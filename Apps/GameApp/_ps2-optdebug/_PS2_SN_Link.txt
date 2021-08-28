@@ -1,0 +1,54 @@
+-nostdlib
+-Wl,-strip-unused,-sn-full-map
+ ".\_ps2-optdebug\Config.obj"
+ ".\_ps2-optdebug\IniFile.obj"
+ ".\_ps2-optdebug\main.obj"
+ ".\_ps2-optdebug\rtf_handler.obj"
+ ".\_ps2-optdebug\Version.obj"
+ --start-group
+ -L "C:\Projects\A51\xCore\3rdParty\PS2\Sony\EE\lib" 
+ -L "C:\Projects\A51\xCore\3rdParty\PS2\SN\EE\lib"   
+ "C:\Projects\A51\xCore\3rdParty\PS2\SN\EE\Lib\sntty.lib"
+ "C:\Projects\A51\xCore\3rdParty\PS2\Sony\EE\Lib\libmc2.lib"
+ "C:\Projects\A51\xCore\3rdParty\PS2\Sony\EE\Lib\libdbc.lib"
+ "C:\Projects\A51\xCore\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib"
+ "C:\Projects\A51\xCore\3rdparty\ps2\sony\ee\lib\netifmc2.lib"
+ "C:\Projects\A51\xCore\3rdparty\ps2\sony\ee\lib\libscf.lib"
+ "C:\Projects\A51\xCore\3rdparty\ps2\sony\ee\lib\libscedemo.lib"
+ "\Projects\A51\Support\ConversationMgr\_ps2-optdebug\ConversationMgr.lib"
+ "\Projects\A51\Support\Music_mgr\_ps2-optdebug\Music_mgr.lib"
+ "\Projects\A51\xCore\Parsing\_ps2-optdebug\Parsing.lib"
+ "\Projects\A51\Support\Render\_ps2-optdebug\Render.lib"
+ "\Projects\A51\Support\GameLib\_ps2-optdebug\Gamelib.lib"
+ "\Projects\A51\Support\StringMgr\_ps2-optdebug\StringMgr.lib"
+ "\Projects\A51\Support\NetworkMgr\_ps2-optdebug\NetworkMgr.lib"
+ "\Projects\A51\xCore\Auxiliary\fx_RunTime\_ps2-optdebug\fx_RunTime.lib"
+ "\Projects\A51\Support\Dialogs\_ps2-optdebug\UserInterface.lib"
+ "\Projects\A51\xCore\Auxiliary\Bitmap\_ps2-optdebug\aux_Bitmap.lib"
+ "\Projects\A51\Support\AudioMgr\_ps2-optdebug\AudioMgr.lib"
+ "\Projects\A51\Support\EventMgr\_ps2-optdebug\EventMgr.lib"
+ "\Projects\A51\xCore\x_files\_ps2-optdebug\x_files.lib"
+ "\Projects\A51\xCore\Entropy\_ps2-optdebug\Entropy.lib"
+ libsn.lib    
+ libc.lib     
+ libcdvd.lib  
+ libdev.lib   
+ libdma.lib   
+ libgcc.lib   
+ libgraph.lib 
+ libipu.lib   
+ libkernl.lib 
+ liblout.lib  
+ libm.lib     
+ libmc.lib    
+ libmpeg.lib  
+ libmsin.lib  
+ libpad.lib   
+ libpc.lib    
+ libpkt.lib   
+ libsdr.lib   
+ libssyn.lib  
+ libvu0.lib   
+ libexcep.lib 
+ --end-group -T "ps2.ld" 
+ -o "c:\Projects\A51\Apps\GameApp\_PS2-OptDebug/A51.elf" -Wl,-Map "c:\Projects\A51\Apps\GameApp\_PS2-OptDebug/A51.map.txt" 

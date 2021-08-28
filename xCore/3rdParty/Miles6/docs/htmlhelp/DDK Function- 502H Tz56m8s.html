@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>DDK Function: 502H Transmit MIDI Data</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="DDK Function: 502H Transmit MIDI Data">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>DDK Function: 502H Transmit MIDI Data</h1>
+<h4>Discussion</h4>
+<p> <b>Input:</b><br> </p><p> AX = 502H<br> BX = Driver number<br> CX = # of MIDI messages in DST MIDI_data[] area<br> MIDI message set copied by API to DST MIDI_data[] area </p><p><b>Output:</b><br> </p><p> None </p><p>This function is the primary message-passing mechanism between MSS and the driver layer. Its input data consists of from 1 to n standard MIDI messages (of either Channel Voice or System Exclusive type), where n is limited by the size of the Driver State Table's 512-byte <b>MIDI_data</b>[] area. The actual number of MIDI messages to be processed is passed to the function in the CX register. Upon calling this function, the list of MIDI messages supplied by MSS will be transmitted or interpreted by the driver, in order of appearance. The driver processes each MIDI message with no delta-time intervals or intermessage delays. This "message list" concept is intended to reduce the large number of protected-mode to real-mode transitions that would be incurred if the function were designed to handle only one MIDI message per call. </p><p>The function handler does not need to handle MIDI running status, as MSS is responsible for associating the proper status byte with each message prior to insertion into the <b>MIDI_data</b>[] buffer. </p><p>This function should not perform DOS or other system-level accesses unless absolutely necessary. </p><p>Note: System Exclusive messages begin with the status byte $F0 or $F7, and are passed to the driver using the format given in the <i>Standard MIDI Files 1.0</i> specification. This allows MSS to simply copy an entire System Exclusive event from the XMIDI file (or the buffer passed to the <a href="AIL_send_sysex_message.html">AIL_send_sysex_message</a> function) to the driver's MIDI_data[] area. $F7 messages do not normally appear in PC MIDI traffic, so their implementation is optional. </p><p>For convenience, the <i>Standard MIDI Files 1.0</i> System Exclusive format is reprinted in the description of the <a href="AIL_send_sysex_message.html">AIL_send_sysex_message</a> function. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="DOS XMIDI Sound Drivbjn2un.html">DOS XMIDI Sound Driver Interface</a><br>
+<b>Related Functions:</b>
+<a href="AIL_send_sysex_message.html">AIL_send_sysex_message</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

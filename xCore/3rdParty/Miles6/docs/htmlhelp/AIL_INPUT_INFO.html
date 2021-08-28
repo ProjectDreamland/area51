@@ -1,0 +1,67 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_INPUT_INFO</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="specifies the details for performing digital input.">
+<meta name="ms-hkwd" content="AIL_INPUT_INFO">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_INPUT_INFO</h1>
+<p>The structure  <b>AIL_INPUT_INFO</b> specifies the details for performing digital input.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="AIL_INPUT_INFO.html" class=trn>AIL_INPUT_INFO</a>
+{
+&nbsp&nbsp<a href="S32.html" class=trn>S32</a></b><i> deviceID</i><b>;
+&nbsp&nbsp<a href="U32.html" class=trn>U32</a></b><i> format</i><b>;
+&nbsp&nbsp<a href="S32.html" class=trn>S32</a></b><i> frequency</i><b>;
+&nbsp&nbsp<a href="S32.html" class=trn>S32</a></b><i> buffer_size</i><b>;
+&nbsp&nbsp<a href="U32.html" class=trn>U32</a></b><i> user_data</i><b>;
+&nbsp&nbsp<a href="AIL_input_callback.html" class=trn>AIL_input_callback</a></b><i> input_cb</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Members</h4>
+<dl>
+<dt><i>deviceID</i></dt>
+<dd>waveIn device ID or WAVE_MAPPER for the Control Panel input setting.</dd>
+<dt><i>format</i></dt>
+<dd>requested input sound format - use one of the <a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a> constants.</dd>
+<dt><i>frequency</i></dt>
+<dd>requested input sound rate (usually 8000, 11025, 22050, or 44100).</dd>
+<dt><i>buffer_size</i></dt>
+<dd>exact amount of data in bytes to be returned to the callback in each call.</dd>
+<dt><i>user_data</i></dt>
+<dd>the value that will be passed to the callback function as the user parameter.</dd>
+<dt><i>input_cb</i></dt>
+<dd>callback to call as the sound data is received by the input device.</dd>
+</dl>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Input hpyv0q.html">Digital Audio Input (Recording) Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_get_input_info.html">AIL_get_input_info</a>, <a href="AIL_input_callback.html">AIL_input_callback</a>, <a href="AIL_open_input.html">AIL_open_input</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

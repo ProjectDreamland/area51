@@ -1,0 +1,63 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_redbook_play</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="begins playback of an audio CD at the specified offset.">
+<meta name="ms-hkwd" content="AIL_redbook_play">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_redbook_play</h1>
+<p>The function  <b>AIL_redbook_play</b> begins playback of an audio CD at the specified offset.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="AIL_redbook_play.html" class=trn>AIL_redbook_play</a>(</b>
+<b>&nbsp&nbsp<a href="HREDBOOK.html" class=trn>HREDBOOK</a>&nbsp</b><i>hand</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>start_ms</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>end_ms</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>hand</i></dt>
+<dd>specifies which CD device to play.</dd>
+<dt><i>start_ms</i></dt>
+<dd>specifies the starting millisecond to play.</dd>
+<dt><i>end_ms</i></dt>
+<dd>specifies the ending millisecond to play.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The current playback status - see <a href="AIL_redbook_status.html">AIL_redbook_status</a> for the possible return values.</p>
+<h4>Discussion</h4>
+<p>Playback will automatically end when the end offset is reached. </p><p> You will usually call the <a href="AIL_redbook_track_info.html">AIL_redbook_track_info</a> function to get the start and end offsets of the track that you want to play - but that isn't required. You could, for example, play the last two seconds of track 5 and the first three seconds of track 6. </p><p> Track 1 does not usually start at a millisecond offset of zero - always use <a href="AIL_redbook_track_info.html">AIL_redbook_track_info</a> to get starting offsets. </p><p> You can monitor the playback with <a href="AIL_redbook_status.html">AIL_redbook_status</a> and <a href="AIL_redbook_position.html">AIL_redbook_position</a>. </p><p> Under DOS, MacOS and Win16, this function must not be invoked from an interrupt-based callback function. </p><p> Example files that use this function: Demo.C, AudioCD.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="CD Audio (Redbook) Skgznaa.html">CD Audio (Redbook) Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_redbook_pause.html">AIL_redbook_pause</a>, <a href="AIL_redbook_position.html">AIL_redbook_position</a>, <a href="AIL_redbook_resume.html">AIL_redbook_resume</a>, <a href="AIL_redbook_status.html">AIL_redbook_status</a>, <a href="AIL_redbook_stop.html">AIL_redbook_stop</a>, <a href="AIL_redbook_track_info.html">AIL_redbook_track_info</a><br>
+<b>Related Basic Types:</b>
+<a href="HREDBOOK.html">HREDBOOK</a>, <a href="U32.html">U32</a><br>
+<b>Related FAQs:</b>
+<a href="How do I loop a tracqkrgja.html">How do I loop a track off a CD?</a>, <a href="How do I play a tracqkrgja.html">How do I play a track off a CD?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_install_driver</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="registers an MSS-compatible driver of any supported type with the MSS API, returning an AIL_DRIVER descriptor.">
+<meta name="ms-hkwd" content="AIL_install_driver">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_install_driver</h1>
+<p>The function  <b>AIL_install_driver</b> registers an MSS-compatible driver of any supported type with the MSS API, returning an AIL_DRIVER descriptor.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="AIL_DRIVER.html" class=trn>AIL_DRIVER *</a> <a href="AIL_install_driver.html" class=trn>AIL_install_driver</a>(</b>
+<b>&nbsp&nbsp<a href="U8.html" class=trn>U8 const *</a>&nbsp</b><i>driver_image</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>n_bytes</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>driver_image</i></dt>
+<dd>points to a memory-resident image of the driver to be installed.</dd>
+<dt><i>n_bytes</i></dt>
+<dd>is the size of the driver image in bytes.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A pointer to a dynamically allocated structure of type AIL_DRIVER driver. AIL_DRIVER may be thought of as the "base class" from which high-level MSS driver types such as DIG_DRIVER and MDI_DRIVER are derived, or NULL if any errors occur. For example, a pointer to an AIL_DRIVER structure for a variable x of type HDIGDRIVER or HMDIDRIVER may be obtained by using an expression of the form x->drvr.</p>
+<h4>Discussion</h4>
+<p>This is a DOS-only function. </p><p> This function must not be invoked from an interrupt-based callback function.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Low-Level DOS Instalopr558.html">Low-Level DOS Installation Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_uninstall_driver.html">AIL_uninstall_driver</a><br>
+<b>Related Basic Types:</b>
+<a href="AIL_DRIVER.html">AIL_DRIVER</a>, <a href="U32.html">U32</a>, <a href="U8.html">U8</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

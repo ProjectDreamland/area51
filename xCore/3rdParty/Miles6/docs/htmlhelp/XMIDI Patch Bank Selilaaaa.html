@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>XMIDI Patch Bank Select (114)</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="XMIDI Patch Bank Select (114)">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>XMIDI Patch Bank Select (114)</h1>
+<h4>Discussion</h4>
+<p> This controller may be used to "extend" the scope of MIDI Program Change (or Cakewalk "Patch") messages. Normally, any of 128 synthesizer patches may be selected with a Program Change message; however, the Patch Bank Select controller instructs the MSS XMIDI driver to associate custom timbres in any of 127 banks with synthesizer patches which are subsequently selected in a channel. </p><p>By convention, patch bank 0 is reserved for General MIDI built-in patch/timbre combinations, and for the Ad Lib-style instruments intended to emulate those patches. Custom timbres should generally be placed in patch banks 1 through 126. Timbre bank 127 is reserved for "drum kit" timbres to be used when playing note events on MIDI channel 10. </p><p>When a MIDI Program Change (or "patch") event is encountered, the XMIDI synthesizer driver looks in its collection of timbres from the Global Timbre Library or proprietary instrument bank for a custom timbre whose "patch number" is the specified Program Change number and whose "bank" is equal to the current Patch Bank Select controller value. If the timbre is found, the synthesizer is automatically instructed to associate the timbre with the patch which was just selected by the Program Change event. Under normal circumstances, the search for the requested timbre should not fail, since the driver should have been informed in advance of the need for the timbre via the <a href="AIL_init_sequence.html">AIL_init_sequence</a> function. </p><p>The default Patch Bank Select controller value is 0. Therefore, MSS applications which do not require custom timbres may disregard this controller altogether. Otherwise, care must be taken to explicitly specify the Timbre Bank Select controller value to be used in each channel of every sequence and sound effect used by the application, since the default value of 0 is asserted only upon driver initialization - not when a channel is locked or when a sequence stops. </p><p>DLS patches are invoked in the normal way, with MIDI Program Change messages; however, it is recommended that the General MIDI bank-select controllers (0 and 32) be used instead of XMIDI Patch Bank Select (114) for all future work. In the MSS software DLS synthesizer, XMIDI Patch Bank Select emulates the GM bank controllers correctly, but this emulation is not supported by hardware-based synthesizer platforms. </p>
+<p><a href="XMIDI Indirect Contrbv6kfq.html">Next Topic (XMIDI Indirect Controller Prefix (115))</a>  </p><p><a href="XMIDI Timbre Protect4rbaaa.html">Previous Topic (XMIDI Timbre Protect (113))</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Extended MIDI Techniid0f6g.html">Extended MIDI Technical Reference</a><br>
+<b>Related Functions:</b>
+<a href="AIL_init_sequence.html">AIL_init_sequence</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

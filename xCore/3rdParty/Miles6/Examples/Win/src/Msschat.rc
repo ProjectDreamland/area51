@@ -1,0 +1,56 @@
+//Microsoft Developer Studio generated resource script.
+//
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+MSSCHAT DIALOG DISCARDABLE  100, 100, 276, 269
+STYLE WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Miles Sound System TCP/IP Voice Chat Example"
+CLASS "MSSCHAT"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        " Voice Chat Server Options: ",117,7,144,260,39
+    PUSHBUTTON      "Start a chat server",101,14,158,104,17,WS_GROUP
+    LTEXT           "This machine's IP: 255.255.255.255",500,134,163,114,8
+    GROUPBOX        " Voice Chat Client Options: ",116,7,186,260,77
+    LTEXT           "Enter the IP number of the server that you wish to connect to, and then click one of the buttons to the right:",
+                    -1,17,202,98,33
+    EDITTEXT        200,17,239,98,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Connect to a chat server at 2900 bps",102,124,199,135,
+                    17
+    PUSHBUTTON      "Connect to a chat server at 2400 bps",103,124,219,135,
+                    17
+    PUSHBUTTON      "Connect to a chat server at 1200 bps",104,124,239,135,
+                    17
+    PUSHBUTTON      "&Close",106,218,60,51,15
+    PUSHBUTTON      "&About...",107,218,78,51,15
+    GROUPBOX        " Information: ",118,7,7,203,133
+    LTEXT           "This is a simple client/server example of the MSS voice chat codecs.  The clients compress the input and send it to the server where the data is decompressed, mixed together with the other clients, and then re-compressed and sent back to the clients.",
+                    -1,19,19,184,42
+    ICON            "DEMO",140,233,31,21,20
+    LTEXT           "This example uses TCP as the transport protocol.  However, for best results, the voice chat packets should be integrated directly in your existing network layer (generally UDP based). This makes better use of the bandwidth than a second, voice-only layer.",
+                    -1,19,64,184,45
+    LTEXT           "For best results, you should use headphones or a head-set to avoid echos from your speakers.  Note also that you must have full-duplex sound drivers installed to chat.",
+                    -1,19,110,184,25
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+DEMO                    ICON    DISCARDABLE     "demo.ico"
+

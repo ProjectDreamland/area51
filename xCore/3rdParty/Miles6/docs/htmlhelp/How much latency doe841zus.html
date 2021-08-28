@@ -1,0 +1,39 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>How much latency does Miles have?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="How much latency does Miles have?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>How much latency does Miles have?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>The <a href="AIL_digital_latency.html">AIL_digital_latency</a> function can roughly report the current latency. This section will discuss where this latency comes from on each of the Miles platforms. </p><p><b>On Win32 with DirectSound,</b> the default latency is 64 milliseconds (not counting the OS, sound driver and sound hardware latency which is out of our control). You can reduce or increase the latency by changing the <a href="MILES_PREFERENCES.html#DIG_DS_MIX_FRAGMENT_CNT">DIG_DS_MIX_FRAGMENT_CNT</a> preference. If you shorten the latency, you increase the chance of skipping. If you lengthen the latency, you can ride out longer thread starvations. </p><p><b>On Win32 with waveOut or Win16,</b> the latency depends on the sound card and sound card drivers. Miles calculates the minimum latency that won't cause skipping at runtime. On most cards, this will be 150 ms to 200 ms, but on some sound cards (especially older ISA cards), this latency can rise to as high as 300 ms! These excessive latency times with waveOut environment are due to fundamental design shortcomings in the Microsoft architecture, and cannot be reliably overcome by any external techniques. </p><p>However, under waveOut, the MSS architecture does permit a sound effect to be started with essentially zero latency, as long as no other sound effects are currently being played! So, if you have a situation where latency is critical, then you can improve waveOut's performance dramatically by letting all other sounds complete before starting the latency-critical sound effect. </p><p><b>On MacOS,</b> Miles has been written so that digital latency will rarely (if ever) exceed 100 milliseconds and will never exceed 140 milliseconds regardless of the speed of your machine. Just like Windows, though, Sound Manager imposes some amount of its own latency as well (exactly how much depends on the machine and version of Sound Manager). </p><p><b>On DOS,</b> the default latency is 100 milliseconds. You can reduce or increase the latency by changing the <a href="MILES_PREFERENCES.html#DIG_LATENCY">DIG_LATENCY</a> preference. If you shorten the latency, you increase the chance of skipping. Under DOS, there is little reason to change the default latency. </p></td></tr>
+</table>
+<p><a href="My sound is skipping3sr5kw.html">Next Topic (My sound is skipping on Win32 - what can I do?)</a>  </p><p><a href="What's the deal with4bihxb.html">Previous Topic (What's the deal with callbacks - are they threads, interrupts, system timers, or what?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Functions:</b>
+<a href="AIL_digital_latency.html">AIL_digital_latency</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

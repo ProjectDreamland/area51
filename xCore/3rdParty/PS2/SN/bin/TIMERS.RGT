@@ -1,0 +1,36 @@
+TIMER registers
+// This format is bit crude because it is based on a debugger internal data format
+// The first line (above) is a title for the pane to display
+// The unit defaults to zero (EE) anyway so is only necessary for other units (eg. 3 for IOP)
+#unit 0
+// the following are just simple register macros to keep things tidier below
+// since we do not need to use huge long lines
+#reg %10!<s0:2,$10000010,BUSCLK;BUSCLK/16;BUSCLK/256;H-BLNK>
+#reg %10!<s0:2,$10000810,BUSCLK;BUSCLK/16;BUSCLK/256;H-BLNK>
+#reg %10!<s0:2,$10001010,BUSCLK;BUSCLK/16;BUSCLK/256;H-BLNK>
+#reg %10!<s0:2,$10001810,BUSCLK;BUSCLK/16;BUSCLK/256;H-BLNK>
+// and here is the stuff that actually displays
+// % => field desription follows
+// followed by optional field size
+// followed by optional ! if not valid cursor position (eg. RO and no alternative display formats)
+// followed by display format delimited by <>
+// optional number to indicate size of the type (eg 16x => 64 bits). This has sensible defaults.
+// x => hexadecimal, d => decimal, b => binary, s => string, m => mask
+// followed by optional n:n => bitfield
+// comma
+// register name or '$' to prefix a hexadecimal address
+// comma, the optional tag used for right-click if alternative fields can be selected
+T0_MODE=%8<x,$10000010,> T1_MODE=%8<x,$10000810,> T2_MODE=%8<x,$10001010,> T3_MODE=%8<x,$10001810,>
+T0_COMP=%8<x,$10000020,> T1_COMP=%8<x,$10000820,> T2_COMP=%8<x,$10001020,> T3_COMP=%8<x,$10001820,>
+T0_HOLD=%8<x,$10000030,> T1_HOLD=%8<x,$10000830,>
+
+   OVFF=%8!<b11:1,$10000010,>    OVFF=%8!<b11:1,$10000810,>    OVFF=%8!<b11:1,$10001010,>    OVFF=%8!<b11:1,$10001810,>
+    EQF=%8!<b10:1,$10000010,>     EQF=%8!<b10:1,$10000810,>     EQF=%8!<b10:1,$10001010,>     EQF=%8!<b10:1,$10001810,>
+   OVFE=%8!<b9:1,$10000010,>    OVFE=%8!<b9:1,$10000810,>    OVFE=%8!<b9:1,$10001010,>    OVFE=%8!<b9:1,$10001810,>
+   CMPE=%8!<b8:1,$10000010,>    CMPE=%8!<b8:1,$10000810,>    CMPE=%8!<b8:1,$10001010,>    CMPE=%8!<b8:1,$10001810,>
+    CUE=%8!<b7:1,$10000010,>     CUE=%8!<b7:1,$10000810,>     CUE=%8!<b7:1,$10001010,>     CUE=%8!<b7:1,$10001810,> 
+   ZRET=%8!<b6:1,$10000010,>    ZRET=%8!<b6:1,$10000810,>    ZRET=%8!<b6:1,$10001010,>    ZRET=%8!<b6:1,$10001810,>
+   GATM=%8!<b4:2,$10000010,>    GATM=%8!<b4:2,$10000810,>    GATM=%8!<b4:2,$10001010,>    GATM=%8!<b4:2,$10001810,> 
+   GATS=%8!<b3:1,$10000010,>    GATS=%8!<b3:1,$10000810,>    GATS=%8!<b3:1,$10001010,>    GATS=%8!<b3:1,$10001810,> 
+   GATE=%8!<b2:1,$10000010,>    GATE=%8!<b2:1,$10000810,>    GATE=%8!<b2:1,$10001010,>    GATE=%8!<b2:1,$10001810,> 
+   CLKS={0}  CLKS={1}  CLKS={2}  CLKS={3}

@@ -1,0 +1,5 @@
+/NOE math_i16 math_a16 mp3dec6 mp3api6,
+mp3dec6.dll,
+nul,
+/nod ldllcew libw mmsystem ..\..\lib\win\mss16,
+mp3d16.def

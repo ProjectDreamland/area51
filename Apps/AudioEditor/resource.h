@@ -1,0 +1,127 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Developer Studio generated include file.
+// Used by AudioEditor.rc
+//
+#define IDD_PARAM_DIALOG                122
+#define IDB_AUDIO_TREE_DRIVE_ICON       124
+#define IDR_AUDIO_EDITOR_HOTKEYS        126
+#define IDD_ELT_PARAM_DIALOG            127
+#define IDD_INTENSITY_DIALOG            128
+#define IDS_ADD_ELEMENT                 501
+#define IDS_ADD_DESCRIPTOR              502
+#define IDS_ADD_PACKAGE                 503
+#define IDS_REFRENCE_DESCRIPTOR         504
+#define IDS_SAVE_AUDIO_EDITOR           505
+#define IDS_LOAD_AUDIO_EDITOR           506
+#define IDS_SET_AUDIO_SOURCE_PATH       507
+#define IDS_ADD_FADER                   508
+#define IDM_POPUP_MENU_NEW_DIR          511
+#define IDM_POPUP_MENU_OPEN             512
+#define IDM_POPUP_MENU_RENAME           514
+#define IDM_POPUP_MENU_NEW_ROOT_DIR     515
+#define IDM_POPUP_MENU_DELETE           516
+#define IDM_POPUP_MENU_NEW_PACKAGE      517
+#define IDM_POPUP_MENU_NEW_DESCRIPTOR   518
+#define IDM_POPUP_MENU_BUILD_PACKAGE    519
+#define IDM_POPUP_MENU_BUILDALL_PACKAGE 520
+#define IDR_SOUNDFRAME                  521
+#define IDR_SOUND                       522
+#define IDD_FADER_DIALOG                523
+#define IDR_PACKAGE                     526
+#define IDB_AUDIO_TREE_DRIVE_ICONS      529
+#define IDM_POPUP_ADD_ELEMENT           531
+#define IDM_POPUP_CREATE_TO_DESC        533
+#define IDM_AUDIO_EDITOR_COPY           551
+#define IDM_AUDIO_EDITOR_PASTE          553
+#define IDM_POPUP_MENU_NEW_INTENSITY    555
+#define IDM_POPUP_MENU_DESC_TOINTENSITY 557
+#define IDM_POPUP_MENU_MOVE_TO          559
+#define IDM_POPUP_MENU_MOVE_PASTE       561
+#define IDR_DIRECTORY_LIST              949
+#define IDC_FADER_NAME                  1000
+#define IDC_FADERDLG_ADD                1001
+#define IDC_FADER_VIEW                  1005
+#define IDC_VOLUME_VAR                  1009
+#define IDC_VOLUME                      1010
+#define IDC_PITCH                       1011
+#define IDC_PITCH_VAR                   1012
+#define IDC_PAN                         1013
+#define IDC_PRIORITY                    1014
+#define IDC_EFFECT_SEND                 1015
+#define IDC_NEAR_FALLOFF                1016
+#define IDC_FAR_FALLOFF                 1017
+#define IDC_EDIT_VOLUME                 1018
+#define IDC_EDIT_VOLUME_VAR             1019
+#define IDC_EDIT_PITCH                  1020
+#define IDC_EDIT_PITCH_VAR              1021
+#define IDC_EDIT_PAN                    1022
+#define IDC_EDIT_PRIORITY               1023
+#define IDC_EDIT_EFFECT_SEND            1024
+#define IDC_EDIT_NEAR_FALLOFF           1025
+#define IDC_EDIT_FAR_FALLOFF            1026
+#define IDC_TEMPERATURE_LIST            1029
+#define IDC_TEMPERATUR                  1030
+#define IDC_ELT_EDIT_VOLUME             1031
+#define IDC_ELT_EDIT_VOLUME_VAR         1032
+#define IDC_ELT_EDIT_PITCH              1033
+#define IDC_ELT_EDIT_PITCH_VAR          1034
+#define IDC_ELT_EDIT_PAN                1035
+#define IDC_ELT_EDIT_PRIORITY           1036
+#define IDC_ELT_EDIT_EFFECT_SEND        1037
+#define IDC_ELT_EDIT_NEAR_FALLOFF       1038
+#define IDC_ELT_EDIT_FAR_FALLOFF        1039
+#define IDC_ELT_FAR_FALLOFF             1040
+#define IDC_ELT_NEAR_FALLOFF            1041
+#define IDC_ELT_EFFECT_SEND             1042
+#define IDC_ELT_PRIORITY                1043
+#define IDC_ELT_PAN                     1044
+#define IDC_ELT_PITCH_VAR               1045
+#define IDC_ELT_PITCH                   1046
+#define IDC_ELT_VOLUME_VAR              1047
+#define IDC_ELT_VOLUME                  1048
+#define IDC_INTENSITY_LIST              1049
+#define ID_SOUND_PLAY                   33001
+#define ID_SOUND_STOP                   33002
+#define ID_SOUND_BEGINNING              33003
+#define ID_SOUND_REWIND                 33004
+#define ID_SOUND_FASTFORWARD            33005
+#define ID_SOUND_END                    33006
+#define ID_SOUND_MARKER                 33007
+#define ID_SOUND_ZOOMINFULL             33008
+#define ID_SOUND_ZOOMOUTFULL            33009
+#define ID_SOUND_ZOOM_SELECTION         33010
+#define ID_SOUND_ZOOMIN                 33011
+#define ID_SOUND_ZOOMOUT                33012
+#define ID_SOUND_UNITS                  33013
+#define ID_SOUND_ZOOM_IN                33015
+#define ID_SOUND_ZOOM_OUT               33016
+#define ID_SOUND_ZOOM_IN_FULL           33017
+#define ID_SOUND_ZOOM_OUT_FULL          33018
+#define ID_DEFAULT_PARAMS               40028
+#define ID_DEFAULT_ELEMENT_PARAMS       40029
+#define ID_SORT_ATOZ                    40030
+#define ID_SORT_DESCENDING              40031
+#define ID_ADD_ELEMENT                  44019
+#define ID_ADD_DESCRIPTOR               44020
+#define ID_ADD_PACKAGE                  44021
+#define ID_REFRENCE_DESCRIPTOR          44022
+#define ID_SAVE_AUDIO_EDITOR            44023
+#define ID_LOAD_AUDIO_EDITOR            44024
+#define ID_SET_AUDIO_SOURCE_PATH        44025
+#define ID_ADD_FADER                    44027
+#define IDW_WORKSPBAR                   59402
+#define IDW_PROPERTY_BAR                59403
+#define IDW_TOOLBAR_SOUND               59404
+#define IDW_SOUND                       59405
+#define IDW_SAMPLE_POOL                 59409
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_NEXT_RESOURCE_VALUE        129
+#define _APS_NEXT_COMMAND_VALUE         40032
+#define _APS_NEXT_CONTROL_VALUE         1050
+#define _APS_NEXT_SYMED_VALUE           102
+#endif
+#endif

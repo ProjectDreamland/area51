@@ -1,0 +1,41 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;   PS0032.PSH: PER PIXEL POINT LIGHTS
+;   --------------------------------------------------------------------------
+;
+;   Formula:
+;
+;       C = 1/sqr(radius)
+;       V = LightPos-VertPos (per pixel in worldspace)
+;       D = V dot V (distance to light)
+;       I = 1-(D*C) (intensity)
+;
+;   c0 = light0 colour
+;   c1 = light1 colour
+;   c2 = light2 colour
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;   tex t0 = 0: Distance attenuation in volume texture
+;   tex t1 = 1: Distance attenuation in volume texture
+;   tex t2 = 2: Distance attenuation in volume texture
+;
+;==----------------------------------------------------------------------------
+;
+;   Calculate intensities
+;
+;==----------------------------------------------------------------------------
+                                ;
+    mul r0.rgb,c0,t0.a          ;   r0 = LightCol[0]*LightInt[0]
+    mad r0.rgb,c1,t1.a,r0       ;   r0 = LightCol[1]*LightInt[1] + r0
+    mad r0.rgb,c2,t2.a,r0       ;   r0 = LightCol[1]*LightInt[1] + r0
+    add r0.rgb,v0,r0 +          ;   r0 = Lightmap + vertex colour
+    mov r0.a  ,v1.a             ;   fog intensity
+                                ;
+;==----------------------------------------------------------------------------
+;
+;   Use final combiner to calculate blend
+;
+;==----------------------------------------------------------------------------
+
+    xfc zero,zero,r0,zero,zero,zero,r0.a

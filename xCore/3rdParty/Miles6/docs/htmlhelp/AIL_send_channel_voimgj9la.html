@@ -1,0 +1,67 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_send_channel_voice_message</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="transmits any desired MIDI Channel Voice message on any MIDI channel.">
+<meta name="ms-hkwd" content="AIL_send_channel_voice_message">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_send_channel_voice_message</h1>
+<p>The function  <b>AIL_send_channel_voice_message</b> transmits any desired MIDI Channel Voice message on any MIDI channel.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_send_channel_voimgj9la.html" class=trn>AIL_send_channel_voice_message</a>(</b>
+<b>&nbsp&nbsp<a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a>&nbsp</b><i>mdi</i><b>,</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>status</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>data_1</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>data_2</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>mdi</i></dt>
+<dd>specifies the MIDI driver to which the MIDI Channel Voice message should be transmitted.</dd>
+<dt><i>S</i></dt>
+<dd>if not NULL, allows the Channel Voice message to be associated with a particular sequence's channel map and XMIDI event log.</dd>
+<dt><i>status</i></dt>
+<dd>is the MIDI status byte for the message to be transmitted.</dd>
+<dt><i>data_1</i></dt>
+<dd>is the first data byte for the message to be transmitted.</dd>
+<dt><i>data_2</i></dt>
+<dd>is the optional second data byte for the message to be transmitted.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>This function is often used to output "one-shot" sound effects on locked MIDI channels. See <a href="AIL_lock_channel.html">AIL_lock_channel</a> for details. </p><p> Either the mdi or the S parameter may be set to NULL. If a driver but not a sequence is specified, the MIDI message will be sent directly to the synthesizer driver layer, with no XMIDI processing or channel remapping at all. On the other hand, when using this function to introduce new controller values "on the fly" into a playing XMIDI sequence, the sequence handle should be passed to the <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a> rather than the driver. Access to a particular sequence handle will help MSS to track current controller values for the sequence, and will allow messages to be sent to channels which sequences have locked, without requiring any calls to <a href="AIL_true_sequence_channel.html">AIL_true_sequence_channel</a>. </p><p> Since the range of channel numbers recognized by different synthesizers can vary widely, it may be advisable to use this function only with physical channel numbers supplied by the <a href="AIL_lock_channel.html">AIL_lock_channel</a> function when an explicit sequence handle is not used. </p><p> For a discussion of standard MIDI Channel Voice messages and their exact format, refer to De Furia and Scacciaferro's <i>MIDI Programmer's Handbook</i>, pp. 59-81, or to a similar general-purpose MIDI manual. Also refer to the MIDI Implementation Chart which accompanies each supported synthesizer. </p><p> It is import to note that the lower nibble of the <b>status</b> bytes consists of the MIDI channel number <i>minus 1</i>. This allows the full range of MIDI channels from 1 to 16 to be mapped into a single four-bit binary nibble, but may be a source of confusion since all other Miles Sound System API calls express channel numbers according to conventional 1-based MIDI notation. Unfortunately, "musician-perspective" versus "programmer-perspective" numbering conflicts are everyday occurrences in the field of MIDI programming. </p><p> data_2 should be set to 0 when transmitting Channel Voice messages which have no second data byte (such as Program Change and Channel Pressure messages).</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Sections:</b>
+<a href="MIDIECHO for DOS - M8o0mlj.html">MIDIECHO for DOS - MIDI Data Receiver and Interpreter</a>, <a href="MIDIECHO for MacOS -5hwjxy.html">MIDIECHO for MacOS - MIDI Data Receiver and Interpreter</a>, <a href="MIDIECHO for Windows5hwjxy.html">MIDIECHO for Windows - MIDI Data Receiver and Interpreter</a>, <a href="XMIDI Channel Mute (107).html">XMIDI Channel Mute (107)</a><br>
+<b>Related Functions:</b>
+<a href="AILEVENTCB.html">AILEVENTCB</a>, <a href="AIL_lock_channel.html">AIL_lock_channel</a>, <a href="AIL_register_ICA_array.html">AIL_register_ICA_array</a>, <a href="AIL_register_event_cs0khaa.html">AIL_register_event_callback</a>, <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a>, <a href="AIL_send_sysex_message.html">AIL_send_sysex_message</a>, <a href="AIL_true_sequence_channel.html">AIL_true_sequence_channel</a><br>
+<b>Related Basic Types:</b>
+<a href="HMDIDRIVER.html">HMDIDRIVER</a>, <a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

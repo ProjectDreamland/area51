@@ -1,0 +1,13 @@
+﻿  Cclist.cpp
+c:\projects\old\a51\xcore\3rdparty\dxtlibrary\cclist.cpp(80): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\projects\old\a51\xcore\3rdparty\dxtlibrary\cclist.cpp(392): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(568): note: see declaration of 'stricmp'
+c:\projects\old\a51\xcore\3rdparty\dxtlibrary\cclist.cpp(414): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(568): note: see declaration of 'stricmp'
+c:\projects\old\a51\xcore\3rdparty\dxtlibrary\cclist.cpp(420): error C2664: 'void ccMinList::Sort(NodeCheckFlipFunc)': cannot convert argument 1 from 'NodeCheckFlipFunc *' to 'NodeCheckFlipFunc'
+  c:\projects\old\a51\xcore\3rdparty\dxtlibrary\cclist.cpp(420): note: There is no context in which this conversion is possible
+c:\projects\old\a51\xcore\3rdparty\dxtlibrary\cclist.cpp(487): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\projects\old\a51\xcore\3rdparty\dxtlibrary\cclist.cpp(622): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(568): note: see declaration of 'stricmp'

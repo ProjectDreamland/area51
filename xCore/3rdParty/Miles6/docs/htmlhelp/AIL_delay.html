@@ -1,0 +1,53 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_delay</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="suspends foreground program execution.">
+<meta name="ms-hkwd" content="AIL_delay">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_delay</h1>
+<p>The function  <b>AIL_delay</b> suspends foreground program execution.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_delay.html" class=trn>AIL_delay</a>(</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>intervals</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>intervals</i></dt>
+<dd>specifies the number of 16 millisecond periods to wait.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>You can also use the <a href="AIL_ms_count.html">AIL_ms_count</a> function for other CPU-independent delays. </p><p> This function may be used to provide a CPU-independent delay for operations such as MIDI System Exclusive transmission via the <a href="AIL_send_sysex_message.html">AIL_send_sysex_message</a> function, or other cases where the application needs to suspend processing for a brief amount of time. </p><p> This function is designed to emulate the delay of waiting for a vertical retrace without actually doing so. It uses the <a href="AIL_ms_count.html">AIL_ms_count</a> to delay exactly 16 milliseconds for every interval. </p><p> Under the Win16, <a href="AIL_delay.html">AIL_delay</a> will return immediately if called from within an MSS callback function.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Timer Services.html">Timer Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_delay.html">AIL_delay</a>, <a href="AIL_ms_count.html">AIL_ms_count</a>, <a href="AIL_send_sysex_message.html">AIL_send_sysex_message</a>, <a href="AIL_us_count.html">AIL_us_count</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

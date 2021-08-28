@@ -1,0 +1,9 @@
+NAME            MSSB16
+
+DESCRIPTION     'MSS Background Task'
+EXETYPE         WINDOWS
+STUB            'WINSTUB.EXE'
+CODE            PRELOAD FIXED
+DATA            PRELOAD FIXED MULTIPLE
+HEAPSIZE        512
+STACKSIZE       4096

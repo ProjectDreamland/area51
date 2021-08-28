@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_redist_directory</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the location of your application's Miles directory.">
+<meta name="ms-hkwd" content="AIL_set_redist_directory">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_redist_directory</h1>
+<p>The function  <b>AIL_set_redist_directory</b> sets the location of your application's Miles directory.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="char P.html" class=trn>char *</a> <a href="AIL_set_redist_directory.html" class=trn>AIL_set_redist_directory</a>(</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>directory</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>directory</i></dt>
+<dd></dd>
+</dl>
+<h4>Returns</h4>
+<p>The new directory path.</p>
+<h4>Discussion</h4>
+<p>Under Windows, this directory should contain the Miles ASI, FLT and M3D providers. Under MacOS, this directory should contain the Miles shared libraries. Under DOS, this directory should contain the sound drivers (*.DIG, *.MDI). </p><p> Miles always first loads the ASI, FLT, or M3D providers from the directory containing MSS32.DLL. After the default directory is searched, then the redistribution directory is scanned. </p><p> This directory is relative to the location of the Miles library file, so if you are using a relative path - make sure it is relative to the right directory! </p><p> You must call <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a> to set your application's Miles directory <i>before</i> calling <a href="AIL_startup.html">AIL_startup</a> or <a href="AIL_quick_startup.html">AIL_quick_startup</a>. </p><p> Example files that use this function: All</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Filter Services.html">Digital Filter Services</a>, <a href="System Services.html">System Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_init_sequence.html">AIL_init_sequence</a>, <a href="AIL_install_DIG_INI.html">AIL_install_DIG_INI</a>, <a href="AIL_install_DIG_driv6dbdaa.html">AIL_install_DIG_driver_file</a>, <a href="AIL_install_DIG_driv6zzyaa.html">AIL_install_DIG_driver_image</a>, <a href="AIL_install_MDI_INI.html">AIL_install_MDI_INI</a>, <a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a>, <a href="AIL_install_MDI_driv6zzyaa.html">AIL_install_MDI_driver_image</a>, <a href="AIL_install_timbre.html">AIL_install_timbre</a>, <a href="AIL_quick_startup.html">AIL_quick_startup</a>, <a href="AIL_set_GTL_filenamelxjjaa.html">AIL_set_GTL_filename_prefix</a>, <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a>, <a href="AIL_startup.html">AIL_startup</a><br>
+<b>Related Basic Types:</b>
+<a href="char.html">char</a>, <a href="char P.html">char *</a>, <a href="char const P.html">char const *</a><br>
+<b>Related FAQs:</b>
+<a href="How do I initialize owpc2p.html">How do I initialize the Miles Sound System for use?</a>, <a href="I can't get Miles tonaxoe0.html">I can't get Miles to play an MP3 file - what's going on?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

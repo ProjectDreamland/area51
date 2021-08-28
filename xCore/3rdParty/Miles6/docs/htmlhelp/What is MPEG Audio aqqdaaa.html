@@ -1,0 +1,39 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>What is MPEG Audio and MP3?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="What is MPEG Audio and MP3?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>What is MPEG Audio and MP3?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p> MPEG audio is a global standard that was invented to compress the audio streams that accompany MPEG video streams. Because it was invented almost 8 years ago, MPEG audio needed to be scalable in playback complexity. The MPEG group, therefore, came up with three levels of compression complexity: MPEG Layer 1, MPEG Layer 2, and MPEG Layer 3. Each level provided almost twice the audibly lossless compression ratio (MP1 provides 3 to 1, MP2 provides 6 to 1, and MP3 provides 11 to 1), but each level required more and more CPU horsepower. </p><p>However, now, 8 years later, even the sophisticated Layer 3 compression standard only uses a small percentage of the total power of a modern desktop CPU. This means we can now take advantage of the massive size savings that MPEG Layer 3 can provide! For example, at the usual compression ratio of 11 to 1, this means you could store up to 13.5 hours of audio on one CD! And remember, this is audibly lossless compression - you can't hear any difference! </p><p>Before MSS, one bad aspect to using MP3 compression was the fact that two overseas companies owned the compression and decompression patent rights to the MP3 algorithm. That meant that if you wanted to add MP3 to your commercial product, then you had to go through a convoluted and lengthy licensing process to obtain an expensive license. Worse, you were simply paying for the patent rights - you still had to write the MP3 decoder itself! </p><p>However, with the Miles Sound System, we have arranged through Fraunhofer and Thomson multimedia to provide a legally redistributable MP3 decoder for no extra cost! You must sign an extra MPEG license addendum (which, among other minor things, requires you to add a credit to Fraunhofer and Thomson in your game), but, other than that, you can use MP3 decompression just like our already built-in IMA ADPCM decompression. More about that in a minute, though. </p><p>Now, MPEG Layer 3 <b>encoding</b> is a completely different situation. RAD does sell an MPEG Layer 3 encoder, but does so completely separately from the Miles Sound System. This MP3 encoder is available from us on a per-machine basis for $95.00. Note that you cannot redistribute this encoder - it is for your use only. To obtain a redistributable encoder, give us a call and we can get you in touch with the right people at Fraunhofer. </p><p>The Miles MP3 encoder is based on the ISO reference source code. This means that while the sound quality of the compression is very good, the compression speed is very, very slow. It can take up to 5 minutes to compress a single 3 minute WAV file! The ISO reference source also has one other limitation - it can only compress 32 Khz, 44 Khz, and 48 Khz data rates. That means that if you try to compress a 22 Khz input file, the Miles encoder will upsample it to 32 Khz and then compress it (which obviously hurts the overall compression ratio). </p><p>Because of these limitations, you may want to look at alternative MP3 compressors - this is a highly competitive field and there are many very good, very fast MP3 encoders available (including ones that support other sample rates - 16, 22 and 24 Khz). See the MP3.<a href="http://www.mp3.com">COM</a> web site for links to many different encoders. The Fraunhofer encoders are generally found to be the very best (and are relatively inexpensive). </p><p>One feature that the other encoders don't have, however, is the ability to compress the instruments in a DLS file. Only the Miles MP3 encoder can currently perform this specific type of compression (which can compress DLS files up to 11 to 1). With this feature, the Miles MP3 encoder can give you incredibly small digital music files. For example, on our web site are several DLS files that are under 1 MB is size, yet contain 7 to 10 MBs of instrument data! </p><p>OK, now let's talk about the Miles MP3 <b>decoder</b>. First off, the Miles MP3 decoder is just that: an MP<b>3</b> decoder. Miles cannot decode or playback MPEG Layer 1 or MPEG Layer 2 compressed audio. You must uncompress data compressed with the simpler formats with a non-Miles utility, and then recompress it using MP3. However, since MP3 is 4 times as small as MP1 and 2 times as small as MP2, this should be to your advantage once the data is converted. </p><p>Once the Miles MP3 decoder is installed, MP3 data is treated like a completely integrated sound type - the data doesn't even have to be decompressed before passing it to Miles! However, the MP3 decompression process does take more CPU than the comparatively simple IMA ADPCM algorithm. You won't be able to decompress 20 MP3 streams simultaneously on a 486, for example! </p><p>To solve this problem, Miles also allows you to pre-decompress MP3 data. This way, if CPU-performance is critical, then you can decompress the MP3 files ahead of time (say when you load the game level data). If, however, memory is critical and CPU-performance isn't important, then you could decompress all of the MP3 files on the fly. The choice is up to you! </p><p>Since an MPEG Layer 3 file contains just the compressed data (MP3 files don't really have an identifying header), you must use a new function called <a href="AIL_set_named_sample_file.html">AIL_set_named_sample_file</a> to tell Miles that it is dealing with MP3-compressed data. There is one exception to this - Microsoft has defined a special type of WAV file that can contain MP3 data (basically the MP3 data is wrapped up into a RIFF chunk). </p><p>If you use this weird WAV file format, then Miles can use the same old <a href="AIL_set_sample_file.html">AIL_set_sample_file</a> function that you've always used to load sound data. However, not all encoders (including the Miles MP3 encoder) support this WAV file wrapping system, so most of the time you should use the new <a href="AIL_set_named_sample_file.html">AIL_set_named_sample_file</a> function (which works with either type of MP3 file). </p></td></tr>
+</table>
+<p><a href="What MP3 encoder shoiud8ga.html">Next Topic (What MP3 encoder should I use?)</a>  </p><p><a href="What kind of audio d9b9pf1.html">Previous Topic (What kind of audio decompression does Miles support?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Functions:</b>
+<a href="AIL_set_named_sample_file.html">AIL_set_named_sample_file</a>, <a href="AIL_set_sample_file.html">AIL_set_sample_file</a><br>
+<b>Related FAQs:</b>
+<a href="What kind of audio d9b9pf1.html">What kind of audio decompression does Miles support?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

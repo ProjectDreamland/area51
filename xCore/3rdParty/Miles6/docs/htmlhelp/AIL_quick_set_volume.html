@@ -1,0 +1,59 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_quick_set_volume</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="controls the volume of an audio handle.">
+<meta name="ms-hkwd" content="AIL_quick_set_volume">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_quick_set_volume</h1>
+<p>The function  <b>AIL_quick_set_volume</b> controls the volume of an audio handle.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_quick_set_volume.html" class=trn>AIL_quick_set_volume</a>(</b>
+<b>&nbsp&nbsp<a href="HAUDIO.html" class=trn>HAUDIO</a>&nbsp</b><i>audio</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>volume</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>extra</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>audio</i></dt>
+<dd>specifies the audio handle that you wish to control.</dd>
+<dt><i>volume</i></dt>
+<dd>specifies the new volume level (0 to 127).</dd>
+<dt><i>extra</i></dt>
+<dd>specifies the extra volume information. For audio handles containing digital data, this is the pan setting (0-127: 0 is hard left, 127 is hard right). For audio handles containing MIDI data, this is the delay time over which the requested volume-scaling takes place.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>You can use this function even if you haven't started playback yet.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Quick Integration Sesm1baa.html">Quick Integration Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_quick_set_speed.html">AIL_quick_set_speed</a><br>
+<b>Related Basic Types:</b>
+<a href="HAUDIO.html">HAUDIO</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

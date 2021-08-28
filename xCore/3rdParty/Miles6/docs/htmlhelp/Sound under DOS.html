@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Sound under DOS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Sound under DOS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Sound under DOS</h1>
+<h4>Discussion</h4>
+<p> Under DOS, the Miles Sound System provides of a set of loadable drivers, or device-dependent code modules which interact with the host machine's sound-generating hardware, and Miles itself. </p><p>Audio driver files for the DOS version of MSS can be recognized by their ".DIG" and ".MDI" file suffixes for the digital audio and XMIDI music drivers, respectively. MSS's driver file structure is the key to its expandability and ease of use. Each unique sound module standard supported by MSS has its own driver which contains enough self-descriptive information to drive its sound module under control of an application developed before that sound module was supported. This "encapsulated" approach helps guard against obsolescence when new sound hardware appears in the marketplace. It is possible to add to an application's list of compatible sound modules without changing a single byte of existing application code, unless unique new performance features must be supported. Even after a product's release, new drivers and data files can be distributed to end-users via the Internet. </p><p>Each DOS driver is written in real-mode 80x86 assembly language or C as a single-segment program containing an INT 66H interrupt handler, various general-purpose support routines, and device-specific code for the supported audio hardware. The drivers' low-level functions are never directly called by the application. Instead, most driver functions serve to pass data back and forth between the sound module and the SDK, while others provide the driver with a means of describing its own capabilities in terms the SDK can understand. DOS drivers for MSS conform to the MSS DDK, which is an "open standard" available to all OEMs, developers, and other interested parties. This standard is defined by the MDD DDK documentation, provided with this documentation. </p><p>In fact, the majority of the loadable sound drivers were actually written by the sound card manufacturers. If you have a card that you'd like to be supported, give the manufacturer a call and have them get in touch with us to obtain a DDK. </p>
+<p><a href="Integrating Miles inmxd43w.html">Next Topic (Integrating Miles into a DOS Build Environment)</a>  </p><p><a href="Installation for DOS.html">Previous Topic (Installation for DOS)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Overview for DOS- Miy6fegj.html">Overview for DOS: Miles on DOS with 32-bit DOS Extenders</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

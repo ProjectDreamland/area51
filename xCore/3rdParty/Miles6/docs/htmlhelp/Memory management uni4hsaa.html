@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Memory management under Win32</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Memory management under Win32">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Memory management under Win32</h1>
+<h4>Discussion</h4>
+<p>Under Win32, memory management is pretty easy - you can pass in any plain old memory pointer for Miles to process. If you want your memory allocations to be compatible with MacOS or DOS, though, you should use the <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a> function. If porting isn't an issue, though, just use whatever memory allocator is convenient (malloc, resource locks, whatever). </p><p>For internal memory use, Miles allocates its own memory directly from the operating system. </p>
+<p><a href="Callbacks under Win32.html">Next Topic (Callbacks under Win32)</a>  </p><p><a href="Sound under Win32.html">Previous Topic (Sound under Win32)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Overview for Win32- zi6edi.html">Overview for Win32: Miles on Windows 95, 98, Me, NT and 2000</a><br>
+<b>Related Functions:</b>
+<a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

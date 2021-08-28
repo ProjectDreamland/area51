@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_quick_fss_load</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="loads a sound file from a Mac file spec, returning a handle that can be used with the other quick API functions.">
+<meta name="ms-hkwd" content="AIL_quick_fss_load">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_quick_fss_load</h1>
+<p>The function  <b>AIL_quick_fss_load</b> loads a sound file from a Mac file spec, returning a handle that can be used with the other quick API functions.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HAUDIO.html" class=trn>HAUDIO</a> <a href="AIL_quick_fss_load.html" class=trn>AIL_quick_fss_load</a>(</b>
+<b>&nbsp&nbsp<a href="FSSpec.html" class=trn>FSSpec const *</a>&nbsp</b><i>file_spec</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>file_spec</i></dt>
+<dd>specifies the FSSpec structure of a .WAV, .MP3, .VOC or .XMI file.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A new audio handle if the function was successful, NULL otherwise.</p>
+<h4>Discussion</h4>
+<p>This MacOS-only function can load Microsoft .WAV files (uncompressed or IMA ADPCM compressed), MPEG Layer-3 files, Creative Labs .VOC files, or XMIDI files. </p><p> You must call <a href="AIL_quick_unload.html">AIL_quick_unload</a> on all handles returned by this function. </p><p> This function must not be invoked from an interrupt-based callback function.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Quick Integration Sesm1baa.html">Quick Integration Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_quick_copy.html">AIL_quick_copy</a>, <a href="AIL_quick_fss_load_a2xyaaa.html">AIL_quick_fss_load_and_play</a>, <a href="AIL_quick_load.html">AIL_quick_load</a>, <a href="AIL_quick_load_and_play.html">AIL_quick_load_and_play</a>, <a href="AIL_quick_load_mem.html">AIL_quick_load_mem</a>, <a href="AIL_quick_unload.html">AIL_quick_unload</a><br>
+<b>Related Basic Types:</b>
+<a href="FSSpec.html">FSSpec</a>, <a href="HAUDIO.html">HAUDIO</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

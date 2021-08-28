@@ -1,0 +1,34 @@
+//==============================================================================
+//  sync.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode provides a simple method for initializing and setting up a
+//  standard set of microcode. At the moment, this just means loading up the
+//  W2S matrix into registers, but at a later time, it might do something more
+//  meaningful.
+//==============================================================================
+
+
+// DS NOTE: The compiler doesn't know how to check dependencies for microcode,
+// so we'll add and remove a line of comments to force the issue. What a pain!
+//==============================================================================
+
+#include "include.vu"
+
+.vu 
+.org MCODE_START_INIT
+.align 4 
+.global VU1_INIT_CODE_START
+.global VU1_INIT_CODE_END
+
+//==============================================================================
+//==============================================================================
+//==============================================================================
+
+VU1_INIT_CODE_START:
+    nop                                                 lq W2S0(xyzw),  0(VI00)
+    nop                                                 lq W2S1(xyzw),  1(VI00)
+    nop[e]                                              lq W2S2(xyzw),  2(VI00)
+    nop                                                 lq W2S3(xyzw),  3(VI00)
+VU1_INIT_CODE_END:

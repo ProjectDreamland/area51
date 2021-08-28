@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_sequence_volume</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="establishes a scaling factor for the value of each MIDI Part Volume Control Change (controller 7) event occurring in a sequence.">
+<meta name="ms-hkwd" content="AIL_set_sequence_volume">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_sequence_volume</h1>
+<p>The function  <b>AIL_set_sequence_volume</b> establishes a scaling factor for the value of each MIDI Part Volume Control Change (controller 7) event occurring in a sequence.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_sequence_volume.html" class=trn>AIL_set_sequence_volume</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>volume</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>milliseconds</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sequence whose volume controller event values are to be scaled.</dd>
+<dt><i>volume</i></dt>
+<dd>specifies the volume-scaling value in standard MIDI units, from 0 (minimum) to 127 (maximum, or no scaling).</dd>
+<dt><i>milliseconds</i></dt>
+<dd>specifies a delay time over which the requested volume-scaling change should take place.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>Volume values are expressed as a number from 0 to 127 which acts as a multiplier for the normal (unscaled) volume levels specified in a sequence's MIDI Control Change events. The default volume-scaling value is 127, indicating no change in the sequence's Part Volume controller values. </p><p> The milliseconds parameter allows the application to specify a number of milliseconds from 0 (immediate) to 2.1 billion (slightly more than three weeks) over which the relative tempo should ramp up or down to reach the specified value. This graduation time is measured only while the sequence is actually playing; if a sequence is paused during a ramp-up or ramp-down with a call to <a href="AIL_stop_sequence.html">AIL_stop_sequence</a>, the graduation effect itself will continue, along with the rest of the sequence's performance, upon a subsequent call to <a href="AIL_resume_sequence.html">AIL_resume_sequence</a>. </p><p> Two important differences affect this function's operation under MSS version 3, as compared with MSS version 2. First, the volume value is no longer given as a percentage, but in standard MIDI units from 0 to 127. It is possible to specify volume values greater than 127, but this is not ordinarily desirable since it may cause imbalances in channel volumes relative to each other. Second, the default volume-scaling value is no longer synthesizer-specific. Under MSS version 2, the volume-scaling factor was reduced to 90% with the Roland MT-32 XMIDI driver active, to reduce distortion inherent in the Roland MT-32 synthesizer circuitry. This is no longer the case under MSS version 3, since most MT-32s in the field are now third-party "clones" rather than genuine Roland MT-32 or LAPC-1 synthesizers. </p><p> Important!<a href="AIL_set_sequence_volume.html">AIL_set_sequence_volume</a> will not affect MIDI channels which contain no MIDI Channel Volume Control Change (7) controller events. <i>All</i> MSS-compatible MIDI sequences should contain Volume Control events near the beginning of each channel; otherwise, each channel will "inherit" the volume level which was established in the last sequence played on that channel.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_resume_sequence.html">AIL_resume_sequence</a>, <a href="AIL_sequence_volume.html">AIL_sequence_volume</a>, <a href="AIL_set_XMIDI_masteraryoaa.html">AIL_set_XMIDI_master_volume</a>, <a href="AIL_set_sequence_volume.html">AIL_set_sequence_volume</a>, <a href="AIL_stop_sequence.html">AIL_stop_sequence</a><br>
+<b>Related Basic Types:</b>
+<a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="I can't seem to chanzj97c4.html">I can't seem to change the volume of my XMIDI sequences, what's going on?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

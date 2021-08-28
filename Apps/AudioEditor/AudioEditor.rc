@@ -1,0 +1,298 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_SOUND TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_SOUND_STOP
+    BUTTON      ID_SOUND_PLAY
+    SEPARATOR
+    BUTTON      ID_SOUND_BEGINNING
+    BUTTON      ID_SOUND_REWIND
+    BUTTON      ID_SOUND_FASTFORWARD
+    BUTTON      ID_SOUND_END
+    SEPARATOR
+    BUTTON      ID_SOUND_MARKER
+    SEPARATOR
+    BUTTON      ID_SOUND_ZOOM_IN
+    BUTTON      ID_SOUND_ZOOM_OUT
+    BUTTON      ID_SOUND_ZOOM_IN_FULL
+    BUTTON      ID_SOUND_ZOOM_OUT_FULL
+    BUTTON      ID_SOUND_ZOOM_SELECTION
+    SEPARATOR
+    BUTTON      ID_SOUND_UNITS
+END
+
+IDR_PACKAGE TOOLBAR DISCARDABLE  16, 16
+BEGIN
+    BUTTON      ID_ADD_ELEMENT
+    BUTTON      ID_ADD_DESCRIPTOR
+    BUTTON      ID_ADD_PACKAGE
+    BUTTON      ID_REFRENCE_DESCRIPTOR
+    SEPARATOR
+    BUTTON      ID_SAVE_AUDIO_EDITOR
+    BUTTON      ID_LOAD_AUDIO_EDITOR
+    SEPARATOR
+    BUTTON      ID_SET_AUDIO_SOURCE_PATH
+    BUTTON      ID_ADD_FADER
+    BUTTON      ID_DEFAULT_PARAMS
+    BUTTON      ID_DEFAULT_ELEMENT_PARAMS
+    SEPARATOR
+    BUTTON      ID_SORT_DESCENDING
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_SOUND               BITMAP  DISCARDABLE     "res\\sound_Toolbar.bmp"
+IDR_PACKAGE             BITMAP  DISCARDABLE     "res\\Package_toolbar.bmp"
+IDB_AUDIO_TREE_DRIVE_ICONS BITMAP  DISCARDABLE     "res\\audio_treectrl_icons.bmp"
+IDB_AUDIO_TREE_DRIVE_ICON BITMAP  DISCARDABLE     "res\\audiotreedrive_icons.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_SOUNDFRAME          ICON    DISCARDABLE     "res\\AudioTool.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_FADER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 188
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 106
+    END
+
+    IDD_PARAM_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 119
+        BOTTOMMARGIN, 146
+        HORZGUIDE, 22
+        HORZGUIDE, 35
+        HORZGUIDE, 49
+        HORZGUIDE, 62
+        HORZGUIDE, 76
+        HORZGUIDE, 88
+        HORZGUIDE, 102
+        HORZGUIDE, 116
+        HORZGUIDE, 127
+    END
+
+    IDD_ELT_PARAM_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 131
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 167
+    END
+
+    IDD_INTENSITY_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 138
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_FADER_DIALOG DIALOG DISCARDABLE  0, 0, 195, 113
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Fader Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_FADER_NAME,8,90,126,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Add",IDC_FADERDLG_ADD,137,89,51,14
+    LISTBOX         IDC_FADER_VIEW,7,7,181,80,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_PARAM_DIALOG DIALOG DISCARDABLE  0, 0, 126, 153
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Default Params"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,64,132,55,14
+    LTEXT           "Volume",IDC_VOLUME,13,11,37,8
+    LTEXT           "VolumeVar",IDC_VOLUME_VAR,13,24,37,12
+    LTEXT           "Pitch",IDC_PITCH,13,38,37,8
+    LTEXT           "PitchVar",IDC_PITCH_VAR,13,51,37,8
+    LTEXT           "Pan",IDC_PAN,13,64,37,8
+    LTEXT           "Priority",IDC_PRIORITY,13,77,37,8
+    LTEXT           "EffectSend",IDC_EFFECT_SEND,13,90,37,8
+    LTEXT           "NearFalloff",IDC_NEAR_FALLOFF,13,104,37,8
+    LTEXT           "FarFalloff",IDC_FAR_FALLOFF,13,116,37,8
+    EDITTEXT        IDC_EDIT_VOLUME,63,8,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VOLUME_VAR,63,22,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PITCH,63,35,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PITCH_VAR,63,49,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PAN,63,62,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PRIORITY,63,75,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_EFFECT_SEND,63,88,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_NEAR_FALLOFF,63,102,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FAR_FALLOFF,63,115,56,12,ES_AUTOHSCROLL
+END
+
+IDD_ELT_PARAM_DIALOG DIALOG DISCARDABLE  0, 0, 138, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Element Default Params"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,63,149,55,14
+    LTEXT           "Volume",IDC_ELT_VOLUME,13,11,37,8
+    LTEXT           "VolumeVar",IDC_ELT_VOLUME_VAR,13,24,37,12
+    LTEXT           "Pitch",IDC_ELT_PITCH,13,38,37,8
+    LTEXT           "PitchVar",IDC_ELT_PITCH_VAR,13,51,37,8
+    LTEXT           "Pan",IDC_ELT_PAN,13,64,37,8
+    LTEXT           "Priority",IDC_ELT_PRIORITY,13,77,37,8
+    LTEXT           "EffectSend",IDC_ELT_EFFECT_SEND,13,90,37,8
+    LTEXT           "NearFalloff",IDC_ELT_NEAR_FALLOFF,13,104,37,8
+    LTEXT           "FarFalloff",IDC_ELT_FAR_FALLOFF,13,116,37,8
+    EDITTEXT        IDC_ELT_EDIT_VOLUME,63,8,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ELT_EDIT_VOLUME_VAR,63,22,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ELT_EDIT_PITCH,63,35,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ELT_EDIT_PITCH_VAR,63,49,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ELT_EDIT_PAN,63,62,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ELT_EDIT_PRIORITY,63,75,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ELT_EDIT_EFFECT_SEND,63,88,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ELT_EDIT_NEAR_FALLOFF,63,102,56,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ELT_EDIT_FAR_FALLOFF,63,115,56,12,ES_AUTOHSCROLL
+    LISTBOX         IDC_TEMPERATURE_LIST,63,130,56,13,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Temperatur",IDC_TEMPERATUR,12,131,45,13
+END
+
+IDD_INTENSITY_DIALOG DIALOG DISCARDABLE  0, 0, 172, 145
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Intensity Descriptor list"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,115,124,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,7,124,50,14
+    LISTBOX         IDC_INTENSITY_LIST,7,7,158,116,LBS_SORT | 
+                    LBS_MULTIPLESEL | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ADD_ELEMENT         "Add a new Element."
+    IDS_ADD_DESCRIPTOR      "Add a new descriptor."
+    IDS_ADD_PACKAGE         "Add a new package."
+    IDS_REFRENCE_DESCRIPTOR "Refrence a descriptor."
+    IDS_SAVE_AUDIO_EDITOR   "Save package"
+    IDS_SET_AUDIO_SOURCE_PATH "Sets where the audio samples reside."
+    IDS_ADD_FADER           "Add a new fader to the list."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ADD_ELEMENT          "Add a new Element. (Ctrl + E)"
+    ID_ADD_DESCRIPTOR       "Add a new descriptor. (Ctrl + D)"
+    ID_ADD_PACKAGE          "Add a new package.(Ctrl + F)"
+    ID_REFRENCE_DESCRIPTOR  "Refrence a descriptor.(Ctrl +R)"
+    ID_SAVE_AUDIO_EDITOR    "Save all the packages."
+    ID_SET_AUDIO_SOURCE_PATH "Sets where the audio samples reside."
+    ID_ADD_FADER            "Add a new fader to the list."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_DEFAULT_PARAMS       "The Default params for the package and descriptor."
+    ID_DEFAULT_ELEMENT_PARAMS "Default params only for the elements."
+    ID_SORT_ATOZ            "Sort"
+    ID_SORT_DESCENDING      "Sort the tree in a descending order."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

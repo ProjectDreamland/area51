@@ -1,0 +1,1075 @@
+//==============================================================================
+//  skinning.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode handles the transform, lighting, and skinning of characters.
+//==============================================================================
+
+// DS NOTE: The compiler doesn't know how to check dependencies for microcode,
+// so we'll add and remove a line of comments to force the issue. What a pain!
+//==============================================================================
+
+#include "include.vu"
+
+.vu 
+.org    MCODE_START_TRANSFORM
+.align  4 
+.global VU1_SKIN_XFORM_CODE_START
+.global VU1_SKIN_XFORM_CODE_END
+
+.global     VU1_ENTRY_SKIN_XFORM_1BONE
+.global     VU1_ENTRY_SKIN_XFORM_2BONES
+.global     VU1_ENTRY_SKIN_XFORM_CLIPPED
+.global     VU1_ENTRY_SKIN_SETUP_MATRIX
+.equ        VU1_ENTRY_SKIN_XFORM_1BONE,       ((VU1_SKIN_1BONE     - VU1_SKIN_XFORM_CODE_START + MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_SKIN_XFORM_2BONES,      ((VU1_SKIN_2BONES    - VU1_SKIN_XFORM_CODE_START + MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_SKIN_XFORM_CLIPPED,     ((VU1_SKIN_WCULL     - VU1_SKIN_XFORM_CODE_START + MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_SKIN_SETUP_MATRIX,      ((VU1_SKIN_MAT_SETUP - VU1_SKIN_XFORM_CODE_START + MCODE_START_TRANSFORM)/8)
+
+#define BRANCH_MATERIAL_MCODE   VU1_SKIN_XFORM_CODE_START+MCODE_START_MATERIAL-MCODE_START_TRANSFORM+16384
+#define BRANCH_CLIPPER_MCODE    VU1_SKIN_XFORM_CODE_START+MCODE_START_CLIPPER -MCODE_START_TRANSFORM+16384
+
+VU1_SKIN_XFORM_CODE_START:
+
+;==============================================================================
+;
+; Matrix setup - loads a transformation matrix, pre-translates it for our
+; funky itof tricks, and stores it back out.
+;
+;==============================================================================
+VU1_SKIN_MAT_SETUP:
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 0
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 4
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 8
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 12
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 16
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 20
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 24
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 28
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 32
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 36
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 40
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 44
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 48
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 52
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 56
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 60
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 64
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 68
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 72
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 76
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 80
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 84
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 88
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 92
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 96
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 100
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 104
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 108
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 112
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 116
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 120
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 124
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 128
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 132
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 136
+    nop                                                 b       SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 140
+SETUP_MATRIX:
+
+    nop                                                 loi     -786432.0
+    addi.xyz    TF04(xyz),  vf00,       i               lq.xyzw TF03(xyzw), 3(ITMP)
+    nop                                                 lq.xyzw TF02(xyzw), 2(ITMP)
+    nop                                                 lq.xyzw TF01(xyzw), 1(ITMP)
+    nop                                                 lq.xyzw TF00(xyzw), 0(ITMP)
+    mulaw.xyzw  acc,        TF03(xyzw), vf00w           nop
+    maddaz.xyzw acc,        TF02(xyzw), TF04(z)         nop
+    madday.xyzw acc,        TF01(xyzw), TF04(y)         nop
+    maddx.xyzw  TF03(xyzw), TF00(xyzw), TF04(x)         nop
+    nop                                                 nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 sq.xyzw TF03(xyzw), 3(ITMP)
+
+;==============================================================================
+;
+;   Skin Renderer - No Clipping and two bones
+;                   Does both lighting and skinning in one loop
+;
+;==============================================================================
+
+#define LMT0( x )                   TF20( x )       // (TEMP) light dir matrix
+#define LMT1( x )                   TF21( x )       // (TEMP) light dir matrix
+#define LMT2( x )                   TF22( x )       // (TEMP) light dir matrix
+
+#define L2S0( x )                   TF00( x )       // Local-to-screen matrix
+#define L2S1( x )                   TF01( x )       // Local-to-screen matrix
+#define L2S2( x )                   TF02( x )       // Local-to-screen matrix
+#define L2S3( x )                   TF03( x )       // Local-to-screen matrix
+#define LCL0( x )                   TF04( x )       // color matrix
+#define LCL1( x )                   TF05( x )       // color matrix
+#define LCL2( x )                   TF06( x )       // color matrix
+#define LCL3( x )                   TF07( x )       // color matrix
+#define LDR0( x )                   TF08( x )       // light dir matrix
+#define LDR1( x )                   TF09( x )       // light dir matrix
+#define LDR2( x )                   TF10( x )       // light dir matrix
+#define BN00( x )                   TF11( x )       // Bone 0
+#define BN01( x )                   TF12( x )       // Bone 0
+#define BN02( x )                   TF13( x )       // Bone 0
+#define BN03( x )                   TF14( x )       // Bone 0
+#define BN10( x )                   TF15( x )       // Bone 1
+#define BN11( x )                   TF16( x )       // Bone 1
+#define BN12( x )                   TF17( x )       // Bone 1
+#define BN13( x )                   TF18( x )       // Bone 1
+#define WGTS( x )                   TF19( x )       // input weights
+#define FWGT( x )                   TF19( x )       // weights as floats
+#define SWGT( x )                   TF19( x )       // scaled weights
+#define INRM( x )                   TF20( x )       // input normal
+#define FNRM( x )                   TF21( x )       // normal as float
+#define SNRM( x )                   TF21( x )       // skinned normal
+#define XNRM( x )                   BN10( x )       // (RE-USE) fixed-point normal
+#define DOTS( x )                   BN11( x )       // (RE-USE) normal*light dir
+#define CDOT( x )                   BN11( x )       // (RE-USE) Clamped dots
+#define RGBS( x )                   BN11( x )       // (RE-USE) Dots * light colors
+#define CRGB( x )                   BN11( x )       // (RE-USE) Clamped rgbs
+#define XRGB( x )                   BN11( x )       // (RE-USE) RGBs as fixed
+#define ITEX( x )                   BN12( x )       // (RE-USE) Input texture coords
+#define FTEX( x )                   BN12( x )       // (RE-USE) Floating-point texture coords
+#define PTEX( x )                   BN12( x )       // (RE-USE) Projected texture coords
+#define IPOS( x )                   INRM( x )       // (RE-USE) Input position
+#define POS0( x )                   INRM( x )       // (RE-USE) Position scaled by weight0
+#define POS1( x )                   TF22( x )       // Position scaled by weight1
+#define SPOS( x )                   TF22( x )       // Skinned position
+#define CPOS( x )                   TF22( x )       // Position times L2S
+#define PPOS( x )                   BN10( x )       // (RE-USE) Projected pos
+#define XPOS( x )                   BN10( x )       // (RE-USE) Pos in fixed-point
+
+#define VPTR                        TI00            // Pointer to vertices
+#define ENDM                        TI01            // End address
+#define BPTR                        TI02            // Pointer to backup buffer
+#define BON0                        TI03            // Pointer to bone 0
+#define BON1                        TI04            // Pointer to bone 1
+
+#define WEIGHT_SCALE    16.062745098039215686       ; 16*256/255
+#define COLOR_CLAMP     255.0
+
+VU1_SKIN_2BONES:
+    nop                                                 xtop BASE
+    nop                                                 lq.xyzw     L2W3(xyzw), VU1_L2W+3(BASE)
+    nop                                                 lq.xyzw     L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 lq.xyzw     L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq.xyzw     L2W0(xyzw), VU1_L2W+0(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W3(w)         lq.zw       LMT0(zw),   VU1_UV0+VU1_LIGHT_SIZE*0(BASE)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W3(z)         lq.zw       LMT1(zw),   VU1_UV0+VU1_LIGHT_SIZE*1(BASE)
+    madday.xyzw acc,        W2S1(xyzw), L2W3(y)         lq.zw       LMT2(zw),   VU1_UV0+VU1_LIGHT_SIZE*2(BASE)
+    maddx.xyzw  L2S3(xyzw), W2S0(xyzw), L2W3(x)         lq.zw       LCL0(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*0(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W2(w)         mr32.xyzw   LMT0(xyzw), LMT0(xyzw)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W2(z)         mr32.xyzw   LMT1(xyzw), LMT1(xyzw)
+    madday.xyzw acc,        W2S1(xyzw), L2W2(y)         mr32.xyzw   LMT2(xyzw), LMT2(xyzw)
+    maddx.xyzw  L2S2(xyzw), W2S0(xyzw), L2W2(x)         lq.zw       LCL1(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*1(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W1(w)         mr32.xyzw   LMT0(xyzw), LMT0(xyzw)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W1(z)         mr32.xyzw   LMT1(xyzw), LMT1(xyzw)
+    madday.xyzw acc,        W2S1(xyzw), L2W1(y)         mr32.xyzw   LMT2(xyzw), LMT2(xyzw)
+    maddx.xyzw  L2S1(xyzw), W2S0(xyzw), L2W1(x)         lq.zw       LCL2(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*2(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W0(w)         lq.zw       LMT0(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*0(BASE)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W0(z)         lq.zw       LMT1(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*1(BASE)
+    madday.xyzw acc,        W2S1(xyzw), L2W0(y)         lq.zw       LMT2(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*2(BASE)
+    maddx.xyzw  L2S0(xyzw), W2S0(xyzw), L2W0(x)         lq.zw       LCL3(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*3(BASE)
+    nop                                                 mr32.xyzw   LCL0(xyzw), LCL0(xyzw)
+    nop                                                 mr32.xyzw   LCL1(xyzw), LCL1(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W0(z)         mr32.xyzw   LCL2(xyzw), LCL2(xyzw)
+    madday.xyz  acc,        LMT1(xyz),  L2W0(y)         mr32.xyzw   LCL3(xyzw), LCL3(xyzw)
+    maddx.xyz   LDR0(xyz),  LMT0(xyz),  L2W0(x)         mr32.xyzw   LCL0(xyzw), LCL0(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W1(z)         mr32.xyzw   LCL1(xyzw), LCL1(xyzw)
+    madday.xyz  acc,        LMT1(xyz),  L2W1(y)         mr32.xyzw   LCL2(xyzw), LCL2(xyzw)
+    maddx.xyz   LDR1(xyz),  LMT0(xyz),  L2W1(x)         mr32.xyzw   LCL3(xyzw), LCL3(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W2(z)         lq.zw       LCL0(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*0(BASE)
+    madday.xyz  acc,        LMT1(xyz),  L2W2(y)         lq.zw       LCL1(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*1(BASE)
+    maddx.xyz   LDR2(xyz),  LMT0(xyz),  L2W2(x)         lq.zw       LCL2(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       LCL3(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*3(BASE)
+
+    nop                                                 ilw.z       INST,   VU1_COUNT(BASE)
+    nop                                                 iaddiu      VPTR,   BASE,   0x00
+    nop                                                 iaddiu      BPTR,   vi00,   VU1_SKIN_BACKUP_BUFFER
+    nop                                                 iaddiu      ITMP,   vi00,   0x7f
+    nop                                                 iand        NUMV,   INST,   ITMP
+    nop                                                 iadd        ENDM,   VPTR,   NUMV
+    nop                                                 iadd        ENDM,   ENDM,   NUMV
+    nop                                                 iadd        ENDM,   ENDM,   NUMV
+    nop                                                 iadd        ENDM,   ENDM,   NUMV
+    nop                                                 iaddiu      NBUF,   vi00,   VU1_SKIN_BACKUP_BUFFER
+
+    ; loop preamble
+    nop                                                 lq.xyz  INRM(xyz),  VU1_NORMAL(VPTR)                ;                   ; load normal0
+    nop                                                 lq.xyzw WGTS(xyzw), VU1_BNIDX(VPTR)                 ;                   ; load weights0
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 nop                                                 ;                   ;
+    itof12.xyz  FNRM(xyz),  INRM(xyz)                   mtir    BON0, WGTS(x)                               ; normal0->float    ; pBone0_0
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 mtir    BON1,WGTS(y)                                ;                   ; pBone0_1
+    itof12.zw   FWGT(zw),   WGTS(zw)                    nop                                                 ; weights0->float   ;
+    nop                                                 lq.xyzw IPOS(xyzw), VU1_XYZ(VPTR)                   ;                   ; load xyz0
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 loi     WEIGHT_SCALE                                ;                   ; load scale const
+    muli.zw     SWGT(zw),   FWGT(zw),   i               nop                                                 ; scale weights0    ;
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 lq.xyzw BN03(xyzw), 3(BON0)                         ;                   ; load bone0_03
+    mulw.xyz    POS1(xyz),  IPOS(xyz),  SWGT(w)         lq.xyzw BN02(xyzw), 2(BON0)                         ; weight xyz0_1     ; load bone0_02
+    nop                                                 lq.xyzw BN01(xyzw), 1(BON0)                         ;                   ; load bone0_01
+    nop                                                 lq.xyzw BN00(xyzw), 0(BON0)                         ;                   ; load bone0_00
+    mulz.xyz    POS0(xyz),  IPOS(xyz),  SWGT(z)         lq.xyzw BN13(xyzw), 3(BON1)                         ; weight xyz0_0     ; load bone0_13
+    mulaz.xyz   acc,        BN02(xyz),  FNRM(z)         nop                                                 ; skin normal0      ;
+    madday.xyz  acc,        BN01(xyz),  FNRM(y)         nop                                                 ; skin normal0      ;
+    maddx.xyz   SNRM(xyz),  BN00(xyz),  FNRM(x)         nop                                                 ; skin normal0      ;
+    mulaz.xyz   acc,        BN03(xyz),  SWGT(z)         nop                                                 ; skin xyz0         ;
+
+    ; optimized loop
+SKIN_LP_2_BONES:
+    maddaz.xyz  acc,        BN02(xyz),  POS0(z)         lq.xyzw BN12(xyzw), 2(BON1)                         ; skin xyz0         ; load bone0_12
+    madday.xyz  acc,        BN01(xyz),  POS0(y)         lq.xyzw BN11(xyzw), 1(BON1)                         ; skin xyz0         ; load bone0_12
+    maddax.xyz  acc,        BN00(xyz),  POS0(x)         lq.xyzw BN10(xyzw), 0(BON1)                         ; skin xyz0         ; load bone0_12
+    maddaw.xyz  acc,        BN13(xyz),  SWGT(w)         nop                                                 ; skin xyz0         ;
+    maddaz.xyz  acc,        BN12(xyz),  POS1(z)         nop                                                 ; skin xyz0         ;
+    madday.xyz  acc,        BN11(xyz),  POS1(y)         nop                                                 ; skin xyz0         ;
+    maddx.xyz   SPOS(xyz),  BN10(xyz),  POS1(x)         move.zw ITEX(zw),   vf00zw                          ; skin xyz0         ; itex.w = 1
+    mulaz.xyz   acc,        LDR2(xyz),  SNRM(z)         iaddiu  VPTR, VPTR, VU1_VERT_SIZE                   ; calc dot0         ; vptr++
+    madday.xyz  acc,        LDR1(xyz),  SNRM(y)         iaddiu  BPTR, BPTR, VU1_VERT_SIZE                   ; calc dot0         ; bptr++
+    maddx.xyz   DOTS(xyz),  LDR0(xyz),  SNRM(x)         sq.w    IPOS(w),    VU1_XYZ-VU1_VERT_SIZE(BPTR)     ; calc dot0         ; backup adc0
+    mulaw.xyzw  acc,        L2S3(xyzw), vf00w           sq.xyz  SPOS(xyz),  VU1_XYZ-VU1_VERT_SIZE(BPTR)     ; calc xyz0         ; backup pos0
+    maddaz.xyzw acc,        L2S2(xyzw), SPOS(z)         lq.xyz  INRM(xyz),  VU1_NORMAL(VPTR)                ; calc xyz0         ; load normal1
+    madday.xyzw acc,        L2S1(xyzw), SPOS(y)         lq.xyzw WGTS(xyzw), VU1_BNIDX(VPTR)                 ; calc xyz0         ; load weights1
+    maddx.xyzw  CPOS(xyzw), L2S0(xyzw), SPOS(x)         lq.xy   ITEX(xy),   VU1_UV0-VU1_VERT_SIZE(VPTR)     ; calc xyz0         ; load uv0
+    maxx.xyz    CDOT(xyz),  DOTS(xyz),  vf00x           mr32.zw ITEX(zw),   ITEX(zw)                        ; clamp dot0        ; itex.z = 1
+    ftoi12.xyz  XNRM(xyz),  SNRM(xyz)                   iaddiu  ITMP,   vi00,   0x80                        ; normal0->fixed    ; tmp = 0x80
+    itof12.xyz  FNRM(xyz),  INRM(xyz)                   mtir    BON0, WGTS(x)                               ; normal1->float    ; pBone1_0
+    mulaw.xyz   acc,        LCL3(xyz),  vf00w           div     q, vf00w, CPOS(w)                           ; calc rgb0         ; divide0
+    maddaz.xyz  acc,        LCL2(xyz),  CDOT(z)         mtir    BON1, WGTS(y)                               ; calc rgb0         ; pBone1_1
+    itof12.zw   FWGT(zw),   WGTS(zw)                    sq.xyz  XNRM(xyz),  VU1_NORMAL-VU1_VERT_SIZE(VPTR)  ; weights1->float   ; store normal0
+    madday.xyz  acc,        LCL1(xyz),  CDOT(y)         lq.xyzw IPOS(xyzw), VU1_XYZ(VPTR)                   ; calc rgb0         ; load xyz1
+    maddx.xyz   RGBS(xyz),  LCL0(xyz),  CDOT(x)         sq.xyz  ITEX(xyz),  VU1_UV0-VU1_VERT_SIZE(BPTR)     ; calc rgb0         ; backup uv0
+    itof12.xy   FTEX(xy),   ITEX(xy)                    loi     WEIGHT_SCALE                                ; uv0->fixed        ; load scale const
+    muli.zw     SWGT(zw),   FWGT(zw),   i               mfir.w  XRGB(w), ITMP                               ; scale weights1    ; alpha = 0x80
+    mulq.xyz    PPOS(xyz),  CPOS(xyz),  q               loi     COLOR_CLAMP                                 ; project xyz0      ; load clamp const
+    minii.xyz   CRGB(xyz),  RGBS(xyz),  i               nop                                                 ; clamp rgb0        ;
+    mulq.xyz    PTEX(xyz),  FTEX(xyz),  q               lq.xyzw BN03(xyzw), 3(BON0)                         ; project uv0       ; load bone1_03
+    mulw.xyz    POS1(xyz),  IPOS(xyz),  SWGT(w)         lq.xyzw BN02(xyzw), 2(BON0)                         ; weight xyz1_1     ; load bone1_02
+    ftoi4.xyz   XPOS(xyz),  PPOS(xyz)                   lq.xyzw BN01(xyzw), 1(BON0)                         ; xyz0->fixed       ; load bone1_01
+    ftoi0.xyz   XRGB(xyz),  CRGB(xyz)                   lq.xyzw BN00(xyzw), 0(BON0)                         ; rgb0->fixed       ; load bone1_00
+    mulz.xyz    POS0(xyz),  IPOS(xyz),  SWGT(z)         lq.xyzw BN13(xyzw), 3(BON1)                         ; weight xyz1_0     ; load bone1_13
+    mulaz.xyz   acc,        BN02(xyz),  FNRM(z)         sq.xyz  PTEX(xyz),  VU1_UV0-VU1_VERT_SIZE(VPTR)     ; skin normal1      ; store uv0
+    madday.xyz  acc,        BN01(xyz),  FNRM(y)         sq.xyz  XPOS(xyz),  VU1_XYZ-VU1_VERT_SIZE(VPTR)     ; skin normal1      ; store xyz0
+    maddx.xyz   SNRM(xyz),  BN00(xyz),  FNRM(x)         ibne    VPTR, ENDM, SKIN_LP_2_BONES                 ; skin normal1      ; loop
+    mulaz.xyz   acc,        BN03(xyz),  SWGT(z)         sq.xyzw XRGB(xyzw), VU1_RGB-VU1_VERT_SIZE(VPTR)     ; skin xyz1         ; store rgb0
+
+    nop                                                 iaddiu      ITMP, VI00, VU1C_RegLoadGif
+    nop                                                 xgkick      ITMP
+    nop[e]                                              nop
+    nop                                                 nop
+
+    nop                                                 b           BRANCH_MATERIAL_MCODE
+    nop                                                 iaddiu      NBUF, VI00, VU1_SKIN_BACKUP_BUFFER
+
+#undef WEIGHT_SCALE
+#undef COLOR_CLAMP
+
+#undef LMT0
+#undef LMT1
+#undef LMT2
+
+#undef L2S0
+#undef L2S1
+#undef L2S2
+#undef L2S3
+#undef LCL0
+#undef LCL1
+#undef LCL2
+#undef LCL3
+#undef LDR0
+#undef LDR1
+#undef LDR2
+#undef BN00
+#undef BN01
+#undef BN02
+#undef BN03
+#undef BN10
+#undef BN11
+#undef BN12
+#undef BN13
+#undef WGTS
+#undef FWGT
+#undef SWGT
+#undef INRM
+#undef FNRM
+#undef SNRM
+#undef XNRM
+#undef DOTS
+#undef CDOT
+#undef RGBS
+#undef CRGB
+#undef XRGB
+#undef ITEX
+#undef FTEX
+#undef PTEX
+#undef IPOS
+#undef POS0
+#undef POS1
+#undef SPOS
+#undef CPOS
+#undef PPOS
+#undef XPOS
+
+#undef VPTR
+#undef ENDM
+#undef BPTR
+#undef BON0
+#undef BON1
+
+;==============================================================================
+;
+;   Skin Renderer - No Clipping and one bone
+;                   Does both lighting and skinning in one loop
+;
+;==============================================================================
+
+#define LMT0( x )                   TF20( x )       // (TEMP) light dir matrix
+#define LMT1( x )                   TF21( x )       // (TEMP) light dir matrix
+#define LMT2( x )                   TF22( x )       // (TEMP) light dir matrix
+
+#define L2S0( x )                   TF00( x )       // Local-to-screen matrix
+#define L2S1( x )                   TF01( x )       // Local-to-screen matrix
+#define L2S2( x )                   TF02( x )       // Local-to-screen matrix
+#define L2S3( x )                   TF03( x )       // Local-to-screen matrix
+#define LCL0( x )                   TF04( x )       // color matrix
+#define LCL1( x )                   TF05( x )       // color matrix
+#define LCL2( x )                   TF06( x )       // color matrix
+#define LCL3( x )                   TF07( x )       // color matrix
+#define LDR0( x )                   TF08( x )       // light dir matrix
+#define LDR1( x )                   TF09( x )       // light dir matrix
+#define LDR2( x )                   TF10( x )       // light dir matrix
+#define BON0( x )                   TF11( x )       // Bone
+#define BON1( x )                   TF12( x )       // Bone
+#define BON2( x )                   TF13( x )       // Bone
+#define BON3( x )                   TF14( x )       // Bone
+#define IPOS( x )                   TF15( x )       // Input position
+#define SPOS( x )                   TF15( x )       // Skinned position
+#define CPOS( x )                   TF16( x )       // position times l2s
+#define PPOS( x )                   TF16( x )       // position after projection
+#define XPOS( x )                   TF16( x )       // position in fixed-point
+#define INRM( x )                   TF17( x )       // Input normal
+#define FNRM( x )                   TF17( x )       // normal as float
+#define SNRM( x )                   TF18( x )       // skinned normal
+#define XNRM( x )                   TF18( x )       // normal as fixed
+#define DOTS( x )                   TF19( x )       // normal times light dirs
+#define CDOT( x )                   TF20( x )       // clamped dots
+#define RGBS( x )                   TF20( x )       // dots * color matrix
+#define CRGB( x )                   TF20( x )       // clamped rgbs
+#define XRGB( x )                   TF20( x )       // rgbs as fixed-point
+#define ITEX( x )                   TF21( x )       // input uv
+#define FTEX( x )                   TF22( x )       // input uv as float
+#define PTEX( x )                   TF22( x )       // projected uv
+
+#define VPTR                        TI00            // Pointer to vertices
+#define ENDM                        TI01            // End address
+#define BPTR                        TI02            // Pointer to backup buffer
+#define PBON                        TI03            // Pointer to bone 0
+
+#define COLOR_CLAMP                 255.0
+
+VU1_SKIN_1BONE:
+    nop                                                 xtop BASE
+    nop                                                 lq.xyzw     L2W3(xyzw), VU1_L2W+3(BASE)
+    nop                                                 lq.xyzw     L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 lq.xyzw     L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq.xyzw     L2W0(xyzw), VU1_L2W+0(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W3(w)         lq.zw       LMT0(zw),   VU1_UV0+VU1_LIGHT_SIZE*0(BASE)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W3(z)         lq.zw       LMT1(zw),   VU1_UV0+VU1_LIGHT_SIZE*1(BASE)
+    madday.xyzw acc,        W2S1(xyzw), L2W3(y)         lq.zw       LMT2(zw),   VU1_UV0+VU1_LIGHT_SIZE*2(BASE)
+    maddx.xyzw  L2S3(xyzw), W2S0(xyzw), L2W3(x)         lq.zw       LCL0(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*0(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W2(w)         mr32.xyzw   LMT0(xyzw), LMT0(xyzw)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W2(z)         mr32.xyzw   LMT1(xyzw), LMT1(xyzw)
+    madday.xyzw acc,        W2S1(xyzw), L2W2(y)         mr32.xyzw   LMT2(xyzw), LMT2(xyzw)
+    maddx.xyzw  L2S2(xyzw), W2S0(xyzw), L2W2(x)         lq.zw       LCL1(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*1(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W1(w)         mr32.xyzw   LMT0(xyzw), LMT0(xyzw)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W1(z)         mr32.xyzw   LMT1(xyzw), LMT1(xyzw)
+    madday.xyzw acc,        W2S1(xyzw), L2W1(y)         mr32.xyzw   LMT2(xyzw), LMT2(xyzw)
+    maddx.xyzw  L2S1(xyzw), W2S0(xyzw), L2W1(x)         lq.zw       LCL2(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*2(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W0(w)         lq.zw       LMT0(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*0(BASE)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W0(z)         lq.zw       LMT1(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*1(BASE)
+    madday.xyzw acc,        W2S1(xyzw), L2W0(y)         lq.zw       LMT2(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*2(BASE)
+    maddx.xyzw  L2S0(xyzw), W2S0(xyzw), L2W0(x)         lq.zw       LCL3(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*3(BASE)
+    nop                                                 mr32.xyzw   LCL0(xyzw), LCL0(xyzw)
+    nop                                                 mr32.xyzw   LCL1(xyzw), LCL1(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W0(z)         mr32.xyzw   LCL2(xyzw), LCL2(xyzw)
+    madday.xyz  acc,        LMT1(xyz),  L2W0(y)         mr32.xyzw   LCL3(xyzw), LCL3(xyzw)
+    maddx.xyz   LDR0(xyz),  LMT0(xyz),  L2W0(x)         mr32.xyzw   LCL0(xyzw), LCL0(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W1(z)         mr32.xyzw   LCL1(xyzw), LCL1(xyzw)
+    madday.xyz  acc,        LMT1(xyz),  L2W1(y)         mr32.xyzw   LCL2(xyzw), LCL2(xyzw)
+    maddx.xyz   LDR1(xyz),  LMT0(xyz),  L2W1(x)         mr32.xyzw   LCL3(xyzw), LCL3(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W2(z)         lq.zw       LCL0(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*0(BASE)
+    madday.xyz  acc,        LMT1(xyz),  L2W2(y)         lq.zw       LCL1(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*1(BASE)
+    maddx.xyz   LDR2(xyz),  LMT0(xyz),  L2W2(x)         lq.zw       LCL2(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       LCL3(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*3(BASE)
+
+    nop                                                 ilw.z       INST,   VU1_COUNT(BASE)
+    nop                                                 iaddiu      VPTR,   BASE,   0x00
+    nop                                                 iaddiu      BPTR,   vi00,   VU1_SKIN_BACKUP_BUFFER
+    nop                                                 iaddiu      ITMP,   vi00,   0x7f
+    nop                                                 iand        NUMV,   INST,   ITMP
+    nop                                                 iadd        ENDM,   VPTR,   NUMV
+    nop                                                 iadd        ENDM,   ENDM,   NUMV
+    nop                                                 iadd        ENDM,   ENDM,   NUMV
+    nop                                                 iadd        ENDM,   ENDM,   NUMV
+    nop                                                 iaddiu      NBUF,   vi00,   VU1_SKIN_BACKUP_BUFFER
+
+    ; loop preamble
+    addw.xyzw   ITEX(xyzw), vf00,       vf00w           ilw.x   PBON,       VU1_BNIDX(VPTR)                 ;                   ; load bi0
+    nop                                                 lq.xyz  INRM(xyz),  VU1_NORMAL(VPTR)                ;                   ; load normal0
+    nop                                                 loi     COLOR_CLAMP                                 ;                   ; load the color clamp
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 lq.xyzw BON3(xyzw), 3(PBON)                         ;                   ; load bone0_3
+    itof12.xyz  FNRM(xyz),  INRM(xyz)                   lq.xyzw BON2(xyzw), 2(PBON)                         ; normal0->float    ; load bone0_2
+    nop                                                 lq.xyzw BON1(xyzw), 1(PBON)                         ;                   ; load bone0_1
+    nop                                                 lq.xyzw BON0(xyzw), 0(PBON)                         ;                   ; load bone0_0
+    nop                                                 lq.xyzw IPOS(xyzw), VU1_XYZ(VPTR)                   ;                   ; load pos0
+    mulaz.xyz   acc,        BON2(xyz),  FNRM(z)         iaddiu  ITMP,   vi00,   0x80                        ; skin normal0      ; tmp = 128
+    madday.xyz  acc,        BON1(xyz),  FNRM(y)         mfir.w  XRGB(w), ITMP                                ; skin normal0      ; alpha = 128
+    maddx.xyz   SNRM(xyz),  BON0(xyz),  FNRM(x)         nop                                                 ; skin normal0      ;
+    mulaw.xyz   acc,        BON3(xyz),  vf00w           nop                                                 ; skin pos0         ;
+    maddaz.xyz  acc,        BON2(xyz),  IPOS(z)         nop                                                 ; skin pos0         ;
+    madday.xyz  acc,        BON1(xyz),  IPOS(y)         lq.xyz  INRM(xyz),  VU1_NORMAL+VU1_VERT_SIZE(VPTR)  ; skin pos0         ; load normal1
+    maddx.xyz   SPOS(xyz),  BON0(xyz),  IPOS(x)         ilw.x   PBON,       VU1_BNIDX+VU1_VERT_SIZE(VPTR)   ; skin pos0         ; load bi1
+    mulaz.xyz   acc,        LDR2(xyz),  SNRM(z)         nop                                                 ; calc dot0         ;
+    madday.xyz  acc,        LDR1(xyz),  SNRM(y)         nop                                                 ; calc dot0         ;
+    maddx.xyz   DOTS(xyz),  LDR0(xyz),  SNRM(x)         nop                                                 ; calc dot0         ;
+
+    ; optimized loop
+SKIN_LP_1BONE:
+    mulaw.xyzw  acc,        L2S3(xyzw), vf00w           lq.xy   ITEX(xy),   VU1_UV0(VPTR)                   ; xform pos0        ; load uv0
+    maddaz.xyzw acc,        L2S2(xyzw), SPOS(z)         sq.w    IPOS(w),    VU1_XYZ(BPTR)                   ; xform pos0        ; backup adc0
+    madday.xyzw acc,        L2S1(xyzw), SPOS(y)         sq.xyz  SPOS(xyz),  VU1_XYZ(BPTR)                   ; xform pos0        ; backup pos0
+    maddx.xyzw  CPOS(xyzw), L2S0(xyzw), SPOS(x)         lq.xyzw BON3(xyzw), 3(PBON)                         ; xform pos0        ; load bone1_3
+    maxx.xyz    CDOT(xyz),  DOTS(xyz),  vf00x           lq.xyzw BON2(xyzw), 2(PBON)                         ; clamp dot0        ; load bone1_2
+    ftoi12.xyz  XNRM(xyz),  SNRM(xyz)                   lq.xyzw BON1(xyzw), 1(PBON)                         ; normal0->fixed    ; load bone1_1
+    itof12.xy   FTEX(xy),   ITEX(xy)                    lq.xyzw BON0(xyzw), 0(PBON)                         ; uv0->float        ; load bone1_0
+    itof12.xyz  FNRM(xyz),  INRM(xyz)                   div     q,  vf00w,  CPOS(w)                         ; normal1->float    ; divide0
+    mulaw.xyz   acc,        LCL3(xyz),  vf00w           move.zw FTEX(zw),   ITEX(zw)                        ; calc rgb0         ; ftex.z = 1
+    maddaz.xyz  acc,        LCL2(xyz),  CDOT(z)         nop                                                 ; calc rgb0         ;
+    madday.xyz  acc,        LCL1(xyz),  CDOT(y)         iaddiu  VPTR, VPTR, VU1_VERT_SIZE                   ; calc rgb0         ; vptr++
+    maddx.xyz   RGBS(xyz),  LCL0(xyz),  CDOT(x)         iaddiu  BPTR, BPTR, VU1_VERT_SIZE                   ; calc rgb0         ; bptr++
+    mulaz.xyz   acc,        BON2(xyz),  FNRM(z)         nop                                                 ; skin normal1      ;
+    madday.xyz  acc,        BON1(xyz),  FNRM(y)         sq.xyz  XNRM(xyz),  VU1_NORMAL-VU1_VERT_SIZE(VPTR)  ; skin normal1      ; store normal0
+    mulq.xyz    PPOS(xyz),  CPOS(xyz),  q               sq.xyz  ITEX(xyz),  VU1_UV0-VU1_VERT_SIZE(BPTR)     ; project pos0      ; backup uv0
+    maddx.xyz   SNRM(xyz),  BON0(xyz),  FNRM(x)         lq.xyzw IPOS(xyzw), VU1_XYZ(VPTR)                   ; skin normal1      ; load pos1
+    mulq.xyz    PTEX(xyz),  FTEX(xyz),  q               nop                                                 ; project uv0       ;
+    minii.xyz   CRGB(xyz),  RGBS(xyz),  i               nop                                                 ; clamp rgb0        ;
+    ftoi4.xyz   XPOS(xyz),  PPOS(xyz)                   nop                                                 ; pos0->fixed       ;
+    mulaw.xyz   acc,        BON3(xyz),  vf00w           nop                                                 ; skin pos1         ;
+    maddaz.xyz  acc,        BON2(xyz),  IPOS(z)         nop                                                 ; skin pos1         ;
+    madday.xyz  acc,        BON1(xyz),  IPOS(y)         lq.xyz  INRM(xyz),  VU1_NORMAL+VU1_VERT_SIZE(VPTR)  ; skin pos1         ; load normal2
+    ftoi0.xyz   XRGB(xyz),  CRGB(xyz)                   ilw.x   PBON,       VU1_BNIDX+VU1_VERT_SIZE(VPTR)   ; rgb0->int         ; load bi2
+    maddx.xyz   SPOS(xyz),  BON0(xyz),  IPOS(x)         sq.xyz  PTEX(xyz),  VU1_UV0-VU1_VERT_SIZE(VPTR)     ; skin pos1         ; store uv0
+    mulaz.xyz   acc,        LDR2(xyz),  SNRM(z)         sq.xyz  XPOS(xyz),  VU1_XYZ-VU1_VERT_SIZE(VPTR)     ; calc dot1         ; store pos0
+    madday.xyz  acc,        LDR1(xyz),  SNRM(y)         ibne    VPTR, ENDM, SKIN_LP_1BONE                   ; calc dot1         ; loop
+    maddx.xyz   DOTS(xyz),  LDR0(xyz),  SNRM(x)         sq.xyzw XRGB(xyzw), VU1_RGB-VU1_VERT_SIZE(VPTR)     ; calc dot1         ; store rgb0
+
+    nop                                                 iaddiu      ITMP, VI00, VU1C_RegLoadGif
+    nop                                                 xgkick      ITMP
+    nop[e]                                              nop
+    nop                                                 nop
+
+    nop                                                 b           BRANCH_MATERIAL_MCODE
+    nop                                                 iaddiu      NBUF, VI00, VU1_SKIN_BACKUP_BUFFER
+
+#undef COLOR_CLAMP
+
+#undef LMT0
+#undef LMT1
+#undef LMT2
+
+#undef L2S0
+#undef L2S1
+#undef L2S2
+#undef L2S3
+#undef LCL0
+#undef LCL1
+#undef LCL2
+#undef LCL3
+#undef LDR0
+#undef LDR1
+#undef LDR2
+#undef BON0
+#undef BON1
+#undef BON2
+#undef BON3
+#undef IPOS
+#undef SPOS
+#undef CPOS
+#undef PPOS
+#undef XPOS
+#undef INRM
+#undef FNRM
+#undef SNRM
+#undef XNRM
+#undef DOTS
+#undef CDOT
+#undef RGBS
+#undef CRGB
+#undef XRGB
+#undef ITEX
+#undef FTEX
+#undef PTEX
+
+#undef VPTR
+#undef ENDM
+#undef BPTR
+#undef PBON
+
+;==============================================================================
+;
+;   Slow Renderer for skinning - Does in-place skinning to local space, then
+;   calls the normal slow renderer code.
+;
+;==============================================================================
+
+/*
+#define LMT0( x )   TF20( x )       // TEMP - light direction matrix
+#define LMT1( x )   TF21( x )       // TEMP - light direction matrix
+#define LMT2( x )   TF22( x )       // TEMP - light direction matrix
+
+#define LCL0( x )   TF00( x )       // color matrix
+#define LCL1( x )   TF01( x )       // color matrix
+#define LCL2( x )   TF02( x )       // color matrix
+#define LCL3( x )   TF03( x )       // color matrix
+#define LDR0( x )   TF04( x )       // light dir matrix
+#define LDR1( x )   TF05( x )       // light dir matrix
+#define LDR2( x )   TF06( x )       // light dir matrix
+#define CNST( x )   TF07( x )       // const (FTOI_CONST,WEIGHT_SCALE,COLOR_CLAMP)
+#define WGHT( x )   TF08( x )       // input weights
+#define FWGT( x )   TF08( x )       // * input weights converted to floats
+#define SWGT( x )   TF08( x )       // * input weights after being scaled
+#define IPOS( x )   TF09( x )       // input position
+#define TPOS( x )   TF09( x )       // * input position after itof translate
+#define POS0( x )   TF10( x )       // position scaled by weight a
+#define POS1( x )   TF09( x )       // * position scaled by weight b
+#define FPOS( x )   TF11( x )       // final skinned position
+#define INRM( x )   TF12( x )       // input normal
+#define FNRM( x )   TF12( x )       // * input normal after conversion to float
+#define TNRM( x )   TF13( x )       // transformed normal
+#define ONRM( x )   TF14( x )       // output normal converted back to fixed
+#define DOTP( x )   TF15( x )       // trasformed normal * light dir matrix
+#define CDOT( x )   TF15( x )       // * clamped dot products
+#define FRGB( x )   TF15( x )       // * dot products * light color matrix
+#define CRGB( x )   TF15( x )       // * clamped rgbs
+#define IRGB( x )   TF11( x )       // * rgbs converted to fixed-point
+#define BN00( x )   TF16( x )       // bone matrix A, col 0
+#define BN01( x )   TF17( x )       // bone matrix A, col 1
+#define BN02( x )   TF18( x )       // bone matrix A, col 2
+#define BN03( x )   TF19( x )       // bone matrix A, col 3
+#define BN10( x )   TF12( x )       // * bone matrix B, col 0
+#define BN11( x )   TF20( x )       // bone matrix B, col 1
+#define BN12( x )   TF21( x )       // bone matrix B, col 2
+#define BN13( x )   TF22( x )       // bone matrix B, col 3
+
+#define VPTR        TI00            // Pointer to vertices
+#define ENDM        TI01            // End address
+#define BON0        TI02            // Pointer to bone 0
+#define BON1        TI03            // Pointer to bone 1
+
+#define ITOF_CONST      -786432.0
+#define WEIGHT_SCALE    16.062745098039215686       ; 16*256/255
+#define COLOR_CLAMP     255.0
+
+VU1_SKIN_SLOW:
+
+    nop                                                 xtop        BASE
+    nop                                                 ilw.z       INST, VU1_COUNT(BASE)
+    nop                                                 lq          L2W0(xyzw), VU1_L2W+0(BASE)
+    nop                                                 lq          L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq          L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 lq          L2W3(xyzw), VU1_L2W+3(BASE) 
+    nop                                                 iaddiu      VPTR, BASE, 0x00
+    nop                                                 iaddiu      ITMP, vi00, 0x7F
+    nop                                                 iand        NUMV, INST, ITMP
+    nop                                                 iadd        ENDM, VPTR, NUMV
+    nop                                                 iadd        ENDM, ENDM, NUMV
+    nop                                                 iadd        ENDM, ENDM, NUMV
+    nop                                                 iadd        ENDM, ENDM, NUMV
+    nop                                                 loi         ITOF_CONST
+    addi.x      CNST(x),    vf00x,      i               loi         WEIGHT_SCALE
+    addi.y      CNST(y),    vf00y,      i               loi         COLOR_CLAMP
+    addi.z      CNST(z),    vf00z,      i               lq.zw       LMT0(zw),   VU1_UV0+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 lq.zw       LMT1(zw),   VU1_UV0+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 lq.zw       LMT2(zw),   VU1_UV0+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       LCL0(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 mr32.xyzw   LMT0(xyzw), LMT0(xyzw)
+    nop                                                 mr32.xyzw   LMT1(xyzw), LMT1(xyzw)
+    nop                                                 mr32.xyzw   LMT2(xyzw), LMT2(xyzw)
+    nop                                                 lq.zw       LCL1(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 mr32.xyzw   LMT0(xyzw), LMT0(xyzw)
+    nop                                                 mr32.xyzw   LMT1(xyzw), LMT1(xyzw)
+    nop                                                 mr32.xyzw   LMT2(xyzw), LMT2(xyzw)
+    nop                                                 lq.zw       LCL2(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       LMT0(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 lq.zw       LMT1(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 lq.zw       LMT2(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       LCL3(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*3(BASE)
+    nop                                                 mr32.xyzw   LCL0(xyzw), LCL0(xyzw)
+    nop                                                 mr32.xyzw   LCL1(xyzw), LCL1(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W0(z)         mr32.xyzw   LCL2(xyzw), LCL2(xyzw)
+    madday.xyz  acc,        LMT1(xyz),  L2W0(y)         mr32.xyzw   LCL3(xyzw), LCL3(xyzw)
+    maddx.xyz   LDR0(xyz),  LMT0(xyz),  L2W0(x)         mr32.xyzw   LCL0(xyzw), LCL0(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W1(z)         mr32.xyzw   LCL1(xyzw), LCL1(xyzw)
+    madday.xyz  acc,        LMT1(xyz),  L2W1(y)         mr32.xyzw   LCL2(xyzw), LCL2(xyzw)
+    maddx.xyz   LDR1(xyz),  LMT0(xyz),  L2W1(x)         mr32.xyzw   LCL3(xyzw), LCL3(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W2(z)         lq.zw       LCL0(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*0(BASE)
+    madday.xyz  acc,        LMT1(xyz),  L2W2(y)         lq.zw       LCL1(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*1(BASE)
+    maddx.xyz   LDR2(xyz),  LMT0(xyz),  L2W2(x)         lq.zw       LCL2(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       LCL3(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*3(BASE)
+    nop                                                 iaddiu      ITMP, vi00, 0x80
+    nop                                                 mfir.w      IRGB(w),    ITMP
+
+    ; loop preamble
+    nop                                                 lq.xyzw     WGHT(xyzw), VU1_BNIDX(VPTR)             ;                   ; load weight 0
+    nop                                                 lq.xyz      IPOS(xyz),  VU1_XYZ(VPTR)               ;                   ; load pos 0
+    nop                                                 lq.xyz      INRM(xyz),  VU1_NORMAL(VPTR)            ;                   ; load normal 0
+    nop                                                 nop                                                 ;                   ;
+    itof12.zw   FWGT(zw),   WGHT(zw)                    mtir        BON0, WGHT(x)                           ; itof weight 0     ; get bone A 0
+    nop                                                 mtir        BON1, WGHT(y)                           ;                   ; get bone B 0
+    itof12.xyz  FNRM(xyz),  INRM(xyz)                   lq.xyzw     BN02(xyzw), 2(BON0)                     ; itof normal 0     ; load boneA2 0
+    nop                                                 lq.xyzw     BN01(xyzw), 1(BON0)                     ;                   ; load boneA1 0
+    muly.zw     SWGT(zw),   FWGT(zw),   CNST(y)         lq.xyzw     BN00(xyzw), 0(BON0)                     ; scale weights 0   ; load boneA0 0
+    addx.xyz    TPOS(xyz),  IPOS(xyz),  CNST(x)         lq.xyzw     BN03(xyzw), 3(BON0)                     ; xlate pos 0       ; load boneA3 0
+    mulaz.xyz   acc,        BN02(xyz),  FNRM(z)         lq.xyzw     BN13(xyzw), 3(BON1)                     ; xform normal 0    ; load boneB3 0
+    madday.xyz  acc,        BN01(xyz),  FNRM(y)         lq.xyzw     BN12(xyzw), 2(BON1)                     ; xform normal 0    ; load boneB2 0
+    maddx.xyz   TNRM(xyz),  BN00(xyz),  FNRM(x)         lq.xyzw     BN11(xyzw), 1(BON1)                     ; xform normal 0    ; load boneB1 0
+    mulz.xyz    POS0(xyz),  TPOS(xyz),  SWGT(z)         lq.xyzw     BN10(xyzw), 0(BON1)                     ; scale pos A 0     ; load boneB0 0
+    mulw.xyz    POS1(xyz),  TPOS(xyz),  SWGT(w)         nop                                                 ; scale pos B 0     ;
+    nop                                                 nop                                                 ;                   ;
+    mulaz.xyz   acc,        LDR2(xyz),  TNRM(z)         nop                                                 ; dot product 0     ;
+    madday.xyz  acc,        LDR1(xyz),  TNRM(y)         nop                                                 ; dot product 0     ;
+    maddx.xyz   DOTP(xyz),  LDR0(xyz),  TNRM(x)         nop                                                 ; dot product 0     ;
+    mulaz.xyz   acc,        BN03(xyz),  SWGT(z)         nop                                                 ; xform pos A 0     ;
+    maddaz.xyz  acc,        BN02(xyz),  POS0(z)         nop                                                 ; xform pos A 0     ;
+    madday.xyz  acc,        BN01(xyz),  POS0(y)         nop                                                 ; xform pos A 0     ;
+    maxx.xyz    CDOT(xyz),  DOTP(xyz),  vf00x           nop                                                 ; clamp dot 0       ;
+    maddax.xyz  acc,        BN00(xyz),  POS0(x)         nop                                                 ; xform pos A 0     ;
+    maddaw.xyz  acc,        BN13(xyz),  SWGT(w)         nop                                                 ; xform pos B 0     ;
+    maddaz.xyz  acc,        BN12(xyz),  POS1(z)         nop                                                 ; xform pos B 0     ;
+    madday.xyz  acc,        BN11(xyz),  POS1(y)         nop                                                 ; xform pos B 0     ;
+    maddx.xyz   FPOS(xyz),  BN10(xyz),  POS1(x)         nop                                                 ; xform pos B 0     ;
+    
+SKIN_SLOW_LOOP:
+    mulaw.xyz   acc,        LCL3(xyz),  vf00w           lq.xyzw     WGHT(xyzw), VU1_BNIDX+VU1_VERT_SIZE(VPTR)   ; calc color 0      ; load weight 1
+    maddaz.xyz  acc,        LCL2(xyz),  CDOT(z)         lq.xyz      IPOS(xyz),  VU1_XYZ+VU1_VERT_SIZE(VPTR)     ; calc color 0      ; load pos 1
+    madday.xyz  acc,        LCL1(xyz),  CDOT(y)         lq.xyz      INRM(xyz),  VU1_NORMAL+VU1_VERT_SIZE(VPTR)  ; calc color 0      ; load normal 1
+    maddx.xyz   FRGB(xyz),  LCL0(xyz),  CDOT(x)         iaddiu      VPTR, VPTR, VU1_VERT_SIZE                   ; calc color 0      ; vptr++
+    itof12.zw   FWGT(zw),   WGHT(zw)                    mtir        BON0, WGHT(x)                               ; itof weight 1     ; get bone A 1
+    ftoi12.xyz  ONRM(xyz),  TNRM(xyz)                   mtir        BON1, WGHT(y)                               ; ftoi normal 0     ; get bone B 1
+    itof12.xyz  FNRM(xyz),  INRM(xyz)                   lq.xyzw     BN02(xyzw), 2(BON0)                         ; itof normal 1     ; load boneA2 1
+    miniz.xyz   CRGB(xyz),  FRGB(xyz),  CNST(z)         lq.xyzw     BN01(xyzw), 1(BON0)                         ; clamp color 0     ; load boneA1 1
+    muly.zw     SWGT(zw),   FWGT(zw),   CNST(y)         lq.xyzw     BN00(xyzw), 0(BON0)                         ; scale weights 1   ; load boneA0 1
+    addx.xyz    TPOS(xyz),  IPOS(xyz),  CNST(x)         lq.xyzw     BN03(xyzw), 3(BON0)                         ; xlate pos 1       ; load boneA3 1
+    mulaz.xyz   acc,        BN02(xyz),  FNRM(z)         lq.xyzw     BN13(xyzw), 3(BON1)                         ; xform normal 1    ; load boneB3 1
+    madday.xyz  acc,        BN01(xyz),  FNRM(y)         lq.xyzw     BN12(xyzw), 2(BON1)                         ; xform normal 1    ; load boneB2 1
+    maddx.xyz   TNRM(xyz),  BN00(xyz),  FNRM(x)         lq.xyzw     BN11(xyzw), 1(BON1)                         ; xform normal 1    ; load boneB1 1
+    mulz.xyz    POS0(xyz),  TPOS(xyz),  SWGT(z)         lq.xyzw     BN10(xyzw), 0(BON1)                         ; scale pos A 1     ; load boneB0 1
+    mulw.xyz    POS1(xyz),  TPOS(xyz),  SWGT(w)         sq.xyz      FPOS(xyz),  VU1_XYZ-VU1_VERT_SIZE(VPTR)     ; scale pos B 1     ; store skinned pos 0
+    ftoi0.xyz   IRGB(xyz),  CRGB(xyz)                   sq.xyz      ONRM(xyz),  VU1_NORMAL-VU1_VERT_SIZE(VPTR)  ; ftoi color 0      ; store skinned normal 0
+    mulaz.xyz   acc,        LDR2(xyz),  TNRM(z)         nop                                                     ; dot product 1     ;
+    madday.xyz  acc,        LDR1(xyz),  TNRM(y)         nop                                                     ; dot product 1     ;
+    maddx.xyz   DOTP(xyz),  LDR0(xyz),  TNRM(x)         nop                                                     ; dot product 1     ;
+    mulaz.xyz   acc,        BN03(xyz),  SWGT(z)         sq.xyzw     IRGB(xyzw), VU1_RGB-VU1_VERT_SIZE(VPTR)     ; xform pos A 1     ; store rgb 0
+    maddaz.xyz  acc,        BN02(xyz),  POS0(z)         nop                                                     ; xform pos A 1     ;
+    madday.xyz  acc,        BN01(xyz),  POS0(y)         nop                                                     ; xform pos A 1     ;
+    maxx.xyz    CDOT(xyz),  DOTP(xyz),  vf00x           nop                                                     ; clamp dot 1       ;
+    maddax.xyz  acc,        BN00(xyz),  POS0(x)         nop                                                     ; xform pos A 1     ;
+    maddaw.xyz  acc,        BN13(xyz),  SWGT(w)         nop                                                     ; xform pos B 1     ;
+    maddaz.xyz  acc,        BN12(xyz),  POS1(z)         nop                                                     ; xform pos B 1     ;
+    madday.xyz  acc,        BN11(xyz),  POS1(y)         ibne        VPTR, ENDM, SKIN_SLOW_LOOP                  ; xform pos B 1     ; loop
+    maddx.xyz   FPOS(xyz),  BN10(xyz),  POS1(x)         nop                                                     ; xform pos B 1     ;
+    
+    ; set up the buffer registers, and branch to the clipper
+    nop                                                 iaddiu      CLIP,   VI00, VU1_SKIN_BUFFER_0
+    nop                                                 iaddiu      NBUF,   VI00, VU1_SKIN_BACKUP_BUFFER
+    nop                                                 isw.x       CLIP,   VU1_CLIP_STORAGE+3(CLIP)
+    nop                                                 isw.y       BASE,   VU1_CLIP_STORAGE+3(CLIP)
+    nop                                                 b           BRANCH_CLIPPER_MCODE
+    nop                                                 isw.z       NBUF,   VU1_CLIP_STORAGE+3(CLIP)
+
+#undef LMT0
+#undef LMT1
+#undef LMT2
+
+#undef LCL0
+#undef LCL1
+#undef LCL2
+#undef LCL3
+#undef LDR0
+#undef LDR1
+#undef LDR2
+#undef CNST
+#undef WGHT
+#undef FWGT
+#undef SWGT
+#undef IPOS
+#undef TPOS
+#undef POS0
+#undef POS1
+#undef FPOS
+#undef INRM
+#undef FNRM
+#undef TNRM
+#undef ONRM
+#undef DOTP
+#undef CDOT
+#undef FRGB
+#undef CRGB
+#undef IRGB
+#undef BN00
+#undef BN01
+#undef BN02
+#undef BN03
+#undef BN10
+#undef BN11
+#undef BN12
+#undef BN13
+
+#undef VPTR
+#undef ENDM
+#undef BON0
+#undef BON1
+
+#undef ITOF_CONST  
+#undef WEIGHT_SCALE
+#undef COLOR_CLAMP 
+*/
+
+;==============================================================================
+;
+;   Slow Renderer for skinning - Does in-place skinning to local space, and
+;   culls triangles (it does not bother calling the clipper, though!)
+;
+;==============================================================================
+
+#define LMT0( x )   TF15( x )       // TEMP - light direction matrix
+#define LMT1( x )   TF16( x )       // TEMP - light direction matrix
+#define LMT2( x )   TF17( x )       // TEMP - light direction matrix
+
+#define L2S0( x )   L2W0( x )       // **(NOTE REGISTER RE-USE!!!) Local-to-screen matrix
+#define L2S1( x )   L2W1( x )       // **(NOTE REGISTER RE-USE!!!) Local-to-screen matrix
+#define L2S2( x )   L2W2( x )       // **(NOTE REGISTER RE-USE!!!) Local-to-screen matrix
+#define L2S3( x )   L2W3( x )       // **(NOTE REGISTER_RE-USE!!!) Local-to-screen matrix
+#define LDR0( x )   TF00( x )       // Light direction matrix
+#define LDR1( x )   TF01( x )       // Light direction matrix
+#define LDR2( x )   TF02( x )       // Light direction matrix
+#define LCL0( x )   TF03( x )       // Light color matrix
+#define LCL1( x )   TF04( x )       // Light color matrix
+#define LCL2( x )   TF05( x )       // Light color matrix
+#define LCL3( x )   TF06( x )       // Light color matrix
+#define WGTS( x )   TF07( x )       // Input weights and bone indices
+#define FWGT( x )   WGTS( x )       // **Weights converted to float
+#define SWGT( x )   FWGT( x )       // **Scaled weights
+#define IPOS( x )   TF08( x )       // Input position
+#define FPOS( x )   IPOS( x )       // Input position converted to float
+#define SPSA( x )   TF09( x )       // Position scaled by weight a
+#define SPSB( x )   IPOS( x )       // **Position scaled by weight b
+#define KPOS( x )   SPSB( x )       // **Skinned position
+#define XPOS( x )   TF10( x )       // skinned position times L2S
+#define PPOS( x )   XPOS( x )       // **projected position
+#define OPOS( x )   PPOS( x )       // **position converted to fixed-point
+#define ITEX( x )   TF11( x )       // Input uv
+#define FTEX( x )   ITEX( x )       // **Input uv converted to float
+#define PTEX( x )   FTEX( x )       // **Projected uv
+#define INRM( x )   TF12( x )       // Input normal
+#define FNRM( x )   INRM( x )       // **Input normal converted to float
+#define XNRM( x )   TF13( x )       // Skinned normal
+#define ONRM( x )   XNRM( x )       // **Skinned normal converted to fixed-point
+#define XDOT( x )   TF14( x )       // dot products for lighting (LightDir*Normal)
+#define CDOT( x )   XDOT( x )       // **dot products clamped to 0
+#define XCOL( x )   CDOT( x )       // **colors from lighting calculation
+#define CCOL( x )   XCOL( x )       // **colors clamped to 255
+#define OCOL( x )   CCOL( x )       // **colors converted to fixed-point
+#define BNA0( x )   TF15( x )       // Bone a0
+#define BNA1( x )   TF16( x )       // Bone a1
+#define BNA2( x )   TF17( x )       // Bone a2
+#define BNA3( x )   TF18( x )       // Bone a3
+#define BNB0( x )   FNRM( x )       // **Bone b0
+#define BNB1( x )   TF19( x )       // Bone b1
+#define BNB2( x )   TF20( x )       // Bone b2
+#define BNB3( x )   TF21( x )       // Bone b3
+#define CMIN( x )   ONRM( x )       // **Min clip bounds (gb left, gb top, ??, nearz)
+#define CMAX( x )   BNB1( x )       // **Max clip bounds (gb right, gb bottom, ??, nearz)
+
+#define VPTR        TI00            // Pointer to vertices
+#define ENDM        TI01            // End address
+#define BPTR        TI02            // Pointer to backup buffer
+#define BONA        TI03            // Pointer to bone 0
+#define BONB        TI04            // Pointer to bone 1
+#define ADCB        TI05            // adc bit
+#define IMAC        TI06            // flags for MAC clipping test
+
+#define ITOF_CONST          -786432.0
+#define WEIGHT_SCALE        16.062745098039215686       ; 16*256/255
+#define COLOR_CLAMP         255.0
+#define CULL_NEARZ          0.0
+#define CULL_FARZ           1048575.0                   ; 2^(24-bit zbuffer minus 4 for ftoi conversion) minus 1 for good measure
+#define CULL_GUARDBAND_MIN  10.0
+#define CULL_GUARDBAND_MAX  4085.0
+#define CMIN_TMP_STORAGE    VU1_L2W+4
+#define CMAX_TMP_STORAGE    VU1_L2W+5
+
+VU1_SKIN_WCULL:
+    nop                                                 xtop        BASE
+    nop                                                 lq.zw       LMT2(zw),   VU1_UV0+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       LMT1(zw),   VU1_UV0+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 lq.zw       LMT0(zw),   VU1_UV0+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 lq.xyzw     L2W3(xyzw), VU1_L2W+3(BASE)
+    nop                                                 mr32.xyzw   LMT2(xyzw), LMT2(xyzw)
+    nop                                                 mr32.xyzw   LMT1(xyzw), LMT1(xyzw)
+    nop                                                 mr32.xyzw   LMT0(xyzw), LMT0(xyzw)
+    nop                                                 lq.xyzw     L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 mr32.xyzw   LMT2(xyzw), LMT2(xyzw)
+    nop                                                 mr32.xyzw   LMT1(xyzw), LMT1(xyzw)
+    nop                                                 mr32.xyzw   LMT0(xyzw), LMT0(xyzw)
+    nop                                                 lq.xyzw     L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq.zw       LMT2(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       LMT1(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 lq.zw       LMT0(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 lq.xyzw     L2W0(xyzw), VU1_L2W+0(BASE)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W2(z)         lq.zw       LCL3(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*3(BASE)
+    madday.xyz  acc,        LMT1(xyz),  L2W2(y)         lq.zw       LCL2(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*2(BASE)
+    maddx.xyz   LDR2(xyz),  LMT0(xyz),  L2W2(x)         lq.zw       LCL1(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*1(BASE)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W1(z)         lq.zw       LCL0(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*0(BASE)
+    madday.xyz  acc,        LMT1(xyz),  L2W1(y)         mr32.xyzw   LCL3(xyzw), LCL3(xyzw)
+    maddx.xyz   LDR1(xyz),  LMT0(xyz),  L2W1(x)         mr32.xyzw   LCL2(xyzw), LCL2(xyzw)
+    mulaz.xyz   acc,        LMT2(xyz),  L2W0(z)         mr32.xyzw   LCL1(xyzw), LCL1(xyzw)
+    madday.xyz  acc,        LMT1(xyz),  L2W0(y)         mr32.xyzw   LCL0(xyzw), LCL0(xyzw)
+    maddx.xyz   LDR0(xyz),  LMT0(xyz),  L2W0(x)         mr32.xyzw   LCL3(xyzw), LCL3(xyzw)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W3(w)         mr32.xyzw   LCL2(xyzw), LCL2(xyzw)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W3(z)         mr32.xyzw   LCL1(xyzw), LCL1(xyzw)
+    madday.xyzw acc,        W2S1(xyzw), L2W3(y)         mr32.xyzw   LCL0(xyzw), LCL0(xyzw)
+    maddx.xyzw  L2S3(xyzw), W2S0(xyzw), L2W3(x)         lq.zw       LCL3(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*3(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W2(w)         lq.zw       LCL2(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*2(BASE)
+    maddaz.xyzw acc,        W2S2(xyzw), L2W2(z)         lq.zw       LCL1(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*1(BASE)
+    madday.xyzw acc,        W2S1(xyzw), L2W2(y)         lq.zw       LCL0(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*0(BASE)
+    maddx.xyzw  L2S2(xyzw), W2S0(xyzw), L2W2(x)         ilw.z       INST,       VU1_COUNT(BASE)
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W1(w)         iaddiu      VPTR, BASE, 0x00
+    maddaz.xyzw acc,        W2S2(xyzw), L2W1(z)         iaddiu      BPTR, vi00, VU1_SKIN_BACKUP_BUFFER
+    madday.xyzw acc,        W2S1(xyzw), L2W1(y)         iaddiu      ITMP, vi00, 0x7f
+    maddx.xyzw  L2S1(xyzw), W2S0(xyzw), L2W1(x)         iand        NUMV, INST, ITMP
+    mulaw.xyzw  acc,        W2S3(xyzw), L2W0(w)         iadd        ENDM, VPTR, NUMV
+    maddaz.xyzw acc,        W2S2(xyzw), L2W0(z)         iadd        ENDM, ENDM, NUMV
+    madday.xyzw acc,        W2S1(xyzw), L2W0(y)         iadd        ENDM, ENDM, NUMV
+    maddx.xyzw  L2S0(xyzw), W2S0(xyzw), L2W0(x)         iadd        ENDM, ENDM, NUMV
+    nop                                                 loi         CULL_NEARZ
+    muli.w      CMIN(w),    vf00w,      i               loi         CULL_FARZ
+    muli.w      CMAX(w),    vf00w,      i               loi         CULL_GUARDBAND_MIN
+    addi.xy     CMIN(xy),   vf00xy,     i               loi         CULL_GUARDBAND_MAX
+    addi.xy     CMAX(xy),   vf00xy,     i               iaddiu      NBUF, vi00, VU1_SKIN_BACKUP_BUFFER
+    addw.z      CMIN(z),    vf00z,      CMIN(w)         iaddiu      ITMP, vi00, 0x0080
+    addw.z      CMAX(z),    vf00z,      CMAX(w)         mfir.w      OCOL(w),    ITMP
+    nop                                                 iaddiu      IMAC, vi00, 0x00e0
+    nop                                                 sq.xyzw     CMIN(xyzw), CMIN_TMP_STORAGE(BASE)
+    nop                                                 sq.xyzw     CMAX(xyzw), CMAX_TMP_STORAGE(BASE)
+    nop                                                 iaddiu      ADCB, vi00, 0x7fff
+    nop                                                 iaddiu      ADCB, ADCB, 0x0001
+    
+    ; loop preamble
+    nop                                                 lq.xyzw     WGTS(xyzw), VU1_BNIDX(VPTR)                 ;                   ; load weights 0
+    nop                                                 nop                                                     ;                   ;
+    nop                                                 loi         WEIGHT_SCALE                                ;                   ; prep wgt scl 0
+    nop                                                 lq.xyz      INRM(xyz),  VU1_NORMAL(VPTR)                ;                   ; load normal 0
+    itof12.zw   FWGT(zw),   WGTS(zw)                    mtir        BONB,       WGTS(y)                         ; wgts to float 0   ; pBoneB 0
+    nop                                                 mtir        BONA,       WGTS(x)                         ;                   ; pBoneA 0
+    nop                                                 lq.xyzw     IPOS(xyzw), VU1_XYZ(VPTR)                   ;                   ; load pos 0
+    nop                                                 lq.xyzw     BNB3(xyzw), 3(BONB)                         ;                   ; load bone_b3 0
+    itof12.xyz  FNRM(xyz),  INRM(xyz)                   lq.xyzw     BNA3(xyzw), 3(BONA)                         ; norm to float 0   ; load bone_a3 0
+    muli.zw     SWGT(zw),   FWGT(zw),   i               loi         ITOF_CONST                                  ; scale weights 0   ; prep itof 0
+    addi.xyz    FPOS(xyz),  IPOS(xyz),  i               lq.xyzw     BNA2(xyzw), 2(BONA)                         ; pos to float 0    ; load bone_a2 0
+    nop                                                 lq.xyzw     BNA1(xyzw), 1(BONA)                         ;                   ; load bone_a1 0
+    nop                                                 lq.xyzw     BNA0(xyzw), 0(BONA)                         ;                   ; load bone_a0 0
+    nop                                                 lq.xyzw     BNB2(xzyw), 2(BONB)                         ;                   ; load bone_b2 0
+    mulz.xyz    SPSA(xyz),  FPOS(xyz),  SWGT(z)         lq.xyzw     BNB1(xyzw), 1(BONB)                         ; scale pos a 0     ; load bone_b1 0
+    mulw.xyz    SPSB(xyz),  FPOS(xyz),  SWGT(w)         nop                                                     ; scale pos b 0     ;
+    mulaz.xyz   acc,        BNA2(xyz),  FNRM(z)         nop                                                     ; xform normal 0    ;
+    madday.xyz  acc,        BNA1(xyz),  FNRM(y)         nop                                                     ; xform normal 0    ;
+    maddx.xyz   XNRM(xyz),  BNA0(xyz),  FNRM(x)         nop                                                     ; xform normal 0    ;
+    mulaw.xyz   acc,        BNB3(xyz),  SWGT(w)         nop                                                     ; skin pos 0        ;
+    maddaz.xyz  acc,        BNA3(xyz),  SWGT(z)         nop                                                     ; skin pos 0        ;
+    maddaz.xyz  acc,        BNA2(xyz),  SPSA(z)         nop                                                     ; skin pos 0        ;
+
+SKIN_WCULL_LOOP:
+    madday.xyz  acc,        BNA1(xyz),  SPSA(y)         lq.xyzw     BNB0(xyzw), 0(BONB)                         ; skin pos 0        ; load bone_b0 0
+    maddax.xyz  acc,        BNA0(xyz),  SPSA(x)         iaddiu      VPTR, VPTR, VU1_VERT_SIZE                   ; skin pos 0        ; vptr++
+    maddaz.xyz  acc,        BNB2(xyz),  SPSB(z)         iaddiu      BPTR, BPTR, VU1_VERT_SIZE                   ; skin pos 0        ; bptr++
+    madday.xyz  acc,        BNB1(xyz),  SPSB(y)         sq.w        IPOS(w),    VU1_XYZ-VU1_VERT_SIZE(BPTR)     ; skin pos 0        ; backup adc 0
+    maddx.xyz   KPOS(xyz),  BNB0(xyz),  SPSB(x)         move.zw     ITEX(zw),   vf00zw                          ; skin pos 0        ; itex.w=1.0 0
+    mulaz.xyz   acc,        LDR2(xyz),  XNRM(z)         nop                                                     ; calc dot 0        ;
+    madday.xyz  acc,        LDR1(xyz),  XNRM(y)         lq.xy       ITEX(xy),   VU1_UV0-VU1_VERT_SIZE(VPTR)     ; calc dot 0        ; load uv 0
+    maddx.xyz   XDOT(xyz),  LDR0(xyz),  XNRM(x)         nop                                                     ; calc dot 0        ;
+    mulaw.xyzw  acc,        L2S3(xyzw), vf00w           sq.xyz      KPOS(xyz),  VU1_XYZ-VU1_VERT_SIZE(BPTR)     ; xform pos 0       ; backup pos 0
+    maddaz.xyzw acc,        L2S2(xyzw), KPOS(z)         lq.xyzw     WGTS(xyzw), VU1_BNIDX(VPTR)                 ; xform pos 0       ; load weights 1
+    madday.xyzw acc,        L2S1(xyzw), KPOS(y)         mr32.zw     ITEX(zw),   ITEX(zw)                        ; xform pos 0       ; itex.z=1.0 0
+    maddx.xyzw  XPOS(xyzw), L2S0(xyzw), KPOS(x)         loi         WEIGHT_SCALE                                ; xform pos 0       ; prep wgt scl 1
+    ftoi12.xyz  ONRM(xyz),  XNRM(xyz)                   lq.xyz      INRM(xyz),  VU1_NORMAL(VPTR)                ; nrm to fixed 0    ; load normal 1
+    itof12.zw   FWGT(zw),   WGTS(zw)                    mtir        BONB,       WGTS(y)                         ; wgts to float 1   ; pBoneB 1
+    maxx.xyz    CDOT(xyz),  XDOT(xyz),  vf00x           mtir        BONA,       WGTS(x)                         ; clamp dot 0       ; pBoneA 1
+    mulaw.xyz   acc,        LCL3(xyz),  vf00w           div         q,   vf00w, XPOS(w)                         ; calc color 0      ; divide 0
+    itof12.xyz  FNRM(xyz),  INRM(xyz)                   lq.xyzw     IPOS(xyzw), VU1_XYZ(VPTR)                   ; norm to float 1   ; load pos 1
+    muli.zw     SWGT(zw),   FWGT(zw),   i               sq.xyz      ITEX(xyz),  VU1_UV0-VU1_VERT_SIZE(BPTR)     ; scale weights 1   ; backup uv 0
+    maddaz.xyz  acc,        LCL2(xyz),  CDOT(z)         sq.xyz      ONRM(xyz),  VU1_NORMAL-VU1_VERT_SIZE(VPTR)  ; calc color 0      ; store norm 0
+    madday.xyz  acc,        LCL1(xyz),  CDOT(y)         loi         ITOF_CONST                                  ; calc color 0      ; prep itof 1
+    addi.xyz    FPOS(xyz),  IPOS(xyz),  i               nop                                                     ; pos to float 1    ;
+    maddx.xyz   XCOL(xyz),  LCL0(xyz),  CDOT(x)         lq.xyzw     CMIN(xyzw), CMIN_TMP_STORAGE(BASE)          ; calc color 0      ; prep cmin test 0
+    itof12.xy   FTEX(xy),   ITEX(xy)                    lq.xyzw     CMAX(xyzw), CMAX_TMP_STORAGE(BASE)          ; uv to float 0     ; prep cmax test 0
+    mulq.xyz    PPOS(xyz),  XPOS(xyz),  q               loi         COLOR_CLAMP                                 ; project pos 0     ; prep cclamp 0
+    mulz.xyz    SPSA(xyz),  FPOS(xyz),  SWGT(z)         lq.xyzw     BNB3(xyzw), 3(BONB)                         ; scale pos a 1     ; load bone_b3 1
+    minii.xyz   CCOL(xyz),  XCOL(xyz),  i               lq.xyzw     BNA3(xyzw), 3(BONA)                         ; clamp color 0     ; load bone_a3 1
+    mulw.xyz    SPSB(xyz),  FPOS(xyz),  SWGT(w)         lq.xyzw     BNA2(xyzw), 2(BONA)                         ; scale pos b 1     ; load bone_a2 1
+    sub.xyz     vf00,       CMIN(xyz),  PPOS(xyz)       lq.xyzw     BNA1(xyzw), 1(BONA)                         ; cmin test 0       ; load bone_a1 1
+    sub.xyz     vf00,       PPOS(xyz),  CMAX(xyz)       lq.xyzw     BNA0(xyzw), 0(BONA)                         ; cmax test 0       ; load bone_a0 1
+    ftoi0.xyz   OCOL(xyz),  CCOL(xyz)                   lq.xyzw     BNB2(xzyw), 2(BONB)                         ; color to int 0    ; load bone_b2 1
+    mulaz.xyz   acc,        BNA2(xyz),  FNRM(z)         lq.xyzw     BNB1(xyzw), 1(BONB)                         ; xform normal 1    ; load bone_b1 1
+    ftoi4.xyz   OPOS(xyz),  PPOS(xyz)                   fmand       ITMP,       IMAC                            ; pos to fixed 0    ; cmin test 0
+    madday.xyz  acc,        BNA1(xyz),  FNRM(y)         fmand       ITMP,       ITMP                            ; xform normal 1    ; cmax test 0
+    mulq.xyz    PTEX(xyz),  FTEX(xyz),  q               sq.xyzw     OCOL(xyzw), VU1_RGB-VU1_VERT_SIZE(VPTR)     ; project uv 0      ; store color 0
+    maddx.xyz   XNRM(xyz),  BNA0(xyz),  FNRM(x)         ibne        ITMP, IMAC, SKIN_CULL_TRI                   ; xform normal 1    ; cull test 0
+    mulaw.xyz   acc,        BNB3(xyz),  SWGT(w)         sq.xyz      OPOS(xyz),  VU1_XYZ-VU1_VERT_SIZE(VPTR)     ; skin pos 1        ; store pos 0
+SKIN_CULL_RET:
+    maddaz.xyz  acc,        BNA3(xyz),  SWGT(z)         ibne        VPTR, ENDM, SKIN_WCULL_LOOP                 ; skin pos 1        ; loop
+    maddaz.xyz  acc,        BNA2(xyz),  SPSA(z)         sq.xyz      PTEX(xyz),  VU1_UV0-VU1_VERT_SIZE(VPTR)     ; skin pos 1        ; store uv 0
+
+    ; cleanup--note that we trashed the L2W registers because we needed all we could get for the loop
+    ; so reload the l2w matrix now   
+    nop                                                 lq.xyzw     L2W3(xyzw), VU1_L2W+3(BASE)
+    nop                                                 lq.xyzw     L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 lq.xyzw     L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq.xyzw     L2W0(xyzw), VU1_L2W+0(BASE)
+
+    nop                                                 iaddiu      ITMP, VI00, VU1C_RegLoadGif
+    nop                                                 xgkick      ITMP
+    ;//nop[e]                                              nop
+    ;//nop                                                 nop
+
+    nop                                                 b           BRANCH_MATERIAL_MCODE
+    nop                                                 iaddiu      NBUF, VI00, VU1_SKIN_BACKUP_BUFFER
+
+SKIN_CULL_TRI:
+    ; turn on the adc bits for the current vert and the next two verts, being careful not to overrun our buffer
+    nop                                                 isw.w       ADCB,       VU1_XYZ-VU1_VERT_SIZE(VPTR)     ; store adc bit into pos 0
+    nop                                                 isw.w       ADCB,       VU1_XYZ-VU1_VERT_SIZE(BPTR)     ; backup adc bit into pos 0
+    nop                                                 ibeq        VPTR, ENDM, SKIN_CULL_RET                   ; bail out if we're on the last vert
+    nop                                                 iaddiu      ITMP, VPTR, VU1_VERT_SIZE                   ; tmp = vptr + 1
+    nop                                                 isw.w       ADCB,       VU1_XYZ(VPTR)                   ; store adc bit into pos 1
+    nop                                                 ibeq        ITMP, ENDM, SKIN_CULL_RET                   ; bail out if we're on the next-to-last vert
+    nop                                                 mfir.w      IPOS(w),    ADCB                            ; backup adc bit 1 (note IPOS was already loaded, so change the register, not memory!)
+    nop                                                 isw.w       ADCB,       VU1_XYZ+VU1_VERT_SIZE(VPTR)     ; store adc bit into pos 2
+    nop                                                 b           SKIN_CULL_RET                               ; return
+    nop                                                 isw.w       ADCB,       VU1_XYZ+VU1_VERT_SIZE(BPTR)     ; backup adc bit into pos 2
+
+#undef LMT0
+#undef LMT1
+#undef LMT2
+
+#undef L2S0
+#undef L2S1
+#undef L2S2
+#undef L2S3
+#undef LDR0
+#undef LDR1
+#undef LDR2
+#undef LCL0
+#undef LCL1
+#undef LCL2
+#undef LCL3
+#undef WGTS
+#undef FWGT
+#undef SWGT
+#undef IPOS
+#undef FPOS
+#undef SPSA
+#undef SPSB
+#undef KPOS
+#undef XPOS
+#undef PPOS
+#undef OPOS
+#undef ITEX
+#undef FTEX
+#undef PTEX
+#undef INRM
+#undef FNRM
+#undef XNRM
+#undef ONRM
+#undef XDOT
+#undef CDOT
+#undef XCOL
+#undef CCOL
+#undef OCOL
+#undef BNA0
+#undef BNA1
+#undef BNA2
+#undef BNA3
+#undef BNB0
+#undef BNB1
+#undef BNB2
+#undef BNB3
+#undef CMIN
+#undef CMAX
+
+#undef VPTR
+#undef ENDM
+#undef BPTR
+#undef BONA
+#undef BONB
+#undef ADCB
+#undef IMAC
+
+#undef ITOF_CONST
+#undef WEIGHT_SCALE
+#undef COLOR_CLAMP
+#undef CULL_NEARZ
+#undef CULL_FARZ
+#undef CULL_GUARDBAND_MIN
+#undef CULL_GUARDBAND_MAX
+#undef CMIN_TMP_STORAGE
+#undef CMAX_TMP_STORAGE
+
+VU1_SKIN_XFORM_CODE_END:

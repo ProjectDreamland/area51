@@ -1,0 +1,14 @@
+#IOP-ILB# [PsIIinetctl 3020]
+L inetctl
+V 0x0101
+F 0x0000
+E 004 sceInetCtlSetConfiguration
+E 005 sceInetCtlUpInterface
+E 006 sceInetCtlDownInterface
+E 007 sceInetCtlSetAutoMode
+E 008 sceInetCtlRegisterEventHandler
+E 009 sceInetCtlUnregisterEventHandler
+E 010 sceInetCtlGetState
+E 011 sceInetCtlGetConfiguration
+E 012 sceInetCtlSetDialingData
+E 013 sceInetCtlClearDialingData

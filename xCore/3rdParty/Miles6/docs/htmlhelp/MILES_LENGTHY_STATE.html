@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>MILES_LENGTHY_STATE</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="indicates the current stage of the lengthy operation.">
+<meta name="ms-hkwd" content="MILES_LENGTHY_STATE">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>MILES_LENGTHY_STATE</h1>
+<p>The basic type <b>MILES_LENGTHY_STATE</b> indicates the current stage of the lengthy operation.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#AIL_LENGTHY_INIT" href="#AIL_LENGTHY_INIT" class=trn>&nbsp;AIL_LENGTHY_INIT</a></td>
+<td width=71% height=25 valign=middle class=list>This state means that the process is about to begin. This let's you set up any persistent variables that you might need.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#AIL_LENGTHY_SET_PREFERENCE" href="#AIL_LENGTHY_SET_PREFERENCE" class=trn>&nbsp;AIL_LENGTHY_SET_PREFERENCE</a></td>
+<td width=71% height=25 valign=middle class=list>This state is called to allow you to set codec preferences. The value parameter contains an address of a function of the <a href="AILCODECSETPREF.html">AILCODECSETPREF</a> type. <br> <br> So, set a preference, you cast the value parameter to <a href="AILCODECSETPREF.html">AILCODECSETPREF</a> and then perform the function call. You would use code something like this: <br> <br> <i>((AILCODECSETPREF)value) ( "Requested Bit Rate", 64 );</i> <br> <br> The Miles MPEG preferences that you can use are listed with the <a href="AILCODECSETPREF.html">AILCODECSETPREF</a> definition.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#AIL_LENGTHY_UPDATE" href="#AIL_LENGTHY_UPDATE" class=trn>&nbsp;AIL_LENGTHY_UPDATE</a></td>
+<td width=71% height=25 valign=middle class=list>Your callback will be called many times with this state during a long operation. The value parameter is the percentage of completion. The percentage is an F32, so you must cast the value to get the correct percentage - use something like: <br> <br> <i>F32 percent=*(F32*)&value;</i> <br> <br> You will usually cancel a long operation by returning a zero from this callback.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#AIL_LENGTHY_DONE" href="#AIL_LENGTHY_DONE" class=trn>&nbsp;AIL_LENGTHY_DONE</a></td>
+<td width=71% height=25 valign=middle class=list>This state means that the process is completed and you can free any persistent variables. The value parameter isn't used and the return value from this callback is ignored.</td>
+</tr>
+</table>
+<p>
+<br>
+<b>Group:</b>
+<a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AILCODECSETPREF.html">AILCODECSETPREF</a>, <a href="AILLENGTHYCB.html">AILLENGTHYCB</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

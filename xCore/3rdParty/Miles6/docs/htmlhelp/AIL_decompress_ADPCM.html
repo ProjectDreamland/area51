@@ -1,0 +1,68 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_decompress_ADPCM</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="decompresses the IMA ADPCM digital sound described by the info structure into a standard PCM wave file image.">
+<meta name="ms-hkwd" content="AIL_decompress_ADPCM">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_decompress_ADPCM</h1>
+<p>The function  <b>AIL_decompress_ADPCM</b> decompresses the IMA ADPCM digital sound described by the info structure into a standard PCM wave file image.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_decompress_ADPCM.html" class=trn>AIL_decompress_ADPCM</a>(</b>
+<b>&nbsp&nbsp<a href="AILSOUNDINFO.html" class=trn>AILSOUNDINFO const *</a>&nbspconst *</b><i>info</i><b>,</b>
+<b>&nbsp&nbsp<a href="void P.html" class=trn>void *</a>&nbsp*</b><i>wav</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>wavesize</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>info</i></dt>
+<dd>describes the ADCPM sound data to decompress.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>wav</i></dt>
+<dd>should be the address of a " void* " pointer that will return with the pointer to the new wave file image. This parameter can be NULL if you don't need it.</dd>
+<dt><i>wavesize</i></dt>
+<dd>should be the address of an unsigned 32-bit integer that will return with the size of the new wave file image. This parameter can be NULL if you don't need it.</dd>
+</dl>
+<h4>Returns</h4>
+<p>1, if the call was successful, or 0 if the call failed.</p>
+<h4>Discussion</h4>
+<p>You must free the pointer returned in wav with <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>. </p><p> You can use the <a href="AIL_WAV_info.html">AIL_WAV_info</a> function to automatically fill the input info structure. </p><p> The output wave file image is a standard PCM wave file - you can write it directly to disk and any WAV file player will be able to play it.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a>, <a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_WAV_info.html">AIL_WAV_info</a>, <a href="AIL_compress_ADPCM.html">AIL_compress_ADPCM</a>, <a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>, <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a>, <a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="void P.html">void *</a><br>
+<b>Related Structures:</b>
+<a href="AILSOUNDINFO.html">AILSOUNDINFO</a><br>
+<b>Related FAQs:</b>
+<a href="How can I play stere982vwf.html">How can I play stereo or compressed digital files with the 3D API?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

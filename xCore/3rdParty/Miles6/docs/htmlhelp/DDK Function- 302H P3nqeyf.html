@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>DDK Function: 302H Periodic Interrupt Service</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="DDK Function: 302H Periodic Interrupt Service">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>DDK Function: 302H Periodic Interrupt Service</h1>
+<h4>Discussion</h4>
+<p> <b>Input:</b><br> </p><p> AX = 302H<br> BX = Driver number </p><p><b>Output:</b><br> </p><p> None </p><p>If the <a href="VDI_HDR.html">VDI_HDR</a> <b>service_rate_required</b> variable is non-zero, the driver requires real-mode callback service via this function at <b>service_rate_required</b> calls per second. Real-mode callback service is normally needed only for certain music-synthesis devices or non-DMA-equipped audio adapters such as PCMCIA or parallel-port devices. </p><p>Most .DIG drivers will not need to use this function for timing, as digital audio devices generally provide their own timing and interrupt capabilities. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="DOS Sound Driver Gens3p70p.html">DOS Sound Driver Generic Initialization Interface</a><br>
+<b>Related Structures:</b>
+<a href="VDI_HDR.html">VDI_HDR</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

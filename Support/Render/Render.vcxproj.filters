@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="PS2">
+      <UniqueIdentifier>{4761d4b1-25e3-4e91-8b2f-597ac80aa9d2}</UniqueIdentifier>
+      <Extensions>cpp;hpp;vu</Extensions>
+    </Filter>
+    <Filter Include="PS2\vu0">
+      <UniqueIdentifier>{91ac6613-a614-4d15-9ec9-e0965ce3c912}</UniqueIdentifier>
+      <Extensions>cpp;hpp</Extensions>
+    </Filter>
+    <Filter Include="PS2\vu1">
+      <UniqueIdentifier>{bad7988e-c9bf-47cc-b08b-30c63cabea3b}</UniqueIdentifier>
+      <Extensions>cpp;hpp</Extensions>
+    </Filter>
+    <Filter Include="PC">
+      <UniqueIdentifier>{a8d9040e-5e81-4f3c-a902-fcbe6b7acb73}</UniqueIdentifier>
+      <Extensions>cpp;hpp</Extensions>
+    </Filter>
+    <Filter Include="PC\Shaders">
+      <UniqueIdentifier>{c1267a8d-9d77-45d5-95af-7f55b31b9cb4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ps2_post.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="ps2_Render.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="ps2_skin.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="vu0\vu0.cpp">
+      <Filter>PS2\vu0</Filter>
+    </ClCompile>
+    <ClCompile Include="vu1\draw.cpp">
+      <Filter>PS2\vu1</Filter>
+    </ClCompile>
+    <ClCompile Include="vu1\vu1.cpp">
+      <Filter>PS2\vu1</Filter>
+    </ClCompile>
+    <ClCompile Include="vu1\vu1_dlist.cpp">
+      <Filter>PS2\vu1</Filter>
+    </ClCompile>
+    <ClCompile Include="pc_Render.cpp">
+      <Filter>PC</Filter>
+    </ClCompile>
+    <ClCompile Include="SoftVertexMgr.cpp">
+      <Filter>PC</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexMgr.cpp">
+      <Filter>PC</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionVolume.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="geom.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="LightMgr.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialArray.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjTextureMgr.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="Render.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidGeom.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="SkinGeom.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="TexAnimArray.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>PS2</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shaders\SkinShader.h">
+      <Filter>PC\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SkinShader.vsa.h">
+      <Filter>PC\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionVolume.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="geom.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="LightMgr.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialArray.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="platform_Render.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjTextureMgr.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidGeom.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="SkinGeom.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="TexAnimArray.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.hpp">
+      <Filter>PS2</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\Make.bat">
+      <Filter>PC\Shaders</Filter>
+    </None>
+    <None Include="Shaders\SkinShader.vsa">
+      <Filter>PC\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ps2_skin.hpp">
+      <Filter>PS2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu0\mcode\include0.vu">
+      <Filter>PS2\vu0</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu0\mcode\skinning.vu">
+      <Filter>PS2\vu0</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu0\vu0.hpp">
+      <Filter>PS2\vu0</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\clipper.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\include.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\lighting.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\passes.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\renderer.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\shadow.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\shadows.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\skinning.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\mcode\transform.vu">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="vu1\vu1.hpp">
+      <Filter>PS2\vu1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SoftVertexMgr.hpp">
+      <Filter>PC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="VertexMgr.hpp">
+      <Filter>PC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Material_Prefs.hpp">
+      <Filter>PS2</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

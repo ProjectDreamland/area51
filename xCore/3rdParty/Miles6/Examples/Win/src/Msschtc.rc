@@ -1,0 +1,35 @@
+#include "windows.h"
+
+MSSCHTC DIALOG DISCARDABLE  132, 132, 276, 159
+STYLE WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Miles Sound System TCP/IP Voice Chat Client"
+CLASS "MSSCHTC"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Close",106,218,13,51,15
+    PUSHBUTTON      "&About...",107,217,31,51,15
+    GROUPBOX        " Information: ",118,7,6,203,45
+    LTEXT           "For best results, you should use headphones or a head-set to avoid echos from your speakers.  Note also that you must have full-duplex sound drivers installed to chat.",
+                    -1,19,20,184,25
+    GROUPBOX        " Voice Chat Client Options: ",116,7,57,260,97
+    LTEXT           "",500,20,69,240,8
+    LTEXT           "",501,20,81,240,8
+    LTEXT           "",502,20,93,240,8
+    LTEXT           "Microphone input level: ",-1,20,111,76,8
+    CONTROL         "Progress1",200,"msctls_progress32",WS_BORDER,99,108,112,
+                    14
+    PUSHBUTTON      "Levels...",108,219,108,40,14
+    LTEXT           "If your microphone level is too low, use the levels button to load the sound card Control Panel.  Then, click the microphone icon in the recording section of the Control Panel.",
+                    -1,20,126,240,25
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+DEMO                    ICON    DISCARDABLE     "demo.ico"
+

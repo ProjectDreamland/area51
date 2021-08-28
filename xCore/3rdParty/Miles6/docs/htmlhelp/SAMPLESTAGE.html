@@ -1,0 +1,50 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>SAMPLESTAGE</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="describes the stage in the sample pipeline to install the filter on.">
+<meta name="ms-hkwd" content="SAMPLESTAGE">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>SAMPLESTAGE</h1>
+<p>The basic type <b>SAMPLESTAGE</b> describes the stage in the sample pipeline to install the filter on.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#DP_FILTER" href="#DP_FILTER" class=trn>&nbsp;DP_FILTER</a></td>
+<td width=71% height=25 valign=middle class=list>Specifies the filter provider stage. Once set, the filter will be called before each buffer from the HSAMPLE is copied into mixing buffer. You will almost always use this stage for the Miles filters.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#DP_MERGE" href="#DP_MERGE" class=trn>&nbsp;DP_MERGE</a></td>
+<td width=71% height=25 valign=middle class=list>Specifies the merge provider stage. The merge provider is called to mix each HSAMPLE's current address into the internal MSS mixing build buffer.</td>
+</tr>
+</table>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Filter Services.html">Digital Filter Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_set_DLS_processor.html">AIL_set_DLS_processor</a>, <a href="AIL_set_sample_processor.html">AIL_set_sample_processor</a>, <a href="AIL_set_stream_processor.html">AIL_set_stream_processor</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

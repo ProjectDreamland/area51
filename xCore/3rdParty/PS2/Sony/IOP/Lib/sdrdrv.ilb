@@ -1,0 +1,6 @@
+#IOP-ILB# [PsIIsdrdrv  3000]
+L sdrdrv
+V 0x0101
+F 0x0000
+E 004 sceSdrChangeThreadPriority
+E 005 sceSdrSetUserCommandFunction

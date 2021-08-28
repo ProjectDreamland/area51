@@ -1,0 +1,65 @@
+#include "mss.h"
+
+#include "windows.h"
+
+MILESPLY ICON "demo.ico"
+
+MILESPLY DIALOG DISCARDABLE  47, 59, 186, 142
+CLASS "MILESPLY"
+STYLE WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+CAPTION "Miles Sound Player"
+FONT 8, "MS Sans Serif"
+{
+    PUSHBUTTON      "&Close",129,132,122,44,14
+    LTEXT           "Start",130,10,8,18,8
+    LTEXT           "End",131,160,8,13,8
+#ifdef _WIN32
+    CONTROL         "Slider1",132,"msctls_trackbar32",8 | 0x10 | WS_TABSTOP,10,18,164,11
+#else
+    SCROLLBAR       132,10,19,163,11,WS_TABSTOP
+#endif
+
+    CONTROL         "",147,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,10,34,167,9
+
+    GROUPBOX        " Audio Options: ",133,9,47,115,90
+    LTEXT           "CPU: 0%",134,17,60,55,10
+    CONTROL         "&Filter",136,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,72,36,13
+    CONTROL         "&Reverb",137,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,85,36,13
+    COMBOBOX        139,79,56,40,96,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "16-&bit",135,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,79,72,36,13
+    CONTROL         "&Stereo",138,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,79,85,36,13
+    COMBOBOX        141,16,103,103,98,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "GM DLS file:",142,16,118,54,13
+    CONTROL         "None selected.",143,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,72,121,49,9
+    ICON            "MILESPLY",140,143,51,18,20
+    PUSHBUTTON      "&Open",148,132,74,44,14
+    PUSHBUTTON      "&Help",145,132,90,44,14
+    PUSHBUTTON      "&About",146,132,106,44,14
+}
+
+
+1 VERSIONINFO LOADONCALL MOVEABLE DISCARDABLE IMPURE
+FILEVERSION 3, 0, 0, 0
+PRODUCTVERSION 3, 0, 0, 0
+FILEFLAGSMASK 0x3f
+FILEFLAGS 0
+FILETYPE 1
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "RAD Game Tools, Inc.\000"
+   VALUE "FileDescription", "Miles Sound System\000"
+   VALUE "FileVersion", MSS_VERSION "\000"
+   VALUE "LegalCopyright", MSS_COPYRIGHT "\000"
+   VALUE "LegalTrademarks", "Miles Sound System is a trademark of RAD Game Tools, Inc.\000"
+   VALUE "ProductName", "Miles Sound System\000"
+   VALUE "ProductVersion", MSS_VERSION "\000"
+   VALUE "Comments", "Thank you for using Miles!\000"
+  }
+
+ }
+
+}
+

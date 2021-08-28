@@ -1,0 +1,25 @@
+create c:/Projects/A51/Support/Render/_PS2-OptDebug/Render.lib
+addmod ./_ps2-optdebug/ps2_skin.obj
+addmod ./_ps2-optdebug/vu1.obj
+addmod ./_ps2-optdebug/clipper.obj
+addmod ./_ps2-optdebug/init.obj
+addmod ./_ps2-optdebug/materials.obj
+addmod ./_ps2-optdebug/shadcast_transform.obj
+addmod ./_ps2-optdebug/shadreceive_passes.obj
+addmod ./_ps2-optdebug/shadreceive_transform.obj
+addmod ./_ps2-optdebug/skinning.obj
+addmod ./_ps2-optdebug/sprite_transform.obj
+addmod ./_ps2-optdebug/sync.obj
+addmod ./_ps2-optdebug/transform.obj
+addmod ./_ps2-optdebug/CollisionVolume.obj
+addmod ./_ps2-optdebug/geom.obj
+addmod ./_ps2-optdebug/LightMgr.obj
+addmod ./_ps2-optdebug/Material.obj
+addmod ./_ps2-optdebug/MaterialArray.obj
+addmod ./_ps2-optdebug/ProjTextureMgr.obj
+addmod ./_ps2-optdebug/Render.obj
+addmod ./_ps2-optdebug/RigidGeom.obj
+addmod ./_ps2-optdebug/SkinGeom.obj
+addmod ./_ps2-optdebug/Texture.obj
+save
+end 

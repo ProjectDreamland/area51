@@ -1,0 +1,73 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_find_DLS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns pointers and sizes to the DLS and XMIDI chunks inside a merged XMIDI file image.">
+<meta name="ms-hkwd" content="AIL_find_DLS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_find_DLS</h1>
+<p>The function  <b>AIL_find_DLS</b> returns pointers and sizes to the DLS and XMIDI chunks inside a merged XMIDI file image.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_find_DLS.html" class=trn>AIL_find_DLS</a>(</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>data</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>size</i><b>,</b>
+<b>&nbsp&nbsp<a href="void P.html" class=trn>void *</a>&nbsp*</b><i>XMI</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>XMI_size</i><b>,</b>
+<b>&nbsp&nbsp<a href="void P.html" class=trn>void *</a>&nbsp*</b><i>dls</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>dlssize</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>data</i></dt>
+<dd>points to a file image containing an XMIDI file with embedded DLS data.</dd>
+<dt><i>size</i></dt>
+<dd>is the length of the data.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>XMI</i></dt>
+<dd>should be the address of a " void* " pointer that will return with the pointer to the XMIDI chunk. This parameter can be NULL if you don't need it.</dd>
+<dt><i>XMI_size</i></dt>
+<dd>should be the address of an unsigned 32-bit integer that will return with the size of the XMIDI chunk. This parameter can be NULL if you don't need it.</dd>
+<dt><i>dls</i></dt>
+<dd>should be the address of a " void* " pointer that will return with the pointer to the DLS or MLS chunk. This parameter can be NULL if you don't need it.</dd>
+<dt><i>dlssize</i></dt>
+<dd>should be the address of an unsigned 32-bit integer that will return with the size of the DLS or MLS chunk. This parameter can be NULL if you don't need it.</dd>
+</dl>
+<h4>Returns</h4>
+<p>1, if the call was successful, or 0 if the call failed.</p>
+<h4>Discussion</h4>
+<p>This function returns pointers inside the original data pointer - do NOT call <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a> on these pointers. If you want to obtain copies of the XMIDI and DLS chunks inside the original file image, you can use the <a href="AIL_extract_DLS.html">AIL_extract_DLS</a> function. </p><p> This function does not decompress the DLS data in the merged XMIDI file - if you need to decompress the data, use <a href="AIL_extract_DLS.html">AIL_extract_DLS</a>. </p><p> A good way to decide whether to use <a href="AIL_extract_DLS.html">AIL_extract_DLS</a> or <a href="AIL_find_DLS.html">AIL_find_DLS</a> is whether the DLS data is compressed. If the data is uncompressed, then you can pass it directly to <a href="AIL_DLS_load_memory.html">AIL_DLS_load_memory</a>, so <a href="AIL_find_DLS.html">AIL_find_DLS</a> can be used. If the data is compressed, then you must decompress it with <a href="AIL_extract_DLS.html">AIL_extract_DLS</a> before handing it off to <a href="AIL_DLS_load_memory.html">AIL_DLS_load_memory</a>. You can determine whether the data is compressed or not with the <a href="AIL_file_type.html">AIL_file_type</a> function.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_DLS_load_file.html">AIL_DLS_load_file</a>, <a href="AIL_DLS_load_memory.html">AIL_DLS_load_memory</a>, <a href="AIL_compress_DLS.html">AIL_compress_DLS</a>, <a href="AIL_extract_DLS.html">AIL_extract_DLS</a>, <a href="AIL_file_type.html">AIL_file_type</a>, <a href="AIL_filter_DLS_with_XMI.html">AIL_filter_DLS_with_XMI</a>, <a href="AIL_find_DLS.html">AIL_find_DLS</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>, <a href="AIL_merge_DLS_with_XMI.html">AIL_merge_DLS_with_XMI</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="void P.html">void *</a>, <a href="void const P.html">void const *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

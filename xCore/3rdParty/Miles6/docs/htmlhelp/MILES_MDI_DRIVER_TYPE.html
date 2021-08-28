@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>MILES_MDI_DRIVER_TYPE</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="describes the type of DOS MIDI driver.">
+<meta name="ms-hkwd" content="MILES_MDI_DRIVER_TYPE">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>MILES_MDI_DRIVER_TYPE</h1>
+<p>The basic type <b>MILES_MDI_DRIVER_TYPE</b> describes the type of DOS MIDI driver.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#MDIDRVRTYPE_GM" href="#MDIDRVRTYPE_GM" class=trn>&nbsp;MDIDRVRTYPE_GM</a></td>
+<td width=71% height=25 valign=middle class=list>General MIDI synthesis. Typically wavetable, enhanced FM, or physical-model synthesis with at least 24 available voices. This type of driver does not require an XMIDI Global Timbre Library file.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#MDIDRVRTYPE_FM_2" href="#MDIDRVRTYPE_FM_2" class=trn>&nbsp;MDIDRVRTYPE_FM_2</a></td>
+<td width=71% height=25 valign=middle class=list>2-operator (Yamaha YM3812/OPL2-equivalent) FM synthesis. These drivers require XMIDI Global Timbre Library files with the suffix .AD. 9 FM voices are provided by this synthesis technology.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#MDIDRVRTYPE_FM_4" href="#MDIDRVRTYPE_FM_4" class=trn>&nbsp;MDIDRVRTYPE_FM_4</a></td>
+<td width=71% height=25 valign=middle class=list>4-operator (Yamaha YMF262/OPL3-equivalent) FM synthesis. This technology offers up to 18 2-operator voices or 6 4-operator voices. Global Timbre Library files with the suffix .OPL are required for use with this type of driver.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#MDIDRVRTYPE_SPKR" href="#MDIDRVRTYPE_SPKR" class=trn>&nbsp;MDIDRVRTYPE_SPKR</a></td>
+<td width=71% height=25 valign=middle class=list>PC or Tandy internal speaker synthesis. Drivers of this type offer exceptionally poor sound quality and limited channel and controller response. No Global Timbre Library file format is supported. Few applications should include drivers of this type (which include TANDY.MDI and PCSPKR.MDI), as little market demand remains for this level of technology.</td>
+</tr>
+</table>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_MDI_driver_type.html">AIL_MDI_driver_type</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

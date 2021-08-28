@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Sharing the CPU under DOS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Sharing the CPU under DOS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Sharing the CPU under DOS</h1>
+<h4>Discussion</h4>
+<p>Under DOS, Miles does most of its work in background interrupts. This means that Miles usually does its work without you even having to worry about it. The mixing and buffer submission to low-level sound drivers all happens without your intervention. </p><p>The only time you may need to specifically give Miles CPU time is when you are streaming files with the high-level streaming functions. DOS applications can't do I/O in the background, so if you are streaming, you have to periodically call <a href="AIL_service_stream.html">AIL_service_stream</a>. </p><p>Miles does take control of the system timer interrupt. If your game already uses the hardware timer, then you are usually best off converting your interrupt routines into Miles timers. They are just as accurate and allow everything to get along nicely. If you must control the clock, then contact RAD for details on patching the required functions in the Miles source code. </p>
+<p><a href="Call Logging under DOS.html">Next Topic (Call Logging under DOS)</a>  </p><p><a href="Callbacks under DOS.html">Previous Topic (Callbacks under DOS)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Overview for DOS- Miy6fegj.html">Overview for DOS: Miles on DOS with 32-bit DOS Extenders</a><br>
+<b>Related Functions:</b>
+<a href="AIL_service_stream.html">AIL_service_stream</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

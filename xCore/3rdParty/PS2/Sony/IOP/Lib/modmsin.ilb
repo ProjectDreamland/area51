@@ -1,0 +1,10 @@
+#IOP-ILB# [PsIImodmsin 3000]
+L modmsin
+V 0x0101
+F 0x0000
+E 004 sceMSIn_Init
+E 005 sceMSIn_ATick
+E 006 sceMSIn_Load
+E 007 sceMSIn_PutMsg
+E 008 sceMSIn_PutExcMsg
+E 009 sceMSIn_PutHsMsg

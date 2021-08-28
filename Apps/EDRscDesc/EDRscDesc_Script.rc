@@ -1,0 +1,206 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_RSCDESC_TREEBITMAP  BITMAP                  "res\\rscdesc_bitmap1.bmp"
+IDW_RSCDESC_TOOLBAR     BITMAP                  "res\\idw_rscd.bmp"
+IDR_RSCDESC_EDIT_TOOLBAR BITMAP                  "res\\rscdesc_Edit.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_RSC_DESC            ICON                    "res\\RscDescView.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDW_RSCDESC_TOOLBAR TOOLBAR  17, 15
+BEGIN
+    BUTTON      ID_RSC_BUILD
+    BUTTON      ID_RSC_COMPILE
+    BUTTON      ID_RSC_BUILD_STOP
+    BUTTON      ID_CLEAN_RESOURCE
+    BUTTON      ID_REBUILD_ALL
+    SEPARATOR
+    BUTTON      ID_COMPILE_NINTENDO
+    BUTTON      ID_COMPILE_PS2
+    BUTTON      ID_COMPILE_XBOX
+    BUTTON      ID_COMPILE_PC
+    SEPARATOR
+    BUTTON      ID_VERBOSE_MODE
+    BUTTON      ID_COLOR_MIPS
+    SEPARATOR
+    BUTTON      ID_RSC_ADD_RES_DESC
+END
+
+IDR_RSCDESC_EDIT_TOOLBAR TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_SAVE_ACTIVE
+    BUTTON      ID_SAVE_ALL
+    BUTTON      ID_EDIT_RESCDESC
+    BUTTON      ID_CHECKOUT_RESCDESC
+    BUTTON      ID_REFRESH_VIEWS
+    BUTTON      ID_DELETE_RSCDESC
+    BUTTON      ID_SCAN_RESOURCES
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_EDRSCDESC_TEMPMENU MENU 
+BEGIN
+    POPUP "Test"
+    BEGIN
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM1
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM2
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM3
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM4
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM5
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM6
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM7
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM8
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM9
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM10
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM11
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM12
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM13
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM14
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM15
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM16
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM17
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM18
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM19
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM20
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM21
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM22
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM23
+        MENUITEM "hello",                       ID_EDRSCDESC_ITEM24
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_RSC_DESC            "\nResources\nResource Descriptions\n\n\nResource Descriptions\nResource Descriptions"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_ADD_RESOURCE_DESC    "Add a Resource Description"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_RSC_BUILD            "Build non upto date resources\nBuild All"
+    ID_RSC_COMPILE          "Compile selected resource"
+    ID_RSC_BUILD_STOP       "Stops a build that is in process\nCancel Compilers"
+    ID_RSC_ADD_RES_DESC     "Add a new resource description\nCreate Resource"
+    ID_BUILD_ALL            "Rebuilds all the resources\nRebuild All"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_SAVE_SELECTED        "Save the se"
+    ID_SAVE_ACTIVE          "Save the Active resource\nSave Resource"
+    ID_SAVE_ALL             "Save all modify resource descriptors"
+    ID_EDIT_RESCDESC        "Will begin/end edit the selected resource description\nBegin/End Edit"
+    ID_COMPILE_NINTENDO     "Compile resources for the nintendo cube\nCompile for Nintendo"
+    ID_COMPILE_PS2          "Compile resources for the PlayStation 2\nCompile for PS2"
+    ID_COMPILE_XBOX         "Compile resources for Microsoft XBox\nCompile for XBox"
+    ID_DEBUG_COMPILERS      "Turn on verbose mode for the make systen\nVerbose Mode"
+    ID_VERBOSE_MODE         "Activates the verbose mode for the make system\nVerbose Mode"
+    ID_BUILD_PC             "Compile resources for the PC\nCompile for PC"
+    ID_COMPILE_PC           "Compile resources for PC\nCompile for PC"
+    ID_CLEAN_RESOURCE       "Errases the selected resource from the filnal directory\nClean Selected"
+    ID_REFRESH_VIEWS        "Rescans resources and updates views\nRefresh Views"
+    ID_DELETE_RSCDESC       "Delete Selected Resource description\nDelete Resource Description"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_REBUILD_ALL          "Rebuils all the resources\nRebuild All"
+    ID_COLORMIPS            "During compile, tint mips with color for debugging"
+    ID_COLOR_MIPS           "Tint mips during compile for debugging\nColor Mips"
+    ID_CHECKOUT_RESCDESC    "Checkout resource from Perforce\nCheckout"
+    ID_SCAN_RESOURCES       "Scan resources for source control mistakes\nReport files not in P4"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

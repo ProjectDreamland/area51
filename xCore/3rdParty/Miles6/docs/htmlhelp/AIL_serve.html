@@ -1,0 +1,50 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_serve</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="provides periodic foreground service to the Miles Sound System to avoid "starvation" during periods when the application does not yield control frequently.">
+<meta name="ms-hkwd" content="AIL_serve">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_serve</h1>
+<p>The function  <b>AIL_serve</b> provides periodic foreground service to the Miles Sound System to avoid "starvation" during periods when the application does not yield control frequently.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_serve.html" class=trn>AIL_serve</a>(</b><b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Discussion</h4>
+<p>Under Windows, you only need to call this function when you won't be yielding to the Windows messaging system regularly. So, if you have a situation where you won't be calling <i>PeekMessage</i> or <i>GetMessage</i>, then you should try to call this function more than 5 times a second, but less than 20 times a second. If you call this function less than 5 times a second, the system can starve and sound will start breaking up. If you call this function more than 20 times a second, then system performance will be adversely affected. </p><p> At typical output sample rates, the Windows MSS digital audio system can maintain background playback for at least 500 milliseconds without receiving foreground timer service internally. Applications which need to continue digital audio playback during disk access, movie playback or other situations which tend to "starve" the Windows message queue should call <a href="AIL_serve.html">AIL_serve</a> as frequently as possible to help avoid sound dropouts. </p><p> Under MacOS, this function will pump the QuickTime MIDI services, if you are currently playing a MIDI file through QuickTime. </p><p> Under MacOS and Win16, this function must not be invoked from an interrupt-based callback function. </p><p> You may have to use this function periodically under Win32 when reading huge amounts of data off a CD-ROM or hard-drive that is still using a 16-bit driver. </p><p> This function is not supported under DOS.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="System Services.html">System Services</a><br>
+<b>Related Sections:</b>
+<a href="Sharing the CPU unde9ijdaa.html">Sharing the CPU under MacOS</a>, <a href="Sharing the CPU undeqnabaa.html">Sharing the CPU under Win16</a>, <a href="Sharing the CPU unde0cdiaa.html">Sharing the CPU under Win32s</a><br>
+<b>Related Functions:</b>
+<a href="AIL_auto_service_stream.html">AIL_auto_service_stream</a>, <a href="AIL_get_timer_highesqwlaaa.html">AIL_get_timer_highest_delay</a>, <a href="AIL_serve.html">AIL_serve</a>, <a href="AIL_service_stream.html">AIL_service_stream</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="My sound is skipping3sr5kw.html">My sound is skipping on Win32 - what can I do?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

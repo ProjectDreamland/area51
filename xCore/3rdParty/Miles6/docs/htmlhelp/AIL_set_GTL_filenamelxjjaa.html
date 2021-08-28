@@ -1,0 +1,53 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_GTL_filename_prefix</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="informs MSS of the prefix portion of all Global Timbre Library filenames which are associated with a particular application.">
+<meta name="ms-hkwd" content="AIL_set_GTL_filename_prefix">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_GTL_filename_prefix</h1>
+<p>The function  <b>AIL_set_GTL_filename_prefix</b> informs MSS of the prefix portion of all Global Timbre Library filenames which are associated with a particular application.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_GTL_filenamelxjjaa.html" class=trn>AIL_set_GTL_filename_prefix</a>(</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>prefix</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>prefix</i></dt>
+<dd>points to a valid DOS filename prefix.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>Global Timbre Library files contain instruments for MSS 2.X-generation synthesizer drivers such as those for the Yamaha OPL2- and OPL3- based boards, and the Roland MT-32. </p><p> By default, the <a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a> and <a href="AIL_install_MDI_driv6zzyaa.html">AIL_install_MDI_driver_image</a> functions will assume that all Global Timbre Library filenames begin with the DOS prefix "FATMAN". This prefix is combined with the driver-specific GTL suffix, such as ".AD" for the 2-operator Ad Lib OPL2-type drivers, to yield the complete filename under which the driver expects to find a GTL file containing instrument definitions for the application. This function must be called <i>before</i> installing the .MDI driver or drivers, to declare a different GTL filename prefix. </p><p> One use for this feature might be for programs which use custom Yamaha and/or MT-32 GTL files. For example, if you're custom patches were called "CUSTOM.AD" and "CUSTOM.OPL", then simply add a call such as AIL_set_GTL_filename_prefix("CUSTOM") before calling <a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a> or <a href="AIL_install_MDI_driv6zzyaa.html">AIL_install_MDI_driver_image</a>. </p><p> MSS 2.X-compatible Global Timbre Library files are loaded by the driver from the current working directory at the time <a href="AIL_init_sequence.html">AIL_init_sequence</a> or <a href="AIL_install_timbre.html">AIL_install_timbre</a> is called. If this is undesirable, the <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a> function may be used to specify a DOS directory path to be used as part of the timbre filename prefix string. </p><p> Drivers for later devices such as the Gravis UltraSound card use proprietary instrument libraries rather than GTL files. Other drivers, such as the MPU401 General MIDI driver MPU401.MDI, do not make any provisions for instrument loading at all. <a href="AIL_set_GTL_filenamelxjjaa.html">AIL_set_GTL_filename_prefix</a> will have no effect when either of these driver types are installed. </p><p> The current version of the Windows and MacOS system does not support custom MIDI instruments. The default MIDI instrument set used by the selected midiOut driver will be used instead.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_init_sequence.html">AIL_init_sequence</a>, <a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a>, <a href="AIL_install_MDI_driv6zzyaa.html">AIL_install_MDI_driver_image</a>, <a href="AIL_install_timbre.html">AIL_install_timbre</a>, <a href="AIL_set_GTL_filenamelxjjaa.html">AIL_set_GTL_filename_prefix</a>, <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a><br>
+<b>Related Basic Types:</b>
+<a href="char const P.html">char const *</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

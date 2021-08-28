@@ -1,0 +1,87 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Low-Level DOS Support Services</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Low-Level DOS Support Services">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Low-Level DOS Support Services</h1>
+<h4>Discussion</h4>
+<p>The Low-Level DOS Support Services are rarely necessary at the application level - they provide interrupt and stack handling services. </p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Low-Level DOS Suppor8y9ysb.html">Low-Level DOS Support Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_real_vect.html">AIL_set_real_vect</a></td>
+<td height=25 valign=top class=toc>installs a real-mode handler real_ptr for interrupt vectnum.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_USE16_ISR.html">AIL_set_USE16_ISR</a></td>
+<td height=25 valign=top class=toc>creates a 16-bit protected-mode interrupt handler for interrupt
+
+          vectnum, mapped to an existing bimodal interrupt handler in real-mode
+
+          memory.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_disable_interrupts.html">AIL_disable_interrupts</a></td>
+<td height=25 valign=top class=toc>disables hardware interrupts (IRQs).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_restore_interrupts.html">AIL_restore_interrupts</a></td>
+<td height=25 valign=top class=toc>restores the hardware interrupt state effective prior to the
+
+          last call to AIL_disable_interrupts (above).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_switch_stack.html">AIL_switch_stack</a></td>
+<td height=25 valign=top class=toc>allows a C or C++ module to change to a different stack whose
+
+          size and location may be chosen by the programmer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_restore_stack.html">AIL_restore_stack</a></td>
+<td height=25 valign=top class=toc>returns to the default stack which was in use prior to the last
+
+          call to AIL_switch_stack.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_get_real_vect.html">AIL_get_real_vect</a></td>
+<td height=25 valign=top class=toc>obtains the address of the current real-mode handler for interrupt
+
+          vectnum.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_call_driver.html">AIL_call_driver</a></td>
+<td height=25 valign=top class=toc>performs a call to an MSS-compatible sound driver in real-mode
+
+          memory.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="VDI_CALL.html">VDI_CALL</a></td>
+<td height=25 valign=top class=toc>specifies the registers passed or returned from a
+
+real-mode driver call.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

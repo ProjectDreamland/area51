@@ -1,0 +1,76 @@
+ProView2.lib v2.0.2                                                  02-Jul-2003
+--------------------------------------------------------------------------------
+
+SN PV2 Library Package release 1.03
+
+Copyright (c) SN Systems Ltd 2003, All rights reserved
+
+1. Contents
+2. What's New
+3. Installation
+4. Release notes
+5. Support
+
+
+1. Contents
+--------------------------------------------------------------------------------
+
+This zip contains the following files:
+
+ cdroot\*		; Files for ProView 2.x.x for Sony libs 2.7.0
+ app.cmd
+ CopyIopImage.bat
+ main.c
+ Makefile
+ MakePVISO.bat
+ MakePVISO2336.bat
+ ProView2 library UG.pdf
+ ProView2 library UG-J.pdf
+ ProView2.h
+ ProView2.lib
+ ProView2.dsp
+ ps2.lk
+ PS2_in_VC.h
+ PV2_0.000
+ LinkSegment_PS2.lcf
+ ProView2.mcp
+ PV2_CW.bat		; For CodeWarrior project
+ PREFIX_PS2_RELEASE.h
+
+
+2. What's New
+-------------------------------------------------------------------------------
+
+Release 1.03:
+- Added PREFIX_PS2_RELEASE.h (for CodeWarrior).
+
+Release 1.02:
+- Added a CodeWarrior project.
+
+Release 1.01:
+- Added Japanese documentation.
+
+
+3. Installation
+-------------------------------------------------------------------------------
+
+Unzip into a new sub-folder (eg) under your ProView installation folder.
+
+
+4. Release notes
+-------------------------------------------------------------------------------
+
+ProView2.lib can be used to generate the ProView EE target files SNMON.ELF
+and SLPS_999.99 for any version of the Sony libs.
+
+These files can then be used to generate a bootable PS2 CD-ROM for the version
+of the Sony libs that you are interested in using.
+
+See 'ProView2 library UG.pdf' for details.
+
+
+5. Support
+-------------------------------------------------------------------------------
+
+If you experience any difficulties using this product please contact the SN 
+support team at ps2support@snsys.com.

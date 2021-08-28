@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_mem_use_free</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="replaces the default memory freeing routine under Win32, MacOS, or DOS.">
+<meta name="ms-hkwd" content="AIL_mem_use_free">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_mem_use_free</h1>
+<p>The function  <b>AIL_mem_use_free</b> replaces the default memory freeing routine under Win32, MacOS, or DOS.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void P.html" class=trn>void *</a> <a href="AIL_mem_use_free.html" class=trn>AIL_mem_use_free</a>(</b>
+<b>&nbsp&nbsp<a href="AILFREECB.html" class=trn>AILFREECB</a>&nbsp</b><i>freecb</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>freecb</i></dt>
+<dd>specifies a memory free routine function of the <a href="AILFREECB.html">AILFREECB</a> type.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The previous free routine's address.</p>
+<h4>Discussion</h4>
+<p>Use this function with <a href="AIL_mem_use_malloc.html">AIL_mem_use_malloc</a>. </p><p> Use this routine and <a href="AIL_mem_use_malloc.html">AIL_mem_use_malloc</a> to hook into your own memory management system. </p><p> This function is not supported under 16-bit Windows.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Memory and File Services.html">Memory and File Services</a><br>
+<b>Related Sections:</b>
+<a href="Memory management undmcbaa.html">Memory management under DOS</a>, <a href="Memory management un1cdaca.html">Memory management under MacOS</a><br>
+<b>Related Functions:</b>
+<a href="AILFREECB.html">AILFREECB</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>, <a href="AIL_mem_use_malloc.html">AIL_mem_use_malloc</a><br>
+<b>Related Basic Types:</b>
+<a href="void.html">void</a>, <a href="void P.html">void *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

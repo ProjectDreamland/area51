@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_3D_sample_file</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the sample starting address, type, and playback rate from the input file image.">
+<meta name="ms-hkwd" content="AIL_set_3D_sample_file">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_3D_sample_file</h1>
+<p>The function  <b>AIL_set_3D_sample_file</b> sets the sample starting address, type, and playback rate from the input file image.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_set_3D_sample_file.html" class=trn>AIL_set_3D_sample_file</a>(</b>
+<b>&nbsp&nbsp<a href="H3DSAMPLE.html" class=trn>H3DSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>file_image</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample handle whose address and length are to be set.</dd>
+<dt><i>file_image</i></dt>
+<dd>points to an uncompressed WAV file image.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Non-zero if the file is successfully loaded, zero if the image could not be deciphered.</p>
+<h4>Discussion</h4>
+<p>The input file image must be a Microsoft mono, uncompressed PCM WAV file. </p><p> This function only takes uncompressed WAV files, so you must use <a href="AIL_decompress_ADPCM.html">AIL_decompress_ADPCM</a> or <a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a> to decompress the data before calling this function. This function also only takes mono data, so you must use <a href="AIL_process_digital_audio.html">AIL_process_digital_audio</a> to convert stereo files, if necessary. </p><p> Example files that use this function: EXAM3D.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_allocate_3D_sampapaoba.html">AIL_allocate_3D_sample_handle</a>, <a href="AIL_decompress_ADPCM.html">AIL_decompress_ADPCM</a>, <a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a>, <a href="AIL_end_3D_sample.html">AIL_end_3D_sample</a>, <a href="AIL_process_digital_audio.html">AIL_process_digital_audio</a>, <a href="AIL_release_3D_sampl2icfaa.html">AIL_release_3D_sample_handle</a>, <a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a>, <a href="AIL_start_3D_sample.html">AIL_start_3D_sample</a><br>
+<b>Related Basic Types:</b>
+<a href="H3DSAMPLE.html">H3DSAMPLE</a>, <a href="S32.html">S32</a>, <a href="void const P.html">void const *</a><br>
+<b>Related FAQs:</b>
+<a href="How can I play stere982vwf.html">How can I play stereo or compressed digital files with the 3D API?</a>, <a href="How do I play a 3D d5zrlfk.html">How do I play a 3D digital sound?</a>, <a href="I get a crash when I35ptsr.html">I get a crash when I call AIL_digital_handle_release while the 3D digital API is playing - what's going on?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

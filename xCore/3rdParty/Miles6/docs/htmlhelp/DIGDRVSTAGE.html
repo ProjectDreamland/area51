@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>DIGDRVSTAGE</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="describes the stage in the driver pipeline to install the filter on.">
+<meta name="ms-hkwd" content="DIGDRVSTAGE">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>DIGDRVSTAGE</h1>
+<p>The basic type <b>DIGDRVSTAGE</b> describes the stage in the driver pipeline to install the filter on.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#DP_FLUSH" href="#DP_FLUSH" class=trn>&nbsp;DP_FLUSH</a></td>
+<td width=71% height=25 valign=middle class=list>Sets the provider to be called when the mixing buffer is to be cleared to silence (before the DP_MERGE stage is called on each HSAMPLE).</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#DP_DEFAULT_FILTER" href="#DP_DEFAULT_FILTER" class=trn>&nbsp;DP_DEFAULT_FILTER</a></td>
+<td width=71% height=25 valign=middle class=list>Sets the default filter provider for this HDIGDRIVER. Once set, each call to <a href="AIL_init_sample.html">AIL_init_sample</a> will set the sample's filter provider to this value.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#DP_DEFAULT_MERGE" href="#DP_DEFAULT_MERGE" class=trn>&nbsp;DP_DEFAULT_MERGE</a></td>
+<td width=71% height=25 valign=middle class=list>Sets the merge provider for this HDIGDRIVER. The merge provider is called to mix each HSAMPLE's current address into the internal MSS mixing build buffer.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#DP_COPY" href="#DP_COPY" class=trn>&nbsp;DP_COPY</a></td>
+<td width=71% height=25 valign=middle class=list>Sets the provider to be called when all mixing is completed and the internal MSS mixing build buffer needs to be scaled down from 32-bits into the final output buffer.</td>
+</tr>
+</table>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Filter Services.html">Digital Filter Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_init_sample.html">AIL_init_sample</a>, <a href="AIL_set_digital_drivwp5xci.html">AIL_set_digital_driver_processor</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

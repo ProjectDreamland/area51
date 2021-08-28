@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Sound under Win32</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Sound under Win32">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Sound under Win32</h1>
+<h4>Discussion</h4>
+<p> For MIDI output, the Miles Sound System can use the system MIDI hardware through the midiOut API, or it can synthesize the MIDI stream itself and feed it through the digital output system. MIDI is pretty a simple environment. </p><p>For digital audio output, however, things are a little more complicated. Miles can be configured to use either DirectSound (the preferred method) or the old waveOut audio system. </p><p>DirectSound shipped about a year after Windows 95 first shipped. It has been built into Windows 98, Windows Me, and Windows 2000. NT 4 with service pack 3 also supports DirectSound, but only in <i>emulated</i> mode. </p><p>DirectSound can run in <i>native</i> mode or <i>emulated</i> mode. Native mode means that DirectSound is talking directly to your sound card hardware. Emulated mode means that DirectSound is talking to old waveOut audio drivers (through an extra layer of buffering). </p><p>DirectSound in emulation mode usually works terribly. To avoid this (and to support old Win95 and old NT machines that don't have DirectSound at all), Miles can use the old waveOut sound system directly. WaveOut was the original way to play sound in Windows (it was added to Win16 way back as an add-on to Windows 3.0 - yes, audio was once considered a chargeable "add-on" by Microsoft). </p><p>WaveOut mode is nice, because it will work on pretty much any machine, but, unfortunately, it has serious latency problems. These latency issues were, in fact, the primary reason Microsoft added DirectSound. </p><p>Under waveOut, latency can rise to as high as 300 milliseconds on some older sound cards. DirectSound's latency, by comparison, rarely hits even 50 ms. </p><p>In practice, we've found that you usually don't have to worry about supporting old sound cards through waveOut, because a game's graphics usually require the latest Direct3D and/or DirectDraw anyway (so you know DirectSound will be installed). </p><p>So, by default, to deal with all of these issues, Miles tries to use DirectSound first, and then falls back to waveOut mode if DirectSound won't load or if it is running in emulation mode. So, you get DirectSound's good latency if running in native mode, and you still get waveOut's compatibility when necessary.</p>
+<p><a href="Memory management uni4hsaa.html">Next Topic (Memory management under Win32)</a>  </p><p><a href="Distributing Miles wly4t1o.html">Previous Topic (Distributing Miles with Win32 Applications)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Overview for Win32- zi6edi.html">Overview for Win32: Miles on Windows 95, 98, Me, NT and 2000</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

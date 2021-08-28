@@ -1,0 +1,24 @@
+SN Systems' product "ProDG Tuner for PlayStation2" contains software which is licensed under the GNU Library General Public License.
+
+A machine-readable copy of the source code in respect of the part of the Software formed by use of the GNU Software is available on request from SN Systems provided that the End User:
+
+a) pays SN Systems' reasonable costs of distributing the source code
+b) provides SN Systems with a shipping address
+
+SN Systems gives no warranty as to the ownership of the Software to the End User. 
+
+Note: 
+1. The GNU software supplied by SN Systems is not the original. It has either been ported or ported and modified.
+---
+
+The following software is covered by the GNU Library General Public License (see file COPYING.LIB)
+
+- demangle.dll
+
+
+All other software distributed in the ProDG Tuner for PlayStation2 package 
+is copyright of SN Systems and is subject to the SUL:
+
+http://www.snsys.com/Sales/sul/tunersul.htm
+
+You may contact SN Systems at support@snsys.com

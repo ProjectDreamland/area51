@@ -1,0 +1,75 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_decompress_ASI</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="decompresses a digital sound with the ASI decoder for the passed file extension and returns a standard PCM wave file image.">
+<meta name="ms-hkwd" content="AIL_decompress_ASI">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_decompress_ASI</h1>
+<p>The function  <b>AIL_decompress_ASI</b> decompresses a digital sound with the ASI decoder for the passed file extension and returns a standard PCM wave file image.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_decompress_ASI.html" class=trn>AIL_decompress_ASI</a>(</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>indata</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>insize</i><b>,</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>filename_ext</i><b>,</b>
+<b>&nbsp&nbsp<a href="void P.html" class=trn>void *</a>&nbsp*</b><i>wav</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>wavesize</i><b>,</b>
+<b>&nbsp&nbsp<a href="AILLENGTHYCB.html" class=trn>AILLENGTHYCB</a>&nbsp</b><i>callback</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>indata</i></dt>
+<dd>contains the compressed input data.</dd>
+<dt><i>insize</i></dt>
+<dd>is the length of the compressed data in bytes.</dd>
+<dt><i>filename_ext</i></dt>
+<dd>is a filename who's extension determines what ASI decoder to use. For example, to use the MPEG Layer 3 decoder, you would specify ".mp3". The Miles voice chat codecs use extensions of ".v29", ".v24", and ".v12". Future decoders will have their own extensions.</dd>
+<dt><i>callback</i></dt>
+<dd>should be set to the address of the callback function which is invoked at several stages of the decompression process. See <a href="AIL_compress_ASI.html">AIL_compress_ASI</a> for a description of this callback.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>wav</i></dt>
+<dd>should be the address of a " void* " pointer that will return with the pointer to the new wave file image. This parameter can be NULL if you don't need it.</dd>
+<dt><i>wavesize</i></dt>
+<dd>should be the address of an unsigned 32-bit integer that will return with the size of the new wave file image. This parameter can be NULL if you don't need it.</dd>
+</dl>
+<h4>Returns</h4>
+<p>1, if the call was successful, or 0 if the call failed.</p>
+<h4>Discussion</h4>
+<p>You must free the pointer returned in wav with <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>. </p><p> The output wave file image is a standard PCM wave file - you can write it directly to disk and any WAV file player will be able to play it.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a>, <a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AILLENGTHYCB.html">AILLENGTHYCB</a>, <a href="AIL_compress_ASI.html">AIL_compress_ASI</a>, <a href="AIL_decompress_ADPCM.html">AIL_decompress_ADPCM</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>, <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a>, <a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="char const P.html">char const *</a>, <a href="void P.html">void *</a>, <a href="void const P.html">void const *</a><br>
+<b>Related FAQs:</b>
+<a href="How can I play stere982vwf.html">How can I play stereo or compressed digital files with the 3D API?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

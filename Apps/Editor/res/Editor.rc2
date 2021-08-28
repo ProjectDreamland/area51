@@ -1,0 +1,37 @@
+//
+// EDITOR.RC2 - resources Microsoft Visual C++ does not edit directly
+//
+
+#ifdef APSTUDIO_INVOKED
+	#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Add manually edited resources here...
+
+#include "XTResource.rc" // Xtreme Toolkit static resources
+
+#include "..\MeshViewer\resource.h"
+#include "..\MeshViewer\Script.rc" 
+
+#include "..\EDRscDesc\resource.h"
+#include "..\EDRscDesc\EDRscDesc_Script.rc" 
+
+#include "..\EventEditor\resource.h"
+#include "..\EventEditor\EventEditor.rc" 
+
+#include "..\LocoEditor\resource.h"
+#include "..\LocoEditor\LocoScript.rc" 
+
+#include "..\WorldEditor\resource.h"
+#include "..\WorldEditor\WorldEditor.rc" 
+
+#include "..\WinControls\resource.h"
+#include "..\WinControls\WinControls.rc" 
+
+#include "..\AudioEditor\resource.h"
+#include "..\AudioEditor\AudioEditor.rc" 
+
+
+/////////////////////////////////////////////////////////////////////////////

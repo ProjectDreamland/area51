@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_quick_play</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="starts the playback of an audio file previously loaded with AIL_quick_load.">
+<meta name="ms-hkwd" content="AIL_quick_play">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_quick_play</h1>
+<p>The function  <b>AIL_quick_play</b> starts the playback of an audio file previously loaded with AIL_quick_load.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_quick_play.html" class=trn>AIL_quick_play</a>(</b>
+<b>&nbsp&nbsp<a href="HAUDIO.html" class=trn>HAUDIO</a>&nbsp</b><i>audio</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>loop_count</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>audio</i></dt>
+<dd>specifies the audio handle that you wish to play.</dd>
+<dt><i>loop_count</i></dt>
+<dd>specifies the number of times to loop the audio handle (use 0 to loop forever).</dd>
+</dl>
+<h4>Returns</h4>
+<p>Whether the function succeeded or not.</p>
+<h4>Discussion</h4>
+<p>Once this function is called, <a href="AIL_quick_status.html">AIL_quick_status</a> will return <a href="MILES_QUICK_STATUS.html#QSTAT_PLAYING">QSTAT_PLAYING</a> until the audio playback is completed. You can play an audio handle multiple times. </p><p> Example files that use this function: Quick.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Quick Integration Sesm1baa.html">Quick Integration Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_quick_fss_load_a2xyaaa.html">AIL_quick_fss_load_and_play</a>, <a href="AIL_quick_halt.html">AIL_quick_halt</a>, <a href="AIL_quick_load_and_play.html">AIL_quick_load_and_play</a>, <a href="AIL_quick_status.html">AIL_quick_status</a><br>
+<b>Related Basic Types:</b>
+<a href="HAUDIO.html">HAUDIO</a>, <a href="MILES_QUICK_STATUS.html">MILES_QUICK_STATUS</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a><br>
+<b>Related FAQs:</b>
+<a href="How do I play a digiyg6gda.html">How do I play a digital sound?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

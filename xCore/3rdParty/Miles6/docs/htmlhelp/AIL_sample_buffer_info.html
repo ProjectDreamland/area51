@@ -1,0 +1,70 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_sample_buffer_info</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns detailed information about the status of the double-buffering system for the specified sound handle.">
+<meta name="ms-hkwd" content="AIL_sample_buffer_info">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_sample_buffer_info</h1>
+<p>The function  <b>AIL_sample_buffer_info</b> returns detailed information about the status of the double-buffering system for the specified sound handle.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_sample_buffer_info.html" class=trn>AIL_sample_buffer_info</a>(</b>
+<b>&nbsp&nbsp<a href="HSAMPLE.html" class=trn>HSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>pos0</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>len0</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>pos1</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>len1</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample handle to check.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>pos0</i></dt>
+<dd>will receive the current position of buffer 0.</dd>
+<dt><i>len0</i></dt>
+<dd>will receive the current size of buffer 0.</dd>
+<dt><i>pos1</i></dt>
+<dd>will receive the current position of buffer 1.</dd>
+<dt><i>len1</i></dt>
+<dd>will receive the current size of buffer 1.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Whether the double-buffering system has completely starved (both sound buffers have been exhausted).</p>
+<h4>Discussion</h4>
+<p>It is very rarely used - see <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a> for a more useful status function. </p><p> You will probably never need this function. It is used primarily by video playback engines that need to monitor the double-buffer status in minute detail. </p><p> Do NOT use this function to determine when to load another sample buffer - use the <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a> function instead.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_load_sample_buffer.html">AIL_load_sample_buffer</a>, <a href="AIL_minimum_sample_bahfkoa.html">AIL_minimum_sample_buffer_size</a>, <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a><br>
+<b>Related Basic Types:</b>
+<a href="HSAMPLE.html">HSAMPLE</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

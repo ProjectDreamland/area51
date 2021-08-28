@@ -1,0 +1,63 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_enumerate_3D_providers</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="enumerates the available 3D providers for display or for opening.">
+<meta name="ms-hkwd" content="AIL_enumerate_3D_providers">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_enumerate_3D_providers</h1>
+<p>The function  <b>AIL_enumerate_3D_providers</b> enumerates the available 3D providers for display or for opening.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_enumerate_3D_prok20aaa.html" class=trn>AIL_enumerate_3D_providers</a>(</b>
+<b>&nbsp&nbsp<a href="HPROENUM.html" class=trn>HPROENUM</a>&nbsp*</b><i>next</i><b>,</b>
+<b>&nbsp&nbsp<a href="HPROVIDER.html" class=trn>HPROVIDER</a>&nbsp*</b><i>dest</i><b>,</b>
+<b>&nbsp&nbsp<a href="char P.html" class=trn>char *</a>&nbsp*</b><i>name</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>next</i></dt>
+<dd>is a pointer that MSS uses to keep track of the next provider to return. You initialize the next variable with the constant HPROENUM_FIRST before the first call to <a href="AIL_enumerate_3D_prok20aaa.html">AIL_enumerate_3D_providers</a>.</dd>
+<dt><i>dest</i></dt>
+<dd>points to an address that receives the HPROVIDER handle that is used for <a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a>.</dd>
+<dt><i>name</i></dt>
+<dd>receives a pointer to the provider's text description (such as "DirectSound3D software"). This return variable is usually used to add the text string to a list of user choices.</dd>
+</dl>
+<h4>Returns</h4>
+<p>0, if no further M3D providers were found, non-zero if another provider was found.</p>
+<h4>Discussion</h4>
+<p>You should call this function before <a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a> to find out what 3D providers are installed on the system. </p><p> The HPROVIDER handles returned by this function can change from one program execution to the next. For example, "DirectSound software" may have the HPROVIDER handle value "1" during one execution, and the value "2" the next. You must, therefore, always use this function to obtain the proper HPROVIDER handle value. </p><p> Example files that use this function: EXAM3D.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_enumerate_3D_prok20aaa.html">AIL_enumerate_3D_providers</a>, <a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a><br>
+<b>Related Basic Types:</b>
+<a href="HPROENUM.html">HPROENUM</a>, <a href="HPROVIDER.html">HPROVIDER</a>, <a href="S32.html">S32</a>, <a href="char P.html">char *</a><br>
+<b>Related FAQs:</b>
+<a href="How do I open a 3D duswuqq.html">How do I open a 3D digital provider?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

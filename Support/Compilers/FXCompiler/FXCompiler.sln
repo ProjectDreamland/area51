@@ -1,0 +1,139 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FXCompiler", "FXCompiler.vcproj", "{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B6456700-4D59-4591-8227-2C6FD444CE4A} = {B6456700-4D59-4591-8227-2C6FD444CE4A}
+		{51F65302-640B-49E6-B711-585E20B79433} = {51F65302-640B-49E6-B711-585E20B79433}
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4} = {E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E} = {DD8AB240-8FA8-4E65-83EF-CB73E24E505E}
+		{DB7E85B4-0652-4388-B13C-65AE449D104E} = {DB7E85B4-0652-4388-B13C-65AE449D104E}
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D} = {36FB18DE-FA6A-4093-9BAD-8A025A7F218D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "x_files", "..\..\..\xCore\x_files\x_files.vcproj", "{51F65302-640B-49E6-B711-585E20B79433}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Parsing", "..\..\..\xCore\Parsing\Parsing.vcproj", "{DB7E85B4-0652-4388-B13C-65AE449D104E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Entropy", "..\..\..\xCore\Entropy\Entropy.vcproj", "{B6456700-4D59-4591-8227-2C6FD444CE4A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aux_Bitmap", "..\..\..\xCore\Auxiliary\Bitmap\aux_Bitmap.vcproj", "{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MeshUtil", "..\..\..\xCore\MeshUtil\MeshUtil.vcproj", "{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fx_Core", "..\..\..\xCore\Auxiliary\fx_Core\fx_Core.vcproj", "{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 8
+		SccProjectName0 = Perforce\u0020Project
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Perforce\u0020SCM
+		CanCheckoutShared = true
+		SolutionUniqueID = {7592C0F7-CB53-410B-815E-D1C2433E161C}
+		SccProjectUniqueName1 = ..\\..\\..\\xCore\\x_files\\x_files.vcproj
+		SccLocalPath1 = ..\\..\\..
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection1 = xCore\\x_files\\
+		SccProjectUniqueName2 = FXCompiler.vcproj
+		SccLocalPath2 = .
+		CanCheckoutShared = true
+		SccProjectUniqueName3 = ..\\..\\..\\xCore\\Parsing\\Parsing.vcproj
+		SccLocalPath3 = ..\\..\\..
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection3 = xCore\\Parsing\\
+		SccProjectUniqueName4 = ..\\..\\..\\xCore\\Entropy\\Entropy.vcproj
+		SccLocalPath4 = ..\\..\\..
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection4 = xCore\\Entropy\\
+		SccProjectUniqueName5 = ..\\..\\..\\xCore\\Auxiliary\\Bitmap\\aux_Bitmap.vcproj
+		SccLocalPath5 = ..\\..\\..
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection5 = xCore\\Auxiliary\\Bitmap\\
+		SccProjectUniqueName6 = ..\\..\\..\\xCore\\MeshUtil\\MeshUtil.vcproj
+		SccLocalPath6 = ..\\..\\..
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection6 = xCore\\MeshUtil\\
+		SccProjectUniqueName7 = ..\\..\\..\\xCore\\Auxiliary\\fx_Core\\fx_Core.vcproj
+		SccLocalPath7 = ..\\..\\..\\xCore\\Auxiliary\\fx_Core
+		CanCheckoutShared = true
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		WIN32-Debug = WIN32-Debug
+		WIN32-OptDebug = WIN32-OptDebug
+		WIN32-QA = WIN32-QA
+		WIN32-Retail = WIN32-Retail
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}.WIN32-Debug.Build.0 = Debug|Win32
+		{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
+		{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}.WIN32-OptDebug.Build.0 = OptDebug|Win32
+		{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}.WIN32-QA.ActiveCfg = QA|Win32
+		{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}.WIN32-QA.Build.0 = QA|Win32
+		{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}.WIN32-Retail.ActiveCfg = Retail|Win32
+		{3BE93C2E-DFB8-43F9-80A0-B89ECCC417FF}.WIN32-Retail.Build.0 = Retail|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Debug.Build.0 = Debug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-OptDebug.Build.0 = OptDebug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-QA.ActiveCfg = QA|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-QA.Build.0 = QA|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Retail.ActiveCfg = Retail|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Retail.Build.0 = Retail|Win32
+		{DB7E85B4-0652-4388-B13C-65AE449D104E}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{DB7E85B4-0652-4388-B13C-65AE449D104E}.WIN32-Debug.Build.0 = Debug|Win32
+		{DB7E85B4-0652-4388-B13C-65AE449D104E}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
+		{DB7E85B4-0652-4388-B13C-65AE449D104E}.WIN32-OptDebug.Build.0 = OptDebug|Win32
+		{DB7E85B4-0652-4388-B13C-65AE449D104E}.WIN32-QA.ActiveCfg = QA|Win32
+		{DB7E85B4-0652-4388-B13C-65AE449D104E}.WIN32-QA.Build.0 = QA|Win32
+		{DB7E85B4-0652-4388-B13C-65AE449D104E}.WIN32-Retail.ActiveCfg = Retail|Win32
+		{DB7E85B4-0652-4388-B13C-65AE449D104E}.WIN32-Retail.Build.0 = Retail|Win32
+		{B6456700-4D59-4591-8227-2C6FD444CE4A}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{B6456700-4D59-4591-8227-2C6FD444CE4A}.WIN32-Debug.Build.0 = Debug|Win32
+		{B6456700-4D59-4591-8227-2C6FD444CE4A}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
+		{B6456700-4D59-4591-8227-2C6FD444CE4A}.WIN32-OptDebug.Build.0 = OptDebug|Win32
+		{B6456700-4D59-4591-8227-2C6FD444CE4A}.WIN32-QA.ActiveCfg = QA|Win32
+		{B6456700-4D59-4591-8227-2C6FD444CE4A}.WIN32-QA.Build.0 = QA|Win32
+		{B6456700-4D59-4591-8227-2C6FD444CE4A}.WIN32-Retail.ActiveCfg = Retail|Win32
+		{B6456700-4D59-4591-8227-2C6FD444CE4A}.WIN32-Retail.Build.0 = Retail|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Debug.Build.0 = Debug|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-OptDebug.Build.0 = OptDebug|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-QA.ActiveCfg = QA|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-QA.Build.0 = QA|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Retail.ActiveCfg = Retail|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Retail.Build.0 = Retail|Win32
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}.WIN32-Debug.Build.0 = Debug|Win32
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}.WIN32-OptDebug.Build.0 = OptDebug|Win32
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}.WIN32-QA.ActiveCfg = QA|Win32
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}.WIN32-QA.Build.0 = QA|Win32
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}.WIN32-Retail.ActiveCfg = Retail|Win32
+		{36FB18DE-FA6A-4093-9BAD-8A025A7F218D}.WIN32-Retail.Build.0 = Retail|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.WIN32-Debug.Build.0 = Debug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.WIN32-OptDebug.Build.0 = OptDebug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.WIN32-QA.ActiveCfg = QA|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.WIN32-QA.Build.0 = QA|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.WIN32-Retail.ActiveCfg = Retail|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.WIN32-Retail.Build.0 = Retail|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

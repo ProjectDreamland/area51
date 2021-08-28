@@ -1,0 +1,39 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>How do I open a 3D digital provider?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="How do I open a 3D digital provider?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>How do I open a 3D digital provider?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>Opening a "3D provider" is the first step in using 3D sound. A 3D provider is a loadable module that provides 3D services to MSS. There are a bunch of different 3D technologies that you can choose from. </p><p>In general, you won't be able to auto-detect the "best" provider to use. Some of the providers even depend on the end-user's speaker configuration (like Dolby Surround). Because of this, you should choose a default 3D provider, and then require the user to select one of the more specific providers. The best provider to use as a default is the Miles Fast 2D provider - it works on all sound cards and doesn't cost much CPU. </p><p>So, the first step in opening a 3D provider is enumerating all of the available 3D providers with <a href="AIL_enumerate_3D_prok20aaa.html">AIL_enumerate_3D_providers</a>. This is performed with code something like this: </p><p></p><code><font size=3 color=#006000><pre><br>#define MAX_PROVIDERS 64<br>char*     provider_names[MAX_PROVIDERS];<br>HPROVIDER provider_handles[MAX_PROVIDERS];<br>HPROVIDER provider_default=0;<br>U32       provider_count=0;<br>HPROENUM enum3D=HPROENUM_FIRST;<br>while (AIL_enumerate_3D_providers( &enum3D,<br>                                   &provider_handles[provider_count],<br>                                   &provider_names[provider_count] ) )<br>{<br>  if (strcmp(provider_names[provider_count],"Miles Fast 2D Positional Audio")==0)<br>    provider_default=provider_handles[provider_count];<br>  provider_count++;<br>}<br></pre></font></code><p></p><p> OK, so now we have an array of descriptive strings as well as a handle for each provider (including our default provider). Note that <b>all of the providers</b> will be in this list (even providers that won't necessarily work on the user's hardware). The only way to tell if a particular provider will actually work on an end-user's machine is to try to open it with the <a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a> function. RAD doesn't usually recommend automatically culling the list (it can take a long time just to try to open every provider) - just display them all and let the user choose. </p><p>So, at this point, we can either display a menu to let the user choose the provider, or just use the default provider. To open the provider, we simply call the <a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a> function. Remember to check the return result from this call - it will fail if a user has chosen a provider that his machine doesn't support. </p></td></tr>
+</table>
+<p><a href="How do I play a 3D d5zrlfk.html">Next Topic (How do I play a 3D digital sound?)</a>  </p><p><a href="Which 3D sound provi8s4uqw.html">Previous Topic (Which 3D sound provider should I use?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Functions:</b>
+<a href="AIL_enumerate_3D_prok20aaa.html">AIL_enumerate_3D_providers</a>, <a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a><br>
+<b>Related FAQs:</b>
+<a href="How do I play a 3D d5zrlfk.html">How do I play a 3D digital sound?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

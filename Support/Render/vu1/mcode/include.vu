@@ -1,0 +1,791 @@
+//==============================================================================
+//
+//  VU1 Includes
+//
+//==============================================================================
+
+#define MCODE_START_SYNC        0x0000
+#define MCODE_START_INIT        0x0020
+#define MCODE_START_CLIPPER     0x0040
+#define MCODE_START_MATERIAL    0x0FC0
+#define MCODE_START_TRANSFORM   0x3000
+
+
+#define DIFFUSE_PASS                (1 << 0)
+#define ENVIRONMENT_PASS            (1 << 1)
+#define SELFILLUM_PASS              (1 << 2)
+#define DETAIL_PASS                 (1 << 3)
+#define UVSCROLL_PASS               (1 << 4)
+#define DECAL_PASS                  (1 << 5)
+#define USE_POSITIONS               (1 << 6)
+#define USE_WORLDSPACE              (1 << 7)
+#define ZPRIME_PASS                 (1 << 8)
+#define SELFILLUM_DIFFUSELIT        (1 << 10)
+#define SELFILLUM_PERPOLY           (1 << 11)
+#define DISTORTION_PASS             (1 << 12)
+#define CLIPPER_PASS                (1 << 13)                   // Set internally by VU only
+#define UV1_IN_USE                  (1 << 14)                   // Set internally by VU only
+
+#define VU1_CLIPPED                 0x0080
+#define VU1_GLOWING                 0x0100
+#define VU1_SHADOW_PASS             0x0200
+#define VU1_FILTERLIGHT             0x0400
+#define VU1_SPOTLIGHT               0x0800
+#define VU1_FADING_ALPHA            0x1000
+#define VU1_DYNAMICLIGHT            0x2000
+#define VU1_DETAIL                  0x4000
+
+#define VU1_PROJ_SHADOW_1           0x0100
+#define VU1_PROJ_SHADOW_2           0x0200
+
+#define GS_NOMIPS                   0x121
+#define GS_FRAME_2                  0x4D
+#define GS_TEXFLUSH                 0x3F
+#define GS_ALPHA_1                  0x42
+
+#define ALPHA_SDDD                  0x54    // (source-dst)*dst+dst
+
+#define GIFREGS_NSRX    0x512F      // NOP ST    RGBAQ XYZ2
+#define GIFREGS_SNRX    0x51F2      // ST  NOP   RGBAQ XYZ2
+#define GIFREGS_NNNX    0x5FFF      // NOP NOP   NOP   XYZ2
+#define GIFREGS_SRNX    0x5F12      // ST  RGBAQ NOP   XYZ2
+#define GIFREGS_NRNX    0x5F1F      // NOP RGBAQ NOP   XYZ2
+
+//==============================================================================
+
+#define CLIP_FLAG_POS_X             ( 1 << 0 )                  // clip flag bits
+#define CLIP_FLAG_NEG_X             ( 1 << 1 )
+#define CLIP_FLAG_POS_Y             ( 1 << 2 )
+#define CLIP_FLAG_NEG_Y             ( 1 << 3 )
+#define CLIP_FLAG_POS_Z             ( 1 << 4 )
+#define CLIP_FLAG_NEG_Z             ( 1 << 5 )
+                                    
+#define CLIP_TRI_POS_X              ( CLIP_FLAG_POS_X | ( CLIP_FLAG_POS_X << 6 ) | ( CLIP_FLAG_POS_X << 12 ))
+#define CLIP_TRI_NEG_X              ( CLIP_FLAG_NEG_X | ( CLIP_FLAG_NEG_X << 6 ) | ( CLIP_FLAG_NEG_X << 12 ))
+#define CLIP_TRI_POS_Y              ( CLIP_FLAG_POS_Y | ( CLIP_FLAG_POS_Y << 6 ) | ( CLIP_FLAG_POS_Y << 12 ))
+#define CLIP_TRI_NEG_Y              ( CLIP_FLAG_NEG_Y | ( CLIP_FLAG_NEG_Y << 6 ) | ( CLIP_FLAG_NEG_Y << 12 ))
+#define CLIP_TRI_POS_Z              ( CLIP_FLAG_POS_Z | ( CLIP_FLAG_POS_Z << 6 ) | ( CLIP_FLAG_POS_Z << 12 ))
+#define CLIP_TRI_NEG_Z              ( CLIP_FLAG_NEG_Z | ( CLIP_FLAG_NEG_Z << 6 ) | ( CLIP_FLAG_NEG_Z << 12 ))
+
+//==============================================================================
+
+#define VU1_VERTS                   80                  // Number of vertices per buffer
+#define VU1_VECTORS                 (VU1_VERTS * 4)     // 4 vectors per vertex
+#define VU1_SKIN_VERTS              68                  // Number of skinned vertices per buffer
+#define VU1_SKIN_VECTORS            (VU1_SKIN_VERTS*4)  // 4 vectors per vertex
+                                    
+#define VU1_COUNT                    0                  // Number of vertices to render
+#define VU1_L2W                      1                  // Start of L2W matrix for instance
+#define VU1_REG6LOAD_GIFTAG          0                  // Address of GIFTAG for 6 register loads
+#define VU1_REG5LOAD_GIFTAG          1                  // Address of GIFTAG for 5 register loads 
+#define VU1_REG4LOAD_GIFTAG          2                  // Address of GIFTAG for 4 register loads 
+#define VU1_REG3LOAD_GIFTAG          3                  // Address of GIFTAG for 3 register loads 
+#define VU1_REG2LOAD_GIFTAG          4                  // Address of GIFTAG for 2 register loads 
+#define VU1_REG1LOAD_GIFTAG          5                  // Address of GIFTAG for 1 register load 
+#define VU1_TRISTRIP_GIFTAG          7                  // Address of Strip GIFTAG
+#define VU1_HEADER_SIZE              8                  // Number of vectors in the Instance header
+
+#define VU1_UV1                      8
+#define VU1_UV0                      9
+#define VU1_RGB                     10
+#define VU1_XYZ                     11
+#define VU1_NORMAL                  VU1_UV1
+#define VU1_BNIDX                   VU1_RGB
+
+#define VU1_VERT_SIZE                4
+#define VU1_LIGHT_SIZE              16
+
+#define VU1_BUFFER_SIZE             (VU1_HEADER_SIZE + VU1_VECTORS)
+
+#define VU1_BONE_CACHE_SIZE         144                 // 36 matrices worth
+#define VU1_SKIN_BUFFER_SIZE        (VU1_HEADER_SIZE + VU1_SKIN_VECTORS)
+
+//==============================================================================
+//  Layout of vu1_material Structure
+//==============================================================================
+
+#define VU1_Flags                   ( VU1_MATERIAL +  0 )   // used by everyone
+#define VU1_DiffuseTex              ( VU1_MATERIAL +  1 )   // diffuse tex0
+#define VU1_DecalTex                ( VU1_MATERIAL +  2 )   // diffuse tex0 in decal mode
+#define VU1_EnvTex                  ( VU1_MATERIAL +  3 )   // environment tex0
+#define VU1_DetailTex               ( VU1_MATERIAL +  4 )   // detail tex0
+#define VU1_Mips                    ( VU1_MATERIAL +  5 )   // tex1 detail maps (can also be used for no mips)
+#define VU1_DiffuseAlpha            ( VU1_MATERIAL +  6 )   // diffuse blend
+#define VU1_EnvIllumAlpha           ( VU1_MATERIAL +  7 )   // blend for env. map or illumination map
+#define VU1_EnvMatrix0              ( VU1_MATERIAL +  8 )   // environment map matrix (last column hidden in bottom row)
+#define VU1_EnvMatrix1              ( VU1_MATERIAL +  9 )   // environment map matrix (last column hidden in bottom row)
+
+#define VU1_MATERIAL_SIZE           10
+
+#define VU1C_LightMultiplier        ( VU1_MATERIAL + 10 )   // for modulating colors (i.e. emergency lighting)
+#define VU1C_ShadowTex              ( VU1_MATERIAL + 11 )   // screen shadow tex0
+#define VU1C_SpotlightTex           ( VU1_MATERIAL + 12 )   // spotlight tex0
+#define VU1C_Clamp                  ( VU1_MATERIAL + 13 )   // Context 2 clamping ON
+#define VU1C_FrameBackAll           ( VU1_MATERIAL + 14 )   // Frame register (write to all channels)
+#define VU1C_FrameBackRGB           ( VU1_MATERIAL + 15 )   // Frame register (write to rgb only)
+#define VU1C_FrameBackAlpha         ( VU1_MATERIAL + 16 )   // Frame register (write to alpha only)
+#define VU1C_FrameFrontAlpha        ( VU1_MATERIAL + 17 )   // Frame register (write to alpha only)
+#define VU1C_IntensityAlpha         ( VU1_MATERIAL + 18 )   // alpha blend = (Dst-Zero)*Src + Zero
+#define VU1C_SpotlightAlpha         ( VU1_MATERIAL + 19 )   // alpha blend = (Src-Zero)*Dst + Dst
+#define VU1C_Context1Gif            ( VU1_MATERIAL + 20 )   // Context 1 giftag
+#define VU1C_Context2Gif            ( VU1_MATERIAL + 21 )   // Context 2 giftag
+#define VU1C_Context2GifNoTex       ( VU1_MATERIAL + 22 )   // Context 2 giftag - no texture
+#define VU1C_SpotlightPos           ( VU1_MATERIAL + 23 )   // Spotlight position
+#define VU1C_SpotlightMat0          ( VU1_MATERIAL + 24 )   // Spotlight projection matrix col0
+#define VU1C_SpotlightMat1          ( VU1_MATERIAL + 25 )   // Spotlight projection matrix col1
+#define VU1C_SpotlightMat2          ( VU1_MATERIAL + 26 )   // Spotlight projection matrix col2
+#define VU1C_SpotlightMat3          ( VU1_MATERIAL + 27 )   // Spotlight projection matrix col3
+#define VU1C_ProjShadow0Tex         ( VU1_MATERIAL + 28 )   // Projected shadow 0 texture
+#define VU1C_ProjShadow1Tex         ( VU1_MATERIAL + 29 )   // Projected shadow 1 texture
+#define VU1C_ProjShadow0Mat0        ( VU1_MATERIAL + 30 )   // Projected shadow 0 matrix col0
+#define VU1C_ProjShadow0Mat1        ( VU1_MATERIAL + 31 )   // Projected shadow 0 matrix col1
+#define VU1C_ProjShadow0Mat2        ( VU1_MATERIAL + 32 )   // Projected shadow 0 matrix col2
+#define VU1C_ProjShadow0Mat3        ( VU1_MATERIAL + 33 )   // Projected shadow 0 matrix col3
+#define VU1C_ProjShadow1Mat0        ( VU1_MATERIAL + 34 )   // Projected shadow 1 matrix col0
+#define VU1C_ProjShadow1Mat1        ( VU1_MATERIAL + 35 )   // Projected shadow 1 matrix col1
+#define VU1C_ProjShadow1Mat2        ( VU1_MATERIAL + 36 )   // Projected shadow 1 matrix col2
+#define VU1C_ProjShadow1Mat3        ( VU1_MATERIAL + 37 )   // Projected shadow 1 matrix col3
+#define VU1C_RegLoadGif             ( VU1_MATERIAL + 38 )   // Giftag for doing register loads and sync'ing gs
+#define VU1C_Storage                ( VU1_MATERIAL + 39 )   // Temp storage space
+
+#define VU1_CONST_MAT_SIZE          30
+
+//==============================================================================
+
+// For sprite rendering, hijack some of the matix storage data for v2w and sin/cos coefficients
+#define VU1C_W2V0       VU1C_ProjShadow0Mat0
+#define VU1C_W2V1       VU1C_ProjShadow0Mat1
+#define VU1C_W2V2       VU1C_ProjShadow0Mat2
+#define VU1C_W2V3       VU1C_ProjShadow0Mat3
+#define VU1C_SinCos0    VU1C_ProjShadow1Mat0
+#define VU1C_SinCos1    VU1C_ProjShadow1Mat1
+#define VU1C_SinCos2    VU1C_ProjShadow1Mat2
+#define VU1C_SinCos3    VU1C_ProjShadow1Mat3
+
+//==============================================================================
+
+#define VU1_BUFFER_0                0
+#define VU1_BUFFER_1                ( VU1_BUFFER_0      + VU1_BUFFER_SIZE    )
+#define VU1_BUFFER_2                ( VU1_BUFFER_1      + VU1_BUFFER_SIZE    )
+#define VU1_MATERIAL                ( VU1_BUFFER_2      + VU1_BUFFER_SIZE    )
+#define VU1_CONST_MAT               ( VU1_MATERIAL      + VU1_MATERIAL_SIZE  )
+#define VU1_FAST_END                ( VU1_CONST_MAT     + VU1_CONST_MAT_SIZE )
+
+#if     VU1_FAST_END != 1024
+#error  VU1_FAST Memory is not properly laid out!
+#endif
+
+//==============================================================================
+
+#define VU1_SKIN_BONE_CACHE         0
+#define VU1_SKIN_BUFFER_0           ( VU1_SKIN_BONE_CACHE    + VU1_BONE_CACHE_SIZE  )
+#define VU1_SKIN_BUFFER_1           ( VU1_SKIN_BUFFER_0      + VU1_SKIN_BUFFER_SIZE )
+#define VU1_SKIN_BACKUP_BUFFER      ( VU1_SKIN_BUFFER_1      + VU1_SKIN_BUFFER_SIZE )
+#define VU1_SKIN_END                ( VU1_SKIN_BACKUP_BUFFER + VU1_SKIN_BUFFER_SIZE )
+
+#if     VU1_SKIN_END != VU1_MATERIAL
+#error  VU1_SKIN Memory is not properly laid out!
+#endif
+
+//==============================================================================
+//
+//  Common Registers:               Free Registers:
+//
+//  VF00 -> VF08                    VF09 -> VF31
+//  VI01 -> VI07 + VI15             VI08 -> VI14
+//
+//==============================================================================
+
+#define W2S0( x )                   VF01 ## x       // World-to-Screen matrix (fixed)
+#define W2S1( x )                   VF02 ## x
+#define W2S2( x )                   VF03 ## x
+#define W2S3( x )                   VF04 ## x
+
+#define L2W0( x )                   VF05 ## x       // Local-to-World matrix
+#define L2W1( x )                   VF06 ## x
+#define L2W2( x )                   VF07 ## x
+#define L2W3( x )                   VF08 ## x
+
+#define ITMP                        VI01            // Temporary register
+#define NUMV                        VI02            // Number of vertices
+#define FLAG                        VI03            // Material flag bits
+#define INST                        VI04            // Instance flag bits
+#define BASE                        VI05            // Pointer to Current Buffer
+#define NBUF                        VI06            // Pointer to Next Buffer
+#define CLIP                        VI07            // Pointer to Clip Buffer
+#define RETN                        VI15            // Return address
+
+//==============================================================================
+//  Temporary Registers
+//==============================================================================
+
+#define TF00( x )                   VF09 ## x
+#define TF01( x )                   VF10 ## x
+#define TF02( x )                   VF11 ## x
+#define TF03( x )                   VF12 ## x
+#define TF04( x )                   VF13 ## x
+#define TF05( x )                   VF14 ## x
+#define TF06( x )                   VF15 ## x
+#define TF07( x )                   VF16 ## x
+#define TF08( x )                   VF17 ## x
+#define TF09( x )                   VF18 ## x
+#define TF10( x )                   VF19 ## x
+#define TF11( x )                   VF20 ## x
+#define TF12( x )                   VF21 ## x
+#define TF13( x )                   VF22 ## x
+#define TF14( x )                   VF23 ## x
+#define TF15( x )                   VF24 ## x
+#define TF16( x )                   VF25 ## x
+#define TF17( x )                   VF26 ## x
+#define TF18( x )                   VF27 ## x
+#define TF19( x )                   VF28 ## x
+#define TF20( x )                   VF29 ## x
+#define TF21( x )                   VF30 ## x
+#define TF22( x )                   VF31 ## x
+
+#define TF00_NOCOMP                 VF09
+#define TF01_NOCOMP                 VF10
+#define TF02_NOCOMP                 VF11
+#define TF03_NOCOMP                 VF12
+#define TF04_NOCOMP                 VF13
+#define TF05_NOCOMP                 VF14
+#define TF06_NOCOMP                 VF15
+#define TF07_NOCOMP                 VF16
+#define TF08_NOCOMP                 VF17
+#define TF09_NOCOMP                 VF18
+#define TF10_NOCOMP                 VF19
+#define TF11_NOCOMP                 VF20
+#define TF12_NOCOMP                 VF21
+#define TF13_NOCOMP                 VF22
+#define TF14_NOCOMP                 VF23
+#define TF15_NOCOMP                 VF24
+#define TF16_NOCOMP                 VF25
+#define TF17_NOCOMP                 VF26
+#define TF18_NOCOMP                 VF27
+#define TF19_NOCOMP                 VF28
+#define TF20_NOCOMP                 VF29
+#define TF21_NOCOMP                 VF30
+#define TF22_NOCOMP                 VF31
+
+#define TI00                        VI08
+#define TI01                        VI09
+#define TI02                        VI10
+#define TI03                        VI11
+#define TI04                        VI12
+#define TI05                        VI13
+#define TI06                        VI14
+
+//==============================================================================
+//  GS Pass Registers
+//==============================================================================
+
+#define EOPB                        TI00
+#define NREG                        TI01
+#define NVRT                        TI02
+#define KICK                        TI03
+
+//==============================================================================
+//  Clipping buffers
+//==============================================================================
+
+#define VU1_CLIP_VERTS              ( 3 + 4 + 5 + 6 + 7 + 8 + 9 )
+#define VU1_CLIP_NUM_PLANES         7
+#define VU1_CLIP_STORAGE_COUNT      4
+#define VU1_MATRIX_SIZE             4
+#define VU1_CLIP_FREE               41
+
+#define VU1_CLIP_BUFFER             ( 0                  +  VU1_HEADER_SIZE        )
+#define VU1_CLIP_PLANES             ( VU1_CLIP_BUFFER    + (VU1_CLIP_VERTS * 4)    )
+#define VU1_CLIP_W2C                ( VU1_CLIP_PLANES    +  VU1_CLIP_NUM_PLANES    ) 
+#define VU1_CLIP_C2W                ( VU1_CLIP_W2C       +  VU1_MATRIX_SIZE        )
+#define VU1_CLIP_C2S                ( VU1_CLIP_C2W       +  VU1_MATRIX_SIZE        )
+#define VU1_CLIP_C2L                ( VU1_CLIP_C2S       +  VU1_MATRIX_SIZE        )
+#define VU1_CLIP_L2C                ( VU1_CLIP_C2L       +  VU1_MATRIX_SIZE        )
+#define VU1_CLIP_STORAGE            ( VU1_CLIP_L2C       +  VU1_MATRIX_SIZE        )
+#define VU1_CLIP_INDEXLIST          ( VU1_CLIP_STORAGE   +  VU1_CLIP_STORAGE_COUNT )
+#define VU1_CLIP_EXTRA              ( VU1_CLIP_INDEXLIST +  VU1_VERTS              )
+#define VU1_CLIP_END                ( VU1_CLIP_EXTRA     +  VU1_CLIP_FREE          )
+
+#define VU1_CLIP_MATRICES           VU1_CLIP_W2C
+
+#if     VU1_CLIP_END != VU1_BUFFER_SIZE
+#error  VU1_CLIP Memory is not properly laid out!
+#endif
+
+#if 0
+
+//==============================================================================
+//  Fast Renderer Memory Layout
+//==============================================================================
+                                            
+//    0 [  NUMV ]
+//    1 [  L2W0 ]
+//    2 [  L2W1 ]
+//    3 [  L2W2 ]
+//    4 [  L2W3 ]
+//    5 [  ...  ]
+//    6 [  ...  ]
+//    7 [  ...  ]
+//    8 [  UV0  ] Vertex  0   <--- [ COPIED ]
+//    9 [  UV1  ] Vertex  0   <--- [ COPIED ]
+//   10 [  RGB  ] Vertex  0
+//   11 [  POS  ] Vertex  0   <--- [ COPIED ]
+//    . [  ...  ] 
+//    . [  ...  ]
+//  324 [  UV0  ] Vertex 79   <--- [ COPIED ]
+//  325 [  UV1  ] Vertex 79   <--- [ COPIED ]
+//  326 [  RGB  ] Vertex 79
+//  327 [  POS  ] Vertex 79   <--- [ COPIED ]
+//
+//  -----------------------------------------
+//
+//  328 [  NUMV ]
+//  329 [  L2W0 ]
+//  330 [  L2W1 ]
+//  331 [  L2W2 ]
+//  332 [  L2W3 ]
+//  333 [  ...  ]
+//  334 [  ...  ]
+//  335 [  ...  ]
+//  336 [  UV0  ] Vertex  0   <--- [ COPIED ] 
+//  337 [  UV1  ] Vertex  0   <--- [ COPIED ] 
+//  338 [  RGB  ] Vertex  0
+//  339 [  POS  ] Vertex  0   <--- [ COPIED ]
+//      [  ...  ] 
+//      [  ...  ]
+//  652 [  UV0  ] Vertex 79   <--- [ COPIED ] 
+//  653 [  UV1  ] Vertex 79   <--- [ COPIED ] 
+//  654 [  RGB  ] Vertex 79
+//  655 [  POS  ] Vertex 79   <--- [ COPIED ]
+//
+//  -----------------------------------------
+//
+//  656 [  NUMV ]
+//  657 [  L2W0 ]
+//  658 [  L2W1 ]
+//  659 [  L2W2 ]
+//  660 [  L2W3 ]
+//  661 [  ...  ]
+//  662 [  ...  ]
+//  663 [  ...  ]
+//  664 [  UV0  ] Vertex  0   <--- [ COPIED ] 
+//  665 [  UV1  ] Vertex  0   <--- [ COPIED ] 
+//  666 [  RGB  ] Vertex  0
+//  667 [  POS  ] Vertex  0   <--- [ COPIED ]
+//      [  ...  ] 
+//      [  ...  ]
+//  980 [  UV0  ] Vertex 79   <--- [ COPIED ] 
+//  981 [  UV1  ] Vertex 79   <--- [ COPIED ] 
+//  982 [  RGB  ] Vertex 79
+//  983 [  POS  ] Vertex 79   <--- [ COPIED ]
+//
+//  -----------------------------------------
+//
+//  984 [  ...  ] vu1_material
+//  985 [  ...  ] 
+//  986 [  ...  ] 
+//  987 [  ...  ] 
+//  988 [  ...  ] 
+//  989 [  ...  ] 
+//  990 [  ...  ] 
+//  991 [  ...  ] 
+//  992 [  ...  ] 
+//  993 [  ...  ] 
+//  994 [  ...  ] 
+//  995 [  ...  ] 
+//  996 [  ...  ] 
+//  997 [  ...  ] 
+//  998 [  ...  ] 
+//  999 [  ...  ] 
+// 1000 [  ...  ] 
+// 1001 [  ...  ] 
+// 1002 [  ...  ] 
+// 1003 [  ...  ] 
+// 1004 [  ...  ]
+// 1005 [  ...  ]
+// 1006 [  ...  ]
+// 1007 [  ...  ]
+// 1008 [  ...  ]
+// 1009 [  ...  ]
+// 1010 [  ...  ]
+// 1011 [  ...  ]
+// 1012 [  ...  ]
+// 1013 [  ...  ]
+// 1014 [  ...  ]
+// 1015 [  ...  ]
+// 1016 [  ...  ] matrix4   M_Spotlight
+// 1017 [  ...  ] .......   .
+// 1018 [  ...  ] .......   .
+// 1019 [  ...  ] .......   .
+// 1020 [  ...  ] matrix4   M_Shadow
+// 1021 [  ...  ] .......   .
+// 1022 [  ...  ] .......   .
+// 1023 [  ...  ] .......   .
+
+//==============================================================================
+//  Skinning Fast Renderer Memory Layout
+//==============================================================================
+                                            
+//    0 [  B0   ] Bone Cache 0
+//    1 [  B0   ] Bone Cache 0
+//    2 [  B0   ] Bone Cache 0
+//    3 [  B0   ] Bone Cache 0
+//    4 [  B1   ] Bone Cache 1
+//    5 [  B1   ] Bone Cache 1
+//    6 [  B1   ] Bone Cache 1
+//    7 [  B1   ] Bone Cache 1
+//    . [  ...  ]
+//    . [  ...  ]
+//  140 [  B36  ] Bone Cache 36
+//  141 [  B36  ] Bone Cache 36
+//  142 [  B36  ] Bone Cache 36
+//  143 [  B36  ] Bone Cache 36
+//
+//  -----------------------------------------
+//
+//  144 [  NUMV ]
+//  145 [  L2W0 ]
+//  146 [  L2W1 ]
+//  147 [  L2W2 ]
+//  148 [  L2W3 ]
+//  149 [  ...  ]
+//  150 [  ...  ]
+//  151 [  ...  ]
+//  152 [  UV0  ] Vertex  0
+//  153 [  UV1  ] Vertex  0
+//  154 [  RGB  ] Vertex  0
+//  155 [  POS  ] Vertex  0
+//      [  ...  ] 
+//      [  ...  ]
+//  420 [  UV0  ] Vertex 68
+//  421 [  UV1  ] Vertex 68
+//  422 [  RGB  ] Vertex 68
+//  423 [  POS  ] Vertex 68
+//
+//  -----------------------------------------
+//
+//  424 [  NUMV ]
+//  425 [  L2W0 ]
+//  426 [  L2W1 ]
+//  427 [  L2W2 ]
+//  428 [  L2W3 ]
+//  429 [  ...  ]
+//  430 [  ...  ]
+//  431 [  ...  ]
+//  432 [  UV0  ] Vertex  0
+//  433 [  UV1  ] Vertex  0
+//  434 [  RGB  ] Vertex  0
+//  435 [  POS  ] Vertex  0
+//      [  ...  ] 
+//      [  ...  ]
+//  700 [  UV0  ] Vertex 68
+//  701 [  UV1  ] Vertex 68
+//  702 [  RGB  ] Vertex 68
+//  703 [  POS  ] Vertex 68
+//
+//  -----------------------------------------
+//
+//  704 [  NUMV ]
+//  705 [  L2W0 ]
+//  706 [  L2W1 ]
+//  707 [  L2W2 ]
+//  708 [  L2W3 ]
+//  709 [  ...  ]
+//  710 [  ...  ]
+//  711 [  ...  ]
+//  712 [  UV0  ] Vertex  0   <--- [ COPIED ] 
+//  713 [  UV1  ] Vertex  0   <--- [ COPIED ] 
+//  714 [  RGB  ] Vertex  0   <--- [ COPIED ] 
+//  715 [  POS  ] Vertex  0   <--- [ COPIED ] 
+//      [  ...  ] 
+//      [  ...  ]
+//  980 [  UV0  ] Vertex 68   <--- [ COPIED ] 
+//  981 [  UV1  ] Vertex 68   <--- [ COPIED ] 
+//  982 [  RGB  ] Vertex 68   <--- [ COPIED ] 
+//  983 [  POS  ] Vertex 68   <--- [ COPIED ] 
+//
+//  -----------------------------------------
+//
+//  984 [  ...  ] vu1_material
+//  985 [  ...  ] 
+//  986 [  ...  ] 
+//  987 [  ...  ] 
+//  988 [  ...  ] 
+//  989 [  ...  ] 
+//  990 [  ...  ] 
+//  991 [  ...  ] 
+//  992 [  ...  ] 
+//  993 [  ...  ] 
+//  994 [  ...  ] 
+//  995 [  ...  ] 
+//  996 [  ...  ] 
+//  997 [  ...  ] 
+//  998 [  ...  ] 
+//  999 [  ...  ] 
+// 1000 [  ...  ] 
+// 1001 [  ...  ] 
+// 1002 [  ...  ] 
+// 1003 [  ...  ] 
+// 1004 [  ...  ]
+// 1005 [  ...  ]
+// 1006 [  ...  ]
+// 1007 [  ...  ]
+// 1008 [  ...  ]
+// 1009 [  ...  ]
+// 1010 [  ...  ]
+// 1011 [  ...  ]
+// 1012 [  ...  ]
+// 1013 [  ...  ]
+// 1014 [  ...  ]
+// 1015 [  ...  ]
+// 1016 [  ...  ] matrix4   M_Spotlight
+// 1017 [  ...  ] .......   .
+// 1018 [  ...  ] .......   .
+// 1019 [  ...  ] .......   .
+// 1020 [  ...  ] matrix4   M_Shadow
+// 1021 [  ...  ] .......   .
+// 1022 [  ...  ] .......   .
+// 1023 [  ...  ] .......   .
+
+//==============================================================================
+//  Fast Renderer Buffer Usage
+//==============================================================================
+  
+  --------------------------------------------
+ |  0 (VIF)     |               |              |
+ |  Local UV    |               |              |
+ |  Normal      |               |              |    Instance 0
+ |  RGB 0       |               |              |
+ |  Local Pos   |               |              |
+ |---------------------------------------------|
+ |  0 (VU)      |   1 (VIF)     |              |
+ |  Screen UV   |   Local UV    |              |
+ |  Normal      |   Normal      |              |    Instance 1
+ |  RGB 0       |   RGB 1       |              |
+ |  Screen Pos  |   Local Pos   |              |
+ |---------------------------------------------|
+ |  0 (GS)      |   1 (VU)      |   2 (VIF)    |
+ |  Screen UV   |   Screen UV   |   Local UV   |
+ |  Normal      |   Normal      |   Normal     |    Instance 2
+ |  RGB 0       |   RGB 1       |   RGB 2      |
+ |  Screen Pos  |   Screen Pos  |   Local Pos  |
+ |---------------------------------------------|
+ |  0 (VIF)     |   1 (GS)      |   2 (VU)     |
+ |  Local UV    |   Screen UV   |   Screen UV  |
+ |  Normal      |   Normal      |   Normal     |    Instance 3
+ |  RGB 3       |   RGB 1       |   RGB 2      |
+ |  Local Pos   |   Screen Pos  |   Local Pos  |
+ |---------------------------------------------|
+ |  0 (VU)      |   1 (VIF)     |   2 (GS)     |
+ |  Screen UV   |   Local UV    |   Screen UV  |
+ |  Normal      |   Normal      |   Normal     |    Instance 4
+ |  RGB 3       |   RGB 4       |   RGB 2      |
+ |  Screen Pos  |   Local Pos   |   Screen Pos |
+ |---------------------------------------------|
+ |  0 (GS)      |   1 (VU)      |   2 (VIF)    |
+ |  Screen UV   |   Screen UV   |   Local UV   |
+ |  Normal      |   Normal      |   Normal     |    Instance 5
+ |  RGB 3       |   RGB 4       |   RGB 5      |
+ |  Screen Pos  |   Screen Pos  |   Local Pos  |
+  ---------------------------------------------
+
+//==============================================================================
+//  Slow Renderer Buffer Usage
+//==============================================================================
+
+       Clip         Current          Next
+      Buffer        Buffer          Buffer
+
+  ---------------------------------------------  
+ |              |  (VIF)       |               | 
+ |              |  Local UV    |               | 
+ |              |  Normal      |               |    Upload Vertex Data for EACH Instance
+ |              |  RGB 0       |               |    - Clip Data uploaded once per Type by vu1_InitClipper()
+ |              |  Local Pos   |               | 
+ |              |              |               | 
+ |   Clip Data  |              |               | 
+ |--------------|------------------------------| 
+ |              |  (VU)        |               | 
+ |              |  Local UV    |               | 
+ |              |  Normal      |               |    CheckClipping
+ |              |  RGB 0       |   RGB 0       |    - Set ADC Bits 
+ |              |  Local Pos   |               |    - Store Indexes of Clipped Verts in W component
+ |   Indexes    |              |               |    - Backup RGB to Next Buffer
+ |   Clip Data  |              |               | 
+ |--------------|------------------------------| 
+ |              |  (VU + GS)   |               | 
+ |              |  Screen UV   |   Local UV    | 
+ |              |  Normal      |   Normal      |    Transform and Render Complete Buffer Normally
+ |              |  RGB 0       |   RGB 0       | 
+ |              |  Screen Pos  |   Local Pos   | 
+ |   Indexes    |              |               | 
+ |   Clip Data  |              |               | 
+ |--------------|------------------------------|<-- MUST Sync GS Here!   
+ |   (VU)       |              |               | 
+ |   Clip UV    |              |   Local UV    | 
+ |   Clip Nrm   |              |   Normal      | 
+ |   Clip RGB 0 |              |   RGB 0       |    Clip each Tri
+ |   Clip Pos   |              |   Local Pos   |    - Use Indexes into Next Buffer
+ |   Indexes    |              |               | 
+ |--------------|------------------------------| 
+ |   (VU)       |              |               | 
+ |   C2L UV     |              |   Local UV    | 
+ |   C2L Nrm    |              |   Normal      | 
+ |   C2L RGB 0  |              |   RGB 0       |    C2L Clipped Verts 
+ |   Clip Pos   |              |   Local Pos   |    - Position slot has Clip Pos
+ |   C2L Pos    |              |               |    - Store additional C2L Pos
+ |   Indexes    |              |               | 
+ |--------------|------------------------------|
+ |   (VU)       |              |               | 
+ |   C2S UV     |  C2L UV      |   Local UV    | 
+ |   C2L Nrm    |              |   Normal      | 
+ |   C2L RGB 0  |              |   RGB 0       |    Transform Using C2S Matrix
+ |   C2S Pos    |  C2S Pos     |   Local Pos   | 
+ |   C2L Pos    |              |               |    Note: C2L Pos can be stored in the XYZ component of Indexes
+ |   Indexes    |              |               | 
+ |--------------|------------------------------| 
+ |   (VU + GS)  |              |               | 
+ |   C2L UV     |  C2L UV      |   Local UV    | 
+ |   C2L Nrm    |  C2L Nrm     |   Normal      | 
+ |   C2L RGB 0  |              |   RGB 0       |    All other passes
+ |   C2S Pos    |  C2L Pos     |   Local Pos   |    - Before EnvMapping we copy C2L Pos to Clip Buffer Position slot
+ |   C2L Pos    |              |               |
+ |   Indexes    |              |               | 
+  -------------- ------------------------------ 
+
+//==============================================================================
+//  Clip Buffer Memory Layout
+//==============================================================================
+
+//    0 [  NUMV ]
+//    1 [  L2W0 ]
+//    2 [  L2W1 ]
+//    3 [  L2W2 ]
+//    4 [  L2W3 ]
+//    5 [  ...  ]
+//    6 [  ...  ]
+//    7 [  ...  ]
+
+//    8 [  UV0  ] Vertex  0 Initial Tri to be Clipped (3 Vertices)
+//    9 [  UV1  ] Vertex  0
+//   10 [  RGB  ] Vertex  0
+//   11 [  POS  ] Vertex  0
+//   12 [  UV0  ] Vertex  1
+//   13 [  UV1  ] Vertex  1
+//   14 [  RGB  ] Vertex  1
+//   15 [  POS  ] Vertex  1
+//   16 [  UV0  ] Vertex  2
+//   17 [  UV1  ] Vertex  2
+//   18 [  RGB  ] Vertex  2
+//   19 [  POS  ] Vertex  2
+//   20 [  UV0  ] Vertex  0 Polygon After -Z Plane Clip (4 Vertices Max)
+//   21 [  UV1  ] Vertex  0
+//   22 [  RGB  ] Vertex  0
+//   23 [  POS  ] Vertex  0
+//      [  ...  ] 
+//   32 [  UV0  ] Vertex  3
+//   33 [  UV1  ] Vertex  3
+//   34 [  RGB  ] Vertex  3
+//   35 [  POS  ] Vertex  3
+
+//   36 [  UV0  ] Vertex  0 Polygon After +Z Plane Clip (5 Vertices Max)
+//   37 [  UV1  ] Vertex  0
+//   38 [  RGB  ] Vertex  0
+//   39 [  POS  ] Vertex  0
+//      [  ...  ] 
+//   52 [  UV0  ] Vertex  4
+//   53 [  UV1  ] Vertex  4
+//   54 [  RGB  ] Vertex  4
+//   55 [  POS  ] Vertex  4
+
+//   56 [  UV0  ] Vertex  0 Polygon After +X Plane Clip (6 Vertices Max)
+//   57 [  UV1  ] Vertex  0
+//   58 [  RGB  ] Vertex  0
+//   59 [  POS  ] Vertex  0
+//      [  ...  ] 
+//   76 [  UV0  ] Vertex  5
+//   77 [  UV1  ] Vertex  5
+//   78 [  RGB  ] Vertex  5
+//   79 [  POS  ] Vertex  5
+
+//   80 [  UV0  ] Vertex  0 Polygon After -X Plane Clip (7 Vertices Max)
+//   81 [  UV1  ] Vertex  0
+//   82 [  RGB  ] Vertex  0
+//   83 [  POS  ] Vertex  0
+//      [  ...  ] 
+//  104 [  UV0  ] Vertex  6
+//  105 [  UV1  ] Vertex  6
+//  106 [  RGB  ] Vertex  6
+//  107 [  POS  ] Vertex  6
+
+//  108 [  UV0  ] Vertex  0 Polygon After +Y Plane Clip (8 Vertices Max)
+//  109 [  UV1  ] Vertex  0
+//  110 [  RGB  ] Vertex  0
+//  111 [  POS  ] Vertex  0
+//      [  ...  ] 
+//  136 [  UV0  ] Vertex  7
+//  137 [  UV1  ] Vertex  7
+//  138 [  RGB  ] Vertex  7
+//  139 [  POS  ] Vertex  7
+
+//  140 [  UV0  ] Vertex  0 Polygon After -Y Plane Clip (9 Vertices Max)
+//  141 [  UV1  ] Vertex  0
+//  142 [  RGB  ] Vertex  0
+//  143 [  POS  ] Vertex  0
+//      [  ...  ] 
+//  172 [  UV0  ] Vertex  8
+//  173 [  UV1  ] Vertex  8
+//  174 [  RGB  ] Vertex  8
+//  175 [  POS  ] Vertex  8
+
+//  176 [  PL0  ] Plane Bits and Jump Address (-Z)
+//  177 [  PL1  ] Plane Bits and Jump Address (+Z)
+//  178 [  PL2  ] Plane Bits and Jump Address (+X)
+//  179 [  PL3  ] Plane Bits and Jump Address (-X)
+//  180 [  PL4  ] Plane Bits and Jump Address (+Y)
+//  181 [  PL5  ] Plane Bits and Jump Address (-Y)
+//  182 [   0   ] End Marker
+
+//  183 [  W2C  ] Uploaded by VIF
+//  184 [  W2C  ]
+//  185 [  W2C  ]
+//  186 [  W2C  ]
+//  187 [  C2W  ] Uploaded by VIF
+//  188 [  C2W  ]
+//  189 [  C2W  ]
+//  190 [  C2W  ]
+//  191 [  C2S  ] Uploaded by VIF
+//  192 [  C2S  ]
+//  193 [  C2S  ]
+//  194 [  C2S  ]
+//  195 [  C2L  ] Computed by VU
+//  196 [  C2L  ]
+//  197 [  C2L  ]
+//  198 [  C2L  ]
+//  199 [  L2C  ] Computed by VU
+//  200 [  L2C  ]
+//  201 [  L2C  ]
+//  202 [  L2C  ]
+
+//  203 [  ST0  ] Extra storage area
+//  204 [  ST1  ] Extra storage area
+//  205 [  ST2  ] Extra storage area
+//  206 [  ST3  ] Extra storage area
+
+//  207 [  I00  ] Starting Vertex Index of Tri to be Clipped
+//      [  ...  ]
+//      [  ...  ]
+//      [  ...  ]
+//      [  ...  ]
+//  286 [  I79  ]
+
+//  287 [       ] 41 Free Vectors
+//      [       ] .
+//  327 [       ] END
+//
+//==============================================================================
+
+//==============================================================================
+
+#endif
+

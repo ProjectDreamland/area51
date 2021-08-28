@@ -1,0 +1,76 @@
+#include "midiechw.h"
+#include "afxres.h"
+#include "mss.h"
+
+MIDIECHW ICON "demo.ico"
+
+IDD_LAUNCHERDIALOG DIALOGEX 0, 0, 254, 222
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION |
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "MIDI Echo for Windows"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    COMBOBOX        IDC_MIDIIN  ,85,8,162,70,CBS_DROPDOWNLIST |
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_MIDIOUT,85,26,162,90,CBS_DROPDOWNLIST |
+                    WS_VSCROLL | WS_TABSTOP
+
+    CONTROL         "DirectSound",IDC_DSRADIO,"Button",BS_AUTORADIOBUTTON,
+                    85,44,65,10
+    CONTROL         "waveOut",IDC_WORADIO,"Button",BS_AUTORADIOBUTTON,
+                    157,44,54,10
+
+    COMBOBOX        IDC_WAVEOUT ,85,62,162,90,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_DSOUND ,85,80,162,90,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_DLSDLL,85,98,112,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DLSFN,85,116,112,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_WVLFN,85,134,112,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GMBANK,85,152,112,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PRANGE,85,170,112,14,ES_AUTOHSCROLL
+
+    PUSHBUTTON      "Browse...",IDC_DLSDLLBROWSE,205,98,42,14
+    PUSHBUTTON      "Browse...",IDC_DLSBROWSE,205,116,42,14
+    PUSHBUTTON      "Browse...",IDC_WVLBROWSE,205,134,42,14
+
+    DEFPUSHBUTTON   "Start MIDI Echo",IDC_RUNAPPBUTTON,49,196,68,14
+    PUSHBUTTON      "Close",IDCANCEL,149,196,68,14
+    LTEXT           "MIDI Input Device",IDC_STATIC,7,10,66,8
+    LTEXT           "MIDI Output Device",IDC_STATIC,7,28,66,8
+    LTEXT           "Digital Output",IDC_STATIC,7,46,66,8
+    LTEXT           "waveOut Device",IDC_STATIC,7,64,76,8
+    LTEXT           "DirectSound Device",IDC_STATIC,7,82,76,8
+    LTEXT           "DLS Provider DLL",IDC_STATIC,7,100,58,8
+    LTEXT           "DLS Bank File",IDC_STATIC,7,118,48,8
+    LTEXT           "WVL File (obsolete):",IDC_STATIC,7,136,48,8
+    LTEXT           "Default GM Bank #",IDC_STATIC,7,154,68,8
+    LTEXT           "Default Bender Range",IDC_STATIC,7,172,72,8
+END
+
+1 VERSIONINFO LOADONCALL MOVEABLE DISCARDABLE IMPURE
+FILEVERSION 3, 0, 0, 0
+PRODUCTVERSION 3, 0, 0, 0
+FILEFLAGSMASK 0x3f
+FILEFLAGS 0
+FILETYPE 1
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "RAD Game Tools, Inc.\000"
+   VALUE "FileDescription", "Miles Sound System\000"
+   VALUE "FileVersion", MSS_VERSION "\000"
+   VALUE "LegalCopyright", MSS_COPYRIGHT "\000"
+   VALUE "LegalTrademarks", "Miles Sound System is a trademark of RAD Game Tools, Inc.\000"
+   VALUE "ProductName", "Miles Sound System\000"
+   VALUE "ProductVersion", MSS_VERSION "\000"
+   VALUE "Comments", "Thank you for using Miles!\000"
+  }
+
+ }
+
+}
+

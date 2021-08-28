@@ -1,0 +1,9 @@
+NAME            DEMO16
+
+DESCRIPTION     'Miles Sound System Demo'
+EXETYPE         WINDOWS
+STUB            'WINSTUB.EXE'
+CODE            PRELOAD FIXED
+DATA            PRELOAD FIXED MULTIPLE
+HEAPSIZE        1024
+STACKSIZE       8192

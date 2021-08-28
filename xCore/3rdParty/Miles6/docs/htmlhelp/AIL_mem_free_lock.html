@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_mem_free_lock</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="frees a pointer previously allocated with AIL_mem_alloc_lock or AIL_file_read.">
+<meta name="ms-hkwd" content="AIL_mem_free_lock">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_mem_free_lock</h1>
+<p>The function  <b>AIL_mem_free_lock</b> frees a pointer previously allocated with AIL_mem_alloc_lock or AIL_file_read.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_mem_free_lock.html" class=trn>AIL_mem_free_lock</a>(</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>ptr</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>ptr</i></dt>
+<dd>specifies the pointer that you want to free.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>You must use this function to free all pointers allocated with <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a> or <a href="AIL_file_read.html">AIL_file_read</a> or your application may leak memory. </p><p> Under DOS, MacOS and Win16, this function must not be invoked from an interrupt-based callback function. </p><p> Example files that use this function: DEMO.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Memory and File Services.html">Memory and File Services</a><br>
+<b>Related Sections:</b>
+<a href="Memory management un63hsaa.html">Memory management under Win16</a>, <a href="Memory management unk00bea.html">Memory management under Win32s</a><br>
+<b>Related Functions:</b>
+<a href="AIL_MIDI_to_XMI.html">AIL_MIDI_to_XMI</a>, <a href="AIL_compress_ADPCM.html">AIL_compress_ADPCM</a>, <a href="AIL_compress_ASI.html">AIL_compress_ASI</a>, <a href="AIL_compress_DLS.html">AIL_compress_DLS</a>, <a href="AIL_decompress_ADPCM.html">AIL_decompress_ADPCM</a>, <a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a>, <a href="AIL_extract_DLS.html">AIL_extract_DLS</a>, <a href="AIL_file_fss_read.html">AIL_file_fss_read</a>, <a href="AIL_file_read.html">AIL_file_read</a>, <a href="AIL_filter_DLS_with_XMI.html">AIL_filter_DLS_with_XMI</a>, <a href="AIL_find_DLS.html">AIL_find_DLS</a>, <a href="AIL_list_DLS.html">AIL_list_DLS</a>, <a href="AIL_list_MIDI.html">AIL_list_MIDI</a>, <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a>, <a href="AIL_mem_use_free.html">AIL_mem_use_free</a>, <a href="AIL_merge_DLS_with_XMI.html">AIL_merge_DLS_with_XMI</a>, <a href="AIL_vmm_unlock.html">AIL_vmm_unlock</a>, <a href="AIL_vmm_unlock_range.html">AIL_vmm_unlock_range</a><br>
+<b>Related Basic Types:</b>
+<a href="void.html">void</a>, <a href="void const P.html">void const *</a><br>
+<b>Related FAQs:</b>
+<a href="When can I free the orulku.html">When can I free the memory I gave to MSS?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

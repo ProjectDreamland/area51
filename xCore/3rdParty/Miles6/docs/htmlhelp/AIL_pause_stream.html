@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_pause_stream</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="pauses the playback of the specified stream handle.">
+<meta name="ms-hkwd" content="AIL_pause_stream">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_pause_stream</h1>
+<p>The function  <b>AIL_pause_stream</b> pauses the playback of the specified stream handle.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_pause_stream.html" class=trn>AIL_pause_stream</a>(</b>
+<b>&nbsp&nbsp<a href="HSTREAM.html" class=trn>HSTREAM</a>&nbsp</b><i>stream</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>onoff</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>stream</i></dt>
+<dd>specifies stream to control.</dd>
+<dt><i>onoff</i></dt>
+<dd>tells MSS to pause (non-zero) or resume (zero) the playback.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>The <a href="AIL_start_stream.html">AIL_start_stream</a> function will also resume playback (but at the beginning of the stream). </p><p> Example files that use this function: Demo.C, Stream.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Stream436kmy.html">Digital Audio Streaming Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_set_stream_loop_count.html">AIL_set_stream_loop_count</a>, <a href="AIL_start_stream.html">AIL_start_stream</a>, <a href="AIL_stream_status.html">AIL_stream_status</a><br>
+<b>Related Basic Types:</b>
+<a href="HSTREAM.html">HSTREAM</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="How do I start an aupeb0vo.html">How do I start an audio file somewhere in the middle?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

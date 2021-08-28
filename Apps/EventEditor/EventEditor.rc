@@ -1,0 +1,142 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_EVENT_EDITOR_TOOL_BAR TOOLBAR DISCARDABLE  32, 16
+BEGIN
+    BUTTON      ID_EVENT_EDITOR_NEW_SOUND
+    BUTTON      ID_EVENT_EDITOR_NEW_PARTICLE
+    BUTTON      ID_EVENT_EDITOR_DEL
+    SEPARATOR
+    BUTTON      ID_LOAD_SOUND_PACKAGE
+    BUTTON      ID_LOAD_GLOBAL_EVENTS
+    BUTTON      ID_SAVE_GLOBAL_EVENTS
+    SEPARATOR
+    BUTTON      ID_SAVE_EVENT_PACKAGE
+    BUTTON      ID_LOAD_EVENT_PACKAGE
+    BUTTON      ID_NEW_EVENT_PACKAGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_EVENT_EDITOR_TOOL_BAR BITMAP  DISCARDABLE     "res\\EventEditorToolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_EVENT_EDITOR_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&Event"
+    BEGIN
+        MENUITEM "Load Global Events",          ID_EVENT_EDITOR_LOAD_GLOBAL_EVENTLIST
+
+        MENUITEM "Save Global Events",          ID_EVENT_EDITOR_SAVE_GLOBAL_EVENTLIST
+
+        MENUITEM "Load Sound Package",          ID_EVENT_EDITOR_LOAD_SOUND_PACKAGE
+
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_EVENT_EDITOR_NEW_SOUND "Add a new sound in to the property view."
+    IDS_EVENT_EDITOR_NEW_PARTICLE 
+                            "Add a new particle in to the property view."
+    IDS_EVENT_EDITOR_DEL    "Delete the selected field in the property view."
+    IDS_LOAD_SOUND_PACKAGE  "Load the sound package labels in the resource view."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_LOAD_SOUND_PACKAGE   "Load the sound package to load the label sets"
+    ID_BUTTON40010          "Load the global Event List."
+    ID_BUTTON40015          "Save the Global Event list."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_LOAD_GLOBAL_EVENTS   "Loads the Global Event list."
+    ID_SAVE_GLOBALS_EVENTS  "Saves the Global Event list."
+    ID_SAVE_GLOBAL_EVENTS   "Saves the Global Event list."
+    ID_SAVE_EVENT_PACKAGE   "Save the current event package."
+    ID_LOAD_EVENT_PACKAGE   "Load a event package."
+    ID_NEW_EVENT_PACKAGE    "Create a new event package."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,48 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_disable_interrupts</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="disables hardware interrupts (IRQs).">
+<meta name="ms-hkwd" content="AIL_disable_interrupts">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_disable_interrupts</h1>
+<p>The function  <b>AIL_disable_interrupts</b> disables hardware interrupts (IRQs).</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="AIL_disable_interrupts.html" class=trn>AIL_disable_interrupts</a>(</b><b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Returns</h4>
+<p>A special value which may be passed to <a href="AIL_restore_interrupts.html">AIL_restore_interrupts</a> to restore the previous interrupt flag state. This value represents the CPU flags word, not a simple Boolean interrupt state value.</p>
+<h4>Discussion</h4>
+<p>This is a DOS-only function. </p><p> This function is used internally by the MSS system, and provides a standardized interrupt-disabling function which is independent of the runtime environment in use. Most applications will not need to use <a href="AIL_disable_interrupts.html">AIL_disable_interrupts</a>, as long as they use the MSS API functions to manipulate sound effect and sequence data. It is important to preserve the returned flags value for later use with <a href="AIL_restore_interrupts.html">AIL_restore_interrupts</a> (below), when interrupts no longer need to be disabled. </p><p> Disabling interrupts for more than a few milliseconds may cause dropouts and other undesirable effects with digitized sound output, and may also result in music tempo slowdowns.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Low-Level DOS Suppor8y9ysb.html">Low-Level DOS Support Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_disable_interrupts.html">AIL_disable_interrupts</a>, <a href="AIL_restore_interrupts.html">AIL_restore_interrupts</a><br>
+<b>Related Basic Types:</b>
+<a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

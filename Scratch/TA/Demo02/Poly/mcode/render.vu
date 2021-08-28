@@ -1,0 +1,509 @@
+;==============================================================================
+;
+;   VU Polygon Renderer
+;
+;==============================================================================
+
+#include "memlayout.vu"
+
+.vu
+
+.align 4
+
+.global VU_POLY_CODE_START
+.global VU_POLY_CODE_END
+
+;==============================================================================
+;   Jump Table
+;==============================================================================
+
+VU_POLY_CODE_START:                                             
+                                                            
+    NOP                                                     B POLY_INIT                                 ; 0
+    NOP                                                     NOP                                         
+                                                            
+    NOP                                                     B POLY_RENDER                               ; 2
+    NOP                                                     NOP                                         
+                                                            
+    NOP                                                     B POLY_CLIP_PLANE_POS_X                     ; 4
+    NOP                                                     NOP                                         
+                                                                                                       
+    NOP                                                     B POLY_CLIP_PLANE_POS_Y                     ; 6
+    NOP                                                     NOP                                         
+                                                                                                       
+    NOP                                                     B POLY_CLIP_PLANE_POS_Z                     ; 8
+    NOP                                                     NOP                                         
+                                                                                                       
+    NOP                                                     B POLY_CLIP_PLANE_NEG_X                     ; 10
+    NOP                                                     NOP                                         
+                                                                                                       
+    NOP                                                     B POLY_CLIP_PLANE_NEG_Y                     ; 12
+    NOP                                                     NOP                                         
+                                                                                                       
+    NOP                                                     B POLY_CLIP_PLANE_NEG_Z                     ; 14
+    NOP                                                     NOP
+    
+    NOP                                                     B SPRITE_RENDER                             ; 16
+    NOP                                                     NOP
+
+;==============================================================================
+;   Initialize
+;==============================================================================
+
+POLY_INIT:
+
+    NOP                                                     LQ W2C0(xyzw), (VU_W2C_MATRIX + 0)(VI00)    ; load world-to-clip matrix
+    NOP                                                     LQ W2C1(xyzw), (VU_W2C_MATRIX + 1)(VI00)
+    NOP                                                     LQ W2C2(xyzw), (VU_W2C_MATRIX + 2)(VI00)
+    NOP                                                     LQ W2C3(xyzw), (VU_W2C_MATRIX + 3)(VI00)
+                                                            
+    NOP                                                     LQ C2S0(xyzw), (VU_C2S_MATRIX + 0)(VI00)    ; load clip-to-screen matrix
+    NOP                                                     LQ C2S1(xyzw), (VU_C2S_MATRIX + 1)(VI00)
+    NOP                                                     LQ C2S2(xyzw), (VU_C2S_MATRIX + 2)(VI00)
+    NOP                                                     LQ C2S3(xyzw), (VU_C2S_MATRIX + 3)(VI00)
+
+    NOP                                                     IADDIU ITemp, VI00,  0x7FFF
+    NOP                                                     IADDIU ITemp, ITemp, 1
+    NOP                                                     MFIR.w ADCBit(w), ITemp
+    NOP                                                     IADDIU ClipperStripDestAddr, VI00, CLIPPER_STRIP_BUFFER0
+
+    SUB ZBias(xyzw), VF00, VF00                             NOP
+    NOP                                                     LQ.z ZBias(z), VU_DATA(VI00)                ; get Z Bias
+
+    NOP[E]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+;   Poly Renderer
+;==============================================================================
+
+POLY_RENDER:
+
+
+    NOP                                                     ILW.x ITemp, VU_DATA(VI00)                  ; read breakpoint flag
+    NOP                                                     NOP
+    NOP                                                     IBEQ ITemp, VI00, NO_BREAK
+    NOP                                                     NOP
+    NOP[D]                                                  NOP
+    NOP                                                     NOP
+    
+NO_BREAK:
+        
+    NOP                                                     XTOP  VertSource                            ; get base address of buffer
+    NOP                                                     ILW.x VertCount,0(VertSource)               ; read the vertex count
+    NOP                                                     IADDIU VertSource, VertSource, 1            ; move pointer to start of data
+    NOP                                                     IADD   LoopCount,  VertCount, VI00
+
+RENDER_LOOP:
+
+    NOP                                                     FCSET 0                                     ; clear clip flags
+                                                            
+    NOP                                                     LQ.xyzw Vert0_UV (xyzw), 0(VertSource)
+    NOP                                                     LQ.xyzw Vert0_Col(xyzw), 1(VertSource)
+    NOP                                                     LQ.xyzw Vert0_Pos(xyzw), 2(VertSource)
+                                                            
+    NOP                                                     LQ.xyzw Vert1_UV (xyzw), 3(VertSource)
+    NOP                                                     LQ.xyzw Vert1_Col(xyzw), 4(VertSource)
+    NOP                                                     LQ.xyzw Vert1_Pos(xyzw), 5(VertSource)
+                                                            
+    NOP                                                     LQ.xyzw Vert2_UV (xyzw), 6(VertSource)
+    NOP                                                     LQ.xyzw Vert2_Col(xyzw), 7(VertSource)
+    NOP                                                     LQ.xyzw Vert2_Pos(xyzw), 8(VertSource)
+                                                            
+    ;
+    ; transform vertex 0 to screen
+    ;
+                                                            
+    MULAx.xyzw  ACC, W2C0(xyzw), Vert0_Pos(x)               NOP                                         ; world-to-clip
+    MADDAy.xyzw ACC, W2C1(xyzw), Vert0_Pos(y)               NOP
+    MADDAz.xyzw ACC, W2C2(xyzw), Vert0_Pos(z)               NOP
+    MADDw.xyzw  Vert0_Pos(xyzw), W2C3(xyzw), VF00w          NOP
+                                                            
+    MULAx.xyzw  ACC, C2S0(xyzw), Vert0_Pos(x)               NOP                                         ; clip-to-screen
+    MADDAy.xyzw ACC, C2S1(xyzw), Vert0_Pos(y)               NOP
+    MADDAz.xyzw ACC, C2S2(xyzw), Vert0_Pos(z)               NOP
+    MADDw.xyzw  Proj_Pos(xyzw),  C2S3(xyzw), Vert0_Pos(w)   NOP
+    
+    Clipw.xyz   Vert0_Pos(xyz),  Vert0_Pos(w)               DIV Q, VF00w, Proj_Pos(w)                   ; perspective divide
+    NOP                                                     WAITQ
+                                                            
+    MULq.xyz  Proj_Pos(xyz), Proj_Pos(xyz), Q               NOP                                         ; project to screen
+    MULq.xyz  Proj_UV (xyz), Vert0_UV(xyz), Q               NOP
+    ADD.z     Proj_Pos( z ), Proj_Pos( z ), ZBias(z)        NOP
+    FTOI4.xyz Proj_Pos(xyz), Proj_Pos(xyz)                  NOP
+    NOP                                                     MOVE.w Proj_Pos(w), ADCBit(w)
+
+    NOP                                                     SQ Proj_UV  (xyzw), 0(VertSource)           ; store projected vertex 0
+    NOP                                                     SQ Vert0_Col(xyzw), 1(VertSource)
+    NOP                                                     SQ Proj_Pos (xyzw), 2(VertSource)
+
+    ;
+    ; transform vertex 1 to screen
+    ;
+                                                            
+    MULAx.xyzw  ACC, W2C0(xyzw), Vert1_Pos(x)               NOP
+    MADDAy.xyzw ACC, W2C1(xyzw), Vert1_Pos(y)               NOP
+    MADDAz.xyzw ACC, W2C2(xyzw), Vert1_Pos(z)               NOP
+    MADDw.xyzw  Vert1_Pos(xyzw), W2C3(xyzw), VF00w          NOP
+                                                            
+    MULAx.xyzw  ACC, C2S0(xyzw), Vert1_Pos(x)               NOP
+    MADDAy.xyzw ACC, C2S1(xyzw), Vert1_Pos(y)               NOP
+    MADDAz.xyzw ACC, C2S2(xyzw), Vert1_Pos(z)               NOP
+    MADDw.xyzw  Proj_Pos(xyzw),  C2S3(xyzw), Vert1_Pos(w)   NOP
+    
+    Clipw.xyz   Vert1_Pos(xyz),  Vert1_Pos(w)               DIV Q, VF00w, Proj_Pos(w)                   ; perspective divide
+    NOP                                                     WAITQ
+                                                            
+    MULq.xyz  Proj_Pos(xyz), Proj_Pos(xyz), Q               NOP                                         ; project to screen
+    MULq.xyz  Proj_UV (xyz), Vert1_UV(xyz), Q               NOP
+    ADD.z     Proj_Pos( z ), Proj_Pos( z ), ZBias(z)        NOP
+    FTOI4.xyz Proj_Pos(xyz), Proj_Pos(xyz)                  NOP
+    NOP                                                     MOVE.w Proj_Pos(w), ADCBit(w)               ; set ADC bit
+
+    NOP                                                     SQ Proj_UV  (xyzw), 3(VertSource)           ; store projected vertex 1
+    NOP                                                     SQ Vert1_Col(xyzw), 4(VertSource)
+    NOP                                                     SQ Proj_Pos (xyzw), 5(VertSource)
+
+    ;
+    ; transform vertex 2 to screen
+    ;
+                                                            
+    MULAx.xyzw  ACC, W2C0(xyzw), Vert2_Pos(x)               NOP
+    MADDAy.xyzw ACC, W2C1(xyzw), Vert2_Pos(y)               NOP
+    MADDAz.xyzw ACC, W2C2(xyzw), Vert2_Pos(z)               NOP
+    MADDw.xyzw  Vert2_Pos(xyzw), W2C3(xyzw), VF00w          NOP
+                                                            
+    MULAx.xyzw  ACC, C2S0(xyzw), Vert2_Pos(x)               NOP
+    MADDAy.xyzw ACC, C2S1(xyzw), Vert2_Pos(y)               NOP
+    MADDAz.xyzw ACC, C2S2(xyzw), Vert2_Pos(z)               NOP
+    MADDw.xyzw  Proj_Pos(xyzw),  C2S3(xyzw), Vert2_Pos(w)   NOP
+    
+    Clipw.xyz   Vert2_Pos(xyz),  Vert2_Pos(w)               DIV Q, VF00w, Proj_Pos(w)                   ; perspective divide
+    NOP                                                     WAITQ
+                                                            
+    MULq.xyz  Proj_Pos(xyz), Proj_Pos(xyz), Q               NOP                                         ; project to screen
+    MULq.xyz  Proj_UV (xyz), Vert2_UV(xyz), Q               NOP
+    ADD.z     Proj_Pos( z ), Proj_Pos( z ), ZBias(z)        NOP
+    FTOI4.xyz Proj_Pos(xyz), Proj_Pos(xyz)                  NOP
+    NOP                                                     MOVE.w Proj_Pos(w), VF00w                   ; clear ADC bit
+
+    ;
+    ; check clipping flags for all three vertices
+    ;
+
+    NOP                                                     IADD  ClipReject, VI00, VI00                ; clear trivial reject flag
+    
+    NOP                                                     FCOR  ITemp, ~CLIP_TRI_POS_X                ; test if all vertices are > +x
+    NOP                                                     IOR   ClipReject, ClipReject, ITemp
+    NOP                                                     FCOR  ITemp, ~CLIP_TRI_NEG_X                ; test if all vertices are < -x
+    NOP                                                     IOR   ClipReject, ClipReject, ITemp
+
+    NOP                                                     FCOR  ITemp, ~CLIP_TRI_POS_Y                ; test if all vertices are > +y
+    NOP                                                     IOR   ClipReject, ClipReject, ITemp
+    NOP                                                     FCOR  ITemp, ~CLIP_TRI_NEG_Y                ; test if all vertices are < -y
+    NOP                                                     IOR   ClipReject, ClipReject, ITemp
+
+    NOP                                                     FCAND ITemp, CLIP_TRI_POS_Z                 ; test if ANY vertices are > +z
+    NOP                                                     IOR   ClipReject, ClipReject, ITemp
+    NOP                                                     FCOR  ITemp, ~CLIP_TRI_NEG_Z                ; test if all vertices are < -z
+    NOP                                                     IOR   ClipReject, ClipReject, ITemp
+
+    ;
+    ; perform trivial reject test
+    ;
+    
+    NOP                                                     IBEQ ClipReject, VI00, STORE_VERT2          ; branch if flag was never set during tests
+    NOP                                                     NOP
+    NOP                                                     MOVE.w Proj_Pos(w), ADCBit(w)               ; ALL verts are outside a plane so set ADC bit so this tri wont render
+
+STORE_VERT2:
+
+    NOP                                                     SQ Proj_UV  (xyzw), 6(VertSource)           ; store projected vertex 2
+    NOP                                                     SQ Vert2_Col(xyzw), 7(VertSource)
+    NOP                                                     SQ Proj_Pos (xyzw), 8(VertSource)
+
+    ;
+    ; perform trivial accept test
+    ;
+
+    NOP                                                     FCAND ITemp, CLIP_TRI_FLAGS
+    NOP                                                     NOP
+    NOP                                                     IBEQ ITemp, VI00, NEXT_TRI
+    NOP                                                     NOP
+    
+    ;
+    ; call the clipper
+    ;
+
+    NOP                                                     IADDIU ITemp, VI00,  0x7FFF                 ; dont render the un-clipped tri since we're going to clip it 
+    NOP                                                     IADDIU ITemp, ITemp, 1
+    NOP                                                     ISW.w ITemp, 8(VertSource)
+    
+    ITOF0 Vert0_Col(xyzw), Vert0_Col(xyzw)                  NOP
+    ITOF0 Vert1_Col(xyzw), Vert1_Col(xyzw)                  NOP
+    ITOF0 Vert2_Col(xyzw), Vert2_Col(xyzw)                  NOP
+
+    NOP                                                     BAL ClipperReturnAddr, CLIP_TRI
+    NOP                                                     NOP
+
+    ;
+    ; process next triangle
+    ;
+
+NEXT_TRI:
+
+    NOP                                                     ISUBIU LoopCount,  LoopCount,  3
+    NOP                                                     IADDIU VertSource, VertSource, 9
+    NOP                                                     IBGTZ  LoopCount,  RENDER_LOOP
+    NOP                                                     NOP                                                            
+
+    ;
+    ; setup GIF Tag
+    ;
+
+    NOP                                                     LQ FTemp(xyzw), VU_GIFTAG(VI00)
+    NOP                                                     XTOP VertSource
+    NOP                                                     IADDIU ITemp, VertCount, 0x7FFF             ; set EOP bit
+    NOP                                                     IADDIU ITemp, ITemp, 1
+    NOP                                                     MFIR.x FTemp(x), ITemp                      ; set NLOOP
+    NOP                                                     SQ     FTemp(xyzw),  0(VertSource)          ; write the GIF Tag
+
+    ;
+    ; kick GS to render polys
+    ;
+
+    NOP                                                     XGKICK VertSource
+    NOP                                                     NOP
+
+    ;
+    ; end of program
+    ;
+                                                            
+    NOP[E]                                                  NOP
+    NOP                                                     NOP
+    NOP                                                     NOP
+    NOP[D]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+;   Sprite Renderer
+;==============================================================================
+
+SPRITE_RENDER:
+
+    NOP                                                     ILW.x ITemp, VU_DATA(VI00)                  ; read breakpoint flag
+    NOP                                                     NOP
+    NOP                                                     IBEQ ITemp, VI00, NO_BREAK2
+    NOP                                                     NOP
+    NOP[D]                                                  NOP
+    NOP                                                     NOP
+    
+NO_BREAK2:
+        
+    SUB Spr_ScX(xyzw), Spr_ScX(xyzw), Spr_ScX(xyzw)         XTOP  VertSource                            ; get base address of buffer
+    SUB Spr_ScY(xyzw), Spr_ScY(xyzw), Spr_ScY(xyzw)         ILW.x VertCount, 0(VertSource)              ; read the vertex count
+    SUB Spr_RT1(xyzw), Spr_RT1(xyzw), Spr_RT1(xyzw)         IADDIU VertSource, VertSource, 1            ; move pointer to start of data
+    SUB Spr_RT2(xyzw), Spr_RT2(xyzw), Spr_RT2(xyzw)         IADD   LoopCount,  VertCount, VI00
+
+    SUB Spr_Org(xyzw), Spr_Org(xyzw), Spr_Org(xyzw)         LOI 2048.0                                  ; prepare clip value
+    MULi.w Spr_Org(w), VF00w, I                             LQ.yw Spr_NearZ(yw), VU_DATA(VI00)          ; get Multiplier and NearZ
+    ADDi.x Spr_Org(x), VF00x, I                             NOP
+    ADDi.y Spr_Org(y), VF00y, I                             NOP
+    
+SPRITE_LOOP:
+
+    ;
+    ; read sprite data
+    ;
+
+    NOP                                                     LQ.xyzw Spr_UV0(xyzw), 0(VertSource)        ; read texture coordinates
+    NOP                                                     LQ.xyzw Spr_UV1(xyzw), 3(VertSource)
+    NOP                                                     LQ.xyzw Spr_UV2(xyzw), 6(VertSource)
+    NOP                                                     LQ.xyzw Spr_UV3(xyzw), 8(VertSource)        ; read 4th UV coordinate | cos(theta)
+    
+    NOP                                                     LQ.xyzw FTemp(xyzw),   5(VertSource)        ; read  width  |  height | sin(theta)
+    
+    NOP                                                     LQ.xyzw Spr_Pos(xyzw), 2(VertSource)        ; read sprite world position
+    NOP                                                     LQ.xyzw Spr_Col(xyzw), 1(VertSource)        ; same colour used on all vertices
+
+    ;
+    ; transform point to screen
+    ;
+    
+    MULAx.xyzw  ACC, W2C0(xyzw), Spr_Pos(x)                 NOP                                         ; world-to-clip
+    MADDAy.xyzw ACC, W2C1(xyzw), Spr_Pos(y)                 NOP
+    MADDAz.xyzw ACC, W2C2(xyzw), Spr_Pos(z)                 NOP
+    MADDw.xyzw  Spr_Pos(xyzw),   W2C3(xyzw), VF00w          NOP
+                                                            
+    MULAx.xyzw  ACC, C2S0(xyzw), Spr_Pos(x)                 NOP                                         ; clip-to-screen
+    MADDAy.xyzw ACC, C2S1(xyzw), Spr_Pos(y)                 NOP
+    MADDAz.xyzw ACC, C2S2(xyzw), Spr_Pos(z)                 NOP
+    MADDw.xyzw  Spr_XYZ(xyzw),   C2S3(xyzw), Spr_Pos(w)     NOP
+    
+    NOP                                                     DIV Q, VF00w, Spr_XYZ(w)                    ; perspective divide (7 cycles)
+    
+    ;
+    ; prepare edge vectors and rotate them
+    ;
+
+    NOP                                                     MOVE.x  Spr_ScY(x), VF00x
+    NOP                                                     MOVE.y  Spr_ScX(y), VF00y
+    NOP                                                     MOVE.x  Spr_ScX(x), FTemp(x)                ; create horizontal vector
+    NOP                                                     MOVE.y  Spr_ScY(y), FTemp(y)                ; create vertical vector
+                                                                                                
+    MULy.x Spr_ScX(x), Spr_ScX(x), Spr_Mult(y)              MR32.y  Spr_RT1(y), FTemp(y)                ; get  sin(t) in Y position of row 1
+    MULy.y Spr_ScY(y), Spr_ScY(y), Spr_Mult(y)              MR32.x  Spr_RT2(x), Spr_RT1(x)              ; get  sin(t) in X position of row 2
+    NOP                                                     MR32.y  Spr_RT2(y), Spr_UV3(y)              ; get  cos(t) in Y position of row 2
+    NOP                                                     MR32.x  Spr_RT1(x), Spr_RT2(x)              ; get  cos(t) in X position of row 1
+    SUB.y  Spr_RT1(y), VF00y, Spr_RT1(y)                    NOP                                         ; get -sin(t) in Y position of row 1
+
+    MULAx.xy         ACC, Spr_RT1(xy), Spr_ScX(x)           NOP                                         ; rotate horizontal and vertical vectors by theta radians 
+    MADDy.xy Spr_ScX(xy), Spr_RT2(xy), Spr_ScX(y)           MR32.z  Spr_UV3(z), VF00z                   ; S | T | 1
+
+    MULAx.xy         ACC, Spr_RT1(xy), Spr_ScY(x)           NOP
+    MADDy.xy Spr_ScY(xy), Spr_RT2(xy), Spr_ScY(y)           FCSET 0
+
+    ;
+    ; project to screen
+    ;
+
+    MULq.xyz  Spr_XYZ(xyz), Spr_XYZ(xyz), Q                 NOP
+    MULq.xyz  Spr_UV0(xyz), Spr_UV0(xyz), Q                 NOP
+    MULq.xyz  Spr_UV1(xyz), Spr_UV1(xyz), Q                 NOP
+    MULq.xyz  Spr_UV2(xyz), Spr_UV2(xyz), Q                 NOP
+    
+    CLIPw.xyz Spr_XYZ(xyz), Spr_NearZ(w)                    NOP                                         ; test near clip plane
+    
+    MULq.xyz  Spr_UV3(xyz), Spr_UV3(xyz), Q                 NOP
+    MULq.xyz  Spr_ScX(xyz), Spr_ScX(xyz), Q                 NOP
+    MULq.xyz  Spr_ScY(xyz), Spr_ScY(xyz), Q                 NOP
+
+    ;
+    ; calculate corner points of quad
+    ;
+    
+    ADD.z     Spr_XYZ( z ), Spr_XYZ( z ), ZBias(z)          NOP
+    SUB.xyz   Spr_PT0(xyz), Spr_XYZ(xyz), Spr_ScX(xyz)      NOP
+    ADD.xyz   Spr_PT1(xyz), Spr_XYZ(xyz), Spr_ScX(xyz)      NOP
+    ADD.xyz   Spr_PT2(xyz), Spr_XYZ(xyz), Spr_ScX(xyz)      NOP
+    SUB.xyz   Spr_PT3(xyz), Spr_XYZ(xyz), Spr_ScX(xyz)      NOP
+    ADD.xyz   Spr_PT0(xyz), Spr_PT0(xyz), Spr_ScY(xyz)      FCAND  VI01, 0x10                           ; test Z greater than NearZ
+    ADD.xyz   Spr_PT1(xyz), Spr_PT1(xyz), Spr_ScY(xyz)      IADDIU ClipReject, VI00, 1 
+    SUB.xyz   Spr_PT2(xyz), Spr_PT2(xyz), Spr_ScY(xyz)      ISUB   ClipReject, ClipReject, VI01
+    SUB.xyz   Spr_PT3(xyz), Spr_PT3(xyz), Spr_ScY(xyz)      FCSET 0
+
+    SUB.xyz   Spr_CL0(xyz), Spr_PT0(xyz), Spr_Org(xyz)      NOP                                         ; move coordinates to (0,0) ready for clip test
+    SUB.xyz   Spr_CL1(xyz), Spr_PT1(xyz), Spr_Org(xyz)      NOP
+    SUB.xyz   Spr_CL2(xyz), Spr_PT2(xyz), Spr_Org(xyz)      NOP
+    SUB.xyz   Spr_CL3(xyz), Spr_PT3(xyz), Spr_Org(xyz)      NOP
+    
+    CLIPw.xyz Spr_CL0(xyz), Spr_Org(w)                      NOP                                         ; check for values outside the range of primitive coordinate system
+    NOP                                                     NOP
+    CLIPw.xyz Spr_CL1(xyz), Spr_Org(w)                      NOP
+    NOP                                                     NOP
+    CLIPw.xyz Spr_CL2(xyz), Spr_Org(w)                      NOP
+    NOP                                                     NOP
+    CLIPw.xyz Spr_CL3(xyz), Spr_Org(w)                      NOP
+    NOP                                                     NOP
+    NOP                                                     NOP
+    NOP                                                     NOP
+    
+    NOP                                                     FCAND ITemp, 0x003CF3CF                     ; check x and y values
+    NOP                                                     NOP
+    NOP                                                     IOR  ClipReject, ClipReject, ITemp
+    NOP                                                     NOP
+    NOP                                                     IBEQ ClipReject, VI00, SPRITE_OK
+    NOP                                                     NOP
+
+    NOP                                                     SQ.w ADCBit(w),  2(VertSource)              ; set ADC bit so polys arent drawn
+    NOP                                                     SQ.w ADCBit(w),  5(VertSource)
+    NOP                                                     SQ.w ADCBit(w),  8(VertSource)
+    NOP                                                     SQ.w ADCBit(w), 11(VertSource)
+    NOP                                                     SQ.w ADCBit(w), 14(VertSource)
+    NOP                                                     SQ.w ADCBit(w), 17(VertSource)
+
+    NOP                                                     B NEXT_SPRITE
+    NOP                                                     NOP
+
+SPRITE_OK:
+
+    FTOI4.xyz Spr_PT0(xyz), Spr_PT0(xyz)                    MFIR.w Spr_PT3(w), VI00                     ; clear ADC bit
+    FTOI4.xyz Spr_PT1(xyz), Spr_PT1(xyz)                    MOVE.w Spr_PT0(w), ADCBit(w)
+    FTOI4.xyz Spr_PT2(xyz), Spr_PT2(xyz)                    MOVE.w Spr_PT1(w), ADCBit(w)
+    FTOI4.xyz Spr_PT3(xyz), Spr_PT3(xyz)                    MFIR.w Spr_PT2(w), VI00
+
+    ;
+    ; store vertex data
+    ;
+    
+    NOP                                                     SQ Spr_UV0(xyzw),  0(VertSource)
+    NOP                                                     SQ Spr_Col(xyzw),  1(VertSource)
+    NOP                                                     SQ Spr_PT0(xyzw),  2(VertSource)
+    
+    NOP                                                     SQ Spr_UV1(xyzw),  3(VertSource)
+    NOP                                                     SQ Spr_Col(xyzw),  4(VertSource)
+    NOP                                                     SQ Spr_PT1(xyzw),  5(VertSource)
+    
+    NOP                                                     SQ Spr_UV2(xyzw),  6(VertSource)
+    NOP                                                     SQ Spr_Col(xyzw),  7(VertSource)
+    NOP                                                     SQ Spr_PT2(xyzw),  8(VertSource)
+
+    NOP                                                     MOVE.w Spr_PT2(w), ADCBit(w)
+    
+    NOP                                                     SQ Spr_UV0(xyzw),  9(VertSource)
+    NOP                                                     SQ Spr_Col(xyzw), 10(VertSource)
+    NOP                                                     SQ Spr_PT0(xyzw), 11(VertSource)
+    
+    NOP                                                     SQ Spr_UV2(xyzw), 12(VertSource)
+    NOP                                                     SQ Spr_Col(xyzw), 13(VertSource)
+    NOP                                                     SQ Spr_PT2(xyzw), 14(VertSource)
+    
+    NOP                                                     SQ Spr_UV3(xyzw), 15(VertSource)
+    NOP                                                     SQ Spr_Col(xyzw), 16(VertSource)
+    NOP                                                     SQ Spr_PT3(xyzw), 17(VertSource)
+
+NEXT_SPRITE:
+
+    NOP                                                     ISUBIU LoopCount,  LoopCount,  6
+    NOP                                                     IADDIU VertSource, VertSource, 18
+    NOP                                                     IBGTZ  LoopCount,  SPRITE_LOOP
+    NOP                                                     NOP                                                            
+    
+    ;
+    ; setup GIF Tag
+    ;
+
+    NOP                                                     LQ FTemp(xyzw), VU_GIFTAG(VI00)
+    NOP                                                     XTOP VertSource
+    NOP                                                     IADDIU ITemp, VertCount, 0x7FFF             ; set EOP bit
+    NOP                                                     IADDIU ITemp, ITemp, 1
+    NOP                                                     MFIR.x FTemp(x), ITemp                      ; set NLOOP
+    NOP                                                     SQ     FTemp(xyzw),  0(VertSource)          ; write the GIF Tag
+
+    ;
+    ; kick GS to render polys
+    ;
+
+    NOP                                                     XGKICK VertSource
+    NOP                                                     NOP
+
+    ;
+    ; end of program
+    ;
+                                                            
+    NOP[E]                                                  NOP
+    NOP                                                     NOP
+    NOP                                                     NOP
+    NOP[D]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+
+#include "clipper.vu"
+
+;==============================================================================
+
+VU_POLY_CODE_END:
+
+;==============================================================================
+

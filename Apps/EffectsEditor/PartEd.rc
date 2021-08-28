@@ -1,0 +1,645 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\PartEd.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\PartEd.ico"
+IDR_PARTEDTYPE          ICON    DISCARDABLE     "res\\PartEdDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_VCR_END_ALPHA       BITMAP  DISCARDABLE     "res\\VCR_End_Alpha.bmp"
+IDB_VCR_END_COLOR       BITMAP  DISCARDABLE     "res\\VCR_End_Color.bmp"
+IDB_VCR_HOME_ALPHA      BITMAP  DISCARDABLE     "res\\VCR_Home_Alpha.bmp"
+IDB_VCR_HOME_COLOR      BITMAP  DISCARDABLE     "res\\VCR_Home_Color.bmp"
+IDB_VCR_KEYSTEP_ALPHA   BITMAP  DISCARDABLE     "res\\VCR_KeyStep_Alpha.bmp"
+IDB_VCR_KEYSTEP_COLOR   BITMAP  DISCARDABLE     "res\\VCR_KeyStep_Color.bmp"
+IDB_VCR_LOOPOFF_ALPHA   BITMAP  DISCARDABLE     "res\\VCR_LoopOff_Alpha.bmp"
+IDB_VCR_LOOPOFF_COLOR   BITMAP  DISCARDABLE     "res\\VCR_LoopOff_Color.bmp"
+IDB_VCR_LOOPON_ALPHA    BITMAP  DISCARDABLE     "res\\VCR_LoopOn_Alpha.bmp"
+IDB_VCR_LOOPON_COLOR    BITMAP  DISCARDABLE     "res\\VCR_LoopOn_Color.bmp"
+IDB_VCR_PAUSE_ALPHA     BITMAP  DISCARDABLE     "res\\VCR_Pause_Alpha.bmp"
+IDB_VCR_PAUSE_COLOR     BITMAP  DISCARDABLE     "res\\VCR_Pause_Color.bmp"
+IDB_VCR_PLAY_ALPHA      BITMAP  DISCARDABLE     "res\\VCR_Play_Alpha.bmp"
+IDB_VCR_PLAY_COLOR      BITMAP  DISCARDABLE     "res\\VCR_Play_Color.bmp"
+IDB_VCR_STEPBACK_ALPHA  BITMAP  DISCARDABLE     "res\\VCR_StepBack_Alpha.bmp"
+IDB_VCR_STEPBACK_COLOR  BITMAP  DISCARDABLE     "res\\VCR_StepBack_Color.bmp"
+IDB_VCR_STEPFORWARD_ALPHA BITMAP  DISCARDABLE     "res\\VCR_StepForward_Alpha.bmp"
+IDB_VCR_STEPFORWARD_COLOR BITMAP  DISCARDABLE     "res\\VCR_StepForward_Color.bmp"
+IDR_TOOLBAR3D           BITMAP  DISCARDABLE     "res\\toolbar1.bmp"
+IDB_VIEWPORT_MAXIMIZE_COLOR BITMAP  DISCARDABLE     "res\\Viewport_Maximize_Color.bmp"
+IDB_VIEWPORT_MAXIMIZE_ALPHA BITMAP  DISCARDABLE     "res\\Viewport_Maximize_Alpha.bmp"
+IDR_MAIN_TOOLBAR        BITMAP  DISCARDABLE     "res\\MainToolbar_Icons.bmp"
+IDB_UP                  BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+IDB_DOWN                BITMAP  DISCARDABLE     "res\\down.bmp"
+IDB_DOTCOM              BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_VIEW_4WAY
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_TOOLBAR3D TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_VIEW_BUTTON1
+    BUTTON      ID_VIEW_BUTTON2
+END
+
+IDR_MAIN_TOOLBAR TOOLBAR DISCARDABLE  24, 24
+BEGIN
+    BUTTON      ID_MAIN_TOOLBAR_UNDO
+    BUTTON      ID_MAIN_TOOLBAR_REDO
+    SEPARATOR
+    BUTTON      ID_MAIN_TOOLBAR_SELECT
+    BUTTON      ID_MAIN_TOOLBAR_MOVE
+    BUTTON      ID_MAIN_TOOLBAR_ROTATE
+    BUTTON      ID_MAIN_TOOLBAR_SCALE
+    SEPARATOR
+    BUTTON      ID_MAIN_TOOLBAR_AXIS_X
+    BUTTON      ID_MAIN_TOOLBAR_AXIS_Y
+    BUTTON      ID_MAIN_TOOLBAR_AXIS_Z
+    SEPARATOR
+    BUTTON      ID_MAIN_TOOLBAR_ALIGN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM "&Export",                     ID_FILE_EXPORT
+        MENUITEM "Export &Video (AVI)",         ID_FILE_EXPORTVIDEOAVI
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "&Clone",                      ID_EDIT_CLONE
+        MENUITEM SEPARATOR
+        MENUITEM "Select &All\tCtrl+A",         ID_EDIT_SELECT_ALL
+        MENUITEM "Select &None\tCtrl+D",        ID_EDIT_SELECT_NONE
+        MENUITEM "Select &Invert\tCtrl+I",      ID_EDIT_SELECT_INVERT
+        MENUITEM "Select &By Name\tH",          ID_EDIT_SELECT_BYNAME
+        MENUITEM SEPARATOR
+        MENUITEM "&Move to 0,0,0\tShift+NumPad 0", ID_EDIT_MOVETO_000
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "Main &Toolbar",               ID_VIEW_TOOLBAR, CHECKED
+        MENUITEM "Viewport &Grids\tG",          ID_VIEW_VIEWPORT_GRIDS
+        , CHECKED
+        MENUITEM "&Bounding Boxes",             ID_VIEW_BBOX, CHECKED
+        MENUITEM "&Maximize Viewport",          ID_VIEW_VIEWPORT_MAXIMIZE
+        , CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "&Redraw All\t`",              ID_VIEW_REDRAW_ALL
+        MENUITEM "Show Tra&jectory Toggle\tJ",  ID_VIEW_TRAJECTORY
+        MENUITEM "Show &Velocity Toggle\tV",    ID_VIEW_VELOCITY
+        MENUITEM SEPARATOR
+        MENUITEM "&Hide Selected\tNumpad -",    ID_VIEW_HIDE_SELECTED
+        MENUITEM "&Unhide All\tNumpad +",       ID_VIEW_UNHIDE_ALL
+    END
+    POPUP "&Create"
+    BEGIN
+        MENUITEM "&Cylinder",                   ID_CREATE_CYLINDER
+        MENUITEM "&Mesh",                       ID_CREATE_MESH
+        MENUITEM "&Plane",                      ID_CREATE_PLANE
+        MENUITEM "Shock&Wave",                  ID_CREATE_SHOCKWAVE
+        MENUITEM "Sphe&re",                     ID_CREATE_SPHERE
+        MENUITEM "&Sprite",                     ID_CREATE_SPRITE
+        MENUITEM "Sprite &Emitter",             ID_CREATE_SPEMITTER
+    END
+    POPUP "Time"
+    BEGIN
+        MENUITEM "Go to &First Frame\tHome",    ID_TIME_GOTO_FIRST_FRAME
+        MENUITEM "Go to &Last Frame\tEnd",      ID_TIME_GOTO_LAST_FRAME
+        MENUITEM "Go to &Previous Frame\t,",    ID_TIME_GOTO_PREVIOUS_FRAME
+        MENUITEM "Go to &Next Frame\t.",        ID_TIME_GOTO_NEXT_FRAME
+        MENUITEM "&Play / Pause\t/",            ID_TIME_PLAY
+        MENUITEM SEPARATOR
+        MENUITEM "&Zoom Time Extents",          ID_TIME_ZOOM_TIME_EXTENTS
+    END
+    POPUP "Help"
+    BEGIN
+        MENUITEM "&About fx_Editor...",         ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_VIEW3D MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        POPUP "&Create"
+        BEGIN
+            MENUITEM "&Cylinder",                   ID_CREATE_CYLINDER
+            MENUITEM "&Mesh",                       ID_CREATE_MESH
+            MENUITEM "&Plane",                      ID_CREATE_PLANE
+            MENUITEM "Shock&Wave",                  ID_CREATE_SHOCKWAVE
+            MENUITEM "Sphe&re",                     ID_CREATE_SPHERE
+            MENUITEM "&Sprite",                     ID_CREATE_SPRITE
+            MENUITEM "Sprite &Emitter",             ID_CREATE_SPEMITTER
+        END
+    END
+    POPUP "In Progress"
+    BEGIN
+        MENUITEM "&Cylinder",                   ID_CREATE_CYLINDER
+        MENUITEM "&Mesh",                       ID_CREATE_MESH
+        MENUITEM "&Plane",                      ID_CREATE_PLANE
+        MENUITEM "&Ribbon",                     ID_CREATE_RIBBON
+        MENUITEM "Shock&Wave",                  ID_CREATE_SHOCKWAVE
+        MENUITEM "Sphe&re",                     ID_CREATE_SPHERE
+        MENUITEM "&Sprite",                     ID_CREATE_SPRITE
+        MENUITEM "Sprite &Emitter",             ID_CREATE_SPEMITTER
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 105
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About FX Editor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,6,6,21,20
+    LTEXT           "Inevitable FX Editor",IDC_STATIC,84,16,64,8,SS_NOPREFIX
+    DEFPUSHBUTTON   "OK",IDOK,94,86,50,14,WS_GROUP
+    LTEXT           "FX Export Version:",IDC_STATIC,62,70,60,8
+    EDITTEXT        IDC_FX_VER,122,68,52,12,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_READONLY
+    CONTROL         167,IDC_STATIC,"Static",SS_BITMAP,58,26,117,37
+END
+
+IDD_ELEM_LIST DIALOG DISCARDABLE  0, 0, 187, 325
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Element Browser"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,114,304,34,14
+    PUSHBUTTON      "Cancel",IDCANCEL,150,304,33,14
+    LISTBOX         IDC_ELEM_LIST,5,5,175,293,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "",IDC_DOWN,27,303,15,14,BS_BITMAP
+    PUSHBUTTON      "",IDC_UP,7,303,15,14,BS_BITMAP
+    CONTROL         "Hide Selected",IDC_HIDE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,50,304,60,12
+END
+
+IDD_ERRORDIALOG DIALOG DISCARDABLE  0, 0, 441, 297
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Compiler Output"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,330,275,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,385,275,50,14
+    EDITTEXT        IDC_EDIT,5,5,430,265,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_AVI_EXPORT DIALOG DISCARDABLE  0, 0, 196, 105
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "AVI Export Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,48,88,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,104,88,50,14
+    LTEXT           "Output to file:",IDC_STATIC,4,8,44,8
+    EDITTEXT        IDC_FILENAME,52,4,120,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "...",IDC_BROWSE_AVI,176,4,16,12
+    LTEXT           "Render using viewport:",IDC_STATIC,4,28,76,8
+    COMBOBOX        IDC_VIEW_SEL,84,24,108,68,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Output Resolution:",IDC_STATIC,16,48,60,8
+    COMBOBOX        IDC_OUTPUT_RES,84,44,108,44,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Start Frame:",IDC_STATIC,8,68,40,8
+    EDITTEXT        IDC_START_FRAME,48,64,40,12,ES_NUMBER
+    LTEXT           "End Frame:",IDC_STATIC,108,68,36,8
+    EDITTEXT        IDC_END_FRAME,148,64,40,12,ES_NUMBER
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,2
+ PRODUCTVERSION 1,0,0,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Inevitable Entertainment\0"
+            VALUE "FileDescription", "Effects Editor Application\0"
+            VALUE "FileVersion", "1, 0, 0, 2\0"
+            VALUE "InternalName", "fx_Editor\0"
+            VALUE "LegalCopyright", "Copyright (C) 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "fx_Editor.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "fx_Editor Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 2\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 98
+    END
+
+    IDD_ELEM_LIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 318
+    END
+
+    IDD_ERRORDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 434
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 290
+    END
+
+    IDD_AVI_EXPORT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 189
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 98
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_MOVE                CURSOR  DISCARDABLE     "res\\Move.cur"
+IDC_PAN                 CURSOR  DISCARDABLE     "res\\Pan.cur"
+IDC_ROTATE              CURSOR  DISCARDABLE     "res\\Rotate.cur"
+IDC_SCALE               CURSOR  DISCARDABLE     "res\\Scale.cur"
+IDC_SELECT              CURSOR  DISCARDABLE     "res\\Select.cur"
+IDC_3D_CREATE           CURSOR  DISCARDABLE     "res\\cursor1.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_AVI_EXPORT DLGINIT
+BEGIN
+    IDC_VIEW_SEL, 0x403, 11, 0
+0x7055, 0x6570, 0x2072, 0x654c, 0x7466, "\000" 
+    IDC_VIEW_SEL, 0x403, 12, 0
+0x7055, 0x6570, 0x2072, 0x6952, 0x6867, 0x0074, 
+    IDC_VIEW_SEL, 0x403, 11, 0
+0x6f4c, 0x6577, 0x2072, 0x654c, 0x7466, "\000" 
+    IDC_VIEW_SEL, 0x403, 12, 0
+0x6f4c, 0x6577, 0x2072, 0x6952, 0x6867, 0x0074, 
+    IDC_VIEW_SEL, 0x403, 10, 0
+0x614d, 0x6978, 0x696d, 0x657a, 0x0064, 
+    IDC_OUTPUT_RES, 0x403, 10, 0
+0x3631, 0x2030, 0x2078, 0x3231, 0x0030, 
+    IDC_OUTPUT_RES, 0x403, 10, 0
+0x3233, 0x2030, 0x2078, 0x3432, 0x0030, 
+    IDC_OUTPUT_RES, 0x403, 10, 0
+0x3436, 0x2030, 0x2078, 0x3834, 0x0030, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "Effects Editor\n\nEffects Editor\nEffect Source Files (*.fxs)\n.fxs\nfx_Editor.Document\nfx_Editor Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "fx_Editor"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select All\nSelect All"
+    ID_EDIT_UNDO            "Redo the last action\nRedo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_4WAY            "Toggle 4-way splitter\nToggle splitter"
+    ID_MAIN_TOOLBAR_UNDO    "Undo\nUndo"
+    ID_MAIN_TOOLBAR_REDO    "Redo\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_MAIN_TOOLBAR_SELECT  "Select\nSelect"
+    ID_MAIN_TOOLBAR_MOVE    "Move\nMove"
+    ID_MAIN_TOOLBAR_ROTATE  "Rotate\nRotate"
+    ID_MAIN_TOOLBAR_SCALE   "Scale\nScale"
+    ID_MAIN_TOOLBAR_AXIS_X  "Enable X Axis\nEnable X Axis"
+    ID_MAIN_TOOLBAR_AXIS_Y  "Enable Y Axis\nEnable Y Axis"
+    ID_MAIN_TOOLBAR_AXIS_Z  "Enable Z Axis\nEnable Z Axis"
+    ID_MAIN_TOOLBAR_ALIGN   "Align\nAlign"
+    ID_VIEW_VIEWPORT_GRIDS  "Viewport Grid\nViewport Grid"
+    ID_VIEW_MAXIMIZE_VIEWPORT "Maximize Viewport\nMaximize Viewport"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\PartEd.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

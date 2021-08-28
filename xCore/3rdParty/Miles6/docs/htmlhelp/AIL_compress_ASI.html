@@ -1,0 +1,72 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_compress_ASI</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="compresses a digital sound with an ASI encoder capable of writing the file type described by the filename_ext parameter.">
+<meta name="ms-hkwd" content="AIL_compress_ASI">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_compress_ASI</h1>
+<p>The function  <b>AIL_compress_ASI</b> compresses a digital sound with an ASI encoder capable of writing the file type described by the filename_ext parameter.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_compress_ASI.html" class=trn>AIL_compress_ASI</a>(</b>
+<b>&nbsp&nbsp<a href="AILSOUNDINFO.html" class=trn>AILSOUNDINFO const *</a>&nbspconst *</b><i>info</i><b>,</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>filename_ext</i><b>,</b>
+<b>&nbsp&nbsp<a href="void P.html" class=trn>void *</a>&nbsp*</b><i>outdata</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>outsize</i><b>,</b>
+<b>&nbsp&nbsp<a href="AILLENGTHYCB.html" class=trn>AILLENGTHYCB</a>&nbsp</b><i>callback</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>info</i></dt>
+<dd>describes the sound data to compress.</dd>
+<dt><i>filename_ext</i></dt>
+<dd>is a filename who's extension determines what ASI codec to use. For example, to use the MPEG Layer 3 encoder, you would specify ".mp3". The Miles voice chat codecs use extensions of ".v29", ".v24", and ".v12". Future encoders will have their own extensions.</dd>
+<dt><i>callback</i></dt>
+<dd>should be set to the address of the callback function of the <a href="AILLENGTHYCB.html">AILLENGTHYCB</a> type. Pass 0 if callbacks are not necessary.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>outdata</i></dt>
+<dd>should be the address of a " void* " pointer that will return with the pointer to the new compressed file image. This parameter can be NULL if you don't need it.</dd>
+<dt><i>outsize</i></dt>
+<dd>should be the address of an unsigned 32-bit integer that will return with the size of the compressed file image. This parameter can be NULL if you don't need it.</dd>
+</dl>
+<h4>Returns</h4>
+<p>1, if the call was successful, or 0 if the call failed.</p>
+<h4>Discussion</h4>
+<p>Note that the only MSS ASI encoder currently available is the MSS MPEG Layer 3 encoder and it must be purchased separately (in addition, it isn't redistributable). We plan to have more audio ASI encoders soon (including a Bink audio codec). </p><p> You must free the pointer returned in outdata with <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>. </p><p> You can use the <a href="AIL_WAV_info.html">AIL_WAV_info</a> function to automatically fill the input info structure. </p><p> Compressing with the MSS MPEG Layer 3 encoder is very slow!</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AILLENGTHYCB.html">AILLENGTHYCB</a>, <a href="AIL_WAV_info.html">AIL_WAV_info</a>, <a href="AIL_compress_ADPCM.html">AIL_compress_ADPCM</a>, <a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="char const P.html">char const *</a>, <a href="void P.html">void *</a><br>
+<b>Related Structures:</b>
+<a href="AILSOUNDINFO.html">AILSOUNDINFO</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

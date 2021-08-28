@@ -1,0 +1,67 @@
+package:
+C:\temp\test[volume=1.0]
+
+files:
+
+f_bilbo_jump          hot     c:\temp\Bilbo_Jump.aif
+f_bilbo_attack1       hot     c:\temp\BilboAttack01.aif
+f_bilbo_attack2       hot     c:\temp\BilboAttack02.aif
+f_bilbo_attack3       hot     c:\temp\BilboAttack03.aif
+f_bilbo_death1        hot     c:\temp\BilboDeath.aif
+f_bilbo_death2        hot     c:\temp\BilboDeath02.aif
+f_bilbo_death3        hot     c:\temp\BilboDeath03.aif
+f_bilbo_explode       hot     c:\temp\BilboExplode.aif
+f_bilbo_falldeath     hot     c:\temp\BilboFallDeath.aif
+f_bilbo_flinch1       hot     c:\temp\BilboFlinch01.aif
+f_bilbo_flinch2       hot     c:\temp\BilboFlinch02.aif
+f_bilbo_flinch3       hot     c:\temp\BilboFlinch03.aif
+f_bilbo_flinch4       hot    c:\temp\BilboFlinch04.aif
+//f_hot_stero_file      hot     c:\temp\Amb_Reg_2_Wild_L4a.aif
+//f_cold_stero_file     cold    c:\temp\Amb_Reg_2_Wild_L4a.aif
+
+descriptors:
+
+bilbo_jump simple f_bilbo_jump
+bilbo_attack rlist
+{
+    f_bilbo_attack1
+    f_bilbo_attack2
+    f_bilbo_attack3
+}
+bilbo_death rlist
+{
+    f_bilbo_death1
+    f_bilbo_death2
+    f_bilbo_death3
+}
+bilbo_explode simple f_bilbo_explode
+bilbo_falldeath simple f_bilbo_falldeath
+bilbo_falldeath_c complex 
+{
+    f_bilbo_falldeath[volume=0.1] 0.0
+    f_bilbo_falldeath[volume=0.4] 2.0
+    f_bilbo_falldeath[volume=1.0] 4.0
+}
+bilbo_flinch rlist
+{
+    f_bilbo_flinch1
+    f_bilbo_flinch2 
+    f_bilbo_flinch3 
+    f_bilbo_flinch4 
+}
+bilbo_b wlist
+{
+    f_bilbo_jump       300
+    bilbo_attack       300
+    bilbo_death        100
+    bilbo_explode      100
+    bilbo_falldeath      5
+}
+complex_list wlist
+{
+    bilbo_attack       200
+    bilbo_death        200
+    bilbo_flinch       100
+    bilbo_explode       50
+    bilbo_falldeath     25
+}

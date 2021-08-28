@@ -1,0 +1,13 @@
+Hmm...  Looks like a new-style context diff to me...
+The text leading up to this was:
+--------------------------
+|diff -cr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' -I 'pcre-4.3-orig*' pcre-4.3-orig/Makefile pcre-4.3/Makefile
+|*** pcre-4.3-orig/Makefile	Sat Jun 14 10:00:45 2003
+|--- pcre-4.3/Makefile	Sat Jun 14 14:21:07 2003
+--------------------------
+Patching file Makefile using Plan A...
+Hunk #1 FAILED at 68.
+Hunk #2 succeeded at 91 (offset -7 lines).
+Hunk #3 FAILED at 103.
+2 out of 3 hunks FAILED -- saving rejects to file Makefile.rej
+done

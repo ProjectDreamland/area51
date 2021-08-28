@@ -1,0 +1,638 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_IMGLIST_TAB         BITMAP                  "res\\PAL_ImgTab.bmp"
+IDR_PALETTEVIEW_FILTER  BITMAP                  "res\\palettev_filter.bmp"
+IDR_WORLDEDITOR         BITMAP                  "res\\tb_worldEditor.bmp"
+IDR_BLUEPRINT_BAR       BITMAP                  "res\\blueprin.bmp"
+IDR_LAYER_VIEW_BAR      BITMAP                  "res\\layervie.bmp"
+IDR_AIVIEW_FILTER       BITMAP                  "res\\ai_view_toolbar.bmp"
+IDB_LAYERLIST_ICONS     BITMAP                  "res\\layerlist_icons.bmp"
+IDR_SOUNDVIEW_FILTER    BITMAP                  "res\\SoundViewFilter.bmp"
+IDR_OBJECT_PALETTE      BITMAP                  "res\\obj_Pal.bmp"
+IDR_GLOBAL_FILTER       BITMAP                  "res\\global_f.bmp"
+IDR_GUID_DEBUGGER       BITMAP                  "res\\tb_guidd.bmp"
+IDR_WATCHVIEW_FILTER    BITMAP                  "res\\watchwindow.bmp"
+IDR_DECAL_PALETTE       BITMAP                  "res\\decal_pal.bmp"
+IDR_TRIGGER_VIEW_BAR    BITMAP                  "res\\triggerview.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_PALETTEVIEW_FILTER TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_PVTB_FILTER_WALL
+    BUTTON      ID_PVTB_FILTER_FLOOR
+    BUTTON      ID_PVTB_FILTER_CEILING
+END
+
+IDR_WORLDEDITOR TOOLBAR  16, 16
+BEGIN
+    BUTTON      IDC_COMBOBOX_ACTIVE_LAYER
+    SEPARATOR
+    BUTTON      ID_WETB_CREATE_OBJECT
+    BUTTON      ID_WETB_ADDWITHRAY
+    SEPARATOR
+    BUTTON      ID_WETB_DELETE_SELECTED
+    BUTTON      ID_WETB_COPY_OBJECTS
+    BUTTON      ID_WETB_MOVEMODE
+    SEPARATOR
+    BUTTON      ID_WETB_MOVE_OBJECTS_TO_ACTIVE_LAYER
+    SEPARATOR
+    BUTTON      ID_WETB_SNAPTOGRID
+    BUTTON      ID_WETB_SHOWGRID
+    BUTTON      ID_WETB_GRIDTOOBJECT
+    SEPARATOR
+    BUTTON      ID_WETB_SHOWSPACD
+    BUTTON      ID_WETB_SHOWAXIS
+    BUTTON      ID_WETB_SHOWSELECTIONBOUNDS
+    BUTTON      ID_WETB_RENDER_ICONS
+    SEPARATOR
+    BUTTON      ID_WETB_GOTO_PLAYER
+    SEPARATOR
+    BUTTON      ID_WETB_RUNGAME
+    BUTTON      ID_WETB_PAUSEGAME
+    BUTTON      ID_WETB_STEPGAME
+    BUTTON      ID_WETB_TOGGLE_FPV
+    BUTTON      ID_WETB_PORTAL_WALK
+    BUTTON      ID_WETB_RENDER_SPEC
+    BUTTON      ID_WETB_SAVEGAME
+    BUTTON      ID_WETB_LOADGAME
+    SEPARATOR
+    BUTTON      ID_WETB_LIGHT_LEVEL
+    BUTTON      ID_WETB_REFRESH_RSC
+    BUTTON      ID_WETB_FOCUS_CAMERA
+    SEPARATOR
+    BUTTON      ID_WETB_UNDO
+    BUTTON      ID_WETB_TRANS_STACK
+    BUTTON      ID_WETB_REDO
+    SEPARATOR
+    BUTTON      ID_WETB_CAMERA_HISTORY_PREV
+    BUTTON      ID_WETB_CAMERA_FAVORITES
+    BUTTON      ID_WETB_CAMERA_HISTORY_NEXT
+    SEPARATOR
+    BUTTON      ID_WETB_SOUND_DEBUG_STATS
+    BUTTON      ID_WETB_SOUND_PRINT_PACKAGE_DATA
+    BUTTON      ID_WETB_SOUND_PROPAGATE
+END
+
+IDR_BLUEPRINT_BAR TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_BPTB_CREATE_ANCHOR
+    BUTTON      ID_BPTB_CREATE_BLUEPRINT
+    SEPARATOR
+    BUTTON      ID_BPTB_ADD_BLUEPRINT
+    BUTTON      ID_BPTB_ADD_BLUEPRINT_AS_OBJECTS
+    SEPARATOR
+    BUTTON      ID_BPTB_SHATTER_BLUEPRINT
+    BUTTON      ID_BPTB_SHATTER_FOR_EDIT
+    SEPARATOR
+    BUTTON      ID_BPTB_REFRESH
+    BUTTON      ID_BPTB_RESYNC
+    SEPARATOR
+    BUTTON      ID_BPTB_REPLACE_SELECTED_WITH_BLUEPRINT
+END
+
+IDR_LAYER_VIEW_BAR TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_LVTB_NEW_LAYER
+    BUTTON      ID_LVTB_NEW_FOLDER
+    BUTTON      ID_LVTB_NEW_RES
+    BUTTON      ID_LVTB_NEW_ZONE
+    SEPARATOR
+    BUTTON      ID_LVTB_LOAD_ALL_LAYERS
+    BUTTON      ID_LVTB_LOAD_LAYER
+    BUTTON      ID_LVTB_CHECKOUT_LAYER
+    SEPARATOR
+    BUTTON      ID_LVTB_RENAME_LAYER
+    BUTTON      ID_LVTB_DELETE_LAYER
+    SEPARATOR
+    BUTTON      ID_LVTB_SET_ACTIVE_LAYER
+    BUTTON      ID_LVTB_LIGHT_LAYER
+    BUTTON      ID_LVTB_SELECT_LAYER
+    SEPARATOR
+    BUTTON      ID_LVTB_NEW_PORTAL
+END
+
+IDR_AIVIEW_FILTER TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_BUTTON_CREATE_NAV_NODE
+    BUTTON      ID_BUTTON_CHAIN_NODES
+    BUTTON      ID_BUTTON_CONNECT_MODE
+    BUTTON      ID_BUTTON_CONNECT_SELECTED
+    BUTTON      ID_BUTTON_CHECK_ALL_NODES
+    SEPARATOR
+    BUTTON      ID_BUTTON_CREATE_PLAYER
+    BUTTON      ID_BUTTON_BATCH_FLAG
+END
+
+IDR_SOUNDVIEW_FILTER TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_CREATE_SOUNDNAV_NODE
+    BUTTON      ID_CREATE_SOUNDNAV_CONNECTION
+END
+
+IDR_OBJECT_PALETTE TOOLBAR  19, 15
+BEGIN
+    BUTTON      ID_OVTB_ADD_PLAYSURFACE
+    BUTTON      ID_OVTB_ADD_PROPSURFACE
+    BUTTON      ID_OVTB_ADD_ANIMSURFACE
+    SEPARATOR
+    BUTTON      ID_OVTB_REFRESH
+    SEPARATOR
+    BUTTON      ID_OVTB_UPDATE_RIGIDINST_FROM_SEL
+    BUTTON      ID_OVTB_SELECT_BASED_ON_RIGID
+END
+
+IDR_GLOBAL_FILTER TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_GVTB_REFRESH
+    SEPARATOR
+    BUTTON      ID_GVTB_NEW_FOLDER
+    SEPARATOR
+    BUTTON      ID_GVTB_NEW_GLOBAL
+    BUTTON      ID_GVTB_DELETE_GLOBAL
+END
+
+IDR_GUID_DEBUGGER TOOLBAR  30, 15
+BEGIN
+    BUTTON      ID_GDTB_GUID_LOOKUP
+    BUTTON      ID_GDTB_GLOBAL_GUID_LOOKUP
+    SEPARATOR
+    BUTTON      ID_GDTB_CLEAR_INFO
+END
+
+IDR_WATCHVIEW_FILTER TOOLBAR  30, 15
+BEGIN
+    BUTTON      ID_WVTB_WATCH_PROP
+    BUTTON      ID_WVTB_WATCH_GLOBAL
+    SEPARATOR
+    BUTTON      ID_WVTB_DELETE_WATCH
+    BUTTON      ID_WVTB_CLEAR_INFO
+END
+
+IDR_DECAL_PALETTE TOOLBAR  19, 15
+BEGIN
+    BUTTON      ID_DVTB_PAINT_MODE
+    BUTTON      ID_DVTB_SELECT_MODE
+    SEPARATOR
+    BUTTON      ID_DVTB_REFRESH
+END
+
+IDR_TRIGGER_VIEW_BAR TOOLBAR  19, 15
+BEGIN
+    BUTTON      ID_TRTB_REFRESH
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_RESOURCE_BROWSER_DLG DIALOGEX 0, 0, 472, 233
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Entropy Resource Quick Viewer"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,415,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,415,24,50,14
+    LTEXT           "",IDC_PREVIEW_FRAME,240,7,171,219,WS_BORDER
+    CONTROL         "Tree1",IDC_TREE_RESOURCE_SELECTOR,"SysTreeView32",
+                    TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | 
+                    TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | 
+                    TVS_FULLROWSELECT | WS_BORDER | WS_TABSTOP,7,7,230,219
+    PUSHBUTTON      "Clear Field",IDCLEAR,415,212,50,14
+END
+
+IDD_TRANSACTION_STACK_DIALOG DIALOG  0, 0, 336, 178
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Transactions"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,279,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,279,24,50,14
+    LISTBOX         IDC_LIST_TRANSACTIONS,7,7,268,164,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+IDD_AUDIOPACKAGE_DIALOG DIALOGEX 0, 0, 266, 202
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,209,181,50,14
+    LISTBOX         IDC_AUDIOPKG_DESC,7,7,251,170,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG_CONNECTION_ATTR DIALOG  0, 0, 212, 178
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Connection Attributes"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,155,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,155,24,50,14
+    COMBOBOX        IDC_COMBO_CONNECTION_HINT_PATROL_ROUTE,21,27,116,98,
+                    CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_CONNECTION_HINT_ONE_WAY,21,55,116,98,
+                    CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "HINT_PATROL_ROUTE",IDC_STATIC,21,15,80,8
+    LTEXT           "HINT_ONE_WAY",IDC_STATIC,21,43,58,8
+    COMBOBOX        IDC_COMBO_CONNECTION_HINT_DARK,21,83,116,98,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "HINT_DARK",IDC_STATIC,21,71,42,8
+    COMBOBOX        IDC_COMBO_CONNECTION_HINT_SNEAKY,21,111,116,98,
+                    CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "HINT_SNEAKY",IDC_STATIC,21,99,51,8
+    COMBOBOX        IDC_COMBO_CONNECTION_HINT_COVER,21,139,116,98,
+                    CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "HINT_COVER",IDC_STATIC,21,127,47,8
+END
+
+IDD_ANIMPACKAGE_DIALOG DIALOGEX 0, 0, 290, 204
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "AnimSelect"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,233,183,50,14
+    CONTROL         "Tree1",IDC_ANIMPKG_DESC,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,7,7,276,168
+    PUSHBUTTON      "Clear",IDCLEAR,177,183,50,14
+END
+
+IDD_NEW_GLOBAL_DLG DIALOG  0, 0, 150, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Global"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_GLOBAL_NAME,5,5,140,15,ES_AUTOHSCROLL | WS_GROUP
+    CONTROL         "Int",IDC_GLOBAL_INT,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT | WS_GROUP | WS_TABSTOP,5,25,55,10
+    CONTROL         "Float",IDC_GLOBAL_FLOAT,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT | WS_TABSTOP,5,35,55,10
+    CONTROL         "Bool",IDC_GLOBAL_BOOL,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT | WS_TABSTOP,5,46,55,10
+    CONTROL         "Guid",IDC_GLOBAL_GUID,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT | WS_TABSTOP,5,55,55,10
+    CONTROL         "Timer",IDC_GLOBAL_TIMER,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT | WS_TABSTOP,5,65,55,10
+    DEFPUSHBUTTON   "OK",IDOK,95,50,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,95,65,50,14
+END
+
+IDD_TEXT_ENTRY DIALOGEX 0, 0, 187, 50
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Set Caption..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NAME,7,7,173,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,7,29,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,29,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_RESOURCE_BROWSER_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 465
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 226
+    END
+
+    IDD_TRANSACTION_STACK_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 329
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_AUDIOPACKAGE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 259
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 195
+    END
+
+    IDD_DIALOG_CONNECTION_ATTR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 205
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_ANIMPACKAGE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 283
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_NEW_GLOBAL_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 143
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 79
+    END
+
+    IDD_TEXT_ENTRY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 43
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_CONNECTION_ATTR DLGINIT
+BEGIN
+    IDC_COMBO_CONNECTION_HINT_PATROL_ROUTE, 0x403, 10, 0
+0x6f4e, 0x4320, 0x6168, 0x676e, 0x0065, 
+    IDC_COMBO_CONNECTION_HINT_PATROL_ROUTE, 0x403, 7, 0
+0x6f54, 0x6767, 0x656c, "\000" 
+    IDC_COMBO_CONNECTION_HINT_PATROL_ROUTE, 0x403, 7, 0
+0x6c41, 0x206c, 0x6e4f, "\000" 
+    IDC_COMBO_CONNECTION_HINT_PATROL_ROUTE, 0x403, 8, 0
+0x6c41, 0x206c, 0x664f, 0x0066, 
+    IDC_COMBO_CONNECTION_HINT_ONE_WAY, 0x403, 10, 0
+0x6f4e, 0x4320, 0x6168, 0x676e, 0x0065, 
+    IDC_COMBO_CONNECTION_HINT_ONE_WAY, 0x403, 7, 0
+0x6f54, 0x6767, 0x656c, "\000" 
+    IDC_COMBO_CONNECTION_HINT_ONE_WAY, 0x403, 7, 0
+0x6c41, 0x206c, 0x6e4f, "\000" 
+    IDC_COMBO_CONNECTION_HINT_ONE_WAY, 0x403, 8, 0
+0x6c41, 0x206c, 0x664f, 0x0066, 
+    IDC_COMBO_CONNECTION_HINT_DARK, 0x403, 10, 0
+0x6f4e, 0x4320, 0x6168, 0x676e, 0x0065, 
+    IDC_COMBO_CONNECTION_HINT_DARK, 0x403, 7, 0
+0x6f54, 0x6767, 0x656c, "\000" 
+    IDC_COMBO_CONNECTION_HINT_DARK, 0x403, 7, 0
+0x6c41, 0x206c, 0x6e4f, "\000" 
+    IDC_COMBO_CONNECTION_HINT_DARK, 0x403, 8, 0
+0x6c41, 0x206c, 0x664f, 0x0066, 
+    IDC_COMBO_CONNECTION_HINT_SNEAKY, 0x403, 10, 0
+0x6f4e, 0x4320, 0x6168, 0x676e, 0x0065, 
+    IDC_COMBO_CONNECTION_HINT_SNEAKY, 0x403, 7, 0
+0x6f54, 0x6767, 0x656c, "\000" 
+    IDC_COMBO_CONNECTION_HINT_SNEAKY, 0x403, 7, 0
+0x6c41, 0x206c, 0x6e4f, "\000" 
+    IDC_COMBO_CONNECTION_HINT_SNEAKY, 0x403, 8, 0
+0x6c41, 0x206c, 0x664f, 0x0066, 
+    IDC_COMBO_CONNECTION_HINT_COVER, 0x403, 10, 0
+0x6f4e, 0x4320, 0x6168, 0x676e, 0x0065, 
+    IDC_COMBO_CONNECTION_HINT_COVER, 0x403, 7, 0
+0x6f54, 0x6767, 0x656c, "\000" 
+    IDC_COMBO_CONNECTION_HINT_COVER, 0x403, 7, 0
+0x6c41, 0x206c, 0x6e4f, "\000" 
+    IDC_COMBO_CONNECTION_HINT_COVER, 0x403, 8, 0
+0x6c41, 0x206c, 0x664f, 0x0066, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    ID_WETB_SHOWAXIS        "Show Focus Cursor\nShow Focus Cursor"
+    ID_WETB_CREATE_OBJECT   "Create Object\nCreate Object"
+    ID_WETB_DELETE_SELECTED "Delete Selected Objects (BCKSPC)\nDelete Selected Objects"
+    ID_WETB_SNAPTOGRID      "Snap to the Grid\nSnap to the Grid"
+    ID_BPTB_CREATE_BLUEPRINT "Create New Blueprint\nCreate New Blueprint"
+    ID_BPTB_CREATE_OBJECT   "Create Object\nCreate Object"
+    ID_BPTB_ADD_BLUEPRINT   "Add Blueprint (Save Reference)\nAdd Blueprint"
+    ID_WETB_MOVEMODE        "Toggle Move Objects Mode (Ctrl-X)\nToggle Move Objects Mode"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BPTB_ADD_BLUEPRINT_AS_OBJECTS 
+                            "Add Objects from Blueprint (No Reference)"
+    IDC_COMBOBOX_ACTIVE_LAYER "Choose Active Layer\nChoose Active Layer"
+    ID_LVTB_NEW_LAYER       "Create New Layer\nCreate Layer"
+    ID_BUTTON_CREATE_NAV_NODE "Create Nav Node\nCreates a new navigation node"
+    ID_BUTTON_CREATE_NAV_CONNECTION "Create Nav Connection"
+    ID_BUTTON_CREATE_FORCED_NAV_ZONE "Create a bug on a point"
+    ID_LVTB_DELETE_LAYER    "Delete Layer\nDelete Layer"
+    ID_LVTB_RENAME_LAYER    "Rename Layer\nRename Layer"
+    ID_LVTB_SET_ACTIVE_LAYER "Set As Active\nSet As Active"
+    ID_BUTTON32828          "Make bug go to a node."
+    IDR_CREATE_OBJECT_FROM_SELECTED 
+                            "Creates an object using the currently selected object as a template"
+    ID_WETB_ADDWITHRAY      "Toggle Add/Move with Ray\nToggle Add/Move with Ray"
+    ID_LVTB_LIGHT_LAYER     "Light Layer\nLight Layer"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WETB_SHOWGRID        "Show Grid\nShow Grid"
+    ID_WETB_SHOWSPACD       "Show Spacial Database\nShow Spacial Database"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BPTB_SHATTER_BLUEPRINT 
+                            "Break Blueprint Apart\nBreak blueprint into objects"
+    ID_WETB_SHOWSELECTIONBOUNDS "Show Selection Bounds\nShowSelectionBounds"
+    ID_WETB_GRIDTOOBJECT    "Move Grid to Object Position\nMove Grid to Object Position (M)"
+    ID_WETB_RUNGAME         "Jump Into Game\nJump Into Game"
+    ID_BUTTON_CREATE_PLAYER "Create a player"
+    ID_WETB_TOGGLE_FPV      "Toggle First Person View\nToggle First Person View"
+    ID_BPTB_CREATE_ANCHOR   "Create Anchor\nCreate Anchor"
+    ID_LVTB_SELECT_LAYER    "Select All Items in Layer\nSelect All Items in Layer"
+    ID_WETB_COPY_OBJECTS    "Copy Selected Object (Ctrl-C)\nCopy Selected Object"
+    ID_WETB_MOVE_OBJECTS_TO_ACTIVE_LAYER 
+                            "Move Selected to Active Layer\nMove Selected Objects to Active Layer"
+    ID_WETB_UNDO            "Undo Last Action (Ctrl-Z)\nUndo Last Action"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WETB_REDO            "Redo Last Undone Action (Ctrl-Y)\nRedo Last Undone Action"
+    ID_CREATE_SOUNDNAV_NODE "Create a sound nav node."
+    ID_CREATE_SOUNDNAV_CONNECTION "Create a sound nav connection."
+    ID_WETB_TRANS_STACK     "Transaction Stack\nTransaction Stack"
+    ID_BPTB_SHATTER_FOR_EDIT 
+                            "Break Blueprint Apart for Editing\nBreak blueprint into objects for Editing"
+    ID_WETB_FOCUS_CAMERA    "Focus Camera on Cursor\nFocus Camera on Cursor (G)"
+    ID_LVTB_NEW_FOLDER      "Create Virtual Folder\nCreate Virtual Folder"
+    ID_LVTB_LOAD_LAYER      "Load/Unload Layer\nLoad/Unload Layer"
+    ID_WETB_LIGHT_LEVEL     "Light the Level\nLight the Level"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_LVTB_LOAD_ALL_LAYERS "Load All Layers\nLoad All Layers"
+    ID_LVTB_NEW_RES         "Create a new Resource\nNew Resource"
+    ID_WETB_RENDER_SPEC     "Render Prevew\nLock Render Size at 640x480"
+    ID_WETB_PAUSEGAME       "Pause Game\nPause game if running"
+    ID_OVTB_ADD_PLAYSURFACE "Create New PlaySurface\nAdd PlaySurface"
+    ID_OVTB_ADD_PROPSURFACE "Create New PropSurface\nAdd PropSurface"
+    ID_OVTB_ADD_ANIMSURFACE "Create New AnimSurface\nAdd AnimSurface"
+    ID_OVTB_REFRESH         "Refresh List\nRefresh List"
+    ID_BPTB_REFRESH         "Refresh Directory\nRefresh Directory"
+    ID_OVTB_UPDATE_GEOMS_FROM_SEL 
+                            "Geom Update\nUpdate all matching geoms from selected"
+    ID_LVTB_NEW_ZONE        "Add Zone\nAdd Zone"
+    ID_LVTB_NEW_PORTAL      "Create Portal\nCreate Portal"
+    ID_BUTTON_CHAIN_NODES   "Chain Mode\nChain mode automatically connects nodes as they are placed."
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BUTTON_CONNECT_VISIBLE 
+                            "Connect All Nodes\nAutomatically connects all nodes based on distance and line of sight"
+    ID_BUTTON_CHECK_ALL_NODES 
+                            "Verify connections\nChecks Line of Sight between nodes and highlights possibly invalid nodes in red"
+    ID_BUTTON_CONNECT_MODE  "Connect Mode\nConnects node with last selected node"
+    ID_BUTTON_CONNECT_SELECTED 
+                            "Connect Selected\nConnects selected mode if they are within 500 units and have clear line of sight"
+    ID_WETB_PORTAL_WALK     "Apply Zones\nApply Zone Culling to Game"
+    ID_OVTB_UPDATE_RIGIDINST_FROM_SEL 
+                            "Update RigidInstances\nUpdate all rigid instances in geoms"
+    ID_WETB_SOUND_DEBUG_STATS 
+                            "Prints all the audio packages currently loaded.\nLoaded Packages"
+    ID_WETB_SOUND_PROPAGATE "Computes the sound propagation for all the zones\nCompute Sound Propagation"
+    ID_GVTB_NEW_FOLDER      "Create new global folder\nNew Folder"
+    ID_GVTB_NEW_GLOBAL      "Create new global variable\nNew Global"
+    ID_GVTB_DELETE_GLOBAL   "Delete a global variable\nDelete Global"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_GVTB_REFRESH         "Refresh View\nRefresh View"
+    ID_WETB_REFRESH_RSC     "Refresh Resources\nRefresh Resources"
+    ID_GDTB_REVERSE_LOOKUP  "Guid Lookup\nGuid Lookup"
+    ID_GDTB_CLEAR_INFO      "Clear Info\nClear Info"
+    ID_GDTB_GLOBAL_GUID_LOOKUP "Global Guid Lookup\nGlobal Guid Lookup"
+    ID_LVTB_CHECKOUT_LAYER  "Check Out Layer\nCheck Out Layer"
+    ID_RENDER_ICONS         "Toggle the rendering of icons in the editor"
+    ID_WETB_RENDER_ICONS    "Toggle Icon Rendering\nToggle Icon Rendering"
+    ID_WETB_SAVEGAME        "Save Game\nSave Game"
+    ID_WETB_LOADGAME        "Load Game\nLoad Game"
+    ID_WVTB_CLEAR_INFO      "Clear Window\nClear WIndow"
+    ID_WVTB_WATCH_PROP      "Watch Property\nWatch Property"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WVTB_WATCH_GLOBAL    "Watch Global Var\\Watch Global Var"
+    ID_WVTB_DELETE_WATCH    "Delete Watch\\Delete Watch"
+    ID_WETB_STEPGAME        "Single steps 1 frame of game\nSingle steps 1 frame of game"
+    TB_PAINT_MODE           "Enter decal painting mode\nPainting mode"
+    TB_SELECT_MODE          "Decal selection mode\nDecal selection mode"
+    ID_DPTB_REFRESH         "Force refresh decal resources\nRefresh decal list"
+    ID_DVTB_REFRESH         "Refresh decal list\nRefresh decal list"
+    ID_DVTB_PAINT_MODE      "Enter decal painting mode\nPainting mode"
+    ID_DVTB_SELECT_MODE     "Decal selection mode\nDecal selection mode"
+    ID_TRTB_REFRESH         "Refresh List\nRefresh List"
+    ID_WETB_CAMERA_HISTORY_PREV 
+                            "Previous Camera Position\nPrevious Camera Position"
+    ID_WETB_CAMERA_HISTORY_NEXT "Next Camera Position\nNext Camera Position"
+    ID_WETB_CAMERA_FAVORITES "Camera Favorites\nCamera Favorites"
+    ID_WETB_GOTO_PLAYER     "Goto Player\n Goto Player"
+    ID_OVTB_SELECT_BASED_ON_RIGID 
+                            "Select Objects Based on RenderInst\nSelect objects based on renderinst of select object"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BPTB_REPLACE_SELECTED_WITH_BLUEPRINT 
+                            "Replace with blueprint\nReplace all selected objects with Blueprint"
+    ID_BPTB_RESYNC          "Resync Blueprint\nResync all Blueprint properties"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

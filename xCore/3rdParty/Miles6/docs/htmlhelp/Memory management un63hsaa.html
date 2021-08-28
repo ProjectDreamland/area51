@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Memory management under Win16</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Memory management under Win16">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Memory management under Win16</h1>
+<h4>Discussion</h4>
+<p>Under Win16, you <b>must</b> use the Miles memory allocation routines for any memory pointer that you pass into MSS. This allows Miles to ensure that the memory is locked and fixed into place to satisfy the Windows multimedia system. </p><p>To allocate memory for Miles use, call <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a>. To free memory, call <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>. </p><p>For internal memory use, Miles just allocates its own memory directly from these same two routines. </p>
+<p><a href="Callbacks under Win16.html">Next Topic (Callbacks under Win16)</a>  </p><p><a href="Sound under Win16.html">Previous Topic (Sound under Win16)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Overview for Win16- k62jt8.html">Overview for Win16: Miles on Windows 3.1</a><br>
+<b>Related Functions:</b>
+<a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

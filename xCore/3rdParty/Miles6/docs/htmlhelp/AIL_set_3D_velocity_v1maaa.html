@@ -1,0 +1,62 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_3D_velocity_vector</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the current velocity of a 3D sample, the listener, or a 3D object in non-normalized coordinates.">
+<meta name="ms-hkwd" content="AIL_set_3D_velocity_vector">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_3D_velocity_vector</h1>
+<p>The function  <b>AIL_set_3D_velocity_vector</b> sets the current velocity of a 3D sample, the listener, or a 3D object in non-normalized coordinates.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_3D_velocity_v1maaa.html" class=trn>AIL_set_3D_velocity_vector</a>(</b>
+<b>&nbsp&nbsp<a href="H3DPOBJECT.html" class=trn>H3DPOBJECT</a>&nbsp</b><i>obj</i><b>,</b>
+<b>&nbsp&nbsp<a href="F32.html" class=trn>F32</a>&nbsp</b><i>dX_per_ms</i><b>,</b>
+<b>&nbsp&nbsp<a href="F32.html" class=trn>F32</a>&nbsp</b><i>dY_per_ms</i><b>,</b>
+<b>&nbsp&nbsp<a href="F32.html" class=trn>F32</a>&nbsp</b><i>dZ_per_ms</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>obj</i></dt>
+<dd>indicates the 3D sample, listener, or 3D object to set the velocity of.</dd>
+<dt><i>dX_per_ms</i></dt>
+<dd>is the delta in meters in the X coordinate per millisecond.</dd>
+<dt><i>dY_per_ms</i></dt>
+<dd>is the delta in meters in the Y coordinate per millisecond.</dd>
+<dt><i>dZ_per_ms</i></dt>
+<dd>is the delta in meters in the Z coordinate per millisecond.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>The velocity of a 3D object is used both for calculating the Doppler pitch shift to use, as well as the amount to move the object when Miles does the repositioning with <a href="AIL_update_3D_position.html">AIL_update_3D_position</a> or <a href="AIL_auto_update_3D_pzvtnaa.html">AIL_auto_update_3D_position</a>. </p><p> Note that since the distances for velocity are in meters per millisecond, the values passed to this function are generally very small. For example, at 20 miles an hour (about the fastest a human can run), you would be passing in roughly 0.009 for a non-normalized delta value. </p><p> Following DirectSound3D's somewhat awkward lead, Miles uses the left-handed coordinate system. All of DirectX also uses left-handed coordinates, so passing in coordinates from a DirectX application is simple. OpenGL, on the other hand, cleanly uses right-handed coordinates, so you must invert the sign of the Z parameter before passing it into Miles.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_3D_velocity.html">AIL_3D_velocity</a>, <a href="AIL_auto_update_3D_pzvtnaa.html">AIL_auto_update_3D_position</a>, <a href="AIL_set_3D_orientation.html">AIL_set_3D_orientation</a>, <a href="AIL_set_3D_position.html">AIL_set_3D_position</a>, <a href="AIL_set_3D_velocity.html">AIL_set_3D_velocity</a>, <a href="AIL_update_3D_position.html">AIL_update_3D_position</a><br>
+<b>Related Basic Types:</b>
+<a href="F32.html">F32</a>, <a href="H3DPOBJECT.html">H3DPOBJECT</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

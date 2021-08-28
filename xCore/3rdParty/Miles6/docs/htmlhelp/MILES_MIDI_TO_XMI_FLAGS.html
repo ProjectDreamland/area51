@@ -1,0 +1,50 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>MILES_MIDI_TO_XMI_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="specifies optional conversion flags for the AIL_MIDI_to_XMI function.">
+<meta name="ms-hkwd" content="MILES_MIDI_TO_XMI_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>MILES_MIDI_TO_XMI_FLAGS</h1>
+<p>The basic type <b>MILES_MIDI_TO_XMI_FLAGS</b> specifies optional conversion flags for the AIL_MIDI_to_XMI function.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#AILMIDITOXMI_TOLERANT" href="#AILMIDITOXMI_TOLERANT" class=trn>&nbsp;AILMIDITOXMI_TOLERANT</a></td>
+<td width=71% height=25 valign=middle class=list>tells Miles to ignore most common errors in the input MIDI file.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#AILMIDITOXMI_USINGLIST" href="#AILMIDITOXMI_USINGLIST" class=trn>&nbsp;AILMIDITOXMI_USINGLIST</a></td>
+<td width=71% height=25 valign=middle class=list> specifies that the <b>MIDI_size</b> parameter is ignored, and the <b>MIDI</b> parameter should point to a series of unsigned 32-bit integers, formatted as follows (this flag is used to covert a series of MIDI files into one XMIDI file): <br> <br> 1st U32 - number of MIDI files to convert <br> 2nd U32 - pointer to the first MIDI file image. <br> 3rd U32 - size of the first MIDI file image. <br> 4th U32 - pointer to the second MIDI file image. <br> 5th U32 - size of the second the MIDI file image. <br> 6th U32 - pointer to the third MIDI file image. <br> 7th U32 - size of the third MIDI file image. <br> ... etc.</td>
+</tr>
+</table>
+<p>
+<br>
+<b>Group:</b>
+<a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_MIDI_to_XMI.html">AIL_MIDI_to_XMI</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

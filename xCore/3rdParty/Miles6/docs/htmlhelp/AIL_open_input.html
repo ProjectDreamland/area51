@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_open_input</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="opens a digital input channel (usually from the microphone) to receive input digital audio data.">
+<meta name="ms-hkwd" content="AIL_open_input">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_open_input</h1>
+<p>The function  <b>AIL_open_input</b> opens a digital input channel (usually from the microphone) to receive input digital audio data.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HDIGINPUT.html" class=trn>HDIGINPUT</a> <a href="AIL_open_input.html" class=trn>AIL_open_input</a>(</b>
+<b>&nbsp&nbsp<a href="AIL_INPUT_INFO.html" class=trn>AIL_INPUT_INFO</a>&nbsp*</b><i>info</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>info</i></dt>
+<dd>points to a structure of type <a href="AIL_INPUT_INFO.html">AIL_INPUT_INFO</a>. The info structure contains the details of the digital audio input to perform.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A handle to the new input handle, or NULL if the open failed.</p>
+<h4>Discussion</h4>
+<p>The Miles Sound System uses the waveIn API for input. </p><p> Recording doesn't begin until you call the <a href="AIL_set_input_state.html">AIL_set_input_state</a> function. </p><p> There are two types of sound drivers under Windows - half-duplex and full-duplex. Half-duplex means that you can either play audio or record audio, but not at the same time. Full-duplex means that you can play and record audio simultaneously. There are virtually no sound cards available any more that don't have full-duplex drivers available (although they sometimes must be switched to full-duplex in the Control Panel), so you will usually just want to require full-duplex drivers. </p><p> If, however, you want to support half-duplex driver, then you must use switch between playing and recording using logic somewhat like this: </p><p> To record audio: call <a href="AIL_digital_handle_ruqabaa.html">AIL_digital_handle_release</a>, call <a href="AIL_open_input.html">AIL_open_input</a>, start recording. </p><p> To play audio again: call <a href="AIL_close_input.html">AIL_close_input</a>, call <a href="AIL_digital_handle_ruoiaaa.html">AIL_digital_handle_reacquire</a>, starting playing again. </p><p> On MacOS, recording is always perform in full-duplex mode. You should select a device in "Sound Monitoring" pop-up in the "Monitor and Sound" control panel. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Input hpyv0q.html">Digital Audio Input (Recording) Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_close_input.html">AIL_close_input</a>, <a href="AIL_digital_handle_ruoiaaa.html">AIL_digital_handle_reacquire</a>, <a href="AIL_digital_handle_ruqabaa.html">AIL_digital_handle_release</a>, <a href="AIL_get_input_info.html">AIL_get_input_info</a>, <a href="AIL_open_input.html">AIL_open_input</a>, <a href="AIL_set_input_state.html">AIL_set_input_state</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGINPUT.html">HDIGINPUT</a><br>
+<b>Related Structures:</b>
+<a href="AIL_INPUT_INFO.html">AIL_INPUT_INFO</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

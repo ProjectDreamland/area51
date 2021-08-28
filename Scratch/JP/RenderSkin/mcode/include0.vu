@@ -1,0 +1,45 @@
+//==============================================================================
+//
+//  VU0 Includes
+//
+//==============================================================================
+
+//=============================================================================
+//  Vertex Skinning Shared Registers
+//=============================================================================
+
+#define MAT00( x )              VF05 ## x       // Bone0 Matrix
+#define MAT01( x )              VF06 ## x
+#define MAT02( x )              VF07 ## x
+#define MAT03( x )              VF08 ## x
+
+#define MAT10( x )              VF09 ## x       // Bone1 Matrix
+#define MAT11( x )              VF10 ## x
+#define MAT12( x )              VF11 ## x
+#define MAT13( x )              VF12 ## x
+
+#define TPOS0( x )              VF13 ## x       // Temporary Position 0
+#define TPOS1( x )              VF14 ## x       // Temporary Position 1
+
+//=============================================================================
+//  Registers for Vertex0
+//=============================================================================
+
+#define POS0( x )               VF01 ## x       // Position | Weight0
+#define NRM0( x )               VF02 ## x       // Normal   | Weight1
+
+#define BONE0_0                 VI01            // Bone0 Index
+#define BONE0_1                 VI02            // Bone1 Index
+
+//=============================================================================
+//  Registers for Vertex1
+//=============================================================================
+
+#define POS1( x )               VF03 ## x       // Position | Weight0
+#define NRM1( x )               VF04 ## x       // Normal   | Weight1
+
+#define BONE1_0                 VI03            // Bone0 Index
+#define BONE1_1                 VI04            // Bone1 Index
+
+//=============================================================================
+

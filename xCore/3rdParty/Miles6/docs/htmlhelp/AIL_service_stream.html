@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_service_stream</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="services the given stream handle.">
+<meta name="ms-hkwd" content="AIL_service_stream">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_service_stream</h1>
+<p>The function  <b>AIL_service_stream</b> services the given stream handle.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_service_stream.html" class=trn>AIL_service_stream</a>(</b>
+<b>&nbsp&nbsp<a href="HSTREAM.html" class=trn>HSTREAM</a>&nbsp</b><i>stream</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>fillup</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>stream</i></dt>
+<dd>specifies which stream to service.</dd>
+<dt><i>fillup</i></dt>
+<dd>specifies whether MSS should fill all of its input buffers. If you have a CPU-intensive task to perform, passing a non-zero value can help avoid sound drop-outs. Normally, however, just pass in zero (don't fill).</dd>
+</dl>
+<h4>Returns</h4>
+<p>The total number of bytes read during the call.</p>
+<h4>Discussion</h4>
+<p>This function should normally only be necessary under DOS - Windows and MacOS application will usually use auto-streaming. You should try to call this function at least 10 times per second to avoid sound drop-outs. </p><p> Win16 applications may need to call this function if they won't be calling <i>PeekMessage</i> frequently. </p><p> Under DOS, MacOS and Win16, this function must not be invoked from an interrupt-based callback function. </p><p> Example files that use this function: Demo.C, Stream.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Stream436kmy.html">Digital Audio Streaming Services</a><br>
+<b>Related Sections:</b>
+<a href="Sharing the CPU under DOS.html">Sharing the CPU under DOS</a><br>
+<b>Related Functions:</b>
+<a href="AIL_auto_service_stream.html">AIL_auto_service_stream</a>, <a href="AIL_open_stream.html">AIL_open_stream</a>, <a href="AIL_serve.html">AIL_serve</a>, <a href="AIL_start_stream.html">AIL_start_stream</a><br>
+<b>Related Basic Types:</b>
+<a href="HSTREAM.html">HSTREAM</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

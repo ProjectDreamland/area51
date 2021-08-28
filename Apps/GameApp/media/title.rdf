@@ -1,0 +1,7 @@
+Texture Title
+{
+   Source TitleImage.tga
+   Format D3DFMT_X8R8G8B8
+   Width  128
+   Height 128
+}

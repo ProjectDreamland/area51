@@ -1,0 +1,7 @@
+#IOP-ILB# [PsIImodssyn 3000]
+L modssyn
+V 0x0101
+F 0x0000
+E 004 sceSSyn_Init
+E 005 sceSSyn_ATick
+E 006 sceSSyn_Load

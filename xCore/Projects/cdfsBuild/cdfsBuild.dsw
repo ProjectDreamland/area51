@@ -1,0 +1,46 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "*cdfsBuild*"=.\cdfsBuild.dsp - Package Owner=<4>
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name x_files
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name crt0
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "crt0"=.\crt0\crt0.dsp - Package Owner=<4>
+
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "x_files"=..\..\x_files\x_files.dsp - Package Owner=<4>
+
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

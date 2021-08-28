@@ -1,0 +1,52 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_get_timer_highest_delay</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the highest delay in timer servicing under Win 32.">
+<meta name="ms-hkwd" content="AIL_get_timer_highest_delay">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_get_timer_highest_delay</h1>
+<p>The function  <b>AIL_get_timer_highest_delay</b> returns the highest delay in timer servicing under Win 32.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="AIL_get_timer_highesqwlaaa.html" class=trn>AIL_get_timer_highest_delay</a>(</b><b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Returns</h4>
+<p>The highest delay since the last call to this function.</p>
+<h4>Discussion</h4>
+<p>This function is only available under Win32 and MacOS. Under Windows 9x, the OS task switcher can cause the Miles timer to slowdown when the system is under load (the NT scheduler is much better - it rarely slows down). The most common side effect of this timer delay is the digital audio subsystem skipping. This function allows you to measure just how good the OS is servicing your timers. </p><p> You can use the <a href="MILES_PREFERENCES.html#DIG_DS_MIX_FRAGMENT_CNT">DIG_DS_MIX_FRAGMENT_CNT</a> preference to increase the digital subsystem's mix ahead time to smooth over the delay returned by this function. </p><p> The Windows thread scheduler usually has the most trouble during disk I/O.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Timer Services.html">Timer Services</a><br>
+<b>Related Sections:</b>
+<a href="Sharing the CPU unde2nabaa.html">Sharing the CPU under Win32</a><br>
+<b>Related Functions:</b>
+<a href="AIL_serve.html">AIL_serve</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="U32.html">U32</a><br>
+<b>Related FAQs:</b>
+<a href="My sound is skipping3sr5kw.html">My sound is skipping on Win32 - what can I do?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>MIDIECHO for MacOS - MIDI Data Receiver and Interpreter</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="MIDIECHO for MacOS - MIDI Data Receiver and Interpreter">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>MIDIECHO for MacOS - MIDI Data Receiver and Interpreter</h1>
+<h4>Discussion</h4>
+<p> The <i>MIDIECHO</i> for Mac program receives incoming MIDI Channel Voice and System Exclusive messages via a QuickTime MIDI input, and sends them to a specified Miles Sound System Extended MIDI (XMIDI) driver. </p><p>Note: To use a MIDI keyboard, you have to install the Opcode OMS library by Opcode Systems, Inc. </p><p><b>MIDIECHO</b> can be useful for musicians who wish to develop music and sound-effects arrangements for MSS applications. Composers can receive immediate feedback when playing compositions on a MIDI sequencer platform, simply by connecting the host’s MIDI interface to a reasonable-quality MIDI interface on a "slave" Mac system running <b>MIDIECHO</b>. </p><p>When starting <b>MIDIECHO</b>, you must choose the capture and playback options. </p><p>With the drop-down menus, "<b>MIDI Input Device</b>" and "<b>MIDI Output Device</b>", you can choose the drivers for MIDI input and MIDI output. </p><p>The "<b>DLS Bank File</b>" button allows selecting a DLS file for playing music. If you selected QuickTime as MIDI Output Device, you can skip selection of the DLS Bank File. </p><p>The "<b>WVL File</b>" button allows selecting a Wave Library file for playing music. If you selected QuickTime as MIDI Output Device, you can skip selection of the Wave Library File. </p><p>Once you've made all of your choices, click the OK button, and the main <b>MIDIECHO</b> window will appear. </p><p>When <b>MIDIECHO</b> is running, the voice limit slider may be used to adjust the "voice alert limit", or the number of notes which MSS assumes the synthesizer in use can play simultaneously. During a MIDI performance, <b>MIDIECHO</b> presents a continuously updated graphical display of polyphonic note activity. </p><p>When the voice alert limit is exceeded, the progress bar begins iterating, and the Total Overflow indicator below the graph will be incremented. This feature may be helpful when diagnosing note "dropout" problems that occur due to partial overflow. </p><p>When running on a slower Mac with dense MIDI traffic, <b>MIDIECHO</b> may exhibit undesirable tempo variations due to program overhead. If this problem occurs, the MIDI Trace checkbox can be used to disable the continuously scrolling MIDI event trace, which appears in <b>MIDIECHO</b>’s uppermost window. </p><p>The "<b>All Notes Off</b>" button can be pressed at any time to "kill" any stuck notes, which may occur while running <b>MIDIECHO</b>. </p><p>During playback, if a combination of XMIDI Patch Bank Select controller and MIDI Program Change number values is used to set up a timbre which cannot be found in the specified Global Timbre Library file, <b>MIDIECHO</b> will complain with an error message. </p><p>The "<b>Error Beep</b>" checkbox can be used to enable or disable the Alert Sound when note overflow occurs, or when instrument-loading errors are reported. </p><p>The "<b>Filtering</b>" checkbox can be marked to toggle the software synthesizer's filtering mode. </p><p>The "<b>Reverberation</b>" checkbox can be marked to toggle the software synthesizer's reverb mode. </p><p><b>MIDIECHO</b> re-transmits incoming data on all 16 MIDI channels to the MSS driver via the <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a> call. The program retransmits all MIDI Channel Voice messages (MIDI System Exclusive messages are retransmitted as well, but this feature should be used with caution since "timing slips" inherent in System Exclusive transmission can cause strange, misleading effects in the music.) </p><p><b>MIDIECHO</b> is intended to receive normal MIDI Channel Voice data, not synthesizer-ready XMIDI data. Timing problems may occur if a dense XMIDI data stream is fed to the <b>MIDIECHO</b> host’s input port. </p>
+<p><a href="MIDIECHO for DOS - M8o0mlj.html">Next Topic (MIDIECHO for DOS - MIDI Data Receiver and Interpreter)</a>  </p><p><a href="MIDIECHO for Windows5hwjxy.html">Previous Topic (MIDIECHO for Windows - MIDI Data Receiver and Interpreter)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Miles Sound System Tq6hmqc.html">Miles Sound System Tools Reference</a><br>
+<b>Related Sections:</b>
+<a href="MIDIECHO for DOS - M8o0mlj.html">MIDIECHO for DOS - MIDI Data Receiver and Interpreter</a>, <a href="MIDIECHO for Windows5hwjxy.html">MIDIECHO for Windows - MIDI Data Receiver and Interpreter</a><br>
+<b>Related Functions:</b>
+<a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

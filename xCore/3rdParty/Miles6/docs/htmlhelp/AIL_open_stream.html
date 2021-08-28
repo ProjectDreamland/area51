@@ -1,0 +1,63 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_open_stream</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="opens a stream handle from a WAV or MP3 file.">
+<meta name="ms-hkwd" content="AIL_open_stream">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_open_stream</h1>
+<p>The function  <b>AIL_open_stream</b> opens a stream handle from a WAV or MP3 file.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HSTREAM.html" class=trn>HSTREAM</a> <a href="AIL_open_stream.html" class=trn>AIL_open_stream</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i><b>,</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>name</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>stream_mem</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>specifies the digital driver handle to use.</dd>
+<dt><i>name</i></dt>
+<dd>specifies the file name to stream. You must use WAV or MP3 files with the streaming API.</dd>
+<dt><i>stream_mem</i></dt>
+<dd>specifies the amount of memory to use for streaming. Normally, you will pass a zero for this parameter which tells MSS to determine the optimal amount of memory to use. You may want to increase this parameter if you play on increasing the playback rate.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A handle to the new stream, or NULL if the open failed.</p>
+<h4>Discussion</h4>
+<p>You can use an uncompressed WAV file, an IMA ADPCM compressed WAV file, a wave-wrapped MP3 file, or standard MP3 file. A stream is similar to a digital sample, but instead of the entire file being loaded into memory, only a small portion of the file is loaded at once. </p><p> You can tell MSS to use an existing open file handle by passing the file handle in as a string with "\\\\" preceding the number. For example, if you wanted MSS to streaming from file handle 6, then pass in "\\\\6" for the filename. In this case, MSS leaves the opening and closing of the file handle to your application. To stream standard MP3 files from a file handle (vs. wave-wrapped MP3 files), you must also give Miles the length of the MP3 file and use the ".mp3" extension. So, if you want to stream an MP3 file that is 4096 bytes in size from file handle 5, then use "\\\\5,4096.mp3". </p><p> You can also override the IO functions that Miles uses to read from the stream completely with the <a href="AIL_set_file_callbacks.html">AIL_set_file_callbacks</a> function, if you don't want to bother with the file handle tricks. </p><p> Under Windows, streams are automatically serviced in the background by default. You can service the buffers manually with the <a href="AIL_service_stream.html">AIL_service_stream</a> and <a href="AIL_auto_service_stream.html">AIL_auto_service_stream</a> functions. </p><p> Under MacOS, streams are automatically serviced with background asynchronous reads. </p><p> Under DOS, you must always service the stream manually with the <a href="AIL_service_stream.html">AIL_service_stream</a> function. </p><p> If the total size of the streaming buffers is greater than or equal to the total stream size, then the MSS will preload all of the data automatically, so you'll never use more memory than a normal sample would take. </p><p> This function doesn't actually load any of the streaming buffers - the only routine in the streaming API that performs the file reading is <a href="AIL_service_stream.html">AIL_service_stream</a>. </p><p> You can tell MSS to use an existing open file handle by passing the file handle in as a string with "\\\\" preceding the number. For example, if you wanted MSS to streaming from file handle 6, then pass in "\\\\6" for the filename. In this case, MSS leaves the opening and closing of the file handle to your application. Note that to use the file handle option with MP3 data, you must use wave-wrapped MP3 files. </p><p> Under DOS, MacOS and Win16, this function must not be invoked from an interrupt-based callback function. </p><p> Example files that use this function: Demo.C, Stream.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Stream436kmy.html">Digital Audio Streaming Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_auto_service_stream.html">AIL_auto_service_stream</a>, <a href="AIL_close_stream.html">AIL_close_stream</a>, <a href="AIL_register_stream_s0khaa.html">AIL_register_stream_callback</a>, <a href="AIL_service_stream.html">AIL_service_stream</a>, <a href="AIL_set_file_callbacks.html">AIL_set_file_callbacks</a>, <a href="AIL_set_stream_loop_count.html">AIL_set_stream_loop_count</a>, <a href="AIL_set_stream_pan.html">AIL_set_stream_pan</a>, <a href="AIL_set_stream_playbug1eaa.html">AIL_set_stream_playback_rate</a>, <a href="AIL_set_stream_volume.html">AIL_set_stream_volume</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="HSTREAM.html">HSTREAM</a>, <a href="S32.html">S32</a>, <a href="char const P.html">char const *</a><br>
+<b>Related FAQs:</b>
+<a href="How do I stream a fisosz8v.html">How do I stream a file off a hard disk or CD?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

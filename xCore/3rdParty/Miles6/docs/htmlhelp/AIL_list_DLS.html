@@ -1,0 +1,70 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_list_DLS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="creates a detailed listing of a DLS or MLS file.">
+<meta name="ms-hkwd" content="AIL_list_DLS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_list_DLS</h1>
+<p>The function  <b>AIL_list_DLS</b> creates a detailed listing of a DLS or MLS file.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_list_DLS.html" class=trn>AIL_list_DLS</a>(</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>dls</i><b>,</b>
+<b>&nbsp&nbsp<a href="char P.html" class=trn>char *</a>&nbsp*</b><i>list</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>listsize</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>flags</i><b>,</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>filename</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dls</i></dt>
+<dd>points to a file image containing the DLS or MLS file.</dd>
+<dt><i>flags</i></dt>
+<dd>is zero, or one or more of the <a href="MILES_LIST_DLS_FLAGS.html">MILES_LIST_DLS_FLAGS</a>.</dd>
+<dt><i>filename</i></dt>
+<dd>is the name of the DLS file. The filename is used for insertion in the list file title as well as for directory creation if the <a href="MILES_LIST_DLS_FLAGS.html#AILDLSLIST_DUMP_WAVE">AILDLSLIST_DUMP_WAVE</a> flag is used.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>list</i></dt>
+<dd>should be the address of a " void* " pointer that will return with the pointer to the new ASCII DLS list. This parameter can be NULL if you don't need it.</dd>
+<dt><i>listsize</i></dt>
+<dd>should be the address of an unsigned 32-bit integer that will return with the size of the new ASCII DLS list. This parameter can be NULL if you don't need it.</dd>
+</dl>
+<h4>Returns</h4>
+<p>1, if the call was successful, or 0 if the call failed.</p>
+<h4>Discussion</h4>
+<p>You must free the pointer returned in list with <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>. </p><p> The output ASCII list is zero-terminated. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_list_MIDI.html">AIL_list_MIDI</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_LIST_DLS_FLAGS.html">MILES_LIST_DLS_FLAGS</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="char P.html">char *</a>, <a href="char const P.html">char const *</a>, <a href="void const P.html">void const *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

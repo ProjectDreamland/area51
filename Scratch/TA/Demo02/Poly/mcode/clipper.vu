@@ -1,0 +1,516 @@
+;==========================================================================
+;
+; Code to view volume clip a textured diffuse tri
+;
+;==========================================================================
+
+
+;==================================================================
+; Clip tri...
+; In:
+;
+; 3 Verts of tri:
+;
+; Vert0_Pos     - Position in clip space
+; Vert0_Col     - RGB color (screen space)
+; Vert0_UV      - UV (before transform)
+;
+; Vert1_Pos     - Position in clip space
+; Vert1_Col     - RGB color (screen space)
+; Vert1_UV      - UV (before transform)
+;
+; Vert2_Pos     - Position in clip space
+; Vert2_Col     - RGB color (screen space)
+; Vert2_UV      - UV (before transform)
+;
+; VU ClipFlags  - Results of last 3 vert clips
+;
+;==================================================================
+
+CLIP_TRI:
+
+;==================================================================
+; Store clipper registers that are used
+;==================================================================
+    NOP                                 ISW.x VertSourceBuffer, (CLIPPER_REGISTER_STORAGE + 0)(VI00)
+    NOP                                 ISW.y VertSourceAddr,   (CLIPPER_REGISTER_STORAGE + 0)(VI00)
+    NOP                                 ISW.z VertSourceCount,  (CLIPPER_REGISTER_STORAGE + 0)(VI00)
+                                        
+    NOP                                 ISW.w VertDestBuffer,   (CLIPPER_REGISTER_STORAGE + 0)(VI00)
+    NOP                                 ISW.x VertDestAddr,     (CLIPPER_REGISTER_STORAGE + 1)(VI00)
+    NOP                                 ISW.y VertDestCount,    (CLIPPER_REGISTER_STORAGE + 1)(VI00)
+                                        
+    NOP                                 ISW.z PlaneAddr,        (CLIPPER_REGISTER_STORAGE + 1)(VI00)
+    NOP                                 ISW.w PlaneClipMask,    (CLIPPER_REGISTER_STORAGE + 1)(VI00)
+    NOP                                 ISW.x PlaneCheckMask,   (CLIPPER_REGISTER_STORAGE + 2)(VI00)
+
+    NOP                                 SQ.xyzw Vert0_Pos(xyzw), (CLIPPER_REGISTER_STORAGE + 3)(VI00)
+    NOP                                 SQ.xyzw Vert1_Pos(xyzw), (CLIPPER_REGISTER_STORAGE + 4)(VI00)
+    NOP                                 SQ.xyzw Vert2_Pos(xyzw), (CLIPPER_REGISTER_STORAGE + 5)(VI00)
+
+    NOP                                 SQ.xyzw Vert0_Col(xyzw), (CLIPPER_REGISTER_STORAGE + 6)(VI00)
+    NOP                                 SQ.xyzw Vert1_Col(xyzw), (CLIPPER_REGISTER_STORAGE + 7)(VI00)
+    NOP                                 SQ.xyzw Vert2_Col(xyzw), (CLIPPER_REGISTER_STORAGE + 8)(VI00)
+
+    NOP                                 SQ.xyzw Vert0_UV(xyzw),  (CLIPPER_REGISTER_STORAGE + 9)(VI00)
+    NOP                                 SQ.xyzw Vert1_UV(xyzw),  (CLIPPER_REGISTER_STORAGE + 10)(VI00)
+    NOP                                 SQ.xyzw Vert2_UV(xyzw),  (CLIPPER_REGISTER_STORAGE + 11)(VI00)
+
+;==================================================================
+; Prepare to clip the 3 verts
+;==================================================================
+
+    ; Setup clip buffers
+    NOP                                     IADDIU VertSourceBuffer, VI00, CLIPPER_BUFFER0
+    NOP                                     IADDIU VertDestBuffer,   VI00, CLIPPER_BUFFER1
+
+    ; Copy 3 verts into source buffer
+    NOP                                     SQ.xyzw Vert0_Pos(xyzw),  (VERT_POS+   (0*VERT_SIZE))(VertSourceBuffer)
+    NOP                                     SQ.xyzw Vert0_Col(xyzw),  (VERT_NORM + (0*VERT_SIZE))(VertSourceBuffer)
+    NOP                                     SQ.xyzw Vert0_UV(xyzw),   (VERT_UV+    (0*VERT_SIZE))(VertSourceBuffer)
+                                            
+    NOP                                     SQ.xyzw Vert1_Pos(xyzw),  (VERT_POS+   (1*VERT_SIZE))(VertSourceBuffer)
+    NOP                                     SQ.xyzw Vert1_Col(xyzw),  (VERT_NORM + (1*VERT_SIZE))(VertSourceBuffer)
+    NOP                                     SQ.xyzw Vert1_UV(xyzw),   (VERT_UV+    (1*VERT_SIZE))(VertSourceBuffer)
+                                            
+    NOP                                     SQ.xyzw Vert2_Pos(xyzw),  (VERT_POS+   (2*VERT_SIZE))(VertSourceBuffer)
+    NOP                                     SQ.xyzw Vert2_Col(xyzw),  (VERT_NORM + (2*VERT_SIZE))(VertSourceBuffer)
+    NOP                                     SQ.xyzw Vert2_UV(xyzw),   (VERT_UV+    (2*VERT_SIZE))(VertSourceBuffer)
+                                            
+    ; Setup source count (and dest count incase of plane skips)                   
+    NOP                                     IADDIU VertSourceCount, VI00, 3
+    NOP                                     IADDIU VertDestCount,   VI00, 3
+
+    ; Get initial planes to check
+    NOP                                     FCGET PlaneCheckMask    ; vert2
+    CLIPw.xyz Vert1_Pos(xyz), Vert1_Pos(w)  NOP
+    NOP                                     NOP
+    NOP                                     NOP
+    NOP                                     NOP
+    NOP                                     FCGET ClipResults
+    CLIPw.xyz Vert0_Pos(xyz), Vert0_Pos(w)  IOR PlaneCheckMask, PlaneCheckMask, ClipResults ; vert1
+    NOP                                     NOP
+    NOP                                     NOP
+    NOP                                     NOP
+    NOP                                     FCGET ClipResults
+    NOP                                     IOR PlaneCheckMask, PlaneCheckMask, ClipResults  ; vert0
+
+    ; Load vert0 with SourceVerts[nSourceVerts-1]
+    NOP                                     MOVE Vert0_Pos(xyzw), Vert2_Pos(xyzw)
+    NOP                                     MOVE Vert0_Col(xyzw), Vert2_Col(xyzw)
+    NOP                                     MOVE Vert0_UV(xyzw),  Vert2_UV(xyzw)
+                                            
+    ; Loop through planes                   
+    NOP                                     IADDIU PlaneAddr, VI00, CLIPPER_PLANE_TABLE ; Start at top of plane table
+    NOP                                     ILW.x PlaneClipMask, (0)(PlaneAddr)               ; Get plane mask
+
+;==================================================================
+; Loop through planes
+;==================================================================
+TexDifClipperPlaneLoop:
+
+    ; Skip this plane? / Setup source and dest addr
+    NOP                                 IAND ClipResults, PlaneCheckMask, PlaneClipMask
+    NOP                                 IADD VertSourceAddr, VI00, VertSourceBuffer
+    NOP                                 IBEQ ClipResults, VI00, TexDifClipperSkipPlane
+    NOP                                 IADD VertDestAddr,   VI00, VertDestBuffer
+
+    ; Reset dest count
+    NOP                                 IADDIU VertDestCount,   VI00, 0
+
+;==================================================================
+; Loop through clipper verts
+;==================================================================
+TexDifClipperVertLoop:
+
+    ; Check vert0 / Load vert1                        
+    CLIPw.xyz Vert0_Pos(xyz), Vert0_Pos(w)      LQ.xyzw Vert1_Pos(xyzw),  (VERT_POS) (VertSourceAddr)
+    NOP                                         LQ.xyzw Vert1_Col(xyzw),  (VERT_NORM)(VertSourceAddr)
+    NOP                                         LQ.xyzw Vert1_UV(xyzw),   (VERT_UV)  (VertSourceAddr)
+    NOP                                         IADDIU  VertSourceAddr, VertSourceAddr, VERT_SIZE
+
+    ; Copy vert1 to vert2 ready for rolling to the next vert
+    NOP                                         MOVE Vert2_Pos(xyzw), Vert1_Pos(xyzw)
+    NOP                                         MOVE Vert2_Col(xyzw), Vert1_Col(xyzw)
+    NOP                                         MOVE Vert2_UV(xyzw),  Vert1_UV(xyzw)
+
+    ; Is vert0 out? / CheckVert1 / Grab swapped clip components incase of interpolation / Keep planes to check
+    NOP                                         FCGET ClipResults
+    CLIPw.xyz Vert1_Pos(xyz), Vert1_Pos(w)      IAND ClipResults, ClipResults, PlaneClipMask
+    NOP                                         MOVE.xyzw Vert1_Comp(xyzw), Vert0_Pos(xyzw)
+    NOP                                         IBNE ClipResults, VI00, TexDifClipperVert0Out
+    NOP                                         MOVE.xyzw Vert0_Comp(xyzw), Vert1_Pos(xyzw)
+
+    ; Drop through (NOTE vert0 & vert1 component registers have already been swapped!)
+
+;==================================================================
+; Vert0 is in - copy it into dest buffer
+; If Vert1 is out, then interpolate, else do next vert
+;==================================================================
+TexDifClipperVert0In:
+
+    ; Store vert0 in dest buffer
+    NOP                                         SQ.xyzw Vert0_Pos(xyzw), (VERT_POS) (VertDestAddr)
+    NOP                                         SQ.xyzw Vert0_Col(xyzw), (VERT_NORM)(VertDestAddr)
+    NOP                                         SQ.xyzw Vert0_UV(xyzw),  (VERT_UV)  (VertDestAddr)
+
+    ; If vert1 is in, skip to next vert / Keep planes to check / Inc vert dest addr + count
+    NOP                                         FCGET ClipResults
+    NOP                                         IAND ClipResults, ClipResults, PlaneClipMask
+    NOP                                         IADDIU VertDestAddr,  VertDestAddr, VERT_SIZE
+    NOP                                         IBEQ ClipResults, VI00, TexDifClipperNextVert
+    NOP                                         IADDIU VertDestCount, VertDestCount, 1
+
+    ; Swap verts0,1 to fix cracking (vert2 already contains vert1)
+    NOP                                         MOVE Vert1_Pos(xyzw), Vert0_Pos(xyzw)
+    NOP                                         MOVE Vert1_Col(xyzw), Vert0_Col(xyzw)
+    NOP                                         MOVE Vert1_UV(xyzw),  Vert0_UV(xyzw)
+
+    NOP                                         MOVE Vert0_Pos(xyzw), Vert2_Pos(xyzw)
+    NOP                                         MOVE Vert0_Col(xyzw), Vert2_Col(xyzw)
+    NOP                                         MOVE Vert0_UV(xyzw),  Vert2_UV(xyzw)
+
+    ; Vert1 is out, so interpolate
+    NOP                                         B TexDifClipperInterpolate
+    NOP                                         NOP
+
+
+
+;==================================================================
+; Vert0 is out - do not copy it
+; If Vert1 is in, then interpolate, else do next vert
+;==================================================================
+TexDifClipperVert0Out:
+
+    ; If vert1 is out skip to next vert / Keep planes to check / Grab clip components incase of interpolation...
+    NOP                                         FCGET ClipResults
+    NOP                                         IAND ClipResults, ClipResults, PlaneClipMask
+    NOP                                         MOVE.xyzw Vert0_Comp(xyzw), Vert0_Pos(xyzw)
+    NOP                                         IBNE ClipResults, VI00, TexDifClipperNextVert
+    NOP                                         MOVE.xyzw Vert1_Comp(xyzw), Vert1_Pos(xyzw)
+
+    ; Vert1 is in, so drop through to interpolate...
+
+
+;==================================================================
+; Interpolate vert0 and vert1 to create vert3
+;==================================================================
+TexDifClipperInterpolate:
+
+    ; Jump to plane intersection T calculation
+    NOP                                         ILW.y ClipResults, 0(PlaneAddr)
+    NOP                                         JR ClipResults
+    NOP                                         NOP
+
+    ; NOTE - The extra nops are because the micro code in RAM maybe aligned to 8 and not 16!
+
+    ;==========================================================
+    ; +'VE PLANE: Right, Bottom, Back
+    ; A = (Vert0->Pos.? - Vert0->Pos.W) 
+    ; B = (Vert1->Pos.W - Vert1->Pos.?) ;
+    ; T = A / (A + B) ;
+    ;==========================================================
+POLY_CLIP_PLANE_POS_Z:  ; Back plane
+    
+    NOP                                                     MR32.xyzw Vert0_Comp(xyzw), Vert0_Comp(xyzw)    ; Vert0.w = X
+    NOP                                                     MR32.xyzw Vert1_Comp(xyzw), Vert1_Comp(xyzw)    ; Vert1.w = X
+                                                            
+POLY_CLIP_PLANE_POS_Y:  ; Bottom plane
+    NOP                                                     MR32.xyzw Vert0_Comp(xyzw), Vert0_Comp(xyzw)    ; Vert0.w = Y
+    NOP                                                     MR32.xyzw Vert1_Comp(xyzw), Vert1_Comp(xyzw)    ; Vert1.w = Y
+                                                            
+POLY_CLIP_PLANE_POS_X:  ; Right plane
+    NOP                                                     MR32.xyzw Vert0_Comp(xyzw), Vert0_Comp(xyzw)    ; Vert0.w = Z
+    NOP                                                     MR32.xyzw Vert1_Comp(xyzw), Vert1_Comp(xyzw)    ; Vert1.w = Z
+
+    SUBw.w Vert0_Comp(w), Vert0_Comp(w), Vert0_Pos(w)       NOP                                             ; Vert0 = A
+    SUBw.w Vert1_Comp(w), Vert1_Pos(w),  Vert1_Comp(w)      B TexDifClipperCreateVert                       ; Vert1 = B
+    ADDw.w Vert1_Comp(w), Vert1_Comp(w), Vert0_Comp(w)      NOP                                             ; Vert1 = A + B
+
+   ;==========================================================
+    ; -'VE PLANE: Left, Top, Front
+    ; A = (Vert0->Pos.? + Vert0->Pos.W)
+    ; B = (Vert1->Pos.W + Vert1->Pos.?)
+    ; T = A / (A - B) ;
+    ;==========================================================
+POLY_CLIP_PLANE_NEG_Z:  ; Front plane
+    NOP                                                     MR32.xyzw Vert0_Comp(xyzw), Vert0_Comp(xyzw)    ; Vert0.w = X
+    NOP                                                     MR32.xyzw Vert1_Comp(xyzw), Vert1_Comp(xyzw)    ; Vert1.w = X
+                                                            
+POLY_CLIP_PLANE_NEG_Y:  ; Top plane
+    NOP                                                     MR32.xyzw Vert0_Comp(xyzw), Vert0_Comp(xyzw)    ; Vert0.w = Y
+    NOP                                                     MR32.xyzw Vert1_Comp(xyzw), Vert1_Comp(xyzw)    ; Vert1.w = Y
+                                                            
+POLY_CLIP_PLANE_NEG_X:  ; Left plane
+    NOP                                                     MR32.xyzw Vert0_Comp(xyzw), Vert0_Comp(xyzw)    ; Vert0.w = Z
+    NOP                                                     MR32.xyzw Vert1_Comp(xyzw), Vert1_Comp(xyzw)    ; Vert1.w = Z
+
+    ADDw.w Vert0_Comp(w), Vert0_Comp(w), Vert0_Pos(w)       NOP                                             ; Vert0 = A
+    ADDw.w Vert1_Comp(w), Vert1_Pos(w),  Vert1_Comp(w)      B TexDifClipperCreateVert                       ; Vert1 = B
+    SUBw.w Vert1_Comp(w), Vert0_Comp(w), Vert1_Comp(w)      NOP                                             ; Vert1 = A + B
+
+
+    ;==========================================================
+    ; Do interpolation and create new vert (all results goto vert3)
+    ;==========================================================
+TexDifClipperCreateVert:
+    NOP                                                             DIV Q, Vert0_Comp(w), Vert1_Comp(w)     ; Q = A / (A+B)
+
+    ; Create new vert3
+    SUB.xyzw Vert3_Pos(xyzw), Vert1_Pos(xyzw), Vert0_Pos(xyzw)      NOP         ; Vert3 = Vert1 - Vert0
+    SUB.xyzw Vert3_Col(xyzw), Vert1_Col(xyzw), Vert0_Col(xyzw)      NOP
+    SUB.xyzw Vert3_UV(xyyzw), Vert1_UV(xyzw),  Vert0_UV(xyzw)       NOP
+
+    NOP                                                             WAITQ
+    MULq.xyzw Vert3_Pos(xyzw), Vert3_Pos(xyzw), Q                   NOP         ; Vert3 *= Q
+    MULq.xyzw Vert3_Col(xyzw), Vert3_Col(xyzw), Q                   NOP
+    MULq.xyzw Vert3_UV(xyzw),  Vert3_UV(xyzw),  Q                   NOP
+
+    ; Finish interpolation / Next vert dest addr (hence the -VERT_SIZE below)
+    ADD.xyzw Vert3_Pos(xyzw), Vert3_Pos(xyzw), Vert0_Pos(xyzw)      IADDIU VertDestAddr,  VertDestAddr, VERT_SIZE
+    ADD.xyzw Vert3_Col(xyzw), Vert3_Col(xyzw), Vert0_Col(xyzw)      IADDIU VertDestCount, VertDestCount, 1
+    ADD.xyzw Vert3_UV(xyzw),  Vert3_UV(xyzw),  Vert0_UV(xyzw)       NOP         ; Now: Vert3 = Vert0 + (Vert1 - Vert0) * Q
+
+    ; Start clipping check
+    CLIPw.xyz Vert3_Pos(xyz), Vert3_Pos(w)                          NOP
+
+    ; Store in dest buffer
+    NOP                                                             SQ.xyzw Vert3_Pos(xyzw), (VERT_POS  - VERT_SIZE)(VertDestAddr)
+    NOP                                                             SQ.xyzw Vert3_Col(xyzw), (VERT_NORM - VERT_SIZE)(VertDestAddr)
+    NOP                                                             SQ.xyzw Vert3_UV(xyzw),  (VERT_UV   - VERT_SIZE)(VertDestAddr)
+
+    ; May have to check for new clipping planes...
+    ; (The front clipping plane can generate a poly that needs X/Y clipping)
+    NOP                                                             FCGET ClipResults
+    NOP                                                             IOR PlaneCheckMask, PlaneCheckMask, ClipResults
+
+    ; Drop through to next vert...
+
+;==================================================================
+; Next clip vert (vert2 contains the last vert1)
+;==================================================================
+TexDifClipperNextVert:
+
+    ; Roll verts(vert2 is the old vert1) / Next vert
+    NOP                                 MOVE Vert0_Pos(xyzw), Vert2_Pos(xyzw)
+    NOP                                 ISUBIU VertSourceCount, VertSourceCount, 1
+    NOP                                 MOVE Vert0_Col(xyzw), Vert2_Col(xyzw)
+    NOP                                 IBGTZ VertSourceCount, TexDifClipperVertLoop
+    NOP                                 MOVE Vert0_UV(xyzw),  Vert2_UV(xyzw)
+
+;==================================================================
+; Next plane
+;==================================================================
+TexDifClipperNextPlane:
+
+    ; Setup new source count / Early out - if we do not have at least 3 verts, then exit now!
+    NOP                                 ISUBIU ClipResults, VertDestCount, 3
+    NOP                                 IADD VertSourceCount, VertDestCount, VI00
+    NOP                                 IBLTZ ClipResults, TexDifClipperExit
+    
+    ; Load vert0 with SourceVerts[nSourceVerts-1] (which is the last vert in the current dest buffer)
+    NOP                                 LQ.xyzw Vert0_Pos(xyzw),  (VERT_POS  - VERT_SIZE)(VertDestAddr)
+    NOP                                 LQ.xyzw Vert0_Col(xyzw),  (VERT_NORM - VERT_SIZE)(VertDestAddr)
+    NOP                                 LQ.xyzw Vert0_UV(xyzw),   (VERT_UV   - VERT_SIZE)(VertDestAddr)
+    
+    ; Swap source/dest buffers
+    NOP                                 IADD SwapTemp,         VertSourceBuffer, VI00
+    NOP                                 IADD VertSourceBuffer, VertDestBuffer,   VI00
+    NOP                                 IADD VertDestBuffer,   SwapTemp,         VI00
+
+    ; Next plane
+TexDifClipperSkipPlane:
+    NOP                                 IADDIU PlaneAddr, PlaneAddr, 1                  ; Next plane lookup
+    NOP                                 ILW.x PlaneClipMask, (0)(PlaneAddr)             ; Get next plane mask
+    NOP                                 NOP
+    NOP                                 IBNE PlaneClipMask, VI00, TexDifClipperPlaneLoop   ; Another plane to do?
+    NOP                                 NOP
+
+
+
+; ASSERT CHECK
+;    NOP                                 ISUBIU ClipResults, VertSourceCount, 9
+;    NOP                                 NOP
+;    NOP                                 IBLEZ ClipResults, TexDifClipperGood
+;    NOP                                 NOP
+;    NOP[D] NOP
+;    NOP    NOP
+;TexDifClipperGood:
+
+;==================================================================
+; Transform clipped verts to screen space whilst converting from
+; a triangle fan to a triangle strip
+; The sequence for converting a fan to a strip is as follows:
+; 0,1,2,0,3,4,0,5,6,0,7,8 etc. with ) with 0 having NoKick (ADC) bit set
+;==================================================================
+
+    ; Get source and count
+    NOP                                                         IADD VertSourceAddr, VI00, VertSourceBuffer
+    NOP                                                         IADD VertSourceCount, VertDestCount, VI00
+
+    ; Get dest (+1 to leave room for gif tag) and clear count
+    NOP                                                         IADD   VertDestBuffer, VI00, ClipperStripDestAddr
+    NOP                                                         IADDIU VertDestCount,  VI00, 0
+    NOP                                                         IADDIU VertDestAddr,   VertDestBuffer, 1    ; Skip giftag
+
+    ; Toggle clipper strip dest for next time
+    NOP                                                         IADDIU ClipResults, VI00, CLIPPER_STRIP_BUFFER0
+    NOP                                                         NOP
+    NOP                                                         IBEQ ClipperStripDestAddr, ClipResults, TexDifClipTransform
+    NOP                                                         IADDIU ClipperStripDestAddr, VI00, CLIPPER_STRIP_BUFFER1
+    NOP                                                         IADDIU ClipperStripDestAddr, VI00, CLIPPER_STRIP_BUFFER0
+
+    ;==========================================================
+    ; Load and transform vert0 to screen space (results in vert0)
+    ; since it's used as a pivot for the tri-strip
+    ;==========================================================
+TexDifClipTransform:
+
+    ; Load clip space vert
+    NOP                                                         LQ.xyzw Vert0_Pos(xyzw),  (VERT_POS )(VertSourceAddr)
+    NOP                                                         LQ.xyzw Vert0_Col(xyzw),  (VERT_NORM)(VertSourceAddr)
+    NOP                                                         LQ.xyzw Vert0_UV(xyzw),   (VERT_UV  )(VertSourceAddr)
+
+    ; Transfrom from clip->screen space / Set ADC bit / Next source addr + count
+    MULAx.xyzw  ACC, C2S0(xyzw),  Vert0_Pos(x)                  IADDIU ClipResults, VI00, 0x7fff    ; Setup ADC bit
+    MADDAy.xyzw ACC, C2S1(xyzw),  Vert0_Pos(y)                  IADDIU ClipResults, ClipResults, 1
+    MADDAz.xyzw ACC, C2S2(xyzw),  Vert0_Pos(z)                  ISUBIU VertSourceCount, VertSourceCount, 1
+    MADDw.xyzw  Vert0_Pos(xyzw), C2S3(xyzw), Vert0_Pos(w)       IADDIU VertSourceAddr,  VertSourceAddr,  VERT_SIZE
+
+    NOP                                                         DIV Q, VF00w, Vert0_Pos(w)
+    NOP                                                         WAITQ
+
+    ; Project vert (results in vert0) / Set NoKick (ADC bit)
+    MULq.xyz Vert0_Pos(xyz), Vert0_Pos(xyz),Q                   NOP
+    MULq.xyzw Vert0_UV(xyzw), Vert0_UV(xyzw), Q                 MFIR.w Vert0_Pos(w), ClipResults ; Set NoKick
+
+    ; Convert to integer ready for hardware / Wait for last draw to finish (the clip buffer may still be being used by the GS)
+    ADD.z      Vert0_Pos( z ), Vert0_Pos( z ), ZBias(z)         NOP
+    FTOI4.xyz  Vert0_Pos(xyz), Vert0_Pos(xyz)                   NOP ;XGKICK VI00
+    FTOI0.xyzw Vert0_Col(xyzw), Vert0_Col(xyzw)                 NOP
+
+TexDifClipperTransformVerts:
+
+    ;==========================================================
+    ; Store vert0 (1st vert of fan)
+    ;==========================================================
+    NOP                                                         SQ.xyzw Vert0_Pos(xyzw),  (VERT_POS )(VertDestAddr)
+    NOP                                                         SQ.xyzw Vert0_Col(xyzw),  (VERT_NORM)(VertDestAddr)
+    NOP                                                         SQ.xyzw Vert0_UV(xyzw),   (VERT_UV  )(VertDestAddr)
+
+    ;==========================================================
+    ; Load, transform, and store vert1
+    ;==========================================================
+    NOP                                                         LQ.xyzw Vert1_Pos(xyzw),  (VERT_POS )(VertSourceAddr)
+    NOP                                                         LQ.xyzw Vert1_Col(xyzw),  (VERT_NORM)(VertSourceAddr)
+    NOP                                                         LQ.xyzw Vert1_UV(xyzw),   (VERT_UV  )(VertSourceAddr)
+
+    ; Transfrom from clip->screen space (results in vert3) / Next dest / Next source vert
+    MULAx.xyzw  ACC, C2S0(xyzw),  Vert1_Pos(x)                  IADDIU VertDestAddr,  VertDestAddr,  VERT_SIZE
+    MADDAy.xyzw ACC, C2S1(xyzw),  Vert1_Pos(y)                  IADDIU VertDestCount, VertDestCount, 1
+    MADDAz.xyzw ACC, C2S2(xyzw),  Vert1_Pos(z)                  ISUBIU VertSourceCount, VertSourceCount, 1
+    MADDw.xyzw  Vert3_Pos(xyzw), C2S3(xyzw), Vert1_Pos(w)       IADDIU VertSourceAddr,  VertSourceAddr, VERT_SIZE
+
+    NOP                                                         DIV Q, VF00w, Vert3_Pos(w)
+    NOP                                                         WAITQ
+
+    ; Project vert1 (results in vert3)
+    MULq.xyz Vert3_Pos(xyz), Vert3_Pos(xyz),Q                   NOP
+    MULq.xyzw Vert3_UV(xyzw), Vert1_UV(xyzw), Q                 MFIR.w Vert3_Pos(w), VI00   ; Clear NoKick
+
+    ; Convert to integer ready for hardware / Next dest addr + count
+    ADD.z      Vert3_Pos( z ), Vert3_Pos( z ), ZBias(z)         NOP
+    FTOI4.xyz  Vert3_Pos(xyz), Vert3_Pos(xyz)                   IADDIU VertDestAddr,  VertDestAddr, VERT_SIZE
+    FTOI0.xyzw Vert3_Col(xyzw), Vert1_Col(xyzw)                 IADDIU VertDestCount, VertDestCount, 1
+
+    ; Store vert1 / Done?
+    NOP                                                         SQ.xyzw Vert3_Pos(xyzw),  (VERT_POS  - VERT_SIZE)(VertDestAddr)
+    NOP                                                         SQ.xyzw Vert3_Col(xyzw),  (VERT_NORM - VERT_SIZE)(VertDestAddr)
+    NOP                                                         IBEQ  VertSourceCount, VI00, TexDifClipperDraw 
+    NOP                                                         SQ.xyzw Vert3_UV(xyzw),   (VERT_UV   - VERT_SIZE)(VertDestAddr)
+
+    ;==========================================================
+    ; Load, transform, and store vert2
+    ;==========================================================
+    NOP                                                         LQ.xyzw Vert1_Pos(xyzw),  (VERT_POS )(VertSourceAddr)
+    NOP                                                         LQ.xyzw Vert1_Col(xyzw),  (VERT_NORM)(VertSourceAddr)
+    NOP                                                         LQ.xyzw Vert1_UV(xyzw),   (VERT_UV  )(VertSourceAddr)
+
+    ; Transfrom from clip->screen space (results in vert3) / Next source vert
+    MULAx.xyzw  ACC, C2S0(xyzw),  Vert1_Pos(x)                  NOP
+    MADDAy.xyzw ACC, C2S1(xyzw),  Vert1_Pos(y)                  NOP
+    MADDAz.xyzw ACC, C2S2(xyzw),  Vert1_Pos(z)                  ISUBIU VertSourceCount, VertSourceCount, 1
+    MADDw.xyzw  Vert3_Pos(xyzw), C2S3(xyzw), Vert1_Pos(w)       IADDIU VertSourceAddr,  VertSourceAddr, VERT_SIZE
+
+    NOP                                                         DIV Q, VF00w, Vert3_Pos(w)
+    NOP                                                         WAITQ
+
+    ; Project vert2 (results in vert3)
+    MULq.xyz Vert3_Pos(xyz), Vert3_Pos(xyz),Q                   NOP
+    MULq.xyzw Vert3_UV(xyzw), Vert1_UV(xyzw), Q                 MFIR.w Vert3_Pos(w), VI00   ; Clear NoKick
+
+    ; Convert to integer ready for hardware / Next dest address (hence the -VERT_SIZE)
+    ADD.z      Vert3_Pos( z ), Vert3_Pos( z ), ZBias(z)         NOP
+    FTOI4.xyz  Vert3_Pos(xyz), Vert3_Pos(xyz)                   IADDIU VertDestAddr,  VertDestAddr, VERT_SIZE
+    FTOI0.xyzw Vert3_Col(xyzw), Vert1_Col(xyzw)                 IADDIU VertDestCount, VertDestCount, 1
+
+    ; Store vert2 / Done?
+    NOP                                                         SQ.xyzw Vert3_Pos(xyzw),  (VERT_POS  - VERT_SIZE)(VertDestAddr)
+    NOP                                                         SQ.xyzw Vert3_Col(xyzw),  (VERT_NORM - VERT_SIZE)(VertDestAddr)
+    NOP                                                         IBNE  VertSourceCount, VI00, TexDifClipperTransformVerts
+    NOP                                                         SQ.xyzw Vert3_UV(xyzw),   (VERT_UV   - VERT_SIZE)(VertDestAddr)
+
+;==================================================================
+; Draw the strip
+;==================================================================
+TexDifClipperDraw:
+
+    ; Finally - draw!                                               
+    
+    NOP                                                             LQ FTemp(xyzw), VU_GIFTAG_STRIP(VI00)
+    NOP                                                             IADDIU ITemp, VertDestCount, 0x7FFF         ; set EOP bit
+    NOP                                                             IADDIU ITemp, ITemp, 1
+    NOP                                                             MFIR.x FTemp(x), ITemp                      ; set NLOOP
+    NOP                                                             SQ     FTemp(xyzw),  0(VertDestBuffer)      ; write the GIF Tag
+
+    NOP                                                             XGKICK VertDestBuffer
+    NOP                                                             NOP
+
+;==================================================================
+; Restore clipper registers that are used
+;==================================================================
+TexDifClipperExit:
+    NOP                                     ILW.x VertSourceBuffer, (CLIPPER_REGISTER_STORAGE + 0)(VI00)
+    NOP                                     ILW.y VertSourceAddr,   (CLIPPER_REGISTER_STORAGE + 0)(VI00)
+    NOP                                     ILW.z VertSourceCount,  (CLIPPER_REGISTER_STORAGE + 0)(VI00)
+                                            
+    NOP                                     ILW.w VertDestBuffer,   (CLIPPER_REGISTER_STORAGE + 0)(VI00)
+    NOP                                     ILW.x VertDestAddr,     (CLIPPER_REGISTER_STORAGE + 1)(VI00)
+    NOP                                     ILW.y VertDestCount,    (CLIPPER_REGISTER_STORAGE + 1)(VI00)
+                                            
+    NOP                                     ILW.z PlaneAddr,        (CLIPPER_REGISTER_STORAGE + 1)(VI00)
+    NOP                                     ILW.w PlaneClipMask,    (CLIPPER_REGISTER_STORAGE + 1)(VI00)
+    NOP                                     ILW.x PlaneCheckMask,   (CLIPPER_REGISTER_STORAGE + 2)(VI00)
+                                            
+    NOP                                     LQ.xyzw Vert0_Pos(xyzw), (CLIPPER_REGISTER_STORAGE + 3)(VI00)
+    NOP                                     LQ.xyzw Vert1_Pos(xyzw), (CLIPPER_REGISTER_STORAGE + 4)(VI00)
+    NOP                                     LQ.xyzw Vert2_Pos(xyzw), (CLIPPER_REGISTER_STORAGE + 5)(VI00)
+                                            
+    NOP                                     LQ.xyzw Vert0_Col(xyzw), (CLIPPER_REGISTER_STORAGE + 6)(VI00)
+    NOP                                     LQ.xyzw Vert1_Col(xyzw), (CLIPPER_REGISTER_STORAGE + 7)(VI00)
+    NOP                                     LQ.xyzw Vert2_Col(xyzw), (CLIPPER_REGISTER_STORAGE + 8)(VI00)
+                                            
+    ; Restore clipping flags too!
+    CLIPw.xyz Vert0_Pos(xyz), Vert0_Pos(w)  LQ.xyzw Vert0_UV(xyzw),  (CLIPPER_REGISTER_STORAGE + 9)(VI00)
+    CLIPw.xyz Vert1_Pos(xyz), Vert1_Pos(w)  LQ.xyzw Vert1_UV(xyzw),  (CLIPPER_REGISTER_STORAGE + 10)(VI00)
+    CLIPw.xyz Vert2_Pos(xyz), Vert2_Pos(w)  LQ.xyzw Vert2_UV(xyzw),  (CLIPPER_REGISTER_STORAGE + 11)(VI00)
+
+    ; Return to caller
+    NOP                                     JR ClipperReturnAddr
+    NOP                                     NOP
+
+
+;==========================================================================
+
+
+

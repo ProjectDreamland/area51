@@ -1,0 +1,121 @@
+//
+// AUTOEXEC.EIC	Default startup script.
+//
+// When the debugger starts up it will look for a file "autoexec.eic"
+// in the same directory as the debugger executable (eg. PS2DBG.EXE or NGCDBG.EXE)
+// If it finds this file it will automatically execute it. This is your chance to
+// set any EiC interpreter settings and include any files you wish pre-included
+//
+
+// *** IF YOU WANT TO INSTALL/USE SCRIPTING YOU MUST COPY THIS FILE
+// *** TO THE bin DIRECTORY WHERE YOUR DEBUGGER EXECUTABLE LIVES
+// *** AND THEN YOU MUST MODIFY IT TO SET THE CORRECT PATH
+//
+// In this default we just set the default path for include files
+// but you can also add script code to initialise anything
+// else you need and setup handy debugging functions etc.
+//
+// Note that the space after the ":-I" command is always necessary.
+// Also, if you have spaces in filenames you must use quotes.
+// and for now please try to avoid \ followed by a quote.
+//
+//  eg. :-I "c:\program files\prodg for playstation2\include"
+
+:-I c:\sn\include
+// :-L // uncomment this line to print the current include path
+
+//
+// Everything from here on is optional and is just here for example.
+//
+#include <stdio.h>
+#include <snscript.h>
+
+//
+// other scripts I wish to install at startup can be loaded like this
+// just watch you don't redefine main() in them or you will get an error
+// one way to avoid redefining main is to have your script detect the
+// __NO_MAIN variable defined here. See kversion.c for more info
+// note that it will look for these scripts in the current directory
+// and then using the search path specified above
+//
+#define __NO_MAIN
+//#include "kversion.c"	//uncomment this line if you want to use kversion in autoexec.eic
+#undef __NO_MAIN
+
+//
+// and then the optional main() function of this script just prints a
+// message but you can extend it too for other custom setup
+// and note that you can execute other scripts at startup by specifying
+// them on the command line with the -S switch. Such command-line
+// specified scripts will always execute immediately after this one
+// in the order that you specify them on the command line.
+//
+
+void myf2func()
+{
+	printf("Shift-F2 pressed\n");
+}
+
+int main(int argc, char** argv)
+{
+	// SNBindKey(0x71, KS_SHIFT, "myf2func();");	// example key binding
+	//RomVer();	// eg. uncomment this line if you have included kversion.c earlier
+
+	printf("main() in autoexec.eic has completed!\n");
+	return 0;	// to avoid a warning
+}
+
+//=============================================================================
+// Here are some more example bits and pieces to demonstrate newer features
+// for RPC calls and displaying message boxes on the host PC
+//
+void ShowMyDialog(void)
+{
+	snval_t	pc;
+	char* perr;
+
+	char*	pname;
+	unsigned int line;
+	char	buff[256];
+
+	perr = SNEvaluate(&pc, 0, "$ra");	// get snCallDebugger() return address
+	if(perr != 0)
+		printf("Error: %s\n", perr);
+	else
+	{
+		SNAddr2Line(0, pc.val.u32, &pname, &line);
+		sprintf(buff, "PS2 code halted at line %d of file %s\n", line, pname);
+		SNMessageBox(buff, "Test Message", MB_OK|MB_ICONEXCLAMATION);
+		SNHaltRPC(0);	// halt execution of the target after the call
+	}
+}
+
+//--------------------------------
+// Simple example of RPC callback code - this function can be called from the target code
+// using snCallDebugger(int)
+//
+// The target code needs to include the libsn.h header file and link with libsn.a
+// any execution of snCallDebugger(int) on the target will then pass control to this function
+//
+int snCallDebugger(int p)
+{
+	static char* pmsg = "This text is printed by the script when the PS2 executes snCallDebugger(1)";
+
+	switch(p)
+	{
+	case 0:
+		break;
+
+	case 1:
+		SNSetstdout(ALLTTY);		// set default output to ALL TTY channel
+		printf("ALL: %s\n", pmsg);	// display message
+		SNSetstdout(-1);			// restore default output to DBG TTY channel
+		printf("DBG: %s\n", pmsg);	// display message there also
+		break;
+
+	case 2:
+		ShowMyDialog();
+		break;
+	}
+	return 0;
+}

@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Miles 2D-based M3D Preferences</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Miles 2D-based M3D Preferences">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Miles 2D-based M3D Preferences</h1>
+<h4>Discussion</h4>
+<p> The Miles 2D-based providers (Fast 2D and Dolby Surround) publish several settings to control environmental reverb effects. Reverb can provide a lot of "feel" to a room, so this is a great option for fast 3D audio. </p><p>Note that setting the room types on the software provider is very expensive CPU-wise! You should use the <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a> function to turn off room effects on most samples when running on a software provider. On the Miles 2D providers, each sample with room effects costs about 7% on a P5/200 (3% on a Pentium II). </p><p>The easiest way to determine if you are using a Miles 2D-based provider is to query the "Reverb time" attribute. If this query returns a value other than -1.0, then you know that you are running under a Miles 2D-based provider. </p><p>Note that you must have the Reverb3.FLT filter available for these preferences to have any effect. </p><p><b>The five current Miles 2D sample-level preferences are:</b> </p><p><b>"Environment selection":</b> this preference allows you to set the reverb's room style. The room styles are same as the EAX 1 provider. You should generally use the <a href="AIL_set_3D_room_type.html">AIL_set_3D_room_type</a> function instead of this preference to set the room type for compatibility with other 3D providers. This preference does let you set room type on a sample by sample basis, though. </p><p><b> "Effect volume":</b> this preference specifies the amount of reverb to apply from 0.0F (no reverb) to 1.0F (maximum reverb). You should generally use the <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a> function instead of this preference to set the reverb level for compatibility with other 3D providers. This preference accepts a 32-bit float (F32). </p><p><b>"Reverb time":</b> this preference specifies the approximate time in seconds for the reflection to die out. This preference accepts a 32-bit float (F32) and can range from 0.0 to 8000.0 milliseconds. </p><p><b>"Predelay time":</b> this preference specifies the approximate time in seconds for the reflection to die out. This preference accepts a 32-bit float (F32) and can range from 0.0 to 250.0 milliseconds. </p><p><b>"Damping":</b> this preference specifies the high-frequency roll off of the room. This preference accepts a 32-bit float (F32) and can range from 20.0 to 20000.0 Hz. </p><p><b>"Reverb quality":</b> this preference specifies whether the reverb is performed in stereo or mono mode. Stereo doubles the CPU requirement (from 7% per sample to 14% on a P5/200), so it is disabled by default. This preference accepts a 32-bit integer (S32) - zero for mono, one for stereo. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_set_3D_room_type.html">AIL_set_3D_room_type</a>, <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

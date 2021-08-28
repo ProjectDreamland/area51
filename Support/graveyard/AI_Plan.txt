@@ -1,0 +1,52 @@
+AI Overview
+
+The AI system for B52 involves 5 major base classes.  These classes 
+are Actor, Brain, AI_State, Emotion_Controller, and Locomotion_Base_Class.
+
+The Actor:
+
+The Actor object is the base class for actors in the game whether they 
+a scientist, a mutant, or the player.  The actual actor class cannot be 
+used in the game and this is enforced by pure virtual functions that must 
+be implemented.  This class covers the majority of the common 
+functionality between all actors.  This functionality includes:
+
+-Updating actor health values
+-Inventory
+-Collision handling/response base functions
+-OnAdvanceLogic time slice
+-Performance monitoring for AI, rendering, general logic updating
+
+The Actor base class also holds a fair number of variables including 
+a pointer to the brain class and the locomotion class associated with 
+the actor.  
+
+The Brain:
+
+The Brain object holds all the AI state objects and Emotion controller.  
+It dispenses time to the current AI state, handles the switches between 
+states, and updates sensory information.
+
+AI states:
+
+The specific AI states all inherit from a base AI state and 
+
+
+Emotion Controller:
+
+The Emotion controller keeps track of the emotions for an AI.  The 
+emotions are essentially just a set of floats that measure the levels 
+of emotions in a several categories.  The currently planned emotions 
+are Anger, Fear, Curiosity, Hunger, and Boredom.  These would not have 
+a set way that they would affect the AI but would be used by the AI states 
+to make decisions.
+
+
+
+
+Putting the pieces together:
+
+The actor contains a brain and a locomotion object.  The actor gives each
+system time to update.
+
+The brain contains a list of all known states.  

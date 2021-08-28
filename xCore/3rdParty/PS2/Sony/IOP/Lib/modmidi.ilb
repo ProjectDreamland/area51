@@ -1,0 +1,26 @@
+#IOP-ILB# [PsIImodmidi 3000]
+L modmidi
+V 0x0105
+F 0x0000
+E 004 sceMidi_Init
+E 005 sceMidi_ATick
+E 006 sceMidi_Load
+E 007 sceMidi_SelectSong
+E 008 sceMidi_SongPlaySwitch
+E 009 sceMidi_SongSetVolume
+E 010 sceMidi_SongVolumeChange
+E 011 sceMidi_SongSetAbsoluteTempo
+E 012 sceMidi_SongSetRelativeTempo
+E 013 sceMidi_SongSetLocation
+E 014 sceMidi_SelectMidi
+E 015 sceMidi_MidiPlaySwitch
+E 016 sceMidi_MidiSetLocation
+E 017 sceMidi_MidiSetVolume
+E 018 sceMidi_MidiVolumeChange
+E 019 sceMidi_MidiSetAbsoluteTempo
+E 020 sceMidi_MidiGetAbsoluteTempo
+E 021 sceMidi_MidiSetRelativeTempo
+E 022 sceMidi_MidiGetRelativeTempo
+E 023 sceMidi_MidiSetUSecTempo
+E 024 sceMidi_MidiGetUSecTempo
+E 025 sceMidi_Unload

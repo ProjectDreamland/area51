@@ -1,0 +1,64 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AILDLSINFO</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="specifies the details for a DLS device.">
+<meta name="ms-hkwd" content="AILDLSINFO">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AILDLSINFO</h1>
+<p>The structure  <b>AILDLSINFO</b> specifies the details for a DLS device.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="AILDLSINFO.html" class=trn>AILDLSINFO</a>
+{
+&nbsp&nbsp<a href="S32.html" class=trn>S32</a></b><i> MaxDLSMemory</i><b>;
+&nbsp&nbsp<a href="S32.html" class=trn>S32</a></b><i> CurrentDLSMemory</i><b>;
+&nbsp&nbsp<a href="S32.html" class=trn>S32</a></b><i> LargestSize</i><b>;
+&nbsp&nbsp<a href="S32.html" class=trn>S32</a></b><i> GMAvailable</i><b>;
+&nbsp&nbsp<a href="S32.html" class=trn>S32</a></b><i> GMBankSize</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Members</h4>
+<dl>
+<dt><i>MaxDLSMemory</i></dt>
+<dd>Maximum amount of DLS memory available. Always 2 GB with the software synth.</dd>
+<dt><i>CurrentDLSMemory</i></dt>
+<dd>Current amount of memory dedicated to DLS use. Always 2 GB with the software synth.</dd>
+<dt><i>LargestSize</i></dt>
+<dd>Largest DLS file that could be loaded right now. Always 2 GB with the software synth.</dd>
+<dt><i>GMAvailable</i></dt>
+<dd>General MIDI availability status. Not applicable to the software synth.</dd>
+<dt><i>GMBankSize</i></dt>
+<dd>Size of the General MIDI set. Not applicable to the software synth.</dd>
+</dl>
+<p>
+<br>
+<b>Group:</b>
+<a href="DLS Services.html">DLS Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_DLS_get_info.html">AIL_DLS_get_info</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

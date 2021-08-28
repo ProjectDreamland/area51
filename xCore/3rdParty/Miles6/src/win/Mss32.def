@@ -1,0 +1,23 @@
+EXPORTS
+        DLSMSSOpen
+        DLSClose
+        DLSCompactMemory
+        DLSGetInfo
+        DLSLoadFile
+        DLSLoadMemFile
+        DLSSetAttribute
+        DLSUnloadAll
+        DLSUnloadFile
+        RIB_alloc_provider_handle
+        RIB_enumerate_interface
+        RIB_error
+        RIB_find_file_provider
+        RIB_free_provider_handle
+        RIB_free_provider_library
+        RIB_load_provider_library
+        RIB_register_interface
+        RIB_request_interface
+        RIB_request_interface_entry
+        RIB_type_string
+        RIB_unregister_interface
+

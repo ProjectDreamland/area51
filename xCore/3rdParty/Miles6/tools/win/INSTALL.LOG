@@ -1,0 +1,1829 @@
+***  Installation Started 03/11/2002 10:13  ***
+Title: The Miles Sound System 6 Installation
+Source: T:\craig\MSS6ALL.EXE
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\tools
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\UNWISE.EXE
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Miles Sound System 6
+RegDB Val: Miles Sound System 6
+RegDB Name: DisplayName
+RegDB Root: 2
+RegDB Old: Miles Sound System 6
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Miles Sound System 6
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\UNWISE.EXE C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\INSTALL.LOG
+RegDB Name: UninstallString
+RegDB Root: 2
+RegDB Old: C:\Miles6\tools\win\UNWISE.EXE C:\Miles6\tools\win\INSTALL.LOG
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\docs
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\docs\winhelp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\winhelp\Miles.chm
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\docs\pdf
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\pdf\Miles.pdf
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\2D Digital Audio Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\3D Digital Audio Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Accessing the Codecsj7rin4.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Acknowledgments.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL3DSAMPLECB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILBEATCB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILCODECSETPREF.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILDLSINFO.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILEVENTCB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILFREECB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILLENGTHYCB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILMALLOCCB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILMIXINFO.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILPREFIXCB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILSAMPLECB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILSEQUENCECB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILSOUNDINFO.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILSTREAMCB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILTIMBRECB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILTIMERCB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILTRIGGERCB.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_distance_factor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_doppler_factor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_orientation.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_provider_attribute.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_rolloff_factor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_room_type.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_attribute.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_cone.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_distances.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_effect9obbaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_length.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_loop_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_obstruction.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_occlusion.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_offset.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_playbayb8baa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_status.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_speaker_type.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_user_data.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_velocity.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_active_3D_sample1mlaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_active_sample_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_active_sequence_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_allocate_3D_sampapaoba.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_allocate_file_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_allocate_sample_ijfaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_allocate_sequenc2icfaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_auto_service_stream.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_auto_update_3D_pzvtnaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_background.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_branch_index.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_call_driver.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_channel_notes.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_3D_listener.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_3D_object.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_3D_provider.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_digital_driver.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_input.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_stream.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_XMIDI_driver.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_compress_ADPCM.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_compress_ASI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_compress_DLS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_controller_value.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_create_wave_syntrqseaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_decompress_ADPCM.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_decompress_ASI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_delay.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_destroy_wave_syn7m4hba.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_configuration.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_CPU_percent.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_handle_ruoiaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_handle_ruqabaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_latency.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_master_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_disable_interrupts.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_close.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_compact.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_get_info.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_get_reverb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_load_file.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_load_memory.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_open.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_set_reverb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_unload.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DRIVER.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_end_3D_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_end_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_end_sequence.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_enumerate_3D_prok20aaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_enumerate_filter4znc1e.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_enumerate_filters.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_enumerate_filteryw2t1e.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_extract_DLS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_close_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_error.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_fss_attrib_write.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_fss_read.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_fss_size.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_fss_write.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_open_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_read.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_read_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_seek_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_size.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_type.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_write.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_attribute.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_DLS_attribute.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_DLS_with_XMI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_sample_atybklaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_stream_atybklaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_find_DLS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_DirectSound_info.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_input_info.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_IO_environment.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_preference.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_real_vect.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_timer_highesqwlaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_HWND.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_INI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_init_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_init_sequence.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_input_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_INPUT_INFO.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_DIG_driv6dbdaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_DIG_driv6zzyaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_DIG_INI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_driver.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_MDI_driv6dbdaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_MDI_driv6zzyaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_MDI_INI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_timbre.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_interrupt_divisor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_last_error.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_list_DLS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_list_MIDI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_load_sample_buffer.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_lock.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_lock_channel.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_map_sequence_channel.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MDI_driver_type.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_mem_alloc_lock.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_mem_free_lock.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_mem_use_free.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_mem_use_malloc.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_merge_DLS_with_XMI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_midiOutOpen.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MIDI_handle_reacquire.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MIDI_handle_release.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MIDI_to_XMI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_minimum_sample_bahfkoa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MSS_version.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_ms_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_3D_listener.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_3D_object.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_3D_provider.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_digital_driver.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_input.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_stream.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_XMIDI_driver.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_pause_stream.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_process_digital_audio.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_protect_timbre.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_copy.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_fss_load.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_fss_load_a2xyaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_halt.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_handles.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_load.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_load_and_play.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_load_mem.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_ms_length.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_ms_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_play.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_set_ms_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_set_reverb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_set_speed.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_set_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_shutdown.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_startup.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_status.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_type.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_unload.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_read_INI.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_close.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_eject.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_id.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_open.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_open_drive.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_open_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_pause.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_play.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_resume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_retract.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_set_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_status.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_stop.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_track.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_tracks.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_track_info.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_3D_EOS_s0khaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_beat_casg9aaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_EOB_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_EOF_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_EOS_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_event_cs0khaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_ICA_array.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_prefix_s0khaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_sequenc8chzca.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_SOB_callback.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_stream_s0khaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_timbre_s0khaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_timer.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_trigger8chzca.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_3D_sampl2icfaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_all_timers.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_channel.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_sample_handle.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_sequence2icfaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_timer_handle.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_restore_interrupts.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_restore_stack.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_resume_3D_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_resume_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_resume_sequence.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_buffer_info.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_buffer_ready.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_granularity.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_loop_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_ms_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_pan.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_playback_rate.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_reverb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_status.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_user_data.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_send_channel_voimgj9la.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_send_sysex_message.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_loop_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_ms_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_status.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_tempo.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_user_data.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_serve.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_service_stream.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_distance_reaaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_doppler_factor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_orientation.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_provider_yxmz5e.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_rolloff_factor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_room_type.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_cone.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_dicyrnaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_efxf4lic.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_file.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_info.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_lop5nvaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_loswdvaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_ob7131va.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_oc325gaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_offset.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_plm6fdon.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_pruqq6aa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_speaker_type.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_user_data.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_velocity.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_velocity_v1maaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_digital_drivwp5xci.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_digital_mastmwidfa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_DirectSound_HWND.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_DLS_processor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_file_callbacks.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_filter_DLS_pqfj6fa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_filter_preference.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_filter_samplemwzk3.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_filter_streaemwzk3.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_GTL_filenamelxjjaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_input_state.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_named_sample_file.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_preference.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_real_vect.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_redist_directory.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_address.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_adpcmu899ga.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_file.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_loop_block.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_loop_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_ms_pozr6aaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_pan.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_playbug1eaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_processor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_reverb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_type.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_user_data.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_loo1mlaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_ms_rl07ba.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_tempo.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_use6kbaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_loop_block.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_loop_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_ms_pozr6aaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_pan.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_playbug1eaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_processor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_reverb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_user_data.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_timer_divisor.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_timer_frequency.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_timer_period.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_timer_user.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_USE16_ISR.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_XMIDI_masteraryoaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_shutdown.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_size_processed_d4yjwo6.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_startup.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_3D_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_all_timers.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_sequence.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_stream.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_timer.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_3D_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_all_timers.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_sample.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_sequence.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_timer.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_info.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_loop_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_ms_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_pan.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_playback_rate.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_reverb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_status.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_user_data.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_switch_stack.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_timbre_status.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_true_sequence_channel.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_uninstall_driver.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_unlock.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_unprotect_timbre.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_update_3D_position.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_us_count.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_vmm_lock.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_vmm_lock_range.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_vmm_unlock.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_vmm_unlock_range.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_waveOutOpen.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_WAV_file_fss_write.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_WAV_file_write.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_WAV_info.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_XMIDI_master_volume.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Aureal's A3D 2 Prefe86raaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Auto-panner Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Band-Pass Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Bandwidth Optimizatifdgbrv.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Basic Types.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under DOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under MacOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under Win16.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under Win32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under Win32s.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under DOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under MacOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under Win16.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under Win32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under Win32s.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Capture Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\CD Audio (Redbook) Skgznaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Changes.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\char const P.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\char P.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\char.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Chorus Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\CLAD - Creative Labsnxhnpk.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Compressor Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Creative's EAX 1 Pre4368aa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Creative's EAX 2 Pre4368aa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Function1g4vha.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Function216z81.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Function6w0qxh.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Function85lgj5.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functioncwwsla.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functiondqr6ma.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functionef9zmr.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functioniqzoa2.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functionjfwqad.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functions8c2qu.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functiont0ndba.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 300H Ibyvqgk.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 301H Gntlrvm.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 302H P3nqeyf.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 303H P7lcdur.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 304H Vtb2frb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 305H Iqn1pgk.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 306H Scnttqy.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 400H G32kz6j.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 401H Szhn1lq.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 402H Sf059iq.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 403H S4b1hov.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 404H So9acgv.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 405H V67fgje.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 500H G0t178s.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 501H Izucc05.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 502H Tz56m8s.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 503H Irtaihq.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 504H G01slct.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 505H Pgop4lg.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 506H V67fgje.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Support Routinesmc7aqj.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Support Routineswsjtx2.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK XMIDI Function- 5z97aa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK XMIDI Function- 92qbba.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK XMIDI Function- lychaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK XMIDI Function- qs7zmr.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DIGDRVSTAGE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Digital Audio Input hpyv0q.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Digital Audio Stream436kmy.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Digital Filter Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles w59qz5u.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles wdkih6t.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles whjcnrn.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles wl23t1o.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles wly4t1o.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DLS Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DOS Digital Sound Drpln2un.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DOS Sound Driver Arcyngbna.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DOS Sound Driver Gens3p70p.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DOS XMIDI Sound Drivbjn2un.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Extended MIDI Globalxqjz2b.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Extended MIDI IFF (.vk9ytc.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Extended MIDI Techniid0f6g.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\F32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\F64.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\FAQs and How Tos.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Flange Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\FSSpec.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\GLIB - Extended MIDIz2acf8.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\H3DPOBJECT.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\H3DSAMPLE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HAUDIO.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDIGDRIVER.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDIGINPUT.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDLSDEVICE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDLSFILEID.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDRIVERSTATE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\High-Pass Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HINTENUM.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HMDIDRIVER.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How can I lower the ev8x6w.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How can I play stere982vwf.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How can I play two Ho6e0ns.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How can I tell what u5gz56.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How careful do I havbuvn9y.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I access filex8kvia.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I initialize owpc2p.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I loop a tracqkrgja.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I open a 3D duswuqq.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play a 3D d5zrlfk.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play a digiyg6gda.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play a tracqkrgja.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play an XMIsog05o.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play an XMIuu17l1.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I set a DSP flufd25.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I set an EAX 6606oe.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I start an aupeb0vo.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I stream a fisosz8v.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How does Miles do soy6n1ef.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How much latency doe841zus.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HPROENUM.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HPROVIDER.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HREDBOOK.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HSAMPLE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HSEQUENCE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HSTREAM.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HTIMER.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HWAVESYNTH.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HWND.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I can't get Miles tonaxoe0.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I can't seem to chanzj97c4.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I get a crash when I35ptsr.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I want a small instanf5kll.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I'm getting a glitchyuljiw.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I'm setting a preferwfslqr.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I'm using Windows 9x4b8wpk.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Implementation Details.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Implementing Voice Chat.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\index.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for DOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for MacOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for Win16.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for Win32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for Win32s.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles in739p6n.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles inbeopsh.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles inhi7rf5.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles inmxd43w.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles inryalph.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating the Code3o2s18.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Introduction.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\IO_PARMS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\kiev.jpg
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Lagrangian Interpolanfpj4a.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Low-Level DOS Instalopr558.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Low-Level DOS Suppor8y9ysb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Low-Pass Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPDIRECTSOUND.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPDIRECTSOUNDBUFFER.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPHMIDIOUT.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPHWAVEOUT.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPWAVEFORMAT.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory and File Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management un1cdaca.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management un63hsaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management undmcbaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management uni4hsaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management unk00bea.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDIECHO for DOS - M8o0mlj.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDIECHO for MacOS -5hwjxy.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDIECHO for Windows5hwjxy.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDILOG - MIDI File k84nrz.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDIREC- Standard MInmfctq.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles 2D-based M3D Pcibglb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Dolby Surroundpt2cum.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for DOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for MacOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for Win16.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for Win32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for Win32s.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Sound Player.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Sound Studio.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Sound System Tq6hmqc.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\miles.jpg
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DIGITAL_FLAGS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DIGITAL_FORMAT.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DIGITAL_STATUS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DLS_CLOSE_FLAGS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DLS_UNLOAD.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_FILE_ERRORS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_FILE_SEEK_TYPE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_FILE_TYPE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_FILTER_DLS_FLAGS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_INSTALL_STATUS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_LENGTHY_STATE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_LIST_DLS_FLAGS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_LIST_MIDI_FLAGS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_MDI_DRIVER_TYPE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_MIDI_TO_XMI_FLAGS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_MIDI_VALUE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_OPEN_DIGITAL_FLAGS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_OPEN_XMIDI_FLAGS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_PREFERENCES.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_QUICK_DIGITAL_OPEN.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_QUICK_MIDI_OPEN.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_QUICK_STATUS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_QUICK_TYPE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_REDBOOK_STATUS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_ROOM_TYPE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_SEQUENCE_STATUS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_SPEAKER_TYPE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Mixing the Client So2v852a.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Mono Delay Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MSS Device Developmew8besk.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\My 3D audio is a lotxfhqaf.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\My 3D sound isn't fa7r7p3x.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\My application is crs22pi6.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\My sound is skipping3sr5kw.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for DOS- Miy6fegj.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for MacOS- 4e2z95.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for Win16- k62jt8.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for Win32- zi6edi.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for Win32s-gklf7y.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Panning isn't workinmo5gkc.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Parametric Equalizervt5vaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Performing the Comprf339dc.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Phaser Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Preferences.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\QSound QMixer Preferences.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Quick Integration Sesm1baa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\REALFAR.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\reference.css
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Resonator Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Reverb 1 Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Reverb 2 Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Reverb 3 Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\RIB_DATA_SUBTYPE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\RIB_ENTRY_TYPE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\RIB_INTERFACE_ENTRY.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Ring-Amplitude Modul3fw5jk.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\S16.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\S32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\S64.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\S8.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\SAMPLESTAGE.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\SETSOUND - MSS Soundv7472s.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU unde0cdiaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU unde2nabaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU unde9ijdaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU undeqnabaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU under DOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Shelving Equalizer Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under DOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under MacOS.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under Win16.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under Win32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under Win32s.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Stereo Delay Filter.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\System Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\The Internet voice cx1l30f.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\This function returnjx0bfo.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Timer Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\U16.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\U32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\U64.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\U8.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Utility Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\VDI_CALL.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\VDI_HDR.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\void const P.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\void P.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\void.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Voxware Voice Chat Codecs.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\WAVELIB - Wave Synthemm6zo.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What are these ASI, m0oxbk.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What is MPEG Audio aqqdaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What is the differenuwpm9k.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What is the latest vpbjt32.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What kind of audio d9b9pf1.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What MP3 encoder shoiud8ga.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What's the deal with4bihxb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\When can I free the orulku.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Where is the Miles slsp9cm.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Which 3D sound provi8s4uqw.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Working with Voice Input.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Callback Prefiqrbaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Callback Triggcphaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Channel Lock (110).html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Channel Lock Pomctpa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Channel Mute (107).html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Clear Beat-Barqpkh7a.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI For Loop Contrqw4wba.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Indirect Contrbv6kfq.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Next-Break Loorcm50t.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Patch Bank Selilaaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Sequence Branc6vf3eb.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Sequence Brancsrbaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Services.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Timbre Protect4rbaaa.html
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Voice Protect (112).html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\2D Digital Audio Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\3D Digital Audio Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Accessing the Codecsj7rin4.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Acknowledgments.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL3DSAMPLECB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILBEATCB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILCODECSETPREF.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILDLSINFO.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILEVENTCB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILFREECB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILLENGTHYCB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILMALLOCCB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILMIXINFO.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILPREFIXCB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILSAMPLECB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILSEQUENCECB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILSOUNDINFO.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILSTREAMCB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILTIMBRECB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILTIMERCB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AILTRIGGERCB.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_distance_factor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_doppler_factor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_orientation.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_provider_attribute.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_rolloff_factor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_room_type.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_attribute.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_cone.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_distances.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_effect9obbaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_length.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_loop_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_obstruction.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_occlusion.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_offset.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_playbayb8baa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_status.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_sample_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_speaker_type.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_user_data.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_3D_velocity.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_active_3D_sample1mlaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_active_sample_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_active_sequence_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_allocate_3D_sampapaoba.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_allocate_file_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_allocate_sample_ijfaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_allocate_sequenc2icfaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_auto_service_stream.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_auto_update_3D_pzvtnaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_background.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_branch_index.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_call_driver.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_channel_notes.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_3D_listener.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_3D_object.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_3D_provider.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_digital_driver.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_input.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_stream.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_close_XMIDI_driver.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_compress_ADPCM.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_compress_ASI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_compress_DLS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_controller_value.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_create_wave_syntrqseaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_decompress_ADPCM.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_decompress_ASI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_delay.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_destroy_wave_syn7m4hba.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_configuration.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_CPU_percent.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_handle_ruoiaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_handle_ruqabaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_latency.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_digital_master_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_disable_interrupts.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_close.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_compact.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_get_info.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_get_reverb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_load_file.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_load_memory.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_open.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_set_reverb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DLS_unload.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_DRIVER.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_end_3D_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_end_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_end_sequence.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_enumerate_3D_prok20aaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_enumerate_filter4znc1e.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_enumerate_filters.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_enumerate_filteryw2t1e.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_extract_DLS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_close_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_error.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_fss_attrib_write.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_fss_read.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_fss_size.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_fss_write.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_open_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_read.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_read_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_seek_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_size.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_type.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_file_write.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_attribute.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_DLS_attribute.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_DLS_with_XMI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_sample_atybklaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_filter_stream_atybklaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_find_DLS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_DirectSound_info.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_input_info.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_IO_environment.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_preference.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_real_vect.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_get_timer_highesqwlaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_HWND.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_INI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_init_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_init_sequence.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_input_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_INPUT_INFO.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_DIG_driv6dbdaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_DIG_driv6zzyaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_DIG_INI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_driver.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_MDI_driv6dbdaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_MDI_driv6zzyaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_MDI_INI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_install_timbre.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_interrupt_divisor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_last_error.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_list_DLS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_list_MIDI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_load_sample_buffer.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_lock.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_lock_channel.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_map_sequence_channel.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MDI_driver_type.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_mem_alloc_lock.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_mem_free_lock.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_mem_use_free.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_mem_use_malloc.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_merge_DLS_with_XMI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_midiOutOpen.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MIDI_handle_reacquire.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MIDI_handle_release.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MIDI_to_XMI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_minimum_sample_bahfkoa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_MSS_version.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_ms_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_3D_listener.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_3D_object.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_3D_provider.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_digital_driver.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_input.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_stream.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_open_XMIDI_driver.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_pause_stream.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_process_digital_audio.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_protect_timbre.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_copy.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_fss_load.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_fss_load_a2xyaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_halt.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_handles.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_load.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_load_and_play.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_load_mem.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_ms_length.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_ms_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_play.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_set_ms_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_set_reverb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_set_speed.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_set_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_shutdown.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_startup.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_status.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_type.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_quick_unload.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_read_INI.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_close.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_eject.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_id.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_open.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_open_drive.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_open_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_pause.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_play.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_resume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_retract.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_set_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_status.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_stop.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_track.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_tracks.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_track_info.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_redbook_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_3D_EOS_s0khaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_beat_casg9aaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_EOB_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_EOF_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_EOS_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_event_cs0khaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_ICA_array.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_prefix_s0khaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_sequenc8chzca.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_SOB_callback.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_stream_s0khaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_timbre_s0khaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_timer.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_register_trigger8chzca.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_3D_sampl2icfaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_all_timers.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_channel.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_sample_handle.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_sequence2icfaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_release_timer_handle.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_restore_interrupts.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_restore_stack.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_resume_3D_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_resume_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_resume_sequence.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_buffer_info.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_buffer_ready.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_granularity.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_loop_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_ms_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_pan.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_playback_rate.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_reverb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_status.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_user_data.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sample_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_send_channel_voimgj9la.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_send_sysex_message.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_loop_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_ms_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_status.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_tempo.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_user_data.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_sequence_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_serve.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_service_stream.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_distance_reaaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_doppler_factor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_orientation.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_provider_yxmz5e.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_rolloff_factor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_room_type.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_cone.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_dicyrnaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_efxf4lic.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_file.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_info.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_lop5nvaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_loswdvaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_ob7131va.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_oc325gaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_offset.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_plm6fdon.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_pruqq6aa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_sample_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_speaker_type.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_user_data.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_velocity.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_3D_velocity_v1maaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_digital_drivwp5xci.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_digital_mastmwidfa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_DirectSound_HWND.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_DLS_processor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_file_callbacks.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_filter_DLS_pqfj6fa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_filter_preference.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_filter_samplemwzk3.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_filter_streaemwzk3.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_GTL_filenamelxjjaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_input_state.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_named_sample_file.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_preference.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_real_vect.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_redist_directory.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_address.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_adpcmu899ga.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_file.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_loop_block.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_loop_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_ms_pozr6aaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_pan.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_playbug1eaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_processor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_reverb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_type.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_user_data.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sample_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_loo1mlaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_ms_rl07ba.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_tempo.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_use6kbaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_sequence_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_loop_block.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_loop_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_ms_pozr6aaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_pan.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_playbug1eaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_processor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_reverb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_user_data.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_stream_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_timer_divisor.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_timer_frequency.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_timer_period.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_timer_user.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_USE16_ISR.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_set_XMIDI_masteraryoaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_shutdown.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_size_processed_d4yjwo6.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_startup.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_3D_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_all_timers.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_sequence.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_stream.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_start_timer.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_3D_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_all_timers.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_sample.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_sequence.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stop_timer.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_info.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_loop_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_ms_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_pan.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_playback_rate.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_reverb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_status.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_user_data.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_stream_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_switch_stack.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_timbre_status.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_true_sequence_channel.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_uninstall_driver.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_unlock.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_unprotect_timbre.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_update_3D_position.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_us_count.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_vmm_lock.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_vmm_lock_range.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_vmm_unlock.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_vmm_unlock_range.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_waveOutOpen.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_WAV_file_fss_write.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_WAV_file_write.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_WAV_info.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\AIL_XMIDI_master_volume.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Aureal's A3D 2 Prefe86raaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Auto-panner Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Band-Pass Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Bandwidth Optimizatifdgbrv.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Basic Types.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under DOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under MacOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under Win16.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under Win32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Call Logging under Win32s.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under DOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under MacOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under Win16.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under Win32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Callbacks under Win32s.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Capture Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\CD Audio (Redbook) Skgznaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Changes.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\char const P.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\char P.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\char.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Chorus Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\CLAD - Creative Labsnxhnpk.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Compressor Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Creative's EAX 1 Pre4368aa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Creative's EAX 2 Pre4368aa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Function1g4vha.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Function216z81.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Function6w0qxh.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Function85lgj5.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functioncwwsla.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functiondqr6ma.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functionef9zmr.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functioniqzoa2.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functionjfwqad.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functions8c2qu.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Digital Functiont0ndba.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 300H Ibyvqgk.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 301H Gntlrvm.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 302H P3nqeyf.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 303H P7lcdur.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 304H Vtb2frb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 305H Iqn1pgk.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 306H Scnttqy.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 400H G32kz6j.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 401H Szhn1lq.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 402H Sf059iq.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 403H S4b1hov.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 404H So9acgv.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 405H V67fgje.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 500H G0t178s.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 501H Izucc05.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 502H Tz56m8s.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 503H Irtaihq.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 504H G01slct.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 505H Pgop4lg.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Function- 506H V67fgje.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Support Routinesmc7aqj.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK Support Routineswsjtx2.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK XMIDI Function- 5z97aa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK XMIDI Function- 92qbba.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK XMIDI Function- lychaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DDK XMIDI Function- qs7zmr.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DIGDRVSTAGE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Digital Audio Input hpyv0q.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Digital Audio Stream436kmy.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Digital Filter Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles w59qz5u.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles wdkih6t.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles whjcnrn.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles wl23t1o.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Distributing Miles wly4t1o.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DLS Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DOS Digital Sound Drpln2un.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DOS Sound Driver Arcyngbna.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DOS Sound Driver Gens3p70p.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\DOS XMIDI Sound Drivbjn2un.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Extended MIDI Globalxqjz2b.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Extended MIDI IFF (.vk9ytc.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Extended MIDI Techniid0f6g.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\F32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\F64.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\FAQs and How Tos.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Flange Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\FSSpec.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\GLIB - Extended MIDIz2acf8.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\H3DPOBJECT.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\H3DSAMPLE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HAUDIO.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDIGDRIVER.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDIGINPUT.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDLSDEVICE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDLSFILEID.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HDRIVERSTATE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\High-Pass Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HINTENUM.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HMDIDRIVER.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How can I lower the ev8x6w.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How can I play stere982vwf.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How can I play two Ho6e0ns.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How can I tell what u5gz56.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How careful do I havbuvn9y.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I access filex8kvia.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I initialize owpc2p.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I loop a tracqkrgja.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I open a 3D duswuqq.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play a 3D d5zrlfk.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play a digiyg6gda.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play a tracqkrgja.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play an XMIsog05o.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I play an XMIuu17l1.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I set a DSP flufd25.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I set an EAX 6606oe.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I start an aupeb0vo.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How do I stream a fisosz8v.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How does Miles do soy6n1ef.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\How much latency doe841zus.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HPROENUM.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HPROVIDER.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HREDBOOK.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HSAMPLE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HSEQUENCE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HSTREAM.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HTIMER.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HWAVESYNTH.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\HWND.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I can't get Miles tonaxoe0.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I can't seem to chanzj97c4.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I get a crash when I35ptsr.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I want a small instanf5kll.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I'm getting a glitchyuljiw.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I'm setting a preferwfslqr.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\I'm using Windows 9x4b8wpk.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Implementation Details.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Implementing Voice Chat.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\index.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for DOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for MacOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for Win16.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for Win32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Installation for Win32s.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles in739p6n.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles inbeopsh.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles inhi7rf5.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles inmxd43w.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating Miles inryalph.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Integrating the Code3o2s18.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Introduction.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\IO_PARMS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\kiev.jpg
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Lagrangian Interpolanfpj4a.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Low-Level DOS Instalopr558.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Low-Level DOS Suppor8y9ysb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Low-Pass Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPDIRECTSOUND.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPDIRECTSOUNDBUFFER.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPHMIDIOUT.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPHWAVEOUT.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\LPWAVEFORMAT.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory and File Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management un1cdaca.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management un63hsaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management undmcbaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management uni4hsaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Memory management unk00bea.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDIECHO for DOS - M8o0mlj.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDIECHO for MacOS -5hwjxy.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDIECHO for Windows5hwjxy.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDILOG - MIDI File k84nrz.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MIDIREC- Standard MInmfctq.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles 2D-based M3D Pcibglb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Dolby Surroundpt2cum.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for DOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for MacOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for Win16.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for Win32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Examples for Win32s.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Sound Player.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Sound Studio.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Miles Sound System Tq6hmqc.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\miles.jpg
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DIGITAL_FLAGS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DIGITAL_FORMAT.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DIGITAL_STATUS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DLS_CLOSE_FLAGS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_DLS_UNLOAD.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_FILE_ERRORS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_FILE_SEEK_TYPE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_FILE_TYPE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_FILTER_DLS_FLAGS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_INSTALL_STATUS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_LENGTHY_STATE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_LIST_DLS_FLAGS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_LIST_MIDI_FLAGS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_MDI_DRIVER_TYPE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_MIDI_TO_XMI_FLAGS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_MIDI_VALUE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_OPEN_DIGITAL_FLAGS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_OPEN_XMIDI_FLAGS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_PREFERENCES.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_QUICK_DIGITAL_OPEN.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_QUICK_MIDI_OPEN.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_QUICK_STATUS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_QUICK_TYPE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_REDBOOK_STATUS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_ROOM_TYPE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_SEQUENCE_STATUS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MILES_SPEAKER_TYPE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Mixing the Client So2v852a.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Mono Delay Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\MSS Device Developmew8besk.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\My 3D audio is a lotxfhqaf.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\My 3D sound isn't fa7r7p3x.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\My application is crs22pi6.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\My sound is skipping3sr5kw.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for DOS- Miy6fegj.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for MacOS- 4e2z95.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for Win16- k62jt8.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for Win32- zi6edi.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Overview for Win32s-gklf7y.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Panning isn't workinmo5gkc.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Parametric Equalizervt5vaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Performing the Comprf339dc.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Phaser Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Preferences.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\QSound QMixer Preferences.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Quick Integration Sesm1baa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\REALFAR.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\reference.css
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Resonator Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Reverb 1 Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Reverb 2 Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Reverb 3 Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\RIB_DATA_SUBTYPE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\RIB_ENTRY_TYPE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\RIB_INTERFACE_ENTRY.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Ring-Amplitude Modul3fw5jk.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\S16.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\S32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\S64.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\S8.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\SAMPLESTAGE.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\SETSOUND - MSS Soundv7472s.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU unde0cdiaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU unde2nabaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU unde9ijdaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU undeqnabaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sharing the CPU under DOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Shelving Equalizer Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under DOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under MacOS.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under Win16.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under Win32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Sound under Win32s.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Stereo Delay Filter.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\System Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\The Internet voice cx1l30f.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\This function returnjx0bfo.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Timer Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\U16.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\U32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\U64.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\U8.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Utility Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\VDI_CALL.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\VDI_HDR.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\void const P.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\void P.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\void.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Voxware Voice Chat Codecs.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\WAVELIB - Wave Synthemm6zo.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What are these ASI, m0oxbk.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What is MPEG Audio aqqdaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What is the differenuwpm9k.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What is the latest vpbjt32.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What kind of audio d9b9pf1.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What MP3 encoder shoiud8ga.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\What's the deal with4bihxb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\When can I free the orulku.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Where is the Miles slsp9cm.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Which 3D sound provi8s4uqw.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\Working with Voice Input.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Callback Prefiqrbaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Callback Triggcphaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Channel Lock (110).html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Channel Lock Pomctpa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Channel Mute (107).html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Clear Beat-Barqpkh7a.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI For Loop Contrqw4wba.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Indirect Contrbv6kfq.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Next-Break Loorcm50t.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Patch Bank Selilaaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Sequence Branc6vf3eb.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Sequence Brancsrbaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Services.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Timbre Protect4rbaaa.html
+File Overwrite: C:\Projects\T2\xCore\3rdParty\Miles6\docs\htmlhelp\XMIDI Voice Protect (112).html
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\include
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\include\Mss.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\include\Mss16.pas
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\include\Mss32.pas
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\win
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Dodefs.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Domake16.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\cleanup.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss.ico
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss16.def
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss16.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss16.rsp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss16def.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss32.def
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss32.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mss32def.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mssa16.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mssb16.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mssb16.def
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Msscd.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mssdig.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mssinput.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Msssys.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Mssxmidi.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Ssmacros.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Vortex.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\win\Vortex.def
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Autopan.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Bandpass.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Capture.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Chorus.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Compress.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Flange.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Flt.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Highpass.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Laginter.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Lowpass.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Mdelay.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Parmeq.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Phaser.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Reson.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Reverb.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Reverb1.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Reverb2.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Reverb3.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Ringmod.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Sdelay.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\flt\Shelfeq.cpp
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec\Datatbl.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec\Math_16.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec\Math_a.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec\Mp3api.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec\Mp3dec.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec\Mp3dec.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Readme.txt
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\Examples
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Wrong.mp3
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Welcome.wav
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Title.xmi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Shot.wav
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\She_bop.wav
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Horn.wav
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Guitar.wav
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Glass.wav
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Demo.xmi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Media\Charge.wav
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Quick32.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Qmixmss.dll
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Mssqsnd.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Msschts.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Msschtc.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Msschat.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Mss32.dll
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Exam3d.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\Demo32.exe
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Quick16.def
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Quick.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Quick.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Msschts.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Msschts.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Msschtc.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Msschtc.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Msschat.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Msschat.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Exam3d.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Exam3d.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Exam32.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Exam16.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Domake16.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Demo16.def
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Demo.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Demo.ico
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\Win\src\Demo.c
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\src
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\src\con_util.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Xmiplay.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Stream.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Sstest.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Play.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Mss32.dll
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Filter.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Dlsplay.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Digplay.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Demo.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Con3d.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Audiocd.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Asifile.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Xmiplay.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Xdigplay.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Win32.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Watcom.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Stream.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Sstest.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Play.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Filter.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Domaked.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Domake16.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Internal.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3d16.def
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3d16.rsp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec16.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mp3dec32.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\Asi\Mssasi.h
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Rsx
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Rsx\Rsx.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Rsx\Rsx.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Rsx\Rsxcore.lib
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\mssbase
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\mssbase\Mssbase.cpp
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\a3d2
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\a3d2\A3d2.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Digplay.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Dbtest.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Con3d.cpp
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\qsound
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\qsound\Qapi.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\qsound\Qmixer.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Dlsplay.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\qsound\Qsound.cpp
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Ds3dbase
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Ds3dbase\Ds3dbase.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Ds3dbase\Eax.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Ds3dbase\Eax2.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Ds3dbase\Ia3d.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\M3d\M3d.mak
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Dls1.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Dls1pars.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Dls1syn.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Dlsfile.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Dlshl.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Dlslist.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Flt.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Imssapi.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\M3d.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Midi2xmi.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Midilist.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Miscutil.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssa32.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssmixer.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mixbuild.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssadp.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssadpcm.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssdbg.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssdbg.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssdls.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssqapi.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssstrm.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssutil.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Mssxdig.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Rib.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Rib.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Synth.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Synth.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\shared\Wavefile.cpp
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Awe32vse.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Awe32vse.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Dpmi.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Dpmi.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Saga.sbk
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Saga.xmi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Sbawe-sf.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Sndfont.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Sndfont.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Sndfont\Watcom.mak
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Oem
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Oem\Ensoniq.zip
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Oem\Gravis.zip
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Oem\Nvidia.zip
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Oem\Sbawe32.zip
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Ddkxmidi.bin
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Fatman.ad
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Fatman.bnk
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Fatman.cat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Fatman.opl
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mdiail2x.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mdimpu.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mdinull.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mditest.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mditest.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mdi_ddk.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mpu401.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mss_mdi.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Mt32.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Sample.ad
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Sample.bnk
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Sample.cat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Sample.opl
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Spkr.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Watcom.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Mdi\Yamaha.inc
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Ddk.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Ddk.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Digpas.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Digrap10.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Digsb.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Digsb16.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Digsbpro.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Digssys.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Digtest.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Digtest.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Mss_dig.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\ddk\Dig\Watcom.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Borland.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Domakeb.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Memfile.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Mss.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Mssa.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Mssasm.inc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Msscd.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Mssdig.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Mssdiga.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Msssr.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Mssxmidi.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Nompeg.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\src\dos\Watcom.mak
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\lib
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\lib\dos
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\lib\dos\Mssbor.lib
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\lib\dos\Msswat.lib
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\lib\win
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\lib\win\Mss32.lib
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\lib\win\Mss32bc.def
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\redist
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Autopan.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Bandpass.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Capture.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Chorus.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Compress.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Flange.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Highpass.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Laginter.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Lowpass.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mdelay.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mp3dec.asi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mss32.dll
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssa3d.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssa3d2.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssdolby.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssds3dh.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssds3ds.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssdx7sh.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssdx7sl.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssdx7sn.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Msseax.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Msseax2.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssfast.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssrsx.m3d
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssv12.asi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssv24.asi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Mssv29.asi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Parmeq.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Phaser.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Reson.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Reverb1.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Reverb2.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Reverb3.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Ringmod.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Sdelay.flt
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\win32\Shelfeq.flt
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Adlib.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Adlibg.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Audiodrv.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Digmaxi.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Esfm.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Fatman.ad
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Fatman.opl
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Iwav.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Iwav.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Jammer.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Mdimaxi.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Mpu401.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Mssdrvr.lst
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Mssw95.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Mt32mpu.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Null.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Nvdig.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Nvmpu.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Opl3.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Pas.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Pasplus.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Pcspkr.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Proaudio.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Rap10.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sb16.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sbawe32.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sblaster.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sblaster.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sbpro.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sbpro1.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sbpro2.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Setsound.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sndscape.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sndscape.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Sndsys.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Tandy.mdi
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Ultra.dig
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\redist\dos\Ultra.mdi
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Demo.ico
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Midiechw.cpp
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Midiechw.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Midiechw.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Miles32.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Milesp16.def
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Milesp16.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Milesply.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Milesply.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Milesstu.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\src\Milesstu.rc
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Midiechw.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Milesp32.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Milesstu.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Audiocd.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Mss32.dll
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\S3base.dll
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Vort_dls.dll
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos
+Made Dir: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Clad.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Domake.bat
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Gen.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Gena.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Genc.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Glib.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Midiecho.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Midilog.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Midirec.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Mssw95.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Real_isr.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Real_isr.bin
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Setsound.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Timer.asm
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Timer.h
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Watcom.mak
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Src\Wavelib.c
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Clad.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Glib.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Midiecho.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Midilog.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Midirec.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\tools\dos\Wavelib.exe
+File Copy: C:\Projects\T2\xCore\3rdParty\Miles6\Examples\console\Src\Asifile.cpp
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles Sound Studio.lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles Sound Player.lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\MIDI Echo for Windows.lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles Demo for Win32.lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles 3D Audio Example.lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles Voice Chat.lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles Quick API Example for Win32.lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles Filter Example.lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles Console Examples (Win32 or DOS).lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Online Miles Documentation (Compiled HTML).lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Online Miles Documentation (HTML).lnk
+Shell Link: C:\Documents and Settings\sansari\Start Menu\Programs\Miles Sound System 6\Miles Change Log.lnk
+RegDB Key: .xmi
+RegDB Val: XMI
+RegDB Old: XMI
+RegDB Key: XMI
+RegDB Val: Miles XMIDI sequence
+RegDB Old: Miles XMIDI sequence
+RegDB Key: XMI\shell\open\command
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Milesp32.exe %1
+RegDB Old: C:\Miles6\tools\win\Milesp32.exe %1
+RegDB Key: MIME
+RegDB Val: 
+RegDB Key: MIME\Database\Content Type
+RegDB Val: 
+RegDB Key: MIME\Database\Content Type\audio/mss
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\milesp32 
+RegDB Old: C:\Miles6\tools\win\milesp32 
+RegDB Key: MIME\Database\Content Type\audio/mss
+RegDB Val: .mss
+RegDB Name: Extension
+RegDB Old: .mss
+RegDB Key: .mss
+RegDB Val: MSS
+RegDB Old: MSS
+RegDB Key: MSS
+RegDB Val: Miles XMIDI sequence (with DLS data)
+RegDB Old: Miles XMIDI sequence (with DLS data)
+RegDB Key: MSS\shell\open\command
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Milesp32.exe %1
+RegDB Old: C:\Miles6\tools\win\Milesp32.exe %1
+RegDB Key: MIME
+RegDB Val: 
+RegDB Key: MIME\Database\Content Type
+RegDB Val: 
+RegDB Key: MIME\Database\Content Type\audio/midi
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\milesp32 
+RegDB Key: MIME\Database\Content Type\audio/midi
+RegDB Val: .mid
+RegDB Name: Extension
+RegDB Old: .mid
+RegDB Key: MIME\Database\Content Type\audio/mid
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\milesp32 
+RegDB Key: MIME\Database\Content Type\audio/mid
+RegDB Val: .mid
+RegDB Name: Extension
+RegDB Old: .mid
+RegDB Key: MIME\Database\Content Type\audio/x-midi
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\milesp32.exe 
+RegDB Key: MIME\Database\Content Type\audio/x-midi
+RegDB Val: .mid
+RegDB Name: Extension
+RegDB Old: .mid
+RegDB Key: .mid
+RegDB Val: MIDI
+RegDB Old: Winamp.File
+RegDB Key: MIDI
+RegDB Val: MIDI Sequence
+RegDB Key: MIDI\shell\open\command
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Milesp32.exe %1
+RegDB Key: .rmi
+RegDB Val: MID
+RegDB Old: Winamp.File
+RegDB Key: MID
+RegDB Val: MIDI Sequence
+RegDB Key: MID\shell\open\command
+RegDB Val: C:\Projects\T2\xCore\3rdParty\Miles6\tools\win\Milesp32.exe %1
+User Rights: Admin

@@ -1,0 +1,5 @@
+You can use ctrl-F to search for text in a list, F3 will search for the next occurence and shift-F3 for the previous one.
+You can set marks in a list with ctrl-F2 and jump forward to the next mark with F2 and back to the previous mark with shift-F2.
+You can use F4 and shift-F4 to move to the next or previous warning / error in the log view.
+You can use F5 and shift-F5 to move to the next or previous highlighted channel in the log view.
+You can use ctrl-A to select all the items in a list.

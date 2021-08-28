@@ -1,0 +1,367 @@
+//==============================================================================
+//  shadreceive_passes.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode receives shadows and kicks them to our "intermediate" buffer.
+//==============================================================================
+
+
+// DS NOTE: The compiler doesn't know how to check dependencies for microcode,
+// so we'll add and remove a line of comments to force the issue. What a pain!
+//==============================================================================
+
+#include "include.vu"
+#include "shadow_include.vu"
+
+.vu 
+.org MCODE_START_MATERIAL
+.align 4 
+.global VU1_SHADRECEIVE_PASSES_CODE_START
+.global VU1_SHADRECEIVE_PASSES_CODE_END
+
+VU1_SHADRECEIVE_PASSES_CODE_START:
+
+    ; setup
+    nop                                                 ilw.x   FLAG,   VU1_Flags(vi00)
+    nop                                                 ilw.w   SFLG,   VU1_COUNT(BASE)
+
+    ;==============================================================================
+    ; kick a shadow pass that primes the z-buffer for us. it is a super-simple kick
+    ;==============================================================================
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 1
+    nop                                                 lq          TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 iaddiu      ITMP, vi00, GS_TEXFLUSH
+    nop                                                 mfir.z      TF01(z),    ITMP
+    nop                                                 lq          TF02(xyzw), VU1_SHAD_PassOneGIF(vi00)
+    nop                                                 mfir.x      TF02(x),    NVRT
+    nop                                                 mfir.x      TF00(x),    NREG
+    nop                                                 iaddiu      KICK, BASE, VU1_REG1LOAD_GIFTAG
+    nop                                                 sq          TF00(xyzw), 0(KICK)
+    nop                                                 sq          TF01(xyzw), 1(KICK)
+    nop                                                 sq          TF02(xyzw), 2(KICK)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 xgkick      KICK
+
+    ;==============================================================================
+    ;  Shadow 0
+    ;==============================================================================
+    nop                                                 iaddiu  ITMP,       vi00,   DO_SHADOW_0
+    nop                                                 iand    ITMP,       SFLG,   ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_SHADOW_RECEIVE_0
+    nop                                                 nop
+    nop                                                 lq.xyzw SMT3(xyzw), VU1_SHAD_M_0_Col3(vi00)
+    nop                                                 lq.xyzw SMT2(xyzw), VU1_SHAD_M_0_Col2(vi00)
+    nop                                                 lq.xyzw SMT1(xyzw), VU1_SHAD_M_0_Col1(vi00)
+    nop                                                 lq.xyzw SMT0(xyzw), VU1_SHAD_M_0_Col0(vi00)
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_XFORM
+    nop                                                 nop
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_KICK
+    nop                                                 lq      TF02(xyzw), VU1_SHAD_M_0_Tex0(vi00)
+
+    nop                                                 iaddiu  ITMP, vi00, (DO_SHADOW_1|DO_SHADOW_2|DO_SHADOW_3|DO_SHADOW_4)
+    nop                                                 iand    ITMP, SFLG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_NEXT_RECEIVE_PASSES
+    nop                                                 iaddiu  ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick  ITMP
+
+    SKIP_SHADOW_RECEIVE_0:
+
+    ;==============================================================================
+    ;  Shadow 1
+    ;==============================================================================
+    nop                                                 iaddiu  ITMP,       vi00,   DO_SHADOW_1
+    nop                                                 iand    ITMP,       SFLG,   ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_SHADOW_RECEIVE_1
+    nop                                                 nop
+    nop                                                 lq.xyzw SMT3(xyzw), VU1_SHAD_M_1_Col3(vi00)
+    nop                                                 lq.xyzw SMT2(xyzw), VU1_SHAD_M_1_Col2(vi00)
+    nop                                                 lq.xyzw SMT1(xyzw), VU1_SHAD_M_1_Col1(vi00)
+    nop                                                 lq.xyzw SMT0(xyzw), VU1_SHAD_M_1_Col0(vi00)
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_XFORM
+    nop                                                 nop
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_KICK
+    nop                                                 lq      TF02(xyzw), VU1_SHAD_M_1_Tex0(vi00)
+
+    nop                                                 iaddiu  ITMP, vi00, (DO_SHADOW_2|DO_SHADOW_3|DO_SHADOW_4)
+    nop                                                 iand    ITMP, SFLG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_NEXT_RECEIVE_PASSES
+    nop                                                 iaddiu  ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick  ITMP
+
+    SKIP_SHADOW_RECEIVE_1:
+
+    ;==============================================================================
+    ;  Shadow 2
+    ;==============================================================================
+    nop                                                 iaddiu  ITMP,       vi00,   DO_SHADOW_2
+    nop                                                 iand    ITMP,       SFLG,   ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_SHADOW_RECEIVE_2
+    nop                                                 nop
+    nop                                                 lq.xyzw SMT3(xyzw), VU1_SHAD_M_2_Col3(vi00)
+    nop                                                 lq.xyzw SMT2(xyzw), VU1_SHAD_M_2_Col2(vi00)
+    nop                                                 lq.xyzw SMT1(xyzw), VU1_SHAD_M_2_Col1(vi00)
+    nop                                                 lq.xyzw SMT0(xyzw), VU1_SHAD_M_2_Col0(vi00)
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_XFORM
+    nop                                                 nop
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_KICK
+    nop                                                 lq      TF02(xyzw), VU1_SHAD_M_2_Tex0(vi00)
+
+    nop                                                 iaddiu  ITMP, vi00, (DO_SHADOW_3|DO_SHADOW_4)
+    nop                                                 iand    ITMP, SFLG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_NEXT_RECEIVE_PASSES
+    nop                                                 iaddiu  ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick  ITMP
+
+    SKIP_SHADOW_RECEIVE_2:
+
+    ;==============================================================================
+    ;  Shadow 3
+    ;==============================================================================
+    nop                                                 iaddiu  ITMP,       vi00,   DO_SHADOW_3
+    nop                                                 iand    ITMP,       SFLG,   ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_SHADOW_RECEIVE_3
+    nop                                                 nop
+    nop                                                 lq.xyzw SMT3(xyzw), VU1_SHAD_M_3_Col3(vi00)
+    nop                                                 lq.xyzw SMT2(xyzw), VU1_SHAD_M_3_Col2(vi00)
+    nop                                                 lq.xyzw SMT1(xyzw), VU1_SHAD_M_3_Col1(vi00)
+    nop                                                 lq.xyzw SMT0(xyzw), VU1_SHAD_M_3_Col0(vi00)
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_XFORM
+    nop                                                 nop
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_KICK
+    nop                                                 lq      TF02(xyzw), VU1_SHAD_M_3_Tex0(vi00)
+
+    nop                                                 iaddiu  ITMP, vi00, (DO_SHADOW_4)
+    nop                                                 iand    ITMP, SFLG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_NEXT_RECEIVE_PASSES
+    nop                                                 iaddiu  ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick  ITMP
+
+    SKIP_SHADOW_RECEIVE_3:
+
+    ;==============================================================================
+    ;  Shadow 4
+    ;==============================================================================
+    nop                                                 iaddiu  ITMP,       vi00,   DO_SHADOW_4
+    nop                                                 iand    ITMP,       SFLG,   ITMP
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,       vi00,   SKIP_SHADOW_RECEIVE_4
+    nop                                                 nop
+    nop                                                 lq.xyzw SMT3(xyzw), VU1_SHAD_M_4_Col3(vi00)
+    nop                                                 lq.xyzw SMT2(xyzw), VU1_SHAD_M_4_Col2(vi00)
+    nop                                                 lq.xyzw SMT1(xyzw), VU1_SHAD_M_4_Col1(vi00)
+    nop                                                 lq.xyzw SMT0(xyzw), VU1_SHAD_M_4_Col0(vi00)
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_XFORM
+    nop                                                 nop
+    nop                                                 bal     RETN,       VU1_SHADOW_RECEIVE_KICK
+    nop                                                 lq      TF02(xyzw), VU1_SHAD_M_4_Tex0(vi00)
+    SKIP_SHADOW_RECEIVE_4:
+    SKIP_NEXT_RECEIVE_PASSES:
+
+    ; should we return to the clipper, or are we done?
+    nop                                                 iaddiu      ITMP, vi00, CLIPPER_PASS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, FINISHED_RECEIVE
+    nop                                                 nop
+    nop                                                 iaddiu  ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick  ITMP
+    nop                                                 ilw.w       RETN, VU1C_Storage(vi00)
+    nop                                                 jr          RETN
+    nop                                                 nop
+    FINISHED_RECEIVE:
+
+    nop                                                 nop
+    nop[E]                                              nop
+    nop                                                 nop
+
+
+;==============================================================================
+;  Shadow receive uv calculation:
+;==============================================================================
+
+#define SEND    TI02        // loop end marker
+#define SPTR    TI03        // pointer to current buffer
+#define SNXT    TI04        // pointer to next buffer
+#define CMSK    TI05        // const mask 0x20
+#define SIGN    TI06        // sign of z in cross product
+#define ADCW    SXFM        // adc and winding mask - REUSE SXFM
+#define SPOS(x) TF08(x)     // the input vertex
+#define PSUB(x) TF09(x)     // the previous sub (TriVert[1]-TriVert[0])
+#define PSPS(x) TF10(x)     // the previous pos in screen space
+#define SRGB(x) TF11(x)     // the color to write in
+#define CSUB(x) TF12(x)     // the current subtraction (TriVert[2]-TriVert[1])
+#define CSPS(x) TF13(x)     // the current pos in screen space
+#define OSTQ(x) TF14(x)     // the uv value to write out
+
+VU1_SHADOW_RECEIVE_XFORM:
+    ; concatenate the l2w and w2s matrices
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W3(w)     iadd    SPTR, vi00, BASE
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W3(z)     iaddiu  SNXT, NBUF, 0x00
+    madday.xyzw     acc,        SMT1(xyzw), L2W3(y)     iadd    SEND, SPTR, NUMV
+    maddx.xyzw      SLS3(xyzw), SMT0(xyzw), L2W3(x)     iadd    SEND, SEND, NUMV
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W2(w)     iadd    SEND, SEND, NUMV
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W2(z)     iadd    SEND, SEND, NUMV
+    madday.xyzw     acc,        SMT1(xyzw), L2W2(y)     iaddiu  ITMP, vi00, 0x80
+    maddx.xyzw      SLS2(xyzw), SMT0(xyzw), L2W2(x)     mfir.w  SRGB(w), ITMP
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W1(w)     mfir.z  SRGB(z), ITMP
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W1(z)     mfir.y  SRGB(y), ITMP
+    madday.xyzw     acc,        SMT1(xyzw), L2W1(y)     mfir.x  SRGB(x), ITMP
+    maddx.xyzw      SLS1(xyzw), SMT0(xyzw), L2W1(x)     iaddiu  CMSK, vi00, 0x20
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W0(w)     nop
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W0(z)     nop
+    madday.xyzw     acc,        SMT1(xyzw), L2W0(y)     nop
+    maddx.xyzw      SLS0(xyzw), SMT0(xyzw), L2W0(x)     nop
+
+    ; loop preamble - handles the first two verts
+    mulx.xyzw       PSUB(xyzw), vf00xyzw,   vf00x       lq.xyzw SPOS(xyzw), VU1_XYZ(SNXT)       ; sub=0             ; load vert0
+    mulx.xyzw       CSUB(xyzw), vf00xyzw,   vf00x       lq.z    OSTQ(z),    VU1_UV0(SPTR)       ; sub=0             ; load q0
+    nop                                                 nop
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       nop                                     ; xform vert0
+    maddaz.xyzw     acc,        SLS2(xyzw), SPOS(z)     nop                                     ; xform vert0
+    madday.xyzw     acc,        SLS1(xyzw), SPOS(y)     nop                                     ; xform vert0
+    maddx.xyzw      CSPS(xyzw), SLS0(xyzw), SPOS(x)     nop                                     ; xform vert0
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    mulz.xy         OSTQ(xy),   CSPS(xy),   OSTQ(z)     nop                                     ; project uv0
+    add.xyz         PSPS(xyz),  CSPS(xyz),  vf00xyz     nop                                     ; prev pos = pos0
+    nop                                                 nop
+    nop                                                 sq.xyzw SRGB(xyzw), VU1_RGB(SPTR)                           ; store vert 0
+    nop                                                 sq.xyz  OSTQ(xyz),  VU1_UV0(SPTR)                           ; store vert 0
+    nop                                                 iaddiu  SPTR, SPTR, VU1_VERT_SIZE                           ; vptr++
+    nop                                                 iaddiu  SNXT, SNXT, VU1_VERT_SIZE                           ; snxt++
+
+    nop                                                 lq.xyzw SPOS(xyzw), VU1_XYZ(SNXT)                           ; load vert1
+    nop                                                 lq.z    OSTQ(z),    VU1_UV0(SPTR)                           ; load q1
+    nop                                                 nop
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       nop                                     ; xform vert1
+    maddaz.xyzw     acc,        SLS2(xyzw), SPOS(z)     nop                                     ; xform vert1
+    madday.xyzw     acc,        SLS1(xyzw), SPOS(y)     nop                                     ; xform vert1
+    maddx.xyzw      CSPS(xyzw), SLS0(xyzw), SPOS(x)     nop                                     ; xform vert1
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    mulz.xy         OSTQ(xy),   CSPS(xy),   OSTQ(z)     nop                                     ; project uv1
+    sub.xy          PSUB(xy),   CSPS(xy),   PSPS(xy)    nop                                     ; vert1-vert0
+    add.xyz         PSPS(xyz),  CSPS(xyz),  vf00xyz     sq.xyzw SRGB(xyzw), VU1_RGB(SPTR)       ; prev pos = pos1   ; store vert 1
+    nop                                                 sq.xyz  OSTQ(xyz),  VU1_UV0(SPTR)                           ; store vert 1
+    nop                                                 iaddiu  SPTR, SPTR, VU1_VERT_SIZE                           ; vptr++
+    nop                                                 iaddiu  SNXT, SNXT, VU1_VERT_SIZE
+
+SHADOW_RECEIVE_XFORM_LOOP:
+    nop                                                 lq.xyzw SPOS(xyzw), VU1_XYZ(SNXT)                           ; load vert2
+    nop                                                 lq.z    OSTQ(z),    VU1_UV0(SPTR)                           ; load q2
+    nop                                                 nop
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       nop                                     ; xform vert2
+    maddaz.xyzw     acc,        SLS2(xyzw), SPOS(z)     mtir    ADCW,   SPOS(w)                 ; xform vert2       ; grab out adc and w bit
+    madday.xyzw     acc,        SLS1(xyzw), SPOS(y)     nop                                     ; xform vert2
+    maddx.xyzw      CSPS(xyzw), SLS0(xyzw), SPOS(x)     nop                                     ; xform vert2
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    mulz.xy         OSTQ(xy),   CSPS(xy),   OSTQ(z)     fmand   SIGN, CMSK                          ; project uv2
+    sub.xy          CSUB(xy),   CSPS(xy),   PSPS(xy)    nop    ; vert2-vert1
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    opmula.xyz      acc,        PSUB(xyz),  CSUB(xyz)   nop                                     ; cross product
+    opmsub.xyz      vf00xyz,    CSUB(xyz),  PSUB(xyz)   nop                                     ; cross product
+    add.xy          PSUB(xy),   CSUB(xy),   vf00xy      nop;ibne    SIGN, vi00, REJECT_SHADOW_POLY  ; psub = csub
+    add.xyz         PSPS(xyz),  CSPS(xyz),  vf00xyz     nop                                     ; prev pos = pos2
+    nop                                                 iand    ITMP,   ADCW, CMSK                                  ; mask out winding bit
+    nop                                                 fmand   SIGN, CMSK                                          ; grab sign of z
+    nop                                                 iadd    ITMP, SIGN, ITMP                                    ; sign + winding bit
+    nop                                                 iand    ITMP, ITMP, CMSK                                    ; winding bit masked out
+
+    nop                                                 nop
+    nop                                                 ibne    ITMP, CMSK, NOT_BACKFACE
+    nop                                                 nop
+    nop                                                 iaddiu  ITMP, vi00, 0x7fff
+    nop                                                 iaddiu  ITMP, ITMP, 1
+    nop                                                 iand    ITMP, ADCW, ITMP
+    nop                                                 nop
+    nop                                                 ibne    ITMP, vi00, NOT_BACKFACE
+    ;//nop                                                 b       NOT_BACKFACE
+    nop                                                 nop
+
+REJECT_SHADOW_POLY:
+    nop                                                 iaddiu  ITMP, ITMP, 0xff
+    nop                                                 isw.w   ITMP, VU1_RGB-(VU1_VERT_SIZE*2)(SPTR)
+    nop                                                 isw.w   ITMP, VU1_RGB-(VU1_VERT_SIZE*1)(SPTR)
+    nop                                                 b       BACKFACE
+    nop                                                 isw.w   ITMP, VU1_RGB(SPTR)
+
+NOT_BACKFACE:
+    nop                                                 sq.w    SRGB(w),   VU1_RGB(SPTR)
+BACKFACE:
+    nop                                                 sq.xyz  SRGB(xyz),  VU1_RGB(SPTR)                           ; store vert 2
+    nop                                                 sq.xyz  OSTQ(xyz),  VU1_UV0(SPTR)                           ; store vert 2
+    nop                                                 iaddiu  SPTR, SPTR, VU1_VERT_SIZE
+    nop                                                 iaddiu  SNXT, SNXT, VU1_VERT_SIZE
+    nop                                                 ibne    SPTR, SEND, SHADOW_RECEIVE_XFORM_LOOP
+    nop                                                 nop
+
+    nop                                                 jr      RETN
+    nop                                                 nop
+
+#undef SEND
+#undef SPTR
+#undef SNXT
+#undef CMSK
+#undef SIGN
+#undef ADCW
+#undef WMSK
+#undef SPLW
+#undef SPOS
+#undef PSUB
+#undef PSPS
+#undef SRGB
+#undef CSUB
+#undef CSPS
+#undef OSTQ
+
+;==============================================================================
+;  Shadow receive kicking:
+;==============================================================================
+VU1_SHADOW_RECEIVE_KICK:
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF                      ; Set EOP Bit
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV                        ; EOP | Num Vertices
+    nop                                                 iaddiu      NREG, vi00, 2
+    nop                                                 lq          TF00(xyzw), VU1C_RegLoadGif(vi00)       ; Load 1 GS Register
+    nop                                                 iaddiu      ITMP, vi00, GS_TEXFLUSH
+    nop                                                 mfir.z      TF01(z),    ITMP
+    ;                                                   lq          TF02, blah -- TF02 was already set to the proper tex0 register
+    nop                                                 lq          TF03(xyzw), VU1_SHAD_PassTwoGIF(vi00)        ; Strip: Opaque/Alpha | Context1 | UV0
+    nop                                                 mfir.x      TF03(x),    NVRT                        ; Set EOP and Num Vertices in GIFTAG
+    nop                                                 mfir.x      TF00(x),    NREG                        ; Set 2 registers
+
+    ; stall the previous pass    
+    nop                                                 iaddiu  ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick  ITMP
+    
+    nop                                                 iaddiu      KICK, BASE, VU1_REG2LOAD_GIFTAG         ; Get start address of GIFTAG
+    nop                                                 sq          TF00(xyzw), 0(KICK)                     ; Build GS chain
+    nop                                                 sq          TF01(xyzw), 1(KICK)
+    nop                                                 sq          TF02(xyzw), 2(KICK)
+    nop                                                 sq          TF03(xyzw), 3(KICK)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 jr          RETN
+    nop                                                 xgkick      KICK                                    ; Kick GS chain
+
+VU1_SHADRECEIVE_PASSES_CODE_END:

@@ -1,0 +1,940 @@
+//==============================================================================
+//  clipper.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode is for generic clipping of polygons. It will run through the
+//  polygons testing them for clipping and set flags and adc bits accordingly.
+//  It will call whatever the material routine is, and when that routine returns
+//  it will clip polygons that were marked as needing it and make more calls
+//  to the material routine as needed.
+//  
+//==============================================================================
+
+// DS NOTE: The compiler doesn't know how to check dependencies for microcode,
+// so we'll add and remove a line of comments to force the issue. What a pain!
+//==============================================================================
+
+#include "include.vu"
+
+.vu 
+.org MCODE_START_CLIPPER
+.align 4 
+.global VU1_CLIPPER_CODE_START
+.global VU1_CLIPPER_CODE_END
+
+#define VU1_CLIPPER_ADDRESS(x)      ((x)-CLIPPER_ADDRESS_START+MCODE_START_CLIPPER)
+#define VU1_CLIPPER_RET_ADDRESS(x)  ((x)-CLIPPER_ADDRESS_START+MCODE_START_CLIPPER)
+#define BRANCH_MATERIAL_MCODE       VU1_CLIPPER_CODE_START+MCODE_START_MATERIAL-MCODE_START_CLIPPER
+
+//==============================================================================
+//==============================================================================
+//==============================================================================
+
+VU1_CLIPPER_CODE_START:
+CLIPPER_ADDRESS_START:
+
+#define L2C0( x )                   TF00( x )       // Local-to-Clip matrix
+#define L2C1( x )                   TF01( x )
+#define L2C2( x )                   TF02( x )
+#define L2C3( x )                   TF03( x )
+#define W2C0( x )                   TF04( x )       // World-to-Clip matrix
+#define W2C1( x )                   TF05( x )
+#define W2C2( x )                   TF06( x )
+#define W2C3( x )                   TF07( x )
+#define C2S0( x )                   TF08( x )       // Clip-to-Screen matrix
+#define C2S1( x )                   TF09( x )
+#define C2S2( x )                   TF10( x )
+#define C2S3( x )                   TF11( x )
+#define C2L0( x )                   TF04( x )       // Clip-to-Local matrix     (Temporary)
+#define C2L1( x )                   TF05( x )
+#define C2L2( x )                   TF06( x )
+#define C2L3( x )                   TF07( x )
+#define C2W0( x )                   TF08( x )       // Clip-to-World matrix     (Temporary)
+#define C2W1( x )                   TF09( x )
+#define C2W2( x )                   TF10( x )
+#define C2W3( x )                   TF11( x )
+#define W2L0( x )                   TF12( x )       // World-to-Local matrix    (Temporary)
+#define W2L1( x )                   TF13( x )
+#define W2L2( x )                   TF14( x )
+#define W2L3( x )                   TF15( x )
+
+#define IXYZ( x )                   TF04( x )       // Input  XYZ position
+#define OXYZ( x )                   TF05( x )       // Output XYZ position
+#define FTEX( x )                   TF06( x )       // Float  UV0 texture coordinate
+#define ITEX( x )                   TF07( x )       // Input  UV0 texture coordinate
+#define OTEX( x )                   TF08( x )       // Output UV0 texture coordinate
+#define CC2L( x )                   TF14( x )       // Clip-to-local
+
+#define QPT0( x )                   TF12( x )       // Queue of Vertex Positions
+#define QPT1( x )                   TF13( x )
+#define QPT2( x )                   TF14( x )
+#define CTEX( x )                   TF15( x )
+#define CCOL( x )                   TF16( x )
+#define CXYZ( x )                   TF17( x )
+#define CSTQ( x )                   TF18( x )
+
+#define POS0( x )                   TF04( x )
+#define TEX0( x )                   TF05( x )
+#define NRM0( x )                   TF06( x )
+#define COL0( x )                   TF07( x )
+#define POS1( x )                   TF08( x )
+#define TEX1( x )                   TF09( x )
+#define NRM1( x )                   TF10( x )
+#define COL1( x )                   TF11( x )
+#define POS2( x )                   TF12( x )
+#define TEX2( x )                   TF13( x )
+#define NRM2( x )                   TF14( x )
+#define COL2( x )                   TF15( x )
+#define CLP0( x )                   TF16( x )
+#define CLP1( x )                   TF17( x )
+#define CLP2( x )                   TF18( x )
+#define CLP3( x )                   TF19( x )
+
+#define VPTR                        TI00            // Pointer to source vertices
+#define ENDM                        TI01            // End address
+#define PC2L                        TI05            // Pointer to clip-to-local positions
+
+#define CPTR                        TI02            // Pointer to output buffer for Indexes
+#define ADCB                        TI03            // ADC mask (0x8000)
+#define ADCC                        TI04            // ADC for current vertex
+#define ADCN                        TI05            // ADC for next vertex
+#define INDX                        TI06            // Vertex index
+
+
+#define NUMC                        TI00            // Number of Clipped vertices
+#define PIDX                        TI01            // Pointer to Indexes
+#define PSRC                        TI02            // Pointer to Source vertices
+#define PDST                        TI03            // Pointer to Destination vertices
+#define NDST                        TI04            // Number of vertices output
+#define PPLN                        TI05            // Pointer to Plane Table
+#define PMSK                        TI06            // Plane Mask
+#define OUT0                        FLAG            // Vertex 0 Outside (NOTE: reuse FLAG)
+#define OUT1                        INST            // Vertex 1 Outside (NOTE: reuse INST)
+//      NBUF                                        // NOTE: Reuse NBUF
+
+#define IVAL                        PDST            // I Value                                      (NOTE: Reuse PDST)
+#define IIND                        PPLN            // Index value                                  (NOTE: Reuse PPLN)
+#define IDST                        PMSK            // Loop Counter                                 (NOTE: Reuse PMSK)
+#define PSTR                        OUT0            // Pointer to Output Buffer for Strip           (NOTE: Reuse OUT0)
+#define PLOC                        OUT1            // Pointer to Output Buffer for C2L vertices    (Note: Reuse OUT1)
+
+#define IWND                        PSRC            // current winding (NOTE: reuse PSRC)
+
+    nop                                                 lq          W2C0(xyzw), VU1_CLIP_W2C+0(CLIP)
+    nop                                                 lq          W2C1(xyzw), VU1_CLIP_W2C+1(CLIP)
+    nop                                                 lq          W2C2(xyzw), VU1_CLIP_W2C+2(CLIP)
+    nop                                                 lq          W2C3(xyzw), VU1_CLIP_W2C+3(CLIP)
+
+    nop                                                 lq          L2W0(xyzw), VU1_L2W+0(BASE)
+    nop                                                 lq          L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq          L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 lq          L2W3(xyzw), VU1_L2W+3(BASE) 
+
+    mulax.xyzw      acc,        W2C0(xyzw), L2W0(x)     ilw.z       INST, VU1_COUNT(BASE)
+    madday.xyzw     acc,        W2C1(xyzw), L2W0(y)     iaddiu      VPTR, BASE, 0x00                        ; Get pointer to start of vertice
+    maddaz.xyzw     acc,        W2C2(xyzw), L2W0(z)     iaddiu      ITMP, vi00, 0x7F
+    maddw.xyzw      L2C0(xyzw), W2C3(xyzw), L2W0(w)     iand        NUMV, INST, ITMP
+                                                                   
+    mulax.xyzw      acc,        W2C0(xyzw), L2W1(x)     iadd        ENDM, VPTR, NUMV                        ; Calculate end address for loop 
+    madday.xyzw     acc,        W2C1(xyzw), L2W1(y)     iadd        ENDM, ENDM, NUMV 
+    maddaz.xyzw     acc,        W2C2(xyzw), L2W1(z)     iadd        ENDM, ENDM, NUMV 
+    maddw.xyzw      L2C1(xyzw), W2C3(xyzw), L2W1(w)     iadd        ENDM, ENDM, NUMV 
+                                                                   
+    mulax.xyzw      acc,        W2C0(xyzw), L2W2(x)     iaddiu      CPTR, CLIP, VU1_CLIP_INDEXLIST          ; Get pointer to output buffer for indexes
+    madday.xyzw     acc,        W2C1(xyzw), L2W2(y)     nop
+    maddaz.xyzw     acc,        W2C2(xyzw), L2W2(z)     nop
+    maddw.xyzw      L2C2(xyzw), W2C3(xyzw), L2W2(w)     nop 
+                                                                   
+    mulax.xyzw      acc,        W2C0(xyzw), L2W3(x)     iaddiu      ADCB, vi00, 0x7FFF                      ; Get the ADC Bit mask
+    madday.xyzw     acc,        W2C1(xyzw), L2W3(y)     iaddiu      ADCB, ADCB, 1      
+    maddaz.xyzw     acc,        W2C2(xyzw), L2W3(z)     iadd        INDX, vi00, vi00                        ; Clear the index counter
+    maddw.xyzw      L2C3(xyzw), W2C3(xyzw), L2W3(w)     nop
+
+    nop                                                 sq          L2C0(xyzw), VU1_CLIP_L2C+0(CLIP)        ; Save the L2C matrix
+    nop                                                 sq          L2C1(xyzw), VU1_CLIP_L2C+1(CLIP)
+    nop                                                 sq          L2C2(xyzw), VU1_CLIP_L2C+2(CLIP)
+    nop                                                 sq          L2C3(xyzw), VU1_CLIP_L2C+3(CLIP)
+
+    addw.xyzw       CTEX(xyzw), VF00xyzw,   VF00w       lq          C2S0(xyzw), VU1_CLIP_C2S+0(CLIP)        ; Load the C2S matrix
+    nop                                                 lq          C2S1(xyzw), VU1_CLIP_C2S+1(CLIP)
+    nop                                                 lq          C2S2(xyzw), VU1_CLIP_C2S+2(CLIP)
+    nop                                                 lq          C2S3(xyzw), VU1_CLIP_C2S+3(CLIP)
+
+CLIPTEST_LOOP:
+
+    addw.zw     CTEX(zw),   VF00zw,     VF00w           ilw.w       ADCN,       VU1_XYZ+VU1_VERT_SIZE(VPTR)     ; Get ADC bits from next vertex (OK to read past end of buffer)
+    nop                                                 lq          QPT2(xyzw), VU1_XYZ(VPTR)                   ; Get next vertex Position
+    nop                                                 lq.xy       CTEX(xy),   VU1_UV0(VPTR)                   ; Get texture coordinates
+    nop                                                 lq          CCOL(xyzw), VU1_RGB(VPTR)                   ; Get Instance Color
+    nop                                                 isub        ITMP,   VPTR,   BASE                        ; calc backup position
+
+    mulax.xyzw  acc,        L2C0(xyzw), QPT2(x)         iadd        ITMP,   ITMP,   NBUF                        ; calc backup position
+    madday.xyzw acc,        L2C1(xyzw), QPT2(y)         mtir        ADCC, QPT2(w)                               ; Transform Position to Clip space
+    maddaz.xyzw acc,        L2C2(xyzw), QPT2(z)         sq          QPT2(xyzw), VU1_XYZ(ITMP)                   ; Backup Position to Next Buffer
+    maddw.xyzw  QPT2(xyzw), L2C3(xyzw), VF00w           sq          CTEX(xyzw), VU1_UV0(ITMP)                   ; Backup UV to Next Buffer
+
+    ; Transform Position by Screen space
+    mulax.xyzw  acc,        C2S0(xyzw), QPT2(x)         sq          CCOL(xyzw), VU1_RGB(ITMP)                   ; Backup Color to Next Buffer
+    madday.xyzw acc,        C2S1(xyzw), QPT2(y)         nop
+    maddaz.xyzw acc,        C2S2(xyzw), QPT2(z)         nop
+    maddw.xyzw  CXYZ(xyzw), C2S3(xyzw), QPT2(w)         nop
+    
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+
+    itof12.xy   CTEX(xy),   CTEX(xy)                    div         q,  VF00w,  CXYZ(w)                     ; Start perspective divide
+    nop                                                 waitq
+    
+    mulq.xyz    CXYZ(xyz),  CXYZ(xyz),  q               nop
+    mulq.xyz    CSTQ(xyz),  CTEX(xyz),  q               nop
+    nop                                                 nop
+    nop                                                 nop
+    ftoi4.xyz   CXYZ(xyz),  CXYZ(xyz)                   nop
+    
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+
+    nop                                                 sq.xyz      CSTQ(xyz),  VU1_UV0(VPTR)
+    nop                                                 sq.xyz      CXYZ(xyz),  VU1_XYZ(VPTR)
+
+    nop                                                 iand        ITMP, ADCC, ADCB                        ; Test if current vertex has ADC bit set
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, NO_ADC
+    nop                                                 iand        ITMP, ADCN, ADCB                        ; Test if next vertex has ADC bit set
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, NO_ADC
+    nop                                                 nop
+    nop                                                 fcset       0                                       ; Clear Clip flags since starting a new Tri
+
+NO_ADC:
+
+    clipw.xyz   QPT2(xyz),  QPT2(w)                     nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 move        QPT0(xyzw), QPT1(xyzw)                  ; Test if the vertex needs clipped | Roll the queue 
+    nop                                                 move        QPT1(xyzw), QPT2(xyzw)                                           
+    nop                                                 fcand       ITMP, 0x3FFFF                           ; Trivial Accept test
+    nop                                                 ibeq        ITMP, vi00, NO_CLIP
+    
+    nop                                                 iand        ITMP, ADCC, ADCB
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, REJECT                      ; Check if this is NOT the first 2 verts on a new Tri
+    nop                                                 iadd        FLAG, vi00, vi00
+
+    nop                                                 fcor        ITMP, ~CLIP_TRI_POS_X                   ; Test if all vertices are > +X
+    nop                                                 ior         FLAG, FLAG, ITMP
+    nop                                                 fcor        ITMP, ~CLIP_TRI_NEG_X                   ; Test if all vertices are < -X
+    nop                                                 ior         FLAG, FLAG, ITMP
+
+    nop                                                 fcor        ITMP, ~CLIP_TRI_POS_Y                   ; Test if all vertices are > +Y
+    nop                                                 ior         FLAG, FLAG, ITMP
+    nop                                                 fcor        ITMP, ~CLIP_TRI_NEG_Y                   ; Test if all vertices are < -Y
+    nop                                                 ior         FLAG, FLAG, ITMP
+
+    nop                                                 fcand       ITMP, CLIP_TRI_POS_Z                    ; Test if ANY vertices are > +Z
+    nop                                                 ior         FLAG, FLAG, ITMP
+    nop                                                 fcor        ITMP, ~CLIP_TRI_NEG_Z                   ; Test if all vertices are < -Z
+    nop                                                 ior         FLAG, FLAG, ITMP
+    
+    nop                                                 nop
+    nop                                                 ibne        FLAG, vi00, REJECT                      ; Trivial Reject test
+    nop                                                 isubiu      ITMP, INDX, 2                           ; Get starting index for Tri
+
+    nop                                                 isw.w       ITMP, 0(CPTR)                           ; Store index
+    nop                                                 iaddiu      CPTR, CPTR, 1
+
+REJECT:
+
+    nop                                                 ior         ITMP, ADCC, ADCB
+    nop                                                 isw.w       ITMP,       VU1_XYZ(VPTR)                   ; Set ADC Bit
+
+NO_CLIP:
+
+    nop                                                 iaddiu      VPTR, VPTR, VU1_VERT_SIZE               ; Advance to next vertex 
+    nop                                                 nop
+    nop                                                 ibne        VPTR, ENDM, CLIPTEST_LOOP
+    nop                                                 iaddiu      INDX, INDX, 1                           ; Increment vertex index
+
+;------------------------------------------------------------------------------
+
+    nop                                                 isub        CPTR, CPTR, CLIP
+    nop                                                 isubiu      CPTR, CPTR, VU1_CLIP_INDEXLIST          ; Get number of Indexes in list
+
+    nop                                                 lq          QPT0(xyzw), VU1_COUNT(BASE)             ; Backup the first vector (Flags, Count etc)
+    nop                                                 sq          QPT0(xyzw), VU1_CLIP_STORAGE + 0(CLIP)
+    nop                                                 isw.x       CPTR,       VU1_CLIP_STORAGE + 1(CLIP)
+
+    nop                                                 iaddiu      ITMP, vi00, VU1_CLIPPER_RET_ADDRESS(CLIP_RET)
+    nop                                                 isw.w       ITMP,       VU1C_Storage(vi00)          ; Store Return Address
+
+    nop                                                 ilw.x       FLAG,       VU1_Flags(vi00)
+    nop                                                 iaddiu      ITMP, vi00, CLIPPER_PASS
+    nop                                                 ior         FLAG, FLAG, ITMP
+    nop                                                 isw.x       FLAG,       VU1_Flags(vi00)
+
+    nop                                                 b           BRANCH_MATERIAL_MCODE
+    nop                                                 nop
+
+;==============================================================================
+;
+;   Triangle Clipper
+;
+;==============================================================================
+
+CLIP_RET:
+
+    nop                                                 ilw.x       NUMC,       VU1_CLIP_STORAGE + 1(CLIP)  ; Load number of Clipped vertices
+    nop                                                 nop
+    nop                                                 ibeq        NUMC, vi00, CLIP_EXIT                   ; Check for NO vertices needed clipping
+    nop                                                 nop
+
+    nop                                                 lq          L2C0(xyzw), VU1_CLIP_L2C + 0(CLIP)
+    nop                                                 lq          L2C1(xyzw), VU1_CLIP_L2C + 1(CLIP)
+    nop                                                 lq          L2C2(xyzw), VU1_CLIP_L2C + 2(CLIP)
+    nop                                                 lq          L2C3(xyzw), VU1_CLIP_L2C + 3(CLIP)
+
+    nop                                                 lq          C2W0(xyzw), VU1_CLIP_C2W + 0(CLIP)
+    nop                                                 lq          C2W1(xyzw), VU1_CLIP_C2W + 1(CLIP)
+    nop                                                 lq          C2W2(xyzw), VU1_CLIP_C2W + 2(CLIP)
+    nop                                                 lq          C2W3(xyzw), VU1_CLIP_C2W + 3(CLIP)
+
+    addz.x      W2L2(x),    VF00x,      L2W0(z)         move.x      W2L0(x),    L2W0(x)                     ; W2L = L2W.InvertRT()
+    addz.y      W2L2(y),    VF00y,      L2W1(z)         mr32.w      W2L0(w),    VF00w   
+    addx.y      W2L0(y),    VF00y,      L2W1(x)         move.y      W2L1(y),    L2W1(y)
+    addx.z      W2L0(z),    VF00z,      L2W2(x)         mr32.w      W2L1(w),    VF00w  
+    addy.x      W2L1(x),    VF00x,      L2W0(y)         move.z      W2L2(z),    L2W2(z)
+    addy.z      W2L1(z),    VF00z,      L2W2(y)         mr32.w      W2L2(w),    VF00w   
+    mulax.xyz   acc,        W2L0(xyz),  L2W3(x)         move.w      W2L3(w),    VF00w
+    madday.xyz  acc,        W2L1(xyz),  L2W3(y)         nop
+    maddz.xyz   W2L3(xyz),  W2L2(xyz),  L2W3(z)         nop
+    sub.xyz     W2L3(xyz),  VF00xyz,    W2L3(xyz)       nop
+
+    mulax.xyzw  acc,        W2L0(xyzw), C2W0(x)         nop                                                 ; C2L = W2L * C2W
+    madday.xyzw acc,        W2L1(xyzw), C2W0(y)         nop
+    maddaz.xyzw acc,        W2L2(xyzw), C2W0(z)         nop
+    maddw.xyzw  C2L0(xyzw), W2L3(xyzw), C2W0(w)         nop
+                                                     
+    mulax.xyzw  acc,        W2L0(xyzw), C2W1(x)         nop
+    madday.xyzw acc,        W2L1(xyzw), C2W1(y)         nop
+    maddaz.xyzw acc,        W2L2(xyzw), C2W1(z)         nop
+    maddw.xyzw  C2L1(xyzw), W2L3(xyzw), C2W1(w)         nop
+                                                     
+    mulax.xyzw  acc,        W2L0(xyzw), C2W2(x)         nop
+    madday.xyzw acc,        W2L1(xyzw), C2W2(y)         nop
+    maddaz.xyzw acc,        W2L2(xyzw), C2W2(z)         nop
+    maddw.xyzw  C2L2(xyzw), W2L3(xyzw), C2W2(w)         nop
+
+    mulax.xyzw  acc,        W2L0(xyzw), C2W3(x)         nop
+    madday.xyzw acc,        W2L1(xyzw), C2W3(y)         nop
+    maddaz.xyzw acc,        W2L2(xyzw), C2W3(z)         nop
+    maddw.xyzw  C2L3(xyzw), W2L3(xyzw), C2W3(w)         iaddiu      PIDX, CLIP, VU1_CLIP_INDEXLIST
+
+    nop                                                 sq          C2L0(xyzw), VU1_CLIP_C2L+0(CLIP)        ; Save the C2L matrix
+    nop                                                 sq          C2L1(xyzw), VU1_CLIP_C2L+1(CLIP)
+    nop                                                 sq          C2L2(xyzw), VU1_CLIP_C2L+2(CLIP)
+    nop                                                 sq          C2L3(xyzw), VU1_CLIP_C2L+3(CLIP)
+
+;==============================================================================
+
+CLIP_VERT_LOOP:
+
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    sub         NRM0(xyzw), VF00xyzw,   VF00xyzw        ilw.w       ITMP, 0(PIDX)                           ; Get starting index of tri
+    sub         TEX0(xyzw), VF00xyzw,   VF00xyzw        ilw.z       PSRC, VU1_CLIP_STORAGE+3(CLIP)
+    sub         COL0(xyzw), VF00xyzw,   VF00xyzw        iadd        PSRC, PSRC, ITMP                        ; Compute address of vertex
+    add         POS0(xyzw), NRM0(xyzw), VF00xyzw        iadd        PSRC, PSRC, ITMP
+    nop                                                 iadd        PSRC, PSRC, ITMP
+    nop                                                 iadd        PSRC, PSRC, ITMP
+    nop                                                 iaddiu      PSRC, PSRC, VU1_HEADER_SIZE
+
+    nop                                                 lq          CLP0(xyzw), VU1_CLIP_L2C+0(CLIP)        ; Load the L2C matrix
+    nop                                                 lq          CLP1(xyzw), VU1_CLIP_L2C+1(CLIP)
+    nop                                                 lq          CLP2(xyzw), VU1_CLIP_L2C+2(CLIP)
+    nop                                                 lq          CLP3(xyzw), VU1_CLIP_L2C+3(CLIP)
+
+    nop                                                 lqi.xyz     NRM0(xyz),  (PSRC++)                    ; Load vertex 0 of Tri
+    itof12.xyz  NRM0(xyz),  NRM0(xyz)                   lqi.xy      TEX0(xy),   (PSRC++)
+    itof12.xy   TEX0(xy),   TEX0(xy)                    lqi.xyzw    COL0(xyzw), (PSRC++)
+    itof12.xyzw COL0(xyzw), COL0(xyzw)                  lqi.xyz     POS0(xyz),  (PSRC++)
+
+    nop                                                 bal         RETN,   TRANSFORM_VERT
+    nop                                                 iaddiu      PDST,   CLIP,   VU1_CLIP_BUFFER
+    
+    nop                                                 sqi         NRM1(xyzw), (PDST++)                    ; Store vertex 0
+    nop                                                 sqi         TEX1(xyzw), (PDST++) 
+    nop                                                 sqi         COL1(xyzw), (PDST++) 
+    nop                                                 sqi         POS1(xyzw), (PDST++) 
+
+    nop                                                 lqi.xyz     NRM0(xyz),  (PSRC++)                    ; Load vertex 1 of Tri
+    itof12.xyz  NRM0(xyz),  NRM0(xyz)                   lqi.xy      TEX0(xy),   (PSRC++)
+    itof12.xy   TEX0(xy),   TEX0(xy)                    lqi.xyzw    COL0(xyzw), (PSRC++)
+    itof12.xyzw COL0(xyzw), COL0(xyzw)                  lqi.xyz     POS0(xyz),  (PSRC++)
+
+    nop                                                 bal         RETN, TRANSFORM_VERT
+    nop                                                 nop
+    
+    nop                                                 sqi         NRM1(xyzw), (PDST++)                    ; Store vertex 1
+    nop                                                 sqi         TEX1(xyzw), (PDST++) 
+    nop                                                 sqi         COL1(xyzw), (PDST++) 
+    nop                                                 sqi         POS1(xyzw), (PDST++) 
+
+    nop                                                 ilw.w       ITMP, 3(PSRC)                           ; backup winding of tri
+    nop                                                 isw.y       ITMP, VU1_CLIP_STORAGE + 1(CLIP)
+
+    nop                                                 lqi.xyz     NRM0(xyz),  (PSRC++)                    ; Load vertex 2 of Tri
+    itof12.xyz  NRM0(xyz),  NRM0(xyz)                   lqi.xy      TEX0(xy),   (PSRC++)
+    itof12.xy   TEX0(xy),   TEX0(xy)                    lqi.xyzw    COL0(xyzw), (PSRC++)
+    itof12.xyzw COL0(xyzw), COL0(xyzw)                  lqi.xyz     POS0(xyz),  (PSRC++)
+
+    nop                                                 bal         RETN, TRANSFORM_VERT
+    nop                                                 nop
+    
+    nop                                                 sqi         NRM1(xyzw), (PDST++)                    ; Store vertex 2
+    nop                                                 sqi         TEX1(xyzw), (PDST++)
+    nop                                                 sqi         COL1(xyzw), (PDST++) 
+    nop                                                 sqi         POS1(xyzw), (PDST++) 
+
+    nop                                                 iaddiu      PSRC, CLIP, VU1_CLIP_BUFFER             ; Get address of vertices in Clip Space
+    nop                                                 iaddiu      NDST, vi00, 3                           ; Initially we have 3 vertices
+    nop                                                 iaddiu      PPLN, CLIP, VU1_CLIP_PLANES             ; Get address of Plane Table
+    nop                                                 fcset       0                                       ; Clear the Clip Flags
+
+;==============================================================================
+
+CLIP_PLANE_LOOP:
+
+    nop                                                 ilw.x       PMSK, 0(PPLN)                           ; Get the Plane Mask
+    nop                                                 ibeq        PMSK, vi00, CLIP_DONE_PLANES            ; Any more planes left?
+    nop                                                 nop
+
+    nop                                                 iadd        ITMP, NDST, NDST                        ; Get address of Destination Buffer
+    nop                                                 iadd        ITMP, ITMP, NDST
+    nop                                                 iadd        ITMP, ITMP, NDST
+    nop                                                 iadd        PDST, PSRC, ITMP                        ; pDst = pSrc + nDst
+    nop                                                 iadd        NBUF, PDST, vi00                        ; pEnd = pDst
+    nop                                                 iadd        NDST, vi00, vi00                        ; nDst = 0
+
+    nop                                                 isubiu      ITMP, PDST, 4                           ; Get Last vertex from Source Buffer
+    nop                                                 lqi         NRM0(xyzw), (ITMP++)                    ; This is the Edge Start Vertex
+    nop                                                 lqi         TEX0(xyzw), (ITMP++)
+    nop                                                 lqi         COL0(xyzw), (ITMP++)
+    nop                                                 lqi         POS0(xyzw), (ITMP++)
+
+    clipw.xyz   POS0(xyz),  POS0(w)                     nop                                                 ; Clip Test
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 fcget       OUT0
+    nop                                                 iand        OUT0, OUT0, PMSK                        ; Check if vertex is outside Plane
+
+;==============================================================================
+
+CLIP_EDGE_LOOP:
+
+    nop                                                 lqi         NRM1(xyzw), (PSRC++)                    ; Get Edge End vertex from Source Buffer
+    nop                                                 lqi         TEX1(xyzw), (PSRC++)
+    nop                                                 lqi         COL1(xyzw), (PSRC++)
+    nop                                                 lqi         POS1(xyzw), (PSRC++)
+    
+    clipw.xyz   POS1(xyz),  POS1(w)                     nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 fcget       OUT1
+    nop                                                 iand        OUT1, OUT1, PMSK                        ; Check if vertex is outside Plane
+
+    nop                                                 ibeq        OUT0, vi00, CLIP_INSIDE                 ; Vertex 0 Inside?
+    nop                                                 nop
+    nop                                                 ibne        OUT1, vi00, CLIP_EDGE_NEXT              ; Outside -> Outside?
+    nop                                                 nop
+
+;   Outside -> Inside
+
+    nop                                                 move        NRM2(xyzw), NRM0(xyzw)                  ; Swap Edge vertexes so we always Clip Inside->Outside
+    nop                                                 move        TEX2(xyzw), TEX0(xyzw)                  ; This will reduce cracking
+    nop                                                 move        COL2(xyzw), COL0(xyzw)
+    nop                                                 move        POS2(xyzw), POS0(xyzw)
+    nop                                                 move        NRM0(xyzw), NRM1(xyzw)
+    nop                                                 move        TEX0(xyzw), TEX1(xyzw)
+    nop                                                 move        COL0(xyzw), COL1(xyzw)
+    nop                                                 move        POS0(xyzw), POS1(xyzw)
+    nop                                                 move        NRM1(xyzw), NRM2(xyzw)
+    nop                                                 move        TEX1(xyzw), TEX2(xyzw)
+    nop                                                 move        COL1(xyzw), COL2(xyzw)
+    nop                                                 move        POS1(xyzw), POS2(xyzw)
+
+    nop                                                 bal         RETN,   INTERPOLATE
+    nop                                                 nop
+    
+    nop                                                 sqi         NRM2(xyzw), (PDST++)                    ; Output Intersection vertex
+    nop                                                 sqi         TEX2(xyzw), (PDST++)                    
+    nop                                                 sqi         COL2(xyzw), (PDST++)
+    nop                                                 sqi         POS2(xyzw), (PDST++)
+    nop                                                 sqi         NRM0(xyzw), (PDST++)                    ; Output Edge End vertex
+    nop                                                 sqi         TEX0(xyzw), (PDST++)                    
+    nop                                                 sqi         COL0(xyzw), (PDST++)
+    nop                                                 sqi         POS0(xyzw), (PDST++)
+
+    nop                                                 b           CLIP_EDGE_SWAP
+    nop                                                 iaddiu      NDST, NDST, 2                           ; nDst += 2
+
+CLIP_INSIDE:
+
+    nop                                                 ibeq        OUT1, vi00, CLIP_INSIDE_INSIDE          ; Inside -> Inside?
+    nop                                                 nop
+
+;   Inside -> Outside
+
+    nop                                                 bal         RETN,   INTERPOLATE
+    nop                                                 nop
+    
+    nop                                                 sqi         NRM2(xyzw), (PDST++)                    ; Output Intersection vertex
+    nop                                                 sqi         TEX2(xyzw), (PDST++)
+    nop                                                 sqi         COL2(xyzw), (PDST++)
+    nop                                                 sqi         POS2(xyzw), (PDST++)
+
+    nop                                                 b           CLIP_EDGE_NEXT
+    nop                                                 iaddiu      NDST, NDST, 1                           ; nDst++
+
+;   Inside -> Inside
+
+CLIP_INSIDE_INSIDE:
+
+    nop                                                 sqi         NRM1(xyzw), (PDST++)                    ; Output Edge End vertex
+    nop                                                 sqi         TEX1(xyzw), (PDST++)
+    nop                                                 sqi         COL1(xyzw), (PDST++)
+    nop                                                 sqi         POS1(xyzw), (PDST++)
+    
+    nop                                                 iaddiu      NDST, NDST, 1                           ; nDst++
+
+CLIP_EDGE_NEXT:
+
+    nop                                                 move        NRM0(xyzw), NRM1(xyzw)                  ; Edge Start Vertex = End Vertex
+    nop                                                 move        TEX0(xyzw), TEX1(xyzw)
+    nop                                                 move        COL0(xyzw), COL1(xyzw)
+    nop                                                 move        POS0(xyzw), POS1(xyzw)
+    
+CLIP_EDGE_SWAP:
+
+    nop                                                 iadd        OUT0, vi00, OUT1
+    nop                                                 ibne        PSRC, NBUF, CLIP_EDGE_LOOP              ; Looped through all edges?
+    nop                                                 nop
+
+    nop                                                 isubiu      ITMP, NDST, 3                           ; Ensure we have at least 3 vertices
+    nop                                                 nop
+    nop                                                 ibltz       ITMP, CLIP_VERT_NEXT
+    nop                                                 nop
+
+    nop                                                 b           CLIP_PLANE_LOOP                         ; Looped through all planes?
+    nop                                                 iaddiu      PPLN, PPLN, 1
+
+;==============================================================================
+
+CLIP_DONE_PLANES:
+
+    nop                                                 iaddiu      PSTR, CLIP, VU1_CLIP_BUFFER             ; Set Output address for Strip vertices
+    nop                                                 iaddiu      PLOC, CLIP, VU1_CLIP_INDEXLIST          ; Set Output address for C2L vertices
+    nop                                                 iaddiu      IVAL, vi00, 1
+    nop                                                 iadd        IDST, vi00, vi00
+
+CLIP_STRIP_LOOP:
+
+    nop                                                 isubiu      ITMP, IDST, 1                           ; Check if IDST > 1
+    nop                                                 iadd        IIND, IDST, vi00                        ; Set Index
+    nop                                                 iblez       ITMP, CLIP_START_STRIP
+    nop                                                 nop
+    nop                                                 iand        ITMP, IDST, ITMP                        ; Odd vertex?
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, CLIP_EVEN_VERT
+    nop                                                 nop
+    nop                                                 iaddiu      IVAL, IVAL, 1                           ; IVAL++
+    nop                                                 b           CLIP_START_STRIP
+    nop                                                 iadd        IIND, IVAL, vi00                        ; Index = IVAL
+
+CLIP_EVEN_VERT:
+
+    nop                                                 isub        IIND, NDST, IVAL                        ; Index = NDST - IVAL
+
+CLIP_START_STRIP:
+
+    nop                                                 iadd        ITMP, PSRC, IIND                        ; Compute pSrc[Index]
+    nop                                                 iadd        ITMP, ITMP, IIND
+    nop                                                 iadd        ITMP, ITMP, IIND
+    nop                                                 iadd        ITMP, ITMP, IIND
+    
+    nop                                                 lqi         NRM0(xyzw), (ITMP++)                    ; Load vertex
+    nop                                                 lqi         TEX0(xyzw), (ITMP++)
+    nop                                                 lqi         COL0(xyzw), (ITMP++)
+    nop                                                 lqi         POS0(xyzw), (ITMP++)
+    
+    nop                                                 lq          CLP0(xyzw), VU1_CLIP_C2L+0(CLIP)        ; Set C2L Matrix
+    nop                                                 lq          CLP1(xyzw), VU1_CLIP_C2L+1(CLIP)
+    nop                                                 lq          CLP2(xyzw), VU1_CLIP_C2L+2(CLIP)
+    nop                                                 lq          CLP3(xyzw), VU1_CLIP_C2L+3(CLIP)
+    
+    nop                                                 bal         RETN, TRANSFORM_VERT
+    nop                                                 nop
+
+    addw.z      TEX1(z),    VF00z,  VF00w               loi         0.0001221                               ; Round up color value
+
+    ; DBS (7/20/2004): Not sure why we needed to round up, but is seems unnecessary, so I'm
+    ; commenting this line out and seeing what complaints come up    
+;    addi.xyzw   COL1(xyzw), COL1(xyzw),  I              nop
+
+    ftoi12.xyz  NRM1(xyz),  NRM1(xyz)                   nop
+    ftoi12.xy   TEX1(xy),   TEX1(xy)                    nop
+    ftoi12.xyzw COL1(xyzw), COL1(xyzw)                  nop
+    
+    nop                                                 sqi         NRM1(xyzw), (PSTR++)                    ; Store vertex 
+    nop                                                 sqi         TEX1(xyzw), (PSTR++)
+    nop                                                 sqi         COL1(xyzw), (PSTR++)
+    nop                                                 sqi         POS0(xyzw), (PSTR++)                    ; Output clipped vertex in Clip Space
+    nop                                                 sqi.xyz     POS1(xyz),  (PLOC++)                    ; Output clipped vertex in Local Space
+
+    nop                                                 iaddiu      IDST, IDST, 1
+    nop                                                 nop
+    nop                                                 ibne        IDST, NDST, CLIP_STRIP_LOOP
+    nop                                                 nop
+
+;==============================================================================
+
+    nop                                                 isw.x       NUMC,       VU1_CLIP_STORAGE + 2(CLIP)  ; Backup registers
+    nop                                                 isw.y       PIDX,       VU1_CLIP_STORAGE + 2(CLIP)
+
+    nop                                                 ilw.x       BASE,       VU1_CLIP_STORAGE + 3(CLIP)  ; BASE = first buffer
+    nop                                                 ilw.y       NBUF,       VU1_CLIP_STORAGE + 3(CLIP)  ; NBUF = middle buffer
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 iaddiu      VPTR, BASE, 0x00
+
+    nop                                                 ilw.z       INST,       VU1_CLIP_STORAGE + 0(BASE)
+    nop                                                 iadd        NUMV, vi00, NDST
+    nop                                                 iadd        ENDM, VPTR, NUMV
+    nop                                                 iadd        ENDM, ENDM, NUMV
+    nop                                                 iadd        ENDM, ENDM, NUMV
+    nop                                                 iadd        ENDM, ENDM, NUMV
+
+    nop                                                 iaddiu      PC2L, CLIP, VU1_CLIP_INDEXLIST          ; Get address of C2L positions
+
+    sub             OXYZ(xyzw), VF00xyzw,   VF00xyzw    lq          CLP0(xyzw), VU1_CLIP_C2S+0(CLIP)        ; Load the C2S matrix
+    sub             CC2L(xyzw), VF00xyzw,   VF00xyzw    lq          CLP1(xyzw), VU1_CLIP_C2S+1(CLIP)
+    addw.xyzw       FTEX(xyzw), VF00xyzw,   VF00w       lq          CLP2(xyzw), VU1_CLIP_C2S+2(CLIP)
+    nop                                                 lq          CLP3(xyzw), VU1_CLIP_C2S+3(CLIP)
+
+    nop                                                 ilw.y       IWND, VU1_CLIP_STORAGE + 1(CLIP)        ; load up winding for triangle
+    nop                                                 iaddiu      ITMP, vi00, 0x0020
+    nop                                                 iand        IWND, IWND, ITMP
+
+;==============================================================================
+
+CLIP_TRANSFORM_LOOP:
+
+    nop                                                 lq          IXYZ(xyzw), VU1_XYZ(VPTR)                   ; Get Position in Clip space
+    nop                                                 lq          ITEX(xyzw), VU1_UV0(VPTR)
+    nop                                                 lqi.xyz     CC2L(xyz),  (PC2L++)                    ; Get C2L position
+
+    mulax.xyzw  acc,        CLP0(xyzw), IXYZ(x)         nop                                                 ; Transform vertex by C2S matrix
+    madday.xyzw acc,        CLP1(xyzw), IXYZ(y)         isub        ITMP,   VPTR,   BASE
+    maddaz.xyzw acc,        CLP2(xyzw), IXYZ(z)         iadd        ITMP,   ITMP,   NBUF
+    maddw.xyzw  IXYZ(xyzw), CLP3(xyzw), IXYZ(w)         nop
+    
+    itof12.xy   FTEX(xy),   ITEX(xy)                    div         q,  VF00w,  IXYZ(w)
+    nop                                                 sq          ITEX(xyzw), VU1_UV0(ITMP)
+    nop                                                 sq.xyz      CC2L(xyz),  VU1_XYZ(ITMP)
+    nop                                                 isw.w       IWND, VU1_XYZ(ITMP)
+    nop                                                 isw.w       IWND, VU1_XYZ(VPTR)
+    nop                                                 iaddiu      ITMP, vi00, 0x0020
+    nop                                                 iadd        IWND, IWND, ITMP
+    nop                                                 iand        IWND, IWND, ITMP
+    
+    mulq.xyz    IXYZ(xyz),  IXYZ(xyz),  q               nop
+    mulq.xyz    OTEX(xyz),  FTEX(xyz),  q               nop
+    ftoi4.xyz   OXYZ(xyz),  IXYZ(xyz)                   nop
+    
+    nop                                                 sq.xyz      OTEX(xyz),  VU1_UV0(VPTR)
+    nop                                                 sq.xyz      OXYZ(xyz),  VU1_XYZ(VPTR)
+    
+    nop                                                 iaddiu      VPTR, VPTR, VU1_VERT_SIZE
+    nop                                                 nop
+    nop                                                 ibne        VPTR, ENDM, CLIP_TRANSFORM_LOOP
+    nop                                                 nop
+
+;==============================================================================
+
+    nop                                                 iaddiu      ITMP, vi00, 0x7FFF                      ; Set ADC Bit on first 2 vertices
+    nop                                                 iaddiu      ITMP, ITMP, 1
+    nop                                                 isw.w       ITMP, (VU1_VERT_SIZE*0)+VU1_XYZ(BASE)
+    nop                                                 isw.w       ITMP, (VU1_VERT_SIZE*1)+VU1_XYZ(BASE)
+
+    nop                                                 lq          OXYZ(xyzw), VU1_CLIP_STORAGE + 0(CLIP)
+    nop                                                 mtir        VPTR, OXYZ(w)
+    nop                                                 iaddiu      ITMP, vi00, 0x7FC0
+    nop                                                 iaddiu      ITMP, ITMP, 0x7FC0
+    nop                                                 iand        ITMP, ITMP, VPTR
+    nop                                                 ior         ITMP, ITMP, NUMV
+    nop                                                 mfir.z      OXYZ(z),    ITMP
+    nop                                                 sq          OXYZ(xyzw), VU1_COUNT(BASE)
+
+    nop                                                 iaddiu      ITMP, vi00, VU1_CLIPPER_RET_ADDRESS(CLIP_RET2)
+    nop                                                 isw.w       ITMP,       VU1C_Storage(vi00)          ; Store Return Address
+
+    nop                                                 b           BRANCH_MATERIAL_MCODE
+    nop                                                 nop
+
+;==============================================================================
+
+CLIP_RET2:
+
+    nop                                                 ilw.x       NUMC,       VU1_CLIP_STORAGE + 2(CLIP)
+    nop                                                 ilw.y       PIDX,       VU1_CLIP_STORAGE + 2(CLIP)
+
+CLIP_VERT_NEXT:
+
+    nop                                                 isubiu      NUMC, NUMC, 1
+    nop                                                 nop
+    nop                                                 ibne        NUMC, vi00, CLIP_VERT_LOOP
+    nop                                                 iaddiu      PIDX, PIDX, 1
+
+;==============================================================================
+
+CLIP_EXIT:
+
+    nop                                                 ilw.x       FLAG,       VU1_Flags(vi00)             ; Clear Clip flag
+    nop                                                 iaddiu      ITMP, vi00, ~CLIPPER_PASS
+    nop                                                 iand        FLAG, FLAG, ITMP
+    nop                                                 isw.x       FLAG,       VU1_Flags(vi00)
+
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    nop[e]                                              nop
+    nop                                                 nop
+
+;==============================================================================
+;
+;   Transform Vertex by Matrix
+;
+;==============================================================================
+
+TRANSFORM_VERT:
+    
+    ; DBS (7/20/2004) : We used to transform the normals, uvs, and colors into clip space, but
+    ; I don't really think that bought anything, so I'm taking it out. This allows us to clip
+    ; alpha values as well. (I suspect this was done to minimize issues with non-perspective
+    ; correct gouraud shading, but I can't tell a difference.)
+;    mulax.xyzw  acc,        CLP0(xyzw), NRM0(x)         nop                                                 ; Transform vertex by matrix
+;    madday.xyzw acc,        CLP1(xyzw), NRM0(y)         nop
+;    maddaz.xyzw acc,        CLP2(xyzw), NRM0(z)         nop
+;    maddw.xyzw  NRM1(xyzw), CLP3(xyzw), NRM0(w)         nop
+    nop                                                 move.xyzw   NRM1(XYZW), NRM0(xyzw)
+
+;    mulax.xyzw  acc,        CLP0(xyzw), TEX0(x)         nop
+;    madday.xyzw acc,        CLP1(xyzw), TEX0(y)         nop
+;    maddaz.xyzw acc,        CLP2(xyzw), TEX0(z)         nop
+;    maddw.xyzw  TEX1(xyzw), CLP3(xyzw), TEX0(w)         nop
+    nop                                                 move.xyzw   TEX1(XYZW), TEX0(xyzw)
+
+;    mulax.xyzw  acc,        CLP0(xyzw), COL0(x)         nop
+;    madday.xyzw acc,        CLP1(xyzw), COL0(y)         nop
+;    maddaz.xyzw acc,        CLP2(xyzw), COL0(z)         nop
+;    maddw.xyzw  COL1(xyzw), CLP3(xyzw), COL0(w)         nop
+    nop                                                 move.xyzw   COL1(XYZW), COL0(xyzw)
+
+    mulax.xyzw  acc,        CLP0(xyzw), POS0(x)         nop
+    madday.xyzw acc,        CLP1(xyzw), POS0(y)         nop
+    maddaz.xyzw acc,        CLP2(xyzw), POS0(z)         jr  RETN
+    maddw.xyzw  POS1(xyzw), CLP3(xyzw), POS0(w)         nop
+
+;==============================================================================
+;
+;   Calculate Edge-Plane Intersection
+;
+;==============================================================================
+
+INTERPOLATE:
+
+    nop                                                 move        CLP0(xyzw), POS0(xyzw)
+    nop                                                 move        CLP1(xyzw), POS1(xyzw)
+    nop                                                 ilw.y       ITMP, 0(PPLN)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 iaddiu      ITMP, ITMP, VU1_CLIPPER_ADDRESS(VU1_CLIP_JUMPADR)
+    nop                                                 jr          ITMP
+    nop                                                 nop
+
+;   +VE Plane: Right, Top, Back
+;   A = POS0.? - POS0.W
+;   B = POS1.W - POS1.?
+;   T = A / (A + B)
+
+CLIP_PLANE_POS_Z:
+
+    nop                                                 mr32.xyzw   CLP0(xyzw), CLP0(xyzw)                  ; CLP0.W = CLP0.X
+    nop                                                 mr32.xyzw   CLP1(xyzw), CLP1(xyzw)                  ; CLP1.W = CLP1.X
+
+CLIP_PLANE_POS_Y:
+
+    nop                                                 mr32.xyzw   CLP0(xyzw), CLP0(xyzw)                  ; CLP0.W = CLP0.Y
+    nop                                                 mr32.xyzw   CLP1(xyzw), CLP1(xyzw)                  ; CLP1.W = CLP1.Y
+
+CLIP_PLANE_POS_X:
+
+    nop                                                 mr32.xyzw   CLP0(xyzw), CLP0(xyzw)                  ; CLP0.W = CLP0.Z
+    nop                                                 mr32.xyzw   CLP1(xyzw), CLP1(xyzw)                  ; CLP1.W = CLP1.Z
+
+    subw.w      CLP0(w),    CLP0(w),    POS0(w)         nop                                                 ; CLP0.W = A
+    subw.w      CLP1(w),    POS1(w),    CLP1(w)         b           CLIP_CREATE_VERT                        ; CLP1.W = B
+    addw.w      CLP1(w),    CLP1(w),    CLP0(w)         nop                                                 ; CLP1.W = A + B
+
+;   -VE Plane: Left, Bottom, Front
+;   A = POS0.? + POS0.W
+;   B = POS1.W + POS1.?
+;   T = A / (A - B)
+
+CLIP_PLANE_NEG_Z:
+
+    nop                                                 mr32.xyzw   CLP0(xyzw), CLP0(xyzw)                  ; CLP0.W = CLP0.X
+    nop                                                 mr32.xyzw   CLP1(xyzw), CLP1(xyzw)                  ; CLP1.W = CLP1.X
+
+CLIP_PLANE_NEG_Y:
+
+    nop                                                 mr32.xyzw   CLP0(xyzw), CLP0(xyzw)                  ; CLP0.W = CLP0.Y
+    nop                                                 mr32.xyzw   CLP1(xyzw), CLP1(xyzw)                  ; CLP1.W = CLP1.Y
+
+CLIP_PLANE_NEG_X:
+
+    nop                                                 mr32.xyzw   CLP0(xyzw), CLP0(xyzw)                  ; CLP0.W = CLP0.Z
+    nop                                                 mr32.xyzw   CLP1(xyzw), CLP1(xyzw)                  ; CLP1.W = CLP1.Z
+
+    addw.w      CLP0(w),    CLP0(w),    POS0(w)         nop                                                 ; CLP0.W = A
+    addw.w      CLP1(w),    POS1(w),    CLP1(w)         nop                                                 ; CLP1.W = B
+    subw.w      CLP1(w),    CLP0(w),    CLP1(w)         nop                                                 ; CLP1.W = A + B
+
+CLIP_CREATE_VERT:
+
+    nop                                                 div     q,  CLP0(w),    CLP1(w)                     ; Q = A / (A+B)
+    sub         NRM2(xyzw), NRM1(xyzw), NRM0(xyzw)      nop
+    sub         TEX2(xyzw), TEX1(xyzw), TEX0(xyzw)      nop
+    sub         COL2(xyzw), COL1(xyzw), COL0(xyzw)      nop
+    sub         POS2(xyzw), POS1(xyzw), POS0(xyzw)      nop                                                 ; POS2 = (POS1-POS0)
+    
+    nop                                                 waitq
+    mulq.xyzw   NRM2(xyzw), NRM2(xyzw), q               nop                                                 ; POS2 *= Q
+    mulq.xyzw   TEX2(xyzw), TEX2(xyzw), q               nop
+    mulq.xyzw   COL2(xyzw), COL2(xyzw), q               nop
+    mulq.xyzw   POS2(xyzw), POS2(xyzw), q               nop
+    
+    add.xyzw    NRM2(xyzw), NRM2(xyzw), NRM0(xyzw)      nop
+    add.xyzw    TEX2(xyzw), TEX2(xyzw), TEX0(xyzw)      nop
+    add.xyzw    COL2(xyzw), COL2(xyzw), COL0(xyzw)      nop
+    add.xyzw    POS2(xyzw), POS2(xyzw), POS0(xyzw)      nop                                                 ; POS2 = POS0 + ((POS1-POS0) * Q)
+
+    nop                                                 jr  RETN
+    nop                                                 nop
+
+VU1_CLIP_JUMPADR:
+
+    nop                                                 b   CLIP_PLANE_NEG_Z                                ;  0
+    nop                                                 nop
+
+    nop                                                 b   CLIP_PLANE_POS_Z                                ;  2
+    nop                                                 nop
+
+    nop                                                 b   CLIP_PLANE_POS_X                                ;  4
+    nop                                                 nop
+
+    nop                                                 b   CLIP_PLANE_NEG_X                                ;  6
+    nop                                                 nop
+
+    nop                                                 b   CLIP_PLANE_POS_Y                                ;  8
+    nop                                                 nop
+
+    nop                                                 b   CLIP_PLANE_NEG_Y                                ; 10
+    nop                                                 nop
+
+#undef L2C0
+#undef L2C1
+#undef L2C2
+#undef L2C3
+#undef W2C0
+#undef W2C1
+#undef W2C2
+#undef W2C3
+#undef C2S0
+#undef C2S1
+#undef C2S2
+#undef C2S3
+#undef C2L0
+#undef C2L1
+#undef C2L2
+#undef C2L3
+#undef C2W0
+#undef C2W1
+#undef C2W2
+#undef C2W3
+#undef W2L0
+#undef W2L1
+#undef W2L2
+#undef W2L3
+#undef IXYZ
+#undef OXYZ
+#undef FTEX
+#undef ITEX
+#undef OTEX
+#undef CC2L
+#undef QPT0
+#undef QPT1
+#undef QPT2
+#undef CTEX
+#undef CCOL
+#undef CXYZ
+#undef CSTQ
+#undef POS0
+#undef TEX0
+#undef NRM0
+#undef COL0
+#undef POS1
+#undef TEX1
+#undef NRM1
+#undef COL1
+#undef POS2
+#undef TEX2
+#undef NRM2
+#undef COL2
+#undef CLP0
+#undef CLP1
+#undef CLP2
+#undef CLP3
+
+
+#undef VPTR
+#undef ENDM
+#undef PC2L
+#undef CPTR
+#undef ADCB
+#undef ADCC
+#undef ADCN
+#undef INDX
+
+#undef NUMC
+#undef PIDX
+#undef PSRC
+#undef PDST
+#undef NDST
+#undef PPLN
+#undef PMSK
+#undef OUT0
+#undef OUT1
+#undef IVAL
+#undef IIND
+#undef IDST
+#undef PSTR
+#undef PLOC
+
+VU1_CLIPPER_CODE_END:

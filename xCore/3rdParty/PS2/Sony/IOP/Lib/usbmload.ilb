@@ -1,0 +1,13 @@
+#IOP-ILB# [PsIIusbmload3000]
+L usbmload
+V 0x0103
+F 0x0000
+E 004 sceUsbmlDisable
+E 005 sceUsbmlEnable
+E 006 sceUsbmlActivateCategory
+E 007 sceUsbmlInactivateCategory
+E 008 sceUsbmlRegisterLoadFunc
+E 009 sceUsbmlUnregisterLoadFunc
+E 010 sceUsbmlLoadConffile
+E 011 sceUsbmlRegisterDevice
+E 012 sceUsbmlChangeThreadPriority

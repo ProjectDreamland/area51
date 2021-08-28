@@ -1,0 +1,127 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Visual C++ generated include file.
+// Used by Editor.rc
+//
+#define IDR_MAINFRAME                   101
+#define IDR_MENU_MAINFRAME              101
+#define IDR_MENU_WORLD                  102
+#define IDM_POPUP_MENU_DELETE           516
+#define IDM_POPUP_CREATE_TO_DESC        533
+#define IDM_AUDIO_EDITOR_COPY           551
+#define IDM_AUDIO_EDITOR_PASTE          553
+#define IDD_ABOUTBOX                    900
+#define IDP_SOCKETS_INIT_FAILED         904
+#define IDB_IMGLIST_VIEW                927
+#define IDR_RSC_VIEW                    930
+#define IDR_EDITORTYPE                  931
+#define IDR_PROJECT_VIEW                932
+#define IDS_RSC_EVENTEDITOR             933
+#define IDS_RSC_AUDIOEDITOR             934
+#define IDR_BUILDBAR                    941
+#define IDR_PROJ_TOOLBAR                953
+#define IDR_HELP_BROSWER                956
+#define IDR_PROJ_RICHTEXTCTRL           958
+#define IDR_WEB_THINKING                960
+#define IDC_FLATTABCTRL                 9001
+#define IDC_SHEET1                      9002
+#define IDC_SHEET2                      9003
+#define IDC_SHEET3                      9004
+#define IDC_SHEET4                      9005
+#define ID_INDICATOR_LOGO               33771
+#define ID_INDICATOR_MODE               33772
+#define ID_INDICATOR_DATA               33773
+#define ID_RSC_VIEW_EDITOR              33774
+#define ID_COMPILE                      33776
+#define ID_BUILD_STOP                   33777
+#define ID_BUILD                        33778
+#define ID_ADD_RES_DESC                 33780
+#define ID_ADD_RES_DESC_01              33781
+#define ID_ADD_RES_DESC_02              33782
+#define ID_ADD_RES_DESC_03              33783
+#define ID_ADD_RES_DESC_04              33784
+#define ID_ADD_RES_DESC_05              33785
+#define ID_ADD_RES_DESC_06              33786
+#define ID_ADD_RES_DESC_07              33787
+#define ID_ADD_RES_DESC_08              33788
+#define ID_ADD_RES_DESC_09              33789
+#define ID_ADD_RES_DESC_10              33790
+#define ID_MENU_FILE_OPEN               33811
+#define ID_MENU_FILE_CLOSE              33812
+#define ID_MENU_FILE_SAVE               33813
+#define ID_MENU_FILE_SAVE_AS            33814
+#define ID_LOCOMOTION_EDITOR            33815
+#define ID_AUDIO_EDITOR                 33816
+#define ID_EVENT_EDITOR                 33817
+#define ID_MENU_FILE_NEW                33818
+#define ID_PROJ_CREATE_NEW_THEME        33819
+#define ID_EDITOR_SAVE_SETTINGS         33820
+#define ID_INSERT_THEME                 33821
+#define ID_MENU_FILE_EXPORT             33822
+#define ID_REMOVE_THEME                 33823
+#define ID_SHOW_REPORT                  33824
+#define ID_MENU_FILE_EXPORT_MAX         33825
+#define ID_MENU_FILE_IMPORT             33827
+#define ID_BACK                         33828
+#define ID_FOWARD                       33829
+#define ID_STOP                         33830
+#define ID_REFRESH                      33831
+#define ID_GO_HOME                      33832
+#define ID_PROJ_TEXT_UNDO               33834
+#define ID_PROJ_TEXT_BOLD               33835
+#define ID_PROJ_TEXT_ITALICS            33836
+#define ID_PROJ_TEXT_UNDERL             33837
+#define ID_PROJ_TEXT_COLOR              33838
+#define ID_PROJ_TEXT_L_ALIGN            33839
+#define ID_PROJ_TEXT_C_ALIGN            33840
+#define ID_PROJ_TEXT_R_ALIGN            33841
+#define ID_PROJ_TEXT_BULLETS            33842
+#define ID_PROJ_TEXT_REDO               33843
+#define ID_PROJ_TEXT_SELECTALL          33844
+#define ID_PROJ_TEXT_CUT                33845
+#define ID_PROJ_TEXT_COPY               33846
+#define ID_PROJ_TEXT_PASTE              33847
+#define ID_PROJ_TEXT_FONT               33848
+#define ID_PROJ_TEXT_FONT_TYPE          33849
+#define ID_PROJ_TEXT_FONT_SIZE          33850
+#define ID_BUTTON33851                  33851
+#define ID_MRU_LIST                     33900
+#define ID_MRU_LIST_1                   33900
+#define ID_MRU_LIST_2                   33901
+#define ID_MRU_LIST_3                   33902
+#define ID_MRU_LIST_4                   33903
+#define ID_MRU_LIST_5                   33904
+#define ID_MRU_LIST_6                   33905
+#define ID_MRU_LIST_7                   33906
+#define ID_MRU_LIST_8                   33907
+#define ID_MRU_LIST_9                   33908
+#define ID_MRU_LIST_10                  33909
+#define ID_VIEW_RESETWINDOWS            34000
+#define ID_SELECTION_SELECTALL          34001
+#define ID_SELECTION_SELECTNONE         34002
+#define ID_SELECTION_INVERTSELECTION    34003
+#define ID_SELECTION_HIDESELECTED       34004
+#define ID_DEBUG_INVULNERABLE           34006
+#define ID_DEBUG_INFINITEAMMO           34007
+#define ID_EDIT_MAINTENANCE             34008
+#define ID_MAINTENANCE_ZONECLEANUP      34009
+#define ID_MENU_BUILD_DFS               34010
+#define ID_ADD_ELEMENT                  44019
+#define ID_ADD_DESCRIPTOR               44020
+#define ID_ADD_PACKAGE                  44021
+#define ID_REFRENCE_DESCRIPTOR          44022
+#define IDW_OUTPUTBAR                   59401
+#define IDW_PROJ_PROPERTY_BAR           59402
+#define IDW_PROJ_VIEWTAB_BAR            59403
+#define IDW_PROJ_TEXT_RICHEDITCTRL      59404
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_3D_CONTROLS                     1
+#define _APS_NEXT_RESOURCE_VALUE        961
+#define _APS_NEXT_COMMAND_VALUE         34011
+#define _APS_NEXT_CONTROL_VALUE         9007
+#define _APS_NEXT_SYMED_VALUE           904
+#endif
+#endif

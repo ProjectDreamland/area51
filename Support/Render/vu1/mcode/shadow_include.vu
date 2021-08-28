@@ -1,0 +1,86 @@
+//==============================================================================
+//  shadow_include.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This file lays out the memory and register usage specifically for the
+//  the creation of projected character shadows and for receiving them into
+//  our temporary shadow map.
+//==============================================================================
+
+
+#define DO_SHADOW_0     0x0001
+#define DO_SHADOW_1     0x0002
+#define DO_SHADOW_2     0x0004
+#define DO_SHADOW_3     0x0008
+#define DO_SHADOW_4     0x0010
+
+;==============================================================================
+;  Layout of shad_material Structure
+;==============================================================================
+
+// VERY IMPORTANT!!!! Make sure the shad flags location matches the location for the normal microcode!
+#define VU1_SHAD_Flags              ( VU1_MATERIAL +  0 )
+#define VU1_SHAD_PassOneGIF         ( VU1_MATERIAL +  1 )
+#define VU1_SHAD_PassTwoGIF         ( VU1_MATERIAL +  2 )
+
+#define VU1_SHAD_M_0_Frame          ( VU1_MATERIAL +  3 )
+#define VU1_SHAD_M_0_Tex0           ( VU1_MATERIAL +  3 )
+#define VU1_SHAD_M_0_Col0           ( VU1_MATERIAL +  4 )
+#define VU1_SHAD_M_0_Col1           ( VU1_MATERIAL +  5 )
+#define VU1_SHAD_M_0_Col2           ( VU1_MATERIAL +  6 )
+#define VU1_SHAD_M_0_Col3           ( VU1_MATERIAL +  7 )
+
+#define VU1_SHAD_M_1_Frame          ( VU1_MATERIAL +  8 )
+#define VU1_SHAD_M_1_Tex0           ( VU1_MATERIAL +  8 )
+#define VU1_SHAD_M_1_Col0           ( VU1_MATERIAL +  9 )
+#define VU1_SHAD_M_1_Col1           ( VU1_MATERIAL + 10 )
+#define VU1_SHAD_M_1_Col2           ( VU1_MATERIAL + 11 )
+#define VU1_SHAD_M_1_Col3           ( VU1_MATERIAL + 12 )
+
+#define VU1_SHAD_M_2_Frame          ( VU1_MATERIAL + 13 )
+#define VU1_SHAD_M_2_Tex0           ( VU1_MATERIAL + 13 )
+#define VU1_SHAD_M_2_Col0           ( VU1_MATERIAL + 14 )
+#define VU1_SHAD_M_2_Col1           ( VU1_MATERIAL + 15 )
+#define VU1_SHAD_M_2_Col2           ( VU1_MATERIAL + 16 )
+#define VU1_SHAD_M_2_Col3           ( VU1_MATERIAL + 17 )
+
+#define VU1_SHAD_M_3_Frame          ( VU1_MATERIAL + 18 )
+#define VU1_SHAD_M_3_Tex0           ( VU1_MATERIAL + 18 )
+#define VU1_SHAD_M_3_Col0           ( VU1_MATERIAL + 19 )
+#define VU1_SHAD_M_3_Col1           ( VU1_MATERIAL + 20 )
+#define VU1_SHAD_M_3_Col2           ( VU1_MATERIAL + 21 )
+#define VU1_SHAD_M_3_Col3           ( VU1_MATERIAL + 22 )
+
+#define VU1_SHAD_M_4_Frame          ( VU1_MATERIAL + 23 )
+#define VU1_SHAD_M_4_Tex0           ( VU1_MATERIAL + 23 )
+#define VU1_SHAD_M_4_Col0           ( VU1_MATERIAL + 24 )
+#define VU1_SHAD_M_4_Col1           ( VU1_MATERIAL + 25 )
+#define VU1_SHAD_M_4_Col2           ( VU1_MATERIAL + 26 )
+#define VU1_SHAD_M_4_Col3           ( VU1_MATERIAL + 27 )
+
+#define VU1_SHAD_XFormStorage       ( VU1_MATERIAL + 28 )
+
+// VERY IMPORTANT!!!! Make sure that the storage space and regload giftag is the same
+// as other types of transform and kicking!!!!!
+
+// common shadow registers
+#define SXFM    TI00            // shadow transform
+#define SFLG    TI01            // shadow flags
+#undef  EOPB
+#undef  NREG                    // we don't use the same registers as normal passes
+#undef  NVRT                    // we don't use the same registers as normal passes
+#undef  KICK                    // we don't use the same registers as normal passes
+#define EOPB    TI02
+#define NREG    TI03
+#define NVRT    TI04
+#define KICK    TI05
+
+#define SMT0(x) TF19(x)         // shadow matrix--very temporary!!!
+#define SMT1(x) TF20(x)         // shadow matrix--very temporary!!!
+#define SMT2(x) TF21(x)         // shadow matrix--very temporary!!!
+#define SMT3(x) TF22(x)         // shadow matrix--very temporary!!!
+#define SLS0(x) TF00(x)         // shadow local-to-screen
+#define SLS1(x) TF01(x)         // shadow local-to-screen
+#define SLS2(x) TF02(x)         // shadow local-to-screen
+#define SLS3(x) TF03(x)         // shadow local-to-screen

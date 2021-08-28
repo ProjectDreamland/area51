@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_register_event_callback</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="registers an application function to be called immediately prior to processing each XMIDI or MIDI Channel Voice message event associated with a given driver.">
+<meta name="ms-hkwd" content="AIL_register_event_callback">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_register_event_callback</h1>
+<p>The function  <b>AIL_register_event_callback</b> registers an application function to be called immediately prior to processing each XMIDI or MIDI Channel Voice message event associated with a given driver.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="AILEVENTCB.html" class=trn>AILEVENTCB</a> <a href="AIL_register_event_cs0khaa.html" class=trn>AIL_register_event_callback</a>(</b>
+<b>&nbsp&nbsp<a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a>&nbsp</b><i>mdi</i><b>,</b>
+<b>&nbsp&nbsp<a href="AILEVENTCB.html" class=trn>AILEVENTCB</a>&nbsp</b><i>callback</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>mdi</i></dt>
+<dd>indicates the driver whose XMIDI and MIDI events are to be trapped by the callback function.</dd>
+<dt><i>callback</i></dt>
+<dd>should be set to the address of an application function prototyped as an <a href="AILEVENTCB.html">AILEVENTCB</a> callback.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The address of the previously-installed event trap function handler.</p>
+<h4>Discussion</h4>
+<p>Most MSS functions can be safely invoked from within callback functions. Exceptions include driver-installation or driver-shutdown functions and any other functions which may perform DOS or BIOS calls, such as <a href="AIL_init_sequence.html">AIL_init_sequence</a>. These exceptions are noted in the descriptions of the functions involved. If in doubt about whether a particular action may safely be performed from within a timer callback function, contact RAD Game Tools for assistance. </p><p> Notwithstanding the above, it is recommended that application programmers refrain from calling other MSS XMIDI functions from within a MIDI event trap except when absolutely necessary, and only after carefully examining AILXMIDI.C's source code to guard against potentially undesirable side-effects. For example, an explicit call to <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a> from within a MIDI event trap callback function may result in a reentrant call to the MIDI event trap function. </p><p> This function is intended primarily for use in tool and diagnostic program development, and to provide a way for the application to implement its own MIDI/XMIDI interpreter (for example, a software-based "wavetable synthesizer" such as AILXDIG.C).</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AILEVENTCB.html">AILEVENTCB</a>, <a href="AIL_init_sequence.html">AIL_init_sequence</a>, <a href="AIL_register_beat_casg9aaa.html">AIL_register_beat_callback</a>, <a href="AIL_register_prefix_s0khaa.html">AIL_register_prefix_callback</a>, <a href="AIL_register_sequenc8chzca.html">AIL_register_sequence_callback</a>, <a href="AIL_register_timbre_s0khaa.html">AIL_register_timbre_callback</a>, <a href="AIL_register_trigger8chzca.html">AIL_register_trigger_callback</a>, <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a><br>
+<b>Related Basic Types:</b>
+<a href="HMDIDRIVER.html">HMDIDRIVER</a><br>
+<b>Related FAQs:</b>
+<a href="What's the deal with4bihxb.html">What's the deal with callbacks - are they threads, interrupts, system timers, or what?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

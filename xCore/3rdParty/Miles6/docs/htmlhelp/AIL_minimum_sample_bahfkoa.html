@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_minimum_sample_buffer_size</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the minimum usable buffer size for use with the digital audio double-buffering function AIL_load_sample_buffer.">
+<meta name="ms-hkwd" content="AIL_minimum_sample_buffer_size">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_minimum_sample_buffer_size</h1>
+<p>The function  <b>AIL_minimum_sample_buffer_size</b> returns the minimum usable buffer size for use with the digital audio double-buffering function AIL_load_sample_buffer.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_minimum_sample_bahfkoa.html" class=trn>AIL_minimum_sample_buffer_size</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>playback_rate</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>format</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>specifies which digital audio driver is to be used for double-buffered audio playback.</dd>
+<dt><i>playback_rate</i></dt>
+<dd>specifies the intended playback rate in samples per second.</dd>
+<dt><i>format</i></dt>
+<dd>specifies the format of the audio data to be played. See <a href="AIL_set_sample_type.html">AIL_set_sample_type</a> for a description of the available audio PCM formats.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The lowest usable size in bytes for each of the two buffers used by the <a href="AIL_load_sample_buffer.html">AIL_load_sample_buffer</a> function.</p>
+<h4>Discussion</h4>
+<p>MSS's built-in double-buffering mechanism (namely, the <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a> and <a href="AIL_load_sample_buffer.html">AIL_load_sample_buffer</a> functions) cannot be used to play buffers which are smaller than the hardware half-buffer size used at the hardware level, because the hardware buffer can be filled with sample data only at its beginning and half-buffer points. The <a href="AIL_minimum_sample_bahfkoa.html">AIL_minimum_sample_buffer_size</a> function returns the smallest buffer size which can be used with a given driver and configuration. Applications which play synchronized audio-video streams with small audio chunks (less than 4-8K) must be designed to queue video and/or audio frame data in memory, in order to present audio buffers of sufficient size to the double-buffered playback routines. </p><p> The value returned by this function is a <i>minimum</i> value, which will typically range from 2K to 8K bytes. It is permissible, and often advisable, to use larger buffer sizes than that recommended by <a href="AIL_minimum_sample_bahfkoa.html">AIL_minimum_sample_buffer_size</a>. For example, applications which are unable to poll the <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a> function frequently may need to employ buffer sizes of 16K, 32K, or greater. </p><p> In calculating the minimum usable buffer size, this function takes into account the difference between the driver's hardware playback rate and the sample's playback rate, as well as any conversions between 8-bit and 16-bit or mono and stereo formats that automatically occur during playback. Consequently, the value returned may be greater or less than the actual hardware half-buffer size. If the playback rate will be varied during the double-buffering process, the highest rate to be used should be passed to <a href="AIL_minimum_sample_bahfkoa.html">AIL_minimum_sample_buffer_size</a> so that the buffer size can accommodate variations at playback time. </p><p> It is permissible for the final audio chunk in a double-buffered stream to be smaller than the minimum buffer size; double-buffered samples do not need to be an integer multiple of the buffer size in length. </p><p> Example files that use this function: DBTEST.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_load_sample_buffer.html">AIL_load_sample_buffer</a>, <a href="AIL_minimum_sample_bahfkoa.html">AIL_minimum_sample_buffer_size</a>, <a href="AIL_sample_buffer_info.html">AIL_sample_buffer_info</a>, <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a>, <a href="AIL_set_sample_type.html">AIL_set_sample_type</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

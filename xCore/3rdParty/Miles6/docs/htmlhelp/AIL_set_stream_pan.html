@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_stream_pan</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="controls the placement of a monaural data stream in stereo space, or the balance of a stereo stream in stereo space.">
+<meta name="ms-hkwd" content="AIL_set_stream_pan">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_stream_pan</h1>
+<p>The function  <b>AIL_set_stream_pan</b> controls the placement of a monaural data stream in stereo space, or the balance of a stereo stream in stereo space.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_stream_pan.html" class=trn>AIL_set_stream_pan</a>(</b>
+<b>&nbsp&nbsp<a href="HSTREAM.html" class=trn>HSTREAM</a>&nbsp</b><i>stream</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>pan</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>stream</i></dt>
+<dd>indicates the stream whose stereo location is to be set.</dd>
+<dt><i>pan</i></dt>
+<dd>is a MIDI-compatible panpot setting from 0 (hard left) to 127 (hard right).</dd>
+</dl>
+<h4>Discussion</h4>
+<p>When a stream handle is initialized by <a href="AIL_open_stream.html">AIL_open_stream</a>, its panpot value is set to 64 (dead center). </p><p> This function has no effect when mono audio data is played with mono sound hardware. </p><p> When stereo audio data is played with mono hardware, only the left channel data is used. Panpot settings above 64 will tend to reduce the overall output volume in this case. </p><p> When mono audio data is played with stereo hardware, the panpot setting determines the sample's location in the stereo field. When stereo data is played with stereo hardware, the panpot setting acts as a stereo balance control, determining the relative volume levels in the left and right channels. At 64, the balance control is considered at midrange, and no attenuation takes place in either channel. </p><p> The ability to pan is governed by the number of channels you used when opening the digital driver in <a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a>. You must use 2 channels if you need stereo panning support. </p><p> There is, unfortunately, some ambiguity in the meaning of panpot values in the MIDI and PC audio world. The original Roland MT-32 synthesizer and its companion PC-200 MIDI keyboard controller defined "hard left" as 127 and "hard right" as 0, which contradicted the MIDI reference books of the day. With later products such as the Sound Canvas, Roland rectified this apparent error, implementing the conventional MIDI panpot mapping used by <a href="AIL_set_stream_pan.html">AIL_set_stream_pan</a>.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Stream436kmy.html">Digital Audio Streaming Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a>, <a href="AIL_open_stream.html">AIL_open_stream</a>, <a href="AIL_set_stream_pan.html">AIL_set_stream_pan</a>, <a href="AIL_set_stream_volume.html">AIL_set_stream_volume</a>, <a href="AIL_stream_pan.html">AIL_stream_pan</a>, <a href="AIL_stream_reverb.html">AIL_stream_reverb</a><br>
+<b>Related Basic Types:</b>
+<a href="HSTREAM.html">HSTREAM</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

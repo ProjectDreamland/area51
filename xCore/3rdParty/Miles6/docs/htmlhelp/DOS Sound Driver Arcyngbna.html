@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>DOS Sound Driver Architecture</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="DOS Sound Driver Architecture">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>DOS Sound Driver Architecture</h1>
+<h4>Discussion</h4>
+<p> MSS-compatible digital sound drivers are essentially "tiny model" real-mode .COM files with the file suffix .DIG. MIDI interpreter drivers are similar in structure, and bear the standard suffix .MDI. </p><p>MSS drivers are loaded into memory by the application at runtime -- not as TSR programs. The area of memory occupied by a MSS driver must be <i>paragraph-aligned</i> (that is, the lower four bits of its offset address must be 0). MSS loads these sound drivers into the lower 1MB of physical memory, which is allocated under DPMI with a call to INT 31H Function 100H. MSS then communicates with these drivers through a standard interrupt-based calling mechanism. </p><p>The standard MSS communications interrupt is INT 66H. To call a sound driver function, the AX register must be set to the desired <i>function number,</i> the BX register must contain the desired <i>driver number</i> (see below), and an INT 66H call must be performed. Function numbers 400H - 4FFH are reserved for use by .DIG digital sound drivers, while functions 500H - 5FFH are assigned to .MDI music drivers. Functions 300H - 3FFH are initialization functions common to both driver types. Any functions not handled by a given MSS driver (including, for example, DIGPAK and MIDPAK driver calls, which share INT 66H with MSS) should be passed down to the previous INT 66H handler. </p><p>Up to 65,536 .DIG and .MDI drivers may be loaded simultaneously by the application, if desired, to provide true "surround-sound" effects with multiple sound cards. When making an MSS driver call, the BX register should contain the driver number specifying which driver in the INT 66H chain should handle the call. Driver numbers start at 0 and increase by 1 for each MSS driver loaded by the application. </p><p>Interrupts are disabled by default during execution of all driver calls, to guard against data coherency problems. Sound driver functions which require interrupts to be enabled, or which need large amounts of processing time, must explicitly enable interrupt service with an STI instruction. <i>This should not be done without careful consideration of asynchronous data and hardware-state coherency issues.</i> The CPU interrupt state is automatically restored upon exiting from a sound driver function. </p><p>Although the MSS API layer requires an 80386-class CPU, sound drivers should be developed for compatibility with all Intel processors including the 8086 and 80286, when possible. This will help prevent problems with specialized or embedded applications which may be developed with MSS. </p><p>In summary, MSS driver calls use the following form. All registers not used to return data from a given function are preserved, with the exception of AX. </p><p><b>AX:</b> Input: 300H-3FFH (All drivers), 400H-4FFH (.DIG driver functions), 500H-5FFH (.MDI driver functions). Output: Status or returned value (1 is success, 0 is failure, -1 is not supported). </p><p><b>BX:</b> Input: Driver number. </p><p>To provide a general "skeleton" template for MSS driver development, the MASM/TASM-compatible modules <b>MSS_DIG.INC and MSS_MDI.INC</b> are supplied as part of the MSS DDK. </p><p> Every MSS driver's binary image, regardless of driver type, begins with a structure of type <a href="VDI_HDR.html">VDI_HDR</a>. This structure provides information which MSS needs in order to link the driver into the INT 66H chain and perform any necessary initialization tasks. The <a href="VDI_HDR.html">VDI_HDR</a> structure also contains the driver number value which enables the driver to respond to calls made to it, while passing others down the INT 66H chain. </p><p>As defined in <b>MSS.H</b>, the Driver Header Table for .MDI and .DIG drivers uses the <a href="VDI_HDR.html">VDI_HDR</a> structure.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="MSS Device Developmew8besk.html">MSS Device Development Kit for DOS Sound Drivers</a><br>
+<b>Related Structures:</b>
+<a href="VDI_HDR.html">VDI_HDR</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

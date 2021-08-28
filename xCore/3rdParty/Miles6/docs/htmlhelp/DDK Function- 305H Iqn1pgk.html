@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>DDK Function: 305H Initialize Device</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="DDK Function: 305H Initialize Device">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>DDK Function: 305H Initialize Device</h1>
+<h4>Discussion</h4>
+<p> <b>Input:</b><br> </p><p> AX = 305H<br> BX = Driver number<br> <a href="VDI_HDR.html">VDI_HDR</a> <b>IO</b> structure contains I/O parameters to use while driver active </p><p><b>Output:</b><br> </p><p> AX = 1: Device successfully initialized<br> AX = 0: Hardware fault </p><p>This function should be called prior to functions 306H through 505H. Its purpose is to perform any hardware initialization tasks not addressed during the I/O validation process of Function 304H. </p><p>Function 304H (Verify Device I/O Parameters) <i>must</i> be called prior to this function. </p><p>This function may, at the developer's option, initialize panpot controls to their center level and set hardware-based reverberation and other effects to a neutral value. Initialization of these parameters is not necessary in cases where a user-accessible "control panel" is provided with the device. </p><p>This function may safely perform DOS or other system-level accesses, if necessary. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="DOS Sound Driver Gens3p70p.html">DOS Sound Driver Generic Initialization Interface</a><br>
+<b>Related Structures:</b>
+<a href="VDI_HDR.html">VDI_HDR</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

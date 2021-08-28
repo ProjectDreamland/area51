@@ -1,0 +1,767 @@
+<html>
+
+<head>
+<title>CPJNSMTPConnection v2.42</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p align="left"><font face="Arial" size="6"><img src="smtp.gif" width="39" height="38" alt="smtp.gif (295 bytes)"><strong>CPJNSMTPConnection 
+v2.42</strong></font></p>
+
+<p><font face="Arial">Welcome to <strong>CPJNSMTPConnection</strong>, a freeware MFC class to
+support the SMTP protocol. SMTP for those not familiar with all the internet protocols is
+the protocol used to send internet email.</font></p>
+
+<p><font face="Arial">For detailed information about the <strong>S</strong>imple <strong>M</strong>ail
+<strong>T</strong>ransfer <strong>P</strong>rotocol you should read RFC 821, </font></p>
+
+<p><font face="Arial">Other documents that these classes refer to are RFC 2045 (which
+defines how MIME attachments are to be handled in a standard SMTP message) and
+RFC 822 (which defines the way standard headers which SMTP uses). You might also
+want to check out RFC 2110 which covers MHTML (aka HTML Email).</font></p>
+
+<p><font face="Arial">You can find numerous Web Servers which carry these documents by
+going to any Web search engine and looking for RFC and 821,
+822, 1321, 2045, 2104 and 2195. </font></p>
+
+<p><font face="Arial">Please note that portions of the code is provided by RSA Security. Please see md5.cpp for more details on this.</font></p>
+
+<p><font face="Arial" size="3"><b><i>Important!!:</i></b> Please note that I
+have been informed recently that CPJNSMTPConnection is being used to develop and
+send unsolicited bulk mail. This was not the intention of the code and the author
+explicitly forbids use of the code for any software of this kind without my
+explicit written consent.</font></p>
+<p></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table>
+  <tr>
+    <td><font face="Arial"><a href="#Features">Features</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#Copyright">Copyright</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#Usage">Usage</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#History">History</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#Enhancements">Planned Enhancements</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#Contact">Contacting the Author</a></font></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><a name="Features"></a><big><strong><big>Features</big></strong></big>
+</font>
+
+<ul>
+  <li><font color="#000000" size="3" face="Arial">Simple and clean C++ interface.</font></li>
+  <li><font color="#000000" size="3" face="Arial">The interface provided is synchronous which
+    provides an easier programming model than using asynchronous sockets.</font></li>
+  <li><font color="#000000" size="3" face="Arial">The code does not rely on the MFC socket
+    classes. These classes have a number of shortcomings, one of which causes problems when
+    they are used in NT services.</font></li>
+  <li><font color="#000000" size="3" face="Arial">The code can be used in a console
+    application without any problems (Again this is not the case for the MFC socket classes).</font></li>
+  <li><font color="#000000" size="3" face="Arial">A configurable timeout for the connection
+    can be set through the class API.</font></li>
+  <li><font color="#000000" size="3" face="Arial">The classes are fully Unicode compliant and
+    include Unicode built options in the workspace file.</font></li>
+  <li><font color="#000000" size="3" face="Arial">As of v1.1, the classes now fully supports
+    sending file attachments.</font></li>
+  <li><font color="#000000" size="3" face="Arial">Multi CC, BCC &amp; Reply To support is
+    included.</font></li>
+  <li><font color="#000000" size="3" face="Arial">Support for regular email address formats
+    and multiple email address parsing.</font></li>
+  <li><font color="#000000" size="3" face="Arial">Full support for MIME and
+    MHTML (aka HTML Email).</font></li>
+  <li><font color="#000000" size="3" face="Arial">Full support for MIME
+    Charsets.</font></li>
+  <li><font color="#000000" size="3" face="Arial">Comprehensive sample program
+    included which exercises most of the classes functionality.</font></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><b><font face="Arial" size="5"><a name="Copyright"></a>Copyright</font></b></p>
+<ul>
+  <li><font face="Arial">You are allowed to include the source code in any product
+(commercial, shareware, freeware or otherwise) when your product is released in
+binary form.&nbsp;</font></li>
+  <li><font face="Arial"> You are allowed to modify the source code in any way you want
+except you cannot modify the copyright details at the top of each module.&nbsp;</font></li>
+  <li><font face="Arial"> If you
+want to distribute source code with your application, then you are only allowed
+to distribute versions released by the author. This is to maintain a single
+distribution point for the source code.&nbsp;</font></li>
+  <li><font face="Arial" size="3"><b><i>Important!!:</i></b> Please note that I
+    have been informed recently that CPJNSMTPConnection is being used to develop
+    and send unsolicited bulk mail. This was not the intention of the code and
+    the author explicitly forbids use of the code for any software of this kind
+    without my explicit written consent.</font></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a name="Usage"></a><font face="Arial"><big><big><strong>Usage</strong></big></big></font>
+
+<ul>
+  <li><font color="#000000" size="3" face="Arial">To use the class in your code simply include
+    smtp.cpp, base64code.cpp and md5.cpp in your project and #include smtp.h in which ever of your modules needs to make
+    calls to the classes.</font></li>
+  <li><font face="Arial">Your code will need to include MFC either statically or dynamically.</font></li>
+  <li><font face="Arial">You will need to have a functioning Winsock stack installed and
+    correctly initialised prior to calling any functions in CPJNSMTPConnection. Depending on your
+    application, this will involve calling either WSAStartup or AfxSocketInit at 
+  start-up of
+    your application.</font></li>
+  <li><font face="Arial">You will also need to have afxtempl.h ,winsock.h or afxsock.h and
+    afxpriv.h in your precompiled header. The code will work just as well in a GUI or console
+    app. The code should also work in a multithreaded application, although it has not be
+    explicitly tested in this scenario.</font></li>
+  <li><font face="Arial">To see the class in action, have a look at the code in InitInstance
+    in the module &quot;main.cpp&quot;.&nbsp; For example to send a message to the author
+    about this class, the code would look something like this (ignoring error handling):</font></li>
+</ul>
+
+<p><font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+CPJNSMTPConnection smtp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; smtp.Connect(&quot;mail.someisp.com&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CSMTPMessage m;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+m.AddRecipient(CSMTPAddress(&quot;pjna@naughter.com&quot;));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m.m_From =
+CSMTPAddress(&quot;adeveloper@someisp.com&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m.m_sSubject = &quot;A Fellow developer!&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m.AddTextBody(&quot;if you can read this then the
+CPJNSMTPConnection code is working&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; smtp.SendMessage(m);<br>
+</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To send your autoexec.bat
+as a file attachment to me you would use the following code:</font></p>
+
+<p><font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+CPJNSMTPConnection smtp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; smtp.Connect(&quot;mail.yourisp.com&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CSMTPMessage m;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+m.AddRecipient(CSMTPAddress(&quot;pjna@naughter.com&quot;));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m.m_From =
+CSMTPAddress(&quot;you@someisp.com&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m.m_sSubject = &quot;Here's my autoexec.bat
+file!&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CSMTPBodyPart a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a.SetFilename(&quot;c:\\autoexec.bat&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m.AddBodyPart(a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; smtp.SendMessage(m);<br>
+</font></p>
+<ul>
+  <li><font face="Arial">For further details on usage of the classes please
+    consult the sample application which comes with the code, specifically check
+    out CMailDlg::OnSend in maildlg.cpp.</font></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><big><a name="History"></a></big><font color="#000000" size="5"><strong>History</strong></font></font></p>
+
+<p><strong><font color="#000000" size="3" face="Arial">V1.0 (26th M</font><font
+face="Arial"><font size="3"><font color="#000000">ay</font></font><font color="#000000"
+size="3"> 1998)</font></font></strong> 
+
+<ul>
+  <li><font face="Arial" color="#000000" size="3">Initial public release.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.1 (17th June 1998)</strong></font>
+
+<ul>
+  <li><font face="Arial">Fixed the case where a single dot occurs on its own in the body of a
+    message</font></li>
+  <li><font face="Arial">Classes now supports an optional &quot;Reply-To&quot; Header Field</font></li>
+  <li><font face="Arial">Classes now fully supports file attachments</font></li>
+  <li><font face="Arial">Some rework on the contents of the help file</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.11 (18th June 1998)</strong></font>
+
+<ul>
+  <li><font face="Arial">Fixed a memory overwrite problem which was occurring with the buffer
+    used for encoding base64 attachments.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.12 (27th June 1998)</strong></font>
+
+<ul>
+  <li><font face="Arial">The case where a line begins with a &quot;.&quot; but contains other
+    text is now also catered for. See RFC821, Section 4.5.2 for further details.</font></li>
+  <li><font face="Arial">m_sBody in CSMTPMessage has now been made protected. Client
+    applications now should call AddBody instead. This ensures that FixSingleDot is only
+    called once even if the same message is sent a number of times.</font></li>
+  <li><font face="Arial">Fixed a number of problems with how the MIME boundaries were defined
+    and sent.</font></li>
+  <li><font face="Arial">Got rid of an unreferenced formal parameter compiler warning when
+    doing a release build.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.2 (11 August 1998)</strong></font>
+
+<ul>
+  <li><font face="Arial">VC 5 project file is now provided instead of VC 4.x</font></li>
+  <li><font face="Arial">Attachment array which the message class contains now uses references
+    instead of pointers.</font></li>
+  <li><font face="Arial">Now uses Sleep(0) to yield our time slice instead of Sleep(100), this
+    is the preferred way of writing polling style code in Win32 without serverly impacting
+    performance.</font></li>
+  <li><font face="Arial">All trace statements now display the value as returned from
+    GetLastError</font></li>
+  <li><font face="Arial">A number of extra asserts have been added</font></li>
+  <li><font face="Arial">AddMultipleRecipients has been added which supports added a number of
+    recipients at one time from a single string</font></li>
+  <li><font face="Arial">Extra trace statements have been added to help in debugging</font></li>
+  <li><font face="Arial">A number of updates to the documentation.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.21 (12 September 1998)</strong></font>
+
+<ul>
+  <li><font face="Arial">Removed a couple of unreferenced variable compiler warnings
+    discovered when the class was compiled on Visual C++ 6.0.</font></li>
+  <li><font face="Arial">Fixed a major bug which was causing an ASSERT when the
+    CSMTPAttachment destructor was being called in the InitInstance of the sample app. This
+    was inadvertently introduced for the 1.2 release. The fix is to revert fix 2) as done for
+    v1.2. This new fix will also help to reduce the number of attachment images kept in memory
+    at one time.</font></li>
+  <li><font face="Arial">Fixed a few errors in this help file.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.3 (18 January 1999)</strong></font>
+
+<ul>
+  <li><font face="Arial">Full support has now been added for CC (Carbon Copy) &amp; BCC (Blind
+    Carbon Copy).</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.31 (22 February 1999)</strong></font>
+
+<ul>
+  <li><font face="Arial">Added a Get and SetTitle method which allows a files attachment title
+    to be different that the original filename.</font></li>
+  <li><font face="Arial">Updated sample app to include a more descriptive subject line.</font></li>
+  <li><font face="Arial">Default timeout for the code when a debug build is built has now been
+    set to 60 seconds.</font></li>
+  <li><font face="Arial">Improved the reading of responses back from the server by
+    implementing a growable receive buffer.</font></li>
+  <li><font face="Arial">Updated instructions on how the relevant RFC documents can be
+    retrieved.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.32 (25 March 1999)</strong></font>
+
+<ul>
+  <li><font face="Arial">Now sleeps for 250 ms instead of yielding the time slice. This helps
+    reduce CPU usage when waiting for data to arrive in the socket.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.33 (14 May 1999)</strong></font>
+
+<ul>
+  <li><font face="Arial">Updated documentation to refer to RFC 822.</font></li>
+  <li><font face="Arial">Fixed a bug with the way the code generates time zone
+    fields in the Date headers. Thanks to Randy
+    A. Scott for reporting this bug.&nbsp;</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.34 (10 September 1999)</strong></font>
+<ul>
+  <li><font face="Arial">Improved CSMTPMessage::GetHeader to include mime field
+    even when no attachments are included.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.35 (5 October 1999)</strong></font>
+<ul>
+  <li><font face="Arial">Fixed 2 level 4 warnings when compiled using VC 6.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.36 (16 February 2000)</strong></font>
+<ul>
+  <li><font face="Arial">Fixed another compiler problem when compiled with VC 6.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.37 (19 March 2000)</strong></font>
+<ul>
+  <li><font face="Arial"> Fixed a problem in GetHeader on Non-English Windows machines</font></li>
+  <li><font face="Arial"> Now ships with a VC 5 workspace. I accidentally shipped a VC 6 version in one of the previous versions of the code.</font></li>
+  <li><font face="Arial">Fixed a number of UNICODE problems</font></li>
+  <li><font face="Arial">Updated the sample app to deliberately assert before connecting to the author's SMTP server.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.38 (26 March 2000)</strong></font>
+<ul>
+  <li><font face="Arial"> Updated the sample app provided with the code to be a
+    mini mail client. This should now also give a better idea of what the code
+    can be used for.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.39 (28 March 2000)</strong></font>
+<ul>
+  <li><font face="Arial"> Set the release mode timeout to be 10 seconds. 2 seconds was causing problems for slow dial                          up networking connections.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.40 (7 May 2000)</strong></font>
+<ul>
+  <li><font face="Arial">Addition of some ASSERT's in CSMTPSocket::Connect.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.41 (20 June 2000)</strong></font>
+<ul>
+  <li><font face="Arial">Removed the base64 encoder from this file</font></li>
+  <li><font face="Arial">Added the base64 encoder/decoder implementation in a separate						              file. This was done because base64 decoding was not part of							            the previous implementation</font></li>
+  <li><font face="Arial">Added support for ESMTP connection. The class now attempts to						              authenticate the user on the ESMTP server using the username and
+    passwords supplied. For this connect now takes the username and							            passwords as parameters. These can be null in which case ESMTP							            authentication is not attempted</font></li>
+  <li><font face="Arial">This class can now handle AUTH LOGIN and AUTH LOGIN PLAIN authentication
+    schemes&nbsp;</font></li>
+  <li><font face="Arial">Added the files md5.* containing the MD5 digest generation code
+    after modifications so that it compiles with VC++ 6</font></li>
+  <li><font face="Arial">Added support for CRAM-MD5 login.</font></li>
+  <li><font face="Arial">Please note that all the support for SMTP
+    authentication was added by Puneet Pawaia to which I am gratefully
+    appreciated for all the hard work put in.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.0 (21 June 2000)</strong></font>
+<ul>
+  <li><font face="Arial">Now includes a number of files missing from the zip
+    file.</font></li>
+  <li><font face="Arial">Updated the version number to v2 to reflect the major
+    changes which occurred in v1.41</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.01 (10 July 2000)</strong></font>
+<ul>
+  <li><font face="Arial">Fixed a problem with sending attachments > 1K in size.</font></li>
+  <li><font face="Arial">Changed the parameters to CPJNSMTPConnection::Connect</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.02 (30 July 2000)</strong></font>
+<ul>
+  <li><font face="Arial">Fixed a bug in AuthLogin which was transmitting the username and password
+    with an extra "=" which was causing the login to failure. Thanks to Victor Vogelpoel for
+    finding this.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.03 (5 September 2000)</strong></font>
+<ul>
+  <li><font face="Arial">Added a CSMTP_NORSA preprocessor macro to allow the
+    CPJNSMTPConnection code to be compiled
+    without the dependence on the RSA code.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.04 (28 December 2000)</strong></font>
+<ul>
+  <li><font face="Arial">Removed an unused variable from ConnectESMTP.</font></li>
+  <li><font face="Arial">Allowed the hostname as sent in the HELO command to be specified at run time
+    </font><font face="Arial">in addition to using the hostname of the client machine</font></li>
+  <li><font face="Arial">Fixed a problem where high ASCII characters were not being properly encoded in
+    the quoted-printable version of the body sent.</font></li>
+  <li><font face="Arial">Added support for user definable charset's for the message body.</font></li>
+  <li><font face="Arial">Mime boundaries are now always sent irrespective of whether attachments are included or
+    not. This is required as the body is using quoted-printable.</font></li>
+  <li><font face="Arial">Fixed a bug in sendLines which was causing small message bodies to be sent incorrectly</font></li>
+  <li><font face="Arial">Now fully supports custom headers in the SMTP message</font></li>
+  <li><font face="Arial">Fixed a copy and paste bug where the default port for the SMTP socket class was 110.</font></li>
+  <li><font face="Arial">You can now specify the address on which the socket is bound. This enables the programmer
+    to decide on which NIC data should be sent from. This is especially useful on a machine
+    with multiple IP addresses.</font></li>
+  <li><font face="Arial">Addition of functions in the SMTP connection class to auto dial and auto disconnect to                          the Internet if you so desire.</font></li>
+  <li><font face="Arial">Sample app has been improved to allow Auto Dial and
+    binding to IP addresses to be configured.</font></li>
+  <li><font face="Arial">Thanks go to Yaroslav Liapkov, Josef Hampl, Duncan Strand,
+    Fritz Roland &quot;Nick&quot; Bjorklund, Lev Elbert and Perry Rapp for
+    finding these problems and/or suggesting the improvements.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.1 (14 May 2001)</strong></font>
+<ul>
+  <li><font face="Arial">  Charset now defaults to ISO 8859-1 instead of us-ascii</font></li>
+  <li><font face="Arial">Removed a number of unreferenced variables from the sample app.</font></li>
+  <li><font face="Arial">Headers are now encoded if they contain non ascii characters.</font></li>
+  <li><font face="Arial">Fixed a bug in getLine, Thanks to Lev Evert for spotting this one.</font></li>
+  <li><font face="Arial">Made the charset value a member of the message class instead of the connection class</font></li>
+  <li><font face="Arial">Sample app now fully supports specifying the charset of the message</font></li>
+  <li><font face="Arial">Added a AddMultipleAttachments method to CSMTPMessage</font></li>
+  <li><font face="Arial">Attachments can now be copied to each other via new methods in CSMTPAttachment</font></li>
+  <li><font face="Arial">Message class now contains copies of the attachments instead of pointers to them</font></li>
+  <li><font face="Arial">Sample app now allows multiple attachments to be added</font></li>
+  <li><font face="Arial">Removed an unnecessary assert in QuotedPrintableEncode</font></li>
+  <li><font face="Arial">Added a Mime flag to the CSMTPMessage class which allows you to decide whether or not a message
+    should be sent as MIME. Note that if you have attachments, then mime is assumed.</font></li>
+  <li><font face="Arial">CSMTPAttachment class has now become CSMTPBodyPart in anticipation of full support for MIME and                          MHTML email support</font></li>
+  <li><font face="Arial">Updated copyright message in source code and documentation</font></li>
+  <li><font face="Arial">Fixed a bug in GetHeader related to _tsetlocale usage. Thanks to Sean McKinnon for spotting this
+    problem.</font></li>
+  <li><font face="Arial">Fixed a bug in SendLines when sending small attachments. Thanks to Deng Tao for spotting this
+    problem.</font></li>
+  <li><font face="Arial">Removed the need for SendLines function entirely.</font></li>
+  <li><font face="Arial">Now fully supports HTML email (aka MHTML)</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.11 (17 June 2001)</strong></font>
+<ul>
+  <li><font face="Arial"> Fixed a bug in CSMTPMessage::HeaderEncode where spaces were not being interpreted correctly. Thanks
+    to Jim Alberico for spotting this.</font></li>
+  <li><font face="Arial">Fixed 2 issues with ReadResponse both having to do with multi-line responses. Thanks to Chris Hanson                          for this update.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.12 (25 June 2001)</strong></font>
+<ul>
+  <li><font face="Arial">Code now links in Winsock and RPCRT40 automatically.
+    This avoids client code having to specify it in their linker settings.
+    Thanks to Malte and Phillip for spotting this issue.</font></li>
+  <li><font face="Arial">Updated sample code in documentation. Thanks to Phillip
+    for spotting this.</font></li>
+  <li><font face="Arial">Improved the code in CSMTPBodyPart::SetText to ensure
+    lines are correctly wrapped. Thanks to Thomas Moser for this fix.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.13 (1 July 2001)</strong></font>
+<ul>
+  <li><font face="Arial"> Modified QuotedPrintableEncode to prevent the code to enter in an infinite loop due to a long word i.e.                          bigger than SMTP_MAXLINE, in this case, the word is 
+  broken. Thanks to Manuel Gustavo Saraiva for this fix.</font></li>
+  <li><font face="Arial">Provided a new protected variable in CSMTPBodyPart called m_bQuotedPrintable to bypass the                          QuotedPrintableEncode function in cases that we don't want that kind of correction. Again thanks to                          Manuel Gustavo Saraiva for this fix.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.14 (15 July 2001)</strong></font>
+<ul>
+  <li><font face="Arial">Improved the error handling in the function CSMTPMessage::AddMultipleAttachments. In addition the                          return value has been changed from BOOL to int.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.15 (13 August 2001)</strong></font>
+<ul>
+  <li><font face="Arial">Fixed a bug in QuotedPrintableEncode which was wrapping encoding characters across multiple lines.                          Thanks to Roy He for spotting this.</font></li>
+  <li><font face="Arial">Provided a "SendMessage" method which sends a email directly from disk. This allows you                          to construct your own emails and the use the class just to do the sending. This function also has the                          advantage that it efficiently uses memory and reports progress.</font></li>
+  <li><font face="Arial">Provided support for progress notification and cancelling via the "OnSendProgress" virtual method.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.16 (29 September 2001)</strong></font>
+<ul>
+  <li><font face="Arial">Fixed a bug in ReadResponse which occurred when you disconnected via Dial-Up Networking
+    while a connection was active. This was originally spotted in my POP3 class.</font></li>
+  <li><font face="Arial">Fixed a problem in CSMTPBodyPart::GetHeader which was always including the "quoted-printable" even when&nbsp;<br>
+                          m_bQuotedPrintable for that body part was FALSE. Thanks to "jason" for spotting this.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.17 (12 October 2001)</strong></font>
+<ul>
+  <li><font face="Arial">Fixed a problem where GetBody was reporting the size as 1 bigger than it should have been. Thanks
+    to "c f" for spotting this problem.</font></li>
+  <li><font face="Arial">Fixed a bug in the TRACE statements when a socket connection cannot be made.</font></li>
+  <li><font face="Arial"> The sample app now displays a filter of "All Files" when selecting
+    attachments to send</font></li>
+  <li><font face="Arial">Fixed a problem sending 0 byte attachments. Thanks to Deng Tao
+    for spotting this problem.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.18 (11 January 2002)</strong></font>
+<ul>
+  <li><font face="Arial">Now includes a method to send a message directly from memory. Thanks to Tom Allebrandi for this
+    suggestion.</font></li>
+  <li><font face="Arial">Change function name "IsReadible" to be "IsReadable". I was never very good at English!.</font></li>
+  <li><font face="Arial">Fixed a bug in CSMTPBodyPart::QuotedPrintableEncode. If a line
+    was exactly 76 characters long plus \r\n it produced an                          invalid  soft linebreak of
+    &quot;\r=\r\n\n&quot;. Thanks to Gerald Egert for spotting this problem.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>13 January 2002</strong></font>
+<ul>
+  <li><font face="Arial"> Minor update to the sample app to fix a bug in
+    browsing for attachments, Core classes not changed.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.19 (29 July 2002)</strong></font>
+<ul>
+  <li><font face="Arial"> Fixed an access violation in CSMTPBodyPart::QuotedPrintableEncode. Thanks to Fergus Gallagher for                          spotting this problem.</font></li>
+  <li><font face="Arial"> Fixed a problem where in very rare cases, the QuotedPrintableEncode function produces a single dot in a                          line, when inserting the "=" to avoid the mail server's maxline limit. I inserted a call to FixSingleDot                          after calling the QuotedPrintableEncode function in GetBody. Thanks to Andreas Kappler for spotting this                          problem.</font></li>
+  <li><font face="Arial">Fixed an issue in CSMTPBodyPart::GetHeader which ensures
+    all mail clients can correctly handle
+    body parts and attachments which have a filename with spaces in it. Thanks to Andreas
+    Kappler for
+    spotting this problem.</font></li>
+  <li><font face="Arial"> QP encoding is now only used when you specify MIME. This fixes a bug as reported by David Terracino.</font></li>
+  <li><font face="Arial">Removed now unused &quot;API Reference&quot; link in HTML file
+    supporting
+    the code.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.20 (10 August 2002)</strong></font>
+<ul>
+  <li><font face="Arial">Fixed a number of uncaught file exceptions in CSMTPBodyPart::GetBody, CSMTPMessage::SaveToDisk and 
+  CPJNSMTPConnection::SendMessage. Thanks to John Allan Miller for reporting this problem.</font></li>
+  <li><font face="Arial">The CPJNSMTPConnection::SendMessage version of the method which sends a file directly from disk, now fails if the
+    file is empty.</font></li>
+  <li><font face="Arial">Improved the sample app by displaying a wait cursor while a message from file is being sent.</font></li>
+  <li><font face="Arial">Improved the sample app by warning the user if mail settings are missing and then bringing up the configuration
+    dialog.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.21 (20 September 2002)</strong></font>
+<ul>
+  <li><font face="Arial"> Fixed a problem where the code "Coder.EncodedMessage" was not being converted from an ASCII string to a UNICODE
+    string in calls to CString::Format. This was occurring when sending the username and password for "AUTH LOGIN" support
+    in addition to sending the "username digest" for "AUTH CRAM-MD5" support. Thanks to Serhiy Pavlov for reporting this
+    problem.</font></li>
+  <li><font face="Arial">Removed a number of calls to CString::Format and instead replaced with string literal CString constructors instead.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.22 (3 October 2002)</strong></font>
+<ul>
+  <li><font face="Arial">Quoted printable encoding didn't work properly in UNICODE. (invalid conversion from TCHAR to BYTE). Thanks to
+    Serhiy Pavlov for reporting this problem.</font></li>
+  <li><font face="Arial">Subject encoding didn't work properly in UNICODE. (invalid conversion from TCHAR to BYTE). Thanks to Serhiy Pavlov
+    for reporting this problem.</font></li>
+  <li><font face="Arial">It didn't insert "charset" tag into root header for plain text messages (now it includes "charset" into plain text                          messages too). Thanks to Serhiy Pavlov for reporting this problem.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.23 (4 October 2002)</strong></font>
+<ul>
+  <li><font face="Arial"> Fixed an issue where the header / body separator was not being sent correctly for mails with attachments or when                          the message is MIME encoded. Thanks to Serhiy Pavlov for reporting this problem.</font></li>
+  <li><font face="Arial"> Fixed a bug in QuotedPrintableEncode and HeaderEncode which was causing the errors. Thanks to Antonio Maiorano                          for reporting this problem.</font></li>
+  <li><font face="Arial"> Fixed an issue with an additional line separator being sent between the header and body of emails. This was only                          evident in mail clients if a non mime email without attachments was sent.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.24 (11 December 2002)</strong></font>
+<ul>
+  <li><font face="Arial">Review all TRACE statements for correctness</font></li>
+  <li><font face="Arial">Provided a virtual OnError method which gets called 
+  with error information.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V2.25 (7 February 2003)</strong></font>
+<ul>
+  <li><font face="Arial">Addition of a &quot;BOOL bGracefully&quot; argument to Disconnect 
+  so that when an application cancels the sending of a message, you can pass 
+  FALSE and close the socket without properly terminating the SMTP conversation. 
+  Thanks to &quot;nabocorp&quot; for this nice addition.</font></li>
+  <li><font face="Arial">Did a spell check on the documentation &lt;g&gt;.</font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>9 February 2003</strong></font>
+<ul>
+  <li><font face="Arial">Updated the sample app to display a simple progress 
+  dialog when you send a message from disk (not using the &quot;Send Direct&quot;) option. 
+  This provides a sample of how you can implement a cancellable send of a 
+  message with progress support. Thanks to &quot;nabocorp&quot; for suggesting this 
+  addition to the sample.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.26 (</font><font face="Arial" color="#000000" size="3">19 
+March 2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Addition of copy constructors and operator= to 
+  CSMTPMessage class. Thanks to Alexey Vasilyev for this suggestion.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.27 (</font><font face="Arial" color="#000000" size="3">13 
+April 2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Fixed a bug in the handling of EHLO responses. Thanks 
+  to &quot;Senior&quot; for the bug report and the fix.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.28 (</font><font face="Arial" color="#000000" size="3">17 
+April 2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Enhanced the CSMTPAddress constructor to parse out the 
+  email address and friendly name rather than assume it is an email address.</font></li>
+  <li><font face="Arial">Reworked the syntax of the 
+  CSMTPMessage::ParseMultipleRecipients method. Also now internally this 
+  function uses the new CSMTPAddress constructor.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.29 (</font><font face="Arial" color="#000000" size="3">19 
+April 2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Fixed a bug in the CSMTPAddress constructor where I was 
+  mixing up the friendly name in the &quot;&lt;&gt;&quot; separators, when it should have been 
+  the email address.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.30 (</font><font face="Arial" color="#000000" size="3">4 
+May 2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Fixed an issue where the class doesn't convert the mail 
+  body and subject to the wanted encoding but rather changes the encoding of the 
+  email in the email header. Since the issue of supporting several languages is 
+  a complicated one I've decided that we could settle for sending all 
+  CPJNSMTPConnection emails in UTF-8. I've added some conversion functions to the 
+  class that - at this point - always converts the body and subject of the email 
+  to UTF-8. A big thanks to Itamar Kerbel for this nice addition.</font></li>
+  <li><font face="Arial">Moved code and sample app to VC 6.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.31 (5</font><font face="Arial" color="#000000" size="3"> 
+May 2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Reworked the way UTF8 encoding is now done. What you 
+  should do if you want to use UTF-8 encoding is set the charset&nbsp; &quot;UTF-8&quot; 
+  and use either QP or base 64 encoding.</font></li>
+  <li><font face="Arial">Reworked the automatic encoding of the subject line to 
+  use the settings as taken from the root SMTP body part</font></li>
+  <li><font face="Arial">Only the correct headers according to the MIME RFC are 
+  now encoded.</font></li>
+  <li><font face="Arial">QP encoding is the encoding mechanism now always used 
+  for headers.</font></li>
+  <li><font face="Arial">Headers are now only encoded if required to be encoded.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.32 (12</font><font face="Arial" color="#000000" size="3"> 
+May 2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Fixed a bug where the X-Mailer header was being sent 
+  incorrectly. Thanks to Paolo Vernazza for reporting this problem.</font></li>
+  <li><font face="Arial">Addition of X-Mailer header is now optional. In 
+  addition sample app now does not send the X-Mailer header.</font></li>
+  <li><font face="Arial">The sample app now does not send the Reply-To header.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.33 (18 August</font><font face="Arial" color="#000000" size="3"> 
+2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Modified the return value from the ConnectToInternet 
+  method. Instead of it being a boolean, it is now an enum. This allows client 
+  code to differentiate between two conditions that it couldn't previously, 
+  namely when an internet connection already existed or if a new connection 
+  (presumably a dial-up connection was made). This allows client code to then 
+  disconnect if a new connection was required. Thanks to Pete Arends for this 
+  nice addition.</font></li>
+</ul>
+
+<p><strong><font face="Arial">19 August</font><font face="Arial" color="#000000" size="3"> 
+2003</font></strong><ul>
+  <li><font face="Arial">Updated the sample app to avoid a memory leak. It turns 
+  out that it was to do with the ordering of &lt;string&gt; in the pre compiled 
+  header. I was never too fond of STL and this has confirmed my prejudices.&nbsp; 
+  Thanks to Damian Willis for reporting this problem.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.34 (15 October</font><font face="Arial" color="#000000" size="3"> 
+2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Reworked the CPJNSMTPConnection::ReadResponse method to 
+  use the timeout provided by IsReadable rather than calling sleep. Thanks to 
+  Clarke Brunt for reporting this issue.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.35 (3 November</font><font face="Arial" color="#000000" size="3"> 
+2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Simplified the code in CPJNSMTPConnection::ReadResponse. 
+  Thanks to Clarke Brunt for reporting this issue.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.36 (3 December</font><font face="Arial" color="#000000" size="3"> 
+2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Made code which checks the Login responses which 
+  contain &quot;Username&quot; and &quot;Password&quot; case insensitive. Thanks to Zhang xiao Pan for 
+  reporting this problem.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.37 (11 December</font><font face="Arial" color="#000000" size="3"> 
+2003</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Fixed an unreferrenced variable in 
+  CPJNSMTPConnection::OnError as reported by VC.Net 2003</font></li>
+  <li><font face="Arial">DEBUG_NEW macro is now only used on VC 6 and not on VC 
+  7 or VC 7.1. This avoids a problem on these compilers where a conflict exists 
+  between it and the STL header files. Thanks to Alex Evans for reporting this 
+  problem.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.38 (31 January</font><font face="Arial" color="#000000" size="3"> 
+2004</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Fixed a bug in CSMTPBodyPart::GetBody where the size of 
+  the body part was incorrectly calculating the size if the encoded size was an 
+  exact multiple of 76. Thanks to Kurt Emanuelson and Enea Mansutti for 
+  reporting this problem.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.39 (7 February</font><font face="Arial" color="#000000" size="3"> 
+2004</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Fixed a bug in CSMTPBodyPart::SetText where the code 
+  would enter an endless loop in the Replace function. It has now been replaced 
+  with CString::Replace. This now means that the class will not now compile on 
+  VC 5. Thanks to Johannes Philipp Grohs for reporting this problem.</font></li>
+  <li><font face="Arial">Fixed a number of warnings when the code is compiled 
+  with VC.Net 2003. Thanks to Edward Livingston for reporting this issue.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.40 (18 February</font><font face="Arial" color="#000000" size="3"> 
+2004</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">You can now optionally set the priority of an email 
+  thro the variable CSMTPMessage::m_Priority. Thanks to Edward Livingston for 
+  suggesting this addition.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.41 (4 March</font><font face="Arial" color="#000000" size="3"> 
+2004</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">To avoid conflicts with the ATL Server class of the 
+  same name &quot;CPJNSMTPConnection&quot;, the class is now called &quot;CPJNSMTPConnection&quot;. 
+  To provide for easy upgrading of code, &quot;CSMTPConnection&quot; is now defined to be 
+  CPJSMTPConnection&quot; if the code detects that the ATL Server SMTP class is not 
+  included. Thanks to Ken Jones for reporting this issue.</font></li>
+</ul>
+
+<p><strong><font face="Arial">V2.42 (13 March</font><font face="Arial" color="#000000" size="3"> 
+2004</font></strong><b><font color="#000000" size="3">)</font></b><ul>
+  <li><font face="Arial">Fixed a problem where the 
+  CSMTPBodyPart::m_dwMaxAttachmentSize value was not being copied in the 
+  CSMTPBodyPart::operator= method. Thanks to Gerald Egert for reporting this 
+  problem and the fix.</font></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><big><a name="Enhancements"></a></big><font color="#000000" size="4"><strong>PLANNED
+ENHANCEMENTS</strong></font> </font>
+
+<ul>
+  <li><font face="Arial">Optimize usage of T2A macros.</font></li>
+  <li><font face="Arial" color="#000000" size="3">If you have any other suggested
+    improvements, please let me know so that I can incorporate them into the next release.</font></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><a name="Contact"></a><font color="#000000" size="4"><strong>CONTACTING
+THE AUTHOR</strong></font></font></p>
+
+<p><font face="Arial" color="#000000" size="3">PJ Naughter<br>
+Email: <a href="mailto:pjna@naughter.com">pjna@naughter.com</a><br>
+Web: <a href="http://www.naughter.com">http://www.naughter.com</a><br>
+13 March </font><font face="Arial">2004</font></p>
+</body>
+</html>

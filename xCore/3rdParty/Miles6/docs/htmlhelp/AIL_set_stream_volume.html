@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_stream_volume</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="controls a stream's playback volume level.">
+<meta name="ms-hkwd" content="AIL_set_stream_volume">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_stream_volume</h1>
+<p>The function  <b>AIL_set_stream_volume</b> controls a stream's playback volume level.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_stream_volume.html" class=trn>AIL_set_stream_volume</a>(</b>
+<b>&nbsp&nbsp<a href="HSTREAM.html" class=trn>HSTREAM</a>&nbsp</b><i>stream</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>volume</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>stream</i></dt>
+<dd>indicates the stream whose volume is to be set.</dd>
+<dt><i>volume</i></dt>
+<dd>is a MIDI-compatible volume level from 0 (minimum) to 127 (maximum).</dd>
+</dl>
+<h4>Discussion</h4>
+<p>All stream volume scaling occurs at full sample precision. 8-bit samples are scaled via a lookup table for maximum performance, while 16-bit samples are scaled via an integer multiply-shift sequence for highest fidelity. </p><p> When a stream is initialized by <a href="AIL_open_stream.html">AIL_open_stream</a>, the sample's volume value is set to the <a href="MILES_PREFERENCES.html#DIG_DEFAULT_VOLUME">DIG_DEFAULT_VOLUME</a> preference. The default value for <a href="MILES_PREFERENCES.html#DIG_DEFAULT_VOLUME">DIG_DEFAULT_VOLUME</a> is 100 on a scale of 0 to 127. The slightly reduced default volume value helps to bridge the inherent volume imbalance between FM music and digital audio on many sound cards.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Stream436kmy.html">Digital Audio Streaming Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_open_stream.html">AIL_open_stream</a>, <a href="AIL_set_stream_pan.html">AIL_set_stream_pan</a>, <a href="AIL_stream_reverb.html">AIL_stream_reverb</a>, <a href="AIL_stream_volume.html">AIL_stream_volume</a><br>
+<b>Related Basic Types:</b>
+<a href="HSTREAM.html">HSTREAM</a>, <a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

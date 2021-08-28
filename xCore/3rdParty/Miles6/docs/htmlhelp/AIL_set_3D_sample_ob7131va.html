@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_3D_sample_obstruction</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the obstruction for the specified 3D sample.">
+<meta name="ms-hkwd" content="AIL_set_3D_sample_obstruction">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_3D_sample_obstruction</h1>
+<p>The function  <b>AIL_set_3D_sample_obstruction</b> sets the obstruction for the specified 3D sample.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_3D_sample_ob7131va.html" class=trn>AIL_set_3D_sample_obstruction</a>(</b>
+<b>&nbsp&nbsp<a href="H3DSAMPLE.html" class=trn>H3DSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="F32.html" class=trn>F32</a>&nbsp</b><i>obstruction</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample handle to control.</dd>
+<dt><i>obstruction</i></dt>
+<dd>is the amount that the sample is obstructed. This is a linear value from completely non-obstructed (0.0) to completely obstructed (1.0).</dd>
+</dl>
+<h4>Discussion</h4>
+<p>Obstructions mean that the direct path of the sound is blocked, but an indirect path is still available - a sound playing from behind a crate, for example. </p><p> By default, samples are completely non-obstructed. </p><p> On most providers, obstructions are emulated with volume control. On the EAX 2 provider, however, obstructions are performed in hardware and sound really cool (you can still hear reflections because they bounce around the obstruction). </p><p> Example files that use this function: EXAM3D.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Sections:</b>
+<a href="Aureal's A3D 2 Prefe86raaa.html">Aureal's A3D 2 Preferences</a>, <a href="Creative's EAX 2 Pre4368aa.html">Creative's EAX 2 Preferences</a><br>
+<b>Related Functions:</b>
+<a href="AIL_3D_sample_obstruction.html">AIL_3D_sample_obstruction</a>, <a href="AIL_set_3D_sample_oc325gaa.html">AIL_set_3D_sample_occlusion</a><br>
+<b>Related Basic Types:</b>
+<a href="F32.html">F32</a>, <a href="H3DSAMPLE.html">H3DSAMPLE</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_digital_configuration</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns information about the specified digital driver.">
+<meta name="ms-hkwd" content="AIL_digital_configuration">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_digital_configuration</h1>
+<p>The function  <b>AIL_digital_configuration</b> returns information about the specified digital driver.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_digital_configuration.html" class=trn>AIL_digital_configuration</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp*</b><i>rate</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp*</b><i>format</i><b>,</b>
+<b>&nbsp&nbsp<a href="char.html" class=trn>char</a>&nbsp*</b><i>desc</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>indicates the driver to inspect.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>rate</i></dt>
+<dd>is a pointer to an integer that will receive the current output rate.</dd>
+<dt><i>format</i></dt>
+<dd>is a pointer to an integer that will receive one of the <a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a> constants.</dd>
+<dt><i>desc</i></dt>
+<dd>is a pointer to a string buffer that will receive a description of the current sound driver. This buffer must be at least 128 characters in length.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>You can pass in NULL for any of the parameters that you're not interested in. </p><p> Under Win32, the *desc string will also tell you if MSS is using DirectSound or the waveOut multimedia extensions (MME). It will also tell you if you are running in emulated DirectSound mode by prepending the description with the string"Emulated". </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a>, <a href="S32.html">S32</a>, <a href="char.html">char</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_resume_sequence</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="resumes playback of a sequence which was previously stopped.">
+<meta name="ms-hkwd" content="AIL_resume_sequence">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_resume_sequence</h1>
+<p>The function  <b>AIL_resume_sequence</b> resumes playback of a sequence which was previously stopped.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_resume_sequence.html" class=trn>AIL_resume_sequence</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sequence to resume playing.</dd>
+</dl>
+<h4>Discussion</h4>
+<p><a href="AIL_resume_sequence.html">AIL_resume_sequence</a> is usable only after sequence playback has been stopped with a call to <a href="AIL_stop_sequence.html">AIL_stop_sequence</a>. It has no effect on sequences whose status is not <a href="MILES_SEQUENCE_STATUS.html#SEQ_STOPPED">SEQ_STOPPED</a>. </p><p> When <a href="AIL_resume_sequence.html">AIL_resume_sequence</a> is called, all MIDI and XMIDI controller values, Program Change values, and Pitch Bender values for all of the sequence's channels are restored to their values at the time <a href="AIL_stop_sequence.html">AIL_stop_sequence</a> was called. Formerly-locked channels (if any) are re-locked, and playback continues exactly as if the sequence had never been interrupted even if other sequences were played on the same MIDI channels while the original sequence was stopped. </p><p> Since all notes in a sequence are turned off when the sequence is stopped, the same notes may appear to be "missing" immediately after the track is restarted. This condition is unavoidable due to the nature of MIDI synthesizers, but will remedy itself quickly as the sequence progresses past the point of interruption.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_end_sequence.html">AIL_end_sequence</a>, <a href="AIL_resume_sequence.html">AIL_resume_sequence</a>, <a href="AIL_sequence_status.html">AIL_sequence_status</a>, <a href="AIL_set_sequence_tempo.html">AIL_set_sequence_tempo</a>, <a href="AIL_set_sequence_volume.html">AIL_set_sequence_volume</a>, <a href="AIL_start_sequence.html">AIL_start_sequence</a>, <a href="AIL_stop_sequence.html">AIL_stop_sequence</a><br>
+<b>Related Basic Types:</b>
+<a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="MILES_SEQUENCE_STATUS.html">MILES_SEQUENCE_STATUS</a>, <a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="How do I start an aupeb0vo.html">How do I start an audio file somewhere in the middle?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

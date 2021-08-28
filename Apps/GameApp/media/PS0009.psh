@@ -1,0 +1,50 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;   PS0009.PSH: kPS_FULL_POST_EFFECT
+;
+;   This shader is the final post effect. It blends between the source diffuse
+;   buffer and the depth of field source before adding in the glows. After all
+;   that the fragment is shifted into the (closest match) PS2 colour space.
+;
+;   Conversion algorithm:
+;
+;       L = RGB * vector3( .2989,.5866,.1144 )
+;       L = 0.925 * L + 19.25/255.0
+;       RGB = L + 1.115 * (RGB - L)
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;   tex t0 = depth of field map
+;   tex t1 = rendered frame
+;   tex t2 = glow buffer
+;   tex t3 = z-buffer
+
+;==------------------------------------------------------------------------------------------
+;
+;   Blend between depth of field and fragment( some colour conversion co-issued )
+;
+;==------------------------------------------------------------------------------------------
+                                                        ;
+    dp3 r1.rgb,c4.rgb,t3.rgb + mov_d2 r0.a,t3.a         ;   0.  r0.a = band index, r1.rgb = g
+    cnd v0.rgb,r0.a,r1.rgb,c5.rgb                       ;   1.  reject all but last z-band
+                                                        ;
+    lrp r1,v0.b,t0,t1                                   ;   2.  lrp between depth and diffuse
+                                                        ;       (comment out to see gradient)
+;==------------------------------------------------------------------------------------------
+;
+;   Blend in self illumination
+;
+;==------------------------------------------------------------------------------------------
+                                                        ;
+    add    r0.rgb,t2.rgb,r1.rgb + sub r0.a,t1.a,c1.b    ;   3.  add glow to frame / set mask
+    cnd_x2 r0.rgb,r0.a,r1.rgb,r0.rgb                    ;   4.  glow cutoff( saturates )
+                                                        ;
+;==------------------------------------------------------------------------------------------
+;
+;   Adjust pixel luminance
+;
+;==------------------------------------------------------------------------------------------
+                                                        ;
+    mul    v0.rgb,r0.rgb,c2.rgb + mov v0.a,c2.a         ;   5.
+    mad    v0.rgb,v0.rgb,c3.b,v0.a                      ;   6.
+    sub    r0.rgb,r0.rgb,v0.rgb                         ;   7.

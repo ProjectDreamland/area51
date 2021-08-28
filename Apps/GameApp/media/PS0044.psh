@@ -1,0 +1,21 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;   PS0044.PSH: Per pixel lighting fogging code
+;
+;   A fog map is produced where RGB is the colour and A is the intensity
+;   after that it's a simple SRCALPHA/INVSRCALPHA to blit the quad over
+;   the scene.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;==----------------------------------------------------------------------------
+;
+;   Blend diffuse with texel, write glow to alpha
+;
+;==----------------------------------------------------------------------------
+
+;   mov r0.rgb,v1.rgb + mov r0.a,v1.a
+;
+	mov r0,v1
+
+    xfc zero,zero,r0,zero,zero,zero,r0.a

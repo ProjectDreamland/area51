@@ -1,0 +1,62 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>MILES_SEQUENCE_STATUS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="indicates the status of an XMIDI handle.">
+<meta name="ms-hkwd" content="MILES_SEQUENCE_STATUS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>MILES_SEQUENCE_STATUS</h1>
+<p>The basic type <b>MILES_SEQUENCE_STATUS</b> indicates the status of an XMIDI handle.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#SEQ_DONE" href="#SEQ_DONE" class=trn>&nbsp;SEQ_DONE</a></td>
+<td width=71% height=25 valign=middle class=list>Sequence has finished playing, or has never been started. (Debugger value: 2).</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#SEQ_PLAYING" href="#SEQ_PLAYING" class=trn>&nbsp;SEQ_PLAYING</a></td>
+<td width=71% height=25 valign=middle class=list>Sequence is currently playing (active). (Debugger value: 4).</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#SEQ_PLAYINGBUTRELEASED" href="#SEQ_PLAYINGBUTRELEASED" class=trn>&nbsp;SEQ_PLAYINGBUTRELEASED</a></td>
+<td width=71% height=25 valign=middle class=list>(Windows and MacOS only) Sequence is currently playing (active), but the hardware MIDI handle was released by a call to <a href="AIL_MIDI_handle_release.html">AIL_MIDI_handle_release</a>. When the MIDI handle is reacquired, the sequence will begin playing again. (Debugger value: 2).</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#SEQ_STOPPED" href="#SEQ_STOPPED" class=trn>&nbsp;SEQ_STOPPED</a></td>
+<td width=71% height=25 valign=middle class=list>Sequence has been stopped with <a href="AIL_stop_sequence.html">AIL_stop_sequence</a>. (Debugger value: 8).</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#SEQ_FREE" href="#SEQ_FREE" class=trn>&nbsp;SEQ_FREE</a></td>
+<td width=71% height=25 valign=middle class=list>Sequence is available for allocation by <a href="AIL_allocate_sequenc2icfaa.html">AIL_allocate_sequence_handle</a>. (Debugger value: 16).</td>
+</tr>
+</table>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_MIDI_handle_release.html">AIL_MIDI_handle_release</a>, <a href="AIL_active_sequence_count.html">AIL_active_sequence_count</a>, <a href="AIL_allocate_sequenc2icfaa.html">AIL_allocate_sequence_handle</a>, <a href="AIL_end_sequence.html">AIL_end_sequence</a>, <a href="AIL_resume_sequence.html">AIL_resume_sequence</a>, <a href="AIL_sequence_status.html">AIL_sequence_status</a>, <a href="AIL_stop_sequence.html">AIL_stop_sequence</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

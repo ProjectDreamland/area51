@@ -1,0 +1,628 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\xTool.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\r\n"
+    "CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST ""xTool.exe.manifest""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\xTool.ico"
+IDR_TOOLTYPE            ICON                    "res\\xToolDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+IDR_PANE_LOG            BITMAP                  "res\\panelog.bmp"
+IDR_PANE_MEMORY         BITMAP                  "res\\pane_mem.bmp"
+IDB_HDRUP               BITMAP                  "res\\hdrup.bmp"
+IDB_HDRDOWN             BITMAP                  "res\\hdrdown.bmp"
+IDB_LOG_TOOLBAR_COLD    BITMAP                  "res\\log_toolbar_cold.bmp"
+IDB_LOG_TOOLBAR_HOT     BITMAP                  "res\\log_toolbar_hot.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 16
+BEGIN
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_WINDOW_TILE_HORZ
+    BUTTON      ID_WINDOW_CLOSE_ALL
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_PANE_LOG TOOLBAR  16, 16
+BEGIN
+    BUTTON      ID_LOG_VIEW_FIXED
+    SEPARATOR
+    BUTTON      ID_LOG_VIEW_MESSAGE
+    BUTTON      ID_LOG_VIEW_WARNING
+    BUTTON      ID_LOG_VIEW_ERROR
+    BUTTON      ID_LOG_VIEW_RTF
+    BUTTON      ID_LOG_VIEW_MEMORY
+    SEPARATOR
+    BUTTON      ID_LOG_VIEW_SEARCH
+    BUTTON      ID_LOG_EXPORT_CSV
+END
+
+IDR_PANE_MEMORY TOOLBAR  16, 16
+BEGIN
+    BUTTON      ID_MEM_VIEW_LIST
+    BUTTON      ID_MEM_VIEW_GRAPH
+    SEPARATOR
+    BUTTON      ID_MEM_VIEW_MALLOC
+    BUTTON      ID_MEM_VIEW_FREE
+    BUTTON      ID_MEM_VIEW_REALLOC
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "T&ip of the Day",             ID_VIEW_TIPOFTHEDAY
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About xTool...",             ID_APP_ABOUT
+    END
+END
+
+IDR_XTOOLTYPE MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "Import Map File...",          ID_FILE_IMPORT_MAPFILE
+        MENUITEM "Export log to CSV...",        ID_LOG_EXPORT_CSV
+        MENUITEM "Export memory log to CSV...", ID_MEMLOG_EXPORT_CSV
+        MENUITEM "Export active allocations to CSV...", 
+                                                ID_MEMLOG_EXPORT_ACTIVE_CSV
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "T&ip of the Day",             ID_VIEW_TIPOFTHEDAY
+    END
+    POPUP "Log"
+    BEGIN
+        MENUITEM "Clear",                       ID_LOG_CLEAR
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+        MENUITEM SEPARATOR
+        MENUITEM "Cl&ose",                      ID_WINDOW_CLOSE
+        MENUITEM "Close Al&l",                  ID_WINDOW_CLOSE_ALL
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About xTool...",             ID_APP_ABOUT
+    END
+END
+
+IDR_POPUP_LOG_VIEW MENU 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Hide Selected Channels",      ID_POPUP_LOG_HIDECHANNEL
+        MENUITEM SEPARATOR
+        MENUITEM "Mark Selected Items\tCtrl+F2", ID_POPUP_LOG_TOGGLEMARK
+        MENUITEM "Goto Next Mark\tF2",          ID_POPUP_LOG_GOTONEXTMARK
+        MENUITEM "Goto Prev Mark\tShift+F2",    ID_POPUP_LOG_GOTOPREVMARK
+        MENUITEM SEPARATOR
+        MENUITEM "Find...\tCtrl+F",             ID_POPUP_LOG_FIND
+        MENUITEM "Find Next\tF3",               ID_POPUP_LOG_FINDNEXT
+        MENUITEM "Find Previous\tShift+F3",     ID_POPUP_LOG_FINDPREVIOUS
+        MENUITEM SEPARATOR
+        MENUITEM "Goto Next Error\tF4",         ID_POPUP_LOG_GOTONEXTERRORWARNING
+
+        MENUITEM "Goto Prev Error\tShift+F4",   ID_POPUP_LOG_GOTOPREVIOUSERRORWARNING
+
+        MENUITEM SEPARATOR
+        MENUITEM "Goto Next Channel\tF5",       ID_POPUP_LOG_GOTONEXTCHANNELHIGHLIGHT
+
+        MENUITEM "Goto Prev Channel\tShift+F5", ID_POPUP_LOG_GOTOPREVCHANNELHIGHLIGHT
+
+        MENUITEM SEPARATOR
+        MENUITEM "Clear",                       ID_LOG_CLEAR
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About xTool"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "xTool Version 0.1",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright © 2003",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_LOG_FIND DIALOG  0, 0, 272, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Find in log"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_STRING,44,4,165,95,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Match &whole word only",IDC_MATCH_WHOLE_WORD,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,4,24,88,8
+    CONTROL         "Match &case",IDC_MATCH_CASE,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,4,36,56,8
+    CONTROL         "Regular &expression",IDC_REGULAR_EXPRESSION,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,4,48,76,8
+    DEFPUSHBUTTON   "&Find Next",IDC_FIND_NEXT,216,4,50,14
+    PUSHBUTTON      "&Mark All",IDC_MARK_ALL,216,24,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,216,44,50,14
+    LTEXT           "Fi&nd what:",IDC_STATIC,4,4,36,12,SS_CENTERIMAGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,0,0,1
+ PRODUCTVERSION 0,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "xTool"
+            VALUE "FileVersion", "0, 0, 0, 1"
+            VALUE "InternalName", "xTool"
+            VALUE "LegalCopyright", "Copyright © 2003"
+            VALUE "OriginalFilename", "xTool.EXE"
+            VALUE "ProductName", "xTool Application"
+            VALUE "ProductVersion", "0, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_LOG_FIND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 265
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+    IDS_TAB_3D              "3D"
+END
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "xTool"
+    IDR_XTOOLTYPE           "\nxTool\nxTool\nxTool Files (*.xlog)\n.xlog\nxTool.Document\nxTool Document"
+    IDS_FRAME_LOG_TOOLBAR   "Log Toolbar"
+    IDS_FRAME_MEMORY_TOOLBAR "Memory Toolbar"
+    IDS_FRAME_MEMORY_TIMEBAR "Memory Timebar"
+    IDS_VIEW_CHANNEL_COL_CHANNEL "Channel"
+    IDS_VIEW_CHANNEL_COL_THREAD "Thread"
+    IDS_VIEW_LOG_COL_TIME   "Time"
+    IDS_VIEW_LOG_COL_THREAD "Thread"
+    IDS_VIEW_LOG_COL_CHANNEL "Channel"
+    IDS_VIEW_LOG_COL_MESSAGE "Message"
+    IDS_VIEW_LOG_COL_LINE   "Line"
+    IDS_VIEW_LOG_COL_FILE   "File"
+    IDS_VIEW_MEMORYLOG_COL_TIME "Time"
+    IDS_VIEW_MEMORYLOG_COL_TYPE "Type"
+    IDS_VIEW_MEMORYLOG_COL_ADDRESS "Address"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "xTool"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TIPOFTHEDAY     "Show or hide Tip of the day\nToggle Tip of the day"
+    ID_LOG_VIEW_FIXED       "Fixed point font\nFixed point font"
+    ID_LOG_VIEW_RTF         "Show logged RTFs\nShow RTFs"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_MEM_VIEW_MALLOC      "Toggle show allocations\nAllocations"
+    ID_MEM_VIEW_FREE        "Toggle show frees\nFrees"
+    ID_MEM_VIEW_REALLOC     "Toggle show reallocs\nReallocs"
+    ID_LOG_EXPORT_CSV       "Export log to CSV\nExport log to CSV"
+    ID_LOG_VIEW_MESSAGE     "Show logged messages\nShow messages"
+    ID_LOG_VIEW_WARNING     "Show logged warnings\nShow warnings"
+    ID_LOG_VIEW_ERRORS      "Show logged errors\nShow errors"
+    ID_LOG_VIEW_ERROR       "Show logged errors\nShow errors"
+    ID_LOG_VIEW_MEMORY      "Show logged memory operations\nShow memory operations"
+    ID_LOG_VIEW_SEARCH      "Search\nSearch"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_VIEW_MEMORYLOG_COL_SIZE "Size"
+    IDS_VIEW_MEMORYLOG_COL_CURRENT "Current"
+    IDS_VIEW_MEMORYLOG_COL_TOTAL "Total"
+    IDS_VIEW_MEMORYLOG_COL_LINE "Line"
+    IDS_VIEW_MEMORYLOG_COL_FILE "File"
+    IDS_TAB_LOG             "Log"
+    IDS_TAB_MEMORY          "Memory"
+    IDS_TAB_IO              "I/O"
+    IDS_TAB_STATS           "Stats"
+    IDS_TAB_TWEAKS          "Tweaks"
+    IDS_TAB_PROFILE         "Profile"
+    IDS_TAB_SCREENSHOT      "Screenshot"
+    IDS_ERROR_EXIT_EVENTS   "Failed to create exit events"
+    IDS_ERROR               "Error"
+    IDS_ERROR_PIPE_CREATE   "Failed to create pipe"
+    IDS_ERROR_BAD_COMMS_HEADER "Bad communication header packet"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_CONNECTION_ERROR    "Connection Error"
+    IDS_VIEW_MEMORYLOG_COL_SEQ "Sequence"
+    IDS_VIEW_LOG_COL_SEQ    "Sequence"
+    IDS_VIEW_MEMORYLOG_COL_THREAD "Thread"
+    IDS_ERROR_SOCKET_CREATE "Failed to create socket"
+    IDS_VIEW_MEMORYLOG_COL_CALLSTACK "Callstack"
+    IDS_STRING166           "3D"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_CLOSE         "Closes the window\nClose window"
+    ID_WINDOW_CLOSE_ALL     "Closes all open windows\nClose all windows"
+    ID_FILE_IMPORT_MAPFILE  "Import map file\nImport map file"
+    ID_MEMLOG_EXPORT_CSV    "Export memory log to CSV\nExport memory log to CSV"
+    ID_LOG_MENU_FILTER_CHANNEL "Filter this channel\nFilter channel"
+    ID_LOG_MENU_HIDE_CHANNEL "Hide this channel\nHide channel"
+    ID_POPUP_LOG_TOGGLEMARK "Mark selected items\nMark selected items"
+    ID_POPUP_LOG_GOTONEXTMARK "Goto next mark\nGoto next mark"
+    ID_POPUP_LOG_GOTOPREVMARK "Goto previous mark\nGoto previous mark"
+    ID_POPUP_LOG_FIND       "Search for string\nSearch for string"
+    ID_POPUP_LOG_FINDNEXT   "Search for next occurence\nSearch for next occurence"
+    ID_POPUP_LOG_FINDPREVIOUS 
+                            "Search for previous occurence\nSearch for previous occurence"
+    ID_POPUP_LOG_GOTONEXTERRORWARNING "Goto next error\nGoto next error"
+    ID_POPUP_LOG_GOTOPREVIOUSERRORWARNING 
+                            "Goto previous error\nGoto previous error"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_POPUP_LOG_GOTONEXTCHANNELHIGHLIGHT 
+                            "Goto next channel\\Goto next channel"
+    ID_POPUP_LOG_GOTOPREVCHANNELHIGHLIGHT 
+                            "Goto previous channel\nGoto previous channel"
+    ID_POPUP_LOG_HIDECHANNEL "Hide selected channels\nHide selected channels"
+    ID_FILE_EXPORTMEMORYREPORTTOCSV 
+                            "Export active memory report to CSV\nExport active memory report to CSV"
+    ID_MEMLOG_EXPORT_ACTIVE_CSV 
+                            "Export active allocations to CSV\nExport active allocations to CSV"
+    ID_LOG_CLEAR            "Clear Log\nClear Log"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\xTool.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "xTool.exe.manifest"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,127 @@
+// Set the project this build belongs to
+PROJECT A51
+
+// Sync to head revision
+SYNC //depot/...#head
+
+// Build the release notes
+RELNOTES //depot/Projects/A51/... "a51_apps" "$OUT\Relnotes.txt"
+
+// Version the Apps & Copy the Version file up
+VERSION "C:\Projects\A51\Apps\Editor\Version.cpp"
+VERSION "C:\Projects\A51\Apps\GameApp\Version.cpp"
+COPY "C:\Projects\A51\Apps\Editor\Version.cpp" "$OUT\Version.cpp"
+
+// Build PS2 Viewer
+BUILD "C:\projects\A51\Apps\GameApp\A51.sln" "PS2-Viewer"
+COPY "C:\Projects\A51\Apps\GameApp\_PS2-Viewer\A51.elf" "$OUT\A51_Viewer.elf"
+COPY "C:\Projects\A51\Apps\GameApp\_PS2-Viewer\A51.map.txt" "$OUT\A51_Viewer.map.txt"
+COPY "$OUT\A51_Viewer.elf" "$OUT\A51_Viewer_Stripped.elf"
+EE-STRIP "$OUT\A51_Viewer_Stripped.elf"
+
+// Build PS2 QA
+BUILD "C:\Projects\A51\Apps\GameApp\A51.sln" "PS2-QA"
+COPY "C:\Projects\A51\Apps\GameApp\_PS2-QA\A51.elf" "$OUT\A51_QA.elf"
+COPY "C:\Projects\A51\Apps\GameApp\_PS2-QA\A51.map.txt" "$OUT\A51_QA.map.txt"
+COPY "$OUT\A51_QA.elf" "$OUT\A51_QA_Stripped.elf"
+EE-STRIP "$OUT\A51_QA_Stripped.elf"
+
+// Build PS2 Retail
+BUILD "C:\Projects\A51\Apps\GameApp\A51.sln" "PS2-Retail"
+COPY "C:\Projects\A51\Apps\GameApp\_PS2-Retail\A51.elf" "$OUT\A51_Retail.elf"
+COPY "C:\Projects\A51\Apps\GameApp\_PS2-Retail\A51.map.txt" "$OUT\A51_Retail.map.txt"
+COPY "$OUT\A51_Retail.elf" "$OUT\A51_Retail_Stripped.elf"
+EE-STRIP "$OUT\A51_Retail_Stripped.elf"
+
+// Get memory stats from the build
+MEMORY_STATS "$OUT\A51_Retail.map.txt"
+
+// Build Win32 Debug
+//BUILD "C:\Projects\A51\Apps\GameApp\A51.sln" "WIN32-Debug"
+
+// Build Xbox QA
+BUILD "C:\Projects\A51\Apps\GameApp\A51.sln" "XBOX-QA"
+COPY "C:\Projects\A51\Apps\GameApp\_XboxQA\A51.xbe" "$OUT\A51_QA.xbe"
+COPY "C:\Projects\A51\Apps\GameApp\_XboxQA\A51.pdb" "$OUT\A51_QA.pdb"
+COPY "C:\Projects\A51\Apps\GameApp\_XboxQA\A51.map" "$OUT\A51_Xbox_QA.map.txt"
+
+// Build Xbox Retail
+BUILD "C:\Projects\A51\Apps\GameApp\A51.sln" "XBOX-Retail"
+COPY "C:\Projects\A51\Apps\GameApp\_XboxRetail\A51.xbe" "$OUT\A51_Retail.xbe"
+COPY "C:\Projects\A51\Apps\GameApp\_XboxRetail\A51.pdb" "$OUT\A51_Retail.pdb"
+COPY "C:\Projects\A51\Apps\GameApp\_XboxRetail\A51.map" "$OUT\A51_Xbox_Retail.map.txt"
+
+// Build Editor OptDebug
+BUILD "C:\Projects\A51\Apps\Editor\Editor.sln" "Editor-OptDebug"
+COPY "C:\Projects\A51\Apps\Editor\_Editor-OptDebug\Editor.exe" "$OUT\Editor-OptDebug.exe"
+COPY "C:\Projects\A51\Apps\Editor\_Editor-OptDebug\Editor.pdb" "$OUT\Editor-OptDebug.pdb"
+
+// Compute Preload lists from source
+PRELOAD "C:\Projects\A51" "$OUT"
+// Create Publish.bat
+OPEN "$OUT\Publish.bat"
+> "REM Make sure the editor & GameApp files are ReadOnly so p4 doesn't error"
+> "attrib +r C:\GameData\A51\Apps\Editor.exe"
+> "attrib +r C:\GameData\A51\Apps\Editor.pdb"
+> "attrib +r C:\GameData\A51\Apps\Viewer\GameApp.elf"
+> "attrib +r C:\GameData\A51\Apps\Viewer\GameApp_DVD.elf"
+> "attrib +r C:\GameData\A51\Apps\Viewer\A51_Viewer.map.txt"
+> "attrib +r C:\GameData\A51\Apps\Viewer\A51_QA.map.txt"
+> "attrib +r C:\GameData\A51\Apps\Viewer\A51_Retail.map.txt"
+> "attrib +r C:\GameData\A51\Apps\Xbox\A51_Retail.xbe"
+> "attrib +r C:\GameData\A51\Apps\Xbox\A51_Retail.pdb"
+> "attrib +r C:\GameData\A51\Apps\Xbox\A51_Retail.map.txt"
+> "attrib +r C:\GameData\A51\Apps\Xbox\A51_QA.xbe"
+> "attrib +r C:\GameData\A51\Apps\Xbox\A51_QA.pdb"
+> "attrib +r C:\GameData\A51\Apps\Xbox\A51_QA.map.txt"
+> "attrib +r C:\GameData\A51\Apps\Compilers\*"
+> "attrib +r C:\GameData\A51\Release\PC\PreloadFiles.txt"
+> "attrib +r C:\GameData\A51\Release\PS2\PreloadFiles.txt"
+> "attrib +r C:\GameData\A51\Release\XBox\PreloadFiles.txt"
+> ""
+> "REM Open files for edit"
+> "p4 edit C:\GameData\A51\Apps\Editor.exe"
+> "p4 edit C:\GameData\A51\Apps\Editor.pdb"
+> "p4 edit C:\GameData\A51\Apps\Viewer\GameApp.elf"
+> "p4 edit C:\GameData\A51\Apps\Viewer\GameApp_DVD.elf"
+> "p4 edit C:\GameData\A51\Apps\Viewer\A51_Viewer.map.txt"
+> "p4 edit C:\GameData\A51\Apps\Viewer\A51_QA.map.txt"
+> "p4 edit C:\GameData\A51\Apps\Viewer\A51_Retail.map.txt"
+> "p4 edit C:\GameData\A51\Apps\Xbox\A51_Retail.xbe"
+> "p4 edit C:\GameData\A51\Apps\Xbox\A51_Retail.pdb"
+> "p4 edit C:\GameData\A51\Apps\Xbox\A51_Retail.map.txt"
+> "p4 edit C:\GameData\A51\Apps\Xbox\A51_QA.xbe"
+> "p4 edit C:\GameData\A51\Apps\Xbox\A51_QA.pdb"
+> "p4 edit C:\GameData\A51\Apps\Xbox\A51_QA.map.txt"
+> "p4 edit C:\GameData\A51\Apps\Compilers\*"
+> "p4 edit C:\Projects\A51\Apps\Editor\Version.cpp"
+> "p4 edit C:\Projects\A51\Apps\GameApp\Version.cpp"
+> "p4 edit C:\GameData\A51\Release\PC\PreloadFiles.txt"
+> "p4 edit C:\GameData\A51\Release\PS2\PreloadFiles.txt"
+> "p4 edit C:\GameData\A51\Release\XBox\PreloadFiles.txt"
+> ""
+> "REM Copy the new files"
+> "copy /v Editor-OptDebug.exe C:\GameData\A51\Apps\Editor.exe"
+> "copy /v Editor-OptDebug.pdb C:\GameData\A51\Apps\Editor.pdb"
+> "copy /v A51_Viewer_Stripped.elf C:\GameData\A51\Apps\Viewer\GameApp.elf"
+> "copy /v A51_Retail_Stripped.elf C:\GameData\A51\Apps\Viewer\GameApp_DVD.elf"
+> "copy /v A51_Viewer.map.txt C:\GameData\A51\Apps\Viewer\A51_Viewer.map.txt"
+> "copy /v A51_QA.map.txt C:\GameData\A51\Apps\Viewer\A51_QA.map.txt"
+> "copy /v A51_Retail.map.txt C:\GameData\A51\Apps\Viewer\A51_Retail.map.txt"
+> "copy /v A51_Retail.xbe C:\GameData\A51\Apps\Xbox\A51_Retail.xbe"
+> "copy /v A51_Retail.pdb C:\GameData\A51\Apps\Xbox\A51_Retail.pdb"
+> "copy /v A51_Xbox_Retail.map.txt C:\GameData\A51\Apps\Xbox\A51_Retail.map.txt"
+> "copy /v A51_QA.xbe C:\GameData\A51\Apps\Xbox\A51_QA.xbe"
+> "copy /v A51_QA.pdb C:\GameData\A51\Apps\Xbox\A51_QA.pdb"
+> "copy /v A51_Xbox_QA.map.txt C:\GameData\A51\Apps\Xbox\A51_QA.map.txt"
+> "copy /v C:\GameData\A51\Apps\Compilers_Dev\* C:\GameData\A51\Apps\Compilers\"
+> "copy /v Version.cpp C:\Projects\A51\Apps\Editor\Version.cpp"
+> "copy /v Version.cpp C:\Projects\A51\Apps\GameApp\Version.cpp"
+> "copy /v PreloadPC.txt C:\GameData\A51\Release\PC\PreloadFiles.txt"
+> "copy /v PreloadPS2.txt C:\GameData\A51\Release\PS2\PreloadFiles.txt"
+> "copy /v PreloadXBox.txt C:\GameData\A51\Release\XBox\PreloadFiles.txt"
+> ""
+> "p4 counter a51_apps $CHANGELIST"
+> ""
+> "pause"
+CLOSE

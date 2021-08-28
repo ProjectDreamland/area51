@@ -1,0 +1,41 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>When can I free the memory I gave to MSS?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="When can I free the memory I gave to MSS?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>When can I free the memory I gave to MSS?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>Since Miles plays out of your memory buffers, you can't free the memory until you know that Miles is done with it. </p><p>For example, if you've pointed Miles at some audio data with <a href="AIL_set_sample_file.html">AIL_set_sample_file</a>, you can't free the memory until <a href="AIL_sample_status.html">AIL_sample_status</a> returns <a href="MILES_DIGITAL_STATUS.html#SMP_DONE">SMP_DONE</a>. You can call <a href="AIL_end_sample.html">AIL_end_sample</a> to instantly force the status to <a href="MILES_DIGITAL_STATUS.html#SMP_DONE">SMP_DONE</a>. </p><p>Occasionally, a crash will occur when a Miles user is freeing sample memory that will cause them to think that Miles is still using the data even after the status has changed to <a href="MILES_DIGITAL_STATUS.html#SMP_DONE">SMP_DONE</a>. </p><p>Over the last ten years, there have a fair number of folks convinced that this is what was happening (with varying degrees of certainty). In <b>all</b> cases, something else was causing the crash - memory corruption (which using causes a crash in <i>free</i>), another sample was also playing from the address, etc. Just remember - if <a href="MILES_DIGITAL_STATUS.html#SMP_DONE">SMP_DONE</a> has been set, you can free the memory as long as another sample isn't using it. Guaranteed! </p></td></tr>
+</table>
+<p><a href="How do I start an aupeb0vo.html">Next Topic (How do I start an audio file somewhere in the middle?)</a>  </p><p><a href="How can I play two Ho6e0ns.html">Previous Topic (How can I play two HSAMPLEs from the same memory address?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Functions:</b>
+<a href="AIL_end_sample.html">AIL_end_sample</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>, <a href="AIL_sample_status.html">AIL_sample_status</a>, <a href="AIL_set_sample_file.html">AIL_set_sample_file</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_DIGITAL_STATUS.html">MILES_DIGITAL_STATUS</a><br>
+<b>Related FAQs:</b>
+<a href="My application is crs22pi6.html">My application is crashing - what should I try?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

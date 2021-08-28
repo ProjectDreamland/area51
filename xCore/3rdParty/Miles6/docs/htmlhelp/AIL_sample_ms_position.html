@@ -1,0 +1,62 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_sample_ms_position</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="reports the current playback position and length of a sample in milliseconds.">
+<meta name="ms-hkwd" content="AIL_sample_ms_position">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_sample_ms_position</h1>
+<p>The function  <b>AIL_sample_ms_position</b> reports the current playback position and length of a sample in milliseconds.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_sample_ms_position.html" class=trn>AIL_sample_ms_position</a>(</b>
+<b>&nbsp&nbsp<a href="HSAMPLE.html" class=trn>HSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp*</b><i>total_milliseconds</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp*</b><i>current_milliseconds</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample whose playback position is to be reported.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>total_milliseconds</i></dt>
+<dd>is the address to place the total length of the sample into. If you don't need the total length, pass a NULL for this parameter.</dd>
+<dt><i>current_milliseconds</i></dt>
+<dd>is the address to place the current millisecond position into. This value increases as the sample is played. If you don't need the current position, pass a NULL for this parameter.</dd>
+</dl>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_sample_position.html">AIL_sample_position</a>, <a href="AIL_set_sample_ms_pozr6aaa.html">AIL_set_sample_ms_position</a>, <a href="AIL_set_sample_position.html">AIL_set_sample_position</a><br>
+<b>Related Basic Types:</b>
+<a href="HSAMPLE.html">HSAMPLE</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="This function returnjx0bfo.html">This function returns a bunch of return data, but I only want one value - is there a simpler way to use it?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,35 @@
+#include "windows.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+MSSCHTS DIALOG DISCARDABLE  432, 132, 276, 159
+STYLE WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Miles Sound System TCP/IP Voice Chat Server"
+CLASS "MSSCHTS"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Close",106,218,13,51,15
+    PUSHBUTTON      "&About...",107,217,31,51,15
+    GROUPBOX        " Information: ",118,7,6,203,45
+    LTEXT           "This is the server side of the MSS client/server example.  This server can accept as many simultaneous clients as the server-side bandwidth allows.",
+                    -1,19,20,184,25
+    GROUPBOX        " Voice Chat Server Options: ",116,7,57,260,97
+    LTEXT           "",500,20,70,111,8
+    EDITTEXT        200,20,87,238,62,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY
+    CONTROL         "Allow clients to hear themselves.",300,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,143,69,116,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+DEMO                    ICON    DISCARDABLE     "demo.ico"
+

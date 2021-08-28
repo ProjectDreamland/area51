@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_sequence_loop_count</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="arranges for a sequence to be restarted immediately upon completion, for a total of two or more iterations.">
+<meta name="ms-hkwd" content="AIL_set_sequence_loop_count">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_sequence_loop_count</h1>
+<p>The function  <b>AIL_set_sequence_loop_count</b> arranges for a sequence to be restarted immediately upon completion, for a total of two or more iterations.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_sequence_loo1mlaaa.html" class=trn>AIL_set_sequence_loop_count</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>loop_count</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sequence to loop.</dd>
+<dt><i>loop_count</i></dt>
+<dd>should be set to the desired number of iterations.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>A loop_count value of 1 results in a single iteration, with no looping. This is the default loop count value, as initialized by <a href="AIL_init_sequence.html">AIL_init_sequence</a>. </p><p> A loop_count value of 0 creates an infinite loop, which can be interrupted by calling <a href="AIL_stop_sequence.html">AIL_stop_sequence</a>, <a href="AIL_end_sequence.html">AIL_end_sequence</a>, or by calling <a href="AIL_set_sequence_loo1mlaaa.html">AIL_set_sequence_loop_count</a> to establish a different loop count. </p><p> loop_count values of 2 or more cause the sequence to be played a total of 2 or more times. The current number of iterations remaining may be monitored with <a href="AIL_sequence_loop_count.html">AIL_sequence_loop_count</a>. </p><p> This function provides a convenient way to loop sequences without requiring the composer to enclose the sequence in XMIDI <i>For/Next...Break</i> controllers. Under MSS version 2, the only way to loop a sequence was to use these controllers or the <i>Sequence Branch Index</i> controller.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_end_sequence.html">AIL_end_sequence</a>, <a href="AIL_init_sequence.html">AIL_init_sequence</a>, <a href="AIL_register_sequenc8chzca.html">AIL_register_sequence_callback</a>, <a href="AIL_sequence_loop_count.html">AIL_sequence_loop_count</a>, <a href="AIL_set_sequence_loo1mlaaa.html">AIL_set_sequence_loop_count</a>, <a href="AIL_stop_sequence.html">AIL_stop_sequence</a><br>
+<b>Related Basic Types:</b>
+<a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

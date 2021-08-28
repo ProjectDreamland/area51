@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_sample_position</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="reports the current playback position of a sample.">
+<meta name="ms-hkwd" content="AIL_sample_position">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_sample_position</h1>
+<p>The function  <b>AIL_sample_position</b> reports the current playback position of a sample.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="AIL_sample_position.html" class=trn>AIL_sample_position</a>(</b>
+<b>&nbsp&nbsp<a href="HSAMPLE.html" class=trn>HSAMPLE</a>&nbsp</b><i>S</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample whose playback position is to be reported.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The offset in bytes of the next sample point to be fetched, relative to the beginning of the sample's data buffer.</p>
+<h4>Discussion</h4>
+<p>The granularity of the reported position offset depends on the hardware's buffer latency, but it will always reflect an address which has not yet been reached by the playback mechanism. </p><p> The Miles Sound System digital audio mixer operates on the application's audio data in small chunks, called <i>blocks</i>. Part of the system's responsibility is to poll the hardware buffers in the background to determine when the next block of audio data from the application should be processed and copied into an empty hardware half-buffer. As an example, consider a hardware driver which is configured to play 16-bit audio at 20,000 Hz with a pair of 1,000-byte half-buffers. The driver's <i>data rate</i> is 40,000 bytes per second, implying a half-buffer playback rate of 40,000 / 1,000, or 40 buffer transitions per second. </p><p> At a rate of 40 times per second, then, a sample block equivalent to one half-buffer's worth of data is fetched from the application's sample data buffer at the current playback position. The samples are resampled if necessary to conform to the driver's hardware rate, converted between 8-bit and 16-bit formats where appropriate, mathematically scaled for volume and panpot control, algebraically added to data from other active samples, clipped, and copied into the driver's empty half-buffer to be played as soon as the other half-buffer finishes playing. </p><p> <a href="AIL_sample_position.html">AIL_sample_position</a> reports the location of the beginning of the <i>next</i> application data block to be fetched and processed by this mechanism. </p><p> You can use the <a href="AIL_sample_ms_position.html">AIL_sample_ms_position</a> function to retrieve the current sample position in milliseconds.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_register_SOB_callback.html">AIL_register_SOB_callback</a>, <a href="AIL_sample_granularity.html">AIL_sample_granularity</a>, <a href="AIL_sample_ms_position.html">AIL_sample_ms_position</a>, <a href="AIL_sample_position.html">AIL_sample_position</a>, <a href="AIL_set_sample_ms_pozr6aaa.html">AIL_set_sample_ms_position</a>, <a href="AIL_set_sample_position.html">AIL_set_sample_position</a><br>
+<b>Related Basic Types:</b>
+<a href="HSAMPLE.html">HSAMPLE</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

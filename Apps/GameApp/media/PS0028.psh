@@ -1,0 +1,22 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;   PS0028.PSH: kPS_DEPTH_OF_FIELD
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;   tex t0 = depth of field map
+;   tex t1 = rendered frame
+;   tex t3 = z-buffer map
+
+;==----------------------------------------------------------------------------
+;
+;   Blend = lerp between t1 and t0 using t3.alpha, add t2
+;
+;==----------------------------------------------------------------------------
+
+    dp3 r0,c0,t3            ; create better alpha range
+    mad r0.a,c0.a,t3.a,r0.b ; <-- this is how to do a dp4 in a pixel shader
+                            ;
+    mul r1.a,t3.b,c1.a      ;
+    cnd r0.a,r0.a,r1.a,c0.b ;                            
+    lrp r0,r0.a,t0,t1       ; lerp between t0 and t1( 1.0 = t1 )

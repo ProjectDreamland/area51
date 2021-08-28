@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_start_sample</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="starts playback of a sample from its beginning.">
+<meta name="ms-hkwd" content="AIL_start_sample">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_start_sample</h1>
+<p>The function  <b>AIL_start_sample</b> starts playback of a sample from its beginning.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_start_sample.html" class=trn>AIL_start_sample</a>(</b>
+<b>&nbsp&nbsp<a href="HSAMPLE.html" class=trn>HSAMPLE</a>&nbsp</b><i>S</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample to start playing.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>If the sample is already playing, it will be restarted from the beginning. To start a sample playing at a specific position, set the position and call <a href="AIL_resume_sample.html">AIL_resume_sample</a> instead of <a href="AIL_start_sample.html">AIL_start_sample</a>. </p><p> At a minimum, the sample handle must be initialized with <a href="AIL_init_sample.html">AIL_init_sample</a>, and its address and length specified with a call to <a href="AIL_set_sample_address.html">AIL_set_sample_address</a>, prior to starting playback of a raw data sample. If the sample handle was allocated from <a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a>, however, only <a href="AIL_start_sample.html">AIL_start_sample</a> must be called to begin playback. </p><p> It is not necessary to call <a href="AIL_start_sample.html">AIL_start_sample</a> when using double-buffering, because the <a href="AIL_load_sample_buffer.html">AIL_load_sample_buffer</a> function automatically begins playback of double-buffered samples. </p><p> Under Win16, and Win32 on waveOut, the MSS architecture permits a sound effect to be started with essentially zero latency <i>as long as no other sound effects are currently being played</i>. On the other hand, latency times incurred for samples which must be injected into an already-running mixer stream may be much higher than even the worst figures obtained in the DOS version of MSS. Consequently, it is important when beginning video playback or any other latency-critical activity to ensure that no previous digital audio effects have been played for at least a few hundred milliseconds prior to starting playback of the critical sound effect or stream. </p><p> On a Win32 system with a native DirectSound driver installed, MSS will take advantage of the high-performance Microsoft DirectSound buffer mechanism to eliminate these latency problems. </p><p> On MacOS, Miles has been written so that digital latency will rarely (if ever) exceed 100 milliseconds and will never exceed 140 milliseconds regardless of the speed of your machine. Just like waveOut, though, Sound Manager imposes some amount of its own latency as well (exactly how much depends on the machine and version of Sound Manager). </p><p> Example files that use this function: SSTEST.C, DBTEST.C, DIGPLAY.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a>, <a href="AIL_allocate_sample_ijfaaa.html">AIL_allocate_sample_handle</a>, <a href="AIL_end_sample.html">AIL_end_sample</a>, <a href="AIL_get_DirectSound_info.html">AIL_get_DirectSound_info</a>, <a href="AIL_init_sample.html">AIL_init_sample</a>, <a href="AIL_load_sample_buffer.html">AIL_load_sample_buffer</a>, <a href="AIL_register_SOB_callback.html">AIL_register_SOB_callback</a>, <a href="AIL_resume_sample.html">AIL_resume_sample</a>, <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a>, <a href="AIL_set_sample_address.html">AIL_set_sample_address</a>, <a href="AIL_start_sample.html">AIL_start_sample</a>, <a href="AIL_stop_sample.html">AIL_stop_sample</a><br>
+<b>Related Basic Types:</b>
+<a href="HSAMPLE.html">HSAMPLE</a>, <a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="How do I play a digiyg6gda.html">How do I play a digital sound?</a>, <a href="How do I start an aupeb0vo.html">How do I start an audio file somewhere in the middle?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

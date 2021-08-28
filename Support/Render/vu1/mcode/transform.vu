@@ -1,0 +1,495 @@
+//==============================================================================
+//  transform.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode handles the transform and lighting of rigid geometry.
+//==============================================================================
+
+// DS NOTE: The compiler doesn't know how to check dependencies for microcode,
+// so we'll add and remove a line of comments to force the issue. What a pain!
+//==============================================================================
+
+#include "include.vu"
+
+.vu 
+.org    MCODE_START_TRANSFORM
+.align  4 
+.global VU1_RIGID_XFORM_CODE_START
+.global VU1_RIGID_XFORM_CODE_END
+
+.global     VU1_ENTRY_RIGID_XFORM_FAST
+.global     VU1_ENTRY_RIGID_XFORM_CLIPPED
+.equ        VU1_ENTRY_RIGID_XFORM_FAST,     ((VU1_FAST-VU1_RIGID_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_RIGID_XFORM_CLIPPED,  ((VU1_SLOW-VU1_RIGID_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+
+#define BRANCH_MATERIAL_MCODE   VU1_RIGID_XFORM_CODE_START+MCODE_START_MATERIAL-MCODE_START_TRANSFORM+16384
+#define BRANCH_CLIPPER_MCODE    VU1_RIGID_XFORM_CODE_START+MCODE_START_CLIPPER -MCODE_START_TRANSFORM+16384
+
+VU1_RIGID_XFORM_CODE_START:
+VU1_FAST:
+#define L2S0( x )                   TF00( x )       // Local-to-Screen matrix
+#define L2S1( x )                   TF01( x )       
+#define L2S2( x )                   TF02( x )       
+#define L2S3( x )                   TF03( x )       
+#define TXYZ( x )                   TF04( x )       // Input  XYZ position
+#define TSPS( x )                   TF05( x )       //        XYZ position * L2S
+#define TCPS( x )                   TF06( x )       // copied XYZ position * L2S
+#define TPPS( x )                   TF07( x )       //        XYZ projected
+#define TFPS( x )                   TF08( x )       //        XYZ in fixed-point
+#define TUV0( x )                   TF09( x )       // Input  UV0
+#define TFUV( x )                   TF10( x )       //        UV0 in float
+#define TPUV( x )                   TF11( x )       //        UV0 projected
+#define VPTR                        TI00            // Pointer to source vertices
+#define ENDM                        TI01            // End address
+#define TCNT                        TI02            // adjust vertex count
+
+    addw.xyzw       TUV0(xyzw), VF00xyzw,   VF00w       xtop BASE
+
+    nop[e]                                              nop
+    nop                                                 nop
+
+VU1_START:
+    nop                                                 ilw.z       INST,       VU1_COUNT(BASE)
+
+    nop                                                 iaddiu      ITMP, VI00, VU1_DYNAMICLIGHT
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, VI00, CHECK_DYNAMICLIGHT
+    nop                                                 nop
+    
+    nop                                                 bal         RETN, DO_POINT_LIGHTING_CHEAP
+    nop                                                 nop
+
+CHECK_DYNAMICLIGHT:
+    nop                                                 iaddiu      ITMP, vi00, VU1_FILTERLIGHT
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, CHECK_FILTERLIGHT
+    nop                                                 nop
+    nop                                                 bal         RETN, DO_FILTER_LIGHTING
+    nop                                                 nop
+    
+CHECK_FILTERLIGHT:
+
+    ;------------------------------------------------------------------------------------
+    ;------------------------------------------------------------------------------------
+    ;------------------------------------------------------------------------------------
+    .macro FastLoop Label, Next
+    ;------------------------------------------------------------------------------------
+    ;------------------------------------------------------------------------------------
+    ;------------------------------------------------------------------------------------
+
+    InputPos  = VU1_XYZ - (VU1_VERT_SIZE*1)
+    InputTex  = VU1_UV0 - (VU1_VERT_SIZE*2)
+    OutputPos = VU1_XYZ - (VU1_VERT_SIZE*5)
+    OutputTex = VU1_UV0 - (VU1_VERT_SIZE*4)
+    BackupPos = \Next + VU1_XYZ - (VU1_VERT_SIZE*2)
+    BackupTex = \Next + VU1_UV0 - (VU1_VERT_SIZE*3)
+
+    ; loop preamble
+    nop                                                 iaddiu      VPTR, VPTR, VU1_VERT_SIZE       ;                       ; vptr++
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 lq.xyzw     TXYZ(xyzw), InputPos(VPTR)      ;                       ; load xyz0
+    nop                                                 nop
+    nop                                                 nop
+    
+    mulaw.xyzw      acc,        L2S3(xyzw), vf00w       iaddiu      VPTR, VPTR, VU1_VERT_SIZE       ; xform xyz0            ; vptr++
+    maddaz.xyzw     acc,        L2S2(xyzw), TXYZ(z)     sq.xyzw     TXYZ(xyzw), BackupPos(VPTR)     ; xform xyz0            ; backup xyz0
+    madday.xyzw     acc,        L2S1(xyzw), TXYZ(y)     nop                                         ; xform xyz0
+    nop                                                 nop
+    maddx.xyzw      TSPS(xyzw), L2S0(xyzw), TXYZ(x)     nop                                         ; xform xyz0
+    nop                                                 lq.xy       TUV0(xy),   InputTex(VPTR)                              ; load uv0
+    nop                                                 lq.xyzw     TXYZ(xyzw), InputPos(VPTR)      ;                       ; load xyz1
+    nop                                                 nop
+    add.xyz         TCPS(xyz),  TSPS(xyz),  vf00xyz     div         q, vf00w, TSPS(w)               ; copy xyz0             ; divide0
+
+    mulaw.xyzw      acc,        L2S3(xyzw), vf00w       iaddiu      VPTR, VPTR, VU1_VERT_SIZE       ; xform xyz1            ; vptr++
+    maddaz.xyzw     acc,        L2S2(xyzw), TXYZ(z)     sq.xyzw     TXYZ(xyzw), BackupPos(VPTR)     ; xform xyz1            ; backup xyz1
+    madday.xyzw     acc,        L2S1(xyzw), TXYZ(y)     nop                                         ; xform xyz1
+    itof12.xy       TFUV(xy),   TUV0(xy)                nop                                         ; unpack uv0
+    maddx.xyzw      TSPS(xyzw), L2S0(xyzw), TXYZ(x)     sq.xy       TUV0(xy),   BackupTex(VPTR)     ; xform xyz1            ; backup uv0
+    nop                                                 lq.xy       TUV0(xy),   InputTex(VPTR)                              ; load uv1
+    mulq.xyz        TPPS(xyz),  TCPS(xyz),  q           lq.xyzw     TXYZ(xyzw), InputPos(VPTR)      ; project sxyz0         ; load xyz2
+    mulq.xyz        TPUV(xyz),  TFUV(xyz),  q           nop                                         ; project uv0
+    add.xyz         TCPS(xyz),  TSPS(xyz),  vf00xyz     div         q, vf00w, TSPS(w)               ; copy xyz1             ; divide1
+
+    mulaw.xyzw      acc,        L2S3(xyzw), vf00w       iaddiu      VPTR, VPTR, VU1_VERT_SIZE       ; xform xyz2            ; vptr++
+    maddaz.xyzw     acc,        L2S2(xyzw), TXYZ(z)     sq.xyzw     TXYZ(xyzw), BackupPos(VPTR)     ; xform xyz2            ; backup xyz2
+    madday.xyzw     acc,        L2S1(xyzw), TXYZ(y)     nop                                         ; xform xyz2
+    itof12.xy       TFUV(xy),   TUV0(xy)                sq.xyz      TPUV(xyz),  OutputTex(VPTR)     ; unpack uv1            ; store stq0
+    maddx.xyzw      TSPS(xyzw), L2S0(xyzw), TXYZ(x)     sq.xy       TUV0(xy),   BackupTex(VPTR)     ; xform xyz2            ; backup uv1
+    ftoi4.xyz       TFPS(xyz),  TPPS(xyz)               lq.xy       TUV0(xy),   InputTex(VPTR)      ; convert sxyz0         ; load uv2
+    mulq.xyz        TPPS(xyz),  TCPS(xyz),  q           lq.xyzw     TXYZ(xyzw), InputPos(VPTR)      ; project sxyz1         ; load xyz3
+    mulq.xyz        TPUV(xyz),  TFUV(xyz),  q           nop                                         ; project uv1
+    add.xyz         TCPS(xyz),  TSPS(xyz),  vf00xyz     div         q, vf00w, TSPS(w)               ; copy xyz2             ; divide2
+
+    ; the main loop
+    \Label:
+    mulaw.xyzw      acc,        L2S3(xzyw), vf00w       iaddiu      VPTR, VPTR, VU1_VERT_SIZE       ; xform xyz3            ; vptr++
+    maddaz.xyzw     acc,        L2S2(xyzw), TXYZ(z)     sq.xyzw     TXYZ(xyzw), BackupPos(VPTR)     ; xform xyz3            ; backup xyz3
+    madday.xyzw     acc,        L2S1(xyzw), TXYZ(y)     sq.xyz      TFPS(xyz),  OutputPos(VPTR)     ; xform xyz3            ; store sxyz0
+    itof12.xy       TFUV(xy),   TUV0(xy)                sq.xyz      TPUV(xyz),  OutputTex(VPTR)     ; unpack uv2            ; store stq1
+    maddx.xyzw      TSPS(xyzw), L2S0(xyzw), TXYZ(x)     sq.xy       TUV0(xy),   BackupTex(VPTR)     ; xform xyz3            ; backup uv2
+    ftoi4.xyz       TFPS(xyz),  TPPS(xyz)               lq.xy       TUV0(xy),   InputTex(VPTR)      ; convert sxyz1         ; load uv3
+    mulq.xyz        TPPS(xyz),  TCPS(xyz),  q           lq.xyzw     TXYZ(xyzw), InputPos(VPTR)      ; project sxyz2         ; load xyz4
+    mulq.xyz        TPUV(xyz),  TFUV(xyz),  q           ibne        VPTR, ENDM, \Label              ; project uv2           ; loop
+    add.xyz         TCPS(xyz),  TSPS(xyz),  vf00xyz     div         q, vf00w, TSPS(w)               ; copy xyz3             ; divide3
+
+    ; post-loop
+    mulaw.xyzw      acc,        L2S3(xyzw), vf00w       iaddiu      VPTR, VPTR, VU1_VERT_SIZE       ; xform xyz4            ; vptr++
+    maddaz.xyzw     acc,        L2S2(xyzw), TXYZ(z)     sq.xyzw     TXYZ(xyzw), BackupPos(VPTR)     ; xform xyz4            ; backup xyz4
+    madday.xyzw     acc,        L2S1(xyzw), TXYZ(y)     sq.xyz      TFPS(xyz),  OutputPos(VPTR)     ; xform xyz4            ; store sxyz1
+    itof12.xy       TFUV(xy),   TUV0(xy)                sq.xyz      TPUV(xyz),  OutputTex(VPTR)     ; unpack uv3            ; store stq2
+    maddx.xyzw      TSPS(xyzw), L2S0(xyzw), TXYZ(x)     sq.xy       TUV0(xy),   BackupTex(VPTR)     ; xform xyz4            ; backup uv3
+    ftoi4.xyz       TFPS(xyz),  TPPS(xyz)               lq.xy       TUV0(xy),   InputTex(VPTR)      ; convert sxyz2         ; load uv4
+    mulq.xyz        TPPS(xyz),  TCPS(xyz),  q           nop                                         ; project sxyz3
+    mulq.xyz        TPUV(xyz),  TFUV(xyz),  q           nop                                         ; project uv3
+    add.xyz         TCPS(xyz),  TSPS(xyz),  vf00xyz     div         q, vf00w, TSPS(w)               ; copy sxyz4            ; divide4
+
+    nop                                                 iaddiu      VPTR, VPTR, VU1_VERT_SIZE                               ; vptr++
+    nop                                                 nop
+    nop                                                 sq.xyz      TFPS(xyz),  OutputPos(VPTR)                             ; store sxyz2
+    itof12.xy       TFUV(xy),   TUV0(xy)                sq.xyz      TPUV(xyz),  OutputTex(VPTR)     ; unpack uv4            ; store stq3
+    nop                                                 sq.xy       TUV0(xy),   BackupTex(VPTR)                             ; backup uv4
+    ftoi4.xyz       TFPS(xyz),  TPPS(xyz)               nop                                         ; convert sxyz3
+    mulq.xyz        TPPS(xyz),  TCPS(xyz),  q           nop                                         ; project sxyz4
+    mulq.xyz        TPUV(xyz),  TFUV(xyz),  q           nop                                         ; project uv4
+    nop                                                 nop
+
+    nop                                                 iaddiu      VPTR, VPTR, VU1_VERT_SIZE                               ; vptr++
+    nop                                                 nop
+    nop                                                 sq.xyz      TFPS(xyz),  OutputPos(VPTR)                             ; store sxyz3
+    nop                                                 sq.xyz      TPUV(xyz),  OutputTex(VPTR)                             ; store stq4
+    nop                                                 nop
+    ftoi4.xyz       TFPS(xyz),  TPPS(xyz)               nop                                         ; convert sxyz4
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+
+    nop                                                 iaddiu      VPTR, VPTR, VU1_VERT_SIZE                               ; vptr++
+    nop                                                 nop
+    nop                                                 sq.xyz      TFPS(xyz),  OutputPos(VPTR)                             ; store sxyz4
+
+    ;------------------------------------------------------------------------------------
+    ;------------------------------------------------------------------------------------
+    ;------------------------------------------------------------------------------------
+    .endm
+    ;------------------------------------------------------------------------------------
+    ;------------------------------------------------------------------------------------
+    ;------------------------------------------------------------------------------------
+
+    addw.z          TFUV(z),    vf00z,      vf00w       lq.xyzw L2W3(xyzw), VU1_L2W+3(BASE)
+    nop                                                 lq.xyzw L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 lq.xyzw L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq.xyzw L2W0(xyzw), VU1_L2W+0(BASE)
+    mulaw.xyzw      acc,        W2S3(xyzw), L2W3(w)     ilw.z       INST, VU1_COUNT(BASE)
+    maddaz.xyzw     acc,        W2S2(xyzw), L2W3(z)     iaddiu      VPTR, BASE, 0x00
+    madday.xyzw     acc,        W2S1(xyzw), L2W3(y)     iaddiu      ITMP, vi00, 0x7f
+    maddx.xyzw      L2S3(xyzw), W2S0(xyzw), L2W3(x)     iand        NUMV, INST, ITMP
+    mulaw.xyzw      acc,        W2S3(xyzw), L2W2(w)     isubiu      ITMP, NUMV, 5
+    maddaz.xyzw     acc,        W2S2(xyzw), L2W2(z)     nop
+    madday.xyzw     acc,        W2S1(xyzw), L2W2(y)     ibgez       ITMP, TRANSFORM_VERT_COUNT_OK
+    maddx.xyzw      L2S2(xyzw), W2S0(xyzw), L2W2(x)     iadd        TCNT, NUMV, vi00
+    nop                                                 iaddiu      TCNT, vi00, 5
+
+TRANSFORM_VERT_COUNT_OK:
+    mulaw.xyzw      acc,        W2S3(xyzw), L2W1(w)     iadd        ENDM, VPTR, TCNT
+    maddaz.xyzw     acc,        W2S2(xyzw), L2W1(z)     iadd        ENDM, ENDM, TCNT
+    madday.xyzw     acc,        W2S1(xyzw), L2W1(y)     iadd        ENDM, ENDM, TCNT
+    maddx.xyzw      L2S1(xyzw), W2S0(xyzw), L2W1(x)     iadd        ENDM, ENDM, TCNT
+    mulaw.xyzw      acc,        W2S3(xyzw), L2W0(w)     nop
+    maddaz.xyzw     acc,        W2S2(xyzw), L2W0(z)     nop
+    madday.xyzw     acc,        W2S1(xyzw), L2W0(y)     isubiu      ITMP, BASE, VU1_BUFFER_SIZE * 2
+    maddx.xyzw      L2S0(xyzw), W2S0(xyzw), L2W0(x)     nop
+
+    nop                                                 ibeq        ITMP, vi00, FAST_BUFFER2
+    nop                                                 nop
+
+    Next = VU1_BUFFER_SIZE
+    FastLoop                                            FAST_LOOP1, Next
+    nop                                                 b           BRANCH_MATERIAL_MCODE
+    nop                                                 iaddiu      NBUF, BASE, VU1_BUFFER_SIZE
+
+FAST_BUFFER2:
+    Next = (-VU1_BUFFER_SIZE*2)
+    FastLoop                                            FAST_LOOP2, Next
+    nop                                                 b           BRANCH_MATERIAL_MCODE
+    nop                                                 iadd        NBUF, vi00, vi00
+
+#undef L2S0
+#undef L2S1
+#undef L2S2
+#undef L2S3
+#undef TXYZ
+#undef TSPS
+#undef TCPS
+#undef TPPS
+#undef TFPS
+#undef TUV0
+#undef TFUV
+#undef TPUV
+#undef VPTR
+#undef ENDM
+#undef TCNT
+
+;==============================================================================
+;
+;   Slow Renderer - Clipping
+;
+;==============================================================================
+
+
+VU1_SLOW:
+
+    nop                                                 xtop        BASE
+
+    nop                                                 ilw.z       INST,       VU1_COUNT(BASE)
+    nop                                                 iaddiu      ITMP, vi00, VU1_DYNAMICLIGHT
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, CLIP_CHECK_DYNAMICLIGHT
+    nop                                                 nop
+    nop                                                 bal         RETN, DO_POINT_LIGHTING_CHEAP
+    nop                                                 nop
+CLIP_CHECK_DYNAMICLIGHT:
+
+    nop                                                 iaddiu      ITMP, vi00, VU1_FILTERLIGHT
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, CLIP_CHECK_FILTERLIGHT
+    nop                                                 nop
+    nop                                                 bal         RETN, DO_FILTER_LIGHTING
+    nop                                                 nop
+CLIP_CHECK_FILTERLIGHT:
+
+    nop                                                 iaddiu      CLIP, vi00, VU1_BUFFER_0                ; Get a pointer to the Clip Buffer
+    nop                                                 iaddiu      NBUF, vi00, VU1_BUFFER_2                ; Get a pointer to the Next Buffer
+
+    nop                                                 isw.x       CLIP,   VU1_CLIP_STORAGE+3(CLIP)        ; store the buffer pointers
+    nop                                                 isw.y       BASE,   VU1_CLIP_STORAGE+3(CLIP)
+
+    nop                                                 b           BRANCH_CLIPPER_MCODE
+    nop                                                 isw.z       NBUF,   VU1_CLIP_STORAGE+3(CLIP)
+
+;==============================================================================
+;
+;   Lighting - This loop does 3 distance-based points--normals are ignored, so
+;              all vertices get the same intensity.
+;
+;==============================================================================
+
+#define PONE( x )                   TF00( x )       // 1.0f, 1.0f, 1.0f, 1.0f
+#define PLP0( x )                   TF01( x )       // point-light position 0
+#define PLP1( x )                   TF02( x )       // point-light position 1
+#define PLP2( x )                   TF03( x )       // point-light position 2
+#define PLC0( x )                   TF04( x )       // point-light color 0 (transposed)
+#define PLC1( x )                   TF05( x )       // point-light color 1 (transposed)
+#define PLC2( x )                   TF06( x )       // point-light color 2 (transposed)
+#define PPOS( x )                   TF07( x )       // vertex position
+#define PRGB( x )                   TF08( x )       // original rgb
+#define PDR0( x )                   TF09( x )       // lighting direction 0
+#define PDR1( x )                   TF10( x )       // lighting direction 1
+#define PDR2( x )                   TF11( x )       // lighting direction 2
+#define PLEN( x )                   TF12( x )       // distance calculations
+#define PMGC( x )                   TF13( x )       // magic numbers for doing approximations
+#define PRAD( x )                   TF14( x )       // 1/(r*r) of the lights
+#define VPTR                        TI00            // Pointer to vertices
+#define ENDM                        TI01            // End address
+
+
+DO_POINT_LIGHTING_CHEAP:
+
+    ; load the light information (its all packed into zw of the uvs, so this should be fun...)
+    nop                                                 lq.zw       PLP0(zw),   VU1_UV0+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 lq.zw       PLP1(zw),   VU1_UV0+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 lq.zw       PLP2(zw),   VU1_UV0+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       PLC0(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 lq.zw       PLC1(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 lq.zw       PLC2(zw),   VU1_UV0+VU1_VERT_SIZE*2+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 mr32.xyzw   PLP0(xyzw), PLP0(xyzw)
+    nop                                                 mr32.xyzw   PLC0(xyzw), PLC0(xyzw)
+    nop                                                 mr32.xyzw   PLP1(xyzw), PLP1(xyzw)
+    nop                                                 mr32.xyzw   PLC1(xyzw), PLC1(xyzw)
+    nop                                                 mr32.xyzw   PLP2(xyzw), PLP2(xyzw)
+    nop                                                 mr32.xyzw   PLC2(xyzw), PLC2(xyzw)
+    nop                                                 mr32.xyzw   PLP0(xyzw), PLP0(xyzw)
+    nop                                                 mr32.xyzw   PLC0(xyzw), PLC0(xyzw)
+    nop                                                 mr32.xyzw   PLP1(xyzw), PLP1(xyzw)
+    nop                                                 mr32.xyzw   PLC1(xyzw), PLC1(xyzw)
+    nop                                                 mr32.xyzw   PLP2(xyzw), PLP2(xyzw)
+    nop                                                 mr32.xyzw   PLC2(xyzw), PLC2(xyzw)
+    nop                                                 lq.zw       PLP0(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 lq.zw       PLP1(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 lq.zw       PLP2(zw),   VU1_UV0+VU1_VERT_SIZE+VU1_LIGHT_SIZE*2(BASE)
+    nop                                                 lq.zw       PLC0(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*0(BASE)
+    nop                                                 lq.zw       PLC1(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*1(BASE)
+    nop                                                 lq.zw       PLC2(zw),   VU1_UV0+VU1_VERT_SIZE*3+VU1_LIGHT_SIZE*2(BASE)
+
+    ; prepare for the loop
+    addw.xyz    PONE(xyz),  VF00xyz,    VF00w           ilw.z       INST, VU1_COUNT(BASE)
+    mulw.w      PONE(w),    VF00w,      VF00w           iaddiu      VPTR, BASE, 0x00
+    nop                                                 iaddiu      ITMP, VI00, 0x7F
+    nop                                                 iand        NUMV, INST, ITMP
+    nop                                                 iadd        ENDM, VPTR, NUMV
+    mulw.x      PRAD(x),    PONE(x),    PLP0(w)         iadd        ENDM, ENDM, NUMV
+    mulw.y      PRAD(y),    PONE(y),    PLP1(w)         iadd        ENDM, ENDM, NUMV
+    mulw.z      PRAD(z),    PONE(z),    PLP2(w)         iadd        ENDM, ENDM, NUMV
+    nop                                                 loi         -1.0
+    addi.y      PMGC(y),    VF00y,      I               loi         0x4efe0000
+    addi.x      PMGC(x),    VF00x,      I               nop
+
+POINT_LIGHT_CHEAP_LOOP:
+    nop                                                 lq.xyz      PPOS(xyz),  VU1_XYZ(VPTR)
+    nop                                                 lq.xyz      PRGB(xyz),  VU1_RGB(VPTR)
+    nop                                                 nop
+    nop                                                 nop
+    sub.xyz     PDR2(xyz),  PLP2(xyz),  PPOS(xyz)       nop
+    sub.xyz     PDR1(xyz),  PLP1(xyz),  PPOS(xyz)       nop
+    sub.xyz     PDR0(xyz),  PLP0(xyz),  PPOS(xyz)       nop
+    itof0.xyz   PRGB(xyz),  PRGB(xyz)                   nop
+    mul.xyz     PDR2(xyz),  PDR2(xyz),  PDR2(xyz)       nop
+    mul.xyz     PDR1(xyz),  PDR1(xyz),  PDR1(xyz)       nop
+    mul.xyz     PDR0(xyz),  PDR0(xyz),  PDR0(xyz)       nop
+    nop                                                 nop
+    adday.z     ACC,        PDR2(z),    PDR2(y)         nop
+    maddx.z     PLEN(z),    PONE(z),    PDR2(x)         nop
+    addaz.y     ACC,        PDR1(y),    PDR1(z)         nop
+    maddx.y     PLEN(y),    PONE(y),    PDR1(x)         nop
+    addaz.x     ACC,        PDR0(x),    PDR0(z)         nop
+    maddy.x     PLEN(x),    PONE(x),    PDR0(y)         nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    mul.xyz     PLEN(xyz),  PLEN(xyz),  PRAD(xyz)       nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    miniw.xyz   PLEN(xyz),  PLEN(xyz),  VF00w           nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    sub.xyz     PLEN(xyz),  PONE(xyz),  PLEN(xyz)       nop
+    nop                                                 nop
+    nop                                                 nop
+    mulaw.xyz   ACC,        PRGB(xyz),  VF00w           nop
+    maddaz.xyz  ACC,        PLC2(xyz),  PLEN(z)         nop
+    madday.xyz  ACC,        PLC1(xyz),  PLEN(y)         nop
+    maddx.xyz   PRGB(xyz),  PLC0(xyz),  PLEN(x)         nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 loi     255.0
+    minii.xyz   PRGB(xyz),  PRGB(xyz),  I               nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    ftoi0.xyz   PRGB(xyz),  PRGB(xyz)                   nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 sq.zw       PONE(zw),   VU1_UV0(VPTR)
+    nop                                                 sq.xyz      PRGB(xyz),  VU1_RGB(VPTR)
+    nop                                                 iaddiu      VPTR,   VPTR,   VU1_VERT_SIZE
+    nop                                                 nop
+    nop                                                 ibne        VPTR,   ENDM,   POINT_LIGHT_CHEAP_LOOP
+    nop                                                 nop
+
+#undef PONE
+#undef PLP0
+#undef PLP1
+#undef PLP2
+#undef PLC0
+#undef PLC1
+#undef PLC2
+#undef PPOS
+#undef PRGB
+#undef PDR0
+#undef PDR1
+#undef PDR2
+#undef PLEN
+#undef PMGC
+#undef PRAD
+#undef VPTR
+#undef ENDM
+
+    nop                                                 jr          RETN
+    nop                                                 nop
+
+;==============================================================================
+;
+;   Filter Lighting - This code modulates the vertex color based on a fixed
+;   filter light color.
+;
+;==============================================================================
+
+#define LCOL( x )                   TF00( x )       // light color
+#define COLA( x )                   TF01( x )       // input vertex color
+#define COLB( x )                   TF02( x )       // vertex color as float
+#define COLC( x )                   TF03( x )       // vertex color after multipy
+#define COLD( x )                   TF04( x )       // clamped vertex color
+#define COLE( x )                   TF05( x )       // copy of vertex color for pip
+#define COLF( x )                   TF06( x )       // final vertex color after fixed-point conversion
+#define VPTR                        TI00            // Pointer to vertices
+#define ENDM                        TI01            // End address
+
+DO_FILTER_LIGHTING:
+    nop                                                 ilw.z   INST, VU1_COUNT(BASE)
+    nop                                                 lq.xyzw LCOL(xyzw), VU1C_LightMultiplier(vi00)
+    nop                                                 iaddiu  VPTR, BASE, 0x00
+    nop                                                 iaddiu  ITMP, vi00, 0x7f
+    nop                                                 iand    NUMV, INST, ITMP
+    nop                                                 iadd    ENDM, VPTR, NUMV
+    nop                                                 iadd    ENDM, ENDM, NUMV
+    nop                                                 iadd    ENDM, ENDM, NUMV
+    nop                                                 iadd    ENDM, ENDM, NUMV
+    nop                                                 loi     255.0
+    
+    ; loop preamble
+    nop                                                 lq.xyz  COLA(xyz),  VU1_RGB(VPTR)                   ;                   ; load color 0
+    nop                                                 nop                                                 ;
+    nop                                                 nop                                                 ;
+    nop                                                 nop                                                 ;
+    itof0.xyz       COLB(xyz),  COLA(xyz)               nop                                                 ; itof color 0
+
+    nop                                                 lq.xyz  COLA(xyz),  VU1_RGB+(VU1_VERT_SIZE*1)(VPTR) ;                   ; load color 1
+    nop                                                 nop                                                 ;
+    nop                                                 nop                                                 ;
+    mul.xyz         COLC(xyz),  COLB(xyz),  LCOL(xyz)   nop                                                 ; mul color 0
+    itof0.xyz       COLB(xyz),  COLA(xyz)               nop                                                 ; itof color 1
+
+    nop                                                 lq.xyz  COLA(xyz),  VU1_RGB+(VU1_VERT_SIZE*2)(VPTR) ;                   ; load color 2
+    nop                                                 nop                                                 ;
+    minii.xyz       COLD(xyz),  COLC(xyz),  i           nop                                                 ; clamp color 0
+    mul.xyz         COLC(xyz),  COLB(xyz),  LCOL(xyz)   nop                                                 ; mul color 1
+    itof0.xyz       COLB(xyz),  COLA(xyz)               nop                                                 ; itof color 2
+
+    nop                                                 lq.xyz  COLA(xyz),  VU1_RGB+(VU1_VERT_SIZE*3)(VPTR) ;                   ; load color 3
+    add.xyz         COLE(xyz),  COLD(xyz),  vf00xyz     nop                                                 ; copy color 0
+    minii.xyz       COLD(xyz),  COLC(xyz),  i           nop                                                 ; clamp color 1
+    mul.xyz         COLC(xyz),  COLB(xyz),  LCOL(xyz)   nop                                                 ; mul color 2
+    itof0.xyz       COLB(xyz),  COLA(xyz)               nop                                                 ; itof color 3
+    
+FILTER_LIGHTING_LOOP:
+    ftoi0.xyz       COLF(xyz),  COLE(xyz)               lq.xyz  COLA(xyz),  VU1_RGB+(VU1_VERT_SIZE*4)(VPTR) ; ftoi color 0      ; load color 4
+    add.xyz         COLE(xyz),  COLD(xyz),  vf00xyz     iaddiu  VPTR, VPTR, VU1_VERT_SIZE                   ; copy color 1      ; vptr++
+    minii.xyz       COLD(xyz),  COLC(xyz),  i           nop                                                 ; clamp color 2
+    mul.xyz         COLC(xyz),  COLB(xyz),  LCOL(xyz)   ibne    VPTR, ENDM, FILTER_LIGHTING_LOOP            ; mul color 3       ; loop
+    itof0.xyz       COLB(xyz),  COLA(xyz)               sq.xyz  COLF(xyz),  VU1_RGB-VU1_VERT_SIZE(VPTR)     ; itof color 4      ; store color 0
+
+    nop                                                 jr          RETN
+    nop                                                 nop
+
+#undef LCOL
+#undef COLA
+#undef COLB
+#undef COLC
+#undef COLD
+#undef COLE
+#undef COLF
+#undef VPTR
+#undef ENDM
+
+VU1_RIGID_XFORM_CODE_END:

@@ -1,0 +1,64 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_sequence_ms_position</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the current playback position and length of the sequence in milliseconds.">
+<meta name="ms-hkwd" content="AIL_sequence_ms_position">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_sequence_ms_position</h1>
+<p>The function  <b>AIL_sequence_ms_position</b> returns the current playback position and length of the sequence in milliseconds.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_sequence_ms_position.html" class=trn>AIL_sequence_ms_position</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp*</b><i>total_milliseconds</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp*</b><i>current_milliseconds</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sequence for which position information is desired.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>total_milliseconds</i></dt>
+<dd>if not NULL, should point to a long integer into which will be stored the total length of the sequence.</dd>
+<dt><i>current_milliseconds</i></dt>
+<dd>if not NULL, should point to a long integer into which will be stored the current playback position in milliseconds.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The total milliseconds and the current milliseconds values are stored in the variables pointed to by the parameters *total_milliseconds and *current_milliseconds.</p>
+<h4>Discussion</h4>
+<p>This function is usually more convenient that the beat and measure values returned by the <a href="AIL_sequence_position.html">AIL_sequence_position</a> function.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_branch_index.html">AIL_branch_index</a>, <a href="AIL_sequence_position.html">AIL_sequence_position</a>, <a href="AIL_set_sequence_ms_rl07ba.html">AIL_set_sequence_ms_position</a><br>
+<b>Related Basic Types:</b>
+<a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

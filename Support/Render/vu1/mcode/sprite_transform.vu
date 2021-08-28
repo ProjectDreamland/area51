@@ -1,0 +1,564 @@
+//==============================================================================
+//  sprite_transform.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode handles the transformation of sprites. This should be a
+//  faster way of doing particles, rather than putting the burden on the main
+//  cpu.
+//==============================================================================
+
+#include "include.vu"
+
+.vu 
+.org    MCODE_START_TRANSFORM
+.align  4 
+.global VU1_SPRITE_XFORM_CODE_START
+.global VU1_SPRITE_XFORM_CODE_END
+
+.global     VU1_ENTRY_SPRITE_XFORM
+.global     VU1_ENTRY_VEL_SPRITE_XFORM
+.global     VU1_ENTRY_DISTORT_SPRITE_XFORM
+.equ        VU1_ENTRY_SPRITE_XFORM,         ((VU1_SPRITE_XFORM        -VU1_SPRITE_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_VEL_SPRITE_XFORM,     ((VU1_VEL_SPRITE_XFORM    -VU1_SPRITE_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_DISTORT_SPRITE_XFORM, ((VU1_DISTORT_SPRITE_XFORM-VU1_SPRITE_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+
+#define BRANCH_CLIPPER_MCODE    VU1_SPRITE_XFORM_CODE_START+MCODE_START_CLIPPER-MCODE_START_TRANSFORM+16384
+
+VU1_SPRITE_XFORM_CODE_START:
+//==============================================================================
+//  
+//  VU1_SPRITE_XFORM:
+//
+//      This routine will take points and convert them into front-facing quads
+//      that are oriented towards the camera. In pseudo-code, this will happen
+//      for each quad:
+//
+//      load sprite position
+//      load sprite rotation, scale, and active flag
+//      load color
+//      position = L2V * position
+//      Rot      = -Rot
+//      Sine     = sin( Rot )
+//      Cosine   = cos( Rot )
+//      Scale   *= UniScale constant
+//      TmpV0    = (Cosine-Sine, Sine+Cosine, 0)
+//      TmpV1    = (Cosine+Sine, Sine-Cosine, 0)
+//      Corner0  = TmpV0*Scale + position
+//      Corner1  = TmpV1*Scale + position
+//      Corner2  = TmpV0*(-Scale) + position
+//      Corner3  = TmpV1*(-Scale) + position
+//      Copy color from slot 0 to slots 1, 2, 3
+//      Store corners 0, 1, 2, 3 (they will be in view space)
+//      Store Active flag in 2, 3
+//      Store ADC bit in 0, 1
+//
+//      Then we run through the normal clipper and material code. Since the
+//      clipper will want to transform from local space to world space, and our
+//      points are in view space, we will cheat it by storing the V2W matrix
+//      as the L2W for the rest of the code.
+//
+//      Inputs:
+//          Per quad:
+//          vector3     x, y, z, active flag
+//          vector3     rotation, scale
+//          u8[4]       Color
+//          Per call:
+//          matrix4     W2V (hijacking some of the constant vu1 data)
+//          matrix4     SinCos Coefficients (hijacking some of the constant vu1 data)
+//          vector4     0, UniScale, SpriteCount*4 | flags, 0x80 | flags
+//          matrix4     L2W
+//
+//==============================================================================
+
+#define L2V0( x )                   L2W0( x )       // Local-to-view matrix
+#define L2V1( x )                   L2W1( x )       // Local-to-view matrix
+#define L2V2( x )                   L2W2( x )       // Local-to-view matrix
+#define L2V3( x )                   L2W3( x )       // Local-to-view matrix
+#define SIN0( x )                   TF00( x )       // Sine and cosine coefficients
+#define SIN1( x )                   TF01( x )       // Sine and cosine coefficients
+#define SIN2( x )                   TF02( x )       // Sine and cosine coefficients
+#define SIN3( x )                   TF03( x )       // Sine and cosine coefficients
+#define SONE( x )                   TF04( x )       // ( 1, 1, 1, ? )
+#define UNIS( x )                   TF05( x )       // ( ?, Uniscale, -Uniscale, ? )
+#define SUV0( x )                   TF06( x )       // uv for corner 0 (0,0,1)
+#define SUV1( x )                   TF07( x )       // uv for corner 1 (0,1,1)
+#define SUV2( x )                   TF08( x )       // uv for corner 2 (1,1,1)
+#define SUV3( x )                   TF09( x )       // uv for corner 3 (1,0,1)
+#define W2V0( x )                   TF10( x )       // TMP - World-to-view matrix
+#define W2V1( x )                   TF11( x )       // TMP - World-to-view matrix
+#define W2V2( x )                   TF12( x )       // TMP - World-to-view matrix
+#define W2V3( x )                   TF13( x )       // TMP - World-to-view matrix
+#define V2W0( x )                   TF14( x )       // TMP - View-to-world matrix
+#define V2W1( x )                   TF15( x )       // TMP - View-to-world matrix
+#define V2W2( x )                   TF16( x )       // TMP - View-to-world matrix
+#define V2W3( x )                   TF17( x )       // TMP - View-to-world matrix
+#define CNTR( x )                   TF10( x )       // ** sprite center
+#define ROTS( x )                   TF11( x )       // ** Rot1, Scale, flag
+#define ROT2( x )                   TF12( x )       // ** Rot^2
+#define ROT4( x )                   TF13( x )       // ** Rot^4
+#define ROT6( x )                   TF14( x )       // ** Rot^6
+#define SCLR( x )                   TF15( x )       // ** color
+#define SINE( x )                   TF12( x )       // ** results of sine and cosine operations
+#define VEC0( x )                   TF16( x )       // ** temporary vector0
+#define VEC1( x )                   TF17( x )       // ** temporary vector1
+#define CRN0( x )                   TF12( x )       // ** corner 0 of sprite
+#define CRN1( x )                   TF13( x )       // ** corner 1 of sprite
+#define CRN2( x )                   TF14( x )       // ** corner 2 of sprite
+#define CRN3( x )                   TF15( x )       // ** corner 3 of sprite
+#define TSC1( x )                   TF20( x )       // Tmp sine and cosine working data
+#define TSC2( x )                   TF21( x )       // Tmp sine and cosine working data
+#define TSC3( x )                   TF22( x )       // Tmp sine and cosine working data
+#define VPTR                        TI00            // pointer to vertices
+#define ENDM                        TI01            // end marker
+#define ADCB                        TI02            // adc bit
+#define SFLG                        TI03            // sprite active/inactive bit
+#define SKPN                        TI04            // number of verts to skip over (this is used to help solve alignment issues)
+#define SKPE                        TI05            // end marker for skipping over verts
+
+// ** NOTE: Note the register with ** comments are re-using other registers...just be careful with that!
+
+VU1_SPRITE_XFORM:
+    sub.xyz         SUV1(xyz),  vf00xyz,    vf00xyz     xtop        BASE
+    sub.xyz         SUV3(xyz),  vf00xyz,    vf00xyz     lq.xyzw     L2W3(xyzw), VU1_L2W+3(BASE)
+    sub.xyz         SUV0(xyz),  vf00xyz,    vf00xyz     lq.xyzw     W2V3(xyzw), VU1C_W2V3(vi00)
+    addw.xyz        SUV2(xyz),  vf00xyz,    vf00w       lq.xyzw     W2V2(xyzw), VU1C_W2V2(vi00)
+    addw.yz         SUV1(yz),   SUV1(yz),   vf00w       lq.xyzw     W2V1(xyzw), VU1C_W2V1(vi00)
+    addw.xz         SUV3(xz),   SUV3(xz),   vf00w       lq.xyzw     W2V0(xyzw), VU1C_W2V0(vi00)
+    mulaw.xyzw      acc,        W2V3(xyzw), L2W3(w)     lq.xyzw     L2W2(xyzw), VU1_L2W+2(BASE)
+    maddaz.xyzw     acc,        W2V2(xyzw), L2W3(z)     lq.xyzw     L2W1(xyzw), VU1_L2W+1(BASE)
+    madday.xyzw     acc,        W2V1(xyzw), L2W3(y)     lq.xyzw     L2W0(xyzw), VU1_L2W+0(BASE)
+    maddx.xyzw      L2V3(xyzw), W2V0(xyzw), L2W3(x)     iaddiu      CLIP, vi00, VU1_BUFFER_0
+    mulaw.xyzw      acc,        W2V3(xyzw), L2W2(w)     iaddiu      NBUF, vi00, VU1_BUFFER_2
+    maddaz.xyzw     acc,        W2V2(xyzw), L2W2(z)     ilw.z       INST,   VU1_COUNT(BASE)
+    madday.xyzw     acc,        W2V1(xyzw), L2W2(y)     isw.x       CLIP,   VU1_CLIP_STORAGE+3(CLIP)
+    maddx.xyzw      L2V2(xyzw), W2V0(xyzw), L2W2(x)     isw.y       BASE,   VU1_CLIP_STORAGE+3(CLIP)
+    mulaw.xyzw      acc,        W2V3(xyzw), L2W1(w)     isw.z       NBUF,   VU1_CLIP_STORAGE+3(CLIP)
+    maddaz.xyzw     acc,        W2V2(xyzw), L2W1(z)     lq.y        UNIS(y),    VU1_COUNT(BASE)
+    madday.xyzw     acc,        W2V1(xyzw), L2W1(y)     iaddiu      ITMP,   vi00,   0x7f
+    maddx.xyzw      L2V1(xyzw), W2V0(xyzw), L2W1(x)     iand        NUMV,   INST,   ITMP
+    mulaw.xyzw      acc,        W2V3(xyzw), L2W0(w)     iadd        VPTR,   vi00,   BASE
+    maddaz.xyzw     acc,        W2V2(xyzw), L2W0(z)     iadd        ENDM,   VPTR,   NUMV
+    madday.xyzw     acc,        W2V1(xyzw), L2W0(y)     iadd        ENDM,   ENDM,   NUMV
+    maddx.xyzw      L2V0(xyzw), W2V0(xyzw), L2W0(x)     iadd        ENDM,   ENDM,   NUMV
+    suby.z          UNIS(z),    vf00z,      UNIS(y)     iadd        ENDM,   ENDM,   NUMV
+    addz.x          V2W2(x),    vf00x,      W2V0(z)     move.x      V2W0(x),    W2V0(x)             ; V2W_20 = W2V_02   ; V2W_00 = W2V_00
+    addz.y          V2W2(y),    vf00y,      W2V1(z)     mr32.w      V2W0(w),    vf00w               ; V2W_21 = W2V_12   ; V2W_03 = 0.0f
+    addx.y          V2W0(y),    vf00y,      W2V1(x)     move.y      V2W1(y),    W2V1(y)             ; V2W_01 = W2V_10   ; V2W_11 = W2V_11
+    addx.z          V2W0(z),    vf00z,      W2V2(x)     mr32.w      V2W1(w),    vf00w               ; V2W_02 = W2V_20   ; V2W_13 = 0.0f
+    addy.x          V2W1(x),    vf00x,      W2V0(y)     move.z      V2W2(z),    W2V2(z)             ; V2W_10 = W2V_01   ; V2W_22 = W2V_22
+    addy.z          V2W1(z),    vf00z,      W2V2(y)     mr32.w      V2W2(w),    vf00w               ; V2W_12 = W2V_21   ; V2W_23 = 0.0f
+    mulaw.xyz       acc,        vf00,       vf00w       move.w      V2W3(w),    vf00w               ; acc = 0,0,0       ; V2W_33 = 1.0f
+    msubax.xyz      acc,        V2W0(xyz),  W2V3(x)     lq.xyzw     SIN0(xyzw), VU1C_SinCos0(vi00)  ; acc -= z*V2W2
+    msubaz.xyz      acc,        V2W2(xyz),  W2V3(z)     lq.xyzw     SIN1(xyzw), VU1C_SinCos1(vi00)  ; acc -= y*V2W1
+    msuby.xyz       V2W3(xyz),  V2W1(xyz),  W2V3(y)     lq.xyzw     SIN2(xyzw), VU1C_SinCos2(vi00)  ; V2W3 = acc-x*V2W0
+    addw.z          SUV0(z),    SUV0(z),    vf00w       lq.xyzw     SIN3(xyzw), VU1C_SinCos3(vi00)
+    addw.xyz        SONE(xyz),  vf00xyz,    vf00w       ilw.x       SKPN,       VU1_COUNT(BASE)
+    add.xy          TSC1(xy),   SIN1(xy),   vf00xy      sq.xyzw     V2W0(xyzw), VU1_L2W+0(BASE)
+    add.xy          TSC2(xy),   SIN2(xy),   vf00xy      sq.xyzw     V2W1(xyzw), VU1_L2W+1(BASE)
+    add.xy          TSC3(xy),   SIN3(xy),   vf00xy      sq.xyzw     V2W2(xyzw), VU1_L2W+2(BASE)
+    ftoi12.xy       SUV0(xy),   SUV0(xy)                sq.xyzw     V2W3(xyzw), VU1_L2W+3(BASE)
+    ftoi12.xy       SUV1(xy),   SUV1(xy)                iaddiu      ADCB,   vi00,   0x7fff
+    ftoi12.xy       SUV2(xy),   SUV2(xy)                iaddiu      ADCB,   ADCB,   1
+    ftoi12.xy       SUV3(xy),   SUV3(xy)                iadd        SKPE,   VPTR,   SKPN
+    sub.z           VEC0(z),    vf00z,      vf00z       iadd        SKPE,   SKPE,   SKPN
+    sub.z           VEC1(z),    vf00z,      vf00z       ibeq        SKPN,   vi00,   SPRITE_XFORM_LOOP
+    nop                                                 iadd        SKPE,   SKPE,   SKPN
+    nop                                                 iadd        SKPE,   SKPE,   SKPN
+    
+; Skip over the first sprites just filling in the adc bit. We do this to help the main CPU out
+; in dealing with alignment issues. If a buffer is not aligned, we just back it up until it is
+; aligned, and skip over the garbage data.
+SPRITE_SKIP_LOOP:
+    nop                                                 isw.w       ADCB,   VU1_XYZ(VPTR)
+    nop                                                 iaddiu      VPTR,   VPTR,   VU1_VERT_SIZE
+    nop                                                 nop
+    nop                                                 ibne        VPTR,   SKPE,   SPRITE_SKIP_LOOP
+    nop                                                 nop
+
+; the main sprite transform loop
+SPRITE_XFORM_LOOP:
+    nop                                                 lq.xyzw     CNTR(xyzw), VU1_XYZ(VPTR)                   ;                   ; load the sprite center
+    nop                                                 lq.xyz      ROTS(xyz),  VU1_UV0(VPTR)                   ;                   ; load the sprite rotation, scale, and flags
+    nop                                                 lq.xyzw     SCLR(xyzw), VU1_RGB(VPTR)                   ;                   ; load the sprite color
+    mulaw.xyzw      acc,        L2V3(xyzw), vf00w       isw.w       ADCB,       (VU1_XYZ+VU1_VERT_SIZE*0)(VPTR) ; l2v*center        ; store adc bit into vert 0
+    maddaz.xyzw     acc,        L2V2(xyzw), CNTR(z)     isw.w       ADCB,       (VU1_XYZ+VU1_VERT_SIZE*1)(VPTR) ; l2v*center        ; store adc bit into vert 1
+    mulx.x          ROT2(x),    ROTS(x),    ROTS(x)     mtir        SFLG,       CNTR(w)                         ; rot2 = rot*rot    ; SFLG = ROTS.z
+    sub.x           ROTS(x),    vf00x,      ROTS(x)     sq.xyzw     SCLR(xyzw), (VU1_RGB+VU1_VERT_SIZE*1)(VPTR) ; rot = -rot        ; copy color into vert 1
+    madday.xyzw     acc,        L2V1(xyzw), CNTR(y)     sq.xyzw     SCLR(xyzw), (VU1_RGB+VU1_VERT_SIZE*2)(VPTR) ; l2v*center        ; copy color into vert 2
+    maddx.xyzw      CNTR(xyzw), L2V0(xyzw), CNTR(x)     sq.xyzw     SCLR(xyzw), (VU1_RGB+VU1_VERT_SIZE*3)(VPTR) ; l2v*center        ; copy color into vert 3
+    mulx.x          ROT4(x),    ROT2(x),    ROT2(x)     isw.w       SFLG,       (VU1_XYZ+VU1_VERT_SIZE*2)(VPTR) ; rot4 = rot2*rot2  ; copy active bit into vert 2
+    mulx.zw         TSC1(zw),   SIN1(zw),   ROTS(x)     isw.w       SFLG,       (VU1_XYZ+VU1_VERT_SIZE*3)(VPTR) ; (B,F,Jx,Nx)       ; copy active bit into vert 3
+    mulx.zw         TSC2(zw),   SIN2(zw),   ROTS(x)     sq.xyz      SUV0(xyz),  (VU1_UV0+VU1_VERT_SIZE*0)(VPTR) ; (C,G,Kx,Ox)       ; store corner0 into uv 0
+    mulx.zw         TSC3(zw),   SIN3(zw),   ROTS(x)     sq.xyz      SUV3(xyz),  (VU1_UV0+VU1_VERT_SIZE*1)(VPTR) ; (D,H,Lx,Px)       ; store corner3 into uv 1
+    adda.xy         acc,        SIN0(xy),   vf00xy      sq.xyz      SUV1(xyz),  (VU1_UV0+VU1_VERT_SIZE*2)(VPTR) ; acc=(A,B,?,?)     ; store corner1 into uv 2
+    mulx.x          ROT6(x),    ROT4(x),    ROT2(x)     sq.xyz      SUV2(xyz),  (VU1_UV0+VU1_VERT_SIZE*3)(VPTR) ; rot6 = rot4*rot2  ; store corner2 into uv 3
+    mulax.zw        acc,        SIN0(zw),   ROTS(x)     nop                                                     ; acc=(A,E,Ix,Mx)
+    maddax.xyzw     acc,        TSC1(xyzw), ROT2(x)     nop                                                     ; acc+=TSC1*rot2
+    maddax.xyzw     acc,        TSC2(xyzw), ROT4(x)     nop                                                     ; acc+=TSC2*rot4
+    maddx.xyzw      SINE(xyzw), TSC3(xyzw), ROT6(x)     nop                                                     ; res=acc+TSC3*rot6
+    muly.yz         ROTS(yz),   UNIS(yz),   ROTS(y)     nop                                                     ; (Scale,-Scale)
+    nop                                                 iaddiu      VPTR,   VPTR,   VU1_VERT_SIZE*4
+    nop                                                 nop
+    addaw.x         acc,        vf00x,      SINE(w)     nop                                                     ; (-S,?,?,?)
+    addaz.y         acc,        vf00y,      SINE(z)     nop                                                     ; (-S,S,?,?)
+    maddx.xy        VEC0(xy),   SONE(xy),   SINE(x)     nop                                                     ; (C-S,C+S,0,?)
+    addax.x         acc,        vf00x,      SINE(x)     nop                                                     ; (C,?,?,?)
+    adday.y         acc,        vf00y,      SINE(y)     nop                                                     ; (C,-C,?,?)
+    maddz.xy        VEC1(xy),   SONE(xy),   SINE(z)     nop                                                     ; (C+S,S-C,0,?)
+    mulay.xyz       acc,        VEC0(xyz),  ROTS(y)     nop                                                     ; acc=vec0*scale
+    maddw.xyz       CRN0(xyz),  CNTR(xyz),  vf00w       nop                                                     ; crn0=acc+cntr
+    mulaz.xyz       acc,        VEC0(xyz),  ROTS(z)     nop                                                     ; acc=vec0*-scale
+    maddw.xyz       CRN2(xyz),  CNTR(xyz),  vf00w       nop                                                     ; crn2=acc+cntr
+    mulay.xyz       acc,        VEC1(xyz),  ROTS(y)     nop                                                     ; acc=vec1*scale
+    maddw.xyz       CRN1(xyz),  CNTR(xyz),  vf00w       nop                                                     ; crn1=acc+cntr
+    mulaz.xyz       acc,        VEC1(xyz),  ROTS(z)     nop                                                     ; acc=vec1*-scale
+    maddw.xyz       CRN3(xyz),  CNTR(xyz),  vf00w       sq.xyz      CRN0(xyz),  (VU1_XYZ-VU1_VERT_SIZE*4)(VPTR) ; cnr0=acc+cntr
+    nop                                                 sq.xyz      CRN2(xyz),  (VU1_XYZ-VU1_VERT_SIZE*1)(VPTR)
+    nop                                                 sq.xyz      CRN1(xyz),  (VU1_XYZ-VU1_VERT_SIZE*2)(VPTR)
+    nop                                                 ibne        VPTR, ENDM, SPRITE_XFORM_LOOP
+    nop                                                 sq.xyz      CRN3(xyz),  (VU1_XYZ-VU1_VERT_SIZE*3)(VPTR)
+    
+    nop                                                 b           BRANCH_CLIPPER_MCODE
+    nop                                                 nop
+
+#undef L2V0
+#undef L2V1
+#undef L2V2
+#undef L2V3
+#undef SIN0
+#undef SIN1
+#undef SIN2
+#undef SIN3
+#undef SONE
+#undef UNIS
+#undef SUV0
+#undef SUV1
+#undef SUV2
+#undef SUV3
+#undef W2V0
+#undef W2V1
+#undef W2V2
+#undef W2V3
+#undef V2W0
+#undef V2W1
+#undef V2W2
+#undef V2W3
+#undef CNTR
+#undef ROTS
+#undef ROT2
+#undef ROT4
+#undef ROT6
+#undef SCLR
+#undef SINE
+#undef VEC0
+#undef VEC1
+#undef CRN0
+#undef CRN1
+#undef CRN2
+#undef CRN3
+#undef TSC1
+#undef TSC2
+#undef TSC3
+#undef VPTR
+#undef ENDM
+#undef ADCB
+#undef SFLG
+#undef SKPN
+#undef SKPE
+
+
+//==============================================================================
+//  
+//  VU1_VEL_SPRITE_XFORM:
+//
+//      This routine will take points and convert them into velocity-oriented
+//      quads. This is useful for effects that you don't necessarily want to be
+//      front facing, but you do want them to be oriented to the camera--such as
+//      sparks.
+//
+//      load sprite position and active flag
+//      load sprite velocity and scale
+//      load color
+//      position = L2W * position
+//      Scale   *= UniScale constant
+//      Right    = ViewDir.Cross( Velocity )
+//      V0       = P + Right*Scale - Velocity*Scale
+//      V1       = P - Right*Scale - Velocity*Scale
+//      V2       = P - Right*Scale + Velocity*Scale
+//      V3       = P + Right*Scale + Velocity*Scale
+//      Copy color from slot 0 to slots 1, 2, 3
+//      Store corners 0, 1, 2, 3 (they will be in view space)
+//      Store Active flag in 2, 3
+//      Store ADC bit in 0, 1
+//      Strip is V0, V1, V3, V2
+//
+//      Then we run through the normal clipper and material code. Since the
+//      clipper will want to transform from local space to world space, and our
+//      points are already in world space, we will cheat it by storing
+//      identity as the local-to-world.
+//
+//      Inputs:
+//          Per quad:
+//          vector3     x, y, z, active
+//          vector3     vel.x, vel.y, vel.z, scale
+//          u8[4]       Color
+//          Per call:
+//          matrix4     W2V (hijacking some of the constant vu1 data)
+//          vector4     0, UniScale, SpriteCount*4 | flags, 0x80 | flags
+//          matrix4     L2W
+//
+//==============================================================================
+
+VU1_VEL_SPRITE_XFORM:
+
+#define W2V0( x )                   TF00( x )       // col 0 of w2v matrix
+#define W2V1( x )                   TF01( x )       // col 1 of w2v matrix
+#define W2V2( x )                   TF02( x )       // col 2 of w2v matrix
+#define ZDIR( x )                   TF03( x )       // Direction of view z in world space
+#define IDN0( x )                   TF04( x )       // col0 of identity matrix
+#define IDN1( x )                   TF05( x )       // col1 of identity matrix
+#define IDN2( x )                   TF06( x )       // col2 of identity matrix
+#define SUV0( x )                   TF07( x )       // uv0
+#define SUV1( x )                   TF08( x )       // uv1
+#define SUV2( x )                   TF09( x )       // uv2
+#define SUV3( x )                   TF10( x )       // uv3
+#define UNIS( x )                   TF11( x )       // 1, UniScale
+#define SPOS( x )                   TF12( x )       // sprite position
+#define SVEL( x )                   TF13( x )       // sprite velocity
+#define SCLR( x )                   TF14( x )       // sprite color
+#define UPVC( x )                   TF15( x )       // up vector
+#define VEC0( x )                   TF16( x )       // corner 0
+#define VEC1( x )                   TF17( x )       // corner 1
+#define VEC2( x )                   TF18( x )       // corner 2
+#define VEC3( x )                   TF19( x )       // corner 3
+#define VMX0( x )                   TF20( x )       // velocity matrix
+#define VMX1( x )                   TF21( x )       // velocity matrix
+#define VMX2( x )                   TF22( x )       // velocity matrix
+#define VDOT( x )                   TF04( x )       // temp for calculating dot product
+
+#define VPTR                        TI00            // pointer to vertices
+#define ENDM                        TI01            // end marker
+#define ADCB                        TI02            // adc bit
+#define SKPN                        TI03            // number of verts to skip over (this is used to help solve alignment issues)
+#define SKPE                        TI04            // end marker for skipping over verts
+
+    sub.xyz         SUV2(xyz),  vf00xyz,    vf00xyz     xtop        BASE
+    sub.xyz         SUV1(xyz),  vf00xyz,    vf00xyz     lq.xyzw     VMX2(xyzw), VU1_L2W+6(BASE)
+    sub.xyz         SUV0(xyz),  vf00xyz,    vf00xyz     lq.xyzw     L2W3(xyzw), VU1_L2W+3(BASE)
+    addw.xyz        SUV3(xyz),  vf00xyz,    vf00w       lq.xyzw     L2W2(xyzw), VU1_L2W+2(BASE)
+    addw.yz         SUV2(yz),   SUV2(yz),   vf00w       lq.xyzw     L2W1(xyzw), VU1_L2W+1(BASE)
+    addw.z          SUV1(z),    SUV1(z),    vf00w       lq.xyzw     L2W0(xyzw), VU1_L2W+0(BASE)
+    addw.xz         SUV0(xz),   SUV0(xz),   vf00w       lq.xyzw     VMX1(xyzw), VU1_L2W+5(BASE)
+    mulaz.xyz       acc,        L2W2(xyz),  VMX2(z)     lq.xyzw     VMX0(xyzw), VU1_L2W+4(BASE)
+    madday.xyz      acc,        L2W1(xyz),  VMX2(y)     ilw.z       INST,   VU1_COUNT(BASE)
+    maddx.xyz       VMX2(xyz),  L2W0(xyz),  VMX2(x)     iaddiu      CLIP, vi00, VU1_BUFFER_0
+    mulaz.xyz       acc,        L2W2(xyz),  VMX1(z)     iaddiu      NBUF, vi00, VU1_BUFFER_2
+    madday.xyz      acc,        L2W1(xyz),  VMX1(y)     isw.x       CLIP, VU1_CLIP_STORAGE+3(CLIP)
+    maddx.xyz       VMX1(xyz),  L2W0(xyz),  VMX1(x)     isw.y       BASE, VU1_CLIP_STORAGE+3(CLIP)
+    mulaz.xyz       acc,        L2W2(xyz),  VMX0(z)     isw.z       NBUF, VU1_CLIP_STORAGE+3(CLIP)
+    madday.xyz      acc,        L2W1(xyz),  VMX0(y)     lq.y        UNIS(y),    VU1_COUNT(BASE)
+    maddx.xyz       VMX0(xyz),  L2W0(xyz),  VMX0(x)     iaddiu      ITMP,   vi00,   0x7f
+    sub.xyz         IDN0(xyz),  vf00xyz,    vf00xyz     iand        NUMV,   INST,   ITMP
+    sub.xyz         IDN1(xyz),  vf00xyz,    vf00xyz     iadd        VPTR,   vi00,   BASE
+    sub.xyz         IDN2(xyz),  vf00xyz,    vf00xyz     iadd        ENDM,   VPTR,   NUMV
+    ftoi12.xy       SUV3(xy),   SUV3(xy)                iadd        ENDM,   ENDM,   NUMV
+    addw.x          IDN0(x),    IDN0(x),    vf00w       iadd        ENDM,   ENDM,   NUMV
+    addw.y          IDN1(y),    IDN1(y),    vf00w       iadd        ENDM,   ENDM,   NUMV
+    addw.z          IDN2(z),    IDN2(z),    vf00w       lq.xyzw     W2V0(xyzw), VU1C_W2V0(vi00)
+    ftoi12.xy       SUV2(xy),   SUV2(xy)                lq.xyzw     W2V1(xyzw), VU1C_W2V1(vi00)
+    ftoi12.xy       SUV1(xy),   SUV1(xy)                lq.xyzw     W2V2(xyzw), VU1C_W2V2(vi00)
+    ftoi12.xy       SUV0(xy),   SUV0(xy)                iaddiu      ADCB,   vi00,   0x7fff
+    addz.x          ZDIR(x),    vf00x,      W2V0(z)     iaddiu      ADCB,   ADCB,   1
+    addz.y          ZDIR(y),    vf00y,      W2V1(z)     sq.xyzw     vf00xyzw,   VU1_L2W+3(BASE)
+    addz.z          ZDIR(z),    vf00z,      W2V2(z)     ilw.x       SKPN,   VU1_COUNT(BASE)
+    addw.x          UNIS(x),    vf00x,      vf00w       sq.xyzw     IDN0(xyzw), VU1_L2W+0(BASE)
+    nop                                                 sq.xyzw     IDN1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 sq.xyzw     IDN2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 ibeq        SKPN,   vi00,   VEL_SPRITE_LOOP
+    nop                                                 iadd        SKPE,   VPTR,   SKPN
+    nop                                                 iadd        SKPE,   SKPE,   SKPN
+    nop                                                 iadd        SKPE,   SKPE,   SKPN
+    nop                                                 iadd        SKPE,   SKPE,   SKPN
+
+; Skip over the first sprites just filling in the adc bit. We do this to help the main CPU out
+; in dealing with alignment issues. If a buffer is not aligned, we just back it up until it is
+; aligned, and skip over the garbage data.
+VEL_SPRITE_SKIP_LOOP:
+    nop                                                 isw.w       ADCB,   VU1_XYZ(VPTR)
+    nop                                                 iaddiu      VPTR,   VPTR,   VU1_VERT_SIZE
+    nop                                                 nop
+    nop                                                 ibne        VPTR,   SKPE,   VEL_SPRITE_SKIP_LOOP
+    nop                                                 nop
+
+; the main sprite transform loop
+VEL_SPRITE_LOOP:
+    nop                                                 lq.xyzw     SVEL(xyzw), VU1_UV0(VPTR)                       ;               ; load velocity
+    nop                                                 lq.xyzw     SPOS(xyzw), VU1_XYZ(VPTR)                       ;               ; load position
+    nop                                                 lq.xyzw     SCLR(xyzw), VU1_RGB(VPTR)                       ;               ; load color
+    nop                                                 isw.w       ADCB,       (VU1_XYZ+VU1_VERT_SIZE*0)(VPTR)     ; xform vel     ; store adc into vert 0
+    mulaz.xyz       acc,        VMX2(xyz),  SVEL(z)     isw.w       ADCB,       (VU1_XYZ+VU1_VERT_SIZE*1)(VPTR)     ; xform vel     ; store adc into vert 1
+    madday.xyz      acc,        VMX1(xyz),  SVEL(y)     sq.w        SPOS(w),    (VU1_XYZ+VU1_VERT_SIZE*2)(VPTR)     ; xform vel     ; copy active into vert 2
+    maddx.xyz       SVEL(xyz),  VMX0(xyz),  SVEL(x)     sq.w        SPOS(w),    (VU1_XYZ+VU1_VERT_SIZE*3)(VPTR)     ; xform vel     ; copy active into vert 3
+    muly.w          SVEL(w),    SVEL(w),    UNIS(y)     sq.xyzw     SCLR(xyzw), (VU1_RGB+VU1_VERT_SIZE*1)(VPTR)     ; uniscl*scale  ; copy color into vert 1
+    mulaw.xyzw      acc,        L2W3(xyzw), vf00w       sq.xyzw     SCLR(xyzw), (VU1_RGB+VU1_VERT_SIZE*2)(VPTR)     ; xform pos     ; copy color into vert 2
+    maddaz.xyzw     acc,        L2W2(xyzw), SPOS(z)     sq.xyzw     SCLR(xyzw), (VU1_RGB+VU1_VERT_SIZE*3)(VPTR)     ; xform pos     ; copy color into vert 3
+    mul.xyz         VDOT(xyz),  SVEL(xyz),  SVEL(xyz)   sq.xyz      SUV0(xyz),  (VU1_UV0+VU1_VERT_SIZE*0)(VPTR)     ; dot vel       ; store corner 0 uv into vert 0
+    madday.xyzw     acc,        L2W1(xyzw), SPOS(y)     sq.xyz      SUV1(xyz),  (VU1_UV0+VU1_VERT_SIZE*1)(VPTR)     ; xform pos     ; store corner 1 uv into vert 1
+    maddx.xyzw      SPOS(xyzw), L2W0(xyzw), SPOS(x)     sq.xyz      SUV3(xyz),  (VU1_UV0+VU1_VERT_SIZE*2)(VPTR)     ; xform pos     ; store corner 3 uv into vert 2
+    nop                                                 sq.xyz      SUV2(xyz),  (VU1_UV0+VU1_VERT_SIZE*3)(VPTR)     ;               ; store covner 2 uv into vert 3
+    adday.x         acc,        VDOT(x),    VDOT(y)     iaddiu      VPTR, VPTR, VU1_VERT_SIZE*4                     ; dot vel       ; vptr++
+    maddz.x         VDOT(x),    UNIS(x),    VDOT(z)     nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 rsqrt       q,  vf00w,  VDOT(x)                             ;               ; 1/sqrt(dot)
+    nop                                                 waitq
+    mulq.xyz        SVEL(xyz),  SVEL(xyz),  q           nop                                                         ; Vel.Normalize
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    opmula.xyz      acc,        ZDIR(xyz),  SVEL(xyz)   nop                                                         ; calc up vec
+    opmsub.xyz      UPVC(xyz),  SVEL(xyz),  ZDIR(xyz)   nop                                                         ; calc up vec
+    nop                                                 nop
+    adda.xyz        acc,        vf00xyz,    SPOS(xyz)   nop                                                         ; calc corner 0
+    maddaw.xyz      acc,        SVEL(xyz),  SVEL(w)     nop                                                         ; calc corner 0
+    msubw.xyz       VEC0(xyz),  UPVC(xyz),  SVEL(w)     nop                                                         ; calc corner 0
+    adda.xyz        acc,        vf00xyz,    SPOS(xyz)   nop                                                         ; calc corner 1
+    msubaw.xyz      acc,        SVEL(xyz),  SVEL(w)     nop                                                         ; calc corner 1
+    msubw.xyz       VEC1(xyz),  UPVC(xyz),  SVEL(w)     nop                                                         ; calc corner 1
+    adda.xyz        acc,        vf00xyz,    SPOS(xyz)   nop                                                         ; calc corner 2
+    msubaw.xyz      acc,        SVEL(xyz),  SVEL(w)     nop                                                         ; calc corner 2
+    maddw.xyz       VEC2(xyz),  UPVC(xyz),  SVEL(w)     nop                                                         ; calc corner 2
+    adda.xyz        acc,        vf00xyz,    SPOS(xyz)   nop                                                         ; calc corner 3
+    maddaw.xyz      acc,        SVEL(xyz),  SVEL(w)     nop                                                         ; calc corner 3
+    maddw.xyz       VEC3(xyz),  UPVC(xyz),  SVEL(w)     sq.xyz      VEC0(xyz),  (VU1_XYZ-VU1_VERT_SIZE*4)(VPTR)     ; calc corner 3 ; store corner 0 into vert 0
+    nop                                                 sq.xyz      VEC1(xyz),  (VU1_XYZ-VU1_VERT_SIZE*3)(VPTR)                     ; store corner 1 into vert 1
+    nop                                                 sq.xyz      VEC2(xyz),  (VU1_XYZ-VU1_VERT_SIZE*1)(VPTR)                     ; store corner 2 into vert 3
+    nop                                                 ibne        VPTR, ENDM, VEL_SPRITE_LOOP                                     ; loop
+    nop                                                 sq.xyz      VEC3(xyz),  (VU1_XYZ-VU1_VERT_SIZE*2)(VPTR)                     ; store corner 3 into vert 2
+                                                        
+    nop                                                 b           BRANCH_CLIPPER_MCODE
+    nop                                                 nop
+    
+#undef W2V0
+#undef W2V1
+#undef W2V2
+#undef ZDIR
+#undef IDN0
+#undef IDN1
+#undef IDN2
+#undef SUV0
+#undef SUV1
+#undef SUV2
+#undef SUV3
+#undef UNIS
+#undef SPOS
+#undef SVEL
+#undef SCLR
+#undef UPVC
+#undef VEC0
+#undef VEC1
+#undef VEC2
+#undef VEC3
+#undef VMX0
+#undef VMX1
+#undef VMX2
+#undef VDOT
+#undef VPTR
+#undef ENDM
+#undef ADCB
+#undef SKPN
+#undef SKPE
+
+//==============================================================================
+//  
+//  VU1_DISTORT_SPRITE_XFORM:
+//
+//      This routine will take points and convert them into front facing sprites
+//      with a distortion in the middle. This can be used for doing distortion
+//      effects of the environment such as heat haze behind a rocket trail or
+//      over a flame.
+//
+//      load sprite position
+//      center  = l2v * position
+//      rot     = -Rot
+//      Sine    = sin( Rot )
+//      Cosine  = cos( Rot )
+//      Scale  *= UniScale constant
+//      TmpV0   = (Cosine-Sine, Sine+Cosine, 0)
+//      TmpV1   = (Cosine+Sine, Sine-Cosine, 0)
+//      Corner0 = TmpV0*Scale + center
+//      Corner1 = TmpV1*Scale + center
+//      Corner2 = TmpV0*(-Scale) + center
+//      Corner3 = TmpV1*(-Scale) + center
+//
+//==============================================================================
+
+
+VU1_DISTORT_SPRITE_XFORM:
+
+    nop[e]                                              nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 nop
+
+#if 0
+    nop                                                 lq.xyzw     SPOS(xyzw), ???(VPTR)       ;                   ; load the sprite center
+    nop                                                 lq.xyz      ROTS(xyz),  VU1_UV0(VPTR)   ;                   ; load the sprite rotation, scale, and flags
+    nop                                                 lq.xyzw     SRGB(xyzw), ???(VPTR)       ;                   ; load the sprite color
+    mulaw.xyzw      acc,        L2V3(xyzw), vf00w       nop                                     ; l2v*center        ;
+    maddaz.xyzw     acc,        L2V2(xyzw), SPOS(z)     sq.w        SPOS(w),    FinalPos2(VPTR) ; l2v*center        ; store active into vert 2
+    mulx.x          ROT2(x),    ROTS(x),    ROTS(x)     sq.w        SPOS(w),    FinalPos3(VPTR) ; rot2 = rot*rot    ; store active into vert 3
+    sub.x           ROTS(x),    vf00x,      ROTS(x)     sq.w        SPOS(w),    FinalPos6(VPTR) ; rot = -rot        ; store active into vert 6
+    madday.xyzw     acc,        L2V1(xyzw), SPOS(y)     sq.w        SPOS(w),    FinalPos7(VPTR) ; l2v*center        ; store active into vert 7
+    maddx.xyzw      SPOS(xyzw), L2V0(xyzw), SPOS(x)     isw.w       ADCB,       FinalPos0(VPTR) ; l2v*center        ; store adc into vert0
+    mulx.x          ROT4(x),    ROT2(x),    ROT2(x)     isw.w       ADCB,       FinalPos1(VPTR) ; rot4 = rot2*rot2  ; store adc into vert1
+    mulx.zw         TSC1(zw),   SIN1(zw),   ROTS(x)     isw.w       ADCB,       FinalPos4(VPTR) ; (B,F,Jx,Nx)       ; store adc into vert4
+    mulx.zw         TSC2(zw),   SIN2(zw),   ROTS(x)     isw.w       ADCB,       FinalPos5(VPTR) ; (C,G,Kx,Ox)       ; store adc into vert5
+    mulx.zw         TSC3(zw),   SIN3(zw),   ROTS(x)     sq.xyz      SRGB(xyz),  FinalRgb0(VPTR) ; (D,H,Lx,Px)       ; store rgb into vert0
+    adda.xy         acc,        SIN0(xy),   vf00xy      sq.xyz      SRGB(xyz),  FinalRgb1(VPTR) ; acc=(A,B,?,?)     ; store rgb into vert1
+    mulx.x          ROT6(x),    ROT4(x),    ROT2(x)     sq.xyzw     SRGB(xyzw), FinalRgb2(VPTR) ; rot6 = rot4*rot2  ; store rgba into vert2
+    mulax.zw        acc,        SIN0(zw),   ROTS(x)     sq.xyz      SRGB(xyz),  FinalRgb3(VPTR) ; acc=(A,E,Ix,Mx)   ; store rgb into vert3
+    maddax.xyzw     acc,        TSC1(xyzw), ROT2(x)     sq.xyz      SRGB(xyz),  FinalRgb4(VPTR) ; acc+=TSC1*rot2    ; store rgb into vert4
+    maddax.xyzw     acc,        TSC2(xyzw), ROT4(x)     sq.xyz      SRGB(xyz),  FinalRgb5(VPTR) ; acc+=TSC2*rot4    ; store rgb into vert5
+    maddx.xyzw      SINE(xyzw), TSC3(xyzw), ROT6(x)     sq.xyzw     SRGB(xyzw), FinalRgb6(VPTR) ; res=acc+TSC3*rot6 ; store rgba into vert 6
+
+/*
+    mulx.x          ROT6(x),    ROT4(x),    ROT2(x)     sq.xyz      SUV2(xyz),  (VU1_UV0+VU1_VERT_SIZE*3)(VPTR) ; rot6 = rot4*rot2  ; store corner2 into uv 3
+    mulax.zw        acc,        SIN0(zw),   ROTS(x)     nop                                                     ; acc=(A,E,Ix,Mx)
+    maddax.xyzw     acc,        TSC1(xyzw), ROT2(x)     nop                                                     ; acc+=TSC1*rot2
+    maddax.xyzw     acc,        TSC2(xyzw), ROT4(x)     nop                                                     ; acc+=TSC2*rot4
+    maddx.xyzw      SINE(xyzw), TSC3(xyzw), ROT6(x)     nop                                                     ; res=acc+TSC3*rot6
+    muly.yz         ROTS(yz),   UNIS(yz),   ROTS(y)     nop                                                     ; (Scale,-Scale)
+    nop                                                 iaddiu      VPTR,   VPTR,   VU1_VERT_SIZE*4
+    nop                                                 nop
+    addaw.x         acc,        vf00x,      SINE(w)     nop                                                     ; (-S,?,?,?)
+    addaz.y         acc,        vf00y,      SINE(z)     nop                                                     ; (-S,S,?,?)
+    maddx.xy        VEC0(xy),   SONE(xy),   SINE(x)     nop                                                     ; (C-S,C+S,0,?)
+    addax.x         acc,        vf00x,      SINE(x)     nop                                                     ; (C,?,?,?)
+    adday.y         acc,        vf00y,      SINE(y)     nop                                                     ; (C,-C,?,?)
+    maddz.xy        VEC1(xy),   SONE(xy),   SINE(z)     nop                                                     ; (C+S,S-C,0,?)
+    mulay.xyz       acc,        VEC0(xyz),  ROTS(y)     nop                                                     ; acc=vec0*scale
+    maddw.xyz       CRN0(xyz),  CNTR(xyz),  vf00w       nop                                                     ; crn0=acc+cntr
+    mulaz.xyz       acc,        VEC0(xyz),  ROTS(z)     nop                                                     ; acc=vec0*-scale
+    maddw.xyz       CRN2(xyz),  CNTR(xyz),  vf00w       nop                                                     ; crn2=acc+cntr
+    mulay.xyz       acc,        VEC1(xyz),  ROTS(y)     nop                                                     ; acc=vec1*scale
+    maddw.xyz       CRN1(xyz),  CNTR(xyz),  vf00w       nop                                                     ; crn1=acc+cntr
+    mulaz.xyz       acc,        VEC1(xyz),  ROTS(z)     nop                                                     ; acc=vec1*-scale
+    maddw.xyz       CRN3(xyz),  CNTR(xyz),  vf00w       sq.xyz      CRN0(xyz),  (VU1_XYZ-VU1_VERT_SIZE*4)(VPTR) ; cnr0=acc+cntr
+    nop                                                 sq.xyz      CRN2(xyz),  (VU1_XYZ-VU1_VERT_SIZE*1)(VPTR)
+    nop                                                 sq.xyz      CRN1(xyz),  (VU1_XYZ-VU1_VERT_SIZE*2)(VPTR)
+    nop                                                 ibne        VPTR, ENDM, SPRITE_XFORM_LOOP
+    nop                                                 sq.xyz      CRN3(xyz),  (VU1_XYZ-VU1_VERT_SIZE*3)(VPTR)
+*/
+    
+    
+;   mulaw.xyzw      acc,        L2W3(xyzw), vf00w       isw.w       ADCB,       (VU1_XYZ+VU1_VERT_SIZE*0)(VPTR)     ; xform pos     ; store adc into vert0
+
+#endif
+
+VU1_SPRITE_XFORM_CODE_END:
+

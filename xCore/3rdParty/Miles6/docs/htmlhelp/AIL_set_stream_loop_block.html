@@ -1,0 +1,59 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_stream_loop_block</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="arranges for a sub-block of a stream to be looped.">
+<meta name="ms-hkwd" content="AIL_set_stream_loop_block">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_stream_loop_block</h1>
+<p>The function  <b>AIL_set_stream_loop_block</b> arranges for a sub-block of a stream to be looped.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_stream_loop_block.html" class=trn>AIL_set_stream_loop_block</a>(</b>
+<b>&nbsp&nbsp<a href="HSTREAM.html" class=trn>HSTREAM</a>&nbsp</b><i>stream</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>loop_start_offset</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>loop_end_offset</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>stream</i></dt>
+<dd>indicates the stream to loop.</dd>
+<dt><i>loop_start_offset</i></dt>
+<dd>should be set to the offset of where looping should begin. If the stream is compressed, this offset is specified in "compressed" bytes.</dd>
+<dt><i>loop_end_offset</i></dt>
+<dd>should be set to the offset of where looping should end. If the stream is compressed, this offset is specified in "compressed" bytes.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>By default, looping a sound will loop the entire stream. This function allows you to loop a smaller sub-section of the stream. </p><p> If the stream data is compressed, then the offset passed to this function is in "compressed" bytes. </p><p> A value of zero for loop_start_offset indicates the beginning of the stream, and a value of -1 for loop_end_offset indicates the end of the stream, regardless of its actual length.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Stream436kmy.html">Digital Audio Streaming Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_set_stream_loop_count.html">AIL_set_stream_loop_count</a><br>
+<b>Related Basic Types:</b>
+<a href="HSTREAM.html">HSTREAM</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

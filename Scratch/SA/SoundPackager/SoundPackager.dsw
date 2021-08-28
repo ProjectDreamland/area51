@@ -1,0 +1,113 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "*SoundPackager*"=.\SoundPackager.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    SoundPackager
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name CommandLine
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name crt0_TextMode
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name x_files
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Parsing
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "CommandLine"=..\..\xCore\Auxiliary\commandline\CommandLine.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    CommandLine
+    ..\..\xcore\auxiliary\commandline
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Parsing"=..\..\xCore\Auxiliary\parsing\Parsing.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    Parsing
+    ..\..\xcore
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "crt0_TextMode"=..\..\xCore\Auxiliary\crt0_textmode\crt0_TextMode.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    crt0_TextMode
+    ..\..\xcore\auxiliary\crt0_textmode
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "x_files"=..\..\xCore\x_files\x_files.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    x_files
+    ..\..\xcore
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    SoundPackager
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

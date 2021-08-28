@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_lock_channel</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns an individual MIDI channel number to the application for direct MIDI message transmission, preventing any XMIDI sequence from utilizing that physical channel until its release with AIL_release_channel.">
+<meta name="ms-hkwd" content="AIL_lock_channel">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_lock_channel</h1>
+<p>The function  <b>AIL_lock_channel</b> returns an individual MIDI channel number to the application for direct MIDI message transmission, preventing any XMIDI sequence from utilizing that physical channel until its release with AIL_release_channel.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_lock_channel.html" class=trn>AIL_lock_channel</a>(</b>
+<b>&nbsp&nbsp<a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a>&nbsp</b><i>mdi</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>mdi</i></dt>
+<dd></dd>
+</dl>
+<h4>Returns</h4>
+<p>A physical MIDI channel number from 1 to 16, or 0 if no unlocked channels were available.</p>
+<h4>Discussion</h4>
+<p>Parameters mdi specifies the driver which is to supply the locked physical channel. </p><p> MIDI channel numbers are passed to and from the MSS API in 1-based format (1-16), rather than the 0-based format (0-15) used when composing MIDI Status byte values. </p><p> This function is useful for "one-shot" sound effects which require a MIDI channel to be temporarily set aside from the normal background playback process. When accessed from within an XMIDI sequence by use of the XMIDI Channel Lock controller (110), channel locking is invaluable in overlaying sound effect sequences over a "background" score. See the Extended MIDI Specification <i><a href="Extended MIDI Techniid0f6g.html#Section">Section</a></i> for an overview of channel locking, remapping, and multiple-sequence playback. </p><p> <a href="AIL_lock_channel.html">AIL_lock_channel</a> attempts to return the highest MIDI channel number recognized by the driver's supported synthesizer which has the fewest actively playing notes. Channels which are already locked will not be returned. Channels which have been "protected" against locking by use of the XMIDI Channel Lock Protect controller (111), will not be returned unless all other channels are locked. If no available MIDI channels are eligible for locking under these criteria, the function returns a value of 0. Otherwise, the returned channel number may range from 1 to 16, but is normally restricted to the range 2 through 9 for compatibility with a broader range of synthesizers. </p><p> Before the channel number is returned to the application, the MIDI Sustain (Hold1) controller (64) in the channel is forced to its "off" condition, and all notes playing in the channel are silenced. <i>No other controller values or MIDI messages are initialized!</i> It is essential for an application (or a sequence) which has just received a locked channel to initialize <i>all</i> MIDI parameters, including MIDI controllers, the XMIDI Patch Bank Select controller and MIDI Program Change number, and the MIDI pitch wheel, to appropriate values. </p><p> The application should use <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a> with a NULL HSEQUENCE parameter to send MIDI and XMIDI Channel Voice messages on the locked channel. No other API function will communicate directly with a locked channel. The locked channel should be returned to the driver with <a href="AIL_release_channel.html">AIL_release_channel</a> as soon as it is no longer needed by the application.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Sections:</b>
+<a href="XMIDI Channel Lock (110).html">XMIDI Channel Lock (110)</a>, <a href="XMIDI Channel Lock Pomctpa.html">XMIDI Channel Lock Protect (111)</a><br>
+<b>Related Functions:</b>
+<a href="AIL_lock_channel.html">AIL_lock_channel</a>, <a href="AIL_release_channel.html">AIL_release_channel</a>, <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a><br>
+<b>Related Basic Types:</b>
+<a href="HMDIDRIVER.html">HMDIDRIVER</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

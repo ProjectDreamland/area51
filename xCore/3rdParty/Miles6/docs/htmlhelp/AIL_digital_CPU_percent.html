@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_digital_CPU_percent</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the percentage of total CPU being spent in the Miles digital processing loop.">
+<meta name="ms-hkwd" content="AIL_digital_CPU_percent">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_digital_CPU_percent</h1>
+<p>The function  <b>AIL_digital_CPU_percent</b> returns the percentage of total CPU being spent in the Miles digital processing loop.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_digital_CPU_percent.html" class=trn>AIL_digital_CPU_percent</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>indicates the driver that you want to profile.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Percentage from 0 to 100 of the CPU that was used by the specified digital driver since the last time you called <a href="AIL_digital_CPU_percent.html">AIL_digital_CPU_percent</a>.</p>
+<h4>Discussion</h4>
+<p>This includes mixing, format conversion, on-the-fly IMA ADPCM or MPEG Layer 3 decompression, and filling of the system buffers.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_DLS_get_reverb.html">AIL_DLS_get_reverb</a>, <a href="AIL_DLS_set_reverb.html">AIL_DLS_set_reverb</a>, <a href="AIL_digital_CPU_percent.html">AIL_digital_CPU_percent</a>, <a href="AIL_quick_set_reverb.html">AIL_quick_set_reverb</a>, <a href="AIL_sample_reverb.html">AIL_sample_reverb</a>, <a href="AIL_set_sample_reverb.html">AIL_set_sample_reverb</a>, <a href="AIL_set_stream_reverb.html">AIL_set_stream_reverb</a>, <a href="AIL_stream_reverb.html">AIL_stream_reverb</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

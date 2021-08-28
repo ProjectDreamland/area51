@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_sample_playback_rate</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets a sample's playback rate in hertz.">
+<meta name="ms-hkwd" content="AIL_set_sample_playback_rate">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_sample_playback_rate</h1>
+<p>The function  <b>AIL_set_sample_playback_rate</b> sets a sample's playback rate in hertz.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_sample_playbug1eaa.html" class=trn>AIL_set_sample_playback_rate</a>(</b>
+<b>&nbsp&nbsp<a href="HSAMPLE.html" class=trn>HSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>playback_rate</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample whose playback rate is to be set.</dd>
+<dt><i>playback_rate</i></dt>
+<dd>specifies the number of samples per second at which to play the sample data.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>An individual audio data sample may be played by the application at any desired rate , which imply that a number of sample points are skipped or repeated during playback, respectively. Undersampling is used when the playback rate is greater than the recorded rate, and results in a "fast-forward" effect because a number of sample points must be skipped to achieve the higher playback rate. Conversely, oversampling occurs when the playback rate is lower than the recorded rate. In this case, some sample bytes or words must be played more than once before moving on to the next sample point, causing a "dragging" or slowdown effect. </p><p> Internally, MSS uses oversampling and undersampling to resolve differences between application data rates and hardware rates. Distortion due to oversampling, in particular, may result when low-frequency data is played at high hardware data rates. Abrupt transitions between repeated sample point values can introduce unwanted high-frequency components which are not effectively attenuated by the hardware's antialiasing filters. On the other hand, the same antialiasing filters may clip treble frequencies from the sample data if the hardware's rate is significantly lower than the application's data rate. </p><p> For the reasons mentioned above, the best audio quality will always be achieved when the driver's hardware data rate is matched as closely as possible to the application's sample data rate. If most of an application's sample data was recorded at a rate of 11025 Hz, for example, it would be a good idea to use 11025 Hz in the call to <a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a>. This will ensure that most of the samples are played without introducing distortion or attenuating treble frequencies. Any samples played at frequencies other than 11025 Hz will be undersampled or oversampled to conform to the hardware rate of 11025 Hz established by the <a href="AIL_set_preference.html">AIL_set_preference</a> call. If the hardware or driver in use does not support a 11025 Hz rate, the closest supported hardware rate will be selected, and the application's data will be resampled accordingly. </p><p> It is not necessary to call this function if <a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a> or <a href="AIL_set_sample_file.html">AIL_set_sample_file</a> is used to play memory-resident .VOC or .WAV files directly. </p><p> Example files that use this function: SSTEST.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a>, <a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a>, <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a>, <a href="AIL_sample_playback_rate.html">AIL_sample_playback_rate</a>, <a href="AIL_set_named_sample_file.html">AIL_set_named_sample_file</a>, <a href="AIL_set_preference.html">AIL_set_preference</a>, <a href="AIL_set_sample_address.html">AIL_set_sample_address</a>, <a href="AIL_set_sample_file.html">AIL_set_sample_file</a>, <a href="AIL_set_sample_type.html">AIL_set_sample_type</a><br>
+<b>Related Basic Types:</b>
+<a href="HSAMPLE.html">HSAMPLE</a>, <a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

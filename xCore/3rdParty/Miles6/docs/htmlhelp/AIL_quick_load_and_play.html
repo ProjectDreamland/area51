@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_quick_load_and_play</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="loads a sound file into a handle and begins playing it immediately.">
+<meta name="ms-hkwd" content="AIL_quick_load_and_play">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_quick_load_and_play</h1>
+<p>The function  <b>AIL_quick_load_and_play</b> loads a sound file into a handle and begins playing it immediately.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HAUDIO.html" class=trn>HAUDIO</a> <a href="AIL_quick_load_and_play.html" class=trn>AIL_quick_load_and_play</a>(</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>filename</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>loop_count</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>wait_request</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>filename</i></dt>
+<dd>specifies the name of a .WAV, .VOC, .MP3 or .XMI file.</dd>
+<dt><i>loop_count</i></dt>
+<dd>specifies the number of times to loop the audio handle (use 0 to loop forever).</dd>
+<dt><i>wait_request</i></dt>
+<dd>specifies whether the function should wait until the playback is complete before returning.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A new audio handle if the function was successful, NULL otherwise.</p>
+<h4>Discussion</h4>
+<p>This function can load uncompressed Microsoft .WAV files, IMA ADPCM compressed .WAV files, Creative Labs .VOC files, MPEG Layer 3 files, or XMIDI files. This function will begin playback immediately (unlike <a href="AIL_quick_load.html">AIL_quick_load</a> ). </p><p> You must call <a href="AIL_quick_unload.html">AIL_quick_unload</a> on all handles returned by this function. </p><p> Under DOS, MacOS and Win16, this function must not be invoked from an interrupt-based callback function.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Quick Integration Sesm1baa.html">Quick Integration Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_quick_copy.html">AIL_quick_copy</a>, <a href="AIL_quick_fss_load.html">AIL_quick_fss_load</a>, <a href="AIL_quick_load.html">AIL_quick_load</a>, <a href="AIL_quick_load_mem.html">AIL_quick_load_mem</a>, <a href="AIL_quick_play.html">AIL_quick_play</a>, <a href="AIL_quick_unload.html">AIL_quick_unload</a><br>
+<b>Related Basic Types:</b>
+<a href="HAUDIO.html">HAUDIO</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="char const P.html">char const *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

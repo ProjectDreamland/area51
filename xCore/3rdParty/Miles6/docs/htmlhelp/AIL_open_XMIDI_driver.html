@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_open_XMIDI_driver</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="opens an driver handle to play XMIDI data files through.">
+<meta name="ms-hkwd" content="AIL_open_XMIDI_driver">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_open_XMIDI_driver</h1>
+<p>The function  <b>AIL_open_XMIDI_driver</b> opens an driver handle to play XMIDI data files through.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a> <a href="AIL_open_XMIDI_driver.html" class=trn>AIL_open_XMIDI_driver</a>(</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>flags</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>flags</i></dt>
+<dd>0 or one of the <a href="MILES_OPEN_XMIDI_FLAGS.html">MILES_OPEN_XMIDI_FLAGS</a> constants.</dd>
+</dl>
+<h4>Returns</h4>
+<p>If successful, this function returns a non-zero handle to an XMIDI driver. If the driver failed to open, then 0 is returned (use <a href="AIL_last_error.html">AIL_last_error</a> for the cause).</p>
+<h4>Discussion</h4>
+<p>This function will open an XMIDI driver on any of the Miles platforms. </p><p> Under Win32, MSS can use a NULL MIDI driver for the Miles software synthesizer, or it can open the hardware midiOut drivers. </p><p> Under MacOS, MSS can use a NULL MIDI driver for the Miles software synthesizer, or it can open the QuickTime software synthesize (which is somewhat limited compared to the Miles synth). </p><p> Under DOS, MSS will call AIL_install_MDI_INI to load a real-mode DOS driver. </p><p> Example files that use this function: DEMO.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_close_XMIDI_driver.html">AIL_close_XMIDI_driver</a>, <a href="AIL_install_MDI_INI.html">AIL_install_MDI_INI</a>, <a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a>, <a href="AIL_last_error.html">AIL_last_error</a>, <a href="AIL_midiOutOpen.html">AIL_midiOutOpen</a>, <a href="AIL_quick_handles.html">AIL_quick_handles</a><br>
+<b>Related Basic Types:</b>
+<a href="HMDIDRIVER.html">HMDIDRIVER</a>, <a href="MILES_OPEN_XMIDI_FLAGS.html">MILES_OPEN_XMIDI_FLAGS</a>, <a href="U32.html">U32</a><br>
+<b>Related FAQs:</b>
+<a href="How do I initialize owpc2p.html">How do I initialize the Miles Sound System for use?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

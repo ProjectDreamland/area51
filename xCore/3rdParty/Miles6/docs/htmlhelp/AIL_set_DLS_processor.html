@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_DLS_processor</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="assigns the filter or mixer stages for a specific sample.">
+<meta name="ms-hkwd" content="AIL_set_DLS_processor">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_DLS_processor</h1>
+<p>The function  <b>AIL_set_DLS_processor</b> assigns the filter or mixer stages for a specific sample.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HPROVIDER.html" class=trn>HPROVIDER</a> <a href="AIL_set_DLS_processor.html" class=trn>AIL_set_DLS_processor</a>(</b>
+<b>&nbsp&nbsp<a href="HDLSDEVICE.html" class=trn>HDLSDEVICE</a>&nbsp</b><i>dls</i><b>,</b>
+<b>&nbsp&nbsp<a href="SAMPLESTAGE.html" class=trn>SAMPLESTAGE</a>&nbsp</b><i>pipeline_stage</i><b>,</b>
+<b>&nbsp&nbsp<a href="HPROVIDER.html" class=trn>HPROVIDER</a>&nbsp</b><i>provider</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dls</i></dt>
+<dd>specifies the HDLSDEVICE handle to use.</dd>
+<dt><i>pipeline_stage</i></dt>
+<dd>specifies the stage to assign the filter to. Use one of the <a href="SAMPLESTAGE.html">SAMPLESTAGE</a> constants.</dd>
+<dt><i>provider</i></dt>
+<dd>specifies the provider to set. Use zero to remove the current filter.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The previously installed provider value.</p>
+<h4>Discussion</h4>
+<p>This function is usually used to install a new filter processor. </p><p> Once a sample-specific filter has been installed, you can read sample-specific attributes with the <a href="AIL_filter_sample_atybklaa.html">AIL_filter_sample_attribute</a> function and can change the sample-specific preferences with the <a href="AIL_set_filter_samplemwzk3.html">AIL_set_filter_sample_preference</a> function. </p><p> You remove an installed filter by calling this function with zero for the provider parameter. </p><p> Example files that use this function: Filter.CPP</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Filter Services.html">Digital Filter Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_filter_sample_atybklaa.html">AIL_filter_sample_attribute</a>, <a href="AIL_set_filter_samplemwzk3.html">AIL_set_filter_sample_preference</a>, <a href="AIL_set_sample_processor.html">AIL_set_sample_processor</a>, <a href="AIL_set_stream_processor.html">AIL_set_stream_processor</a><br>
+<b>Related Basic Types:</b>
+<a href="HDLSDEVICE.html">HDLSDEVICE</a>, <a href="HPROVIDER.html">HPROVIDER</a>, <a href="SAMPLESTAGE.html">SAMPLESTAGE</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

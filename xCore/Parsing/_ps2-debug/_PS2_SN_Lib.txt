@@ -1,0 +1,6 @@
+create c:/Projects/A51/xCore/Parsing/_PS2-Debug/Parsing.lib
+addmod ./_ps2-debug/TextIn.obj
+addmod ./_ps2-debug/TextOut.obj
+addmod ./_ps2-debug/tokenizer.obj
+save
+end 

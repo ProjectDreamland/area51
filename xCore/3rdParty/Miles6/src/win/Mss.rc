@@ -1,0 +1,44 @@
+// #include "afxres.h" wtf is this? -- jm
+
+#include "windows.h"
+#include "..\\..\\include\\mss.h"
+
+STRINGTABLE
+     {
+      1,   MSS_VERSION
+     }
+
+
+01 ICON "..\\win\\mss.ico"
+
+STRINGTABLE
+BEGIN
+  42,MSS_VERSION
+  43,MSS_COPYRIGHT
+END
+
+1 VERSIONINFO LOADONCALL MOVEABLE DISCARDABLE IMPURE
+FILEVERSION 3, 0, 0, 0
+PRODUCTVERSION 3, 0, 0, 0
+FILEFLAGSMASK 0x3f
+FILEFLAGS 0
+FILETYPE 1
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "RAD Game Tools, Inc.\000"
+   VALUE "FileDescription", "Miles Sound System\000"
+   VALUE "FileVersion", MSS_VERSION "\000"
+   VALUE "LegalCopyright", MSS_COPYRIGHT "\000"
+   VALUE "LegalTrademarks", "Miles Sound System is a trademark of RAD Game Tools, Inc.\000"
+   VALUE "ProductName", "Miles Sound System\000"
+   VALUE "ProductVersion", MSS_VERSION "\000"
+   VALUE "Comments", "Thank you for using Miles!\000"
+  }
+
+ }
+
+}
+

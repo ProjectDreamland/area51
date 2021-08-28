@@ -1,0 +1,66 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_size_processed_digital_audio</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="provides a way to determine how much output memory is necessary for a given set of input mix data.">
+<meta name="ms-hkwd" content="AIL_size_processed_digital_audio">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_size_processed_digital_audio</h1>
+<p>The function  <b>AIL_size_processed_digital_audio</b> provides a way to determine how much output memory is necessary for a given set of input mix data.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_size_processed_d4yjwo6.html" class=trn>AIL_size_processed_digital_audio</a>(</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>destrate</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>destformat</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>num_srcs</i><b>,</b>
+<b>&nbsp&nbsp<a href="AILMIXINFO.html" class=trn>AILMIXINFO const *</a>&nbspconst *</b><i>srcs</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>destrate</i></dt>
+<dd>contains the output data rate that you will be mixing to.</dd>
+<dt><i>destformat</i></dt>
+<dd>contains the format that you want the destination buffer to be mixed to. See the <a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a> flags for the possible output formats.</dd>
+<dt><i>num_srcs</i></dt>
+<dd>contains the number of buffers that you will be mixing. If you won't be mixing multiple samples, then just pass 1 for this parameter.</dd>
+<dt><i>srcs</i></dt>
+<dd>is a pointer to an array of "num_srcs" <a href="AILMIXINFO.html">AILMIXINFO</a> structures. The only part of the <a href="AILMIXINFO.html">AILMIXINFO</a> structure that you need to set is the Info structure inside the <a href="AILMIXINFO.html">AILMIXINFO</a> structure. The Info structure is of type <a href="AILSOUNDINFO.html">AILSOUNDINFO</a>, so you can use <a href="AIL_WAV_info.html">AIL_WAV_info</a> to set the appropriate fields. See the example in <a href="AIL_process_digital_audio.html">AIL_process_digital_audio</a> for details.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The number of bytes that will be necessary to completely perform the mix.</p>
+<h4>Discussion</h4>
+<p>You can use the <a href="AIL_WAV_info.html">AIL_WAV_info</a> function to automatically fill the input src->Info structures. </p><p> This function can directly accept IMA ADPCM compressed data, but not MPEG Layer 3 compressed data.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_WAV_info.html">AIL_WAV_info</a>, <a href="AIL_process_digital_audio.html">AIL_process_digital_audio</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a><br>
+<b>Related Structures:</b>
+<a href="AILMIXINFO.html">AILMIXINFO</a>, <a href="AILSOUNDINFO.html">AILSOUNDINFO</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

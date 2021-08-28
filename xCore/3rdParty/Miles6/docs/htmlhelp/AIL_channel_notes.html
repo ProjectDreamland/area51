@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_channel_notes</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the number of notes currently turned "on" in a given MIDI channel.">
+<meta name="ms-hkwd" content="AIL_channel_notes">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_channel_notes</h1>
+<p>The function  <b>AIL_channel_notes</b> returns the number of notes currently turned "on" in a given MIDI channel.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_channel_notes.html" class=trn>AIL_channel_notes</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>channel</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sequence for which a channel-based note count is to be determined.</dd>
+<dt><i>channel</i></dt>
+<dd>indicates the channel number in which the number of "on" notes is to be determined.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The number of notes currently playing in the specified channel.</p>
+<h4>Discussion</h4>
+<p>As with all XMIDI functions which require an explicit channel parameter, MIDI channel numbers are passed to and from the MSS API in 1-based format (1-16), rather than the 0-based format (0-15) used when composing MIDI Status byte values. </p><p> This function is intended for use in special-purpose applications (such as editors and test programs) where an indication of channel note activity is useful. Most applications will not need to call <a href="AIL_channel_notes.html">AIL_channel_notes</a>.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_channel_notes.html">AIL_channel_notes</a>, <a href="AIL_controller_value.html">AIL_controller_value</a><br>
+<b>Related Basic Types:</b>
+<a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

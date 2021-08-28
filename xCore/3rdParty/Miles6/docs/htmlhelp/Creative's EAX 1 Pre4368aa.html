@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Creative's EAX 1 Preferences</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Creative's EAX 1 Preferences">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Creative's EAX 1 Preferences</h1>
+<h4>Discussion</h4>
+<p> The EAX 1 provider publishes four provider-level preferences (for setting) and attributes (for reading) that allow game developers to set global reverb settings for specific room types. The EAX provider also publishes one sample-level preference that allows you to control the amount of reverb applied to that sample. Good use of room styles can add more to the "feel" of a game than the fanciest 3D spacialization. </p><p>The easiest way to determine if you are using the EAX M3D provider is to query the "EAX environment selection" attribute. If this query returns a value other than -1, then you know that you are running under an EAX compatible sound card. See Exam3D.C for an example. </p><p><b>The four current EAX provider-level preferences are:</b> </p><p><b>"EAX environment selection</b>" - this preference allows you to set the reverb's room style. You should generally use the <a href="AIL_set_3D_room_type.html">AIL_set_3D_room_type</a> function instead of this preference to set the room type for compatibility with other 3D providers. It should be set to one of the <a href="MILES_ROOM_TYPE.html">MILES_ROOM_TYPE</a>constants. </p><p><b>"EAX effect volume":</b> - this preference controls the level at which the EAX reverb effect is applied to each voice. Its value ranges from 0.0 to 1.0. The maximum value of 1.0 turns overall reverb up to its highest possible level. Each time the value is halved, the reverb level is halved (decreased by 6 dB). Setting the effect volume to 0.0 turns off all reverb completely. This preference accepts a 32-bit float (F32). </p><p><b>"EAX decay time":</b> this preference controls the decay time for the EAX reverb effect as it is applied to each voice, ranging from 0.1 to 20.0 seconds. This parameter determines the time in seconds required for the reverb effect to diminish by 60 dB. This preference accepts a 32-bit float (F32). </p><p><b>"EAX damping":</b> this preference controls the damping factor (effect of frequency on decay time) for the EAX reverb effect as it is applied to each voice, ranging from 0.0 to 2.0. A value of 1.0 is treated as neutral, with the decay time equal for high, low, and mid-range frequencies. As the damping value increases above 1.0, the decay time of the high-frequency components of the sound increases relative to that of the mid-range and low-frequency components. This preference accepts a 32-bit float (F32). </p><p> <b>The single EAX sample-level preference is:</b> </p><p><b>"EAX sample reverb mix":</b> this preference allows you to manually control how much reverb is applied to just this sample. You should generally use the <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a> function instead of this preference to set the reverb level for compatibility with other 3D providers. By default, EAX controls the reverb amount automatically based on the distance from the sample to the listener. With this function, you can specify the amount of reverb to use from 0.0 (no reverb applied) to 1.0 (full environmental reverb applied). To reset the reverb control back to automatic mode, set the preference to the EAX_REVERBMIX_USEDISTANCE constant. This preference is often used to turn off reverb on speech samples (sound effects sound great with reverb - voices just sound kind of weird). </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_set_3D_room_type.html">AIL_set_3D_room_type</a>, <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_ROOM_TYPE.html">MILES_ROOM_TYPE</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

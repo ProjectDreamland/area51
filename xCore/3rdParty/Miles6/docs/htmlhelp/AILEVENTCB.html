@@ -1,0 +1,67 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AILEVENTCB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="specifies a user-defined XMIDI event callback.">
+<meta name="ms-hkwd" content="AILEVENTCB">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AILEVENTCB</h1>
+<p>The function  <b>AILEVENTCB</b> specifies a user-defined XMIDI event callback.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> AILCALLBACK <a href="AILEVENTCB.html" class=trn>AILEVENTCB</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>sequence</i><b>,</b>
+<b>&nbsp&nbsp<a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a>&nbsp</b><i>mdi</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>status</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>data_1</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>data_2</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>sequence</i></dt>
+<dd>indicates the sequence handle that generated the callback.</dd>
+<dt><i>mdi</i></dt>
+<dd>indicates the driver that generated the callback.</dd>
+<dt><i>status</i></dt>
+<dd>indicates the MIDI Channel Voice message status which is about to be processed.</dd>
+<dt><i>data_1</i></dt>
+<dd>indicates the MIDI Channel Voice message first data byte which is about to be processed.</dd>
+<dt><i>data_2</i></dt>
+<dd>indicates the MIDI Channel Voice message second data byte which is about to be processed.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The callback function should return 0 to enable MSS to process the event and send it on to the driver layer, or 1 to inhibit further processing of the event.</p>
+<h4>Discussion</h4>
+<p>See <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a> for more information on Channel Voice message formats.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_register_event_cs0khaa.html">AIL_register_event_callback</a>, <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a><br>
+<b>Related Basic Types:</b>
+<a href="HMDIDRIVER.html">HMDIDRIVER</a>, <a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

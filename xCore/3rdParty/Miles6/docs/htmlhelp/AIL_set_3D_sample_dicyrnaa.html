@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_3D_sample_distances</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the minimum and maximum distances for a given sample handle.">
+<meta name="ms-hkwd" content="AIL_set_3D_sample_distances">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_3D_sample_distances</h1>
+<p>The function  <b>AIL_set_3D_sample_distances</b> sets the minimum and maximum distances for a given sample handle.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_3D_sample_dicyrnaa.html" class=trn>AIL_set_3D_sample_distances</a>(</b>
+<b>&nbsp&nbsp<a href="H3DSAMPLE.html" class=trn>H3DSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="F32.html" class=trn>F32</a>&nbsp</b><i>max_dist</i><b>,</b>
+<b>&nbsp&nbsp<a href="F32.html" class=trn>F32</a>&nbsp</b><i>min_dist</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample handle whose distances are to be set.</dd>
+<dt><i>max_dist</i></dt>
+<dd>is the distance at which the sound will be clipped to silence. Note that this parameter does <b>not</b> effect the volume falloff curve.</dd>
+<dt><i>min_dist</i></dt>
+<dd>is the distance at which the sound will be at maximum volume. That is, any sound that is this distance or closer to the listener will be at maximum volume.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>Since sound effects should always be normalized to use the maximum resolution of the sound's bit resolution (8-bit or 16-bit), you have to use the minimum and maximum sample volumes to make each sound "feel correct" as it approaches and moves away from the listener. </p><p> For example, a bumblebee could have a minimum distance of 0.25, and maximum distance of one meter. In contrast, a jet plane might have a minimum distance of a hundred meters (where it's loudest) and a maximum distance of two thousand meters (where it's clipped to silence). </p><p> As a sound approaches the listener, each time the distance between the listener and the sound is halved, the volume of the sound is doubled. This means that any sound at the maximum distance or greater from the listener is silent, any sound within the minimum distance is the maximum volume, and in between the minimum and maximum distances, the volume is set to one half as loud each time the distance from the listener to the minimum distance is doubled. </p><p> Note that the maximum distance doesn't effect the volume falloff curve! The maximum distance just sets a hard clip point - the volume is forced to be zero. </p><p>Also note that some DirectSound drivers don't implement the maximum distance correctly with the DSBCAPS_MUTE3DATMAXDISTANCE flag in effect. At the maximum distance on these drivers, the volume doesn't drop to zero, instead it just stops falling off. </p><p> Another way to look at it is that if your minimum distance was 1, then at 2 your volume would be 50%, at 4 your volume would be 25%, at 8 your volume would be 12.5%, etc. Basically, just remember that it is not a linear falloff! </p><p> This is why you can't use zero for the minimum distance - the sound volume would fall off infinitely fast and you'd never hear anything. </p><p> Example files that use this function: EXAM3D.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_3D_sample_distances.html">AIL_3D_sample_distances</a>, <a href="AIL_set_3D_distance_reaaaa.html">AIL_set_3D_distance_factor</a>, <a href="AIL_set_3D_rolloff_factor.html">AIL_set_3D_rolloff_factor</a>, <a href="AIL_set_3D_sample_cone.html">AIL_set_3D_sample_cone</a>, <a href="AIL_set_3D_sample_volume.html">AIL_set_3D_sample_volume</a><br>
+<b>Related Basic Types:</b>
+<a href="F32.html">F32</a>, <a href="H3DSAMPLE.html">H3DSAMPLE</a>, <a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="How do I play a 3D d5zrlfk.html">How do I play a 3D digital sound?</a>, <a href="My 3D sound isn't fa7r7p3x.html">My 3D sound isn't falling off like I expected - what's going on?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

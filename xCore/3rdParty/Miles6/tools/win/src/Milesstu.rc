@@ -1,0 +1,49 @@
+#include "mss.h"
+
+MILESSTU ICON "demo.ico"
+
+MILESSTU DIALOG DISCARDABLE  47, 59, 278, 75
+STYLE WS_CHILD |DS_3DLOOK|WS_CLIPSIBLINGS|DS_CONTROL
+FONT 8, "MS Sans Serif"
+{
+    GROUPBOX        " Miles Sound Studio Tools: ",200,2,0,274,71
+    ICON            "MILESSTU",100,28,9,21,20
+    PUSHBUTTON      "&Compress",149,8,32,57,14
+    PUSHBUTTON      "&Decompress",150,8,51,57,14
+    PUSHBUTTON      "&Merge XMI/DLS",157,69,13,67,14
+    PUSHBUTTON      "Unmer&ge XMI/DLS",155,69,32,67,14
+    PUSHBUTTON      "Filt&er DLS w/MIDI",156,69,51,67,14
+    PUSHBUTTON      "Con&vert to XMIDI",153,140,13,67,14
+    PUSHBUTTON      "Convert to &RAW",154,140,32,67,14
+    PUSHBUTTON      "&File Type",158,140,51,67,14
+    PUSHBUTTON      "MIDI &List",151,211,13,57,14
+    PUSHBUTTON      "DL&S Dump",152,211,32,57,14
+    PUSHBUTTON      "&About",101,211,51,57,14
+}
+
+
+1 VERSIONINFO LOADONCALL MOVEABLE DISCARDABLE IMPURE
+FILEVERSION 3, 0, 0, 0
+PRODUCTVERSION 3, 0, 0, 0
+FILEFLAGSMASK 0x3f
+FILEFLAGS 0
+FILETYPE 1
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "RAD Game Tools, Inc.\000"
+   VALUE "FileDescription", "Miles Sound System\000"
+   VALUE "FileVersion", MSS_VERSION "\000"
+   VALUE "LegalCopyright", MSS_COPYRIGHT "\000"
+   VALUE "LegalTrademarks", "Miles Sound System is a trademark of RAD Game Tools, Inc.\000"
+   VALUE "ProductName", "Miles Sound System\000"
+   VALUE "ProductVersion", MSS_VERSION "\000"
+   VALUE "Comments", "Thank you for using Miles!\000"
+  }
+
+ }
+
+}
+

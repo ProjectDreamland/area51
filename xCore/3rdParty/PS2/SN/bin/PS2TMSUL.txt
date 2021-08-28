@@ -1,0 +1,117 @@
+SN SYSTEMS STANDARD USER LICENSE : ProDG Target Manager for PlayStation®2
+
+1	BACKGROUND
+1.1	SN Systems has created a software tool to allow developers to manage and connect to the development platform for the 128-bit computer entertainment system developed by Sony under the trademark PlayStation®2.
+
+1.2	The End User is such a developer and wishes to utilise the software tool, subject to the terms and conditions of this Agreement.
+
+2	INTERPRETATION
+2.1	In this Standard User License ("SUL"): "This Agreement" is this SUL; "Designated User" is the user designated by the End User to use the Software; "End User" is the licensee of the Software; "Implementation Date" is the date on which the Software is run on the End User's system either by the End User downloading the Software online or after receipt of the Software in CD-ROM format; "Intellectual Property Rights" means without limitation all patents, copyright, design rights, service marks, logos, trade secrets, database rights, trademarks (whether registered or unregistered) and all applications for the same, anywhere in the world; "NIC" is the network interface card; "PlayStation®2" is the 128-bit computer entertainment system developed by Sony; "Product (s)" is any game or other product being developed by the End User for PlayStation®2; "Software" is the ProDG Target Manager for PlayStation®2 and related user documentation described in SN Systems' product literature from time to time as  posted on its web-site; "The Sony Information" is the information relating to the hardware and software forming PlayStation®2 provided by Sony to SN Systems to enable SN Systems to develop the Software; "Sony" is Sony Computer Entertainment Inc whose principal place of business is 1-1 Akasaka 7-Chrome, Minato-ku, Tokyo 107-0052, Japan; "SN Systems" is SN Systems Limited a private limited company registered in England and Wales (no. 02436957) whose registered office is at Redcliff Quay, 120 Redcliff Street, Bristol, BS1 6HU. 
+
+3	GRANTING OF LICENSE
+3.1	In consideration of completion of a license registration form and the other rights and obligations contained in this Agreement SN Systems grants to the End User on the following terms and conditions a perpetual (subject to clause 7) non-transferable and non-exclusive license to use the Intellectual Property Rights in the Software for the purposes set out above.  SN Systems reserves all rights not expressly granted.  This License is personal to the End User and must not, subject to clause 12.4, be assigned, sublicensed, sold or made over to any other person.
+
+3.2	The license of the Software is for use on any one personal computer under the End User's control with any compatible hardware and may only be used by the Designated User. The End User shall notify SN Systems of any change from time to time of its NIC to enable SN Systems to establish a new NIC address.
+
+3.3	The End User shall promptly notify SN Systems in writing with all details of any matter likely to give rise to a dispute in connection with any infringement of the Intellectual Property Rights of SN Systems in the Software.
+
+3.4	On acceptance of a properly completed license registration form and the relevant administration fee in accordance with the provisions contained in clause 3.6 (where applicable) SN Systems shall:
+
+3.4.1	provide the End User with a license file to activate the Software provided that the End User has provided such information to enable SN Systems to generate the license file; and 
+
+3.4.2	deliver the Software in CD-ROM format to the End User at the End User's address specified on the licence registration form (in accordance with the provisions contained in clause 3.6) or enable the End User to download the software online (unless the Software has been provided to the End User by a third party supplier).
+
+3.5	The media upon which the Software are supplied shall remain the property of SN Systems.  Risk in such media passes to the End User on delivery.
+
+3.6	Where the End User requests that the Software is delivered on CD-ROM format, the End User shall pay SN Systems an administration fee, the amount and payment details of such fee to be posted by SN Systems on its web-site from time to time. 
+
+4	OWNERSHIP AND COPYRIGHT
+4.1	SN Systems has the right to grant a license of the Intellectual Property Rights in the Software subject to the provisions contained in clause 4.2. This License is not a sale of the original software or any copy.
+
+4.2	SN Systems is licensed to use the Sony Information pursuant to a license entered into with Sony.  SN Systems gives no warranty as to the ownership by Sony of the Sony Information to the End User.
+
+5	COPIES AND MODIFICATIONS
+5.1	The End User may not use, copy, modify, decompile, reverse engineer, disassemble, transfer, rent, lease, sub-contract, or transfer the rights in the Software or any copy, modification or merged portion thereof in whole or in part, except as expressly provided for in this License.
+
+5.2	The End User may make only those copies of the Software as are necessary for security, back-up or archival purposes.  Such copies will be the property of SN Systems.
+
+5.3	Any such copies made under clause 5.2 must contain all of the original Software's proprietary notices or labels.  Such notices must not be removed or interfered with at any time.
+
+5.4	The End User may not remove or interfere with any proprietary notices or labels on, in or relating to the Software.
+
+6	USE OF THE LICENSED SOFTWARE
+6.1	The End User will provide SN Systems with the name and e-mail address of the Designated User of the Software.
+
+6.2	The End User will keep full, accurate and up to date records of the number of Designated User(s) and the number of copies of the Software running on the End User's computer system.
+
+7	TERMINATION
+7.1	SN Systems may terminate this Agreement on giving 30 days written notice to the End User.
+
+7.2	This Agreement is effective from the Implementation Date and shall remain in force until terminated.
+
+7.3	Termination for whatever reason shall be without prejudice to any rights of either party under this Agreement which may have accrued up to the date of termination.
+
+7.4	Upon termination the End User will, depending on the decision of SN Systems:
+(a)	immediately cease use of the Software;
+(b)	delete or destroy all copies of the Software in its possession or control including without limitation erasure of the Software from the storage media of any computer; and
+(c)	destroy or return the Software to SN Systems. 
+
+7.5	The following clauses shall survive termination of this Agreement: 8.1, 8.2, 8.3, 9.3, 9.4, 11.1, 11.6, 11.7 and 11.11.
+
+8	LIMITED WARRANTIES AND LIMITATION OF LIABILITY
+8.1	The Software is free and therefore provided "as is".  The End User agrees that it uses the Software at its own risk.  All representations, conditions, warranties whether expressed or implied (by statute or otherwise) are excluded to the fullest extent permitted by law.  In particular, but without limitation, SN Systems excludes any representation, condition or warranty: (a) that the Software will meet the End User's requirements; (b) that the operation of 
+the Software will be uninterrupted or virus or error free; or (c) regarding the use or the results of the use of the Software in terms of its correctness, accuracy, reliability, compatibility with any hardware or operating system used in respect of the Product or otherwise.
+
+8.2	SN Systems shall not (subject to the terms contained in clause 8.3) in any circumstances (including if SN Systems has been negligent) be liable in connection with this Agreement or its subject matter for: (a) any direct or consequential loss or damage; or (b) any loss of business, data, profit or goodwill; or (c) for any special, indirect, consequential, incidental, punitive 
+damages howsoever caused whether arising in tort, contract or otherwise even if SN Systems was previously advised of the possibility of such damages.
+
+8.3	Nothing in this clause 8 or elsewhere in this Agreement will apply so as to limit or exclude any liability SN Systems may have to the End User resulting from death or personal injury caused by the negligence of SN Systems or any fraud or fraudulent misrepresentation made to the End User by SN Systems.
+
+9	REMEDIES AND NOTIFICATION
+9.1	In the event of a material error or defect in the Software arising during the development of the Product, SN Systems will use its reasonable endeavours to correct (as far as it is able) such error or defect to the reasonable satisfaction of the End User, provided that the End User immediately notifies SN Systems of any such error or defect or suspected error or defect in the Software as soon as it is discovered and supplies SN Systems with detailed information of the error or defect on notification.
+
+9.2	The End User warrants to SN Systems that it will not ship the Product until it is satisfied that its Product is free from all errors and defects.
+
+9.3	In the event that the End User does not comply with the condition set out in clause 9.2 the End User: 
+
+9.3.1	hereby agrees to fully and effectively indemnify and keep SN Systems fully and effectively indemnified against any claims by any third parties, losses or expenses (including legal costs) SN Systems incurs as a result thereof; and
+
+9.3.2	agrees that this Agreement shall automatically expire without prejudice to any rights SN Systems may have against the End User. 
+
+9.4	The End User hereby agrees to fully and effectively indemnify SN Systems and keep SN Systems fully and effectively indemnified against any claims against by any third parties, losses or expenses (including legal costs) SN Systems incurs in connection with any claim made against it arising out of the breach by the End User of this Agreement.
+
+10	SUPPORT SERVICES
+10.1	SN Systems may provide support services from time to time but reserves the express right in its absolute discretion to:
+
+10.1.1	interrupt, withdraw, suspend, modify and terminate the provision of such services in such manner at such time as it sees fit; and
+
+10.1.2	offer the service for such support fee it considers appropriate.
+
+10.2 	SN Systems is under no obligation to provide patches, fixes, upgrades or new versions of the Software. 
+
+11	GENERAL
+11.1	This Agreement shall be construed, interpreted and governed by the laws of England and Wales and subject to the exclusive jurisdiction of the Courts of England and Wales and the European Courts of Justice.  If any provision of the Agreement is invalid under English Law, such a provision is, to the extent of such invalidity, deemed to be omitted.  The jurisdiction agreement in this clause 11.1 is made for the benefit of SN Systems only, and SN Systems reserves the right to apply for injunctive relief in the court of any jurisdiction to protect any intellectual property right of, or claim by SN Systems.
+
+11.2	Neither party to this Agreement shall be liable to the other for any delay in, or failure of, performance of its obligations under this Agreement arising from any cause beyond its reasonable control save that lack of funds will not be deemed to be such a cause.
+
+11.3	This Agreement (and any documents referred to in this Agreement) sets out the entire agreement and understanding between SN Systems and the End User in connection with its subject matter. 
+
+11.4	The End User may not assign, hold on trust or in any other way make over to any third party the benefit of this Agreement either in whole or in part.
+
+11.5	Failure by either party to exercise or enforce any rights, or the giving of any forbearance, delay or indulgence, will not be construed as a waiver of its rights under this Agreement or otherwise.  Any express waiver of any breach of this Agreement shall not be deemed to be a waiver of any subsequent breach.
+
+11.6	Notices under this Agreement shall be in writing.  Notices to SN Systems shall be sent to its Company Secretary at the registered office from time to time.  Notices to the End User shall be sent to the address appearing on this Agreement or such other address in the United Kingdom as the End User may notify to SN Systems in writing from time to time.  Notices may be sent by first class mail.  Correctly addressed notices sent by first class mail shall be deemed to be delivered two days (excluding Saturdays, Sundays and U.K. bank and public holidays) after posting.
+
+11.7	Neither party to this Agreement will disclose to any third party or use any of the other's confidential information unless that confidential information was publicly known (other than by breach of this Agreement at the time of disclosure).  For the purposes of this clause 11.7, confidential information includes, without limitation, any information contained in the Software, the documentation or any trade secrets or know-how of SN Systems or the End User as applicable and any license file granted to the End User by SN Systems. This provision shall not apply where disclosure is required by law or by any regulatory authority.  However, information which is obtained from one or more publicly available sources is not "publicly known" if substantial skill, labour or expense was required to obtain or produce it.
+
+11.8	SN Systems may, at its sole discretion, terminate, change or suspend any part of its web-site, including any content, features or hours of availability.
+
+11.9	SN Systems may, at its sole discretion, change any terms of this Agreement by posting a new agreement on its web-site.  The terms of each new agreement will take effect thirty (30) days after posting on the web-site.  The End User's use of any of the services provided on the web-site after such changes are posted will constitute the End User's acceptance of the new agreement.
+
+11.10	The End User may change any of the terms of this Agreement with the prior consent in writing of SN Systems.
+
+11.11	Nothing in this Agreement confers on any third party any benefits under the provisions of the Contracts (Rights of Third Parties) Act 1999.
+
+11.12	If any part of this Agreement is found to be void or unenforceable, it will be severed from the rest of the Agreement so that it is ineffective to the extent that it shall not affect the validity of the balance of the Agreement, which shall remain valid and enforceable according to its terms.
+
+11.13	Nothing in this Agreement or contained on the SN Systems web-site shall constitute an offer by SN Systems to provide the Software to any person.

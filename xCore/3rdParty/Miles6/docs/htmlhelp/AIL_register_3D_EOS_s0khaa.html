@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_register_3D_EOS_callback</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="arranges for callback service to be provided to an application function immediately upon reaching the end of a 3D sample.">
+<meta name="ms-hkwd" content="AIL_register_3D_EOS_callback">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_register_3D_EOS_callback</h1>
+<p>The function  <b>AIL_register_3D_EOS_callback</b> arranges for callback service to be provided to an application function immediately upon reaching the end of a 3D sample.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="AIL3DSAMPLECB.html" class=trn>AIL3DSAMPLECB</a> <a href="AIL_register_3D_EOS_s0khaa.html" class=trn>AIL_register_3D_EOS_callback</a>(</b>
+<b>&nbsp&nbsp<a href="H3DSAMPLE.html" class=trn>H3DSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="AIL3DSAMPLECB.html" class=trn>AIL3DSAMPLECB</a>&nbsp</b><i>EOS</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the 3D sample for which end-of-sample (EOS) callback service is desired.</dd>
+<dt><i>EOS</i></dt>
+<dd>should be set to the address of the callback function which is to be invoked just after the last audio data block in a sample is merged into the 3D buffer. A value of NULL cancels end-of-sample callbacks.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The address of the previously-installed EOS callback function handler.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL3DSAMPLECB.html">AIL3DSAMPLECB</a><br>
+<b>Related Basic Types:</b>
+<a href="H3DSAMPLE.html">H3DSAMPLE</a><br>
+<b>Related FAQs:</b>
+<a href="What's the deal with4bihxb.html">What's the deal with callbacks - are they threads, interrupts, system timers, or what?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

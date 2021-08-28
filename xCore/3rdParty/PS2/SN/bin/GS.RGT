@@ -1,0 +1,15 @@
+GS Priviledged Registers
+SIGLBLID=%17!<16x,$12001080,>
+
+     CSR=%8<x,$12001000,>
+  SIGNAL=%1!<b0:1,$12001000,> SIGNAL event
+  FINISH=%1!<b1:1,$12001000,> FINISH event
+   HSINT=%1!<b2:1,$12001000,> HSync interrupt
+   VSINT=%1!<b3:1,$12001000,> VSync interrupt
+  EDWINT=%1!<b4:1,$12001000,> Area Write interrupt
+
+  NFIELD=%1!<b12:1,$12001000,>
+   FIELD=%1!<b13:1,$12001000,>
+    FIFO=%2!<b14:2,$12001000,> %1!<s14:2,$12001000, ;Empty;Almost Full;Reserved>
+     REV=%2!<d16:4,$12001000,>
+      ID=%2!<d24:4,$12001000,>

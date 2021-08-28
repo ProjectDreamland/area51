@@ -1,0 +1,40 @@
+No blocks of object allocations
+
+	Allocating objects from a single pool probably isn't feasable if we have 
+many object types. Can't simply allocate 1 block of objects because they 
+vary in size so we would have to allocate a separate block of objects for 
+each final type which would likely result in a large amount of unneeded waste.
+
+
+Search types
+
+	Trade offs between memory and size can be made by using records which hold
+information about the objects in contiguous blocks of memory.  What extra data
+goes into these records whill have to be weighed against 
+
+
+
+
+obj_type_info
+
+	Another optimizing structure.  Again, looks like redundant data but this
+object is used to turn a "switch" statement with as many cases as there are
+object types into an array lookup.
+
+
+obj_type_node
+
+	For keeping stats on object types.  Only allocated once for each object type
+not once for each object.  The following members weren't being used in Meridian.
+They were being set and reset but never used.
+
+        s32         TotalInstanceCount;
+        f32         LogicTimeMS;
+        f32         LogicInnerTimeMS;
+
+
+obj_slot
+
+	This structure is used for holding all objects in the game.  Holds the GUID,
+the type, a pointer to the object, an index to the next and previous for it.
+There is a fixed size array of these objects to insure that they are linear.	

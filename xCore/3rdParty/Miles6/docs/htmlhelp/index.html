@@ -1,0 +1,3095 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Miles Sound System Reference</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Miles Sound System Reference">
+<meta name="ms-hkwd" content="Miles Sound System Reference">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Miles Sound System Reference</h1>
+<p>The <b>Miles Sound System Reference</b> is a hyperlinked version of the Miles Sound System SDK's printed reference manual.<br<br><p><img src="Miles.jpg"></p></p>
+<table class=toc width=90%>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Acknowledgments.html">Acknowledgments</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Introduction.html">Introduction</a></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Overview for Win32- zi6edi.html">Overview for Win32: Miles on Windows 95, 98, Me, NT and 2000</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation for Win32.html">Installation for Win32</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating Miles inryalph.html">Integrating Miles into a Win32 Build Environment</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing Miles wly4t1o.html">Distributing Miles with Win32 Applications</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound under Win32.html">Sound under Win32</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory management uni4hsaa.html">Memory management under Win32</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Callbacks under Win32.html">Callbacks under Win32</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sharing the CPU unde2nabaa.html">Sharing the CPU under Win32</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Call Logging under Win32.html">Call Logging under Win32</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Examples for Win32.html">Miles Examples for Win32</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Overview for MacOS- 4e2z95.html">Overview for MacOS: Miles on Macintosh</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation for MacOS.html">Installation for MacOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound under MacOS.html">Sound under MacOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating Miles inhi7rf5.html">Integrating Miles into a MacOS Build Environment</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing Miles wdkih6t.html">Distributing Miles with MacOS Applications</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory management un1cdaca.html">Memory management under MacOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Callbacks under MacOS.html">Callbacks under MacOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sharing the CPU unde9ijdaa.html">Sharing the CPU under MacOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Call Logging under MacOS.html">Call Logging under MacOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Examples for MacOS.html">Miles Examples for MacOS</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Overview for DOS- Miy6fegj.html">Overview for DOS: Miles on DOS with 32-bit DOS Extenders</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation for DOS.html">Installation for DOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound under DOS.html">Sound under DOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating Miles inmxd43w.html">Integrating Miles into a DOS Build Environment</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing Miles whjcnrn.html">Distributing Miles with DOS Applications</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory management undmcbaa.html">Memory management under DOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Callbacks under DOS.html">Callbacks under DOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sharing the CPU under DOS.html">Sharing the CPU under DOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Call Logging under DOS.html">Call Logging under DOS</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Examples for DOS.html">Miles Examples for DOS</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Overview for Win16- k62jt8.html">Overview for Win16: Miles on Windows 3.1</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation for Win16.html">Installation for Win16</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating Miles inbeopsh.html">Integrating Miles into a Win16 Build Environment</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing Miles wl23t1o.html">Distributing Miles with Win16 Applications</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound under Win16.html">Sound under Win16</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory management un63hsaa.html">Memory management under Win16</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Callbacks under Win16.html">Callbacks under Win16</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sharing the CPU undeqnabaa.html">Sharing the CPU under Win16</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Call Logging under Win16.html">Call Logging under Win16</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Examples for Win16.html">Miles Examples for Win16</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Overview for Win32s-gklf7y.html">Overview for Win32s: Miles on Windows 3.1 with 32-bit Extensions</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation for Win32s.html">Installation for Win32s</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating Miles in739p6n.html">Integrating Miles into a Win32s Build Environment</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing Miles w59qz5u.html">Distributing Miles with Win32s Applications</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound under Win32s.html">Sound under Win32s</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory management unk00bea.html">Memory management under Win32s</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Callbacks under Win32s.html">Callbacks under Win32s</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sharing the CPU unde0cdiaa.html">Sharing the CPU under Win32s</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Call Logging under Win32s.html">Call Logging under Win32s</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Examples for Win32s.html">Miles Examples for Win32s</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="FAQs and How Tos.html">FAQs and How Tos</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I initialize owpc2p.html">How do I initialize the Miles Sound System for use?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I play a digiyg6gda.html">How do I play a digital sound?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I play an XMIuu17l1.html">How do I play an XMIDI or MIDI file?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I play an XMIsog05o.html">How do I play an XMIDI file with a DLS instrument set?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I stream a fisosz8v.html">How do I stream a file off a hard disk or CD?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I play a tracqkrgja.html">How do I play a track off a CD?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I loop a tracqkrgja.html">How do I loop a track off a CD?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="What kind of audio d9b9pf1.html">What kind of audio decompression does Miles support?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="What is MPEG Audio aqqdaaa.html">What is MPEG Audio and MP3?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="What MP3 encoder shoiud8ga.html">What MP3 encoder should I use?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="I can't get Miles tonaxoe0.html">I can't get Miles to play an MP3 file - what's going on?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How can I lower the ev8x6w.html">How can I lower the CPU hit of playing an MP3 file?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="I'm getting a glitchyuljiw.html">I'm getting a glitch when I loop an MP3 file - what can I do?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I set a DSP flufd25.html">How do I set a DSP filter on a sample?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="What is the differenuwpm9k.html">What is the difference between `simple` reverb and the DSP reverb filters?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How can I play two Ho6e0ns.html">How can I play two HSAMPLEs from the same memory address?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="When can I free the orulku.html">When can I free the memory I gave to MSS?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I start an aupeb0vo.html">How do I start an audio file somewhere in the middle?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Panning isn't workinmo5gkc.html">Panning isn't working - what's going on?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Which 3D sound provi8s4uqw.html">Which 3D sound provider should I use?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I open a 3D duswuqq.html">How do I open a 3D digital provider?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I play a 3D d5zrlfk.html">How do I play a 3D digital sound?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="My 3D sound isn't fa7r7p3x.html">My 3D sound isn't falling off like I expected - what's going on?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How can I play stere982vwf.html">How can I play stereo or compressed digital files with the 3D API?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="I get a crash when I35ptsr.html">I get a crash when I call AIL_digital_handle_release while the 3D  digital API is playing - what's going on?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="My 3D audio is a lotxfhqaf.html">My 3D audio is a lot louder than my 2D audio - what can I do?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I set an EAX 6606oe.html">How do I set an EAX reverb room style?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How does Miles do soy6n1ef.html">How does Miles do sound prioritization?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="I can't seem to chanzj97c4.html">I can't seem to change the volume of my XMIDI sequences, what's going  on?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="What's the deal with4bihxb.html">What's the deal with callbacks - are they threads, interrupts, system timers, or what?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How much latency doe841zus.html">How much latency does Miles have?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="My sound is skipping3sr5kw.html">My sound is skipping on Win32 - what can I do?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="My application is crs22pi6.html">My application is crashing - what should I try?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Where is the Miles slsp9cm.html">Where is the Miles source code?  How can I rebuild it (in debug mode)?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How can I tell what u5gz56.html">How can I tell what version of Miles that I have?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="What is the latest vpbjt32.html">What is the latest version of MSS?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How do I access filex8kvia.html">How do I access files from a big packed file?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="I'm setting a preferwfslqr.html">I'm setting a preference and it isn't having any effect - what's going on?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="I want a small instanf5kll.html">I want a small installation - do I need all of the files in the \redist directories?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="I'm using Windows 9x4b8wpk.html">I'm using Windows 9x or NT - do I have to call the AIL_mem_alloc_lock function?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="How careful do I havbuvn9y.html">How careful do I have to be when shutting down?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="This function returnjx0bfo.html">This function returns a bunch of return data, but I only want one value - is there a simpler way to use it?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="The Internet voice cx1l30f.html">The Internet voice chat example has a lot of latency or it doesn't work on my LAN - what's going on?</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="What are these ASI, m0oxbk.html">What are these ASI, M3D, and FLT files? What is RIB?</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Basic Types.html">Basic Types</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S8.html">S8</a></td>
+<td height=25 valign=top class=toc>describes a signed 8-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U8.html">U8</a></td>
+<td height=25 valign=top class=toc>describes an unsigned 8-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S16.html">S16</a></td>
+<td height=25 valign=top class=toc>describes a signed 16-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U16.html">U16</a></td>
+<td height=25 valign=top class=toc>describes an unsigned 16-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S64.html">S64</a></td>
+<td height=25 valign=top class=toc>describes a signed 64-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U64.html">U64</a></td>
+<td height=25 valign=top class=toc>describes an unsigned 64-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S32.html">S32</a></td>
+<td height=25 valign=top class=toc>describes a signed 32-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U32.html">U32</a></td>
+<td height=25 valign=top class=toc>describes an unsigned 32-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="F32.html">F32</a></td>
+<td height=25 valign=top class=toc>describes a standard 32-bit floating-point number.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="F64.html">F64</a></td>
+<td height=25 valign=top class=toc>describes a standard 64-bit double-precision floating-point number.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="void.html">void</a></td>
+<td height=25 valign=top class=toc>describes a standard C/C++ void return type.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="void P.html">void *</a></td>
+<td height=25 valign=top class=toc>describes a standard C/C++ untyped memory pointer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="void const P.html">void const *</a></td>
+<td height=25 valign=top class=toc>describes a constant (unchangeable) C/C++ untyped memory pointer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="char.html">char</a></td>
+<td height=25 valign=top class=toc>describes a single character type.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="char P.html">char *</a></td>
+<td height=25 valign=top class=toc>describes a normal zero-terminated C-style string.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="char const P.html">char const *</a></td>
+<td height=25 valign=top class=toc>describes a constant (unchangeable) zero-terminated C-style string.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDIGDRIVER.html">HDIGDRIVER</a></td>
+<td height=25 valign=top class=toc>is a handle to an digital audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HMDIDRIVER.html">HMDIDRIVER</a></td>
+<td height=25 valign=top class=toc>is a handle to an digital audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDLSDEVICE.html">HDLSDEVICE</a></td>
+<td height=25 valign=top class=toc>is a handle to an DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDIGINPUT.html">HDIGINPUT</a></td>
+<td height=25 valign=top class=toc>is a handle to an digital audio input device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HPROVIDER.html">HPROVIDER</a></td>
+<td height=25 valign=top class=toc>is a handle to an available RIB provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDRIVERSTATE.html">HDRIVERSTATE</a></td>
+<td height=25 valign=top class=toc>is a handle to an open digital audio filter.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HTIMER.html">HTIMER</a></td>
+<td height=25 valign=top class=toc>is a handle to a Miles timer callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HSAMPLE.html">HSAMPLE</a></td>
+<td height=25 valign=top class=toc>is a handle to a digital sound sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HAUDIO.html">HAUDIO</a></td>
+<td height=25 valign=top class=toc>is a handle to a quick API handle (it can contain
+
+digital or MIDI data).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HSAMPLE.html">HSAMPLE</a></td>
+<td height=25 valign=top class=toc>is a handle to a digital sound sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HSTREAM.html">HSTREAM</a></td>
+<td height=25 valign=top class=toc>is a handle to a digital audio stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="H3DSAMPLE.html">H3DSAMPLE</a></td>
+<td height=25 valign=top class=toc>is a handle to 3D digital audio sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="H3DPOBJECT.html">H3DPOBJECT</a></td>
+<td height=25 valign=top class=toc>is a generic handle to 3D digital audio sample, a 3D
+
+listener object, or over 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HREDBOOK.html">HREDBOOK</a></td>
+<td height=25 valign=top class=toc>is a handle to a CD audio (redbook) device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HSEQUENCE.html">HSEQUENCE</a></td>
+<td height=25 valign=top class=toc>is a handle to an XMIDI sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HWAVESYNTH.html">HWAVESYNTH</a></td>
+<td height=25 valign=top class=toc>is a handle to an open wave synthesizer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDLSFILEID.html">HDLSFILEID</a></td>
+<td height=25 valign=top class=toc>is a handle to an loaded DLS instrument set.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HPROENUM.html">HPROENUM</a></td>
+<td height=25 valign=top class=toc>specifies a type used to enumerate through a list of
+
+RIB providers.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HINTENUM.html">HINTENUM</a></td>
+<td height=25 valign=top class=toc>specifies a type used to enumerate through a list of
+
+attributes and/or preferences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DRIVER.html">AIL_DRIVER</a></td>
+<td height=25 valign=top class=toc>specifies a low-level digital or XMIDI DOS driver. </td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="REALFAR.html">REALFAR</a></td>
+<td height=25 valign=top class=toc>specifies a lower 1 MB real mode address.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTSOUND.html">LPDIRECTSOUND</a></td>
+<td height=25 valign=top class=toc>describes a pointer to a DirectSound object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTSOUNDBUFFER.html">LPDIRECTSOUNDBUFFER</a></td>
+<td height=25 valign=top class=toc>describes a pointer to a DirectSound buffer object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HWND.html">HWND</a></td>
+<td height=25 valign=top class=toc>specifies a Windows window handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPHWAVEOUT.html">LPHWAVEOUT</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a Windows waveOut device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPWAVEFORMAT.html">LPWAVEFORMAT</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a PCMWAVEFORMAT structure.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPHMIDIOUT.html">LPHMIDIOUT</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a Windows midiOut device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="FSSpec.html">FSSpec</a></td>
+<td height=25 valign=top class=toc>is a MacOS file spec structure.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Quick Integration Sesm1baa.html">Quick Integration Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_startup.html">AIL_quick_startup</a></td>
+<td height=25 valign=top class=toc>initializes the quick integration system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_QUICK_DIGITAL_OPEN.html">MILES_QUICK_DIGITAL_OPEN</a></td>
+<td height=25 valign=top class=toc>describes how to open the digital
+
+audio system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_QUICK_MIDI_OPEN.html">MILES_QUICK_MIDI_OPEN</a></td>
+<td height=25 valign=top class=toc>describes how to open the MIDI system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_shutdown.html">AIL_quick_shutdown</a></td>
+<td height=25 valign=top class=toc>closes the quick integration API.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_load.html">AIL_quick_load</a></td>
+<td height=25 valign=top class=toc>loads a sound file, returning a handle that
+
+          can be used with the other quick API functions.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_fss_load.html">AIL_quick_fss_load</a></td>
+<td height=25 valign=top class=toc>loads a sound file from a Mac file spec, returning a handle that
+
+          can be used with the other quick API functions.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_load_mem.html">AIL_quick_load_mem</a></td>
+<td height=25 valign=top class=toc>loads a sound file that is already loaded into
+
+          memory, returning a handle that can be used with the other quick
+
+          API functions.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_copy.html">AIL_quick_copy</a></td>
+<td height=25 valign=top class=toc>copies an audio handle from an already-loaded
+
+          audio handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_unload.html">AIL_quick_unload</a></td>
+<td height=25 valign=top class=toc>unloads a sound handle previously loaded with AIL_quick_load
+
+          or AIL_quick_load_and_play.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_play.html">AIL_quick_play</a></td>
+<td height=25 valign=top class=toc>starts the playback of an audio file previously loaded with AIL_quick_load.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_halt.html">AIL_quick_halt</a></td>
+<td height=25 valign=top class=toc>stops a currently playing audio handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_status.html">AIL_quick_status</a></td>
+<td height=25 valign=top class=toc>returns the status of an audio handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_QUICK_STATUS.html">MILES_QUICK_STATUS</a></td>
+<td height=25 valign=top class=toc>describes the status of a Quick API audio
+
+handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_load_and_play.html">AIL_quick_load_and_play</a></td>
+<td height=25 valign=top class=toc>loads a sound file into
+
+          a handle and begins playing it immediately.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_fss_load_a2xyaaa.html">AIL_quick_fss_load_and_play</a></td>
+<td height=25 valign=top class=toc>loads a Mac file spec sound into
+
+          a handle and begins playing it immediately.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_type.html">AIL_quick_type</a></td>
+<td height=25 valign=top class=toc>returns the type of an audio handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_QUICK_TYPE.html">MILES_QUICK_TYPE</a></td>
+<td height=25 valign=top class=toc>describes the data in a Quick API audio
+
+handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_set_volume.html">AIL_quick_set_volume</a></td>
+<td height=25 valign=top class=toc>controls the volume of an audio handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_set_speed.html">AIL_quick_set_speed</a></td>
+<td height=25 valign=top class=toc>controls the playback rate of an audio
+
+          handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_ms_length.html">AIL_quick_ms_length</a></td>
+<td height=25 valign=top class=toc>returns the total length in milliseconds of an audio handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_ms_position.html">AIL_quick_ms_position</a></td>
+<td height=25 valign=top class=toc>returns the current position in milliseconds of an audio handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_set_ms_position.html">AIL_quick_set_ms_position</a></td>
+<td height=25 valign=top class=toc>changes current playback position in
+
+          milliseconds of the specified audio handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_set_reverb.html">AIL_quick_set_reverb</a></td>
+<td height=25 valign=top class=toc>changes the simple reverb level of a digital
+
+          audio sample, or a MIDI playing through the software synthesizer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_quick_handles.html">AIL_quick_handles</a></td>
+<td height=25 valign=top class=toc>returns the MSS digital driver and MIDI driver
+
+          handles.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="System Services.html">System Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a></td>
+<td height=25 valign=top class=toc>sets the location of your application's Miles directory.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_startup.html">AIL_startup</a></td>
+<td height=25 valign=top class=toc>initializes the Miles Sound System and prepares for the installation
+
+          and use of sound drivers.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_shutdown.html">AIL_shutdown</a></td>
+<td height=25 valign=top class=toc>shuts down all active sound drivers, restores normal system timer
+
+          operation, and disconnects the API timer interrupt handler.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MSS_version.html">AIL_MSS_version</a></td>
+<td height=25 valign=top class=toc>returns the version of the Miles library.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_serve.html">AIL_serve</a></td>
+<td height=25 valign=top class=toc>provides periodic foreground service to the Miles Sound System
+
+          to avoid `starvation` during periods when the application
+
+          does not yield control frequently.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_preference.html">AIL_set_preference</a></td>
+<td height=25 valign=top class=toc>controls certain internal parameters
+
+          used by the MSS system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_get_preference.html">AIL_get_preference</a></td>
+<td height=25 valign=top class=toc>queries the current MSS internal parameters.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_last_error.html">AIL_last_error</a></td>
+<td height=25 valign=top class=toc>returns a string describing the last
+
+          MSS error.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_background.html">AIL_background</a></td>
+<td height=25 valign=top class=toc>allows an application function to determine if it is currently
+
+          running in `background` mode from an interrupt or thread, or if it is currently
+
+          running in the `foreground`.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Memory and File Services.html">Memory and File Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a></td>
+<td height=25 valign=top class=toc>allocates a locked block of memory.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a></td>
+<td height=25 valign=top class=toc>frees a pointer previously allocated with AIL_mem_alloc_lock
+
+          or AIL_file_read.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_read.html">AIL_file_read</a></td>
+<td height=25 valign=top class=toc>loads a data file into the specified memory
+
+          address, optionally allocating the memory as well.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_fss_read.html">AIL_file_fss_read</a></td>
+<td height=25 valign=top class=toc>loads a data file spec into the specified memory
+
+          address, optionally allocating the memory as well.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_write.html">AIL_file_write</a></td>
+<td height=25 valign=top class=toc>creates a new data file and fills it with the specified
+
+          data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_fss_write.html">AIL_file_fss_write</a></td>
+<td height=25 valign=top class=toc>creates a new MacOS data file spec and fills it with the specified
+
+          data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_fss_attrib_write.html">AIL_file_fss_attrib_write</a></td>
+<td height=25 valign=top class=toc>creates a new MacOS data file spec and fills it with the specified
+
+          data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_WAV_file_write.html">AIL_WAV_file_write</a></td>
+<td height=25 valign=top class=toc>creates a new Microsoft .WAV file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_WAV_file_fss_write.html">AIL_WAV_file_fss_write</a></td>
+<td height=25 valign=top class=toc>creates a new MacOS .WAV file spec.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_size.html">AIL_file_size</a></td>
+<td height=25 valign=top class=toc>returns the size of the specified data file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_fss_size.html">AIL_file_fss_size</a></td>
+<td height=25 valign=top class=toc>returns the size of the specified MacOS data file spec.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_error.html">AIL_file_error</a></td>
+<td height=25 valign=top class=toc>returns the last file I/O error from AIL_file_read, AIL_file_write,
+
+          or AIL_file_size.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_FILE_ERRORS.html">MILES_FILE_ERRORS</a></td>
+<td height=25 valign=top class=toc>describes an error encountered by one of the
+
+Miles file I/O functions.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_mem_use_malloc.html">AIL_mem_use_malloc</a></td>
+<td height=25 valign=top class=toc>replaces the default memory allocation
+
+          routines under Win32, MacOS or DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_mem_use_free.html">AIL_mem_use_free</a></td>
+<td height=25 valign=top class=toc>replaces the default memory freeing
+
+          routine under Win32, MacOS, or DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILMALLOCCB.html">AILMALLOCCB</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a user-defined memory allocation callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILFREECB.html">AILFREECB</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a user-defined memory release callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_file_callbacks.html">AIL_set_file_callbacks</a></td>
+<td height=25 valign=top class=toc>replaces the file IO functions that
+
+          Miles uses for AIL_file_read, AIL_file_size, and the high-level
+
+          streaming functions.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_open_callback.html">AIL_file_open_callback</a></td>
+<td height=25 valign=top class=toc>specifies user replaceable callback to open file in MSS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_close_callback.html">AIL_file_close_callback</a></td>
+<td height=25 valign=top class=toc>specifies user replaceable callback to close a file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_seek_callback.html">AIL_file_seek_callback</a></td>
+<td height=25 valign=top class=toc>specifies user replaceable callback to seek in a file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_FILE_SEEK_TYPE.html">MILES_FILE_SEEK_TYPE</a></td>
+<td height=25 valign=top class=toc>describes the type of seek to perform.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_read_callback.html">AIL_file_read_callback</a></td>
+<td height=25 valign=top class=toc>specifies user replaceable callback to read from a file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_vmm_lock.html">AIL_vmm_lock</a></td>
+<td height=25 valign=top class=toc>locks the specified memory range under DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_vmm_unlock.html">AIL_vmm_unlock</a></td>
+<td height=25 valign=top class=toc>unlocks a piece of memory previously locked
+
+          with AIL_vmm_lock.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_vmm_lock_range.html">AIL_vmm_lock_range</a></td>
+<td height=25 valign=top class=toc>locks the specified memory range under DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_vmm_unlock_range.html">AIL_vmm_unlock_range</a></td>
+<td height=25 valign=top class=toc>unlocks a piece of memory previously locked
+
+          with AIL_vmm_lock_range.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Timer Services.html">Timer Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_ms_count.html">AIL_ms_count</a></td>
+<td height=25 valign=top class=toc>returns a millisecond accurate timer count (one thousand ticks
+
+          per second).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_us_count.html">AIL_us_count</a></td>
+<td height=25 valign=top class=toc>returns a microsecond accurate timer count (one million ticks
+
+          per second).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_timer.html">AIL_register_timer</a></td>
+<td height=25 valign=top class=toc>registers a callback function callback_fn to receive asynchronous
+
+          time-slice service from a timer, and returns a handle HTIMER
+
+          which may be used to start, stop, and program the function's
+
+          assigned timer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILTIMERCB.html">AILTIMERCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined timer callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_timer_user.html">AIL_set_timer_user</a></td>
+<td height=25 valign=top class=toc>instructs the MSS timer dispatcher to pass the value user to
+
+          the timer callback function associated with the timer handle
+
+          timer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_timer_period.html">AIL_set_timer_period</a></td>
+<td height=25 valign=top class=toc>programs a timer for callback service at periods ranging from
+
+          1 microsecond to 1,000,000,000 microseconds (approximately 15
+
+          minutes).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_timer_frequency.html">AIL_set_timer_frequency</a></td>
+<td height=25 valign=top class=toc>programs a timer for callback service at frequencies ranging
+
+          from 1 Hz (Hertz, or cycles per second) to 1,000,000 Hz.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_timer_divisor.html">AIL_set_timer_divisor</a></td>
+<td height=25 valign=top class=toc>programs a timer for callback service at a rate which is given
+
+          in terms of the constant value that would normally be used to
+
+          program the IBM PC's 8253 Programmable Interval Timer chip for
+
+          the desired interrupt rate, if the application were to access
+
+          the chip directly.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_interrupt_divisor.html">AIL_interrupt_divisor</a></td>
+<td height=25 valign=top class=toc>returns the current value used internally by the Miles Sound
+
+          System's Timer Services to program the IBM PC's 8253 Programmable
+
+          Interval Timer chip for periodic INT 8 (IRQ 0) service.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_timer.html">AIL_start_timer</a></td>
+<td height=25 valign=top class=toc>initiates or resumes periodic time-slice interrupt service to
+
+          the callback function registered to timer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_timer.html">AIL_stop_timer</a></td>
+<td height=25 valign=top class=toc>stops periodic time-slice interrupt service to the callback function
+
+          registered to timer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_timer_handle.html">AIL_release_timer_handle</a></td>
+<td height=25 valign=top class=toc>stops periodic time-slice interrupt service to the callback function
+
+          registered to timer, and releases the timer's handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_get_timer_highesqwlaaa.html">AIL_get_timer_highest_delay</a></td>
+<td height=25 valign=top class=toc>returns the highest delay in timer servicing under Win 32.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_delay.html">AIL_delay</a></td>
+<td height=25 valign=top class=toc>suspends foreground program execution.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_lock.html">AIL_lock</a></td>
+<td height=25 valign=top class=toc>suspends timer service to all MSS drivers and application callback
+
+          functions until a matching call to AIL_unlock is made.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_unlock.html">AIL_unlock</a></td>
+<td height=25 valign=top class=toc>resumes timer service to all MSS drivers and application callback
+
+          functions after a matching call to AIL_lock.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_all_timers.html">AIL_start_all_timers</a></td>
+<td height=25 valign=top class=toc>initiates or resumes periodic time-slice interrupt service to
+
+          the callback functions registered to all active timer handles.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_all_timers.html">AIL_stop_all_timers</a></td>
+<td height=25 valign=top class=toc>stops periodic time-slice interrupt service to the callback functions
+
+          registered to all active timer handles.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_all_timers.html">AIL_release_all_timers</a></td>
+<td height=25 valign=top class=toc>stops periodic time-slice interrupt service to the callback functions
+
+          registered to all active timer handles, and releases all active
+
+          timer handles.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="2D Digital Audio Services.html">2D Digital Audio Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a></td>
+<td height=25 valign=top class=toc>opens a digital driver to play 2D digital audio.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_OPEN_DIGITAL_FLAGS.html">MILES_OPEN_DIGITAL_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies open flags for the
+
+AIL_open_digital_driver function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_digital_driver.html">AIL_close_digital_driver</a></td>
+<td height=25 valign=top class=toc>shuts down and closes an audio driver which was
+
+          opened by a previous call to AIL_open_digital_driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_digital_handle_ruqabaa.html">AIL_digital_handle_release</a></td>
+<td height=25 valign=top class=toc>temporarily releases the hardware digital handle (either the HWAVEOUT
+
+          handle, the DirectSound object, or the Sound Manager buffer) back to the system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_digital_handle_ruoiaaa.html">AIL_digital_handle_reacquire</a></td>
+<td height=25 valign=top class=toc>attempts to reacquire hardware digital handle (either the HWAVEOUT
+
+          handle, the DirectSound object, or the Sound Manager buffer) from the system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_DirectSound_HWND.html">AIL_set_DirectSound_HWND</a></td>
+<td height=25 valign=top class=toc>assigns the HWND to use for DirectSound's
+
+          focus control.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_HWND.html">AIL_HWND</a></td>
+<td height=25 valign=top class=toc>returns the HWND that MSS has detected as your primary HWND.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_digital_mastmwidfa.html">AIL_set_digital_master_volume</a></td>
+<td height=25 valign=top class=toc>establishes an overall `master volume` value which is used to
+
+          scale the volumes of all subsequent digital audio samples.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_digital_master_volume.html">AIL_digital_master_volume</a></td>
+<td height=25 valign=top class=toc>returns the current digital master volume setting in use.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_allocate_sample_ijfaaa.html">AIL_allocate_sample_handle</a></td>
+<td height=25 valign=top class=toc>searches for a free sample handle and returns it to the application
+
+          for use in the playback of digital audio data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_sample_handle.html">AIL_release_sample_handle</a></td>
+<td height=25 valign=top class=toc>releases a sample handle previously allocated with AIL_allocate_sample_handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a></td>
+<td height=25 valign=top class=toc>loads a memory-resident .VOC file, uncompressed .WAV file, IMA ADPCM compressed .WAV
+
+          file, .WAV-wrapped MPEG Layer 3 file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_init_sample.html">AIL_init_sample</a></td>
+<td height=25 valign=top class=toc>prepares a sample handle for playback of audio data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_address.html">AIL_set_sample_address</a></td>
+<td height=25 valign=top class=toc>specifies the starting address and length for a raw data sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_file.html">AIL_set_sample_file</a></td>
+<td height=25 valign=top class=toc>initializes a sample's address, length, type, and flags to prepare
+
+          for playback of a memory-resident .</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_named_sample_file.html">AIL_set_named_sample_file</a></td>
+<td height=25 valign=top class=toc>initializes a sample's address, length, type, and flags to prepare
+
+          for playback of a memory-resident .</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_type.html">AIL_set_sample_type</a></td>
+<td height=25 valign=top class=toc>provides information about the nature of the raw sample data
+
+          associated with a given sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a></td>
+<td height=25 valign=top class=toc>describes the type of digital audio.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_DIGITAL_FLAGS.html">MILES_DIGITAL_FLAGS</a></td>
+<td height=25 valign=top class=toc>describes the layout of digital audio.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_sample.html">AIL_start_sample</a></td>
+<td height=25 valign=top class=toc>starts playback of a sample from its beginning.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_sample.html">AIL_stop_sample</a></td>
+<td height=25 valign=top class=toc>stops playback of a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_resume_sample.html">AIL_resume_sample</a></td>
+<td height=25 valign=top class=toc>resumes playback of a sample which was previously stopped.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_end_sample.html">AIL_end_sample</a></td>
+<td height=25 valign=top class=toc>terminates playback of a sample, setting its status to SMP_DONE.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_playbug1eaa.html">AIL_set_sample_playback_rate</a></td>
+<td height=25 valign=top class=toc>sets a sample's playback rate in hertz.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_playback_rate.html">AIL_sample_playback_rate</a></td>
+<td height=25 valign=top class=toc>returns the current sample playback rate.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_volume.html">AIL_set_sample_volume</a></td>
+<td height=25 valign=top class=toc>controls a sample's playback volume level.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_volume.html">AIL_sample_volume</a></td>
+<td height=25 valign=top class=toc>returns the current sample volume, from 0 (minimum) to 127 (maximum).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_pan.html">AIL_set_sample_pan</a></td>
+<td height=25 valign=top class=toc>controls the placement of a monaural data sample in stereo space,
+
+          or the balance of a stereo sample in stereo space.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_pan.html">AIL_sample_pan</a></td>
+<td height=25 valign=top class=toc>returns the current sample panpot value, from 0 (hard left) to
+
+          127 (hard right).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_reverb.html">AIL_set_sample_reverb</a></td>
+<td height=25 valign=top class=toc>changes the simple reverb settings of a digital
+
+          audio sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_reverb.html">AIL_sample_reverb</a></td>
+<td height=25 valign=top class=toc>retrieves the simple reverb settings of a
+
+          digital audio sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_loop_count.html">AIL_set_sample_loop_count</a></td>
+<td height=25 valign=top class=toc>arranges for a sample to be restarted immediately upon completion,
+
+          for a total of two or more iterations.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_loop_count.html">AIL_sample_loop_count</a></td>
+<td height=25 valign=top class=toc>returns the number of loop iterations remaining for the given
+
+          sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_loop_block.html">AIL_set_sample_loop_block</a></td>
+<td height=25 valign=top class=toc>arranges for a sub-block of a sample to be looped.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_position.html">AIL_set_sample_position</a></td>
+<td height=25 valign=top class=toc>adjusts the playback position of a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_position.html">AIL_sample_position</a></td>
+<td height=25 valign=top class=toc>reports the current playback position of a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_ms_pozr6aaa.html">AIL_set_sample_ms_position</a></td>
+<td height=25 valign=top class=toc>adjusts the playback position of a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_ms_position.html">AIL_sample_ms_position</a></td>
+<td height=25 valign=top class=toc>reports the current playback position and length of a sample
+
+          in milliseconds.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_status.html">AIL_sample_status</a></td>
+<td height=25 valign=top class=toc>returns the status of a given sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_DIGITAL_STATUS.html">MILES_DIGITAL_STATUS</a></td>
+<td height=25 valign=top class=toc>describes the current state of the digital audio.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_user_data.html">AIL_set_sample_user_data</a></td>
+<td height=25 valign=top class=toc>sets a value for one of eight user data entries associated with
+
+          each sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_user_data.html">AIL_sample_user_data</a></td>
+<td height=25 valign=top class=toc>retrieves a value for one of eight user data entries associated
+
+          with each sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_minimum_sample_bahfkoa.html">AIL_minimum_sample_buffer_size</a></td>
+<td height=25 valign=top class=toc>returns the minimum usable buffer size for use with the digital
+
+          audio double-buffering function AIL_load_sample_buffer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a></td>
+<td height=25 valign=top class=toc>checks to see if either of two buffers associated with a sample
+
+          handle are ready to be filled with new audio data by the AIL_load_sample_buffer
+
+          function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_load_sample_buffer.html">AIL_load_sample_buffer</a></td>
+<td height=25 valign=top class=toc>sets the address and length for one of two buffers associated
+
+          with a sample handle, and enables double-buffering mode for that
+
+          sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_buffer_info.html">AIL_sample_buffer_info</a></td>
+<td height=25 valign=top class=toc>returns detailed information about the status of
+
+          the double-buffering system for the specified sound handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sample_granularity.html">AIL_sample_granularity</a></td>
+<td height=25 valign=top class=toc>returns the granularity of a sample in bytes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_adpcmu899ga.html">AIL_set_sample_adpcm_block_size</a></td>
+<td height=25 valign=top class=toc>sets the block size for the IMA ADPCM data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_digital_CPU_percent.html">AIL_digital_CPU_percent</a></td>
+<td height=25 valign=top class=toc>returns the percentage of total CPU being spent in the Miles
+
+          digital processing loop.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_digital_latency.html">AIL_digital_latency</a></td>
+<td height=25 valign=top class=toc>returns the approximate latency of a sound being heard if it
+
+          was started immediately.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_SOB_callback.html">AIL_register_SOB_callback</a></td>
+<td height=25 valign=top class=toc>arranges for callback service to be provided to an application's
+
+          function just before a block of sample data is merged into the
+
+          hardware buffer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILSAMPLECB.html">AILSAMPLECB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined digital audio callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_EOB_callback.html">AIL_register_EOB_callback</a></td>
+<td height=25 valign=top class=toc>arranges for callback service to be provided to an application
+
+          function immediately upon reaching the end of a sample buffer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_EOS_callback.html">AIL_register_EOS_callback</a></td>
+<td height=25 valign=top class=toc>arranges for callback service to be provided to an application
+
+          function immediately upon reaching the end of a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_EOF_callback.html">AIL_register_EOF_callback</a></td>
+<td height=25 valign=top class=toc>arranges for callback service to be provided to an application
+
+          function immediately upon reaching the end of a file whose handle
+
+          was allocated by AIL_allocate_file_sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_active_sample_count.html">AIL_active_sample_count</a></td>
+<td height=25 valign=top class=toc>returns the number of currently-playing samples.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_digital_configuration.html">AIL_digital_configuration</a></td>
+<td height=25 valign=top class=toc>returns information about the specified digital
+
+          driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_get_DirectSound_info.html">AIL_get_DirectSound_info</a></td>
+<td height=25 valign=top class=toc>returns the pointers to the DirectSound object
+
+          currently being used by MSS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_waveOutOpen.html">AIL_waveOutOpen</a></td>
+<td height=25 valign=top class=toc>assigns a DirectSound object or a Windows Multimedia Extensions
+
+          (MME) low-level waveOut driver to the Windows MSS API for digital
+
+          audio performance.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_DIG_INI.html">AIL_install_DIG_INI</a></td>
+<td height=25 valign=top class=toc>installs and initializes the currently selected MSS .DIG driver
+
+          file under DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_INSTALL_STATUS.html">MILES_INSTALL_STATUS</a></td>
+<td height=25 valign=top class=toc>specifies possible results from loading a DOS driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_DIG_driv6dbdaa.html">AIL_install_DIG_driver_file</a></td>
+<td height=25 valign=top class=toc>installs and initializes an MSS-compatible .DIG driver file under
+
+          DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="IO_PARMS.html">IO_PARMS</a></td>
+<td height=25 valign=top class=toc>indicates specific hardware settings to use when
+
+installing a digital driver</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Digital Audio Input hpyv0q.html">Digital Audio Input (Recording) Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_input.html">AIL_open_input</a></td>
+<td height=25 valign=top class=toc>opens a digital input channel (usually from the microphone) to
+
+          receive input digital audio data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_INPUT_INFO.html">AIL_INPUT_INFO</a></td>
+<td height=25 valign=top class=toc>specifies the details for performing digital input.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_input_callback.html">AIL_input_callback</a></td>
+<td height=25 valign=top class=toc>specifies a user callback that is called as audio data is received
+
+          by the input device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_input.html">AIL_close_input</a></td>
+<td height=25 valign=top class=toc>closes a digital input handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_input_state.html">AIL_set_input_state</a></td>
+<td height=25 valign=top class=toc>controls whether the digital input channel is actively recording
+
+          or not.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_get_input_info.html">AIL_get_input_info</a></td>
+<td height=25 valign=top class=toc>returns the information structure used to open the digital input
+
+          channel.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Digital Audio Stream436kmy.html">Digital Audio Streaming Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_stream.html">AIL_open_stream</a></td>
+<td height=25 valign=top class=toc>opens a stream handle from a WAV or MP3 file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_stream.html">AIL_close_stream</a></td>
+<td height=25 valign=top class=toc>closes a stream handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_service_stream.html">AIL_service_stream</a></td>
+<td height=25 valign=top class=toc>services the given stream handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_auto_service_stream.html">AIL_auto_service_stream</a></td>
+<td height=25 valign=top class=toc>turns auto-servicing on or off for a stream handle
+
+          (it's turned on by default).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_stream.html">AIL_start_stream</a></td>
+<td height=25 valign=top class=toc>starts playback of the specified stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_pause_stream.html">AIL_pause_stream</a></td>
+<td height=25 valign=top class=toc>pauses the playback of the specified stream
+
+          handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_playbug1eaa.html">AIL_set_stream_playback_rate</a></td>
+<td height=25 valign=top class=toc>sets a stream's playback rate in hertz.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_playback_rate.html">AIL_stream_playback_rate</a></td>
+<td height=25 valign=top class=toc>returns the current stream playback rate.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_volume.html">AIL_set_stream_volume</a></td>
+<td height=25 valign=top class=toc>controls a stream's playback volume level.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_volume.html">AIL_stream_volume</a></td>
+<td height=25 valign=top class=toc>returns the current stream volume, from 0 (minimum) to 127 (maximum).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_pan.html">AIL_set_stream_pan</a></td>
+<td height=25 valign=top class=toc>controls the placement of a monaural data stream in stereo space,
+
+          or the balance of a stereo stream in stereo space.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_pan.html">AIL_stream_pan</a></td>
+<td height=25 valign=top class=toc>returns the current stream panpot value, from 0 (hard left) to
+
+          127 (hard right).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_reverb.html">AIL_set_stream_reverb</a></td>
+<td height=25 valign=top class=toc>changes the simple reverb settings of a digital
+
+          stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_reverb.html">AIL_stream_reverb</a></td>
+<td height=25 valign=top class=toc>retrieves the simple reverb settings of a
+
+          digital stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_loop_count.html">AIL_set_stream_loop_count</a></td>
+<td height=25 valign=top class=toc>arranges for a stream to be restarted immediately upon completion,
+
+          for a total of two or more iterations.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_loop_count.html">AIL_stream_loop_count</a></td>
+<td height=25 valign=top class=toc>returns the number of loop iterations remaining for the given
+
+          stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_loop_block.html">AIL_set_stream_loop_block</a></td>
+<td height=25 valign=top class=toc>arranges for a sub-block of a stream to be looped.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_position.html">AIL_set_stream_position</a></td>
+<td height=25 valign=top class=toc>adjusts the playback position of a stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_position.html">AIL_stream_position</a></td>
+<td height=25 valign=top class=toc>reports the current playback position of a stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_ms_pozr6aaa.html">AIL_set_stream_ms_position</a></td>
+<td height=25 valign=top class=toc>adjusts the playback position of a stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_ms_position.html">AIL_stream_ms_position</a></td>
+<td height=25 valign=top class=toc>reports the total length and the current playback position of
+
+          a stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_status.html">AIL_stream_status</a></td>
+<td height=25 valign=top class=toc>returns the status of a given stream handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_user_data.html">AIL_set_stream_user_data</a></td>
+<td height=25 valign=top class=toc>sets a value for one of eight user data entries associated with
+
+          each stream handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_user_data.html">AIL_stream_user_data</a></td>
+<td height=25 valign=top class=toc>retrieves a value for one of eight user data entries associated
+
+          with each stream handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stream_info.html">AIL_stream_info</a></td>
+<td height=25 valign=top class=toc>returns information about the given stream handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_stream_s0khaa.html">AIL_register_stream_callback</a></td>
+<td height=25 valign=top class=toc>arranges for callback service to be provided to an application
+
+          function immediately upon reaching the end of a stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILSTREAMCB.html">AILSTREAMCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined digital audio stream callback.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Digital Filter Services.html">Digital Filter Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_enumerate_filters.html">AIL_enumerate_filters</a></td>
+<td height=25 valign=top class=toc>enumerates the available filter processors for display or for
+
+          opening.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_filter.html">AIL_open_filter</a></td>
+<td height=25 valign=top class=toc>opens a filter to prepare it for use.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_filter.html">AIL_close_filter</a></td>
+<td height=25 valign=top class=toc>closes a previously opened filter.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sample_processor.html">AIL_set_sample_processor</a></td>
+<td height=25 valign=top class=toc>assigns the filter or mixer stages for a specific
+
+          sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="SAMPLESTAGE.html">SAMPLESTAGE</a></td>
+<td height=25 valign=top class=toc>describes the stage in the sample pipeline to install
+
+the filter on.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_stream_processor.html">AIL_set_stream_processor</a></td>
+<td height=25 valign=top class=toc>assigns the filter or mixer stages for a specific
+
+          stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_DLS_processor.html">AIL_set_DLS_processor</a></td>
+<td height=25 valign=top class=toc>assigns the filter or mixer stages for a specific
+
+          sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_digital_drivwp5xci.html">AIL_set_digital_driver_processor</a></td>
+<td height=25 valign=top class=toc>assigns the filter or mixer stages for a digital
+
+          driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="DIGDRVSTAGE.html">DIGDRVSTAGE</a></td>
+<td height=25 valign=top class=toc>describes the stage in the driver pipeline to install
+
+the filter on.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_enumerate_filter4znc1e.html">AIL_enumerate_filter_attributes</a></td>
+<td height=25 valign=top class=toc>enumerates through the possible filter-level attributes
+
+          and preferences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RIB_INTERFACE_ENTRY.html">RIB_INTERFACE_ENTRY</a></td>
+<td height=25 valign=top class=toc>specifies a structure that contains RIB attribute
+
+and/or preference information.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RIB_ENTRY_TYPE.html">RIB_ENTRY_TYPE</a></td>
+<td height=25 valign=top class=toc>describes the type of the RIB entry.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RIB_DATA_SUBTYPE.html">RIB_DATA_SUBTYPE</a></td>
+<td height=25 valign=top class=toc>describes the variable type of the RIB entry.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_enumerate_filteryw2t1e.html">AIL_enumerate_filter_sample_attributes</a></td>
+<td height=25 valign=top class=toc>enumerates through the possible sample-level filter
+
+          attributes and preferences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_filter_attribute.html">AIL_filter_attribute</a></td>
+<td height=25 valign=top class=toc>retrieves the current value of the specified filter-level
+
+          attribute.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_filter_sample_atybklaa.html">AIL_filter_sample_attribute</a></td>
+<td height=25 valign=top class=toc>retrieves the current value of the specified sample-level
+
+          attribute.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_filter_stream_atybklaa.html">AIL_filter_stream_attribute</a></td>
+<td height=25 valign=top class=toc>retrieves the current value of the specified sample-level
+
+          attribute.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_filter_DLS_attribute.html">AIL_filter_DLS_attribute</a></td>
+<td height=25 valign=top class=toc>retrieves the current value of the specified sample-level
+
+          attribute.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_filter_preference.html">AIL_set_filter_preference</a></td>
+<td height=25 valign=top class=toc>sets the value of the specified filter-level preference.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_filter_samplemwzk3.html">AIL_set_filter_sample_preference</a></td>
+<td height=25 valign=top class=toc>sets the value of the specified sample-level preference.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_filter_streaemwzk3.html">AIL_set_filter_stream_preference</a></td>
+<td height=25 valign=top class=toc>sets the value of the specified sample-level preference.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_filter_DLS_pqfj6fa.html">AIL_set_filter_DLS_preference</a></td>
+<td height=25 valign=top class=toc>sets the value of the specified sample-level preference.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Capture Filter.html">Capture Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Reverb 1 Filter.html">Reverb 1 Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Reverb 2 Filter.html">Reverb 2 Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Reverb 3 Filter.html">Reverb 3 Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Low-Pass Filter.html">Low-Pass Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="High-Pass Filter.html">High-Pass Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Band-Pass Filter.html">Band-Pass Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Resonator Filter.html">Resonator Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Mono Delay Filter.html">Mono Delay Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Stereo Delay Filter.html">Stereo Delay Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Parametric Equalizervt5vaa.html">Parametric Equalizer Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Shelving Equalizer Filter.html">Shelving Equalizer Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Compressor Filter.html">Compressor Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Auto-panner Filter.html">Auto-panner Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Ring-Amplitude Modul3fw5jk.html">Ring-Amplitude Modulator Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Phaser Filter.html">Phaser Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Chorus Filter.html">Chorus Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Flange Filter.html">Flange Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Lagrangian Interpolanfpj4a.html">Lagrangian Interpolator Filter</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="3D Digital Audio Services.html">3D Digital Audio Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_enumerate_3D_prok20aaa.html">AIL_enumerate_3D_providers</a></td>
+<td height=25 valign=top class=toc>enumerates the available 3D providers for display or for opening.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a></td>
+<td height=25 valign=top class=toc>opens the specified M3D provider for playback of 3D sounds.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_3D_provider.html">AIL_close_3D_provider</a></td>
+<td height=25 valign=top class=toc>closes the specified M3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_allocate_3D_sampapaoba.html">AIL_allocate_3D_sample_handle</a></td>
+<td height=25 valign=top class=toc>allocates a handle that can play 3D audio.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_3D_sampl2icfaa.html">AIL_release_3D_sample_handle</a></td>
+<td height=25 valign=top class=toc>releases a 3D sample handle back to its M3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a></td>
+<td height=25 valign=top class=toc>sets the sample starting address, type, and playback
+
+          rate from the input file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a></td>
+<td height=25 valign=top class=toc>sets the sample starting address, type, and playback
+
+          rate from the fields in the specified AILSOUNDINFO structure.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_dicyrnaa.html">AIL_set_3D_sample_distances</a></td>
+<td height=25 valign=top class=toc>sets the minimum and maximum distances for a given sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_distances.html">AIL_3D_sample_distances</a></td>
+<td height=25 valign=top class=toc>returns the current minimum and maximum distances
+
+          for the specified sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_3D_sample.html">AIL_start_3D_sample</a></td>
+<td height=25 valign=top class=toc>begins playback of a 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_3D_sample.html">AIL_stop_3D_sample</a></td>
+<td height=25 valign=top class=toc>pauses a 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_resume_3D_sample.html">AIL_resume_3D_sample</a></td>
+<td height=25 valign=top class=toc>resumes a sample that was previously stopped with AIL_stop_3D_sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_end_3D_sample.html">AIL_end_3D_sample</a></td>
+<td height=25 valign=top class=toc>completely ends playback of the specified sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_plm6fdon.html">AIL_set_3D_sample_playback_rate</a></td>
+<td height=25 valign=top class=toc>sets the playback rate of the specified 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_playbayb8baa.html">AIL_3D_sample_playback_rate</a></td>
+<td height=25 valign=top class=toc>returns the current playback rate for the specified sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_volume.html">AIL_set_3D_sample_volume</a></td>
+<td height=25 valign=top class=toc>establishes the maximum volume level of a 3D sample (the volume
+
+          to use when the 3D sample is right next to the 3D listener).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_volume.html">AIL_3D_sample_volume</a></td>
+<td height=25 valign=top class=toc>returns the current maximum volume for the specified sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_offset.html">AIL_set_3D_sample_offset</a></td>
+<td height=25 valign=top class=toc>sets the playback offset of in a 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_offset.html">AIL_3D_sample_offset</a></td>
+<td height=25 valign=top class=toc>returns the current playback offset for the specified 3D sample
+
+          handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_cone.html">AIL_set_3D_sample_cone</a></td>
+<td height=25 valign=top class=toc>sets the sound emission cone on a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_cone.html">AIL_3D_sample_cone</a></td>
+<td height=25 valign=top class=toc>retrieves the current sound emission
+
+          cone of a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_oc325gaa.html">AIL_set_3D_sample_occlusion</a></td>
+<td height=25 valign=top class=toc>sets the occlusion for the specified 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_occlusion.html">AIL_3D_sample_occlusion</a></td>
+<td height=25 valign=top class=toc>retrieves the current occlusion level
+
+          of the given sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_ob7131va.html">AIL_set_3D_sample_obstruction</a></td>
+<td height=25 valign=top class=toc>sets the obstruction for the specified 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_obstruction.html">AIL_3D_sample_obstruction</a></td>
+<td height=25 valign=top class=toc>retrieves the current obstruction level
+
+          of the given sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a></td>
+<td height=25 valign=top class=toc>controls the amount of room effects that
+
+          are applied by AIL_set_3D_room_type.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_effect9obbaa.html">AIL_3D_sample_effects_level</a></td>
+<td height=25 valign=top class=toc>retrieves the current effects level of
+
+          the given sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_lop5nvaa.html">AIL_set_3D_sample_loop_count</a></td>
+<td height=25 valign=top class=toc>sets the number of times for a 3D sample to loop.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_loop_count.html">AIL_3D_sample_loop_count</a></td>
+<td height=25 valign=top class=toc>returns the number of loops remaining in the specified sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_loswdvaa.html">AIL_set_3D_sample_loop_block</a></td>
+<td height=25 valign=top class=toc>arranges for a sub-block of a 3D sample to be looped.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_user_data.html">AIL_set_3D_user_data</a></td>
+<td height=25 valign=top class=toc>sets a value for one of eight user data entries associated with
+
+          a 3D sample, the listener, or a 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_user_data.html">AIL_3D_user_data</a></td>
+<td height=25 valign=top class=toc>retrieves a value for one of eight user data entries associated
+
+          with each 3D sample, the listener, or 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_status.html">AIL_3D_sample_status</a></td>
+<td height=25 valign=top class=toc>returns the playback status of the specified sample
+
+          handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_length.html">AIL_3D_sample_length</a></td>
+<td height=25 valign=top class=toc>returns the length of the specified sample in bytes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_3D_EOS_s0khaa.html">AIL_register_3D_EOS_callback</a></td>
+<td height=25 valign=top class=toc>arranges for callback service to be provided to an application
+
+          function immediately upon reaching the end of a 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL3DSAMPLECB.html">AIL3DSAMPLECB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined 3D digital audio callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_active_3D_sample1mlaaa.html">AIL_active_3D_sample_count</a></td>
+<td height=25 valign=top class=toc>returns the number of currently playing sample handles for the
+
+          specified M3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_3D_listener.html">AIL_open_3D_listener</a></td>
+<td height=25 valign=top class=toc>opens a handle to the listener.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_3D_listener.html">AIL_close_3D_listener</a></td>
+<td height=25 valign=top class=toc>closes the 3D listener handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_3D_object.html">AIL_open_3D_object</a></td>
+<td height=25 valign=top class=toc>opens a 3D object for the specified M3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_3D_object.html">AIL_close_3D_object</a></td>
+<td height=25 valign=top class=toc>closes the specified 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_position.html">AIL_set_3D_position</a></td>
+<td height=25 valign=top class=toc>sets the three dimensional position of a 3D sample,
+
+          the listener, or a 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_position.html">AIL_3D_position</a></td>
+<td height=25 valign=top class=toc>retrieves the current 3D position of a 3D sample, the listener,
+
+          or a 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_velocity.html">AIL_set_3D_velocity</a></td>
+<td height=25 valign=top class=toc>sets the current velocity of a 3D sample, the listener,
+
+          or a 3D object in normalized coordinates.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_velocity.html">AIL_3D_velocity</a></td>
+<td height=25 valign=top class=toc>retrieves the current velocity of a 3D sample, the listener,
+
+          or a 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_velocity_v1maaa.html">AIL_set_3D_velocity_vector</a></td>
+<td height=25 valign=top class=toc>sets the current velocity of a 3D sample, the listener,
+
+          or a 3D object in non-normalized coordinates.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_update_3D_position.html">AIL_update_3D_position</a></td>
+<td height=25 valign=top class=toc>updates a 3D sample, listener, or 3D object's
+
+          position based on its previously set velocity and the specified
+
+          delta time in milliseconds.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_auto_update_3D_pzvtnaa.html">AIL_auto_update_3D_position</a></td>
+<td height=25 valign=top class=toc>arranges for the position of a 3D sample to be automatically
+
+          updated in the background.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_orientation.html">AIL_set_3D_orientation</a></td>
+<td height=25 valign=top class=toc>specifies the orientation of a 3D sample, the listener, or a
+
+          3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_orientation.html">AIL_3D_orientation</a></td>
+<td height=25 valign=top class=toc>retrieves the orientation of a 3D sample, the listener, or a
+
+          3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_room_type.html">AIL_set_3D_room_type</a></td>
+<td height=25 valign=top class=toc>sets the room type that the listener is currently
+
+          in.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_ROOM_TYPE.html">MILES_ROOM_TYPE</a></td>
+<td height=25 valign=top class=toc>specifies a room type to use for the
+
+environmental reverb.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_room_type.html">AIL_3D_room_type</a></td>
+<td height=25 valign=top class=toc>returns the current room type.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_speaker_type.html">AIL_set_3D_speaker_type</a></td>
+<td height=25 valign=top class=toc>sets the type of speaker system that the 3D provider
+
+          should use.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_SPEAKER_TYPE.html">MILES_SPEAKER_TYPE</a></td>
+<td height=25 valign=top class=toc>specifies a speaker type to use for the
+
+3D spacializing routines.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_speaker_type.html">AIL_3D_speaker_type</a></td>
+<td height=25 valign=top class=toc>returns the current speaker system being used by
+
+          the 3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_rolloff_factor.html">AIL_set_3D_rolloff_factor</a></td>
+<td height=25 valign=top class=toc>sets the provider's global 3D rolloff factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_rolloff_factor.html">AIL_3D_rolloff_factor</a></td>
+<td height=25 valign=top class=toc>returns the provider's current 3D rolloff factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_doppler_factor.html">AIL_set_3D_doppler_factor</a></td>
+<td height=25 valign=top class=toc>sets the provider's global 3D doppler factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_doppler_factor.html">AIL_3D_doppler_factor</a></td>
+<td height=25 valign=top class=toc>returns the provider's current 3D doppler factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_distance_reaaaa.html">AIL_set_3D_distance_factor</a></td>
+<td height=25 valign=top class=toc>sets the provider's global 3D distance factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_distance_factor.html">AIL_3D_distance_factor</a></td>
+<td height=25 valign=top class=toc>returns the provider's current 3D distance factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_provider_attribute.html">AIL_3D_provider_attribute</a></td>
+<td height=25 valign=top class=toc>retrieves provider level attributes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_provider_yxmz5e.html">AIL_set_3D_provider_preference</a></td>
+<td height=25 valign=top class=toc>sets provider level preferences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_attribute.html">AIL_3D_sample_attribute</a></td>
+<td height=25 valign=top class=toc>retrieves sample level attributes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_pruqq6aa.html">AIL_set_3D_sample_preference</a></td>
+<td height=25 valign=top class=toc>sets sample level preferences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Creative's EAX 1 Pre4368aa.html">Creative's EAX 1 Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Creative's EAX 2 Pre4368aa.html">Creative's EAX 2 Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Aureal's A3D 2 Prefe86raaa.html">Aureal's A3D 2 Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="QSound QMixer Preferences.html">QSound QMixer Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Dolby Surroundpt2cum.html">Miles Dolby Surround M3D Provider</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles 2D-based M3D Pcibglb.html">Miles 2D-based M3D Preferences</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="CD Audio (Redbook) Skgznaa.html">CD Audio (Redbook) Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_open.html">AIL_redbook_open</a></td>
+<td height=25 valign=top class=toc>opens a Red Book CD-audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_open_drive.html">AIL_redbook_open_drive</a></td>
+<td height=25 valign=top class=toc>opens a Red Book CD-audio device from a drive letter.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_open_volume.html">AIL_redbook_open_volume</a></td>
+<td height=25 valign=top class=toc>opens a Red Book CD-audio device from a MacOS volume name.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_close.html">AIL_redbook_close</a></td>
+<td height=25 valign=top class=toc>closes the handle to the Red Book device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_eject.html">AIL_redbook_eject</a></td>
+<td height=25 valign=top class=toc>ejects the CD currently inserted in the CD-ROM.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_retract.html">AIL_redbook_retract</a></td>
+<td height=25 valign=top class=toc>retracts the CD tray back into the CD-ROM.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_id.html">AIL_redbook_id</a></td>
+<td height=25 valign=top class=toc>returns an ID that will uniquely identify the CD currently inserted
+
+          in the Red Book device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_status.html">AIL_redbook_status</a></td>
+<td height=25 valign=top class=toc>returns the current status of the specified Red
+
+          Book device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_REDBOOK_STATUS.html">MILES_REDBOOK_STATUS</a></td>
+<td height=25 valign=top class=toc>specifies the redbook device status.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_tracks.html">AIL_redbook_tracks</a></td>
+<td height=25 valign=top class=toc>returns the number of audio tracks on the inserted
+
+          CD.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_track_info.html">AIL_redbook_track_info</a></td>
+<td height=25 valign=top class=toc>returns the starting and ending millisecond offsets
+
+          for a given track.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_position.html">AIL_redbook_position</a></td>
+<td height=25 valign=top class=toc>returns the current position in milliseconds of a playing Red
+
+          Book device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_track.html">AIL_redbook_track</a></td>
+<td height=25 valign=top class=toc>returns the currently play audio track number.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_play.html">AIL_redbook_play</a></td>
+<td height=25 valign=top class=toc>begins playback of an audio CD at the specified offset.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_stop.html">AIL_redbook_stop</a></td>
+<td height=25 valign=top class=toc>stops playback of a Red Book CD-audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_pause.html">AIL_redbook_pause</a></td>
+<td height=25 valign=top class=toc>pauses the playback of a Red Book CD-audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_resume.html">AIL_redbook_resume</a></td>
+<td height=25 valign=top class=toc>resumes the playback of a Red Book CD-audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_set_volume.html">AIL_redbook_set_volume</a></td>
+<td height=25 valign=top class=toc>controls the volume level of the Red Book CD-audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_redbook_volume.html">AIL_redbook_volume</a></td>
+<td height=25 valign=top class=toc>retrieves the volume level of the Red Book CD-audio device.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="XMIDI Services.html">XMIDI Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_XMIDI_driver.html">AIL_open_XMIDI_driver</a></td>
+<td height=25 valign=top class=toc>opens an driver handle to play XMIDI data files through.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_OPEN_XMIDI_FLAGS.html">MILES_OPEN_XMIDI_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies open flags for the
+
+AIL_open_XMIDI_driver function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_XMIDI_driver.html">AIL_close_XMIDI_driver</a></td>
+<td height=25 valign=top class=toc>shuts down and closes a MIDI music driver which was opened
+
+          by a previous call to AIL_open_XMIDI_driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MIDI_handle_release.html">AIL_MIDI_handle_release</a></td>
+<td height=25 valign=top class=toc>temporarily releases the hardware MIDI handle (the HMIDIOUT handle
+
+or the QuickTime MIDI handle) back to the system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MIDI_handle_reacquire.html">AIL_MIDI_handle_reacquire</a></td>
+<td height=25 valign=top class=toc>attempts to reacquire the hardware MIDI handle (the HMIDIOUT
+
+handle or the QuickTime MIDI handle) from the system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_XMIDI_masteraryoaa.html">AIL_set_XMIDI_master_volume</a></td>
+<td height=25 valign=top class=toc>establishes an overall `master volume` value which is used to
+
+          scale the volumes of all subsequent XMIDI note events in all
+
+          sequences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_XMIDI_master_volume.html">AIL_XMIDI_master_volume</a></td>
+<td height=25 valign=top class=toc>returns the current XMIDI master volume setting in use.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_allocate_sequenc2icfaa.html">AIL_allocate_sequence_handle</a></td>
+<td height=25 valign=top class=toc>searches for a free sequence handle and returns it to the application
+
+          for use in the playback of XMIDI audio data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_sequence2icfaa.html">AIL_release_sequence_handle</a></td>
+<td height=25 valign=top class=toc>frees a sequence handle for later allocation by AIL_allocate_sequence_handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_init_sequence.html">AIL_init_sequence</a></td>
+<td height=25 valign=top class=toc>prepares a sequence handle for playback of XMIDI sequence data,
+
+          and allows the application to specify the starting address and
+
+          sequence number of the XMIDI sequence to be played.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_sequence.html">AIL_start_sequence</a></td>
+<td height=25 valign=top class=toc>starts playback of a sequence from its beginning.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_sequence.html">AIL_stop_sequence</a></td>
+<td height=25 valign=top class=toc>stops playback of a sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_resume_sequence.html">AIL_resume_sequence</a></td>
+<td height=25 valign=top class=toc>resumes playback of a sequence which was previously stopped.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_end_sequence.html">AIL_end_sequence</a></td>
+<td height=25 valign=top class=toc>terminates playback of a sequence, setting its status to SEQ_DONE<*MILES_SEQUENCE_STATUS>.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_tempo.html">AIL_set_sequence_tempo</a></td>
+<td height=25 valign=top class=toc>specifies an increase or decrease in the normal playback tempo
+
+          of a sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_tempo.html">AIL_sequence_tempo</a></td>
+<td height=25 valign=top class=toc>returns the current relative tempo percentage for a sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_volume.html">AIL_set_sequence_volume</a></td>
+<td height=25 valign=top class=toc>establishes a scaling factor for the value of each MIDI Part
+
+          Volume Control Change (controller 7) event occurring in a sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_volume.html">AIL_sequence_volume</a></td>
+<td height=25 valign=top class=toc>returns the current sequence volume scaling value, from 0 (minimum)
+
+          to 127 (maximum).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_loo1mlaaa.html">AIL_set_sequence_loop_count</a></td>
+<td height=25 valign=top class=toc>arranges for a sequence to be restarted immediately upon completion,
+
+          for a total of two or more iterations.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_loop_count.html">AIL_sequence_loop_count</a></td>
+<td height=25 valign=top class=toc>returns the number of loop iterations remaining for the given
+
+          sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_branch_index.html">AIL_branch_index</a></td>
+<td height=25 valign=top class=toc>moves a sequence's data pointers to the location of a specified
+
+          XMIDI Sequence Branch Index controller.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_position.html">AIL_sequence_position</a></td>
+<td height=25 valign=top class=toc>returns the number of beats and measures elapsed since a given
+
+          XMIDI sequence began playing.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_ms_rl07ba.html">AIL_set_sequence_ms_position</a></td>
+<td height=25 valign=top class=toc>moves the current playback position of a sequence to the specified
+
+          millisecond count.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_ms_position.html">AIL_sequence_ms_position</a></td>
+<td height=25 valign=top class=toc>returns the current playback position and length of the sequence
+
+          in milliseconds.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_use6kbaaa.html">AIL_set_sequence_user_data</a></td>
+<td height=25 valign=top class=toc>sets a value for one of eight user data entries associated with
+
+          each sequence handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_user_data.html">AIL_sequence_user_data</a></td>
+<td height=25 valign=top class=toc>retrieves a value for one of eight user data entries associated
+
+          with each sequence handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_status.html">AIL_sequence_status</a></td>
+<td height=25 valign=top class=toc>returns the status of a given sequence handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_SEQUENCE_STATUS.html">MILES_SEQUENCE_STATUS</a></td>
+<td height=25 valign=top class=toc>indicates the status of an XMIDI handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_create_wave_syntrqseaa.html">AIL_create_wave_synthesizer</a></td>
+<td height=25 valign=top class=toc>creates a `virtual wave synthesizer` by associating an XMIDI
+
+          driver with a digital audio driver and a library file containing
+
+          digital audio samples assigned to various MIDI patches.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_destroy_wave_syn7m4hba.html">AIL_destroy_wave_synthesizer</a></td>
+<td height=25 valign=top class=toc>destroys a `virtual wave synthesizer` instance created by a previous
+
+          call to the AIL_create_wave_synthesizer function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MDI_driver_type.html">AIL_MDI_driver_type</a></td>
+<td height=25 valign=top class=toc>reports the MIDI synthesis technology available with a specified.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_MDI_DRIVER_TYPE.html">MILES_MDI_DRIVER_TYPE</a></td>
+<td height=25 valign=top class=toc>describes the type of DOS MIDI driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_GTL_filenamelxjjaa.html">AIL_set_GTL_filename_prefix</a></td>
+<td height=25 valign=top class=toc>informs MSS of the prefix portion of all Global Timbre Library
+
+          filenames which are associated with a particular application.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_timbre_status.html">AIL_timbre_status</a></td>
+<td height=25 valign=top class=toc>checks to see if a given timbre (synthesizer instrument) is loaded.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_timbre.html">AIL_install_timbre</a></td>
+<td height=25 valign=top class=toc>forces the driver to install a single timbre (synthesizer instrument),
+
+          allowing it to be used for performance in a channel of an Extended
+
+          MIDI (XMIDI) sequence which contains an XMIDI Patch Bank Select
+
+          controller (114) with the value bank followed by a MIDI Program
+
+          Change (Patch) message with the value patch.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_protect_timbre.html">AIL_protect_timbre</a></td>
+<td height=25 valign=top class=toc>prevents the timbre bank, patch from being discarded from the
+
+          synthesizer memory or local timbre cache.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_unprotect_timbre.html">AIL_unprotect_timbre</a></td>
+<td height=25 valign=top class=toc>disables timbre protection for the timbre bank, patch, subjecting
+
+          the timbre to the action of the normal timbre replacement algorithm.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_active_sequence_count.html">AIL_active_sequence_count</a></td>
+<td height=25 valign=top class=toc>returns the number of currently-playing sequences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_controller_value.html">AIL_controller_value</a></td>
+<td height=25 valign=top class=toc>returns any current MIDI Control Change value for any of the
+
+          channels used in the specified sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_MIDI_VALUE.html">MILES_MIDI_VALUE</a></td>
+<td height=25 valign=top class=toc>specifies a MIDI controller that can queried.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_channel_notes.html">AIL_channel_notes</a></td>
+<td height=25 valign=top class=toc>returns the number of notes currently turned `on` in a given
+
+          MIDI channel.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_prefix_s0khaa.html">AIL_register_prefix_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called whenever an XMIDI
+
+          Callback Prefix controller (108) is encountered in a playing
+
+          XMIDI sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILPREFIXCB.html">AILPREFIXCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI prefix callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_trigger8chzca.html">AIL_register_trigger_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called whenever an XMIDI
+
+          Callback Trigger  controller (119) is encountered in a playing
+
+          XMIDI sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILTRIGGERCB.html">AILTRIGGERCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI trigger callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_sequenc8chzca.html">AIL_register_sequence_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called immediately upon
+
+          completion of playback of an XMIDI sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILSEQUENCECB.html">AILSEQUENCECB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI end of sequence callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_event_cs0khaa.html">AIL_register_event_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called immediately prior
+
+          to processing each XMIDI or MIDI Channel Voice message event
+
+          associated with a given driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILEVENTCB.html">AILEVENTCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI event callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_beat_casg9aaa.html">AIL_register_beat_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called each time the
+
+          relative beat count changes in any sequence played with the given
+
+          driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILBEATCB.html">AILBEATCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI beat callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_timbre_s0khaa.html">AIL_register_timbre_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called immediately prior
+
+          to installing a timbre with AIL_install_timbre or AIL_init_sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILTIMBRECB.html">AILTIMBRECB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI timbre installation callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_ICA_array.html">AIL_register_ICA_array</a></td>
+<td height=25 valign=top class=toc>allows the application to declares an array of 128 bytes whose
+
+          entries may be used to replace XMIDI or MIDI controller values
+
+          whose controller events are preceded by an XMIDI Indirect Controller
+
+          Prefix controller (115).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_lock_channel.html">AIL_lock_channel</a></td>
+<td height=25 valign=top class=toc>returns an individual MIDI channel number to the application
+
+          for direct MIDI message transmission, preventing any XMIDI sequence
+
+          from utilizing that physical channel until its release with AIL_release_channel.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_channel.html">AIL_release_channel</a></td>
+<td height=25 valign=top class=toc>returns a MIDI channel previously locked with AIL_lock_channel
+
+          to the sequence which formerly `owned` it, if any.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_map_sequence_channel.html">AIL_map_sequence_channel</a></td>
+<td height=25 valign=top class=toc>causes all events in a given sequence which are associated with
+
+          a given MIDI channel seq_channel to be transmitted instead on
+
+          a `remapped` MIDI channel new_channel.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_true_sequence_channel.html">AIL_true_sequence_channel</a></td>
+<td height=25 valign=top class=toc>returns the physical MIDI channel number which receives MIDI
+
+          and XMIDI messages transmitted on a logical channel sequence_channel
+
+          by a given sequence S.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a></td>
+<td height=25 valign=top class=toc>transmits any desired MIDI Channel Voice message on any MIDI
+
+          channel.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_send_sysex_message.html">AIL_send_sysex_message</a></td>
+<td height=25 valign=top class=toc>transmits a System Exclusive message to a MIDI device driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_midiOutOpen.html">AIL_midiOutOpen</a></td>
+<td height=25 valign=top class=toc>assigns a Windows Multimedia Extensions low-level midiOut driver
+
+          (or the MIDI Mapper device) to the Windows MSS API for MIDI music
+
+          performance.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_MDI_INI.html">AIL_install_MDI_INI</a></td>
+<td height=25 valign=top class=toc>installs and initializes the currently selected MSS
+
+          .MDI driver file for XMIDI music performance under DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a></td>
+<td height=25 valign=top class=toc>installs and initializes an MSS-compatible .MDI driver file for
+
+          XMIDI music performance under DOS.  </td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="DLS Services.html">DLS Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_open.html">AIL_DLS_open</a></td>
+<td height=25 valign=top class=toc>opens a handle to a downloadable sample device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_close.html">AIL_DLS_close</a></td>
+<td height=25 valign=top class=toc>closes a previously opened DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_DLS_CLOSE_FLAGS.html">MILES_DLS_CLOSE_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies optional closing flags to AIL_DLS_close.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_load_file.html">AIL_DLS_load_file</a></td>
+<td height=25 valign=top class=toc>loads an uncompressed DLS file into the specified DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_load_memory.html">AIL_DLS_load_memory</a></td>
+<td height=25 valign=top class=toc>loads an uncompressed DLS file memory image into the specified
+
+          DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_unload.html">AIL_DLS_unload</a></td>
+<td height=25 valign=top class=toc>unloads a previously loaded DLS file ID and makes the sample
+
+          memory available for other DLS files.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_DLS_UNLOAD.html">MILES_DLS_UNLOAD</a></td>
+<td height=25 valign=top class=toc>describes optional DLS unload flags.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_compact.html">AIL_DLS_compact</a></td>
+<td height=25 valign=top class=toc>compacts the memory of a hardware DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_get_info.html">AIL_DLS_get_info</a></td>
+<td height=25 valign=top class=toc>retrieves information about the specified DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILDLSINFO.html">AILDLSINFO</a></td>
+<td height=25 valign=top class=toc>specifies the details for a DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_set_reverb.html">AIL_DLS_set_reverb</a></td>
+<td height=25 valign=top class=toc>changes the global simple reverb settings
+
+          on the DLS software synthesizer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_get_reverb.html">AIL_DLS_get_reverb</a></td>
+<td height=25 valign=top class=toc>retrieves the simple reverb settings of the
+
+          DLS software synthesizer.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Utility Services.html">Utility Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_type.html">AIL_file_type</a></td>
+<td height=25 valign=top class=toc>returns the file type of the specified file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_FILE_TYPE.html">MILES_FILE_TYPE</a></td>
+<td height=25 valign=top class=toc>describes the type of a file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_WAV_info.html">AIL_WAV_info</a></td>
+<td height=25 valign=top class=toc>retrieves the audio format information for the specified file
+
+image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILSOUNDINFO.html">AILSOUNDINFO</a></td>
+<td height=25 valign=top class=toc>specifies audio format details.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_process_digital_audio.html">AIL_process_digital_audio</a></td>
+<td height=25 valign=top class=toc>provides high-level access to the Miles sound mixer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="AILMIXINFO.html">AILMIXINFO</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_size_processed_d4yjwo6.html">AIL_size_processed_digital_audio</a></td>
+<td height=25 valign=top class=toc>provides a way to determine how much output memory
+
+          is necessary for a given set of input mix data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_compress_ADPCM.html">AIL_compress_ADPCM</a></td>
+<td height=25 valign=top class=toc>compresses the digital sound described by the info structure into
+
+          an IMA ADPCM wave file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_decompress_ADPCM.html">AIL_decompress_ADPCM</a></td>
+<td height=25 valign=top class=toc>decompresses the IMA ADPCM digital sound described by the info structure into
+
+          a standard PCM wave file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_compress_ASI.html">AIL_compress_ASI</a></td>
+<td height=25 valign=top class=toc>compresses a digital sound with an ASI encoder capable of writing
+
+          the file type described by the filename_ext parameter.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILLENGTHYCB.html">AILLENGTHYCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined callback that gets called during lengthy
+
+Miles operations.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_LENGTHY_STATE.html">MILES_LENGTHY_STATE</a></td>
+<td height=25 valign=top class=toc>indicates the current stage of the lengthy
+
+operation.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILCODECSETPREF.html">AILCODECSETPREF</a></td>
+<td height=25 valign=top class=toc>provides a way for ASI preferences to be set during a compression
+
+or decompression.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a></td>
+<td height=25 valign=top class=toc>decompresses a digital sound with the ASI decoder for the passed
+
+          file extension and returns a standard PCM wave file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MIDI_to_XMI.html">AIL_MIDI_to_XMI</a></td>
+<td height=25 valign=top class=toc>converts Standard MIDI Format 0 and Format
+
+          1 sequence files to the Extended MIDI (XMIDI) format.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_MIDI_TO_XMI_FLAGS.html">MILES_MIDI_TO_XMI_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies optional conversion flags for the
+
+AIL_MIDI_to_XMI function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_compress_DLS.html">AIL_compress_DLS</a></td>
+<td height=25 valign=top class=toc>compresses a DLS file with either IMA ADPCM compression or with an
+
+          ASI encoder specified by the compress_ext parameter.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_extract_DLS.html">AIL_extract_DLS</a></td>
+<td height=25 valign=top class=toc>extracts and decompresses the DLS data from a
+
+          loaded MLS file or merged XMIDI file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_find_DLS.html">AIL_find_DLS</a></td>
+<td height=25 valign=top class=toc>returns pointers and sizes to the DLS and XMIDI
+
+          chunks inside a merged XMIDI file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_merge_DLS_with_XMI.html">AIL_merge_DLS_with_XMI</a></td>
+<td height=25 valign=top class=toc>merges an XMIDI file and a DLS or MLS file together.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_filter_DLS_with_XMI.html">AIL_filter_DLS_with_XMI</a></td>
+<td height=25 valign=top class=toc>filters out unused instruments in a DLS file
+
+          given one or more XMIDI files.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_FILTER_DLS_FLAGS.html">MILES_FILTER_DLS_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies options to use when filtering DLS
+
+instrument sets with an XMIDI file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_list_MIDI.html">AIL_list_MIDI</a></td>
+<td height=25 valign=top class=toc>creates a detailed listing of a MIDI file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_LIST_MIDI_FLAGS.html">MILES_LIST_MIDI_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies flags to use when listing a MIDI
+
+file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_list_DLS.html">AIL_list_DLS</a></td>
+<td height=25 valign=top class=toc>creates a detailed listing of a DLS or MLS file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_LIST_DLS_FLAGS.html">MILES_LIST_DLS_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies flags to use when listing a DLS
+
+file.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Low-Level DOS Instalopr558.html">Low-Level DOS Installation Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_DIG_driv6zzyaa.html">AIL_install_DIG_driver_image</a></td>
+<td height=25 valign=top class=toc>installs and initializes an MSS-compatible .DIG driver file for digital audio performance.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_MDI_driv6zzyaa.html">AIL_install_MDI_driver_image</a></td>
+<td height=25 valign=top class=toc>Installs and initializes an MSS-compatible .MDI driver file for XMIDI music performance.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_get_IO_environment.html">AIL_get_IO_environment</a></td>
+<td height=25 valign=top class=toc>searches for and evaluates a DOS environment variable which contains
+
+          I/O configuration data for a particular MSS driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_read_INI.html">AIL_read_INI</a></td>
+<td height=25 valign=top class=toc>reads a standard MSS MDI.INI or DIG.INI file, parses it, and stores its contents
+
+          in an application-specified AIL_INI structure.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_INI.html">AIL_INI</a></td>
+<td height=25 valign=top class=toc>returns the contents of a MSS INI file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_driver.html">AIL_install_driver</a></td>
+<td height=25 valign=top class=toc>registers an MSS-compatible driver of any supported type with
+
+          the MSS API, returning an AIL_DRIVER descriptor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_uninstall_driver.html">AIL_uninstall_driver</a></td>
+<td height=25 valign=top class=toc>shuts down and unloads an MSS-compatible driver which was previously
+
+          installed by AIL_install_driver above.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Low-Level DOS Suppor8y9ysb.html">Low-Level DOS Support Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_real_vect.html">AIL_set_real_vect</a></td>
+<td height=25 valign=top class=toc>installs a real-mode handler real_ptr for interrupt vectnum.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_USE16_ISR.html">AIL_set_USE16_ISR</a></td>
+<td height=25 valign=top class=toc>creates a 16-bit protected-mode interrupt handler for interrupt
+
+          vectnum, mapped to an existing bimodal interrupt handler in real-mode
+
+          memory.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_disable_interrupts.html">AIL_disable_interrupts</a></td>
+<td height=25 valign=top class=toc>disables hardware interrupts (IRQs).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_restore_interrupts.html">AIL_restore_interrupts</a></td>
+<td height=25 valign=top class=toc>restores the hardware interrupt state effective prior to the
+
+          last call to AIL_disable_interrupts (above).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_switch_stack.html">AIL_switch_stack</a></td>
+<td height=25 valign=top class=toc>allows a C or C++ module to change to a different stack whose
+
+          size and location may be chosen by the programmer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_restore_stack.html">AIL_restore_stack</a></td>
+<td height=25 valign=top class=toc>returns to the default stack which was in use prior to the last
+
+          call to AIL_switch_stack.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_get_real_vect.html">AIL_get_real_vect</a></td>
+<td height=25 valign=top class=toc>obtains the address of the current real-mode handler for interrupt
+
+          vectnum.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_call_driver.html">AIL_call_driver</a></td>
+<td height=25 valign=top class=toc>performs a call to an MSS-compatible sound driver in real-mode
+
+          memory.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="VDI_CALL.html">VDI_CALL</a></td>
+<td height=25 valign=top class=toc>specifies the registers passed or returned from a
+
+real-mode driver call.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Preferences.html">Preferences</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a></td>
+<td height=25 valign=top class=toc>describes the Miles Sound System Preferences.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Implementing Voice Chat.html">Implementing Voice Chat</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Voxware Voice Chat Codecs.html">Voxware Voice Chat Codecs</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Working with Voice Input.html">Working with Voice Input</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Accessing the Codecsj7rin4.html">Accessing the Codecs Directly with the RIB Interface</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Performing the Comprf339dc.html">Performing the Compression and Decompression</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating the Code3o2s18.html">Integrating the Codecs with your Networking Architecture</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Mixing the Client So2v852a.html">Mixing the Client Sound Data on the Server</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Implementation Details.html">Implementation Details</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bandwidth Optimizatifdgbrv.html">Bandwidth Optimization and Channel Reliability Tips</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Miles Sound System Tq6hmqc.html">Miles Sound System Tools Reference</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Sound Studio.html">Miles Sound Studio</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Sound Player.html">Miles Sound Player</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="MIDIECHO for Windows5hwjxy.html">MIDIECHO for Windows - MIDI Data Receiver and Interpreter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="MIDIECHO for MacOS -5hwjxy.html">MIDIECHO for MacOS - MIDI Data Receiver and Interpreter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="MIDIECHO for DOS - M8o0mlj.html">MIDIECHO for DOS - MIDI Data Receiver and Interpreter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="SETSOUND - MSS Soundv7472s.html">SETSOUND - MSS Sound Configuration Utility</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="GLIB - Extended MIDIz2acf8.html">GLIB - Extended MIDI (XMIDI) Global Timbre Librarian</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="CLAD - Creative Labsnxhnpk.html">CLAD - Creative Labs and Ad Lib (TM) Converter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="MIDILOG - MIDI File k84nrz.html">MIDILOG - MIDI File Event Filter</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="MIDIREC- Standard MInmfctq.html">MIDIREC- Standard MIDI File Recorder</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="WAVELIB - Wave Synthemm6zo.html">WAVELIB - Wave Synthesizer Librarian</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Extended MIDI Techniid0f6g.html">Extended MIDI Technical Reference</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Channel Mute (107).html">XMIDI Channel Mute (107)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Callback Prefiqrbaaa.html">XMIDI Callback Prefix (108)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Sequence Brancsrbaaa.html">XMIDI Sequence Branch (109)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Channel Lock (110).html">XMIDI Channel Lock (110)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Channel Lock Pomctpa.html">XMIDI Channel Lock Protect (111)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Voice Protect (112).html">XMIDI Voice Protect (112)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Timbre Protect4rbaaa.html">XMIDI Timbre Protect (113)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Patch Bank Selilaaaa.html">XMIDI Patch Bank Select (114)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Indirect Contrbv6kfq.html">XMIDI Indirect Controller Prefix (115)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI For Loop Contrqw4wba.html">XMIDI For Loop Controller (116)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Next-Break Loorcm50t.html">XMIDI Next-Break Loop Controller (117)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Clear Beat-Barqpkh7a.html">XMIDI Clear Beat-Bar Count (118)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Callback Triggcphaaa.html">XMIDI Callback Trigger (119)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="XMIDI Sequence Branc6vf3eb.html">XMIDI Sequence Branch Index (120)</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Extended MIDI IFF (.vk9ytc.html">Extended MIDI IFF (.XMI) Structure</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Extended MIDI Globalxqjz2b.html">Extended MIDI Global Timbre Library File Format</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="MSS Device Developmew8besk.html">MSS Device Development Kit for DOS Sound Drivers</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DOS Sound Driver Arcyngbna.html">DOS Sound Driver Architecture</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="VDI_HDR.html">VDI_HDR</a></td>
+<td height=25 valign=top class=toc>describes a DOS sound driver's Driver Header Table.</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="DOS Sound Driver Gens3p70p.html">DOS Sound Driver Generic Initialization Interface</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 300H Ibyvqgk.html">DDK Function: 300H  Initialize Driver</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 301H Gntlrvm.html">DDK Function: 301H  Get Driver Information</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 302H P3nqeyf.html">DDK Function: 302H  Periodic Interrupt Service</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 303H P7lcdur.html">DDK Function: 303H  Parse Environment String</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 304H Vtb2frb.html">DDK Function: 304H  Verify Device I/O Parameters</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 305H Iqn1pgk.html">DDK Function: 305H  Initialize Device</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 306H Scnttqy.html">DDK Function: 306H  Shut Down Device</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="DOS Digital Sound Drpln2un.html">DOS Digital Sound Driver Interface</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 400H G32kz6j.html">DDK Function: 400H  Get/Set Digital Hardware Volume</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 401H Szhn1lq.html">DDK Function: 401H  Start Digital Playback Command</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 402H Sf059iq.html">DDK Function: 402H  Stop Digital Playback Request</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 403H S4b1hov.html">DDK Function: 403H  Start Digital Recording Command</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 404H So9acgv.html">DDK Function: 404H  Stop Digital Recording Request</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 405H V67fgje.html">DDK Function: 405H  Vendor-Specific Extensions</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="DOS XMIDI Sound Drivbjn2un.html">DOS XMIDI Sound Driver Interface</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 500H G0t178s.html">DDK Function: 500H  Get/Set MIDI Hardware Volume</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 501H Izucc05.html">DDK Function: 501H  Initialize Instrument Manager</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 502H Tz56m8s.html">DDK Function: 502H  Transmit MIDI Data</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 503H Irtaihq.html">DDK Function: 503H  Install Timbre Set</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 504H G01slct.html">DDK Function: 504H  Get Timbre Status</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 505H Pgop4lg.html">DDK Function: 505H  Protect/Unprotect Timbre</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Function- 506H V67fgje.html">DDK Function: 506H  Vendor-Specific Extensions</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="DDK Support Routineswsjtx2.html">DDK Support Routines for Digital Sound Drivers</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Functionef9zmr.html">DDK Digital Function: INT66H_dispatch</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Function1g4vha.html">DDK Digital Function: DIG_init</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Function216z81.html">DDK Digital Function: DMAC_disable</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Functionjfwqad.html">DDK Digital Function: DMAC_enable</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Functioniqzoa2.html">DDK Digital Function: DMAC_program</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Functiont0ndba.html">DDK Digital Function: ASC_val</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Functiondqr6ma.html">DDK Digital Function: RAD_wait</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Functioncwwsla.html">DDK Digital Function: IRQ_hook</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Functions8c2qu.html">DDK Digital Function: IRQ_unhook</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Function85lgj5.html">DDK Digital Function: IRQ_validate</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK Digital Function6w0qxh.html">DDK Digital Function: IRQ_acknowledge</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="DDK Support Routinesmc7aqj.html">DDK Support Routines for XMIDI Sound Drivers</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK XMIDI Function- qs7zmr.html">DDK XMIDI Function: INT66H_dispatch</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK XMIDI Function- 5z97aa.html">DDK XMIDI Function: MDI_init</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK XMIDI Function- lychaa.html">DDK XMIDI Function: ASC_val</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DDK XMIDI Function- 92qbba.html">DDK XMIDI Function: RAD_wait</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Changes.html">Change Log</a></th>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

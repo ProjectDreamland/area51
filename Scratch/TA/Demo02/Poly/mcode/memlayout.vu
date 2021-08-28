@@ -1,0 +1,176 @@
+//=============================================================================
+//
+//  VU Memory Layout for Polygon Renderer
+//
+//=============================================================================
+
+#ifndef MEMLAYOUT_VU
+#define MEMLAYOUT_VU
+
+//==============================================================================
+//  Constants
+//==============================================================================
+
+#define VERT_UV                     0
+#define VERT_NORM                   1
+#define VERT_POS                    2
+#define VERT_SIZE                   3
+                                    
+#define CLIP_FLAG_POS_X             ( 1 << 0 )                  // clip flag bits
+#define CLIP_FLAG_NEG_X             ( 1 << 1 )
+#define CLIP_FLAG_POS_Y             ( 1 << 2 )
+#define CLIP_FLAG_NEG_Y             ( 1 << 3 )
+#define CLIP_FLAG_POS_Z             ( 1 << 4 )
+#define CLIP_FLAG_NEG_Z             ( 1 << 5 )
+                                    
+#define CLIP_VERT_FLAGS             ( CLIP_FLAG_POS_X | CLIP_FLAG_NEG_X | CLIP_FLAG_POS_Y | CLIP_FLAG_NEG_Y | CLIP_FLAG_POS_Z | CLIP_FLAG_NEG_Z )
+                                    
+#define CLIP_TRI_FLAGS              ( CLIP_VERT_FLAGS | ( CLIP_VERT_FLAGS << 6 ) | ( CLIP_VERT_FLAGS << 12 ))
+                                    
+#define CLIP_TRI_POS_X              ( CLIP_FLAG_POS_X | ( CLIP_FLAG_POS_X << 6 ) | ( CLIP_FLAG_POS_X << 12 ))
+#define CLIP_TRI_NEG_X              ( CLIP_FLAG_NEG_X | ( CLIP_FLAG_NEG_X << 6 ) | ( CLIP_FLAG_NEG_X << 12 ))
+#define CLIP_TRI_POS_Y              ( CLIP_FLAG_POS_Y | ( CLIP_FLAG_POS_Y << 6 ) | ( CLIP_FLAG_POS_Y << 12 ))
+#define CLIP_TRI_NEG_Y              ( CLIP_FLAG_NEG_Y | ( CLIP_FLAG_NEG_Y << 6 ) | ( CLIP_FLAG_NEG_Y << 12 ))
+#define CLIP_TRI_POS_Z              ( CLIP_FLAG_POS_Z | ( CLIP_FLAG_POS_Z << 6 ) | ( CLIP_FLAG_POS_Z << 12 ))
+#define CLIP_TRI_NEG_Z              ( CLIP_FLAG_NEG_Z | ( CLIP_FLAG_NEG_Z << 6 ) | ( CLIP_FLAG_NEG_Z << 12 ))
+
+//=============================================================================
+//  Vertex Buffers
+//=============================================================================
+
+#define VU_MAX_POLYS                48                          // must be divisible by 12 (vector3), 8 (vector2) and 4 (xcolor)
+#define VU_MAX_VERTS                ( VU_MAX_POLYS   * 3 )      // 3 verts per poly
+#define VU_MAX_VECTORS              ( VU_MAX_VERTS   * 3 )      // 3 vectors per vertex: XYZ, ST, RGBA
+#define VU_BUFFER_SIZE              ( VU_MAX_VECTORS + 1 )      // need an extra vector for the GIF Tag
+#define VU_BASE_MEMORY              ( VU_BUFFER_SIZE * 2 )      // allocate enough memory for double buffering
+
+//=============================================================================
+//  Uploaded Data
+//=============================================================================
+
+#define VU_DATA                     ( VU_BASE_MEMORY       )    // 1 vector for any data passed from CPU
+#define VU_GIFTAG                   ( VU_DATA         +  1 )    // 1 vector for tri GIF Tag
+#define VU_GIFTAG_STRIP             ( VU_GIFTAG       +  1 )    // 1 vector for strip GIF Tag
+#define VU_W2C_MATRIX               ( VU_GIFTAG_STRIP +  1 )    // 4 vectors for world-to-clip matrix
+#define VU_C2S_MATRIX               ( VU_W2C_MATRIX   +  4 )    // 4 vectors for clip-to-screen matrix
+#define VU_CLIPPER                  ( VU_C2S_MATRIX   +  4 )    // start of clipper memory
+#define CLIPPER_PLANE_TABLE         ( VU_CLIPPER           )    // plane table used by clipper
+
+//=============================================================================
+//  Clipper Memory
+//=============================================================================
+
+#define REGISTER_STORAGE_SIZE       15                          // storage for saving and restoring registers
+#define PLANE_TABLE_SIZE            7                           // clip mask and jump addresses
+#define BUFFER_SIZE                 (   9 * VERT_SIZE )
+#define STRIP_BUFFER_SIZE           (( 12 * VERT_SIZE ) + 1 )
+
+#define CLIPPER_REGISTER_STORAGE    ( CLIPPER_PLANE_TABLE      + PLANE_TABLE_SIZE      )
+#define CLIPPER_BUFFER0             ( CLIPPER_REGISTER_STORAGE + REGISTER_STORAGE_SIZE )
+#define CLIPPER_BUFFER1             ( CLIPPER_BUFFER0          + BUFFER_SIZE           )
+#define CLIPPER_STRIP_BUFFER0       ( CLIPPER_BUFFER1          + BUFFER_SIZE           )
+#define CLIPPER_STRIP_BUFFER1       ( CLIPPER_STRIP_BUFFER0    + STRIP_BUFFER_SIZE     )
+#define CLIPPER_END                 ( CLIPPER_STRIP_BUFFER1    + STRIP_BUFFER_SIZE     )
+
+//==============================================================================
+//   Integer Registers
+//==============================================================================
+
+#define ITemp                       VI01
+#define ClipResults                 VI01
+#define SwapTemp                    VI01
+                                    
+#define VertSource                  VI02
+#define VertCount                   VI03
+#define LoopCount                   VI04
+#define ClipReject                  VI05
+#define ClipperReturnAddr           VI05
+                                    
+#define ClipperStripDestAddr        VI06
+#define VertSourceBuffer            VI07
+#define VertSourceAddr              VI08
+#define VertSourceCount             VI09
+#define VertDestBuffer              VI10
+#define VertDestAddr                VI11
+#define VertDestCount               VI12
+#define PlaneAddr                   VI13
+#define PlaneClipMask               VI14
+#define PlaneCheckMask              VI15
+    
+//==============================================================================
+//   Floating Point Registers
+//==============================================================================
+
+#define W2C0(__x__)                 VF01 ## __x__               // world-to-clip matrix
+#define W2C1(__x__)                 VF02 ## __x__
+#define W2C2(__x__)                 VF03 ## __x__
+#define W2C3(__x__)                 VF04 ## __x__
+                                    
+#define C2S0(__x__)                 VF05 ## __x__               // clip-to-screen
+#define C2S1(__x__)                 VF06 ## __x__
+#define C2S2(__x__)                 VF07 ## __x__
+#define C2S3(__x__)                 VF08 ## __x__
+
+#define ZBias(__x__)                VF09 ## __x__               // Z Bias
+
+#define ADCBit(__x__)               VF10 ## __x__               // bit 15 (ADC) set in register
+                                    
+#define Vert0_UV(__x__)             VF11 ## __x__               // texture coordinates
+#define Vert0_Col(__x__)            VF12 ## __x__               // colour RGBA
+#define Vert0_Pos(__x__)            VF13 ## __x__               // position in clip space
+                                    
+#define Vert1_UV(__x__)             VF14 ## __x__               // texture coordinates
+#define Vert1_Col(__x__)            VF15 ## __x__               // colour RGBA
+#define Vert1_Pos(__x__)            VF16 ## __x__               // position in clip space
+                                    
+#define Vert2_UV(__x__)             VF17 ## __x__               // texture coordinates
+#define Vert2_Col(__x__)            VF18 ## __x__               // colour RGBA
+#define Vert2_Pos(__x__)            VF19 ## __x__               // position in clip space
+                                    
+#define Proj_Pos(__x__)             VF20 ## __x__               // projected screen coordinates
+#define Proj_UV(__x__)              VF21 ## __x__               // projected texture coordinates
+                                    
+#define Vert3_UV(__x__)             VF22 ## __x__               // texture coordinates
+#define Vert3_Col(__x__)            VF23 ## __x__               // colour RGBA
+#define Vert3_Pos(__x__)            VF24 ## __x__               // position in clip space
+                                    
+#define Vert0_Comp(__x__)           VF25 ## __x__
+#define Vert1_Comp(__x__)           VF26 ## __x__
+
+#define FTemp(__x__)                VF31 ## __x__               // temporary register
+
+//-----------------------------------------------------------------------------
+
+#define Spr_Org(__x__)              VF11 ## __x__               // origin of primitive coordinate system
+#define Spr_NearZ(__x__)            VF12 ## __x__               // NearZ plane
+#define Spr_Mult(__x__)             VF12 ## __x__               // Width and Height multiplier <WARNING: shared register with Spr_NearZ>
+
+#define Spr_UV0(__x__)              VF13 ## __x__               // texture coordinates
+#define Spr_UV1(__x__)              VF14 ## __x__               // texture coordinates
+#define Spr_UV2(__x__)              VF15 ## __x__               // texture coordinates
+#define Spr_UV3(__x__)              VF16 ## __x__               // texture coordinates
+
+#define Spr_Col(__x__)              VF17 ## __x__               // colour RGBA
+#define Spr_Pos(__x__)              VF18 ## __x__               // position in clip space
+
+#define Spr_ScX(__x__)              VF19 ## __x__               // horizontal screen vector
+#define Spr_ScY(__x__)              VF20 ## __x__               // vertical screen vector
+#define Spr_RT1(__x__)              VF21 ## __x__               //  cos(theta) | -sin(theta) | 0 | 0
+#define Spr_RT2(__x__)              VF22 ## __x__               //  sin(theta) |  cos(theta) | 0 | 0
+
+#define Spr_XYZ(__x__)              VF23 ## __x__               // projected screen coordinate
+
+#define Spr_PT0(__x__)              VF24 ## __x__               // screen position top right
+#define Spr_PT1(__x__)              VF25 ## __x__               // screen position top left
+#define Spr_PT2(__x__)              VF26 ## __x__               // screen position bottom left
+#define Spr_PT3(__x__)              VF27 ## __x__               // screen position bottom right
+
+#define Spr_CL0(__x__)              VF28 ## __x__               // clip test for vertex 0
+#define Spr_CL1(__x__)              VF29 ## __x__               // clip test for vertex 1
+#define Spr_CL2(__x__)              VF30 ## __x__               // clip test for vertex 2
+#define Spr_CL3(__x__)              VF31 ## __x__               // clip test for vertex 3
+
+//=============================================================================
+#endif
+//=============================================================================
+

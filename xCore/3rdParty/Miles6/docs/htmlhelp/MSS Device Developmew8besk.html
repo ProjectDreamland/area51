@@ -1,0 +1,42 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>MSS Device Development Kit for DOS Sound Drivers</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="MSS Device Development Kit for DOS Sound Drivers">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>MSS Device Development Kit for DOS Sound Drivers</h1>
+<h4>Discussion</h4>
+<p> The MSS DDK is used to create DOS sound drivers for new sound hardware. Sound card manufacturers use the DDK to create the .DIG and .MDI files that MSS uses to play sound under DOS. This chapter will describe the complete DDK interface specification, but the easiest way to write a sound driver is to start with one of the existing drivers and modify it. We supply many sample sound drivers to make this "development-by-modification" as simple as possible. </p><p>The DDK is found in the "\SRC\DOS\DDK" directory tree. There is a subdirectory called "\SRC\DOS\DDK\DIG" that contains the digital sound driver development kit, a subdirectory called "\SRC\DOS\DDK\MDI" that contains the XMIDI sound driver development kit, a subdirectory called "\SRC\DOS\DDK\OEM" that contains notes and source code to some of the manufacturer-developed drivers, and, finally, a subdirectory called "\SRC\DOS\DDK\SNDFONT" that contains example code for programming the SoundFont capabilities of the SoundBlaster AWE32. </p><p>MSS sound drivers are essentially "tiny model" real-mode .COM files. Digital sound drivers have the <b>.DIG</b> extension and XMIDI drivers have the <b>.MDI</b> extension. They are loaded into memory by MSS at runtime, but not as TSR programs. MSS simply allocates a piece of real-mode memory and loads the image of the driver. MSS then hooks the real-mode image into the INT 66H interrupt chain. Once hooked in, MSS and the drivers communicate with a simple interrupt-based calling mechanism. </p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="MSS Device Developmew8besk.html">MSS Device Development Kit for DOS Sound Drivers</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="DOS Sound Driver Arcyngbna.html">DOS Sound Driver Architecture</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="VDI_HDR.html">VDI_HDR</a></td>
+<td height=25 valign=top class=toc>describes a DOS sound driver's Driver Header Table.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

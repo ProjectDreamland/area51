@@ -1,0 +1,33 @@
+MP3 library
+-----------
+Version 0.2
+
+This decoder is a 'light' version (thrown out all unnecessay parts)
+from the mpg123 package. I made this for a company.
+
+Currently only Layer III is enabled to save some space. Layer I and II isn't
+tested at all. The interface will not change significantly. 
+A backport to the mpg123 package is planed.
+
+compiled and tested only on Solaris 2.6
+main.c contains a simple demo application for library.
+
+COPYING: you may use this source under GPL terms!
+
+PLEASE NOTE: This software may contain patented algorithms (at least
+  patented in some countries). It may be not allowed to sell/use products
+  based on this source code in these countries. Check this out first!
+
+COPYRIGHT of MP3 music:
+  Please note, that the duplicating of copyrighted music without explicit
+  permission violates the rights of the owner.
+
+SENDING PATCHES:
+  Maybe I change the copyright policy (i.e. some kind of more free BSD license).
+  Please consider this when sending patches/changes.
+
+FEEDBACK:
+  I'm interested to here from you, when you use this package as part
+  of another project.
+
+

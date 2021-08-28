@@ -1,0 +1,19 @@
+GIF Registers
+ STAT=%8<x,$10003020,>
+  M3R=%1!<b0:1,$10003020,> PATH3 mask status
+  M3P=%1!<b1:1,$10003020,> PATH3 VIF mask status
+  IMT=%1!<b2:1,$10003020,> PATH3 IMT status
+  PSE=%1!<b3:1,$10003020,> Temporary transfer stop
+  IP3=%1!<b5:1,$10003020,> PATH3 interrupted
+  P3Q=%1!<b6:1,$10003020,> PATH3 in queue
+  P2Q=%1!<b7:1,$10003020,> PATH2 in queue
+  P1Q=%1!<b8:1,$10003020,> PATH1 in queue
+  OPH=%1!<b9:1,$10003020,> Output path %1<s9:1,$10003020,Idle;Active>
+APATH=%1!<s10:2,$10003020,Idle;PATH1 active;PATH2 active;PATH3 active>
+  FQC=%4<d24:5,$10003020,decimal|2x24:5,$10003020,hex>
+
+The following are only valid if PSE=1 written to GIF_CTRL (see above)
+
+ CNT=%12<x,$10003080,hex|d,$10003080,decimal> P3CNT=%12<x,$10003090,hex|d,$10003090,decimal> P3TAG=%8<x,$100030A0,>
+
+ TAG=%8<x,$10003070,>_%8<x,$10003060,>_%8<x,$10003050,>_%8<x,$10003040,> %32!<16u1,$10003040,>

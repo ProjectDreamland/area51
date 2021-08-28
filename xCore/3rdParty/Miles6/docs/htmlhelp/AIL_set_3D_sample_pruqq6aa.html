@@ -1,0 +1,59 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_3D_sample_preference</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets sample level preferences.">
+<meta name="ms-hkwd" content="AIL_set_3D_sample_preference">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_3D_sample_preference</h1>
+<p>The function  <b>AIL_set_3D_sample_preference</b> sets sample level preferences.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_3D_sample_pruqq6aa.html" class=trn>AIL_set_3D_sample_preference</a>(</b>
+<b>&nbsp&nbsp<a href="H3DSAMPLE.html" class=trn>H3DSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>preference</i><b>,</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>value</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the 3D sample handle to set the preference on.</dd>
+<dt><i>preference</i></dt>
+<dd>is a string variable describing the preference to set.</dd>
+<dt><i>value</i></dt>
+<dd>is a pointer to a variable containing the value to be set.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>Most providers also publish provider-specific, sample level preferences - see the provider information at the end of this chapter for details. </p><p> See the provider information at the end of this chapter for a list of each provider's preferences. </p><p> Example: To turn off the EAX effects on a particular sample, you could use the following code (you'd should usually want to use the <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a> function, though): </p><p></p><code><font size=3 color=#006000><pre><br>F32 eax_amount=0.0; // from 0 (no effect) to 1.0 (full effect)<br>AIL_set_3D_sample_preference( eax_samp,<br>                              "EAX  sample reverb mix",<br>                              &eax_amount);<br></pre></font></code><p></p><p></p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_3D_sample_attribute.html">AIL_3D_sample_attribute</a>, <a href="AIL_set_3D_provider_yxmz5e.html">AIL_set_3D_provider_preference</a>, <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a><br>
+<b>Related Basic Types:</b>
+<a href="H3DSAMPLE.html">H3DSAMPLE</a>, <a href="char const P.html">char const *</a>, <a href="void.html">void</a>, <a href="void const P.html">void const *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

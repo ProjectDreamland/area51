@@ -1,0 +1,393 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>3D Digital Audio Services</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="3D Digital Audio Services">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>3D Digital Audio Services</h1>
+<h4>Discussion</h4>
+<p> 3D audio is simply a way to assign 3D coordinates to a particular sound. In a perfect world, everyone would have six speakers that would allow true three-dimensional placement of any sound. However, since most people only have two speakers or headphones, 3D technologies today try to simulate these multiple speaker setups. Not surprisingly, there are many ways to do this simulation. Also not surprisingly, not every technique works for every game and not every technique works well for every hardware configuration. </p><p>So, as we designed the new high-level Miles 3D API, we wanted to support any 3D technology that came along. This way, the game developer (or end user) could use the technology that makes the game sound best on each end-user's hardware. </p><p>In addition to the high-level API, Miles also defines a lower-level API that abstracts the various 3D technologies. We call this API "M3D." It is implemented using RAD's new RIB Architecture (for more information on RIB, see the "What is RIB?" <i><a href="What are these ASI, m0oxbk.html#FAQ">FAQ</a></i>). So, in the Miles redistribution directory, you'll find thirteen files that end with the extension "M3D". Each of these files supports a different 3D technology that the high-level API can use. These M3D providers are: </p><p><b>DirectSound3D Software (MSSDS3DS.M3D):</b> This provider uses DirectSound3D's software mode to provide 3D spacialized sound support on non-hardware-accelerated Win32 machines. The DirectSound software provider is not very fast and doesn't sound all that great, but it is available on most machines. Note that you should definitely monitor the CPU usage of this software provider with SYSMON to ensure that the 3D sound portion of your game doesn't hog the CPU. </p><p><b>DirectSound Hardware (MSSDS3DH.M3D):</b> This provider also uses DirectSound3D to provide spacialized sound support, but only on those machines that have hardware accelerated sound support. Generally, with hardware accelerated 3D sound, no extra CPU time is used. However, some cards (such as those based on the Aureal Vortex 1 chipset), do some and/or most of the "hardware" acceleration in software (even though the voices are flagged as hardware buffers). Again, monitoring the CPU usage with SYSMON is a good idea to catch tricky cards like this. Most 3D cards are also only capable of a few hardware voices (usually less than eight), so you cannot allocate an infinite number of voices. You can, however, use the DirectSound software provider as a backup to the hardware voices, if you want to support many concurrent 3D sounds. </p><p><b>DirectSound3D 7 Software with pan and volume (MSSDX7N.M3D):</b> This provider uses DirectSound3D 7.0's new pan and volume mode to do fast 3D spacialized sound support on non-hardware-accelerated machines. This DirectSound software provider is very fast and is a good solution for slower machines. This provider is very similar to the Miles Fast 2D provider. You must have installed DirectX 7 for this provider to load. </p><p><b>DirectSound3D 7 Software with Light HRTF (MSSDX7L.M3D):</b> This provider uses DirectSound3D 7.0's new 3D algorithms to do fairly quick 3D spacialized sound support on non-hardware-accelerated machines. This DirectSound software provider is pretty quick and is a good solution for medium speed machines. You must have installed DirectX 7 on Windows 9x or Windows NT 2000 for this provider to load. </p><p><b>DirectSound3D 7 Software with Full HRTF (MSSDX7F.M3D):</b> This provider uses DirectSound3D 7.0's new 3D algorithms to do full 3D spacialized sound support on non-hardware-accelerated machines. This DirectSound software provider is not super fast (about 4% per sample on a P5/200), so it's best for Pentium IIs and up. You must have installed DirectX 7 on Windows 9x or Windows NT 2000 for this provider to load. </p><p><b>Creative's EAX 1 (MSSEAX.M3D):</b> The EAX 1 provider is mostly identical to the DirectSound hardware provider. The only difference is that EAX also provides four hardware reverb preferences. Just adding reverb doesn't seem all that cool, but surprisingly, reverb seems to add more feel to a game than the 3D techniques themselves! The other nice thing about EAX hardware (such as the SoundBlaster Live) is that they have plenty of hardware voices (31, currently). See the end of the 3D Services chapter for a rundown on the EAX reverb preferences. </p><p><b>Creative's EAX 2 (MSSEAX2.M3D):</b> The EAX 2 provider is mostly identical to the EAX 1 provider. The big difference is hardware support for occlusions and obstructions (currently, on all of the other providers, occlusions and obstructions are simulated with volume control and/or a software low-pass filter). The EAX 2 provider also gives complete control over all the settings (there are dozens) that create each EAX room type. </p><p><b>Aureal's A3D 1 (MSSA3D.M3D):</b> The Aureal A3D provider uses the A3D API to provide hardware accelerated 3D voices. The A3D provider is identical to the DirectSound hardware provider when using DirectX 5.0 and up. Before DirectX 5.0, DirectSound did not support hardware acceleration, so the A3D API was the only way to obtain hardware acceleration. It is still a good way to supply hardware acceleration for older DirectX installations. </p><p><b>Aureal's A3D 2 (MSSA3D2 .M3D):</b> The Aureal A3D 2 provider is completely different than the A3D 1 provider. The A3D 2 provider uses Aureal's SDK to provide sophisticated 3D audio. There are two ways to use this provider. First, you can simply use the Miles room-types and Miles will create geometry to match the reverb characteristics of each EAX room automatically. We recommend this method because you can support A3D and EAX simultaneously. The second option is to use Miles to manage all of your sounds, but call in directly to A3D 2 to download your own geometry (this is usually much more trouble than it is worth - especially since Miles still supports occlusions and obstructions without having to download geometry). </p><p><b>QSound's QMixer (MSSQSND.M3D):</b> The QSound provider is a fast software 3D audio positioner. The QSound provider gives a nice, sweet sound with its 3D audio - some effects sound better than even hardware. Note, however, that you cannot distribute the QSound provider without separately licensing it from QSound (give RAD a call for details). </p><p><b>Fast Miles 2D (MSSFAST.M3D):</b> The fast provider is a software-based 3D provider that uses normal Miles 2D HSAMPLEs for output. It is much faster than DirectSound3D software (more than 10 times, in fact), and sounds pretty good. This provider uses pan and volume to simulate the position and pitch changes to create doppler pitch shifting. This provider also has occlusion and EAX emulation in software (using a low-pass filter and a nice reverb engine)! This is a good provider for slower machines, or for machines without DirectSound (this provider can operate with waveOut or DirectSound), or when you need to emulate EAX on a non-Creative sound card. This provider is available on MacOS. </p><p><b>Dolby Surround (MSSDOLBY.M3D):</b> The Miles Dolby Surround M3D provider is an extremely-fast, run-time surround sound positioner. Using multi-speaker systems like those from Cambridge Soundworks, Boston Acoustics, and Altec Lansing (or any other surround sound system), this provider can play audio from the rear speakers - allowing real (non-simulated) 3D sound positioning. This provider also has occlusion and EAX emulation in software (using a low-pass filter and a nice reverb engine)! The Dolby Surround provider is based on the Miles 2D services, so it is also useful for slower machines, or when you need to emulate EAX on a non-Creative sound card. This provider is available on MacOS. </p><p><b>RSX 3D Audio (MSSRSX.M3D):</b> Our RSX provider is another software-based 3D provider. It is faster than most of the DirectSound3D software providers (all but the DirectSound3D 7 pan and volume), and sounds almost as good as the hardware providers. The RSX provider is usually the best option for software support - it sounds really good! </p><p>A nice thing about the M3D API is that you can use new providers without even recompiling your game. We will continue to add new M3D providers over time so that Miles will always be the best way to add the latest 3D support to your game. Note that you may also choose to only ship the M3D providers that you use in your game. For example, if you don't need A3D support, then you don't have to bother shipping MSSA3D.M3D. </p><p>Now let's cover a few general 3D issues. First off, 3D audio always uses mono, uncompressed WAV data. That means you'll have to use the decompression functions (<a href="AIL_decompress_ADPCM.html">AIL_decompress_ADPCM</a> and <a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a>) and/or the resampling function (<a href="AIL_process_digital_audio.html">AIL_process_digital_audio</a>) to convert your samples (unless you create them in the correct format before you ship which is obviously the right thing to do). </p><p>Also, remember that 3D audio is expensive CPU-wise. You must carefully plan the use of your 3D sounds, or your game could get bogged down with just a few samples. Since the 3D providers are generally system components or hardware drivers, Miles itself can't monitor their CPU use. You should profile often with SYSMON to make sure that the 3D audio isn't using more CPU than you budgeted for. Note that this is just as true of the hardware 3D providers, since most of them do a fair amount of processing on the host CPU. </p><p>Keep in mind that you can use more than one 3D provider simultaneously. This lets you use hardware acceleration on the critical voices and fall back to software if the hardware voices are exhausted. You can also, of course, use the existing Miles 2D API for audio that doesn't need to be 3D spacialized. </p><p>3D audio also carries a fair amount of new terminology, tricks, and "gotchas". It is definitely worthwhile to review each of the underlying 3D technology's documentation (such as the DirectSound3D help file, the A3D docs, etc.), as you integrate 3D sound into your game. </p><p>Finally, 3D audio programming requires a fair amount of (mostly simple) 3D math. It is usually a good idea to get the opinion of your 3D engine programmer on integration and placement of the 3D sounds - otherwise, you may duplicate a lot of the same math that he is performing for the 3D graphics portion of the game. </p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="3D Digital Audio Services.html">3D Digital Audio Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_enumerate_3D_prok20aaa.html">AIL_enumerate_3D_providers</a></td>
+<td height=25 valign=top class=toc>enumerates the available 3D providers for display or for opening.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a></td>
+<td height=25 valign=top class=toc>opens the specified M3D provider for playback of 3D sounds.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_3D_provider.html">AIL_close_3D_provider</a></td>
+<td height=25 valign=top class=toc>closes the specified M3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_allocate_3D_sampapaoba.html">AIL_allocate_3D_sample_handle</a></td>
+<td height=25 valign=top class=toc>allocates a handle that can play 3D audio.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_3D_sampl2icfaa.html">AIL_release_3D_sample_handle</a></td>
+<td height=25 valign=top class=toc>releases a 3D sample handle back to its M3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a></td>
+<td height=25 valign=top class=toc>sets the sample starting address, type, and playback
+
+          rate from the input file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a></td>
+<td height=25 valign=top class=toc>sets the sample starting address, type, and playback
+
+          rate from the fields in the specified AILSOUNDINFO structure.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_dicyrnaa.html">AIL_set_3D_sample_distances</a></td>
+<td height=25 valign=top class=toc>sets the minimum and maximum distances for a given sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_distances.html">AIL_3D_sample_distances</a></td>
+<td height=25 valign=top class=toc>returns the current minimum and maximum distances
+
+          for the specified sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_3D_sample.html">AIL_start_3D_sample</a></td>
+<td height=25 valign=top class=toc>begins playback of a 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_3D_sample.html">AIL_stop_3D_sample</a></td>
+<td height=25 valign=top class=toc>pauses a 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_resume_3D_sample.html">AIL_resume_3D_sample</a></td>
+<td height=25 valign=top class=toc>resumes a sample that was previously stopped with AIL_stop_3D_sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_end_3D_sample.html">AIL_end_3D_sample</a></td>
+<td height=25 valign=top class=toc>completely ends playback of the specified sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_plm6fdon.html">AIL_set_3D_sample_playback_rate</a></td>
+<td height=25 valign=top class=toc>sets the playback rate of the specified 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_playbayb8baa.html">AIL_3D_sample_playback_rate</a></td>
+<td height=25 valign=top class=toc>returns the current playback rate for the specified sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_volume.html">AIL_set_3D_sample_volume</a></td>
+<td height=25 valign=top class=toc>establishes the maximum volume level of a 3D sample (the volume
+
+          to use when the 3D sample is right next to the 3D listener).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_volume.html">AIL_3D_sample_volume</a></td>
+<td height=25 valign=top class=toc>returns the current maximum volume for the specified sample handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_offset.html">AIL_set_3D_sample_offset</a></td>
+<td height=25 valign=top class=toc>sets the playback offset of in a 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_offset.html">AIL_3D_sample_offset</a></td>
+<td height=25 valign=top class=toc>returns the current playback offset for the specified 3D sample
+
+          handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_cone.html">AIL_set_3D_sample_cone</a></td>
+<td height=25 valign=top class=toc>sets the sound emission cone on a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_cone.html">AIL_3D_sample_cone</a></td>
+<td height=25 valign=top class=toc>retrieves the current sound emission
+
+          cone of a sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_oc325gaa.html">AIL_set_3D_sample_occlusion</a></td>
+<td height=25 valign=top class=toc>sets the occlusion for the specified 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_occlusion.html">AIL_3D_sample_occlusion</a></td>
+<td height=25 valign=top class=toc>retrieves the current occlusion level
+
+          of the given sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_ob7131va.html">AIL_set_3D_sample_obstruction</a></td>
+<td height=25 valign=top class=toc>sets the obstruction for the specified 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_obstruction.html">AIL_3D_sample_obstruction</a></td>
+<td height=25 valign=top class=toc>retrieves the current obstruction level
+
+          of the given sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a></td>
+<td height=25 valign=top class=toc>controls the amount of room effects that
+
+          are applied by AIL_set_3D_room_type.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_effect9obbaa.html">AIL_3D_sample_effects_level</a></td>
+<td height=25 valign=top class=toc>retrieves the current effects level of
+
+          the given sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_lop5nvaa.html">AIL_set_3D_sample_loop_count</a></td>
+<td height=25 valign=top class=toc>sets the number of times for a 3D sample to loop.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_loop_count.html">AIL_3D_sample_loop_count</a></td>
+<td height=25 valign=top class=toc>returns the number of loops remaining in the specified sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_loswdvaa.html">AIL_set_3D_sample_loop_block</a></td>
+<td height=25 valign=top class=toc>arranges for a sub-block of a 3D sample to be looped.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_user_data.html">AIL_set_3D_user_data</a></td>
+<td height=25 valign=top class=toc>sets a value for one of eight user data entries associated with
+
+          a 3D sample, the listener, or a 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_user_data.html">AIL_3D_user_data</a></td>
+<td height=25 valign=top class=toc>retrieves a value for one of eight user data entries associated
+
+          with each 3D sample, the listener, or 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_status.html">AIL_3D_sample_status</a></td>
+<td height=25 valign=top class=toc>returns the playback status of the specified sample
+
+          handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_length.html">AIL_3D_sample_length</a></td>
+<td height=25 valign=top class=toc>returns the length of the specified sample in bytes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_3D_EOS_s0khaa.html">AIL_register_3D_EOS_callback</a></td>
+<td height=25 valign=top class=toc>arranges for callback service to be provided to an application
+
+          function immediately upon reaching the end of a 3D sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL3DSAMPLECB.html">AIL3DSAMPLECB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined 3D digital audio callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_active_3D_sample1mlaaa.html">AIL_active_3D_sample_count</a></td>
+<td height=25 valign=top class=toc>returns the number of currently playing sample handles for the
+
+          specified M3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_3D_listener.html">AIL_open_3D_listener</a></td>
+<td height=25 valign=top class=toc>opens a handle to the listener.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_3D_listener.html">AIL_close_3D_listener</a></td>
+<td height=25 valign=top class=toc>closes the 3D listener handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_3D_object.html">AIL_open_3D_object</a></td>
+<td height=25 valign=top class=toc>opens a 3D object for the specified M3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_3D_object.html">AIL_close_3D_object</a></td>
+<td height=25 valign=top class=toc>closes the specified 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_position.html">AIL_set_3D_position</a></td>
+<td height=25 valign=top class=toc>sets the three dimensional position of a 3D sample,
+
+          the listener, or a 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_position.html">AIL_3D_position</a></td>
+<td height=25 valign=top class=toc>retrieves the current 3D position of a 3D sample, the listener,
+
+          or a 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_velocity.html">AIL_set_3D_velocity</a></td>
+<td height=25 valign=top class=toc>sets the current velocity of a 3D sample, the listener,
+
+          or a 3D object in normalized coordinates.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_velocity.html">AIL_3D_velocity</a></td>
+<td height=25 valign=top class=toc>retrieves the current velocity of a 3D sample, the listener,
+
+          or a 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_velocity_v1maaa.html">AIL_set_3D_velocity_vector</a></td>
+<td height=25 valign=top class=toc>sets the current velocity of a 3D sample, the listener,
+
+          or a 3D object in non-normalized coordinates.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_update_3D_position.html">AIL_update_3D_position</a></td>
+<td height=25 valign=top class=toc>updates a 3D sample, listener, or 3D object's
+
+          position based on its previously set velocity and the specified
+
+          delta time in milliseconds.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_auto_update_3D_pzvtnaa.html">AIL_auto_update_3D_position</a></td>
+<td height=25 valign=top class=toc>arranges for the position of a 3D sample to be automatically
+
+          updated in the background.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_orientation.html">AIL_set_3D_orientation</a></td>
+<td height=25 valign=top class=toc>specifies the orientation of a 3D sample, the listener, or a
+
+          3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_orientation.html">AIL_3D_orientation</a></td>
+<td height=25 valign=top class=toc>retrieves the orientation of a 3D sample, the listener, or a
+
+          3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_room_type.html">AIL_set_3D_room_type</a></td>
+<td height=25 valign=top class=toc>sets the room type that the listener is currently
+
+          in.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_ROOM_TYPE.html">MILES_ROOM_TYPE</a></td>
+<td height=25 valign=top class=toc>specifies a room type to use for the
+
+environmental reverb.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_room_type.html">AIL_3D_room_type</a></td>
+<td height=25 valign=top class=toc>returns the current room type.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_speaker_type.html">AIL_set_3D_speaker_type</a></td>
+<td height=25 valign=top class=toc>sets the type of speaker system that the 3D provider
+
+          should use.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_SPEAKER_TYPE.html">MILES_SPEAKER_TYPE</a></td>
+<td height=25 valign=top class=toc>specifies a speaker type to use for the
+
+3D spacializing routines.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_speaker_type.html">AIL_3D_speaker_type</a></td>
+<td height=25 valign=top class=toc>returns the current speaker system being used by
+
+          the 3D provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_rolloff_factor.html">AIL_set_3D_rolloff_factor</a></td>
+<td height=25 valign=top class=toc>sets the provider's global 3D rolloff factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_rolloff_factor.html">AIL_3D_rolloff_factor</a></td>
+<td height=25 valign=top class=toc>returns the provider's current 3D rolloff factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_doppler_factor.html">AIL_set_3D_doppler_factor</a></td>
+<td height=25 valign=top class=toc>sets the provider's global 3D doppler factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_doppler_factor.html">AIL_3D_doppler_factor</a></td>
+<td height=25 valign=top class=toc>returns the provider's current 3D doppler factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_distance_reaaaa.html">AIL_set_3D_distance_factor</a></td>
+<td height=25 valign=top class=toc>sets the provider's global 3D distance factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_distance_factor.html">AIL_3D_distance_factor</a></td>
+<td height=25 valign=top class=toc>returns the provider's current 3D distance factor.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_provider_attribute.html">AIL_3D_provider_attribute</a></td>
+<td height=25 valign=top class=toc>retrieves provider level attributes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_provider_yxmz5e.html">AIL_set_3D_provider_preference</a></td>
+<td height=25 valign=top class=toc>sets provider level preferences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_3D_sample_attribute.html">AIL_3D_sample_attribute</a></td>
+<td height=25 valign=top class=toc>retrieves sample level attributes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_3D_sample_pruqq6aa.html">AIL_set_3D_sample_preference</a></td>
+<td height=25 valign=top class=toc>sets sample level preferences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Creative's EAX 1 Pre4368aa.html">Creative's EAX 1 Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Creative's EAX 2 Pre4368aa.html">Creative's EAX 2 Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Aureal's A3D 2 Prefe86raaa.html">Aureal's A3D 2 Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="QSound QMixer Preferences.html">QSound QMixer Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles Dolby Surroundpt2cum.html">Miles Dolby Surround M3D Provider</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Miles 2D-based M3D Pcibglb.html">Miles 2D-based M3D Preferences</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_process_digital_audio.html">AIL_process_digital_audio</a></td>
+<td height=25 valign=top class=toc>provides high-level access to the Miles sound mixer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_decompress_ADPCM.html">AIL_decompress_ADPCM</a></td>
+<td height=25 valign=top class=toc>decompresses the IMA ADPCM digital sound described by the info structure into
+
+          a standard PCM wave file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a></td>
+<td height=25 valign=top class=toc>decompresses a digital sound with the ASI decoder for the passed
+
+          file extension and returns a standard PCM wave file image.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_allocate_sample_handle</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="searches for a free sample handle and returns it to the application for use in the playback of digital audio data.">
+<meta name="ms-hkwd" content="AIL_allocate_sample_handle">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_allocate_sample_handle</h1>
+<p>The function  <b>AIL_allocate_sample_handle</b> searches for a free sample handle and returns it to the application for use in the playback of digital audio data.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HSAMPLE.html" class=trn>HSAMPLE</a> <a href="AIL_allocate_sample_ijfaaa.html" class=trn>AIL_allocate_sample_handle</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>specifies which digital audio driver is to play the audio data associated with the sample handle.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A handle to an available sample slot, or NULL if all sample handles have already been allocated.</p>
+<h4>Discussion</h4>
+<p>Each digital audio driver, when installed, is provided with a number of <i>sample handles</i>. Sample handles are reusable descriptors for application audio data at any moment in time, each instance of a playing digital sample must be associated with a sample handle. The number of sample handles allocated, hence the maximum number of HSAMPLE sample handles available from <a href="AIL_allocate_sample_ijfaaa.html">AIL_allocate_sample_handle</a>, is determined by the <a href="MILES_PREFERENCES.html#DIG_MIXER_CHANNELS">DIG_MIXER_CHANNELS</a> preference. This value is normally 16, but can be set to any value by use of the <a href="AIL_set_preference.html">AIL_set_preference</a> function prior to driver installation. </p><p> After loading a digital audio driver, the application should allocate as many sample handles as it will require, based on the maximum number of simultaneous sound effects needed. When a sound effect is to be played, the application calls <a href="AIL_sample_status.html">AIL_sample_status</a> for each of its allocated sample handles, searching for one with the status <a href="MILES_DIGITAL_STATUS.html#SMP_DONE">SMP_DONE</a>. This indicates that the system is either finished playing the last audio sample assigned to the sample handle, or that the sample handle has been allocated but not yet used to play a sample. Assuming an available sample handle is found, the next step is to call <a href="AIL_init_sample.html">AIL_init_sample</a> to prepare the sample handle for use with new data, followed by calls to set the address, size, playback volume, and other playback information. Playback of the sample data will begin when <a href="AIL_start_sample.html">AIL_start_sample</a> is called. </p><p> The number of simultaneously-playing samples which should be allowed by the application varies. Performance-critical action games generally limit themselves to between four and eight simultaneous sound effects. On the other hand, products which can afford to dedicate more CPU time to sound-effects processing may permit the maximum number of available sample handles to be active at once. In reality, however, the human ear has a very difficult time sorting out more than eight or ten sounds at once, and too many additional sounds are likely to waste processor time without conveying any meaningful information to the user. </p><p> Example files that use this function: SSTEST.C, DBTEST.C, DIGPLAY.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a>, <a href="AIL_allocate_sample_ijfaaa.html">AIL_allocate_sample_handle</a>, <a href="AIL_end_sample.html">AIL_end_sample</a>, <a href="AIL_init_sample.html">AIL_init_sample</a>, <a href="AIL_release_sample_handle.html">AIL_release_sample_handle</a>, <a href="AIL_sample_buffer_ready.html">AIL_sample_buffer_ready</a>, <a href="AIL_sample_status.html">AIL_sample_status</a>, <a href="AIL_set_preference.html">AIL_set_preference</a>, <a href="AIL_start_sample.html">AIL_start_sample</a>, <a href="AIL_stop_sample.html">AIL_stop_sample</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="HSAMPLE.html">HSAMPLE</a>, <a href="MILES_DIGITAL_STATUS.html">MILES_DIGITAL_STATUS</a>, <a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a><br>
+<b>Related FAQs:</b>
+<a href="How can I play two Ho6e0ns.html">How can I play two HSAMPLEs from the same memory address?</a>, <a href="How do I play a digiyg6gda.html">How do I play a digital sound?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

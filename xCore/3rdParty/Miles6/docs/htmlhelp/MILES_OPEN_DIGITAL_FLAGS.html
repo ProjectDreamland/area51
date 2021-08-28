@@ -1,0 +1,52 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>MILES_OPEN_DIGITAL_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="specifies open flags for the AIL_open_digital_driver function.">
+<meta name="ms-hkwd" content="MILES_OPEN_DIGITAL_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>MILES_OPEN_DIGITAL_FLAGS</h1>
+<p>The basic type <b>MILES_OPEN_DIGITAL_FLAGS</b> specifies open flags for the AIL_open_digital_driver function.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#0" href="#0" class=trn>&nbsp;0</a></td>
+<td width=71% height=25 valign=middle class=list>Under Win32, the default flag of zero tells Miles to try DirectSound first, and then try waveOut if DirectSound fails (or is using emulation mode).<br><br> Under MacOS, the default flag simply opens Sound Manager.<br><br> Under DOS, the default flag simply opens the DOS driver specified in the DIG.INI file.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#AIL_OPEN_DIGITAL_FORCE_PREFERENCE" href="#AIL_OPEN_DIGITAL_FORCE_PREFERENCE" class=trn>&nbsp;AIL_OPEN_DIGITAL_FORCE_PREFERENCE</a></td>
+<td width=71% height=25 valign=middle class=list>Under Win32, this flag tells <a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a> to obey the <a href="MILES_PREFERENCES.html#DIG_USE_WAVEOUT">DIG_USE_WAVEOUT</a> preference instead of trying DirectSound first and then waveOut automatically.<br><br> Under DOS, this causes the sound format parameters to <a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a> to be ignored and the <a href="MILES_PREFERENCES.html#DIG_HARDWARE_SAMPLE_RATE">DIG_HARDWARE_SAMPLE_RATE</a>, <a href="MILES_PREFERENCES.html#DIG_USE_STEREO">DIG_USE_STEREO</a>, and <a href="MILES_PREFERENCES.html#DIG_USE_16_BITS">DIG_USE_16_BITS</a> preferences are used to setup the driver.</td>
+</tr>
+</table>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

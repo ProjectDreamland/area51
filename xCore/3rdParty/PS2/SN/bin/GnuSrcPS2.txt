@@ -1,0 +1,77 @@
+SN Systems' product "ProDG for PlayStation2" contains software which is licensed under the GNU General Public License and other licenses, copies of which are included in the distribution in files COPYING, COPYING.LIB and COPYING.NEWLIB.
+
+A machine-readable copy of the source code in respect of the part of the Software formed by use of the GNU Software is available on request from SN Systems provided that the End User:
+
+a) pays SN Systems' reasonable costs of distributing the source code
+b) provides SN Systems with a shipping address
+
+SN Systems gives no warranty as to the ownership of the Software to the End User. 
+
+Note: 
+1. The GNU software supplied by SN Systems is not the original. It has either been ported or ported and modified.
+2. COPYING.NEWLIB mentions that it should be accompanied by file copying.dj. However, we do not include it, because our distribution does not use any source code covered by this license.
+---
+
+The following software is covered by the licenses COPYING, COPYING.LIB or COPYING.NEWLIB.
+
+COPYING (this is the GPL)
+---------
+as.exe
+cpp.exe
+cc1.exe
+cc1plus.exe
+collect2.exe
+ee-addr2line.exe
+ee-ar.exe
+ee-as.exe
+ee-c_filt.exe
+ee-dvp-as.exe
+ee-gcc.exe
+ee-gcc2953.exe
+ee-ld.exe
+ee-nm.exe
+ee-objcopy.exe
+ee-objdump.exe
+ee-ranlib.exe
+ee-readelf.exe
+ee-size.exe
+ee-strings.exe
+ee-strip.exe
+iop-ar.exe
+iop-elf-gcc.exe
+iop-nm.exe
+iop-objcopy.exe
+iop-objdump.exe
+iop-ranlib.exe
+iop-strip.exe
+ld.exe
+make.exe
+nm.exe
+strip.exe
+*libgcc.a 
+
+Note:
+* In addition to the permissions in the GNU General Public License, the
+Free Software Foundation gives you unlimited permission to link the
+compiled version of this file with other programs, and to distribute
+those programs without any restriction coming from the use of this
+file.  (The General Public License restrictions do apply in other
+respects; for example, they cover modification of the file, and
+distribution when not linked into another program.)
+
+
+COPYING.LIB (this is the LGPL)
+------------
+demangle.dll
+
+COPYING.NEWLIB (this is the Newlib license)
+-----------------
+libc.a
+libm.a
+
+All other software distributed in the ProDG for PlayStation2 package 
+is copyright of SN Systems and is subject to the SUL:
+
+http://www.snsys.com/Sales/sul/prodgps2sul.htm
+
+You may contact SN Systems at support@snsys.com

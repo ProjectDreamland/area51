@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_unprotect_timbre</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="disables timbre protection for the timbre bank, patch, subjecting the timbre to the action of the normal timbre replacement algorithm.">
+<meta name="ms-hkwd" content="AIL_unprotect_timbre">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_unprotect_timbre</h1>
+<p>The function  <b>AIL_unprotect_timbre</b> disables timbre protection for the timbre bank, patch, subjecting the timbre to the action of the normal timbre replacement algorithm.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_unprotect_timbre.html" class=trn>AIL_unprotect_timbre</a>(</b>
+<b>&nbsp&nbsp<a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a>&nbsp</b><i>mdi</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>bank</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>patch</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>mdi</i></dt>
+<dd>indicates the driver for which timbre protection is to be disabled.</dd>
+<dt><i>bank</i></dt>
+<dd>specifies the XMIDI Patch Bank Select (controller 114) value associated with the desired timbre.</dd>
+<dt><i>patch</i></dt>
+<dd>specifies the MIDI Program Change value associated with the desired timbre.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>If the synthesizer memory or local timbre cache does not contain sufficient space for a timbre to be installed by <a href="AIL_init_sequence.html">AIL_init_sequence</a> or <a href="AIL_install_timbre.html">AIL_install_timbre</a>, one or more least-recently-used timbres (the timbres least recently used to play notes) may be discarded from the cache to make room. <a href="AIL_protect_timbre.html">AIL_protect_timbre</a> and <a href="AIL_unprotect_timbre.html">AIL_unprotect_timbre</a> provide a means of protecting a given timbre against deletion, and of removing such protection, respectively. (Neither function will have any immediate effect on the contents of the timbre cache.) </p><p> Timbres installed by <a href="AIL_init_sequence.html">AIL_init_sequence</a> or <a href="AIL_install_timbre.html">AIL_install_timbre</a> are "unprotected" by default. Timbre protection may be useful in cases where it is desirable to play little-used sound-effect or music sequences at widely varying intervals during the course of an application, while avoiding the delay associated with loading and transmitting their custom timbres. Excessive use of timbre protection may give rise to "logjams" in the timbre cache. </p><p> If both the bank and the patch parameters are equal to -1, the <a href="AIL_protect_timbre.html">AIL_protect_timbre</a> and <a href="AIL_unprotect_timbre.html">AIL_unprotect_timbre</a> functions will protect or unprotect all timbres in the cache. </p><p> The action of these functions is analogous to the Extended MIDI Control Change event 113 (Timbre Protect). </p><p> The current version of the Windows and MacOS system does not support custom MIDI instruments. The default MIDI instrument set used by the selected midiOut driver will be used instead.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Sections:</b>
+<a href="XMIDI Timbre Protect4rbaaa.html">XMIDI Timbre Protect (113)</a><br>
+<b>Related Functions:</b>
+<a href="AIL_init_sequence.html">AIL_init_sequence</a>, <a href="AIL_install_timbre.html">AIL_install_timbre</a>, <a href="AIL_protect_timbre.html">AIL_protect_timbre</a>, <a href="AIL_timbre_status.html">AIL_timbre_status</a>, <a href="AIL_unprotect_timbre.html">AIL_unprotect_timbre</a><br>
+<b>Related Basic Types:</b>
+<a href="HMDIDRIVER.html">HMDIDRIVER</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

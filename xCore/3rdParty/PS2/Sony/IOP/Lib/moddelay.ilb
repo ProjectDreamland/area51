@@ -1,0 +1,7 @@
+#IOP-ILB# [PsIImoddelay3000]
+L moddelay
+V 0x0101
+F 0x0000
+E 004 sceMidiDelay_Init
+E 005 sceMidiDelay_ATick
+E 006 sceMidiDelay_Flush

@@ -1,0 +1,59 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_restore_stack</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns to the default stack which was in use prior to the last call to AIL_switch_stack.">
+<meta name="ms-hkwd" content="AIL_restore_stack">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_restore_stack</h1>
+<p>The function  <b>AIL_restore_stack</b> returns to the default stack which was in use prior to the last call to AIL_switch_stack.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_restore_stack.html" class=trn>AIL_restore_stack</a>(</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>SS</i><b>,</b>
+<b>&nbsp&nbsp<a href="void P.html" class=trn>void *</a>&nbsp</b><i>ESP</i><b>,</b>
+<b>&nbsp&nbsp<a href="void P.html" class=trn>void *</a>&nbsp</b><i>EBP</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>SS</i></dt>
+<dd>contains a variable of type U32 which was written by <a href="AIL_switch_stack.html">AIL_switch_stack</a>.</dd>
+<dt><i>ESP</i></dt>
+<dd>contains a variable of type void * which was written by <a href="AIL_switch_stack.html">AIL_switch_stack</a>.</dd>
+<dt><i>EBP</i></dt>
+<dd>contains a variable of type void * which was written by <a href="AIL_switch_stack.html">AIL_switch_stack</a>.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>This is a DOS-only function. </p><p> Refer to <a href="AIL_switch_stack.html">AIL_switch_stack</a> for details on switching stacks from within a C function. </p><p> This function is used internally by the MSS system. Most applications will not need to use <a href="AIL_switch_stack.html">AIL_switch_stack</a>, unless large interrupt handlers with extensive stack usage are implemented in C, and/or preemptive multi-threaded timer services are enabled.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Low-Level DOS Suppor8y9ysb.html">Low-Level DOS Support Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_switch_stack.html">AIL_switch_stack</a><br>
+<b>Related Basic Types:</b>
+<a href="U32.html">U32</a>, <a href="void.html">void</a>, <a href="void P.html">void *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

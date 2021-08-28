@@ -1,0 +1,161 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Timer Services</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Timer Services">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Timer Services</h1>
+<h4>Discussion</h4>
+<p>The Timer Services are used to provide cross-platform timer callbacks. Timers are implemented is different technology depending on the Miles platform: </p><p>Timer callbacks under Win32 are implemented as background threads. </p><p>Timer callbacks under MacOS are implemented as MacOS system timers (which are interrupt based). </p><p>Timer callbacks under DOS are implemented as hardware interrupts. </p><p>Timer callbacks under Win16 are implemented as multimedia callbacks. </p><p>Timer callbacks under Win32s are implemented as Windows message callbacks. </p><p></p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Timer Services.html">Timer Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_ms_count.html">AIL_ms_count</a></td>
+<td height=25 valign=top class=toc>returns a millisecond accurate timer count (one thousand ticks
+
+          per second).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_us_count.html">AIL_us_count</a></td>
+<td height=25 valign=top class=toc>returns a microsecond accurate timer count (one million ticks
+
+          per second).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_timer.html">AIL_register_timer</a></td>
+<td height=25 valign=top class=toc>registers a callback function callback_fn to receive asynchronous
+
+          time-slice service from a timer, and returns a handle HTIMER
+
+          which may be used to start, stop, and program the function's
+
+          assigned timer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILTIMERCB.html">AILTIMERCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined timer callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_timer_user.html">AIL_set_timer_user</a></td>
+<td height=25 valign=top class=toc>instructs the MSS timer dispatcher to pass the value user to
+
+          the timer callback function associated with the timer handle
+
+          timer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_timer_period.html">AIL_set_timer_period</a></td>
+<td height=25 valign=top class=toc>programs a timer for callback service at periods ranging from
+
+          1 microsecond to 1,000,000,000 microseconds (approximately 15
+
+          minutes).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_timer_frequency.html">AIL_set_timer_frequency</a></td>
+<td height=25 valign=top class=toc>programs a timer for callback service at frequencies ranging
+
+          from 1 Hz (Hertz, or cycles per second) to 1,000,000 Hz.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_timer_divisor.html">AIL_set_timer_divisor</a></td>
+<td height=25 valign=top class=toc>programs a timer for callback service at a rate which is given
+
+          in terms of the constant value that would normally be used to
+
+          program the IBM PC's 8253 Programmable Interval Timer chip for
+
+          the desired interrupt rate, if the application were to access
+
+          the chip directly.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_interrupt_divisor.html">AIL_interrupt_divisor</a></td>
+<td height=25 valign=top class=toc>returns the current value used internally by the Miles Sound
+
+          System's Timer Services to program the IBM PC's 8253 Programmable
+
+          Interval Timer chip for periodic INT 8 (IRQ 0) service.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_timer.html">AIL_start_timer</a></td>
+<td height=25 valign=top class=toc>initiates or resumes periodic time-slice interrupt service to
+
+          the callback function registered to timer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_timer.html">AIL_stop_timer</a></td>
+<td height=25 valign=top class=toc>stops periodic time-slice interrupt service to the callback function
+
+          registered to timer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_timer_handle.html">AIL_release_timer_handle</a></td>
+<td height=25 valign=top class=toc>stops periodic time-slice interrupt service to the callback function
+
+          registered to timer, and releases the timer's handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_get_timer_highesqwlaaa.html">AIL_get_timer_highest_delay</a></td>
+<td height=25 valign=top class=toc>returns the highest delay in timer servicing under Win 32.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_delay.html">AIL_delay</a></td>
+<td height=25 valign=top class=toc>suspends foreground program execution.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_lock.html">AIL_lock</a></td>
+<td height=25 valign=top class=toc>suspends timer service to all MSS drivers and application callback
+
+          functions until a matching call to AIL_unlock is made.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_unlock.html">AIL_unlock</a></td>
+<td height=25 valign=top class=toc>resumes timer service to all MSS drivers and application callback
+
+          functions after a matching call to AIL_lock.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_all_timers.html">AIL_start_all_timers</a></td>
+<td height=25 valign=top class=toc>initiates or resumes periodic time-slice interrupt service to
+
+          the callback functions registered to all active timer handles.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_all_timers.html">AIL_stop_all_timers</a></td>
+<td height=25 valign=top class=toc>stops periodic time-slice interrupt service to the callback functions
+
+          registered to all active timer handles.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_all_timers.html">AIL_release_all_timers</a></td>
+<td height=25 valign=top class=toc>stops periodic time-slice interrupt service to the callback functions
+
+          registered to all active timer handles, and releases all active
+
+          timer handles.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

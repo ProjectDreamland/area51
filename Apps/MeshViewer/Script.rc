@@ -1,0 +1,163 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_RSC_MESH_VIEWER     ICON    DISCARDABLE     "res\\icon2.ico"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MESH_VIEWER TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_LOADMESH
+    SEPARATOR
+    BUTTON      ID_MV_ADD_MATX_AS_RIGIDGEOM
+    BUTTON      ID_MV_ADD_MATX_AS_SKINGEOM
+    SEPARATOR
+    BUTTON      ID_ORBITCAM
+    BUTTON      ID_FREEFLY_CAMERA
+    SEPARATOR
+    BUTTON      ID_PLAY
+    BUTTON      ID_ANIM_IN_PLACE
+    BUTTON      ID_PAUSE
+    BUTTON      ID_SLOW_MOTION
+    SEPARATOR
+    BUTTON      ID_MESHV_RENDER_SKELETON
+    BUTTON      ID_MESHV_TAKE_TO_BIND
+    BUTTON      ID_MESHV_RENDER_BONE_LAVELS
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MESH_VIEWER         BITMAP  DISCARDABLE     "res\\MeshVtoolbar1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ORBITCAM             "Orbit Camera"
+    ID_FREEFLY_CAMERA       "Free Fly Camera"
+    ID_LOADMESH             "Load a new mesh"
+    ID_PLAY                 "Play Animation"
+    ID_MV_ADD_MATX_AS_RES   "Add MatX files to Theme\nAdd MatX files to Theme"
+    ID_MV_OPEN_THEME        "Open a Theme\nOpen a Theme"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_MV_ADD_MATX_AS_SKINGEOM 
+                            "Add MatX files as SkinGeoms\nAdd MatX files as SkinGeoms"
+    ID_MV_ADD_MATX_AS_RIGIDGEOM 
+                            "Add MatX files as RigidGeoms\nAdd MatX files as RigidGeoms"
+    ID_ANIM_IN_PLACE        "Forces to play animation in place."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_MESHV_RENDER_SKELETON "Renders the Skeleton of the animated mesh"
+    ID_MESHV_TAKE_TO_BIND   "Takes each objects from the bone and takes it to their origion"
+    ID_MESHV_RENDER_BONE_LAVELS "Render the name of the bones"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

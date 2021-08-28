@@ -1,0 +1,93 @@
+//#include "SkinShader.h"
+
+// Vertex inputs
+#define VS_VERT_POS             v0
+#define VS_VERT_NORMAL          v1
+#define VS_VERT_UVS             v2.xy
+#define VS_VERT_INDEX1          v0.w
+#define VS_VERT_INDEX2          v1.w
+#define VS_VERT_WEIGHT1         v2.z
+#define VS_VERT_WEIGHT2         v2.w
+
+// Bone struct
+#define VS_BONE_L2W0            0
+#define VS_BONE_L2W1            1
+#define VS_BONE_L2W2            2
+#define VS_BONE_LIGHT_DIR       3
+#define VS_BONE_SIZE            4
+
+// World to clip
+#define VS_W2C0                 c0
+#define VS_W2C1                 c1
+#define VS_W2C2                 c2
+#define VS_W2C3                 c3
+
+// Constants
+#define VS_ZERO                 c4.x
+#define VS_ONE                  c4.y
+#define VS_MINUS_ONE            c4.z
+#define VS_FOG                  c4.w
+
+// Light constants
+#define VS_LIGHT_DIR_COL        c5
+#define VS_LIGHT_AMB_COL        c6
+
+// Here is where the bones start
+#define VS_BONE_REG_OFFSET      7
+
+vs.1.1
+
+dcl_position    v0
+dcl_normal      v1
+dcl_texcoord0   v2
+
+; Set r0={0,0,0,0}
+sge r0, c0, c0
+
+; BUGFIX - Copy input position to r2, because we MUST have the W component set to 1 for the transforms!!
+mov r2.xyz, VS_VERT_POS
+mov r2.w,   VS_ONE
+
+; Transform to world using index1, weight1
+mov a0.x, VS_VERT_INDEX1
+dp4 r0.x, r2, c[ a0.x + VS_BONE_REG_OFFSET + VS_BONE_L2W0 ]
+dp4 r0.y, r2, c[ a0.x + VS_BONE_REG_OFFSET + VS_BONE_L2W1 ]
+dp4 r0.z, r2, c[ a0.x + VS_BONE_REG_OFFSET + VS_BONE_L2W2 ]
+mul r3, VS_VERT_WEIGHT1, c[ a0.x + VS_BONE_REG_OFFSET + VS_BONE_LIGHT_DIR ]     // Compute the light
+
+; Transform to world index2, weight2
+mov a0.x, VS_VERT_INDEX2
+dp4 r1.x, r2, c[ a0.x + VS_BONE_REG_OFFSET + VS_BONE_L2W0 ]
+dp4 r1.y, r2, c[ a0.x + VS_BONE_REG_OFFSET + VS_BONE_L2W1 ]
+dp4 r1.z, r2, c[ a0.x + VS_BONE_REG_OFFSET + VS_BONE_L2W2 ]
+mad r3, VS_VERT_WEIGHT2, c[ a0.x + VS_BONE_REG_OFFSET + VS_BONE_LIGHT_DIR ], r3 // Computer the light
+
+; Set the final weighted vertex
+mul r0.xyz, r0, VS_VERT_WEIGHT1
+mad r0.xyz, r1, VS_VERT_WEIGHT2, r0
+
+; Transform the final world vertex to clipping space
+dp4 oPos.x, r0, VS_W2C0
+dp4 oPos.y, r0, VS_W2C1
+dp4 oPos.z, r0, VS_W2C2
+dp4 oPos.w, r0, VS_W2C3
+
+; Normalize the light vector
+dp3 r3.w, r3, r3
+rsq r3.w, r3.w
+mul r3, r3, -r3.w               
+
+; Perform lighting
+dp3 r1.x, VS_VERT_NORMAL, r3        ; r1 = normal dot light
+max r1.x, r1.x, VS_ZERO             ; if dot < 0 then dot = 0
+mul r1, r1.x, VS_LIGHT_DIR_COL      ; * directional color
+add r1, r1.xyz, VS_LIGHT_AMB_COL    ; + ambient color
+mov r1.w, VS_LIGHT_AMB_COL.w        ; Use alpha from ambient color
+min oD0, r1, VS_ONE                 ; Clamp if > 1
+
+; Fogging
+mov oFog, VS_FOG
+
+; Output texture coordinates
+mov oT0.xy, VS_VERT_UVS
+mov oT1.xy, VS_VERT_UVS

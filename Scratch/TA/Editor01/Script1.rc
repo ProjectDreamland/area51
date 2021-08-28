@@ -1,0 +1,233 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MATERIAL_TYPE DIALOG DISCARDABLE  0, 0, 287, 171
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sound Type"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Done",ID_SOUND_TYPE_DONE,215,142,50,14
+    LISTBOX         IDC_SOUND_TYPE_LIST,15,13,246,108,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_SOUND_TYPE_MAT,15,126,251,102,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "Apply",ID_SOUND_TYPE_APPLY,14,143,50,14
+END
+
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 102, 556
+STYLE DS_MODALFRAME | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Grid ",IDC_STATIC,2,20,93,62
+    LTEXT           "0",IDC_GRID_YPOS,37,31,45,10,SS_SUNKEN
+    LTEXT           "Height :",IDC_GRID_YPOS2,9,30,26,10
+    PUSHBUTTON      "+ 1",IDC_GRID_P1,10,44,37,10,BS_LEFT
+    PUSHBUTTON      "- 1",IDC_GRID_N1,49,44,37,10,BS_LEFT
+    PUSHBUTTON      "+ 2",IDC_GRID_P2,10,55,37,10,BS_LEFT
+    PUSHBUTTON      "- 2",IDC_GRID_N2,49,55,37,10,BS_LEFT
+    PUSHBUTTON      "+ 4",IDC_GRID_P4,10,66,37,10,BS_LEFT
+    PUSHBUTTON      "- 4",IDC_GRID_N4,49,66,37,10,BS_LEFT
+    LISTBOX         IDC_PIECES_LIST,9,121,86,88,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL
+    PUSHBUTTON      "+90",IDC_ROTATE_P90,6,95,24,11,BS_CENTER
+    GROUPBOX        "Pieces ",IDC_STATIC,2,86,93,196
+    PUSHBUTTON      "Add Wall",IDC_ADD_MODE,5,303,83,11,BS_LEFT
+    CONTROL         "",IDC_QUICK_VIEW,"Static",SS_BLACKRECT,6,213,83,64
+    GROUPBOX        "Edit ",IDC_STATIC,2,278,93,247
+    LTEXT           "Mode :",IDC_STATIC,8,287,28,11
+    LTEXT           "None",IDC_EDIT_MODE,38,287,47,10,SS_SUNKEN
+    PUSHBUTTON      "Undo",IDC_UNDO,2,7,43,13,BS_CENTER
+    PUSHBUTTON      "Redo",IDC_REDO,49,7,46,13
+    PUSHBUTTON      "- 90",IDC_ROTATE_N90,65,95,24,11,BS_CENTER
+    PUSHBUTTON      "Select",IDC_SEL_MODE,5,315,83,11,BS_LEFT
+    PUSHBUTTON      "UnSelect",IDC_UNSEL_MODE,5,328,83,11,BS_LEFT
+    PUSHBUTTON      "Unselect All",IDC_UNSEL_ALL,5,341,83,11,BS_LEFT
+    PUSHBUTTON      "Delete                 [ DEL ]",IDC_DEL_MODE,5,354,83,
+                    11,BS_LEFT
+    PUSHBUTTON      "Add With Ray",IDC_ADD_WITH_RAY,5,366,83,11,BS_LEFT
+    PUSHBUTTON      "Add Rotate",IDC_ADD_ROTATE,5,379,83,11,BS_LEFT
+    EDITTEXT        IDC_ROTATE_INFO,32,95,31,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Add Light",IDC_ADD_LIGHT,5,393,42,11,BS_LEFT
+    PUSHBUTTON      "Light Color",IDC_LIGHT_COLOR,5,407,41,11,BS_LEFT
+    CONTROL         "",IDC_COLOR_STATIC,"Static",SS_BLACKFRAME,47,407,41,11
+    PUSHBUTTON      "Add Sound",IDC_ADD_SOUND,5,419,42,11,BS_LEFT | 
+                    BS_VCENTER
+    COMBOBOX        IDC_SOUNDTYPE,2,431,93,57,CBS_DROPDOWNLIST | WS_VSCROLL
+    PUSHBUTTON      "Apply Material Type",IDC_MATERIAL_TYPE,6,108,83,11,
+                    BS_LEFT
+    CONTROL         "Looped",IDC_LOOP_SOUND,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,5,444,38,8
+    PUSHBUTTON      "Add PFX",IDC_ADD_PFX,5,454,33,11,BS_LEFT | BS_VCENTER
+    COMBOBOX        IDC_PFXTYPE,42,453,53,57,CBS_DROPDOWNLIST | WS_VSCROLL
+    PUSHBUTTON      "Add Glow",IDC_ADD_GLOW,5,469,42,11,BS_LEFT
+    PUSHBUTTON      "Glow Color",IDC_GLOW_COLOR,5,482,41,11,BS_LEFT
+    CONTROL         "",IDC_GLOW_COLOR_STATIC,"Static",SS_BLACKFRAME,48,481,
+                    41,11
+    CONTROL         "Clipped",IDC_CLIP_SOUND,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,51,443,38,8
+    CONTROL         "Slider1",IDC_GLOW_SLIDER,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,45,469,44,11
+    COMBOBOX        IDC_PICKUP_TYPE,2,495,93,59,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_OBJECT_NAME,2,509,93,13,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_MATERIAL_TYPE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 280
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 164
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 95
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 549
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "Project"
+    BEGIN
+        MENUITEM "New",                         AFX_ID_NEW_PROJECT
+        MENUITEM SEPARATOR
+        MENUITEM "Save",                        AFX_ID_SAVE
+        MENUITEM "Save As",                     AFX_ID_SAVEAS
+        MENUITEM "Load",                        AFX_ID_LOAD
+        MENUITEM SEPARATOR
+        MENUITEM "Export",                      AFX_ID_EXPORT
+    END
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Inevitable\0"
+            VALUE "FileDescription", "Editor01\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "Editor01\0"
+            VALUE "LegalCopyright", "Copyright © 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Editor01.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Inevitable Editor01\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

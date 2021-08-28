@@ -1,0 +1,174 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Utility Services</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Utility Services">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Utility Services</h1>
+<h4>Discussion</h4>
+<p> provide many functions that used to be standalone utilities in previous versions of the Miles Sound System. Now that this technology is available as part of the general MSS library, you can add some neat new features to your applications. You could, for example, leave your MIDI sequences in standard MIDI formatted files and only convert them to XMIDI at playback time. This would let your users edit and add new MIDI files to your application! </p><p> These functions were used to create the new Miles Sound Studio application. The source code for this utility (found in \WINTOOLS\SRC) is an excellent place to look for sophisticated examples of these functions. </p><p> Note that you may never have to even use any of these functions, since many can be performed offline with the Miles Sound Studio.</p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Utility Services.html">Utility Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_type.html">AIL_file_type</a></td>
+<td height=25 valign=top class=toc>returns the file type of the specified file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_FILE_TYPE.html">MILES_FILE_TYPE</a></td>
+<td height=25 valign=top class=toc>describes the type of a file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_WAV_info.html">AIL_WAV_info</a></td>
+<td height=25 valign=top class=toc>retrieves the audio format information for the specified file
+
+image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILSOUNDINFO.html">AILSOUNDINFO</a></td>
+<td height=25 valign=top class=toc>specifies audio format details.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_process_digital_audio.html">AIL_process_digital_audio</a></td>
+<td height=25 valign=top class=toc>provides high-level access to the Miles sound mixer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="AILMIXINFO.html">AILMIXINFO</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_size_processed_d4yjwo6.html">AIL_size_processed_digital_audio</a></td>
+<td height=25 valign=top class=toc>provides a way to determine how much output memory
+
+          is necessary for a given set of input mix data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_compress_ADPCM.html">AIL_compress_ADPCM</a></td>
+<td height=25 valign=top class=toc>compresses the digital sound described by the info structure into
+
+          an IMA ADPCM wave file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_decompress_ADPCM.html">AIL_decompress_ADPCM</a></td>
+<td height=25 valign=top class=toc>decompresses the IMA ADPCM digital sound described by the info structure into
+
+          a standard PCM wave file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_compress_ASI.html">AIL_compress_ASI</a></td>
+<td height=25 valign=top class=toc>compresses a digital sound with an ASI encoder capable of writing
+
+          the file type described by the filename_ext parameter.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILLENGTHYCB.html">AILLENGTHYCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined callback that gets called during lengthy
+
+Miles operations.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_LENGTHY_STATE.html">MILES_LENGTHY_STATE</a></td>
+<td height=25 valign=top class=toc>indicates the current stage of the lengthy
+
+operation.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILCODECSETPREF.html">AILCODECSETPREF</a></td>
+<td height=25 valign=top class=toc>provides a way for ASI preferences to be set during a compression
+
+or decompression.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_decompress_ASI.html">AIL_decompress_ASI</a></td>
+<td height=25 valign=top class=toc>decompresses a digital sound with the ASI decoder for the passed
+
+          file extension and returns a standard PCM wave file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MIDI_to_XMI.html">AIL_MIDI_to_XMI</a></td>
+<td height=25 valign=top class=toc>converts Standard MIDI Format 0 and Format
+
+          1 sequence files to the Extended MIDI (XMIDI) format.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_MIDI_TO_XMI_FLAGS.html">MILES_MIDI_TO_XMI_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies optional conversion flags for the
+
+AIL_MIDI_to_XMI function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_compress_DLS.html">AIL_compress_DLS</a></td>
+<td height=25 valign=top class=toc>compresses a DLS file with either IMA ADPCM compression or with an
+
+          ASI encoder specified by the compress_ext parameter.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_extract_DLS.html">AIL_extract_DLS</a></td>
+<td height=25 valign=top class=toc>extracts and decompresses the DLS data from a
+
+          loaded MLS file or merged XMIDI file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_find_DLS.html">AIL_find_DLS</a></td>
+<td height=25 valign=top class=toc>returns pointers and sizes to the DLS and XMIDI
+
+          chunks inside a merged XMIDI file image.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_merge_DLS_with_XMI.html">AIL_merge_DLS_with_XMI</a></td>
+<td height=25 valign=top class=toc>merges an XMIDI file and a DLS or MLS file together.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_filter_DLS_with_XMI.html">AIL_filter_DLS_with_XMI</a></td>
+<td height=25 valign=top class=toc>filters out unused instruments in a DLS file
+
+          given one or more XMIDI files.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_FILTER_DLS_FLAGS.html">MILES_FILTER_DLS_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies options to use when filtering DLS
+
+instrument sets with an XMIDI file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_list_MIDI.html">AIL_list_MIDI</a></td>
+<td height=25 valign=top class=toc>creates a detailed listing of a MIDI file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_LIST_MIDI_FLAGS.html">MILES_LIST_MIDI_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies flags to use when listing a MIDI
+
+file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_list_DLS.html">AIL_list_DLS</a></td>
+<td height=25 valign=top class=toc>creates a detailed listing of a DLS or MLS file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_LIST_DLS_FLAGS.html">MILES_LIST_DLS_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies flags to use when listing a DLS
+
+file.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

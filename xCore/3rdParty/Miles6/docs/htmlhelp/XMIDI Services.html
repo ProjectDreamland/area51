@@ -1,0 +1,401 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>XMIDI Services</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="XMIDI Services">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>XMIDI Services</h1>
+<h4>Discussion</h4>
+<p> The term ‘Extended MIDI,' or ‘XMIDI,' refers to the set of features added to the base Musical Instrument Digital Interface (MIDI) data specification by the drivers and utility programs included with the Miles Sound System's Version 2.00 release. The XMIDI standard brings many powerful features to the Miles Sound System which would otherwise be absent in a system conforming to the original MIDI standard. </p><p> Composers who are interested in getting started with XMIDI should pay particular attention to the descriptions of the Miles Sound Studio and MIDIECHO in the Tools-Reference <i><a href="Miles Sound System Tq6hmqc.html#Section">Section</a></i>, before moving on to the specific discussions of the Extended MIDI controllers below. It is strongly recommended that musicians with even the slightest programming knowledge (or interest) examine the <i>XMIDI Services</i> section as well, in order to gain the best possible understanding of the Miles Sound System's capabilities. </p><p> Programmers seeking to master effective Miles Sound System application design are also advised to familiarize themselves with the <i><a href="Miles Sound System Tq6hmqc.html#Tools-Reference">Tools-Reference</a></i> section, followed by a perusal of the <i>XMIDI Services</i> section. </p><p> Also useful to both XMIDI composers and programmers would be a good understanding of the new DLS features found in the Miles Sound System. This information can be found in the DLS Services <i><a href="DLS Services.html#Section">Section</a></i>. </p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="XMIDI Services.html">XMIDI Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_open_XMIDI_driver.html">AIL_open_XMIDI_driver</a></td>
+<td height=25 valign=top class=toc>opens an driver handle to play XMIDI data files through.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_OPEN_XMIDI_FLAGS.html">MILES_OPEN_XMIDI_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies open flags for the
+
+AIL_open_XMIDI_driver function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_close_XMIDI_driver.html">AIL_close_XMIDI_driver</a></td>
+<td height=25 valign=top class=toc>shuts down and closes a MIDI music driver which was opened
+
+          by a previous call to AIL_open_XMIDI_driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MIDI_handle_release.html">AIL_MIDI_handle_release</a></td>
+<td height=25 valign=top class=toc>temporarily releases the hardware MIDI handle (the HMIDIOUT handle
+
+or the QuickTime MIDI handle) back to the system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MIDI_handle_reacquire.html">AIL_MIDI_handle_reacquire</a></td>
+<td height=25 valign=top class=toc>attempts to reacquire the hardware MIDI handle (the HMIDIOUT
+
+handle or the QuickTime MIDI handle) from the system.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_XMIDI_masteraryoaa.html">AIL_set_XMIDI_master_volume</a></td>
+<td height=25 valign=top class=toc>establishes an overall `master volume` value which is used to
+
+          scale the volumes of all subsequent XMIDI note events in all
+
+          sequences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_XMIDI_master_volume.html">AIL_XMIDI_master_volume</a></td>
+<td height=25 valign=top class=toc>returns the current XMIDI master volume setting in use.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_allocate_sequenc2icfaa.html">AIL_allocate_sequence_handle</a></td>
+<td height=25 valign=top class=toc>searches for a free sequence handle and returns it to the application
+
+          for use in the playback of XMIDI audio data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_sequence2icfaa.html">AIL_release_sequence_handle</a></td>
+<td height=25 valign=top class=toc>frees a sequence handle for later allocation by AIL_allocate_sequence_handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_init_sequence.html">AIL_init_sequence</a></td>
+<td height=25 valign=top class=toc>prepares a sequence handle for playback of XMIDI sequence data,
+
+          and allows the application to specify the starting address and
+
+          sequence number of the XMIDI sequence to be played.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_start_sequence.html">AIL_start_sequence</a></td>
+<td height=25 valign=top class=toc>starts playback of a sequence from its beginning.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_stop_sequence.html">AIL_stop_sequence</a></td>
+<td height=25 valign=top class=toc>stops playback of a sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_resume_sequence.html">AIL_resume_sequence</a></td>
+<td height=25 valign=top class=toc>resumes playback of a sequence which was previously stopped.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_end_sequence.html">AIL_end_sequence</a></td>
+<td height=25 valign=top class=toc>terminates playback of a sequence, setting its status to SEQ_DONE<*MILES_SEQUENCE_STATUS>.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_tempo.html">AIL_set_sequence_tempo</a></td>
+<td height=25 valign=top class=toc>specifies an increase or decrease in the normal playback tempo
+
+          of a sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_tempo.html">AIL_sequence_tempo</a></td>
+<td height=25 valign=top class=toc>returns the current relative tempo percentage for a sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_volume.html">AIL_set_sequence_volume</a></td>
+<td height=25 valign=top class=toc>establishes a scaling factor for the value of each MIDI Part
+
+          Volume Control Change (controller 7) event occurring in a sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_volume.html">AIL_sequence_volume</a></td>
+<td height=25 valign=top class=toc>returns the current sequence volume scaling value, from 0 (minimum)
+
+          to 127 (maximum).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_loo1mlaaa.html">AIL_set_sequence_loop_count</a></td>
+<td height=25 valign=top class=toc>arranges for a sequence to be restarted immediately upon completion,
+
+          for a total of two or more iterations.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_loop_count.html">AIL_sequence_loop_count</a></td>
+<td height=25 valign=top class=toc>returns the number of loop iterations remaining for the given
+
+          sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_branch_index.html">AIL_branch_index</a></td>
+<td height=25 valign=top class=toc>moves a sequence's data pointers to the location of a specified
+
+          XMIDI Sequence Branch Index controller.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_position.html">AIL_sequence_position</a></td>
+<td height=25 valign=top class=toc>returns the number of beats and measures elapsed since a given
+
+          XMIDI sequence began playing.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_ms_rl07ba.html">AIL_set_sequence_ms_position</a></td>
+<td height=25 valign=top class=toc>moves the current playback position of a sequence to the specified
+
+          millisecond count.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_ms_position.html">AIL_sequence_ms_position</a></td>
+<td height=25 valign=top class=toc>returns the current playback position and length of the sequence
+
+          in milliseconds.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_sequence_use6kbaaa.html">AIL_set_sequence_user_data</a></td>
+<td height=25 valign=top class=toc>sets a value for one of eight user data entries associated with
+
+          each sequence handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_user_data.html">AIL_sequence_user_data</a></td>
+<td height=25 valign=top class=toc>retrieves a value for one of eight user data entries associated
+
+          with each sequence handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_sequence_status.html">AIL_sequence_status</a></td>
+<td height=25 valign=top class=toc>returns the status of a given sequence handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_SEQUENCE_STATUS.html">MILES_SEQUENCE_STATUS</a></td>
+<td height=25 valign=top class=toc>indicates the status of an XMIDI handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_create_wave_syntrqseaa.html">AIL_create_wave_synthesizer</a></td>
+<td height=25 valign=top class=toc>creates a `virtual wave synthesizer` by associating an XMIDI
+
+          driver with a digital audio driver and a library file containing
+
+          digital audio samples assigned to various MIDI patches.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_destroy_wave_syn7m4hba.html">AIL_destroy_wave_synthesizer</a></td>
+<td height=25 valign=top class=toc>destroys a `virtual wave synthesizer` instance created by a previous
+
+          call to the AIL_create_wave_synthesizer function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_MDI_driver_type.html">AIL_MDI_driver_type</a></td>
+<td height=25 valign=top class=toc>reports the MIDI synthesis technology available with a specified.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_MDI_DRIVER_TYPE.html">MILES_MDI_DRIVER_TYPE</a></td>
+<td height=25 valign=top class=toc>describes the type of DOS MIDI driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_GTL_filenamelxjjaa.html">AIL_set_GTL_filename_prefix</a></td>
+<td height=25 valign=top class=toc>informs MSS of the prefix portion of all Global Timbre Library
+
+          filenames which are associated with a particular application.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_timbre_status.html">AIL_timbre_status</a></td>
+<td height=25 valign=top class=toc>checks to see if a given timbre (synthesizer instrument) is loaded.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_timbre.html">AIL_install_timbre</a></td>
+<td height=25 valign=top class=toc>forces the driver to install a single timbre (synthesizer instrument),
+
+          allowing it to be used for performance in a channel of an Extended
+
+          MIDI (XMIDI) sequence which contains an XMIDI Patch Bank Select
+
+          controller (114) with the value bank followed by a MIDI Program
+
+          Change (Patch) message with the value patch.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_protect_timbre.html">AIL_protect_timbre</a></td>
+<td height=25 valign=top class=toc>prevents the timbre bank, patch from being discarded from the
+
+          synthesizer memory or local timbre cache.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_unprotect_timbre.html">AIL_unprotect_timbre</a></td>
+<td height=25 valign=top class=toc>disables timbre protection for the timbre bank, patch, subjecting
+
+          the timbre to the action of the normal timbre replacement algorithm.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_active_sequence_count.html">AIL_active_sequence_count</a></td>
+<td height=25 valign=top class=toc>returns the number of currently-playing sequences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_controller_value.html">AIL_controller_value</a></td>
+<td height=25 valign=top class=toc>returns any current MIDI Control Change value for any of the
+
+          channels used in the specified sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_MIDI_VALUE.html">MILES_MIDI_VALUE</a></td>
+<td height=25 valign=top class=toc>specifies a MIDI controller that can queried.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_channel_notes.html">AIL_channel_notes</a></td>
+<td height=25 valign=top class=toc>returns the number of notes currently turned `on` in a given
+
+          MIDI channel.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_prefix_s0khaa.html">AIL_register_prefix_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called whenever an XMIDI
+
+          Callback Prefix controller (108) is encountered in a playing
+
+          XMIDI sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILPREFIXCB.html">AILPREFIXCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI prefix callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_trigger8chzca.html">AIL_register_trigger_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called whenever an XMIDI
+
+          Callback Trigger  controller (119) is encountered in a playing
+
+          XMIDI sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILTRIGGERCB.html">AILTRIGGERCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI trigger callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_sequenc8chzca.html">AIL_register_sequence_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called immediately upon
+
+          completion of playback of an XMIDI sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILSEQUENCECB.html">AILSEQUENCECB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI end of sequence callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_event_cs0khaa.html">AIL_register_event_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called immediately prior
+
+          to processing each XMIDI or MIDI Channel Voice message event
+
+          associated with a given driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILEVENTCB.html">AILEVENTCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI event callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_beat_casg9aaa.html">AIL_register_beat_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called each time the
+
+          relative beat count changes in any sequence played with the given
+
+          driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILBEATCB.html">AILBEATCB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI beat callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_timbre_s0khaa.html">AIL_register_timbre_callback</a></td>
+<td height=25 valign=top class=toc>registers an application function to be called immediately prior
+
+          to installing a timbre with AIL_install_timbre or AIL_init_sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILTIMBRECB.html">AILTIMBRECB</a></td>
+<td height=25 valign=top class=toc>specifies a user-defined XMIDI timbre installation callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_register_ICA_array.html">AIL_register_ICA_array</a></td>
+<td height=25 valign=top class=toc>allows the application to declares an array of 128 bytes whose
+
+          entries may be used to replace XMIDI or MIDI controller values
+
+          whose controller events are preceded by an XMIDI Indirect Controller
+
+          Prefix controller (115).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_lock_channel.html">AIL_lock_channel</a></td>
+<td height=25 valign=top class=toc>returns an individual MIDI channel number to the application
+
+          for direct MIDI message transmission, preventing any XMIDI sequence
+
+          from utilizing that physical channel until its release with AIL_release_channel.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_release_channel.html">AIL_release_channel</a></td>
+<td height=25 valign=top class=toc>returns a MIDI channel previously locked with AIL_lock_channel
+
+          to the sequence which formerly `owned` it, if any.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_map_sequence_channel.html">AIL_map_sequence_channel</a></td>
+<td height=25 valign=top class=toc>causes all events in a given sequence which are associated with
+
+          a given MIDI channel seq_channel to be transmitted instead on
+
+          a `remapped` MIDI channel new_channel.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_true_sequence_channel.html">AIL_true_sequence_channel</a></td>
+<td height=25 valign=top class=toc>returns the physical MIDI channel number which receives MIDI
+
+          and XMIDI messages transmitted on a logical channel sequence_channel
+
+          by a given sequence S.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a></td>
+<td height=25 valign=top class=toc>transmits any desired MIDI Channel Voice message on any MIDI
+
+          channel.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_send_sysex_message.html">AIL_send_sysex_message</a></td>
+<td height=25 valign=top class=toc>transmits a System Exclusive message to a MIDI device driver.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_midiOutOpen.html">AIL_midiOutOpen</a></td>
+<td height=25 valign=top class=toc>assigns a Windows Multimedia Extensions low-level midiOut driver
+
+          (or the MIDI Mapper device) to the Windows MSS API for MIDI music
+
+          performance.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_MDI_INI.html">AIL_install_MDI_INI</a></td>
+<td height=25 valign=top class=toc>installs and initializes the currently selected MSS
+
+          .MDI driver file for XMIDI music performance under DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a></td>
+<td height=25 valign=top class=toc>installs and initializes an MSS-compatible .MDI driver file for
+
+          XMIDI music performance under DOS.  </td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>MIDIECHO for DOS - MIDI Data Receiver and Interpreter</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="MIDIECHO for DOS - MIDI Data Receiver and Interpreter">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>MIDIECHO for DOS - MIDI Data Receiver and Interpreter</h1>
+<h4>Discussion</h4>
+<p> The <b>MIDIECHO</b> program receives incoming MIDI Channel Voice and System Exclusive messages via a Roland MPU-401-compatible MIDI interface, and sends them to a specified Miles Sound System Extended MIDI (XMIDI) driver. </p><p><b>MIDIECHO</b> is a valuable resource for musicians who wish to develop music and sound-effects arrangements for MSS applications. Composers can receive immediate feedback when developing IBM-specific XMIDI compositions on a Macintosh or Atari ST-based MIDI sequencer platform, simply by connecting the host's MIDI interface to the MPU-401 interface on a "slave" PC system running <b>MIDIECHO</b>. </p><p><b>MIDIECHO</b> has the following command-line syntax: </p><p></p><code><font size=3 color=#006000><pre><br><b>MIDIECHO</b> driver.MDI  [driver.DIG]  [wavelib.WVL]  [GTL_prefix]<br>         [/MA:xx]    [/MI:xx]<br>         [/A:xx]     [/I:xx]       [/D:xx]<br>         [/DA:xx]    [DI:xx]       [/DD:xx]<br>         [/PR:xx]<br></pre></font></code><p></p><p> where driver.MDI specifies the Miles Sound System .MDI driver to be used for playback performance, and <b>GTL_prefix</b> optionally indicates the pathname and filename prefix under which Yamaha or Roland MT-32 Global Timbre Library files are stored. Other optional parameters include <b>/A:xx, /I:xx, and /D:xx,</b> which specify the hexadecimal I/O port address, IRQ number, and DMA channel to be used by the MSS playback driver, and the <b>/MA:xx and /MI:xx</b> parameters which specify the address and IRQ setting of the Roland MPU401-compatible MIDI interface used to receive the incoming data. The <b>/MA and /MI</b> parameters are required only if the Roland interface is not addressable at its default jumper settings I/O address $330, IRQ 2. Similarly, <b>/A and /I, and /D</b> are necessary only if the sound adapter used for playback is configured at a non-standard I/O address or interrupt setting. </p><p>By specifying the filename of an MSS-compatible digital audio driver <b>[driver.DIG]</b> and a wave library <b>[wavelib.WVL]</b> created by the <b>WAVELIB</b> program, it is possible to use <b>MIDIECHO</b> as a composition aid for XMIDI-based sound-effect sequences or sequences which use "virtual wave synthesis" to play rhythm or melodic instrument sounds. The /<b>DA:xx, /DI:xx, and /DD:xx</b> parameters may be used to specify an explicit port address, interrupt number, and DMA channel for the digital driver, if necessary. </p><p>By default, the <b>MIDIECHO</b> program included with MSS is configured for a default pitch-bend range of +/- 2 semitones. The <b>/PR:xx</b> option permits other pitch-bend range values to be specified without sending MIDI RPN data, which may be useful in cases where <b>MIDIECHO</b> is used to compose sequences for playback on the MT-32 or other non-General MIDI platforms (including older MSS 2.0 XMIDI drivers). </p><p>While <b>MIDIECHO</b> is running, the <b>+ and -</b> keys may be used to adjust the "voice alert limit," or the number of notes which MSS assumes the synthesizer in use can play simultaneously. During a MIDI performance, <b>MIDIECHO</b> presents a continuously-updated graphical display of polyphonic note activity. When the voice alert limit is exceeded, the portion of the bar graph to the right of the limit indicator will be shown in bright red, and the "total overflows" indicator above the graph will be incremented. This feature may be helpful when diagnosing note "dropout" problems that occur due to partial overflow. </p><p>When running on slower PC platforms with dense MIDI traffic, <b>MIDIECHO</b> may exhibit undesirable tempo variations due to program overhead. If this problem occurs, the <b>T</b> key can be used to disable the continuously scrolling MIDI event trace which appears in <b>MIDIECHO</b>'s uppermost window. </p><p>The <b>A</b> key (All Notes Off) can be pressed at any time to "kill" any stuck notes which may occur while running <b>MIDIECHO</b>. </p><p>During playback, if a combination of XMIDI Patch Bank Select controller and MIDI Program Change number values is used to set up a timbre which cannot be found in the specified Global Timbre Library file, <b>MIDIECHO</b> will complain with an error message. The <b>E</b> key can be used to enable or disable a beep tone from the PC speaker when note overflow occurs, or when instrument-loading errors are reported. </p><p><b>MIDIECHO</b> re-transmits incoming data on all 16 MIDI channels to the MSS driver via the <a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a> call. The program retransmits all MIDI Channel Voice messages. (MIDI System Exclusive messages are retransmitted as well, but this feature should be used with caution since "timing slips" inherent in System Exclusive transmission can cause strange, misleading effects in the music). </p><p><b>MIDIECHO</b> is intended to receive normal MIDI Channel Voice data, not synthesizer-ready XMIDI data. Timing problems may occur if a dense XMIDI data stream (as from a Miles Sound System application or the MSS Version 2.0 <b>CAKEPORT</b> driver) is fed to the <b>MIDIECHO</b> host's input port. </p>
+<p><a href="SETSOUND - MSS Soundv7472s.html">Next Topic (SETSOUND - MSS Sound Configuration Utility)</a>  </p><p><a href="MIDIECHO for MacOS -5hwjxy.html">Previous Topic (MIDIECHO for MacOS - MIDI Data Receiver and Interpreter)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Miles Sound System Tq6hmqc.html">Miles Sound System Tools Reference</a><br>
+<b>Related Sections:</b>
+<a href="MIDIECHO for MacOS -5hwjxy.html">MIDIECHO for MacOS - MIDI Data Receiver and Interpreter</a>, <a href="MIDIECHO for Windows5hwjxy.html">MIDIECHO for Windows - MIDI Data Receiver and Interpreter</a><br>
+<b>Related Functions:</b>
+<a href="AIL_send_channel_voimgj9la.html">AIL_send_channel_voice_message</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

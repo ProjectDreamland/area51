@@ -1,0 +1,15 @@
+ /c /nologo /W3 /FD 
+ /P 
+ /Fd"c:\Projects\A51\xCore\Parsing\_PS2-Debug/vc70.pdb" 
+ /FI "c:\Projects\A51\xCore\Parsing\_PS2-Debug/_SN_in_VC.h"
+ /I "C:\Projects\A51\xCore\x_files" 
+ /I "\." 
+ /I "C:/Projects/A51/xCore/3rdParty/PS2/Sony/EE/include" 
+ /I "C:/Projects/A51/xCore/3rdParty/PS2/Sony/include"    
+ /I "C:/Projects/A51/xCore/3rdParty/PS2/SN/EE/include"   
+ /I . 
+ /D TARGET_PS2 
+ /D CONFIG_DEBUG 
+ /D Biscuit 
+ /D VENDOR_SN 
+ /D "XCORE_PATH=\"C:/Projects/A51/xCore\""

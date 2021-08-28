@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_digital_handle_reacquire</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="attempts to reacquire hardware digital handle (either the HWAVEOUT handle, the DirectSound object, or the Sound Manager buffer) from the system.">
+<meta name="ms-hkwd" content="AIL_digital_handle_reacquire">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_digital_handle_reacquire</h1>
+<p>The function  <b>AIL_digital_handle_reacquire</b> attempts to reacquire hardware digital handle (either the HWAVEOUT handle, the DirectSound object, or the Sound Manager buffer) from the system.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_digital_handle_ruoiaaa.html" class=trn>AIL_digital_handle_reacquire</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>indicates the driver to try to reacquire.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Non-zero on success. Zero if the digital handle was still in use by the system.</p>
+<h4>Discussion</h4>
+<p>On Windows, this function is usually used with the <a href="AIL_digital_handle_ruqabaa.html">AIL_digital_handle_release</a> function in the WM_ACTIVATEAPP message processing code to allow other applications to play digital sound. </p><p> On MacOS, other applications can always still play audio - that is, Sound Manager can still be used by other applications when Miles is using it. </p><p> This function will automatically restart any samples that were playing when <a href="AIL_digital_handle_ruqabaa.html">AIL_digital_handle_release</a> was called. </p><p> Important!! Note that this function can fail if the digital handle is still in use, and that there is a slight delay from when a digital handle is freed to when that handle becomes available again. So, if you place this call in your WM_ACTIVATEAPP message handling code, you will have to retry the reacquire periodically if the call fails. See Demo.C for an example. </p><p> Under MacOS and Win16, this function must not be invoked from an interrupt-based callback function. </p><p> This function is not supported under DOS. </p><p> Example files that use this function: DEMO.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_digital_handle_ruqabaa.html">AIL_digital_handle_release</a>, <a href="AIL_open_input.html">AIL_open_input</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="S32.html">S32</a><br>
+<b>Related FAQs:</b>
+<a href="I get a crash when I35ptsr.html">I get a crash when I call AIL_digital_handle_release while the 3D digital API is playing - what's going on?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

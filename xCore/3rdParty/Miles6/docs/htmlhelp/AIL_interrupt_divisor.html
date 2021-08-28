@@ -1,0 +1,48 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_interrupt_divisor</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the current value used internally by the Miles Sound System's Timer Services to program the IBM PC's 8253 Programmable Interval Timer chip for periodic INT 8 (IRQ 0) service.">
+<meta name="ms-hkwd" content="AIL_interrupt_divisor">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_interrupt_divisor</h1>
+<p>The function  <b>AIL_interrupt_divisor</b> returns the current value used internally by the Miles Sound System's Timer Services to program the IBM PC's 8253 Programmable Interval Timer chip for periodic INT 8 (IRQ 0) service.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="AIL_interrupt_divisor.html" class=trn>AIL_interrupt_divisor</a>(</b><b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Returns</h4>
+<p>The value last used to program the IBM timer hardware for interrupt service by the MSS system.</p>
+<h4>Discussion</h4>
+<p>This function is intended for use by applications which must seize direct control of the IBM's timer interrupt hardware. Its use is not recommended under ordinary circumstances. </p><p> The MSS Timer Services are fast enough and flexible enough to meet nearly any conceivable application's needs for periodic callback service, and programmers are strongly encouraged to make use of them whenever possible. In the rare event that this is not practical, <a href="AIL_interrupt_divisor.html">AIL_interrupt_divisor</a> allows the application to continue to play sound and music while circumventing the MSS's timer interrupt handler for its own purposes. The application must assume responsibility for generating software INT 8 calls at the indicated rate. </p><p> This function is not supported under Windows or MacOS.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Timer Services.html">Timer Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_interrupt_divisor.html">AIL_interrupt_divisor</a>, <a href="AIL_set_timer_divisor.html">AIL_set_timer_divisor</a><br>
+<b>Related Basic Types:</b>
+<a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

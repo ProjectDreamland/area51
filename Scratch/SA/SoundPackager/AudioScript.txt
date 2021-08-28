@@ -1,0 +1,19 @@
+C:\GameData\A51\Apps\Compilers\SoundPackager.exe package:
+test [ volume=1  volumevar=0  pitch=0.015625  pitchvar=0  pan=0  priority=255  effect=0  nearclip=0  farclip=2 ] 
+files:
+AmbientBreathA01 HOT C:\GameData\A51\Source\Audio\SFX\Ambience\AmbientBreathA01.aif
+AmbientBreathA05 HOT C:\GameData\A51\Source\Audio\SFX\Ambience\AmbientBreathA05.aif
+AmbientRoar04 HOT C:\GameData\A51\Source\Audio\SFX\Ambience\AmbientRoar04.aif
+AmbientRoar03 HOT C:\GameData\A51\Source\Audio\SFX\Ambience\AmbientRoar03.aif
+descriptors:
+Descriptor1 [ volume=1  volumevar=0  pitch=0.015625  pitchvar=0  pan=0  priority=255  effect=0  nearclip=0  farclip=2 ]  complex 
+{
+AmbientBreathA01 [ volume=1  volumevar=0  pitch=0.015625  pitchvar=0  pan=0  priority=255  effect=0  nearclip=0  farclip=2 ]   0.00 
+AmbientBreathA05 [ volume=1  volumevar=0  pitch=0.015625  pitchvar=0  pan=0  priority=255  effect=0  nearclip=0  farclip=2 ]   0.00 
+}
+Descriptor2 [ volume=1  volumevar=0  pitch=0.015625  pitchvar=0  pan=0  priority=255  effect=0  nearclip=0  farclip=2 ]  rlist 
+{
+AmbientRoar04 [ volume=1  volumevar=0  pitch=0.015625  pitchvar=0  pan=0  priority=255  effect=0  nearclip=0  farclip=2 ] 
+AmbientRoar03 [ volume=1  volumevar=0  pitch=0.015625  pitchvar=0  pan=0  priority=255  effect=0  nearclip=0  farclip=2 ] 
+}
+ -PC "C:\GameData\A51\Release\PC\test.audio pkg" 

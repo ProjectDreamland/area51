@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_allocate_3D_sample_handle</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="allocates a handle that can play 3D audio.">
+<meta name="ms-hkwd" content="AIL_allocate_3D_sample_handle">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_allocate_3D_sample_handle</h1>
+<p>The function  <b>AIL_allocate_3D_sample_handle</b> allocates a handle that can play 3D audio.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="H3DSAMPLE.html" class=trn>H3DSAMPLE</a> <a href="AIL_allocate_3D_sampapaoba.html" class=trn>AIL_allocate_3D_sample_handle</a>(</b>
+<b>&nbsp&nbsp<a href="HPROVIDER.html" class=trn>HPROVIDER</a>&nbsp</b><i>m3d</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>m3d</i></dt>
+<dd>indicates the M3D provider to allocate the 3D sample from.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A non-zero H3DSAMPLE handle, if successful, zero if unsuccessful.</p>
+<h4>Discussion</h4>
+<p>Most of the providers have a limited number of H3DSAMPLES that can be loaded, so you should be prepared to handle this function failing (by stopping lower-priority sample handles, or by allocating a sample handle from an alternate M3D provider, for example). </p><p> This function simply allocates a handle. You cannot play a sample until you load it into the handle with <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a>. </p><p> Example files that use this function: EXAM3D.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_release_3D_sampl2icfaa.html">AIL_release_3D_sample_handle</a>, <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a>, <a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a><br>
+<b>Related Basic Types:</b>
+<a href="H3DPOBJECT.html">H3DPOBJECT</a>, <a href="H3DSAMPLE.html">H3DSAMPLE</a>, <a href="HPROVIDER.html">HPROVIDER</a><br>
+<b>Related FAQs:</b>
+<a href="How do I play a 3D d5zrlfk.html">How do I play a 3D digital sound?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

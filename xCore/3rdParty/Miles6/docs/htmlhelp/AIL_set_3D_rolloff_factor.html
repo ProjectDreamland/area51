@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_3D_rolloff_factor</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the provider's global 3D rolloff factor.">
+<meta name="ms-hkwd" content="AIL_set_3D_rolloff_factor">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_3D_rolloff_factor</h1>
+<p>The function  <b>AIL_set_3D_rolloff_factor</b> sets the provider's global 3D rolloff factor.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_3D_rolloff_factor.html" class=trn>AIL_set_3D_rolloff_factor</a>(</b>
+<b>&nbsp&nbsp<a href="HPROVIDER.html" class=trn>HPROVIDER</a>&nbsp</b><i>provider</i><b>,</b>
+<b>&nbsp&nbsp<a href="F32.html" class=trn>F32</a>&nbsp</b><i>factor</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>provider</i></dt>
+<dd>indicates the provider to set.</dd>
+<dt><i>factor</i></dt>
+<dd>indicates new rolloff factor to use.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>The rolloff factor controls how fast 3D audio will falloff with distance. The default is 1.0 which means no change to the "real-world" falloff speed. You can double the falloff by using 2.0, and you can turn off the falloff completely by using 0.0. </p><p>Use the <a href="AIL_set_3D_sample_dicyrnaa.html">AIL_set_3D_sample_distances</a> function to control the falloff curve for each sample.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_3D_rolloff_factor.html">AIL_3D_rolloff_factor</a>, <a href="AIL_set_3D_sample_dicyrnaa.html">AIL_set_3D_sample_distances</a><br>
+<b>Related Basic Types:</b>
+<a href="F32.html">F32</a>, <a href="HPROVIDER.html">HPROVIDER</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

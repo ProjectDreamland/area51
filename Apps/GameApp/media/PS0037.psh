@@ -1,0 +1,23 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;   PS0037.PSH: kPS_PROJ_SHADOW1
+;
+;	Diffuse texture is multiplied by the result of the projected shadow
+;
+;   t0 - diffuse texture
+;   t1 - proj shadow (128==1.0, so can brighten or darken)
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;   tex t0
+;   tex t1
+;   tex t2
+
+;==----------------------------------------------------------------------------
+;
+;   Blend diffuse with texel, write glow to alpha
+;
+;==----------------------------------------------------------------------------
+
+	mul_x2 r0.rgb,t0.rgb,t1.b +
+	mov    r0.a,t0.a

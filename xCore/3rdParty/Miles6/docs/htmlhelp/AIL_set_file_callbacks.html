@@ -1,0 +1,64 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_set_file_callbacks</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="replaces the file IO functions that Miles uses for AIL_file_read, AIL_file_size, and the high-level streaming functions.">
+<meta name="ms-hkwd" content="AIL_set_file_callbacks">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_set_file_callbacks</h1>
+<p>The function  <b>AIL_set_file_callbacks</b> replaces the file IO functions that Miles uses for AIL_file_read, AIL_file_size, and the high-level streaming functions.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_set_file_callbacks.html" class=trn>AIL_set_file_callbacks</a>(</b>
+<b>&nbsp&nbsp<a href="AIL_file_open_callback.html" class=trn>AIL_file_open_callback</a>&nbsp</b><i>opencb</i><b>,</b>
+<b>&nbsp&nbsp<a href="AIL_file_close_callback.html" class=trn>AIL_file_close_callback</a>&nbsp</b><i>closecb</i><b>,</b>
+<b>&nbsp&nbsp<a href="AIL_file_seek_callback.html" class=trn>AIL_file_seek_callback</a>&nbsp</b><i>seekcb</i><b>,</b>
+<b>&nbsp&nbsp<a href="AIL_file_read_callback.html" class=trn>AIL_file_read_callback</a>&nbsp</b><i>readcb</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>opencb</i></dt>
+<dd>specifies the callback function to be called when opening a file.</dd>
+<dt><i>closecb</i></dt>
+<dd>specifies the callback function to be called when closing a file.</dd>
+<dt><i>seekcb</i></dt>
+<dd>specifies the callback function to be called when seeking in a file.</dd>
+<dt><i>readcb</i></dt>
+<dd>specifies the callback function to be called when reading from a file.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>Under Win32, the Miles streaming API can call these routines from a background thread. So, your IO routines must be thread-safe if you use the high-level streaming API.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Memory and File Services.html">Memory and File Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_file_close_callback.html">AIL_file_close_callback</a>, <a href="AIL_file_fss_read.html">AIL_file_fss_read</a>, <a href="AIL_file_open_callback.html">AIL_file_open_callback</a>, <a href="AIL_file_read.html">AIL_file_read</a>, <a href="AIL_file_read_callback.html">AIL_file_read_callback</a>, <a href="AIL_file_seek_callback.html">AIL_file_seek_callback</a>, <a href="AIL_file_size.html">AIL_file_size</a>, <a href="AIL_open_stream.html">AIL_open_stream</a><br>
+<b>Related Basic Types:</b>
+<a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="How do I access filex8kvia.html">How do I access files from a big packed file?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

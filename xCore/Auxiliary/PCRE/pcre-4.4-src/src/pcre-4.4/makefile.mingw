@@ -1,0 +1,39 @@
+#export CFLAGS= -DSTATIC -D__STATIC__  -DPCRE_STATIC
+#export LDFLAGS= -Wl,--static 
+mkfdirs=. 
+
+.PHONY: all
+all:
+	./configure --prefix=c:/progra~1/Pcre \
+		--enable-shared --disable-static --enable-utf8
+	list='$(mkfdirs)'; for dd in $$list; do \
+		rm -f $$dd/Makefile.orig libtool.orig; \
+	done
+
+	rm -f Makefile0.sed
+	if [ -e Makefile-rc.sed ]; then \
+		cat Makefile-rc.sed >Makefile0.sed; \
+	fi
+	if [ -e Makefile.sed ]; then \
+		cat Makefile.sed >>Makefile0.sed; \
+	fi
+
+	list='$(mkfdirs)'; for dd in $$list; do \
+		if [ -e $$dd/Makefile ]; then \
+			if ! [ -e $$dd/Makefile.orig ]; then \
+				cp -fp $$dd/Makefile $$dd/Makefile.orig; \
+			fi; \
+			if [ -e Makefile0.sed ]; then \
+				sed -f Makefile0.sed $$dd/Makefile.orig >$$dd/Makefile; \
+			fi; \
+			if [ -e libtool ]; then \
+				cp -fp libtool libtool.orig; \
+				sed -f $(DVLDIR)/libtool.sed  libtool.orig >libtool; \
+			fi; \
+		fi; \
+	done
+
+#	make all
+#	make check
+#	make install prefix=c:/temp/sed
+                                 

@@ -1,0 +1,69 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_call_driver</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="performs a call to an MSS-compatible sound driver in real-mode memory.">
+<meta name="ms-hkwd" content="AIL_call_driver">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_call_driver</h1>
+<p>The function  <b>AIL_call_driver</b> performs a call to an MSS-compatible sound driver in real-mode memory.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_call_driver.html" class=trn>AIL_call_driver</a>(</b>
+<b>&nbsp&nbsp<a href="AIL_DRIVER.html" class=trn>AIL_DRIVER *</a>&nbsp</b><i>drvr</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>fn</i><b>,</b>
+<b>&nbsp&nbsp<a href="VDI_CALL.html" class=trn>VDI_CALL *</a>&nbspconst *</b><i>in</i><b>,</b>
+<b>&nbsp&nbsp<a href="VDI_CALL.html" class=trn>VDI_CALL</a>&nbsp*</b><i>out</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>drvr</i></dt>
+<dd>points to an AIL_DRIVER driver descriptor structure. AIL_DRIVER may be thought of as the "base class" from which high-level MSS driver types such as DIG_DRIVER and MDI_DRIVER are derived. To obtain a pointer to an AIL_DRIVER structure for a variable x of type HDIGDRIVER or HMDIDRIVER, use an expression of the form x->drvr.</dd>
+<dt><i>fn</i></dt>
+<dd>gives the driver's <i>function number</i> to invoke. Since applications should use <a href="AIL_call_driver.html">AIL_call_driver</a> only to invoke a Vendor-Specific Extensions (VSE) function for a particular driver, fn should normally equal the DIG_VSE or MDI_VSE labels.</dd>
+<dt><i>in</i></dt>
+<dd>may be set to NULL, or may point to a structure of type VDI_CALL, which contains all values to be passed to the driver function handler. To make a VSE call, the VDI_CALL structure's CX member should be set to correspond to the VSE <i>feature identifier</i> for the requested operation. Refer to the current <i>MSS DDK Interface</i> chapter for a list of assigned VSE calls and required register values.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>out</i></dt>
+<dd>may be set to NULL, or may point to a structure of type VDI_CALL, into which will be stored all values returned from the driver function handler. Refer to the current <i>MSS DDK Interface</i> chapter for a list of assigned VSE calls and their returned values, if any.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The AX register as returned from the driver function handler. This is equal to out->AX, sign-extended from WORD (16 bits) to S32 (32 bits). Many driver functions use AX to return codes for success (> 0) or failure (0). A returned value of -1 normally indicates that the requested function is not supported by the driver.</p>
+<h4>Discussion</h4>
+<p>This is a DOS-only function. </p><p> This function is used internally by the MSS system. Applications should use <a href="AIL_call_driver.html">AIL_call_driver</a> only to invoke Vendor-Specific Extensions (VSE) functions for particular drivers, where desired. Applications which do not make VSE calls will not need to use <a href="AIL_call_driver.html">AIL_call_driver</a> at all.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Low-Level DOS Suppor8y9ysb.html">Low-Level DOS Support Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_call_driver.html">AIL_call_driver</a><br>
+<b>Related Basic Types:</b>
+<a href="AIL_DRIVER.html">AIL_DRIVER</a>, <a href="S32.html">S32</a><br>
+<b>Related Structures:</b>
+<a href="VDI_CALL.html">VDI_CALL</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

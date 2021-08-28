@@ -1,0 +1,61 @@
+128 bit xyzw INT
+           x    |       y    |       z    |       w    |
+at=[%12<x,atx,hex|12f,atx,float>|%12<x,aty,hex|12f,aty,float>|%12<x,atz,hex|12f,atz,float>|%12<x,atw,hex|12f,atw,float>]
+v0=[%12<x,v0x,hex|12f,v0x,float>|%12<x,v0y,hex|12f,v0y,float>|%12<x,v0z,hex|12f,v0z,float>|%12<x,v0w,hex|12f,v0w,float>]
+v1=[%12<x,v1x,hex|12f,v1x,float>|%12<x,v1y,hex|12f,v1y,float>|%12<x,v1z,hex|12f,v1z,float>|%12<x,v1w,hex|12f,v1w,float>]
+a0=[%12<x,a0x,hex|12f,a0x,float>|%12<x,a0y,hex|12f,a0y,float>|%12<x,a0z,hex|12f,a0z,float>|%12<x,a0w,hex|12f,a0w,float>]
+a1=[%12<x,a1x,hex|12f,a1x,float>|%12<x,a1y,hex|12f,a1y,float>|%12<x,a1z,hex|12f,a1z,float>|%12<x,a1w,hex|12f,a1w,float>]
+a2=[%12<x,a2x,hex|12f,a2x,float>|%12<x,a2y,hex|12f,a2y,float>|%12<x,a2z,hex|12f,a2z,float>|%12<x,a2w,hex|12f,a2w,float>]
+a3=[%12<x,a3x,hex|12f,a3x,float>|%12<x,a3y,hex|12f,a3y,float>|%12<x,a3z,hex|12f,a3z,float>|%12<x,a3w,hex|12f,a3w,float>]
+t0=[%12<x,t0x,hex|12f,t0x,float>|%12<x,t0y,hex|12f,t0y,float>|%12<x,t0z,hex|12f,t0z,float>|%12<x,t0w,hex|12f,t0w,float>]
+t1=[%12<x,t1x,hex|12f,t1x,float>|%12<x,t1y,hex|12f,t1y,float>|%12<x,t1z,hex|12f,t1z,float>|%12<x,t1w,hex|12f,t1w,float>]
+t2=[%12<x,t2x,hex|12f,t2x,float>|%12<x,t2y,hex|12f,t2y,float>|%12<x,t2z,hex|12f,t2z,float>|%12<x,t2w,hex|12f,t2w,float>]
+t3=[%12<x,t3x,hex|12f,t3x,float>|%12<x,t3y,hex|12f,t3y,float>|%12<x,t3z,hex|12f,t3z,float>|%12<x,t3w,hex|12f,t3w,float>]
+t4=[%12<x,t4x,hex|12f,t4x,float>|%12<x,t4y,hex|12f,t4y,float>|%12<x,t4z,hex|12f,t4z,float>|%12<x,t4w,hex|12f,t4w,float>]
+t5=[%12<x,t5x,hex|12f,t5x,float>|%12<x,t5y,hex|12f,t5y,float>|%12<x,t5z,hex|12f,t5z,float>|%12<x,t5w,hex|12f,t5w,float>]
+t6=[%12<x,t6x,hex|12f,t6x,float>|%12<x,t6y,hex|12f,t6y,float>|%12<x,t6z,hex|12f,t6z,float>|%12<x,t6w,hex|12f,t6w,float>]
+t7=[%12<x,t7x,hex|12f,t7x,float>|%12<x,t7y,hex|12f,t7y,float>|%12<x,t7z,hex|12f,t7z,float>|%12<x,t7w,hex|12f,t7w,float>]
+s0=[%12<x,s0x,hex|12f,s0x,float>|%12<x,s0y,hex|12f,s0y,float>|%12<x,s0z,hex|12f,s0z,float>|%12<x,s0w,hex|12f,s0w,float>]
+s1=[%12<x,s1x,hex|12f,s1x,float>|%12<x,s1y,hex|12f,s1y,float>|%12<x,s1z,hex|12f,s1z,float>|%12<x,s1w,hex|12f,s1w,float>]
+s2=[%12<x,s2x,hex|12f,s2x,float>|%12<x,s2y,hex|12f,s2y,float>|%12<x,s2z,hex|12f,s2z,float>|%12<x,s2w,hex|12f,s2w,float>]
+s3=[%12<x,s3x,hex|12f,s3x,float>|%12<x,s3y,hex|12f,s3y,float>|%12<x,s3z,hex|12f,s3z,float>|%12<x,s3w,hex|12f,s3w,float>]
+s4=[%12<x,s4x,hex|12f,s4x,float>|%12<x,s4y,hex|12f,s4y,float>|%12<x,s4z,hex|12f,s4z,float>|%12<x,s4w,hex|12f,s4w,float>]
+s5=[%12<x,s5x,hex|12f,s5x,float>|%12<x,s5y,hex|12f,s5y,float>|%12<x,s5z,hex|12f,s5z,float>|%12<x,s5w,hex|12f,s5w,float>]
+s6=[%12<x,s6x,hex|12f,s6x,float>|%12<x,s6y,hex|12f,s6y,float>|%12<x,s6z,hex|12f,s6z,float>|%12<x,s6w,hex|12f,s6w,float>]
+s7=[%12<x,s7x,hex|12f,s7x,float>|%12<x,s7y,hex|12f,s7y,float>|%12<x,s7z,hex|12f,s7z,float>|%12<x,s7w,hex|12f,s7w,float>]
+t8=[%12<x,t8x,hex|12f,t8x,float>|%12<x,t8y,hex|12f,t8y,float>|%12<x,t8z,hex|12f,t8z,float>|%12<x,t8w,hex|12f,t8w,float>]
+t9=[%12<x,t9x,hex|12f,t9x,float>|%12<x,t9y,hex|12f,t9y,float>|%12<x,t9z,hex|12f,t9z,float>|%12<x,t9w,hex|12f,t9w,float>]
+k0=[%12<x,k0x,hex|12f,k0x,float>|%12<x,k0y,hex|12f,k0y,float>|%12<x,k0z,hex|12f,k0z,float>|%12<x,k0w,hex|12f,k0w,float>]
+k1=[%12<x,k1x,hex|12f,k1x,float>|%12<x,k1y,hex|12f,k1y,float>|%12<x,k1z,hex|12f,k1z,float>|%12<x,k1w,hex|12f,k1w,float>]
+gp=[%12<x,gpx,hex|12f,gpx,float>|%12<x,gpy,hex|12f,gpy,float>|%12<x,gpz,hex|12f,gpz,float>|%12<x,gpw,hex|12f,gpw,float>]
+sp=[%12<x,spx,hex|12f,spx,float>|%12<x,spy,hex|12f,spy,float>|%12<x,spz,hex|12f,spz,float>|%12<x,spw,hex|12f,spw,float>]
+fp=[%12<x,fpx,hex|12f,fpx,float>|%12<x,fpy,hex|12f,fpy,float>|%12<x,fpz,hex|12f,fpz,float>|%12<x,fpw,hex|12f,fpw,float>]
+ra=[%12<x,rax,hex|12f,rax,float>|%12<x,ray,hex|12f,ray,float>|%12<x,raz,hex|12f,raz,float>|%12<x,raw,hex|12f,raw,float>]
+
+ hi=%19<16x,hi,hex|16d,hi,decimal>status=%12<x,status,hex>
+ lo=%19<16x,lo,hex|16d,lo,decimal> cause=%8<x,cause,hex>
+hi1=%19<16x,hi1,hex|16d,hi1,decimal>    sa=%8<x,sa,hex>
+lo1=%19<16x,lo1,hex|16d,lo1,decimal>
+
+PC=%8<x,pc,hex>      %40D
+ %40E
+
+  f0=%14<f,f0,float|x,f0,hex>   f16=%14<f,f16,float|x,f16,hex>
+  f1=%14<f,f1,float|x,f1,hex>   f17=%14<f,f17,float|x,f17,hex>
+  f2=%14<f,f2,float|x,f2,hex>   f18=%14<f,f18,float|x,f18,hex>
+  f3=%14<f,f3,float|x,f3,hex>   f19=%14<f,f19,float|x,f19,hex>
+  f4=%14<f,f4,float|x,f4,hex>   f20=%14<f,f20,float|x,f20,hex>
+  f5=%14<f,f5,float|x,f5,hex>   f21=%14<f,f21,float|x,f21,hex>
+  f6=%14<f,f6,float|x,f6,hex>   f22=%14<f,f22,float|x,f22,hex>
+  f7=%14<f,f7,float|x,f7,hex>   f23=%14<f,f23,float|x,f23,hex>
+  f8=%14<f,f8,float|x,f8,hex>   f24=%14<f,f24,float|x,f24,hex>
+  f9=%14<f,f9,float|x,f9,hex>   f25=%14<f,f25,float|x,f25,hex>
+ f10=%14<f,f10,float|x,f10,hex>   f26=%14<f,f26,float|x,f26,hex>
+ f11=%14<f,f11,float|x,f11,hex>   f27=%14<f,f27,float|x,f27,hex>
+ f12=%14<f,f12,float|x,f12,hex>   f28=%14<f,f28,float|x,f28,hex>
+ f13=%14<f,f13,float|x,f13,hex>   f29=%14<f,f29,float|x,f29,hex>
+ f14=%14<f,f14,float|x,f14,hex>   f30=%14<f,f30,float|x,f30,hex>
+ f15=%14<f,f15,float|x,f15,hex>   f31=%14<f,f31,float|x,f31,hex>
+ acc=%14<f,acc,float|x,acc,hex>
+
+fcr0= %8<x,fcr0,hex>  fcr31= %8<x,fcr31,hex>

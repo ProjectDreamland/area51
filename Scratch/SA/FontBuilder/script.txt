@@ -1,0 +1,15 @@
+// THIS A SAMPLE OF HOW THE SCRIPT SHOULD LOOK LIKE
+
+//-font      "Arial Unicode MS"
+-font      "Verdana"
+-size      15
+//-firstchar 12449
+-firstchar 32 //12448
+-numchars  96
+-weight    600
+-antialias 1
+-pc 		C:\Projects\A51\Scratch\SA\FontBuilder\PC
+-ps2		C:\Projects\A51\Scratch\SA\FontBuilder\PS2
+-log
+-writexbmp
+-writetga

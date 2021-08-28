@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AILCODECSETPREF</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="provides a way for ASI preferences to be set during a compression or decompression.">
+<meta name="ms-hkwd" content="AILCODECSETPREF">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AILCODECSETPREF</h1>
+<p>The function  <b>AILCODECSETPREF</b> provides a way for ASI preferences to be set during a compression or decompression.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AILCODECSETPREF.html" class=trn>AILCODECSETPREF</a>(</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>preference</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>value</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>preference</i></dt>
+<dd>indicates the preference name to set.</dd>
+<dt><i>value</i></dt>
+<dd>indicates the value to set the preference to.</dd>
+</dl>
+<h4>Returns</h4>
+<p>1 if the preference set was successful, 0 if the preference set failed.</p>
+<h4>Discussion</h4>
+<p>This function address is provided in the <b>value</b> parameter of the <a href="AILLENGTHYCB.html">AILLENGTHYCB</a> function when the <a href="MILES_LENGTHY_STATE.html#AIL_LENGTHY_SET_PREFERENCE">AIL_LENGTHY_SET_PREFERENCE</a> state is passed. </p><p> The Miles MPEG encoder defines the following preferences: </p><p> <b>"Requested bit rate":</b> which specifies the output bit rate to use in kilobits per second - you may use: 32,40,48,56,64,80,96,112,128,160,192,224,256,320). </p><p> <b>"Requested sample rate":</b> which specifies the output playback (for MPEG I Layer 3, this means 32000, 44100, or 48000 Hz). </p><p> <b>"Requested # of channels":</b> which is the number of output channels (1 for mono, 2 for stereo). </p><p></p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AILLENGTHYCB.html">AILLENGTHYCB</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_LENGTHY_STATE.html">MILES_LENGTHY_STATE</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="char const P.html">char const *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

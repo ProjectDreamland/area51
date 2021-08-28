@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>DDK Digital Function: IRQ_acknowledge</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="DDK Digital Function: IRQ_acknowledge">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>DDK Digital Function: IRQ_acknowledge</h1>
+<h4>Discussion</h4>
+<p> <b>Input:</b><br> </p><p> IRQ variable in <a href="VDI_HDR.html">VDI_HDR</a> = interrupt # </p><p><b>Output:</b><br> </p><p> Nothing<br> All registers preserved </p><p><b>Purpose:</b><br> </p><p> Acknowledges the current IRQ </p><p><b>Notes:</b><br> </p><p> This routine must be called prior to returning from a sound ISR. It sends an end-of-interrupt (EOI) command to the Programmable Interrupt Controller (PIC) device, to prepare for subsequent interrupts. </p><p>It is not necessary (or advisable) to call IRQ_acknowledge if the IRQ_validate function (above) returns with C=0. </p><p>Does not require valid DS register. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="DDK Support Routineswsjtx2.html">DDK Support Routines for Digital Sound Drivers</a><br>
+<b>Related Structures:</b>
+<a href="VDI_HDR.html">VDI_HDR</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

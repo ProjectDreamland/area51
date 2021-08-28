@@ -1,0 +1,70 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_switch_stack</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="allows a C or C++ module to change to a different stack whose size and location may be chosen by the programmer.">
+<meta name="ms-hkwd" content="AIL_switch_stack">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_switch_stack</h1>
+<p>The function  <b>AIL_switch_stack</b> allows a C or C++ module to change to a different stack whose size and location may be chosen by the programmer.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_switch_stack.html" class=trn>AIL_switch_stack</a>(</b>
+<b>&nbsp&nbsp<a href="void.html" class=trn>void</a>&nbsp*</b><i>stack</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>size</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32 *</a>&nbsp</b><i>SS</i><b>,</b>
+<b>&nbsp&nbsp<a href="void.html" class=trn>void * *</a>&nbsp</b><i>ESP</i><b>,</b>
+<b>&nbsp&nbsp<a href="void.html" class=trn>void * *</a>&nbsp</b><i>EBP</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>size</i></dt>
+<dd>specifies the size in bytes of the new stack.</dd>
+<dt><i>SS</i></dt>
+<dd>points to a variable of type U32 which will be used later by <a href="AIL_restore_stack.html">AIL_restore_stack</a> to return to the default application stack.</dd>
+<dt><i>ESP</i></dt>
+<dd>points to a variable of type void * which will be used later by <a href="AIL_restore_stack.html">AIL_restore_stack</a> to return to the default application stack.</dd>
+<dt><i>EBP</i></dt>
+<dd>points to a variable of type void * which will be used later by <a href="AIL_restore_stack.html">AIL_restore_stack</a> to return to the default application stack.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>stack</i></dt>
+<dd>points to a statically declared or globally allocated area of memory suitable for use as a stack. This area must reside within the application's normal data segment, and should be a multiple of 4 bytes in size.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>This is a DOS-only function. </p><p> Auto variables may be used from within a function that calls <a href="AIL_switch_stack.html">AIL_switch_stack</a>, but their values are not copied from the default stack to the new stack by this function. Note that some or all of a function's formal arguments are actually considered auto variables, implying that argument values should be copied to static variables before calling <a href="AIL_switch_stack.html">AIL_switch_stack</a>. Compiler register optimizations may mask problems resulting from failure to preserve function arguments and/or auto variable contents; however, seemingly unrelated failures may occur when minor changes are made to the code at a later date. </p><p> Any Watcom C/C++ modules which contain calls to <a href="AIL_switch_stack.html">AIL_switch_stack</a> <i>must</i> be compiled with the -of+ option, to force generation of traceable stack frames. Otherwise, EBP may be assigned for use as a register variable prior to the <a href="AIL_switch_stack.html">AIL_switch_stack</a> call, resulting in improper stack frame creation. </p><p> Prior to exiting, a function which has called <a href="AIL_switch_stack.html">AIL_switch_stack</a> must return to the normal stack by means of a call to <a href="AIL_restore_stack.html">AIL_restore_stack</a>. </p><p> This function is used internally by the MSS system. Most applications will not need to use <a href="AIL_switch_stack.html">AIL_switch_stack</a>, unless large interrupt handlers with extensive stack usage are implemented in C, and/or preemptive multi-threaded timer services are enabled. (By default, preemptive timer services are disabled, and the internal timer dispatcher switches to its own 2kb stack before calling any timer callback functions.) Misuse of <a href="AIL_switch_stack.html">AIL_switch_stack</a> can cause obscure, difficult-to-trace bugs; it is not recommended that this function be used by programmers unfamiliar with C's stack frame architecture.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Low-Level DOS Suppor8y9ysb.html">Low-Level DOS Support Services</a><br>
+<b>Related Sections:</b>
+<a href="Callbacks under DOS.html">Callbacks under DOS</a><br>
+<b>Related Functions:</b>
+<a href="AIL_restore_stack.html">AIL_restore_stack</a>, <a href="AIL_switch_stack.html">AIL_switch_stack</a><br>
+<b>Related Basic Types:</b>
+<a href="U32.html">U32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

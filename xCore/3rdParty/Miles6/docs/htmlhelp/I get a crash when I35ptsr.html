@@ -1,0 +1,37 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>I get a crash when I call AIL_digital_handle_release while the 3D digital API is playing - what's going on?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="I get a crash when I call AIL_digital_handle_release while the 3D digital API is playing - what's going on?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>I get a crash when I call AIL_digital_handle_release while the 3D digital API is playing - what's going on?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>Some of the 3D providers use the DirectSound handle that the 2D subsystem opens. If you release the 2D handle, you need to also release the 3D system. However, the 3D system may be more complicated to release, though, because the audio samples could have been downloaded to the hardware itself. </p><p>Note that opening, closing and re-opening the 3D sound driver is stressing the sound hardware drivers in an unusual way. As with all hardware drivers, when you step off the common path, you run the risk of exposing driver bugs. </p><p>So, for maximum compatibility, RAD recommends just not releasing the drivers <i>at all</i> if you are using 3D sound. This isn't that big of a downside anymore - most sound drivers allow multiple applications to access the hardware at once now, anyway. </p><p>If you still want to <b>release</b> your digital handle regardless of the driver situation, you need to follow these steps: </p><p>1) Call <a href="AIL_close_3D_provider.html">AIL_close_3D_provider</a> to close the 3D resources. </p><p>2) Call <a href="AIL_digital_handle_ruqabaa.html">AIL_digital_handle_release</a> to release the 2D handle. </p><p><br> <br> Then, when you want to <b>reacquire</b> the sound resources: </p><p>1) Call <a href="AIL_digital_handle_ruoiaaa.html">AIL_digital_handle_reacquire</a> to re-open the 2D handle. </p><p>2) Call <a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a> to re-open the 3D system. </p><p>3) Reallocate all of your H3DSAMPLES and resubmit the audio buffers with <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a>. </p></td></tr>
+</table>
+<p><a href="My 3D audio is a lotxfhqaf.html">Next Topic (My 3D audio is a lot louder than my 2D audio - what can I do?)</a>  </p><p><a href="How can I play stere982vwf.html">Previous Topic (How can I play stereo or compressed digital files with the 3D API?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Functions:</b>
+<a href="AIL_close_3D_provider.html">AIL_close_3D_provider</a>, <a href="AIL_digital_handle_ruoiaaa.html">AIL_digital_handle_reacquire</a>, <a href="AIL_digital_handle_ruqabaa.html">AIL_digital_handle_release</a>, <a href="AIL_open_3D_provider.html">AIL_open_3D_provider</a>, <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

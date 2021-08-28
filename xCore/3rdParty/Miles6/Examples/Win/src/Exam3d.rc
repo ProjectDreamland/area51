@@ -1,0 +1,95 @@
+#include "windows.h"
+#include "mss.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+EXAM3D DIALOG DISCARDABLE  100, 100, 398, 217
+STYLE WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Miles Sound System 3D Example"
+CLASS "EXAM3D"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        " Digital Sound Controls: ",-1,8,6,192,149
+    LTEXT           "Choose the 3D &technology to use:",-1,19,20,170,8
+    COMBOBOX        100,21,30,172,188,CBS_DROPDOWNLIST | WS_VSCROLL |
+                    WS_TABSTOP
+    PUSHBUTTON      "&Play sound",101,18,50,59,17,WS_GROUP
+    LTEXT           "Velocity:",202,92,54,28,8
+    CONTROL         "Slider1",102,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS |
+                    WS_TABSTOP,122,54,73,10
+    CONTROL         "&Rotate sound around the listener",103,"Button",
+                    BS_AUTORADIOBUTTON,17,76,170,10
+    CONTROL         "&Back and forth, through the listener",104,"Button",
+                    BS_AUTORADIOBUTTON,17,87,170,10
+    CONTROL         "Set a rotating audible cone on the sound",125,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,19,102,140,10
+    CONTROL         "Add walls (add occlusions to the environment)",126,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,114,160,10
+    CONTROL         "Add crates (add obstructions to the environment)",127,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,126,169,10
+    LTEXT           "Type:",119,19,141,19,8
+    CONTROL         "2-speakers",120,"Button",BS_AUTORADIOBUTTON,40,141,50,
+                    10
+    CONTROL         "Headphones",121,"Button",BS_AUTORADIOBUTTON,92,141,54,
+                    10
+    CONTROL         "4-speakers",122,"Button",BS_AUTORADIOBUTTON,147,141,51,
+                    10
+    GROUPBOX        " Reverb Environment Options: ",206,8,158,192,29
+    CONTROL         "&None",106,"Button",BS_AUTORADIOBUTTON | WS_GROUP,14,
+                    171,33,10
+    CONTROL         "C&ity",107,"Button",BS_AUTORADIOBUTTON,55,171,33,10
+    CONTROL         "&Mountains",108,"Button",BS_AUTORADIOBUTTON,97,171,49,
+                    10
+    CONTROL         "&Hallway",109,"Button",BS_AUTORADIOBUTTON,154,171,41,10
+    GROUPBOX        " Current environment: ",130,208,6,184,181
+    PUSHBUTTON      "&Stop sound",110,8,194,56,17
+    PUSHBUTTON      "&Load new sound...",113,220,194,69,17
+    PUSHBUTTON      "P&rovider attributes...",114,69,194,73,17
+    PUSHBUTTON      "S&ound attributes...",115,147,194,68,17
+    PUSHBUTTON      "&About...",111,294,194,46,17
+    PUSHBUTTON      "&Close",112,345,194,46,17
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+DEMO                    ICON    DISCARDABLE     "demo.ico"
+
+STRINGTABLE
+BEGIN
+  42,MSS_VERSION
+  43,MSS_COPYRIGHT
+END
+
+1 VERSIONINFO LOADONCALL MOVEABLE DISCARDABLE IMPURE
+FILEVERSION 3, 0, 0, 0
+PRODUCTVERSION 3, 0, 0, 0
+FILEFLAGSMASK 0x3f
+FILEFLAGS 0
+FILETYPE 1
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "RAD Game Tools, Inc.\000"
+   VALUE "FileDescription", "Miles Sound System\000"
+   VALUE "FileVersion", MSS_VERSION "\000"
+   VALUE "LegalCopyright", MSS_COPYRIGHT "\000"
+   VALUE "LegalTrademarks", "Miles Sound System is a trademark of RAD Game Tools, Inc.\000"
+   VALUE "ProductName", "Miles Sound System\000"
+   VALUE "ProductVersion", MSS_VERSION "\000"
+   VALUE "Comments", "Thank you for using Miles!\000"
+  }
+
+ }
+
+}
+

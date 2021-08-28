@@ -1,0 +1,37 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>How do I set a DSP filter on a sample?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="How do I set a DSP filter on a sample?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>How do I set a DSP filter on a sample?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>To set a DSP filter, you have to first find the filter that you want to apply. To find a filter, you enumerate through the possible filters looking for the one you want with the <a href="AIL_enumerate_filters.html">AIL_enumerate_filters</a> function. Code like this will find the low-pass DSP filter: </p><p></p><code><font size=3 color=#006000><pre><br>HPROVIDER low_pass;<br>char*     flt_name;<br>HPROENUM enumFLTs=HPROENUM_FIRST;<br>HPROVIDER cur_prov;<br>while (AIL_enumerate_3D_filters( &enumFLTs,<br>                                 &cur_prov,<br>                                 &flt_name ) )<br>{<br>  if (strcmp(flt_name,"LowPass Filter")==0)<br>  {<br>    low_pass=cur_prov;<br>    break;<br>  }<br>}<br></pre></font></code><p></p><p> OK, we have a handle to the low-pass filter, so now we have to apply it to our HSAMPLE. To do this, we call the <a href="AIL_set_sample_processor.html">AIL_set_sample_processor</a> function, like this: </p><p></p><code><font size=3 color=#006000><pre><br>AIL_init_sample( S );<br>AIL_set_sample_processor( S, DP_FILTER, low_pass );<br></pre></font></code><p></p><p> Make sure you call <a href="AIL_set_sample_processor.html">AIL_set_sample_processor</a> <i>after</i> the call to <a href="AIL_init_sample.html">AIL_init_sample</a>. Now all that remains is setting the filter preferences that you'd like to control. </p><p>To do that, call the <a href="AIL_set_filter_samplemwzk3.html">AIL_set_filter_sample_preference</a> function with one of the preferences described in the Digital Filter Services <i><a href="Digital Filter Services.html#Section">Section</a></i>. To finish our example, let's set the low-pass filter to kick in at 4000 Hz, like this: </p><p></p><code><font size=3 color=#006000><pre><br>F32 value=4000.0F;<br>AIL_set_filter_sample_preference( S, "Lowpass Cutoff", &value );<br></pre></font></code><p></p><p></p></td></tr>
+</table>
+<p><a href="What is the differenuwpm9k.html">Next Topic (What is the difference between "simple" reverb and the DSP reverb filters?)</a>  </p><p><a href="I'm getting a glitchyuljiw.html">Previous Topic (I'm getting a glitch when I loop an MP3 file - what can I do?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Functions:</b>
+<a href="AIL_enumerate_filters.html">AIL_enumerate_filters</a>, <a href="AIL_init_sample.html">AIL_init_sample</a>, <a href="AIL_set_filter_samplemwzk3.html">AIL_set_filter_sample_preference</a>, <a href="AIL_set_sample_processor.html">AIL_set_sample_processor</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

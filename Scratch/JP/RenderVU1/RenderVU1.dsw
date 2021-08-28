@@ -1,0 +1,147 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "*RenderVU1*"=.\RenderVU1.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    RenderVU1
+    ..\..\..
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Entropy
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name x_files
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name MeshUtil
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Parsing
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name vu1
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name aux_Bitmap
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "Entropy"=..\..\..\xCore\Entropy\Entropy.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    Entropy
+    ..\..\entropy
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "MeshUtil"=..\..\..\xCore\MeshUtil\MeshUtil.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    MeshUtil
+    ..\..\..\xcore\meshutil
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Parsing"=..\..\..\xCore\Parsing\Parsing.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    Parsing
+    ..\..\..
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "aux_Bitmap"=..\..\..\xCore\Auxiliary\Bitmap\aux_Bitmap.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    aux_Bitmap
+    ..\..\..\xcore\auxiliary\bitmap
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "vu1"=..\..\..\Support\Geometry\vu1\vu1.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    vu1
+    ..\..\..\support\geometry\vu1
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "x_files"=..\..\..\xCore\x_files\x_files.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    x_files
+    ..\..
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

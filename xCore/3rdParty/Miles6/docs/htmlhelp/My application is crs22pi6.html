@@ -1,0 +1,39 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>My application is crashing - what should I try?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="My application is crashing - what should I try?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>My application is crashing - what should I try?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>Here's my quick list of things to ask yourself when you get a crash. Most of them seem really obvious, but one of these questions solves pretty much every technical support query we get! </p><p>Go through the questions one by one and <b>don't assume</b> the answer to any of them - actually explore each question. Without fail, the most complicated crashes are usually reduced to one simple assumption that was never completely confirmed. </p><p>1) What call is crashing? Does it crash every time, or just once in a while? </p><p>2) If you cut that call into one of the Miles sample applications, does it still crash? </p><p>3) Is the problem data-dependent? Do other sound files work? </p><p>4) Don't overlook the obvious - what are the contents of the parameters being passed to the crashing function? Are they valid? Double-check them at run-time in the debugger. </p><p>5) Are you using the latest version of Miles? See the "What is the latest version of MSS?" <i><a href="What is the latest vpbjt32.html#FAQ">FAQ</a></i> for details. </p><p>6) Make sure that the header file, the DLLs and shared libraries, and all of the add-ons files (the ASIs, FLTs, M3Ds, etc) are all the same version! Scan your drive for the Miles library files - make sure there are none on your drive except the very latest version. </p><p>7) Miles is used in a <b>lot</b> of games (about 700 per year). If you are getting a crash, try to imagine what is different about your application - are you doing anything you'd guess is unusual? </p><p>8) Try never freeing your sound memory buffers. You'll leak memory, but if you don't crash, then you are probably freeing a piece of memory before Miles is done with it. See the "When can I free the memory I gave to MSS?" <i><a href="When can I free the orulku.html#FAQ">FAQ</a></i> for details. </p><p>9) Does it happen on a specific machine? On a specific OS? Does it only happen with a particular sound card? Do you have the latest sound card drivers for your sound card? </p><p>10) Does it only happen with a particular 3D provider? </p><p>11) Examine the Miles call log (see the call logging sections in the Overview sections). Does anything appear unusual? </p><p>12) Build the Miles DLL in debug mode - can you tell what's happening from the crash location in the source code? See the "How can I rebuild the Miles source code?" <i><a href="Where is the Miles slsp9cm.html#FAQ">FAQ</a></i> for details. </p><p>13) Try simplifying the problem. Turn off everything unnecessary (DSP filters, spacialization, reverb, etc.) - does it affect the crash? </p><p>14) Are you using callbacks? Try turning them off completely - does it still crash? </p><p>15) Finally, if you've been able to reproduce a crash in Miles, send me the example (keep it short and simple - the console applications in the \Examples directory are a good place to start) and we'll get it fixed for you. RAD can usually fix reproducable problems within days! </p></td></tr>
+</table>
+<p><a href="Where is the Miles slsp9cm.html">Next Topic (Where is the Miles source code? How can I rebuild it (in debug mode)?)</a>  </p><p><a href="My sound is skipping3sr5kw.html">Previous Topic (My sound is skipping on Win32 - what can I do?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Sections:</b>
+<a href="Call Logging under DOS.html">Call Logging under DOS</a>, <a href="Call Logging under MacOS.html">Call Logging under MacOS</a>, <a href="Call Logging under Win16.html">Call Logging under Win16</a>, <a href="Call Logging under Win32.html">Call Logging under Win32</a>, <a href="Call Logging under Win32s.html">Call Logging under Win32s</a><br>
+<b>Related FAQs:</b>
+<a href="What is the latest vpbjt32.html">What is the latest version of MSS?</a>, <a href="When can I free the orulku.html">When can I free the memory I gave to MSS?</a>, <a href="Where is the Miles slsp9cm.html">Where is the Miles source code? How can I rebuild it (in debug mode)?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

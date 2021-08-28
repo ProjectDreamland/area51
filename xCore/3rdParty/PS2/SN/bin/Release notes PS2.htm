@@ -1,0 +1,415 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>ProDG for PlayStation®2</title>
+</head>
+<body bgcolor="#FFFFFF">
+<h1><font face="Verdana, Arial, Helvetica, sans-serif"><a name="top"></a>ProDG 
+  for PlayStation<font size="5">®</font>2 v3.0.1</font></h1>
+<h4><font face="Verdana, Arial, Helvetica, sans-serif">20th December 2002</font></h4>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">©</font><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2"> 
+  Copyright 2000-2002 SN Systems Ltd, All rights reserved</font> </font></p>
+<p style="margin-bottom: 0"><font size="2" face="Verdana"><a href="#_Toc759981">Installer Contents</a><a href="#_Toc759982"><br>
+  What's new</a></font> </p>
+<p style="margin-top: 0"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="#Compatibility with Sony libraries">Compatibility
+with Sony libraries<br>
+  Installation</a><a href="#_Toc759996"><br>
+Limitations &amp; Warnings</a><a href="#_Toc760004"><br>
+  Support</a></font></p>
+<h2 style="margin-top: 0"><font face="Verdana">Overview</font></h2>
+<ul>
+  <li>
+    <p style="margin-top: 0; margin-bottom: 3"><font face="Verdana" size="2">This release uses a "link once" style of linking a C++ based game. "Link
+    once" eliminates duplicate instances of inline methods, duplicate template instances and other duplicate C++ constructs.
+    <b> This considerably reduces the
+    size of your ELF file</b>. In addition, options are available in the compiler and linker to remove global destructors from your game. Global destructors
+    will never be used as, typically, the game never exits. There have been improvements to the tools so that stripping of functions using the
+    -strip-unused linker option is more efficient. In addition further stripping of unused part of your game is possible with this release by using
+    the -strip-unused-data linker option. The -strip-unused-data option removes unused data as well as unused functions. For more information and tips for
+    producing the smallest ELF possible, please see the white paper: <a href="http://www.snsys.com/Support/files/ps2/prodg/SN007-Build-E.pdf">Tips
+    for optimising your code using ProDG for PlayStation®2</a>.</font></li>
+</ul>
+<blockquote>
+    <p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Verdana">The compiler has been modified to run more quickly with C++ compilations.
+    The amount of improvement you will see will depend on the style of you C++. For tips on making further improvements to the build speed by improving
+    the style of your C++, please see the white paper: <a href="http://www.snsys.com/Support/files/ps2/prodg/SN007-Build-E.pdf">Tips
+    for optimising your code using ProDG for PlayStation®2</a>.</font>
+</blockquote>
+<ul>
+  <li>
+    <p style="margin-bottom: 3"><font SIZE="2" face="Verdana">A new version of
+    iopfixup (v2.01) is included which is essential when using the IOP 2.95.2
+    compiler.</font></li>
+  <li><font SIZE="2" face="Verdana">The debugger has several new <a href="#_Toc759983">features</a>. Check out the new mixed source/disassembly view.</font></li>
+  <li><font SIZE="2"><font face="Verdana">The Target Manager supports <a href="#_Toc759984">additional</a>
+    file serving commands.</font></li>
+    <li><font face="Verdana">This release describes some features eg. debugger
+      scripting, which are only enabled if you hold a license for <a href="http://www.snsys.com/PlayStation2/Prodgplus.htm"> ProDG PLUS for
+      PlayStation®2</a>.</font></font>
+    <p>&nbsp;</li>
+</ul>
+<h2> <font face="Verdana, Arial, Helvetica, sans-serif"><b>Installer </b><a name="_Toc759981"><b>Contents</b></a> 
+  </font></h2>
+<p><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">The 
+  installer contains the following tools: </font></font></p>
+<ul>
+  <li> 
+    <p><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">Debugger
+    (ps2dbg.exe) </font> </font>
+  </li>
+  <li> 
+    <p><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">Target 
+      Manager (ps2tm.exe) </font> </font>
+  </li>
+  <li> 
+    <p style="margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">Build 
+      tools:</font></font></p>
+    <p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">-Assemblers
+    (EE, IOP, VU)</font></p>
+    <p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">-Compiler driver (ps2cc.exe)</font></p>
+    <p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">-EE
+    C/C++ compilers and tools</font></p>
+    <p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">-IOP
+    C/C++ compilers and tools</font></p>
+    <p style="margin-top: 0; margin-bottom: 0"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">-Linker (ps2ld.exe)</font></p>
+  </li>
+  <li> 
+    <p style="margin-top: 6"><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">Visual 
+      Studio 6 Integration add-in </font> </font>
+  </li>
+  <li> 
+    <p><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">Getting 
+      started guide (pdf)</font>  </font>
+  </li>
+</ul>
+    <p>&nbsp; 
+    <h2><font face="Verdana, Arial, Helvetica, sans-serif"><a name="_Toc759982">What's 
+  new</a> (since v3.0) <font size="2"><a href="#top">back to top</a></font></font></h2>
+    <h4><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Libc.a</font></h4>
+<ul>
+  <li>
+    <p><font face="Verdana" size="2">FIXED: Floating point values in printf family</font></li>
+  <li>
+    <p><font face="Verdana" size="2">IMPROVED: Locale functions use less memory</font></li>
+</ul>
+    <p>&nbsp;
+<h2><font face="Verdana, Arial, Helvetica, sans-serif"><a name="_Toc759982">What's 
+  new</a> (since v2.2) <font size="2"><a href="#top">back to top</a></font></font></h2>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="#Compiler new feature">EE
+Compiler
+</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="#IOP Compiler">IOP
+Compiler and tools</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="#_Toc759986">
+  Linker</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="#Libc.a">Libc.a</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="#STL">STL</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="#_Toc759983">Debugger</a><a href="#_Toc759984"><br>
+  Target Manager</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="#VSI feature">VSI.6</a></font></p>
+<p style="margin-top: 0; margin-bottom: 6"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="#VSI.NET">VSI.NET</a><a href="#_Toc759987"><br>
+</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">The
+following major features and significant bug fixes have been made.&nbsp;</font></p>
+    <font SIZE="2">
+  <h4><font face="Verdana, Arial, Helvetica, sans-serif"><a name="Compiler new feature"></a>EE
+  Compiler</font></h4>
+  <ul>
+  <li><font face="Verdana" size="2">REMOVED: GCC 2.95.2 and </font><font face="Verdana">2.9-991111</font><font face="Verdana">
+    from installer. Still available on the website.</font></li>
+  <li><font face="Verdana">CHANGED: Code generation changed to ensure no FDIV
+    functional unit related opcodes in delay slots. This is due to a Sony EE CPU
+    caution regarding a hardware problem</font></li>
+  <li><font size="2" face="Verdana">ADDED:&nbsp;</font><font face="Verdana">#pragma
+    mathwarn. Allows toggling of the floating point math warning setting on a
+    function by function basis.</font></li>
+  <li><font face="Verdana">ADDED: &quot;link once&quot; style section naming is
+    now used by the compiler to eliminate various duplicate C++ objects at link
+    time. For example duplicate methods declared inline and duplicate template
+    instances. Note &quot;link once&quot; is not used when compiling with the
+    debug generation command line flag &quot;-g&quot;.</font></li>
+  <li><font face="Verdana">ADDED: Switch -fforce-link-once.&nbsp;Forces use of
+    &quot;link once&quot; section naming when generating debug information.</font></li>
+  <li><font face="Verdana">ADDED: Switch -fno-inline-debugging. Prevents source
+    debugging information being generated for inlined code.&nbsp;</font></li>
+  <li><font face="Verdana">ADDED: Switch -Wno-missing-enum-case to suppress
+    warnings about missing enum cases in switch statements.</font></li>
+  <li><font face="Verdana">ADDED: C++ non-initialised global data now uses .bss
+    section.</font></li>
+  <li><font face="Verdana">ADDED: Unaligned load/store built in calls. Usage:
+    int __builtin_getunaligned ( void* ptr ); void __builtin_setunaligned (
+    void* ptr, int value ); These two built in compiler functions allow the
+    reading and writing of int(s) to memory regardless to their alignment.</font></li>
+  <li><font face="Verdana">ADDED: Switch -fno-static-dtors (C++). Prevents
+    generation of code to call static global destructors. This reduces code size
+    when game code never 'ends' and therefore never requires to destroy its
+    static class instances.</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED: Switch -fopt-stack.</font><font size="2" face="Verdana">
+    </font><font face="Verdana">Optimises 64 vs 128 bit register saving.&nbsp;</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED:</font><font face="Verdana">
+    All compiler files now opened for writing in binary mode. This decreases
+    build time.</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">FIXED: </font><font face="Verdana">Badly
+    constructed asm constraints causing common sub-expression optimisation pass
+    to enter infinite loop.</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">FIXED:&nbsp;Stabs debug
+    data changes for wide-char types.</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">FIXED: Use of wrong
+    mode when accessing unaligned long int(s).</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">FIXED: Very large
+    negative enum values losing precision.</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">FIXED: Hot-spot in
+    compiler when saving bindings for templates.</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">FIXED: </font><font face="Verdana">Changed
+    'file function name' format to filename plus random. This fixes C++
+    constructor problems when the first function found in a compilation module
+    is duplicated in many compilation modules.</font></li>
+  </ul>
+  <h4><font face="Verdana, Arial, Helvetica, sans-serif"><a name="IOP Compiler"></a>IOP
+  Compiler and tools</font></h4>
+  <ul>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED:&nbsp;GCC
+    2.95.2 is now the default compiler set by the SN.INI generated by the
+    installer. GCC 2.8.1 is
+    still included and will remain your default if you omit to generate a new
+    SN.INI.&nbsp;</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">FIXED:&nbsp;iopfixup
+    Hi16/Lo16 relocation problem, exhibited when using the 2.95.2 C/C++ compiler</font></li>
+  </ul>
+<h4><font face="Verdana, Arial, Helvetica, sans-serif"><a name="_Toc759986">Linker</a> 
+  </font></h4>
+<ul>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDE</font><font face="Verdana" size="2">D: Now removes any "comment" sections from link. Includes comment sections if -comment used on command line.</font>
+<li><font face="Verdana" size="2">ADDED: -sn-full-map to create a full map file.</font>
+<li><font face="Verdana" size="2">ADDED: Now reports errors if you use symbol stripping with a relocatable link.</font>
+<li><font face="Verdana" size="2">ADDED: Support for -sn-no-dtors. Best used with stripping. This removes global destructors.</font>
+<li><font face="Verdana" size="2">ADDED: Support for -whole-archive command line option.</font>
+<li><font face="Verdana" size="2">ADDED: Stabs related warnings suppressed unless --warn-stabs used on command line.</font>
+<li><font face="Verdana" size="2">ADDED: Support for the GNU style "link once" section naming
+  convention.</font>
+<li><font face="Verdana" size="2">ADDED: Support for EXCLUDE_FILE in linker scripts.</font>
+<li><font face="Verdana" size="2">ADDED: Support for -defsym command line option.</font>
+<li><font face="Verdana" size="2">ADDED: Now displays globals that are UNDEFINED in map file.</font>
+<li><font face="Verdana" size="2">ADDED: Support for data stripping using the -strip-unused-data. (This option strips functions too)</font>
+<li><font face="Verdana" size="2">ADDED: Support for debugging of modules with more than one text sections. Includes link
+  once and code in named sections.</font>
+  <li><font face="Verdana" size="2">IMPROVED: Some response file "Quoted file name" fixes.</font>
+  <li><font face="Verdana" size="2">IMPROVED: Fix problems with VU debugging in DLLs</font>
+  <li><font face="Verdana" size="2">IMPROVED: More robust against filing system problems. Better error reports.</font>
+  <li><font face="Verdana" size="2">IMPROVED: Now produces sensible error when one of the definitions of a multiply defined symbol is in a map file.</font>
+  <li><font face="Verdana" size="2">IMPROVED: Now displays in map file symbols that are in contributions of zero size.</font>
+  <li><font face="Verdana" size="2">IMPROVED: Now outputs sections that are zero size but contain assignments.</font>
+  <li><font face="Verdana" size="2">IMPROVED: Now allows setting of "." to a value less than the correct value as long as not done in output section.</font>
+  <li><font face="Verdana" size="2">IMPROVED: Better support for stripping.</font>
+</ul>
+  <h4><font face="Verdana"><a name="Libc.a">Libc.a</a></font></h4>
+  <ul>
+    <li><font face="Verdana">ADDED: Thread safe heap memory allocation functions,
+      malloc etc.</font></li>
+  </ul>
+  <h4><font face="Verdana"><a name="STL">STL</a> for EE and IOP</font></h4>
+  <ul>
+    <li>
+      <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana">Now based
+      on STLPort 4.5.3 (See Readme_STLport4.5.3.txt in .usr\)</font></li>
+  </ul>
+  <p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<h4><font face="Verdana, Arial, Helvetica, sans-serif"><a name="_Toc759983">Debugger</a> 
+  </font></h4>
+<ul>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED:&nbsp;Support
+    for VS.NET&nbsp;</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED: Mixed
+    source disassembly view</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: Scripting pane
+    (ProDG PLUS licensees only)</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: Support for
+    conditional and counted breakpoints</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: Register
+    colouring in the disassembly pane</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: 'Follow'/'undo
+    follow' addresses/labels to the disassembly pane</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: Support for
+    proportional fonts in panes (common controls only)</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: Search backwards
+    in DMA pane</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: Vector type
+    display options to EE 128bit register pane</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: Configuration
+    file (DBUGPS2.PS2) support for [opentemplate] eg. for CodeWright:
+    [opentemplate]&lt;CR&gt; <a href="file:///c://cw32/cw32.exe">c:\\cw32\cw32.exe</a>
+    %f-G%l</font></li>
+  <li><font face="Verdana, Arial, Helvetica, sans-serif">ADDED: Configurable
+    keystrokes to the watch/locals pane to edit the name/value of a watch
+    (default F2 and SHIFT+F2)</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">IMPROVED:
+    Symbol handling</font></li>
+</ul>
+<h4><font face="Verdana, Arial, Helvetica, sans-serif"><a name="_Toc759984">Target 
+  Manager</a> </font></h4>
+<ul>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED:&nbsp;</font><font face="Verdana">support
+    for Sony file serving functions, sceDopen, sceDread, sceDclose, sceRmdir,
+    sceChdir, sceRename, sceRemove and sceLseek64 (sceSymlink and sceReadlink are not supported)</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED: support
+    for sceChstat, sceGetstat, sceMkdir functions</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">CHANGED:
+    PS2_DECI2 reset command to use default values when no parameters are passed</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">FIXED: TTY
+    pane when copying/pasting text &gt; 32Kb</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">FIXED: Named
+    pipe read function now correctly returns the number of bytes requested</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">FIXED: Home
+    directory when set from properties dialogue</font></li>
+  <li>
+    <p style="margin-top: 0; margin-bottom: 6"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">FIXED:
+    Failed
+    calls to sceOpen would not return the correct error number</font></li>
+</ul>
+  <p style="margin-top: 0; margin-bottom: 6">
+  &nbsp;</font>
+<h4><font face="Verdana, Arial, Helvetica, sans-serif"><a name="VSI feature"></a>Visual
+    Studio 6 Integration add-in</font></h4>
+<ul>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED:&nbsp;Support
+    for Visual Studio &quot;Go&quot; (F5) command - &quot;build and run
+    debugger&quot;</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED: Batch
+    build mode reduces build times</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ADDED:
+    Appwizard with new rel.cmd</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">FIXED: Now
+    resolves paths for IOP static libraries</font></li>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">IMPROVED:
+    Library projects now use snarl.exe instead of ee-ar.exe</font></li>
+</ul>
+    <h4 style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font face="Verdana, Arial, Helvetica, sans-serif"><a name="VSI.NET"></a>Visual
+    Studio .NET Integration add-in</font></h4>
+<ul>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">This is
+    provided in a separate installation, contact support@snsys.com</font></li>
+</ul>
+    <p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;
+<h2><font face="Verdana, Arial, Helvetica, sans-serif" size="5"><a name="Compatibility with Sony libraries"></a>Compatibility
+with Sony libraries</font><font face="Verdana, Arial, Helvetica, sans-serif"> 
+  <font size="2"><a href="#top">back to top</a></font></font></h2>
+<p><font face="Verdana" size="2">This release has been tested with v2.6.0 of the
+Sony runtime libraries.</font></p>
+<font SIZE="2">
+<p><font face="Verdana">Please note that this release is not compatible with
+Sony's 'latest everything' since it contains the Sony Linux compiler 2.96 and tools. You only need to install the Sony runtime
+libraries (usually a zip file with name tlibs-2.6.0.tgz for example) not the
+'latest everything' (zip file tools_libs-2.6.0.tgz). </font><font face="Verdana"> If you have installed
+</font><font face="Verdana">the 'latest everything'</font><font face="Verdana"> under Win32, then this
+installation will overwrite portions of it.</font></p>
+</font>
+<p>&nbsp;</p>
+<h2><font face="Verdana, Arial, Helvetica, sans-serif"><a name="_Toc759989">Installation</a> 
+  <font size="2"><a href="#top">back to top</a></font></font></h2>
+<p style="margin-top: 0; margin-bottom: 3"><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">Installation 
+  and use of this software is governed by the Standard User License: </font></font></p>
+<p style="margin-top: 0; margin-bottom: 3"><font face="Verdana" size="2"><a href="http://www.snsys.com/sales/prodgps2sul.htm">http://www.snsys.com/sales/sul/prodgps2sul.htm</a></font></p>
+<p style="margin-top: 0; margin-bottom: 3">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 3"><font size="2" face="Verdana">The 
+  software is installed from a single Installshield file.&nbsp;Run 
+  the installer - it gives you the option of selecting the installation path and 
+  whether you want the Visual Studio 6 Integration add-in. It sets up environment 
+  variables and the registry.</font></p>
+<p style="margin-bottom: 3"><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">Note:&nbsp; </font></font></p>
+<p style="margin-top: 3; margin-bottom: 3"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">1.
+SNarl.exe has
+been moved out of the Sony tree (.usr\) into the ProDG tree.</font></p>
+<p style="margin-top: 3; margin-bottom: 3"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">2. If you want the Visual Studio 6 Integration add-in then you must have already 
+  installed Visual Studio and run it at least once (Visual Studio alters the registry, which needs 
+  to be done before we alter it).</font></p>
+<p style="margin-top: 3; margin-bottom: 3"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">3.
+SN.INI has been updated. If you omitted to use the new version during installation, you
+can find a default on the website.</font></p>
+<p style="margin-top: 3; margin-bottom: 3"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">4.
+</font><font SIZE="2"><font face="Verdana">Debugger scripting requires a ProDG
+PLUS licence. In addition the file &quot;autoexec.eic&quot; in the &quot;TestScripts&quot;
+folder needs to be copied and edited. Please follow the instruction in this
+file.</font></p>
+  </font>
+<p style="margin-top: 3; margin-bottom: 3"><font face="Verdana" size="2">5. STL
+is not enabled by default. To enable, see Readme_STLport4.5.3.txt in .usr\</font></p>
+<p style="margin-top: 3; margin-bottom: 3"><font face="Verdana" size="2">6. IOP
+compiler settings have changed. See Readme_IOP.txt in .usr\</font></p>
+<p>&nbsp;</p>
+<h2><font face="Verdana, Arial, Helvetica, sans-serif"><a name="_Toc759996">Limitations
+&amp; Warnings</a> 
+  <font size="2"><a href="#top">back to top</a></font> 
+  </font></h2>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b>Limitation:</b>
+</font></p>
+<ul>
+  <li><font size="2" face="Verdana, Arial, Helvetica, sans-serif">DLLs built with VSI can only be debugged if ps2dbg.exe is launched from the
+command line in the directory where the DLL's dsp file resides.</font></li>
+  <li><font face="Verdana" size="2">ee-objcopy does not support -j</font></li>
+  <li><font face="Verdana" size="2">ee-gcc is hard coded to use GCC 2.9-991111
+    which is no longer in this installer. However, we do include ee-gcc2953
+    which can be used instead.</font></li>
+</ul>
+<p><font face="Verdana" size="2"><b>
+Warning</b>:</font></p>
+<ul>
+  <li><font face="Verdana" size="2">The libc.a in this release contains a new
+    function snprintf. This will conflict with a function of the same name in
+    &quot;Proview for PlayStation</font><font face="Verdana, Arial, Helvetica, sans-serif" size="2">®</font><font face="Verdana" size="2">2&quot;. Proview
+    has now been changed.</font></li>
+  <li>
+    <p style="margin-top: 3; margin-bottom: 3"><font face="Verdana" size="2">Required changes to linker script when using
+    C++:</font></li>
+</ul>
+<blockquote>
+  <p style="margin-top: 3; margin-bottom: 3"><font face="Verdana" size="2">The app.cmd file may need updating before C++ linking will work correctly.
+  The app.cmd file is usually found in your "\usr\local\sce\ee\lib\app.cmd" directory but you may have builds that use local copies. These too will need
+  modifying. The document: &quot;<a href="http://www.snsys.com/Support/Library/article.asp?id=1952">http://www.snsys.com/Support/Library/article.asp?id=1952</a>&quot;  contains full instructions.<br>
+  <br>
+  Please check what changes your script requires by looking at the list below.<br>
+  <br>
+  app.cmd supplied with Sony libs version 2.6.0<br>
+  ---------------------------------------------<br>
+  The linker script provided with Sony libs 2.6.0 has already been updated.<br>
+  <br>
+  app.cmd supplied with Sony libs versions 2.5.x<br>
+  ---------------------------------------------<br>
+  Linker Scripts from version 2.5.x of the Sony libs require that in the small data part of the script that usually contains:<br>
+  *(.sdata)<br>
+  you add:<br>
+  *(.gnu.linkonce.s*)<br>
+  <br>
+  app.cmd supplied with Sony libs version 2.4.x<br>
+  --------------------------------------------<br>
+  The linker script provided with versions 2.4.x of the Sony libs requires the changes outlined in the document:<br>
+  &quot;<a href="http://www.snsys.com/Support/Library/article.asp?id=1952">http://www.snsys.com/Support/Library/article.asp?id=1952</a>&quot;</font></p>
+</blockquote>
+<p>&nbsp;</p>
+<h2><font face="Verdana, Arial, Helvetica, sans-serif"><a name="_Toc760004">Support</a> 
+  <font size="2"><a href="#top">back to top</a></font> 
+  </font></h2>
+<p><font COLOR="#000000" size="2" face="Verdana">First line support for all SN
+Systems products is provided by the Support area of our website. To view these
+pages you must be a registered user with an SN Systems User ID and Password. If
+you have forgotten your User ID/Password, send an e-mail </font><font face="Verdana" size="2"><font COLOR="#000000">to
+</font><b><font COLOR="#0000ff">webmaster@snsys.com </font></b><font COLOR="#000000">and
+we will send you a reminder.</font></font></p>
+<p><font COLOR="#000000" size="2" face="Verdana">Once you have a valid User ID
+and Password you can visit our website Support area at:</font></p>
+<b>
+<p style="word-spacing: 0; margin-top: 0; margin-bottom: 0"><font COLOR="#0000ff" face="Verdana" size="2"><a href="http://www.snsys.com/support">www.snsys.com/support</a>
+</font></b><font COLOR="#000000" face="Verdana" size="2">(English)</font></p>
+<b>
+<p style="word-spacing: 0; margin-top: 0"><font COLOR="#0000ff" face="Verdana" size="2"><a href="http://www.snsys.jp/support">www.snsys.jp/support</a>
+</font></b><font COLOR="#000000" face="Verdana" size="2">(Japanese)</font></p>
+<p><font COLOR="#000000" size="2" face="Verdana">If the answer to your problem
+cannot be found on the website, you can e-mail our support team at:</font></p>
+<b>
+<p style="margin-top: 0; margin-bottom: 0"><font COLOR="#0000ff" face="Verdana" size="2">support@snsys.com
+</font></b><font COLOR="#000000" face="Verdana" size="2">(English)</font></p>
+<b>
+<p style="margin-top: 0; margin-bottom: 0"><font COLOR="#0000ff" face="Verdana" size="2">j-support@snsys.com
+</font></b><font COLOR="#000000" face="Verdana" size="2">(Japanese)</font></p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>How do I play a 3D digital sound?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="How do I play a 3D digital sound?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>How do I play a 3D digital sound?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>Once you have a 3D provider <i><a href="How do I open a 3D duswuqq.html#opened">opened</a></i>, playing a 3D digital sound is comparatively easy. Just follow these steps: </p><p>1) Allocate an H3DSAMPLE with <a href="AIL_allocate_3D_sampapaoba.html">AIL_allocate_3D_sample_handle</a>. </p><p>2) Load the file from the disk with <a href="AIL_file_read.html">AIL_file_read</a> (or your own file IO routines). </p><p>3) Call <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a> to point the sample at the file image that you want to play (use <a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a> to play RAW audio data.) </p><p>Note that 3D audio data has to be mono (not stereo) and has to be uncompressed (not IMA ADPCM or MP3). See the "How can I play stereo or compressed digital files with the 3D API?" <i><a href="How can I play stere982vwf.html#FAQ">FAQ</a></i> for more details. </p><p>4) Call <a href="AIL_set_3D_sample_dicyrnaa.html">AIL_set_3D_sample_distances</a> to set the 3D volume falloff values. See the "My 3D sound isn't falling off like I expected..." <i><a href="My 3D sound isn't fa7r7p3x.html#FAQ">FAQ</a></i> for more details on 3D distances. </p><p>5) Finally, call <a href="AIL_start_3D_sample.html">AIL_start_3D_sample</a> to begin playing the H3DSAMPLE. </p></td></tr>
+</table>
+<p><a href="My 3D sound isn't fa7r7p3x.html">Next Topic (My 3D sound isn't falling off like I expected - what's going on?)</a>  </p><p><a href="How do I open a 3D duswuqq.html">Previous Topic (How do I open a 3D digital provider?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Functions:</b>
+<a href="AIL_allocate_3D_sampapaoba.html">AIL_allocate_3D_sample_handle</a>, <a href="AIL_file_read.html">AIL_file_read</a>, <a href="AIL_set_3D_sample_dicyrnaa.html">AIL_set_3D_sample_distances</a>, <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a>, <a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a>, <a href="AIL_start_3D_sample.html">AIL_start_3D_sample</a><br>
+<b>Related FAQs:</b>
+<a href="How can I play stere982vwf.html">How can I play stereo or compressed digital files with the 3D API?</a>, <a href="How do I open a 3D duswuqq.html">How do I open a 3D digital provider?</a>, <a href="My 3D sound isn't fa7r7p3x.html">My 3D sound isn't falling off like I expected - what's going on?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Memory and File Services</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Memory and File Services">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Memory and File Services</h1>
+<h4>Discussion</h4>
+<p>The Memory and File Services are cross-platform services to control memory allocation and file I/O. On some platforms, memory must be allocated correctly for MSS use: </p><p>On Win32, you don't need to anything special to the memory - you can use normal memory. </p><p>On MacOS, you must call <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a> and <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a> to manage memory that will be passed into MSS. </p><p>On DOS, you must call <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a> and <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a> or you must call <a href="AIL_vmm_lock.html">AIL_vmm_lock</a> to lock addresses that will be passed into MSS. </p><p>On Win16, you must call <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a> and <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a> to manage memory that will be passed into MSS. </p><p>On Win32s, you must call <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a> and <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a> to manage memory that will be passed into MSS. </p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Memory and File Services.html">Memory and File Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a></td>
+<td height=25 valign=top class=toc>allocates a locked block of memory.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a></td>
+<td height=25 valign=top class=toc>frees a pointer previously allocated with AIL_mem_alloc_lock
+
+          or AIL_file_read.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_read.html">AIL_file_read</a></td>
+<td height=25 valign=top class=toc>loads a data file into the specified memory
+
+          address, optionally allocating the memory as well.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_fss_read.html">AIL_file_fss_read</a></td>
+<td height=25 valign=top class=toc>loads a data file spec into the specified memory
+
+          address, optionally allocating the memory as well.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_write.html">AIL_file_write</a></td>
+<td height=25 valign=top class=toc>creates a new data file and fills it with the specified
+
+          data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_fss_write.html">AIL_file_fss_write</a></td>
+<td height=25 valign=top class=toc>creates a new MacOS data file spec and fills it with the specified
+
+          data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_fss_attrib_write.html">AIL_file_fss_attrib_write</a></td>
+<td height=25 valign=top class=toc>creates a new MacOS data file spec and fills it with the specified
+
+          data.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_WAV_file_write.html">AIL_WAV_file_write</a></td>
+<td height=25 valign=top class=toc>creates a new Microsoft .WAV file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_WAV_file_fss_write.html">AIL_WAV_file_fss_write</a></td>
+<td height=25 valign=top class=toc>creates a new MacOS .WAV file spec.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_size.html">AIL_file_size</a></td>
+<td height=25 valign=top class=toc>returns the size of the specified data file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_fss_size.html">AIL_file_fss_size</a></td>
+<td height=25 valign=top class=toc>returns the size of the specified MacOS data file spec.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_error.html">AIL_file_error</a></td>
+<td height=25 valign=top class=toc>returns the last file I/O error from AIL_file_read, AIL_file_write,
+
+          or AIL_file_size.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_FILE_ERRORS.html">MILES_FILE_ERRORS</a></td>
+<td height=25 valign=top class=toc>describes an error encountered by one of the
+
+Miles file I/O functions.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_mem_use_malloc.html">AIL_mem_use_malloc</a></td>
+<td height=25 valign=top class=toc>replaces the default memory allocation
+
+          routines under Win32, MacOS or DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_mem_use_free.html">AIL_mem_use_free</a></td>
+<td height=25 valign=top class=toc>replaces the default memory freeing
+
+          routine under Win32, MacOS, or DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILMALLOCCB.html">AILMALLOCCB</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a user-defined memory allocation callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILFREECB.html">AILFREECB</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a user-defined memory release callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_set_file_callbacks.html">AIL_set_file_callbacks</a></td>
+<td height=25 valign=top class=toc>replaces the file IO functions that
+
+          Miles uses for AIL_file_read, AIL_file_size, and the high-level
+
+          streaming functions.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_open_callback.html">AIL_file_open_callback</a></td>
+<td height=25 valign=top class=toc>specifies user replaceable callback to open file in MSS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_close_callback.html">AIL_file_close_callback</a></td>
+<td height=25 valign=top class=toc>specifies user replaceable callback to close a file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_seek_callback.html">AIL_file_seek_callback</a></td>
+<td height=25 valign=top class=toc>specifies user replaceable callback to seek in a file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_FILE_SEEK_TYPE.html">MILES_FILE_SEEK_TYPE</a></td>
+<td height=25 valign=top class=toc>describes the type of seek to perform.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_file_read_callback.html">AIL_file_read_callback</a></td>
+<td height=25 valign=top class=toc>specifies user replaceable callback to read from a file.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_vmm_lock.html">AIL_vmm_lock</a></td>
+<td height=25 valign=top class=toc>locks the specified memory range under DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_vmm_unlock.html">AIL_vmm_unlock</a></td>
+<td height=25 valign=top class=toc>unlocks a piece of memory previously locked
+
+          with AIL_vmm_lock.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_vmm_lock_range.html">AIL_vmm_lock_range</a></td>
+<td height=25 valign=top class=toc>locks the specified memory range under DOS.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_vmm_unlock_range.html">AIL_vmm_unlock_range</a></td>
+<td height=25 valign=top class=toc>unlocks a piece of memory previously locked
+
+          with AIL_vmm_lock_range.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

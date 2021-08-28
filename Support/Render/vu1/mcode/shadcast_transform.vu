@@ -1,0 +1,461 @@
+//==============================================================================
+//  shadcast_transform.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode handles the transform, lighting, and kicking of skinned
+//  geometry to a projected shadow texture. The result is just a black or
+//  grayscale alpha image of the silhouette (think bugs bunny running through
+//  a pile of snow!)
+//==============================================================================
+
+// DS NOTE: The compiler doesn't know how to check dependencies for microcode,
+// so we'll add and remove a line of comments to force the issue. What a pain!
+//==============================================================================
+
+#include "include.vu"
+#include "shadow_include.vu"
+
+.vu
+.org        MCODE_START_TRANSFORM
+.align      4 
+.global     VU1_SHADCAST_XFORM_CODE_START
+.global     VU1_SHADCAST_XFORM_CODE_END
+
+.global     VU1_ENTRY_SHAD_CAST_SETUP_MATRIX
+.global     VU1_ENTRY_SHAD_CAST_2BONES
+.global     VU1_ENTRY_SHAD_CAST_1BONE
+.equ        VU1_ENTRY_SHAD_CAST_SETUP_MATRIX,   ((SHAD_CAST_SETUP_MATRIX-VU1_SHADCAST_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_SHAD_CAST_2BONES,         ((SHAD_CAST_2BONES      -VU1_SHADCAST_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_SHAD_CAST_1BONE,          ((SHAD_CAST_1BONE       -VU1_SHADCAST_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+
+#define VU1_SHADCAST_ADDRESS(x)     ((x)-SHAD_CAST_SETUP_MATRIX+MCODE_START_TRANSFORM)
+
+VU1_SHADCAST_XFORM_CODE_START:
+
+//==============================================================================
+//  Matrix setup - This small set of microcode does a pre-translate for our
+//  itof trickiness. Check the cpp comments for an explanation.
+//==============================================================================
+
+SHAD_CAST_SETUP_MATRIX:
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 0
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 4
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 8
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 12
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 16
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 20
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 24
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 28
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 32
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 36
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 40
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 44
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 48
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 52
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 56
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 60
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 64
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 68
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 72
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 76
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 80
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 84
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 88
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 92
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 96
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 100
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 104
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 108
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 112
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 116
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 120
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 124
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 128
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 132
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 136
+    nop                                                 b       SC_SETUP_MATRIX
+    nop                                                 iaddiu  ITMP, vi00, 140
+SC_SETUP_MATRIX:
+    nop                                                 loi     -786432.0
+    addi.xyz    TF04(xyz),  vf00,       i               lq.xyzw TF03(xyzw), 3(ITMP)
+    nop                                                 lq.xyzw TF02(xyzw), 2(ITMP)
+    nop                                                 lq.xyzw TF01(xyzw), 1(ITMP)
+    nop                                                 lq.xyzw TF00(xyzw), 0(ITMP)
+    mulaw.xyzw  acc,        TF03(xyzw), vf00w           nop
+    maddaz.xyzw acc,        TF02(xyzw), TF04(z)         nop
+    madday.xyzw acc,        TF01(xyzw), TF04(y)         nop
+    maddx.xyzw  TF03(xyzw), TF00(xyzw), TF04(x)         nop
+    nop                                                 nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 sq.xyzw TF03(xyzw), 3(ITMP)
+
+//==============================================================================
+//  Shadow casting transform for 2 bones
+//==============================================================================
+
+SHAD_CAST_2BONES:
+    nop                                                 xtop    BASE
+    nop[e]                                              nop
+    nop                                                 nop
+    nop                                                 b       VU1_DO_CASTING
+    nop                                                 iaddiu  SXFM,   vi00,   VU1_SHADCAST_ADDRESS(VU1_SHADOW_SKIN_CAST_XFORM)
+
+//==============================================================================
+//  Shadow casting transform for 1 bone
+//==============================================================================
+
+SHAD_CAST_1BONE:
+    nop                                                 xtop    BASE
+    nop[e]                                              nop
+    nop                                                 nop
+    nop                                                 b       VU1_DO_CASTING
+    nop                                                 iaddiu  SXFM,   vi00,   VU1_SHADCAST_ADDRESS(VU1_SHADOW_SKIN_CAST_XFORM_1BONE)
+
+//==============================================================================
+//  Shadow casting code - loads the appropriate transform matris, does the
+//  transform, then does the setup for the xgkick
+//==============================================================================
+
+VU1_DO_CASTING:
+    ; load up the shadow flags
+    nop                                                 ilw.z   INST,   VU1_COUNT(BASE)
+    nop                                                 lq.xyzw L2W3(xyzw), VU1_L2W+3(BASE)
+    nop                                                 lq.xyzw L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 lq.xyzw L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq.xyzw L2W0(xyzw), VU1_L2W+0(BASE)
+    nop                                                 iaddiu  ITMP,   vi00,   0x7f
+    nop                                                 iand    NUMV,   INST,   ITMP
+    nop                                                 ilw.w   SFLG,   VU1_COUNT(BASE)
+
+    ; transform the shadows
+    nop                                                 lq.xzyw SMT3(xyzw), VU1_SHAD_M_0_Col3(vi00)
+    nop                                                 lq.xzyw SMT2(xyzw), VU1_SHAD_M_0_Col2(vi00)
+    nop                                                 lq.xzyw SMT1(xyzw), VU1_SHAD_M_0_Col1(vi00)
+    nop                                                 lq.xzyw SMT0(xyzw), VU1_SHAD_M_0_Col0(vi00)
+    nop                                                 jalr    RETN,       SXFM
+    nop                                                 nop
+
+    ; kick the shadows
+    nop                                                 bal     RETN,       VU1_SHADOW_CAST_KICK
+    nop                                                 lq      TF02(xyzw), VU1_SHAD_M_0_Frame(vi00)
+    nop                                                 nop
+    nop                                                 nop
+    nop[E]                                              nop
+    nop                                                 nop
+
+;==============================================================================
+;  Skin shadow casting transform
+;==============================================================================
+
+#define SEND                        TI02            // loop end marker
+#define SPTR                        TI03            // pointer to current vert
+#define BON0                        TI05            // pointer to bone0
+#define BON1                        TI06            // pointer to bone1
+#define SPOS( x )                   TF04( x )       // input xyz
+#define SPS0( x )                   TF05( x )       // unskinned xyz position * weight 0
+#define SPS1( x )                   TF06( x )       // unskinned xyz position * weight 1
+#define SRGB( x )                   TF07( x )       // value to write into rgb
+#define WGHT( x )                   TF08( x )       // input bone weights
+#define OWGT( x )                   TF09( x )       // weights after conversion to float and scale
+#define BN00( x )                   TF10( x )       // bone 0 vector 0
+#define BN01( x )                   TF11( x )       // bone 0 vector 1
+#define BN02( x )                   TF12( x )       // bone 0 vector 2
+#define BN03( x )                   TF13( x )       // bone 0 vector 3
+#define BN10( x )                   TF14( x )       // bone 1 vector 0
+#define BN11( x )                   TF15( x )       // bone 1 vector 1
+#define BN12( x )                   TF16( x )       // bone 1 vector 2
+#define BN13( x )                   TF17( x )       // bone 1 vector 3
+#define SXYZ( x )                   TF18( x )       // xyz after skinning
+#define SSPS( x )                   TF19( x )       // xyz after l2s matrix
+#define SFPS( x )                   TF20( x )       // xyz after projection and in fixed-point
+
+VU1_SHADOW_SKIN_CAST_XFORM:
+
+    ; concatenate the l2w and w2s matrices
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W3(w)     iadd    SPTR, vi00, BASE
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W3(z)     iadd    SEND, SPTR, NUMV
+    madday.xyzw     acc,        SMT1(xyzw), L2W3(y)     iadd    SEND, SEND, NUMV
+    maddx.xyzw      SLS3(xyzw), SMT0(xyzw), L2W3(x)     iadd    SEND, SEND, NUMV
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W2(w)     iadd    SEND, SEND, NUMV
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W2(z)     iaddiu  ITMP, vi00, 0x80
+    madday.xyzw     acc,        SMT1(xyzw), L2W2(y)     mfir.w  SRGB(w),    ITMP
+    maddx.xyzw      SLS2(xyzw), SMT0(xyzw), L2W2(x)     mfir.z  SRGB(z),    vi00
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W1(w)     mfir.y  SRGB(y),    vi00
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W1(z)     mfir.x  SRGB(x),    vi00
+    madday.xyzw     acc,        SMT1(xyzw), L2W1(y)     loi     16.062745098039215686               ; 16*256/255
+    maddx.xyzw      SLS1(xyzw), SMT0(xyzw), L2W1(x)     nop
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W0(w)     nop
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W0(z)     nop
+    madday.xyzw     acc,        SMT1(xyzw), L2W0(y)     nop
+    maddx.xyzw      SLS0(xyzw), SMT0(xyzw), L2W0(x)     nop
+
+
+    ; loop preamble
+    nop                                                 lq.xyzw WGHT(xyzw), VU1_RGB(SPTR)                   ;               ; load weights0
+    nop                                                 lq.xyzw SPOS(xyzw), VU1_XYZ(SPTR)                   ;               ; load xyz0    
+    nop                                                 nop                                                 ; 
+    nop                                                 nop                                                 ; 
+    itof12.zw       WGHT(zw),   WGHT(zw)                mtir    BON0, WGHT(x)                               ; wght0->float  ; load bi0
+    nop                                                 mtir    BON1, WGHT(y)                               ;               ; load bi0
+    nop                                                 lq.xyzw BN03(xyzw), 3(BON0)                         ;               ; load bone0_0
+    nop                                                 lq.xyzw BN02(xyzw), 2(BON0)                         ;               ; load bone0_0
+    muli.zw         OWGT(zw),   WGHT(zw),   i           lq.xyzw BN01(xyzw), 1(BON0)                         ; scale wght0   ; load bone0_0
+    nop                                                 lq.xyzw BN00(xyzw), 0(BON0)                         ;               ; load bone0_0
+    nop                                                 lq.xyzw BN13(xyzw), 3(BON1)                         ;               ; load bone0_1
+    nop                                                 lq.xyzw BN12(xyzw), 2(BON1)                         ;               ; load bone0_1
+    mulz.xyz        SPS0(xyz),  SPOS(xyz),  OWGT(z)     lq.xyzw BN11(xyzw), 1(BON1)                         ; xyz0*wght0_0  ; load bone0_1
+    nop                                                 lq.xyzw BN10(xyzw), 0(BON1)                         ;               ; load bone0_1
+    mulw.xyz        SPS1(xyz),  SPOS(xyz),  OWGT(w)     nop                                                 ; xyz0*wght0_1
+    mulaz.xyz       acc,        BN03(xyz),  OWGT(z)     nop                                                 ; xyz0*bone0
+    maddaz.xyz      acc,        BN02(xyz),  SPS0(z)     nop                                                 ; xyz0*bone0
+    madday.xyz      acc,        BN01(xyz),  SPS0(y)     nop                                                 ; xyz0*bone0
+
+    maddax.xyz      acc,        BN00(xyz),  SPS0(x)     lq.xyzw WGHT(xyzw), VU1_RGB+(VU1_VERT_SIZE*1)(SPTR) ; xyz0*bone0    ; load weights1
+    maddaw.xyz      acc,        BN13(xyz),  OWGT(w)     lq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*1)(SPTR) ; xyz0*bone1    ; load xyz1     
+    maddaz.xyz      acc,        BN12(xyz),  SPS1(z)     nop                                                 ; xyz0*bone1
+    madday.xyz      acc,        BN11(xyz),  SPS1(y)     nop                                                 ; xyz0*bone1
+    itof12.zw       WGHT(zw),   WGHT(zw)                mtir    BON0, WGHT(x)                               ; wght1->float  ; load bi1
+    maddx.xyz       SXYZ(xyz),  BN10(xyz),  SPS1(x)     mtir    BON1, WGHT(y)                               ; xyz0*bone1    ; load bi1
+    nop                                                 lq.xyzw BN03(xyzw), 3(BON0)                         ;               ; load bone1_0
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       lq.xyzw BN02(xyzw), 2(BON0)                         ; xform xyz0    ; load bone1_0
+    muli.zw         OWGT(zw),   WGHT(zw),   i           lq.xyzw BN01(xyzw), 1(BON0)                         ; scale wght1   ; load bone1_0
+    maddaz.xyzw     acc,        SLS2(xyzw), SXYZ(z)     lq.xyzw BN00(xyzw), 0(BON0)                         ; xform xyz0    ; load bone1_0
+    madday.xyzw     acc,        SLS1(xyzw), SXYZ(y)     lq.xyzw BN13(xyzw), 3(BON1)                         ; xform xyz0    ; load bone1_1
+    maddx.xyzw      SSPS(xyzw), SLS0(xyzw), SXYZ(x)     lq.xyzw BN12(xyzw), 2(BON1)                         ; xform xyz0    ; load bone1_1
+    mulz.xyz        SPS0(xyz),  SPOS(xyz),  OWGT(z)     lq.xyzw BN11(xyzw), 1(BON1)                         ; xyz1*wght1_0  ; load bone1_1
+    nop                                                 lq.xyzw BN10(xyzw), 0(BON1)                         ;               ; load bone1_1
+    mulw.xyz        SPS1(xyz),  SPOS(xyz),  OWGT(w)     nop                                                 ; xyz1*wght1_1
+    mulaz.xyz       acc,        BN03(xyz),  OWGT(z)     div     q,  vf00w,  SSPS(w)                         ; xyz1*bone0    ; div0
+    maddaz.xyz      acc,        BN02(xyz),  SPS0(z)     nop                                                 ; xyz1*bone0
+    madday.xyz      acc,        BN01(xyz),  SPS0(y)     nop                                                 ; xyz1*bone0
+
+    ; tight loop
+SHAD_CAST_SKINNING_LOOP:
+    maddax.xyz      acc,        BN00(xyz),  SPS0(x)     lq.xyzw WGHT(xyzw), VU1_RGB+(VU1_VERT_SIZE*2)(SPTR) ; xyz1*bone0    ; load weights2 
+    maddaw.xyz      acc,        BN13(xyz),  OWGT(w)     lq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*2)(SPTR) ; xyz1*bone1    ; load xyz2     
+    maddaz.xyz      acc,        BN12(xyz),  SPS1(z)     nop                                                 ; xyz1*bone1    ;
+    madday.xyz      acc,        BN11(xyz),  SPS1(y)     iaddiu  SPTR, SPTR, VU1_VERT_SIZE                   ; xyz1*bone1    ; pCur++
+    itof12.zw       WGHT(zw),   WGHT(zw)                mtir    BON0, WGHT(x)                               ; wght2->float  ; load bi2
+    maddx.xyz       SXYZ(xyz),  BN10(xyz),  SPS1(x)     mtir    BON1, WGHT(y)                               ; xyz1*bone1    ; load bi2
+    mulq.xyz        SFPS(xyz),  SSPS(xyz),  q           lq.xyzw BN03(xyzw), 3(BON0)                         ; project xyz0  ; load bone2_0
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       lq.xyzw BN02(xyzw), 2(BON0)                         ; xform xyz1    ; load bone2_0
+    muli.zw         OWGT(zw),   WGHT(zw),   i           lq.xyzw BN01(xyzw), 1(BON0)                         ; scale wght2   ; load bone2_0
+    maddaz.xyzw     acc,        SLS2(xyzw), SXYZ(z)     lq.xyzw BN00(xyzw), 0(BON0)                         ; xform xyz1    ; load bone2_0
+    madday.xyzw     acc,        SLS1(xyzw), SXYZ(y)     lq.xyzw BN13(xyzw), 3(BON1)                         ; xform xyz1    ; load bone2_1
+    maddx.xyzw      SSPS(xyzw), SLS0(xyzw), SXYZ(x)     lq.xyzw BN12(xyzw), 2(BON1)                         ; xform xyz1    ; load bone2_1
+    mulz.xyz        SPS0(xyz),  SPOS(xyz),  OWGT(z)     lq.xyzw BN11(xyzw), 1(BON1)                         ; xyz2*wght2_0  ; load bone2_1
+    ftoi4.xyz       SFPS(xyz),  SFPS(xyz)               lq.xyzw BN10(xyzw), 0(BON1)                         ; xyz0->fixed   ; load bone2_1
+    mulw.xyz        SPS1(xyz),  SPOS(xyz),  OWGT(w)     sq.xyzw SRGB(xyzw), VU1_RGB-VU1_VERT_SIZE(SPTR)     ; xyz2*wght2_1  ; store rgb0
+    mulaz.xyz       acc,        BN03(xyz),  OWGT(z)     div     q,  vf00w,  SSPS(w)                         ; xyz2*bone0    ; div1
+    maddaz.xyz      acc,        BN02(xyz),  SPS0(z)     ibne    SPTR, SEND, SHAD_CAST_SKINNING_LOOP         ; xyz2*bone0    ; loop
+    madday.xyz      acc,        BN01(xyz),  SPS0(y)     sq.xyz  SFPS(xyz),  VU1_XYZ-VU1_VERT_SIZE(SPTR)     ; xyz2*bone0    ; store xyz0
+
+    ; finished
+    nop                                                 jr      RETN
+    nop                                                 nop
+
+
+#undef SEND
+#undef SPTR
+#undef BON0
+#undef BON1
+#undef SPOS
+#undef SPS0
+#undef SPS1
+#undef SRGB
+#undef WGHT
+#undef OWGT
+#undef BN00
+#undef BN01
+#undef BN02
+#undef BN03
+#undef BN10
+#undef BN11
+#undef BN12
+#undef BN13
+#undef SXYZ
+#undef SSPS
+#undef SFPS
+
+;==============================================================================
+;  Skin shadow casting transform for a single bone
+;==============================================================================
+
+#define SRGB( x )                   TF04( x )       // color to fill into rgb
+#define BON0( x )                   TF05( x )       // bone vector 0
+#define BON1( x )                   TF06( x )       // bone vector 1
+#define BON2( x )                   TF07( x )       // bone vector 2
+#define BON3( x )                   TF08( x )       // bone vector 3
+#define IPOS( x )                   TF09( x )       // original position input
+#define BPOS( x )                   TF10( x )       // position after transform by bone
+#define SPOS( x )                   TF11( x )       // position after transform by l2s
+#define CPOS( x )                   TF12( x )       // copy of position after transform by l2s
+#define PPOS( x )                   TF13( x )       // position after projection by q
+#define FPOS( x )                   TF14( x )       // fixed-point position
+
+#define SEND                        TI02            // loop end marker
+#define SPTR                        TI03            // curr buffer ptr
+#define PBON                        TI05            // bone pointer
+
+VU1_SHADOW_SKIN_CAST_XFORM_1BONE:
+    ; concatenate the l2w and w2s matrices
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W3(w)     iadd    SPTR, vi00, BASE
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W3(z)     iadd    SEND, SPTR, NUMV
+    madday.xyzw     acc,        SMT1(xyzw), L2W3(y)     iadd    SEND, SEND, NUMV
+    maddx.xyzw      SLS3(xyzw), SMT0(xyzw), L2W3(x)     iadd    SEND, SEND, NUMV
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W2(w)     iadd    SEND, SEND, NUMV
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W2(z)     iaddiu  ITMP, vi00, 0x80
+    madday.xyzw     acc,        SMT1(xyzw), L2W2(y)     mfir.w  SRGB(w),    ITMP
+    maddx.xyzw      SLS2(xyzw), SMT0(xyzw), L2W2(x)     mfir.z  SRGB(z),    vi00
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W1(w)     mfir.y  SRGB(y),    vi00
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W1(z)     mfir.x  SRGB(x),    vi00
+    madday.xyzw     acc,        SMT1(xyzw), L2W1(y)     loi     16.062745098039215686               ; 16*256/255
+    maddx.xyzw      SLS1(xyzw), SMT0(xyzw), L2W1(x)     nop
+    mulaw.xyzw      acc,        SMT3(xyzw), L2W0(w)     nop
+    maddaz.xyzw     acc,        SMT2(xyzw), L2W0(z)     nop
+    madday.xyzw     acc,        SMT1(xyzw), L2W0(y)     nop
+    maddx.xyzw      SLS0(xyzw), SMT0(xyzw), L2W0(x)     nop
+
+    ; loop preamble
+    nop                                                 ilw.x   PBON,       VU1_BNIDX(SPTR)                     ;               ; load bptr0
+    nop                                                 nop                                                     ;               ;
+    nop                                                 nop                                                     ;               ;
+    nop                                                 lq.xyzw IPOS(xyzw), VU1_XYZ(SPTR)                       ;               ; load xyz0
+
+    nop                                                 lq.xyzw BON3(xyzw), 3(PBON)                             ;               ; load bone0
+    nop                                                 lq.xyzw BON2(xyzw), 2(PBON)                             ;               ; load bone0
+    nop                                                 lq.xyzw BON1(xyzw), 1(PBON)                             ;               ; load bone0
+    nop                                                 lq.xyzw BON0(xyzw), 0(PBON)                             ;               ; load bone0
+    nop                                                 nop                                                     ;               ;
+    nop                                                 nop                                                     ;               ;
+    mulaw.xyz       acc,        BON3(xyz),  vf00w       ilw.x   PBON,       VU1_BNIDX+(VU1_VERT_SIZE*1)(SPTR)   ; xform xyz0    ; load bptr1
+    maddaz.xyz      acc,        BON2(xyz),  IPOS(z)     nop                                                     ; xform xyz0    ;
+    madday.xyz      acc,        BON1(xyz),  IPOS(y)     nop                                                     ; xform xyz0    ;
+    maddx.xyz       BPOS(xyz),  BON0(xyz),  IPOS(x)     nop                                                     ; xform xyz0    ;
+    nop                                                 nop                                                     ;               ;
+    nop                                                 lq.xyzw IPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*1)(SPTR)     ;               ; load xyz1
+
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       lq.xyzw BON3(xyzw), 3(PBON)                             ; l2s xyz0      ; load bone1
+    maddaz.xyzw     acc,        SLS2(xyzw), BPOS(z)     lq.xyzw BON2(xyzw), 2(PBON)                             ; l2s xyz0      ; load bone1
+    madday.xyzw     acc,        SLS1(xyzw), BPOS(y)     lq.xyzw BON1(xyzw), 1(PBON)                             ; l2s xyz0      ; load bone1
+    maddx.xyzw      SPOS(xyzw), SLS0(xyzw), BPOS(x)     lq.xyzw BON0(xyzw), 0(PBON)                             ; l2s xyz0      ; load bone1
+    nop                                                 nop                                                     ;               ;
+    nop                                                 nop                                                     ;               ;
+    mulaw.xyz       acc,        BON3(xyz),  vf00w       ilw.x   PBON,       VU1_BNIDX+(VU1_VERT_SIZE*2)(SPTR)   ; xform xyz1    ; load bptr2
+    maddaz.xyz      acc,        BON2(xyz),  IPOS(z)     div     q,  vf00w,  SPOS(w)                             ; xform xyz1    ; divide0
+    madday.xyz      acc,        BON1(xyz),  IPOS(y)     nop                                                     ; xform xyz1    ;
+    maddx.xyz       BPOS(xyz),  BON0(xyz),  IPOS(x)     nop                                                     ; xform xyz1    ;
+    nop                                                 nop                                                     ;               ;
+    add.xyz         CPOS(xyz),  SPOS(xyz),  vf00xyz     lq.xyzw IPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*2)(SPTR)     ; copy xyz0     ; load xyz2
+
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       lq.xyzw BON3(xyzw), 3(PBON)                             ; l2s xyz1      ; load bone2
+    maddaz.xyzw     acc,        SLS2(xyzw), BPOS(z)     lq.xyzw BON2(xyzw), 2(PBON)                             ; l2s xyz1      ; load bone2
+    madday.xyzw     acc,        SLS1(xyzw), BPOS(y)     lq.xyzw BON1(xyzw), 1(PBON)                             ; l2s xyz1      ; load bone2
+    maddx.xyzw      SPOS(xyzw), SLS0(xyzw), BPOS(x)     lq.xyzw BON0(xyzw), 0(PBON)                             ; l2s xyz1      ; load bone2
+    mulq.xyz        PPOS(xyz),  CPOS(xyz),  q           nop                                                     ; project xyz0  ;
+    nop                                                 nop                                                     ;               ;
+    mulaw.xyz       acc,        BON3(xyz),  vf00w       ilw.x   PBON,       VU1_BNIDX+(VU1_VERT_SIZE*3)(SPTR)   ; xform xyz2    ; load bptr3
+    maddaz.xyz      acc,        BON2(xyz),  IPOS(z)     div     q,  vf00w,  SPOS(w)                             ; xform xyz2    ; divide1
+    madday.xyz      acc,        BON1(xyz),  IPOS(y)     nop                                                     ; xform xyz2    ;
+    maddx.xyz       BPOS(xyz),  BON0(xyz),  IPOS(x)     nop                                                     ; xform xyz2    ;
+    ftoi4.xyz       FPOS(xyz),  PPOS(xyz)               nop                                                     ; ftoi0         ;
+    add.xyz         CPOS(xyz),  SPOS(xyz),  vf00xyz     lq.xyzw IPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*3)(SPTR)     ; copy xyz1     ; load xyz3
+
+    ; optimized loop
+SKIN_CAST_1BONE_LOOP:
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       lq.xyzw BON3(xyzw), 3(PBON)                             ; l2s xyz2      ; load bone3
+    maddaz.xyzw     acc,        SLS2(xyzw), BPOS(z)     lq.xyzw BON2(xyzw), 2(PBON)                             ; l2s xyz2      ; load bone3
+    madday.xyzw     acc,        SLS1(xyzw), BPOS(y)     lq.xyzw BON1(xyzw), 1(PBON)                             ; l2s xyz2      ; load bone3
+    maddx.xyzw      SPOS(xyzw), SLS0(xyzw), BPOS(x)     lq.xyzw BON0(xyzw), 0(PBON)                             ; l2s xyz2      ; load bone3
+    mulq.xyz        PPOS(xyz),  CPOS(xyz),  q           sq.xyz  FPOS(xyz),  VU1_XYZ(SPTR)                       ; project xyz1  ; store xyz0
+    nop                                                 sq.xyzw SRGB(xyzw), VU1_RGB(SPTR)                       ;               ; store rgb0
+    mulaw.xyz       acc,        BON3(xyz),  vf00w       ilw.x   PBON,       VU1_BNIDX+(VU1_VERT_SIZE*4)(SPTR)   ; xform xyz3    ; load bptr4
+    maddaz.xyz      acc,        BON2(xyz),  IPOS(z)     div     q,  vf00w,  SPOS(w)                             ; xform xyz3    ; divide2
+    madday.xyz      acc,        BON1(xyz),  IPOS(y)     iaddiu  SPTR, SPTR, VU1_VERT_SIZE                       ; xform xyz3    ; vptr++
+    maddx.xyz       BPOS(xyz),  BON0(xyz),  IPOS(x)     nop                                                     ; xform xyz3    ; nptr++
+    ftoi4.xyz       FPOS(xyz),  PPOS(xyz)               ibne    SPTR, SEND, SKIN_CAST_1BONE_LOOP                ; ftoi1         ; loop
+    add.xyz         CPOS(xyz),  SPOS(xyz),  vf00xyz     lq.xyzw IPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*3)(SPTR)     ; copy xyz2     ; load xyz4
+
+    ; finished
+    nop                                                 jr      RETN
+    nop                                                 nop
+
+#undef SRGB
+#undef BON0
+#undef BON1
+#undef BON2
+#undef BON3
+#undef IPOS
+#undef BPOS
+#undef SPOS
+#undef CPOS
+#undef PPOS
+#undef FPOS
+
+#undef SEND
+#undef SPTR
+#undef PBON
+
+;==============================================================================
+;  Shadow creation kick
+;==============================================================================
+VU1_SHADOW_CAST_KICK:
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF                      ; Set EOP Bit
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV                        ; EOP | Num Vertices
+    nop                                                 iaddiu      NREG, vi00, 2
+    nop                                                 lq          TF00(xyzw), VU1C_RegLoadGif(vi00)       ; Load 1 GS Register
+    nop                                                 iaddiu      ITMP, vi00, GS_TEXFLUSH
+    nop                                                 mfir.z      TF01(z),    ITMP
+    ;                                                   lq          TF02, blah -- TF02 was already set to the proper frame register
+    nop                                                 lq          TF03(xyzw), VU1_SHAD_PassOneGIF(vi00)        ; Strip: Opaque/Alpha | Context1 | UV0
+    nop                                                 mfir.x      TF03(x),    NVRT                        ; Set EOP and Num Vertices in GIFTAG
+    nop                                                 mfir.x      TF00(x),    NREG                        ; Set 2 registers
+    nop                                                 iaddiu      KICK, BASE, VU1_REG2LOAD_GIFTAG         ; Get start address of GIFTAG
+    nop                                                 sq          TF00(xyzw), 0(KICK)                     ; Build GS chain
+    nop                                                 sq          TF01(xyzw), 1(KICK)
+    nop                                                 sq          TF02(xyzw), 2(KICK)
+    nop                                                 sq          TF03(xyzw), 3(KICK)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 jr          RETN
+    nop                                                 xgkick      KICK                                    ; Kick GS chain
+
+VU1_SHADCAST_XFORM_CODE_END:

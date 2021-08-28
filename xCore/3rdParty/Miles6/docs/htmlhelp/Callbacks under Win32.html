@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Callbacks under Win32</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Callbacks under Win32">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Callbacks under Win32</h1>
+<h4>Discussion</h4>
+<p>Read this section carefully if you plan to use Miles timer or other callbacks (such as an end-of-sample callback). If you don't intend to use callbacks, then this section won't apply to you. </p><p>Under Win32, callbacks are usually made to your application on a background thread. The ideal callback function is one that does nothing more than writes to one or two flag variables and then immediately returns back to Miles. Under Win32, other operations are <i>allowed</i>, but not recommended! </p><p>So, unlike MacOS or DOS, you can do whatever you want inside a Miles callback under Win32 - there are no OS-mandated restrictions. However, if you want to maintain easily ported code, then you should read about the callback restrictions for the other platforms you intend to support. Other platforms are much more strict than Win32 when it comes to callbacks. </p><p>In any case, you do have to take general multithread precautions in your callbacks. For example, if you use the C runtime library inside a callback, then you need to link with the multithreaded libraries. If you access your own internal data structures, then you need to make sure that the accessor functions can be called by two threads at once (unless you protect with a critical section lock). </p><p>Also remember that all global or static variables that are modified by a callback function must be declared with the <i>volatile</i> modifier. Otherwise, the callback function and the foreground may not be able to communicate after the compiler has performed all of its optimizing tricks. </p><p>You should also minimize the total amount of work inside a Miles callback. During a callback, Miles is suspended, so other background tasks won't run - mixing will be interrupted, for example, if you take too long. </p><p>Again, though, the best advice for callbacks is to simply post a message or set a flag that can be operated on by your foreground task. This technique works on all platforms and you'll never need to worry about the complications that multithreading can cause. </p>
+<p><a href="Sharing the CPU unde2nabaa.html">Next Topic (Sharing the CPU under Win32)</a>  </p><p><a href="Memory management uni4hsaa.html">Previous Topic (Memory management under Win32)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Overview for Win32- zi6edi.html">Overview for Win32: Miles on Windows 95, 98, Me, NT and 2000</a><br>
+<b>Related FAQs:</b>
+<a href="What's the deal with4bihxb.html">What's the deal with callbacks - are they threads, interrupts, system timers, or what?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

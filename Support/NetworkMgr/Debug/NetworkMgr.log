@@ -1,0 +1,305 @@
+﻿  GhostNet.cpp
+c:\projects\old\a51\support\objects\ghost.hpp(198): error C2653: 'inventory_item': is not a class or namespace name
+c:\projects\old\a51\support\objects\ghost.hpp(198): error C3646: 'GetInventoryType': unknown override specifier
+c:\projects\old\a51\support\objects\ghost.hpp(198): error C2059: syntax error: '('
+c:\projects\old\a51\support\objects\ghost.hpp(198): error C2238: unexpected token(s) preceding ';'
+c:\projects\old\a51\support\objects\ghostnet.cpp(130): error C2065: 'CROUCH_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(148): error C2065: 'Health': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(222): error C2065: 'FIRE_ALT_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(258): error C2065: 'PAIN_0_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(259): error C2065: 'RecentPain': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(259): error C2228: left of '.Amount' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(260): error C2065: 'RecentPain': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(260): error C2228: left of '.Type' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(262): error C2065: 'RecentPain': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(262): error C2228: left of '.Yaw' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(307): error C2065: 'JumpSeq': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(308): error C2065: 'MeleeSeq': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(309): error C2065: 'ReloadSeq': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(310): error C2065: 'FireSeq': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(311): error C2065: 'TossSeq': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(378): error C2065: 'CROUCH_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(380): error C2065: 'CROUCH_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(398): error C2065: 'Health': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(470): error C2065: 'FIRE_ALT_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(472): error C2065: 'FIRE_ALT_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(500): error C2065: 'PAIN_ANY_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(506): error C2065: 'PAIN_0_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(508): error C2065: 'RecentPain': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(508): error C2228: left of '.Yaw' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(509): error C2065: 'PAIN_0_BIT': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(510): error C2065: 'RecentPain': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(510): error C2228: left of '.Amount' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(511): error C2065: 'RecentPain': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(511): error C2228: left of '.Type' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(544): error C2509: 'net_Activate': member function not declared in 'ghost'
+  c:\projects\old\a51\support\objects\ghost.hpp(56): note: see declaration of 'ghost'
+c:\projects\old\a51\support\objects\ghostnet.cpp(593): error C2509: 'net_AcceptUpdate': member function not declared in 'ghost'
+  c:\projects\old\a51\support\objects\ghost.hpp(56): note: see declaration of 'ghost'
+c:\projects\old\a51\support\objects\ghostnet.cpp(736): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\objects\ghostnet.cpp(736): error C2143: syntax error: missing ',' before '*'
+c:\projects\old\a51\support\objects\ghostnet.cpp(737): error C2509: 'net_ProvideUpdate': member function not declared in 'ghost'
+  c:\projects\old\a51\support\objects\ghost.hpp(56): note: see declaration of 'ghost'
+c:\projects\old\a51\support\objects\ghostnet.cpp(897): error C2509: 'net_SetTeamBits': member function not declared in 'ghost'
+  c:\projects\old\a51\support\objects\ghost.hpp(56): note: see declaration of 'ghost'
+c:\projects\old\a51\support\objects\ghostnet.cpp(911): error C2509: 'net_GetGameGuid': member function not declared in 'ghost'
+  c:\projects\old\a51\support\objects\ghost.hpp(56): note: see declaration of 'ghost'
+c:\projects\old\a51\support\objects\ghostnet.cpp(918): error C2509: 'net_GetGameSlot': member function not declared in 'ghost'
+  c:\projects\old\a51\support\objects\ghost.hpp(56): note: see declaration of 'ghost'
+c:\projects\old\a51\support\objects\ghostnet.cpp(925): error C2509: 'net_Logic': member function not declared in 'ghost'
+  c:\projects\old\a51\support\objects\ghost.hpp(56): note: see declaration of 'ghost'
+c:\projects\old\a51\support\objects\ghostnet.cpp(995): error C2039: 'net_ApplyMove': is not a member of 'ghost'
+  c:\projects\old\a51\support\objects\ghost.hpp(56): note: see declaration of 'ghost'
+c:\projects\old\a51\support\objects\ghostnet.cpp(997): error C2065: 'm_NetModeBits': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(997): error C2065: 'GHOST_ON_SERVER': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1005): error C2065: 'm_Dead': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1006): error C2065: 'm_WantToSpawn': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1008): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1008): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1008): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1008): error C2228: left of '.Position' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1009): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1009): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1009): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1009): error C2228: left of '.Pitch' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1010): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1010): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1010): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1010): error C2228: left of '.Yaw' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1012): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1012): error C2228: left of '.LifeSeq' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1012): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1018): error C2065: 'm_NetDirtyBits': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1019): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1019): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1019): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1019): error C2228: left of '.Position' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1020): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1020): error C2228: left of '.BlendPosX' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1020): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1020): error C2228: left of '.SetTarget' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1020): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1020): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1020): error C2228: left of '.Position' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1020): error C2228: left of '.GetX' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1021): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1021): error C2228: left of '.BlendPosY' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1021): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1021): error C2228: left of '.SetTarget' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1021): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1021): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1021): error C2228: left of '.Position' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1021): error C2228: left of '.GetY' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1022): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1022): error C2228: left of '.BlendPosZ' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1022): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1022): error C2228: left of '.SetTarget' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1022): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1022): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1022): error C2228: left of '.Position' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1022): error C2228: left of '.GetZ' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1028): error C2065: 'm_NetDirtyBits': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1029): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1029): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1029): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1029): error C2228: left of '.Pitch' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1030): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1030): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1030): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1030): error C2228: left of '.Yaw' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1031): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1031): error C2228: left of '.BlendPitch' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1031): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1031): error C2228: left of '.SetTarget' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1031): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1031): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1031): error C2228: left of '.Pitch' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1032): error C2065: 'm_Net': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1032): error C2228: left of '.BlendYaw' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1032): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1032): error C2228: left of '.SetTarget' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1032): error C2228: left of '.Actual' must have class/struct/union
+  c:\projects\old\a51\support\objects\ghostnet.cpp(1032): note: type is 'unknown-type'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1032): error C2228: left of '.Yaw' must have class/struct/union
+c:\projects\old\a51\support\objects\ghostnet.cpp(1035): error C3861: 'GetCurrentWeaponType': identifier not found
+c:\projects\old\a51\support\objects\ghostnet.cpp(1037): error C2653: 'inventory_item': is not a class or namespace name
+c:\projects\old\a51\support\objects\ghostnet.cpp(1037): error C2065: 'inv_type': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1037): error C2146: syntax error: missing ')' before identifier 'Move'
+c:\projects\old\a51\support\objects\ghostnet.cpp(1038): error C2065: 'm_NetDirtyBits': undeclared identifier
+c:\projects\old\a51\support\objects\ghostnet.cpp(1038): fatal error C1003: error count exceeds 100; stopping compilation
+  Blowfish.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Blowfish.cpp': No such file or directory
+  Dh.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Dh.cpp': No such file or directory
+  integer.cpp
+c1xx : fatal error C1083: Cannot open source file: 'integer.cpp': No such file or directory
+  MatchMgr.cpp
+c1xx : fatal error C1083: Cannot open source file: 'MatchMgr.cpp': No such file or directory
+  Move.cpp
+c:\projects\old\a51\support\networkmgr\move.cpp(56): error C2039: 'Amount': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(58): error C2039: 'Type': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(59): error C2039: 'Yaw': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(62): error C2039: 'Amount': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(169): error C2039: 'Amount': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(170): error C2039: 'Type': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(171): error C2039: 'Yaw': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(175): error C2039: 'Amount': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(176): error C2039: 'Type': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(177): error C2039: 'Yaw': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(186): error C2039: 'Amount': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(187): error C2039: 'Type': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(188): error C2039: 'Yaw': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(331): error C2039: 'Amount': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(342): error C2039: 'Amount': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(344): error C2039: 'Amount': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(345): error C2039: 'Type': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+c:\projects\old\a51\support\networkmgr\move.cpp(346): error C2039: 'Yaw': is not a member of 'net_pain'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(15): note: see declaration of 'net_pain'
+  MoveMgr.cpp
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(16): error C3646: 'SourceSlot': unknown override specifier
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(17): error C3646: 'VictimSlot': unknown override specifier
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(18): error C3646: 'DeltaHealth': unknown override specifier
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(19): error C3646: 'Kill': unknown override specifier
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(20): error C3646: 'PainIndex': unknown override specifier
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(21): error C3646: 'Severity': unknown override specifier
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(22): error C3646: 'UseYaw': unknown override specifier
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(23): error C3646: 'AbsoluteYaw': unknown override specifier
+c:\projects\old\a51\support\networkmgr\movemgr.hpp(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(51): error C2653: 'move_mgr': is not a class or namespace name
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(52): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(53): error C2065: 'm_ClientIndex': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(54): error C3861: 'Reset': identifier not found
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(55): warning C4508: 'move_mgr': function should return a value; 'void' return type assumed
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(59): error C2653: 'move_mgr': is not a class or namespace name
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(60): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(60): error C2084: function 'int move_mgr(void)' already has a body
+  c:\projects\old\a51\support\networkmgr\movemgr.cpp(51): note: see previous definition of 'move_mgr'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(65): error C2653: 'move_mgr': is not a class or namespace name
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(67): error C2065: 'm_ClientIndex': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(68): error C3861: 'Reset': identifier not found
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(73): error C2653: 'move_mgr': is not a class or namespace name
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(77): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(77): error C2065: 'MAX_MOVES': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(87): error C2065: 'm_ClientIndex': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(87): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(87): error C2065: 'm_Tail': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(87): error C2228: left of '.Seq' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(89): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(90): error C2065: 'm_Tail': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(90): error C2065: 'MAX_MOVES': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(98): error C2065: 'm_Seq': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(109): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(109): error C2065: 'm_Seq': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(114): error C2065: 'm_Seq': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(116): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(116): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(116): error C2065: 'm_Head': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(116): error C2228: left of '.Seq' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(121): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(122): error C2065: 'm_Head': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(122): error C2065: 'MAX_MOVES': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(123): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(123): error C2065: 'm_Head': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(136): error C3861: 'LogQueue': identifier not found
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(142): error C2653: 'move_mgr': is not a class or namespace name
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(144): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(145): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(145): error C2065: 'm_Tail': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(146): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(147): error C2065: 'm_Tail': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(147): error C2065: 'MAX_MOVES': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(152): error C2653: 'move_mgr': is not a class or namespace name
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(154): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(159): error C2653: 'move_mgr': is not a class or namespace name
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(164): error C2065: 'm_ClientIndex': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(166): error C2065: 'm_Head': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(166): error C2065: 'MAX_MOVES': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(167): error C2065: 'm_Tail': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(168): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(169): error C2065: 'm_Seq': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(171): error C2065: 'MAX_MOVES': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(173): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(173): error C2228: left of '.SendsLeft' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(176): error C2065: 'm_LastAcked': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(203): error C2653: 'move_mgr': is not a class or namespace name
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(210): error C2065: 'CONN_MOVES_PER_PACKET': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(212): error C2027: use of undefined type 'conn_packet'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(38): note: see declaration of 'conn_packet'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(212): error C2228: left of '.MoveID' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(213): error C2027: use of undefined type 'conn_packet'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(38): note: see declaration of 'conn_packet'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(213): error C2228: left of '.MoveSeq' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(215): error C2027: use of undefined type 'conn_packet'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(38): note: see declaration of 'conn_packet'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(215): error C2228: left of '.NMoves' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(218): error C2027: use of undefined type 'bitstream'
+  c:\projects\old\a51\xcore\entropy\network\netsocket.hpp(21): note: see declaration of 'bitstream'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(218): error C2228: left of '.GetCursor' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(219): error C2027: use of undefined type 'bitstream'
+  c:\projects\old\a51\xcore\entropy\network\netsocket.hpp(21): note: see declaration of 'bitstream'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(219): error C2228: left of '.WriteRangedS32' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(219): error C2065: 'CONN_MOVES_PER_PACKET': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(222): error C2065: 'm_Count': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(229): error C2065: 'm_Tail': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(230): error C2065: 'm_Head': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(230): error C2065: 'MAX_MOVES': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(233): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(233): error C2228: left of '.SendsLeft' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(235): error C2065: 'MAX_MOVES': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(244): error C2027: use of undefined type 'bitstream'
+  c:\projects\old\a51\xcore\entropy\network\netsocket.hpp(21): note: see declaration of 'bitstream'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(244): error C2228: left of '.WriteS32' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(244): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(244): error C2228: left of '.Seq' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(249): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(249): error C2228: left of '.SendsLeft' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(252): error C2027: use of undefined type 'bitstream'
+  c:\projects\old\a51\xcore\entropy\network\netsocket.hpp(21): note: see declaration of 'bitstream'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(252): error C2228: left of '.GetCursor' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(255): error C2065: 'm_Move': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(255): error C2228: left of '.Write' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(255): error C2065: 'm_LastAcked': undeclared identifier
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(258): error C2027: use of undefined type 'bitstream'
+  c:\projects\old\a51\xcore\entropy\network\netsocket.hpp(21): note: see declaration of 'bitstream'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(258): error C2228: left of '.Overwrite' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(260): error C2027: use of undefined type 'bitstream'
+  c:\projects\old\a51\xcore\entropy\network\netsocket.hpp(21): note: see declaration of 'bitstream'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(260): error C2228: left of '.SetCursor' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(265): error C2027: use of undefined type 'conn_packet'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(38): note: see declaration of 'conn_packet'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(265): error C2228: left of '.MoveID' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(265): error C2228: left of '.NMoves' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(266): error C2027: use of undefined type 'conn_packet'
+  c:\projects\old\a51\support\networkmgr\movemgr.hpp(38): note: see declaration of 'conn_packet'
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(266): error C2228: left of '.MoveSeq' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(266): error C2228: left of '.NMoves' must have class/struct/union
+c:\projects\old\a51\support\networkmgr\movemgr.cpp(266): fatal error C1003: error count exceeds 100; stopping compilation
+  Headset_Stub.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Voice\Headset_Stub.cpp': No such file or directory
+  Headset_XBOX.cpp
+c:\projects\old\a51\support\networkmgr\voice\headset_xbox.cpp(11): fatal error C1189: #error:  This should only be compiled for XBOX. Check your dependancies.
+  Generating Code...

@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_register_sequence_callback</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="registers an application function to be called immediately upon completion of playback of an XMIDI sequence.">
+<meta name="ms-hkwd" content="AIL_register_sequence_callback">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_register_sequence_callback</h1>
+<p>The function  <b>AIL_register_sequence_callback</b> registers an application function to be called immediately upon completion of playback of an XMIDI sequence.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="AILSEQUENCECB.html" class=trn>AILSEQUENCECB</a> <a href="AIL_register_sequenc8chzca.html" class=trn>AIL_register_sequence_callback</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="AILSEQUENCECB.html" class=trn>AILSEQUENCECB</a>&nbsp</b><i>callback</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sequence with which the end-of-sequence callback function handler is to be associated.</dd>
+<dt><i>callback</i></dt>
+<dd>should be set to the address of an application function prototyped as an <a href="AILSEQUENCECB.html">AILSEQUENCECB</a> callback.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The address of the previously-installed end-of-sequence function handler.</p>
+<h4>Discussion</h4>
+<p>The end-of-sequence function handler will be called after the expiration of all loop iterations executed in accordance with the <a href="AIL_set_sequence_loo1mlaaa.html">AIL_set_sequence_loop_count</a> function. </p><p> If desired, the sequence may be restarted by calling <a href="AIL_start_sequence.html">AIL_start_sequence</a> from within an end-of-sequence callback function handler. </p><p> Most MSS functions can be safely invoked from within callback functions. Exceptions include driver-installation or driver-shutdown functions and any other functions which may perform DOS or BIOS calls, such as <a href="AIL_init_sequence.html">AIL_init_sequence</a>. These exceptions are noted in the descriptions of the functions involved. If in doubt about whether a particular action may safely be performed from within a timer callback function, contact RAD Game Tools for assistance.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AILSEQUENCECB.html">AILSEQUENCECB</a>, <a href="AIL_init_sequence.html">AIL_init_sequence</a>, <a href="AIL_register_beat_casg9aaa.html">AIL_register_beat_callback</a>, <a href="AIL_register_event_cs0khaa.html">AIL_register_event_callback</a>, <a href="AIL_register_prefix_s0khaa.html">AIL_register_prefix_callback</a>, <a href="AIL_register_timbre_s0khaa.html">AIL_register_timbre_callback</a>, <a href="AIL_register_trigger8chzca.html">AIL_register_trigger_callback</a>, <a href="AIL_set_sequence_loo1mlaaa.html">AIL_set_sequence_loop_count</a>, <a href="AIL_start_sequence.html">AIL_start_sequence</a><br>
+<b>Related Basic Types:</b>
+<a href="HSEQUENCE.html">HSEQUENCE</a><br>
+<b>Related FAQs:</b>
+<a href="What's the deal with4bihxb.html">What's the deal with callbacks - are they threads, interrupts, system timers, or what?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

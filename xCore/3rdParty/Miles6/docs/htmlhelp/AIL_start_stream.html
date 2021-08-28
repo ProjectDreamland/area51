@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_start_stream</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="starts playback of the specified stream.">
+<meta name="ms-hkwd" content="AIL_start_stream">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_start_stream</h1>
+<p>The function  <b>AIL_start_stream</b> starts playback of the specified stream.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_start_stream.html" class=trn>AIL_start_stream</a>(</b>
+<b>&nbsp&nbsp<a href="HSTREAM.html" class=trn>HSTREAM</a>&nbsp</b><i>stream</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>stream</i></dt>
+<dd>specifies which stream to begin playing.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>This function doesn't do any file reading, so it is safe to call from an interrupt-based callback function. </p><p> If you call this function on an already-playing stream, then the stream will be restarted from the beginning. </p><p> Under DOS, you must call <a href="AIL_service_stream.html">AIL_service_stream</a> for the stream to be played. </p><p> Example files that use this function: Demo.C, Stream.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Digital Audio Stream436kmy.html">Digital Audio Streaming Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_pause_stream.html">AIL_pause_stream</a>, <a href="AIL_service_stream.html">AIL_service_stream</a>, <a href="AIL_stream_status.html">AIL_stream_status</a><br>
+<b>Related Basic Types:</b>
+<a href="HSTREAM.html">HSTREAM</a>, <a href="void.html">void</a><br>
+<b>Related FAQs:</b>
+<a href="How do I start an aupeb0vo.html">How do I start an audio file somewhere in the middle?</a>, <a href="How do I stream a fisosz8v.html">How do I stream a file off a hard disk or CD?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>XMIDI For Loop Controller (116)</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="XMIDI For Loop Controller (116)">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>XMIDI For Loop Controller (116)</h1>
+<h4>Discussion</h4>
+<p> 1-127: Define beginning of MIDI data block to be played a total of v times, where v is the For loop controller's value </p><p> 0: Define beginning of MIDI data block to be played indefinitely </p><p>This controller allows the creation of a loop within an XMIDI sequence. Its use is almost self-explanatory, especially for those familiar with BASIC or C's "for...next" construct. A loop value of 1 causes the block of MIDI/XMIDI events between the For controller and its corresponding Next/Break controller to be executed precisely once - as if the controllers did not exist. Values from 2 to 127 cause the event block to be executed from 2 to 127 times. A value of 0, on the other hand, causes the event block to loop indefinitely, interruptible only at the application's request. </p><p>There are four rules to bear in mind when using For...Next/Break loops: </p><p>* At least one XMIDI 'quantization interval' must separate the For and Next/Break loop controllers. In practice, this means that more than 1/120 second (8.4 milliseconds) of real time must elapse between these two events during playback. Otherwise, the application will "hang" forever, since neither the For nor the Next/Break controller automatically terminates the current interval. </p><p>* The branching effect caused by a Next/Break controller does not result in the note queue being flushed, unlike the operation of the <a href="AIL_branch_index.html">AIL_branch_index</a> function. Only the sequence pointer is adjusted by the Next/Break controller. Refer to the <a href="AIL_branch_index.html">AIL_branch_index</a> function description and the <a href="MILES_PREFERENCES.html#MDI_ALLOW_LOOP_BRANCHING">MDI_ALLOW_LOOP_BRANCHING</a> preference for additional notes about sequence branching in general. </p><p>* Multi-track MIDI Format 1 files are converted to MIDI Format 0 during the XMIDI compilation process. This implies that loops placed on a single track will actually cause events in all other tracks to be repeated as well. In situations where it is desired to loop tracks independently of each other, a possible solution is to split the tracks into multiple XMIDI sequences and have the application play each sequence simultaneously. </p><p>* For...Next/Break controller loops may be nested up to 4 levels deep. </p>
+<p><a href="XMIDI Next-Break Loorcm50t.html">Next Topic (XMIDI Next-Break Loop Controller (117))</a>  </p><p><a href="XMIDI Indirect Contrbv6kfq.html">Previous Topic (XMIDI Indirect Controller Prefix (115))</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Extended MIDI Techniid0f6g.html">Extended MIDI Technical Reference</a><br>
+<b>Related Functions:</b>
+<a href="AIL_branch_index.html">AIL_branch_index</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

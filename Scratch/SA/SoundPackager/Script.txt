@@ -1,0 +1,30 @@
+package:
+NewTest [ volume=1  volumevar=0  pitch=0.015625  pitchvar=0  pan=0  priority=255  effect=0  nearclip=0  farclip=2 ] 
+files:
+FF_Human_Run_Metal01 HOT C:\GameData\A51\Source\Audio\SFX\Player\FF_Human_Run_Metal01.aif
+FF_Human_Run_Metal02 HOT C:\GameData\A51\Source\Audio\SFX\Player\FF_Human_Run_Metal02.aif
+FF_Human_Run_Metal03 HOT C:\GameData\A51\Source\Audio\SFX\Player\FF_Human_Run_Metal03.aif
+AttackSwooshA01 HOT C:\GameData\A51\Source\Audio\SFX\NonPlayerWeapons\AttackSwooshA01.aif
+AttackSwooshA03 HOT C:\GameData\A51\Source\Audio\SFX\NonPlayerWeapons\AttackSwooshA03.aif
+AttackSwooshA06 HOT C:\GameData\A51\Source\Audio\SFX\NonPlayerWeapons\AttackSwooshA06.aif
+FF_Player_Run_Metal01 HOT C:\GameData\Meridian\Source\Audio\Voice\Chapter02\Thorin_02_01.aif
+FF_Player_Run_Metal02 HOT C:\Projects\T2\Demo1\AUDIO\MUSIC\InevLogo_Groove1_03.aif
+FF_Player_Run_Metal03 HOT C:\Projects\T2\Demo1\AUDIO\MUSIC\InevLogo_Groove1_03.aif
+descriptors:
+Run complex 
+{
+FF_Human_Run_Metal01  0.00 
+FF_Human_Run_Metal02  0.00 
+FF_Human_Run_Metal03  0.00 
+}
+Attack wlist 
+{
+AttackSwooshA01 0 
+AttackSwooshA03 0 
+AttackSwooshA06 0 
+}
+Descriptor3 complex 
+{
+FF_Player_Run_Metal01  0.00 
+}
+c:\temp\PS2\NewTest.audiopkg

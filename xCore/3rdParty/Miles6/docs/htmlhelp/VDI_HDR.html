@@ -1,0 +1,92 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>VDI_HDR</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="describes a DOS sound driver's Driver Header Table.">
+<meta name="ms-hkwd" content="VDI_HDR">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>VDI_HDR</h1>
+<p>The structure  <b>VDI_HDR</b> describes a DOS sound driver's Driver Header Table.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="VDI_HDR.html" class=trn>VDI_HDR</a>
+{
+&nbsp&nbsp<a href="U8.html" class=trn>U8</a></b><i> ID[8]</i><b>;
+&nbsp&nbsp<a href="U32.html" class=trn>U32</a></b><i> driver_version</i><b>;
+&nbsp&nbsp<a href="IO_PARMS.html" class=trn>IO_PARMS *</a></b><i> common_IO_configurations</i><b>;
+&nbsp&nbsp<a href="U16.html" class=trn>U16</a></b><i> num_IO_configurations</i><b>;
+&nbsp&nbsp<a href="char P.html" class=trn>char *</a></b><i> environment_string</i><b>;
+&nbsp&nbsp<a href="IO_PARMS.html" class=trn>IO_PARMS</a></b><i> IO</i><b>;
+&nbsp&nbsp<a href="U16.html" class=trn>U16</a></b><i> service_rate</i><b>;
+&nbsp&nbsp<a href="U16.html" class=trn>U16</a></b><i> busy</i><b>;
+&nbsp&nbsp<a href="U16.html" class=trn>U16</a></b><i> driver_number</i><b>;
+&nbsp&nbsp<a href="U16.html" class=trn>U16</a></b><i> this_ISR</i><b>;
+&nbsp&nbsp<a href="void P.html" class=trn>void *</a></b><i> prev_ISR</i><b>;
+&nbsp&nbsp<a href="U8.html" class=trn>U8</a></b><i> scratch[128]</i><b>;
+&nbsp&nbsp<a href="char.html" class=trn>char</a></b><i> dev_name[80]</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Members</h4>
+<dl>
+<dt><i>ID[8]</i></dt>
+<dd>is an eight-character string which identifies the MSS driver's type. In assembly language, for example, the ID string would be initialized with a statement of the form db 'AIL3xxx',26, where xxx is replaced by 'DIG' for .DIG digital sound drivers, and 'MDI' for .MDI XMIDI drivers.</dd>
+<dt><i>driver_version</i></dt>
+<dd>should be initialized to a hexadecimal value corresponding to the revision level of the DDK For instance, version 0.10 of the DDK would correspond to a driver_version value of 0000010H, while version 1.00 would be 00000100H. See the MSS_DIG.H file for the current DDK version number.</dd>
+<dt><i>common_IO_configurations</i></dt>
+<dd>points to an array of num_IO_configurations structures of type <a href="IO_PARMS.html">IO_PARMS</a> (above). This is a list of commonly encountered user I/O port settings for the supported sound device(s). It offers a reasonably "safe" compromise for auto-detection of sound hardware -- one that lies between attempting detection at only one factory default setting and recklessly scanning dozens of I/O port combinations, as many other drivers have attempted to do in the past. num_IO_configurations may be initialized to 0 if appropriate.</dd>
+<dt><i>num_IO_configurations</i></dt>
+<dd>specifies how many I/O configurations are pointed to by the common_IO_configuration field.</dd>
+<dt><i>environment_string</i></dt>
+<dd>if not NULL, points to an ASCII environment variable name (such as 'BLASTER' for Creative Labs Sound Blaster drivers) which may be found on end-users' systems and used to identify the correct I/O parameters for the supported audio device. The programmer may be able to avoid the "risks" inherent in the auto-detection process by performing a <i>getenv</i> for this standard environment variable and, if the result is not NULL, calling Function 303H (Parse Environment String) to fill the <a href="VDI_HDR.html">VDI_HDR</a>'s <a href="IO_PARMS.html">IO_PARMS</a> structure with the information derived from the variable.</dd>
+<dt><i>IO</i></dt>
+<dd>tells the driver what I/O parameters to use to communicate with the supported device. It must be initialized by either MSS or by calling Function 303H (Parse Environment String) prior to any calls to functions 304H - 402H.</dd>
+<dt><i>service_rate</i></dt>
+<dd>if greater than zero, the driver requires real-mode callback service at service_rate calls per second from MSS via Function 302H (Periodic Interrupt Service). Function 302H is typically employed only for .MDI drivers or .DIG drivers which support non-DMA-equipped audio adapters, such as PCMCIA or parallel-port devices. Most .DIG drivers will not need to use Function 302H for timing, as digital audio devices generally provide their own timing and interrupt capabilities.</dd>
+<dt><i>busy</i></dt>
+<dd>initialized to 0 by MSS before any driver functions are called. Its value will become non-zero during any INT 66H function call to the driver, or while any external interrupt service for audio devices is taking place. MSS will not attempt any type of interaction with a driver whose busy flag is nonzero.</dd>
+<dt><i>driver_number</i></dt>
+<dd>initialized by MSS to a unique driver number value. When an INT 66H call is received, the driver compares the caller's BX value with driver_number, responding to the call only if the two values are equal. Otherwise, the call is dispatched to the prev_ISR handler (below).</dd>
+<dt><i>this_ISR</i></dt>
+<dd>initialized by the driver at assembly time. Its value is the offset of the driver's INT 66H function dispatcher from the beginning of the driver image.</dd>
+<dt><i>prev_ISR</i></dt>
+<dd>initialized by MSS to the address of the INT 66H handler which was active prior to installation of this_ISR into the INT 66H chain. When an INT 66H call is received, the driver compares the caller's BX value with driver_number, responding to the call only if the two values are equal. Otherwise, the call is dispatched to the prev_ISR handler.</dd>
+<dt><i>scratch[128]</i></dt>
+<dd>provides a 128-byte array which may be used either as temporary workspace by any sound driver function or as a convenient real-mode memory buffer for communications between MSS and functions such as 303H (Parse Environment String).</dd>
+<dt><i>dev_name[80]</i></dt>
+<dd>is an 80-byte array which contains the ASCII name(s) of the driver's supported device(s). Characters past the end of the ASCII string should be initialized to 0.</dd>
+</dl>
+<h4>Discussion</h4>
+<p> The driver header's ID, driver_version, and this_ISR fields are statically initialized at assembly time. <b>common_IO_configurations</b>, <b>num_IO_configurations</b>, <b>environment_string</b>, and <b>service_rate</b> must be initialized by Function 300H (Initialize Driver), and cannot be accessed by MSS until after this function is called. All other members, including <b>busy</b>, <b>driver_number</b>, and <b>prev_ISR</b> are initialized by MSS immediately upon loading and installing the driver, before any INT 66H calls to the driver can be made. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="MSS Device Developmew8besk.html">MSS Device Development Kit for DOS Sound Drivers</a><br>
+<b>Related Sections:</b>
+<a href="DDK Digital Function6w0qxh.html">DDK Digital Function: IRQ_acknowledge</a>, <a href="DDK Digital Function85lgj5.html">DDK Digital Function: IRQ_validate</a>, <a href="DDK Function- 302H P3nqeyf.html">DDK Function: 302H Periodic Interrupt Service</a>, <a href="DDK Function- 303H P7lcdur.html">DDK Function: 303H Parse Environment String</a>, <a href="DDK Function- 304H Vtb2frb.html">DDK Function: 304H Verify Device I/O Parameters</a>, <a href="DDK Function- 305H Iqn1pgk.html">DDK Function: 305H Initialize Device</a>, <a href="DOS Sound Driver Arcyngbna.html">DOS Sound Driver Architecture</a><br>
+<b>Related Basic Types:</b>
+<a href="U16.html">U16</a>, <a href="U32.html">U32</a>, <a href="U8.html">U8</a>, <a href="char.html">char</a>, <a href="char P.html">char *</a>, <a href="void P.html">void *</a><br>
+<b>Related Structures:</b>
+<a href="IO_PARMS.html">IO_PARMS</a>, <a href="VDI_HDR.html">VDI_HDR</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

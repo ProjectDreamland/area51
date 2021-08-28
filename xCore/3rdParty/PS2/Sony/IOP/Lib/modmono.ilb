@@ -1,0 +1,7 @@
+#IOP-ILB# [PsIImodmono 3000]
+L modmono
+V 0x0101
+F 0x0000
+E 004 sceMidiMono_Init
+E 005 sceMidiMono_ATick
+E 006 sceMidiMono_SetMono

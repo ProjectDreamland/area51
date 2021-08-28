@@ -1,0 +1,66 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_create_wave_synthesizer</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="creates a "virtual wave synthesizer" by associating an XMIDI driver with a digital audio driver and a library file containing digital audio samples assigned to various MIDI patches.">
+<meta name="ms-hkwd" content="AIL_create_wave_synthesizer">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_create_wave_synthesizer</h1>
+<p>The function  <b>AIL_create_wave_synthesizer</b> creates a "virtual wave synthesizer" by associating an XMIDI driver with a digital audio driver and a library file containing digital audio samples assigned to various MIDI patches.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HWAVESYNTH.html" class=trn>HWAVESYNTH</a> <a href="AIL_create_wave_syntrqseaa.html" class=trn>AIL_create_wave_synthesizer</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i><b>,</b>
+<b>&nbsp&nbsp<a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a>&nbsp</b><i>mdi</i><b>,</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>wave_lib</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>polyphony</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>specifies the digital audio driver to play sampled MIDI instruments or sound effects.</dd>
+<dt><i>mdi</i></dt>
+<dd>specifies the XMIDI music driver to trigger the playback of sampled MIDI instruments or sound effects.</dd>
+<dt><i>wave_lib</i></dt>
+<dd>points to a memory-resident <i>wave library</i> file created with the WAVELIB program.</dd>
+<dt><i>polyphony</i></dt>
+<dd>specifies the number of digital sample handles to reserve for use with the virtual wave synthesizer.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A handle to the newly created virtual wave synthesizer, or NULL if insufficient memory was available.</p>
+<h4>Discussion</h4>
+<p>Note that this function is now obsolete. Applications should migrate to the DLS functions as soon as possible. </p><p> The wave library file created by WAVELIB contains a collection of digital audio samples, together with information assigning each sample an XMIDI patch bank number and a MIDI Program Change or rhythm-channel key number. The entire wave library file must be resident in memory (and VMM page-locked) during playback of sequences which make use of digital audio triggers. Refer to the current version of the example wave library list file WAVEDEMO.TXT to learn about the parameters which may be associated with wave samples. </p><p> Only one wave synthesizer instance may be associated with each XMIDI or digital audio driver. Example files that use this function: MIDIECHO.C, XDIGPLAY.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Sections:</b>
+<a href="WAVELIB - Wave Synthemm6zo.html">WAVELIB - Wave Synthesizer Librarian</a><br>
+<b>Related Functions:</b>
+<a href="AIL_destroy_wave_syn7m4hba.html">AIL_destroy_wave_synthesizer</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="HMDIDRIVER.html">HMDIDRIVER</a>, <a href="HWAVESYNTH.html">HWAVESYNTH</a>, <a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="S32.html">S32</a>, <a href="void const P.html">void const *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

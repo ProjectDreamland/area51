@@ -1,0 +1,63 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_file_read</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="loads a data file into the specified memory address, optionally allocating the memory as well.">
+<meta name="ms-hkwd" content="AIL_file_read">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_file_read</h1>
+<p>The function  <b>AIL_file_read</b> loads a data file into the specified memory address, optionally allocating the memory as well.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void P.html" class=trn>void *</a> <a href="AIL_file_read.html" class=trn>AIL_file_read</a>(</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>filename</i><b>,</b>
+<b>&nbsp&nbsp<a href="void.html" class=trn>void</a>&nbsp*</b><i>dest</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>filename</i></dt>
+<dd>specifies the data file that you'd like to read.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>dest</i></dt>
+<dd>specifies the address of where you'd like the data loaded. If you pass in NULL for this parameter, then MSS will allocate the memory to hold the data file with <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a>. You can also pass in the flag "FILE_READ_WITH_SIZE" for the dest parameter. This flag also tells MSS to allocate the memory to hold the data file, but, in addition, it will place the size of the data in the first four bytes of the buffer. This saves an extra call to the <a href="AIL_file_size.html">AIL_file_size</a> function.</dd>
+</dl>
+<h4>Returns</h4>
+<p>If *dest was NULL, then this function will return the pointer to the new memory block. If *dest was an address, then this function will just return *dest. If an error occurred, then this function will return NULL - use <a href="AIL_file_error.html">AIL_file_error</a> and <a href="AIL_last_error.html">AIL_last_error</a> to get the specific error.</p>
+<h4>Discussion</h4>
+<p>If you use this function to allocate the memory for you, then you must free the pointer it returns with <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a> or your application will leak. </p><p> Under DOS, MacOS and Win16, this function must not be invoked from an interrupt-based callback function. </p><p> Example files that use this function: DEMO.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Memory and File Services.html">Memory and File Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_file_error.html">AIL_file_error</a>, <a href="AIL_file_fss_read.html">AIL_file_fss_read</a>, <a href="AIL_file_size.html">AIL_file_size</a>, <a href="AIL_file_write.html">AIL_file_write</a>, <a href="AIL_last_error.html">AIL_last_error</a>, <a href="AIL_mem_alloc_lock.html">AIL_mem_alloc_lock</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>, <a href="AIL_set_file_callbacks.html">AIL_set_file_callbacks</a><br>
+<b>Related Basic Types:</b>
+<a href="char const P.html">char const *</a>, <a href="void.html">void</a>, <a href="void P.html">void *</a><br>
+<b>Related FAQs:</b>
+<a href="How careful do I havbuvn9y.html">How careful do I have to be when shutting down?</a>, <a href="How do I play a 3D d5zrlfk.html">How do I play a 3D digital sound?</a>, <a href="How do I play a digiyg6gda.html">How do I play a digital sound?</a>, <a href="How do I play an XMIsog05o.html">How do I play an XMIDI file with a DLS instrument set?</a>, <a href="How do I play an XMIuu17l1.html">How do I play an XMIDI or MIDI file?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

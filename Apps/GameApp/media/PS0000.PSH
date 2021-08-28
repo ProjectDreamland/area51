@@ -1,0 +1,25 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;   PS0000.PSH: kPS_DIFFUSE_PER_PIXEL_ILLUM
+;
+;   Texture alpha controls glow. Glow is stored in destination pixel's
+;   alpha channel.
+;
+;   t0 - diffuse texture
+;   t1 - env map
+;   t2 - detail
+;   t3 - proj
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;   tex t0
+
+;==----------------------------------------------------------------------------
+;
+;   Blend diffuse with texel, write glow to alpha
+;
+;==----------------------------------------------------------------------------
+
+    mul r0.rgb,v0.rgb,t0.rgb
+    lrp r0.rgb,t0.a  ,t0.rgb,r0.rgb +
+    mov r0.a  ,t0.a

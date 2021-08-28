@@ -1,0 +1,203 @@
+//==============================================================================
+//  shadreceive_transform.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode handles the transform of rigid instances to receive shadows.
+//==============================================================================
+
+// DS NOTE: The compiler doesn't know how to check dependencies for microcode,
+// so we'll add and remove a line of comments to force the issue. What a pain!
+//==============================================================================
+
+#include "include.vu"
+#include "shadow_include.vu"
+
+.vu 
+.org    MCODE_START_TRANSFORM
+.align  4 
+.global VU1_SHADRECEIVE_XFORM_CODE_START
+.global VU1_SHADRECEIVE_XFORM_CODE_END
+
+.global     VU1_ENTRY_SHAD_RECEIVE_FAST
+.global     VU1_ENTRY_SHAD_RECEIVE_SLOW
+.equ        VU1_ENTRY_SHAD_RECEIVE_FAST, ((VU1_SHADOW_RECEIVE_FAST-VU1_SHADRECEIVE_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+.equ        VU1_ENTRY_SHAD_RECEIVE_SLOW, ((VU1_SHADOW_RECEIVE_SLOW-VU1_SHADRECEIVE_XFORM_CODE_START+MCODE_START_TRANSFORM)/8)
+
+#define BRANCH_MATERIAL_MCODE   VU1_SHADRECEIVE_XFORM_CODE_START+MCODE_START_MATERIAL-MCODE_START_TRANSFORM+16384
+#define BRANCH_CLIPPER_MCODE    VU1_SHADRECEIVE_XFORM_CODE_START+MCODE_START_CLIPPER-MCODE_START_TRANSFORM+16384
+
+VU1_SHADRECEIVE_XFORM_CODE_START:
+
+;==============================================================================
+;  Shadow receive higher-level code
+;==============================================================================
+
+VU1_SHADOW_RECEIVE_FAST:
+    nop                                                 xtop    BASE
+
+    // TODO: Why is this needed again?!?!?
+    nop[e]                                              nop
+    nop                                                 nop
+
+    nop                                                 isubiu  ITMP,   BASE,   VU1_BUFFER_SIZE*2
+    nop                                                 nop
+    nop                                                 ibeq    ITMP,   vi00,   SHAD_RECEIVE_BUFFER2
+    nop                                                 iaddiu  NBUF,   vi00,   0
+    nop                                                 iaddiu  NBUF,   BASE,   VU1_BUFFER_SIZE
+    SHAD_RECEIVE_BUFFER2:
+    nop                                                 ilw.z   INST,   VU1_COUNT(BASE)
+    nop                                                 lq.xyzw L2W3(xyzw), VU1_L2W+3(BASE)
+    nop                                                 lq.xyzw L2W2(xyzw), VU1_L2W+2(BASE)
+    nop                                                 lq.xyzw L2W1(xyzw), VU1_L2W+1(BASE)
+    nop                                                 lq.xyzw L2W0(xyzw), VU1_L2W+0(BASE)
+    nop                                                 iaddiu  ITMP,   vi00,   0x7f
+    nop                                                 iand    NUMV,   INST,   ITMP
+    nop                                                 bal     RETN,   TRANSFORM_AND_BACKUP_FAST
+    nop                                                 nop
+    nop                                                 b       BRANCH_MATERIAL_MCODE
+    nop                                                 nop
+
+VU1_SHADOW_RECEIVE_SKIN_FAST:
+    nop[e]                                              nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 nop
+
+VU1_SHADOW_RECEIVE_SLOW:
+    nop                                                 xtop        BASE
+    nop                                                 ilw.z       INST,       VU1_COUNT(BASE)
+    nop                                                 iaddiu      CLIP, vi00, VU1_BUFFER_0
+    nop                                                 iaddiu      NBUF, vi00, VU1_BUFFER_2
+    nop                                                 isw.x       CLIP,   VU1_CLIP_STORAGE+3(CLIP)
+    nop                                                 isw.y       BASE,   VU1_CLIP_STORAGE+3(CLIP)
+    nop                                                 b           BRANCH_CLIPPER_MCODE
+    nop                                                 isw.z       NBUF,   VU1_CLIP_STORAGE+3(CLIP)
+
+VU1_SHADOW_RECEIVE_SKIN_SLOW:
+    nop[e]                                              nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 nop
+
+;==============================================================================
+;  Rigid shadow receiving transform fast
+;==============================================================================
+
+TRANSFORM_AND_BACKUP_FAST:
+
+#define SPOS( x )                   TF04( x )   // original position
+#define TPOS( x )                   TF05( x )   // transformed position
+#define BPOS( x )                   TF06( x )   // backup of transformed position
+#define PPOS( x )                   TF07( x )   // projected position
+#define FPOS( x )                   TF08( x )   // fixed-point position
+#define STQ0( x )                   TF09( x )   // q
+#define SPTR                        TI02        // pointer to vert buffer
+#define SNXT                        TI03        // pointer to next buffer
+#define SEND                        TI04        // end marker
+
+    ; concatenate the l2w and w2s matrices
+    mulaw.xyzw      acc,        W2S3(xyzw), L2W3(w)     isubiu  ITMP, NUMV, 4
+    maddaz.xyzw     acc,        W2S2(xyzw), L2W3(z)     iadd    SPTR, vi00, BASE
+    madday.xyzw     acc,        W2S1(xyzw), L2W3(y)     ibgtz   ITMP, RIGID_4ORMORE_VERTS
+    maddx.xyzw      SLS3(xyzw), W2S0(xyzw), L2W3(x)     iadd    ITMP, vi00, NUMV
+    nop                                                 iaddiu  ITMP, vi00, 4
+
+RIGID_4ORMORE_VERTS:
+    mulaw.xyzw      acc,        W2S3(xyzw), L2W2(w)     iaddiu  SNXT, NBUF, 0x00
+    maddaz.xyzw     acc,        W2S2(xyzw), L2W2(z)     iadd    SEND, SPTR, ITMP
+    madday.xyzw     acc,        W2S1(xyzw), L2W2(y)     iadd    SEND, SEND, ITMP
+    maddx.xyzw      SLS2(xyzw), W2S0(xyzw), L2W2(x)     iadd    SEND, SEND, ITMP
+    mulaw.xyzw      acc,        W2S3(xyzw), L2W1(w)     iadd    SEND, SEND, ITMP
+    maddaz.xyzw     acc,        W2S2(xyzw), L2W1(z)     mfir.w  STQ0(w), vi00
+    madday.xyzw     acc,        W2S1(xyzw), L2W1(y)     nop
+    maddx.xyzw      SLS1(xyzw), W2S0(xyzw), L2W1(x)     nop
+    mulaw.xyzw      acc,        W2S3(xyzw), L2W0(w)     nop
+    maddaz.xyzw     acc,        W2S2(xyzw), L2W0(z)     nop
+    madday.xyzw     acc,        W2S1(xyzw), L2W0(y)     isubiu  SEND, SEND, VU1_VERT_SIZE*3
+    maddx.xyzw      SLS0(xyzw), W2S0(xyzw), L2W0(x)     nop
+
+    ; loop preamble
+    nop                                                 lq.xyzw SPOS(xyzw), VU1_XYZ(SPTR)                   ;                   ; load (0)
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       nop                                                 ; xform (0)         ;
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 nop                                                 ;                   ;
+    maddaz.xyzw     acc,        SLS2(xyzw), SPOS(z)     sq.xyzw SPOS(xyzw), VU1_XYZ(SNXT)                   ; xform (0)         ; backup (0)
+    madday.xyzw     acc,        SLS1(xyzw), SPOS(y)     nop                                                 ; xform (0)         ;
+    maddx.xyzw      TPOS(xyzw), SLS0(xyzw), SPOS(x)     nop                                                 ; xform (0)         ;
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 lq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*1)(SPTR) ;                   ; load (1)
+
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       nop                                                 ; xform (1)         ;
+    nop                                                 nop                                                 ;                   ;
+    add.xyz         BPOS(xyz),  TPOS(xyz),  vf00xyz     div     q,  vf00w,  TPOS(w)                         ; copy (0)          ; divide (0)
+    maddaz.xyzw     acc,        SLS2(xyzw), SPOS(z)     sq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*1)(SNXT) ; xform (1)         ; backup (1)
+    madday.xyzw     acc,        SLS1(xyzw), SPOS(y)     nop                                                 ; xform (1)         ;
+    maddx.xyzw      TPOS(xyzw), SLS0(xyzw), SPOS(x)     nop                                                 ; xform (1)         ;
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 lq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*2)(SPTR) ;                   ; load (2)
+
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       nop                                                 ; xform (2)         ;
+    mulq.xyz        PPOS(xyz),  BPOS(xyz),  q           nop                                                 ; project xyz (0)   ;
+    add.xyz         BPOS(xyz),  TPOS(xyz),  vf00xyz     div     q,  vf00w,  TPOS(w)                         ; copy (1)          ; divide (1)
+    maddaz.xyzw     acc,        SLS2(xyzw), SPOS(z)     sq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*2)(SNXT) ; xform (2)         ; backup (2)
+    madday.xyzw     acc,        SLS1(xyzw), SPOS(y)     nop                                                 ; xform (2)         ;
+    maddx.xyzw      TPOS(xyzw), SLS0(xyzw), SPOS(x)     nop                                                 ; xform (2)         ;
+    addq.z          STQ0(z),    vf00z,      q           nop                                                 ; project q (0)     ;
+    ftoi4.xyz       FPOS(xyz),  PPOS(xyz)               lq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*3)(SPTR) ; ftoi (0)          ; load (3)
+
+RIGID_XFORM_FAST_LOOP:
+    mulaw.xyzw      acc,        SLS3(xyzw), vf00w       iaddiu  SPTR, SPTR, VU1_VERT_SIZE                   ; xform (i+3)       ; vptr++
+    mulq.xyz        PPOS(xyz),  BPOS(xyz),  q           iaddiu  SNXT, SNXT, VU1_VERT_SIZE                   ; project xyz (i+1) ; nptr++
+    add.xyz         BPOS(xyz),  TPOS(xyz),  vf00xyz     div     q,  vf00w,  TPOS(w)                         ; copy (i+2)        ; divide (i+2)
+    maddaz.xyzw     acc,        SLS2(xyzw), SPOS(z)     sq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*2)(SNXT) ; xform (i+3)       ; backup (i+3)
+    madday.xyzw     acc,        SLS1(xyzw), SPOS(y)     sq.xyz  FPOS(xyz),  VU1_XYZ-(VU1_VERT_SIZE*1)(SPTR) ; xform (i+3)       ; store xyz (i)
+    maddx.xyzw      TPOS(xyzw), SLS0(xyzw), SPOS(x)     sq.zw   STQ0(zw),   VU1_UV0-(VU1_VERT_SIZE*1)(SPTR) ; xform (i+3)       ; store q (i)
+    addq.z          STQ0(z),    vf00z,      q           ibne    SPTR, SEND, RIGID_XFORM_FAST_LOOP           ; project q(i+1)    ; loop
+    ftoi4.xyz       FPOS(xyz),  PPOS(xyz)               lq.xyzw SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*3)(SPTR) ; ftoi (i+1)        ; load (i+4)
+
+    ; finish up the last few verts
+    nop                                                 iaddiu  SPTR, SPTR, VU1_VERT_SIZE                   ;                   ; vptr++
+    mulq.xyz        PPOS(xyz),  BPOS(xyz),  q           iaddiu  SNXT, SNXT, VU1_VERT_SIZE                   ; project xyz (n-1) ; nptr++
+    add.xyz         BPOS(xyz),  TPOS(xyz),  vf00xyz     div     q,  vf00w,  TPOS(w)                         ; copy (n)          ; divide (n)
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 sq.xyz  FPOS(xyz),  VU1_XYZ-(VU1_VERT_SIZE*1)(SPTR) ;                   ; store xyz (n-2)
+    nop                                                 sq.zw   STQ0(zw),    VU1_UV0-(VU1_VERT_SIZE*1)(SPTR) ;                   ; store q (n-2)
+    addq.z          STQ0(z),    vf00z,      q           nop                                                 ; project q (n-1)   ;
+    ftoi4.xyz       FPOS(xyz),  PPOS(xyz)               nop                                                 ; ftoi (n-1)        ;
+
+    nop                                                 iaddiu  SPTR, SPTR, VU1_VERT_SIZE                   ;                   ; vptr++
+    mulq.xyz        PPOS(xyz),  BPOS(xyz),  q           iaddiu  SNXT, SNXT, VU1_VERT_SIZE                   ; project xyz (n)   ; nptr++
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 sq.xyz  FPOS(xyz),  VU1_XYZ-(VU1_VERT_SIZE*1)(SPTR) ;                   ; store xyz (n-1)
+    nop                                                 sq.zw   STQ0(zw),   VU1_UV0-(VU1_VERT_SIZE*1)(SPTR) ;                   ; store q (n-1)
+    addq.z          STQ0(z),    vf00z,      q           nop                                                 ; project q (n)     ;
+    ftoi4.xyz       FPOS(xyz),  PPOS(xyz)               nop                                                 ; ftoi (n)          ;
+
+    nop                                                 iaddiu  SPTR, SPTR, VU1_VERT_SIZE                   ;                   ; vptr++
+    nop                                                 iaddiu  SNXT, SNXT, VU1_VERT_SIZE                   ;                   ; nptr++
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 nop                                                 ;                   ;
+    nop                                                 sq.xyz  FPOS(xyz),  VU1_XYZ-(VU1_VERT_SIZE*1)(SPTR) ;                   ; store xyz (n)
+    nop                                                 sq.zw   STQ0(zw),   VU1_UV0-(VU1_VERT_SIZE*1)(SPTR) ;                   ; store q (n)
+
+    ; finished
+    nop                                                 jr      RETN
+    nop                                                 nop
+
+#undef SPOS
+#undef TPOS
+#undef BPOS
+#undef PPOS
+#undef FPOS
+#undef STQ0
+#undef SPTR
+#undef SNXT
+#undef SEND
+
+VU1_SHADRECEIVE_XFORM_CODE_END:

@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_register_SOB_callback</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="arranges for callback service to be provided to an application's function just before a block of sample data is merged into the hardware buffer.">
+<meta name="ms-hkwd" content="AIL_register_SOB_callback">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_register_SOB_callback</h1>
+<p>The function  <b>AIL_register_SOB_callback</b> arranges for callback service to be provided to an application's function just before a block of sample data is merged into the hardware buffer.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="AILSAMPLECB.html" class=trn>AILSAMPLECB</a> <a href="AIL_register_SOB_callback.html" class=trn>AIL_register_SOB_callback</a>(</b>
+<b>&nbsp&nbsp<a href="HSAMPLE.html" class=trn>HSAMPLE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="AILSAMPLECB.html" class=trn>AILSAMPLECB</a>&nbsp</b><i>SOB</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sample for which start-of-block (SOB) callback service is desired.</dd>
+<dt><i>SOB</i></dt>
+<dd>should be set to the address of the callback function which is to be invoked just before the audio data at <a href="AIL_sample_position.html">AIL_sample_position</a> is merged into the hardware buffer for playback. A value of NULL cancels start-of-block callbacks.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The address of the previously-installed SOB callback function handler.</p>
+<h4>Discussion</h4>
+<p> The Miles Sound System digital audio mixer operates on the application's audio data in small chunks, called <i>blocks</i>. Part of the system's responsibility is to poll the hardware buffers in the background to determine when the next block of audio data from the application should be processed and copied into an empty hardware half-buffer. As an example, consider a hardware driver which is configured to play 16-bit audio at 20,000 Hz with a pair of 1,000-byte half-buffers. The driver's <i>data rate</i> is 40,000 bytes per second, implying a half-buffer playback rate of 40,000 / 1,000, or 40 buffer transitions per second. </p><p> At a rate of 40 times per second, then, a sample block equivalent to one half-buffer's worth of data is fetched from the application's sample data buffer at the current playback position. The samples are resampled if necessary to conform to the driver's hardware rate, converted between 8-bit and 16-bit formats where appropriate, mathematically scaled for volume and panpot control, algebraically added to data from other active samples, clipped, and copied into the driver's empty half-buffer to be played as soon as the other half-buffer finishes playing. </p><p>Consequently, any change made to a sample's playback characteristics - be it a change in volume, panpot value, pitch, start/stop status, or playback position - must wait until the next half-buffer transition occurs before it can take effect. Certain applications, such as those employing synchronized video playback, may find it useful to set up a start-of-block callback handler with this function so they can be informed of exactly when their data is about to be processed. After the start-of-block callback occurs, the first data sample point at the current sample position (as reported by <a href="AIL_sample_position.html">AIL_sample_position</a>) is guaranteed to be transferred to the sound hardware in one half-buffer period or less. This period of "uncertainty" amounts to one to two half-buffer periods if the application merely relies on the time of its <a href="AIL_start_sample.html">AIL_start_sample</a> call to determine its audio playback timing, since a total of two hardware half-buffer transitions must occur before data from the sample is actually passed to the sound hardware. </p><p>Most MSS functions can be safely invoked from within callback functions. Exceptions include driver-installation or driver-shutdown functions and any other functions which may perform DOS or BIOS calls, such as <a href="AIL_init_sequence.html">AIL_init_sequence</a>. These exceptions are noted in the descriptions of the functions involved. If in doubt about whether a particular action may safely be performed from within a timer callback function, contact RAD Game Tools for assistance. </p><p> Under Win16 and Win32 on waveOut, the MSS architecture permits a sound effect to be started with essentially zero latency <i>as long as no other sound effects are currently being played</i>. On the other hand, latency times incurred for samples which must be injected into an already-running mixer stream may be much higher than even the worst figures obtained in the DOS version of MSS . Consequently, it is important when beginning video playback or any other latency-critical activity to ensure that no previous digital audio effects have been played for at least a few hundred milliseconds prior to starting playback of the critical sound effect or stream. </p><p> On a Win32 system with a DirectSound driver installed, MSS will take advantage of the high-performance Microsoft DirectSound buffer mechanism to eliminate these latency problems. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AILSAMPLECB.html">AILSAMPLECB</a>, <a href="AIL_init_sequence.html">AIL_init_sequence</a>, <a href="AIL_register_EOB_callback.html">AIL_register_EOB_callback</a>, <a href="AIL_register_EOF_callback.html">AIL_register_EOF_callback</a>, <a href="AIL_register_EOS_callback.html">AIL_register_EOS_callback</a>, <a href="AIL_sample_position.html">AIL_sample_position</a>, <a href="AIL_start_sample.html">AIL_start_sample</a><br>
+<b>Related Basic Types:</b>
+<a href="HSAMPLE.html">HSAMPLE</a><br>
+<b>Related FAQs:</b>
+<a href="What's the deal with4bihxb.html">What's the deal with callbacks - are they threads, interrupts, system timers, or what?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

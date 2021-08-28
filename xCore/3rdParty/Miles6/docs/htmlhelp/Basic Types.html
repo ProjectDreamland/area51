@@ -1,0 +1,215 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Basic Types</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Basic Types">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Basic Types</h1>
+<h4>Discussion</h4>
+<p>Miles strives to be as cross-platform as possible. To this end, Miles uses a set of basic types that are configured for each platform to ensure consistency in the API. </p><p>These basic types include simple integer types, float types, and more. In general, it is best if an application uses Miles's types internally in places where it interfaces to Miles, as this ensures that porting the application to other Miles platforms will be quick and easy.</p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="Basic Types.html">Basic Types</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S8.html">S8</a></td>
+<td height=25 valign=top class=toc>describes a signed 8-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U8.html">U8</a></td>
+<td height=25 valign=top class=toc>describes an unsigned 8-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S16.html">S16</a></td>
+<td height=25 valign=top class=toc>describes a signed 16-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U16.html">U16</a></td>
+<td height=25 valign=top class=toc>describes an unsigned 16-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S64.html">S64</a></td>
+<td height=25 valign=top class=toc>describes a signed 64-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U64.html">U64</a></td>
+<td height=25 valign=top class=toc>describes an unsigned 64-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S32.html">S32</a></td>
+<td height=25 valign=top class=toc>describes a signed 32-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U32.html">U32</a></td>
+<td height=25 valign=top class=toc>describes an unsigned 32-bit integer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="F32.html">F32</a></td>
+<td height=25 valign=top class=toc>describes a standard 32-bit floating-point number.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="F64.html">F64</a></td>
+<td height=25 valign=top class=toc>describes a standard 64-bit double-precision floating-point number.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="void.html">void</a></td>
+<td height=25 valign=top class=toc>describes a standard C/C++ void return type.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="void P.html">void *</a></td>
+<td height=25 valign=top class=toc>describes a standard C/C++ untyped memory pointer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="void const P.html">void const *</a></td>
+<td height=25 valign=top class=toc>describes a constant (unchangeable) C/C++ untyped memory pointer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="char.html">char</a></td>
+<td height=25 valign=top class=toc>describes a single character type.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="char P.html">char *</a></td>
+<td height=25 valign=top class=toc>describes a normal zero-terminated C-style string.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="char const P.html">char const *</a></td>
+<td height=25 valign=top class=toc>describes a constant (unchangeable) zero-terminated C-style string.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDIGDRIVER.html">HDIGDRIVER</a></td>
+<td height=25 valign=top class=toc>is a handle to an digital audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HMDIDRIVER.html">HMDIDRIVER</a></td>
+<td height=25 valign=top class=toc>is a handle to an digital audio device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDLSDEVICE.html">HDLSDEVICE</a></td>
+<td height=25 valign=top class=toc>is a handle to an DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDIGINPUT.html">HDIGINPUT</a></td>
+<td height=25 valign=top class=toc>is a handle to an digital audio input device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HPROVIDER.html">HPROVIDER</a></td>
+<td height=25 valign=top class=toc>is a handle to an available RIB provider.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDRIVERSTATE.html">HDRIVERSTATE</a></td>
+<td height=25 valign=top class=toc>is a handle to an open digital audio filter.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HTIMER.html">HTIMER</a></td>
+<td height=25 valign=top class=toc>is a handle to a Miles timer callback.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HAUDIO.html">HAUDIO</a></td>
+<td height=25 valign=top class=toc>is a handle to a quick API handle (it can contain
+
+digital or MIDI data).</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HSAMPLE.html">HSAMPLE</a></td>
+<td height=25 valign=top class=toc>is a handle to a digital sound sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HSTREAM.html">HSTREAM</a></td>
+<td height=25 valign=top class=toc>is a handle to a digital audio stream.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="H3DSAMPLE.html">H3DSAMPLE</a></td>
+<td height=25 valign=top class=toc>is a handle to 3D digital audio sample.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="H3DPOBJECT.html">H3DPOBJECT</a></td>
+<td height=25 valign=top class=toc>is a generic handle to 3D digital audio sample, a 3D
+
+listener object, or over 3D object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HREDBOOK.html">HREDBOOK</a></td>
+<td height=25 valign=top class=toc>is a handle to a CD audio (redbook) device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HSEQUENCE.html">HSEQUENCE</a></td>
+<td height=25 valign=top class=toc>is a handle to an XMIDI sequence.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HWAVESYNTH.html">HWAVESYNTH</a></td>
+<td height=25 valign=top class=toc>is a handle to an open wave synthesizer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HDLSFILEID.html">HDLSFILEID</a></td>
+<td height=25 valign=top class=toc>is a handle to an loaded DLS instrument set.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HPROENUM.html">HPROENUM</a></td>
+<td height=25 valign=top class=toc>specifies a type used to enumerate through a list of
+
+RIB providers.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HINTENUM.html">HINTENUM</a></td>
+<td height=25 valign=top class=toc>specifies a type used to enumerate through a list of
+
+attributes and/or preferences.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DRIVER.html">AIL_DRIVER</a></td>
+<td height=25 valign=top class=toc>specifies a low-level digital or XMIDI DOS driver. </td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="REALFAR.html">REALFAR</a></td>
+<td height=25 valign=top class=toc>specifies a lower 1 MB real mode address.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTSOUND.html">LPDIRECTSOUND</a></td>
+<td height=25 valign=top class=toc>describes a pointer to a DirectSound object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTSOUNDBUFFER.html">LPDIRECTSOUNDBUFFER</a></td>
+<td height=25 valign=top class=toc>describes a pointer to a DirectSound buffer object.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HWND.html">HWND</a></td>
+<td height=25 valign=top class=toc>specifies a Windows window handle.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPHWAVEOUT.html">LPHWAVEOUT</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a Windows waveOut device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPWAVEFORMAT.html">LPWAVEFORMAT</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a PCMWAVEFORMAT structure.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPHMIDIOUT.html">LPHMIDIOUT</a></td>
+<td height=25 valign=top class=toc>specifies a pointer to a Windows midiOut device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="FSSpec.html">FSSpec</a></td>
+<td height=25 valign=top class=toc>is a MacOS file spec structure.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

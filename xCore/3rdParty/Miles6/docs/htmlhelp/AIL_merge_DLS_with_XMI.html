@@ -1,0 +1,67 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_merge_DLS_with_XMI</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="merges an XMIDI file and a DLS or MLS file together.">
+<meta name="ms-hkwd" content="AIL_merge_DLS_with_XMI">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_merge_DLS_with_XMI</h1>
+<p>The function  <b>AIL_merge_DLS_with_XMI</b> merges an XMIDI file and a DLS or MLS file together.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_merge_DLS_with_XMI.html" class=trn>AIL_merge_DLS_with_XMI</a>(</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>XMI</i><b>,</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>dls</i><b>,</b>
+<b>&nbsp&nbsp<a href="void P.html" class=trn>void *</a>&nbsp*</b><i>mss</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp*</b><i>msssize</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>XMI</i></dt>
+<dd>should point to a loaded XMIDI file image.</dd>
+<dt><i>dls</i></dt>
+<dd>should point to a loaded DLS or MLS file image.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>mss</i></dt>
+<dd>should be the address of a " void* " pointer that will return with the pointer to the new merged XMIDI file image. This parameter can be NULL if you don't need it.</dd>
+<dt><i>msssize</i></dt>
+<dd>should be the address of an unsigned 32-bit integer that will return with the size of the new merged XMIDI file image. This parameter can be NULL if you don't need it.</dd>
+</dl>
+<h4>Returns</h4>
+<p>1, if the call was successful, or 0 if the call failed.</p>
+<h4>Discussion</h4>
+<p>You must free the pointer returned in mss with <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a>. </p><p> You extract the XMIDI and DLS chunks with the <a href="AIL_extract_DLS.html">AIL_extract_DLS</a> function. </p><p> You find the XMIDI and DLS chunks with the <a href="AIL_find_DLS.html">AIL_find_DLS</a> function. </p><p> XMIDI files with merged DLS data usually have an ".MSS" extension.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_compress_DLS.html">AIL_compress_DLS</a>, <a href="AIL_extract_DLS.html">AIL_extract_DLS</a>, <a href="AIL_find_DLS.html">AIL_find_DLS</a>, <a href="AIL_mem_free_lock.html">AIL_mem_free_lock</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="void P.html">void *</a>, <a href="void const P.html">void const *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

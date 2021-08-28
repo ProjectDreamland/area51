@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_install_DIG_INI</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="installs and initializes the currently selected MSS .DIG driver file under DOS.">
+<meta name="ms-hkwd" content="AIL_install_DIG_INI">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_install_DIG_INI</h1>
+<p>The function  <b>AIL_install_DIG_INI</b> installs and initializes the currently selected MSS .DIG driver file under DOS.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_install_DIG_INI.html" class=trn>AIL_install_DIG_INI</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp*</b><i>dig</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>points to an application variable of type HDIGDRIVER. If successful, <a href="AIL_install_DIG_INI.html">AIL_install_DIG_INI</a> will validate the application's HDIGDRIVER variable for use in subsequent function calls involving the driver. Otherwise, if an error occurs, *dig's value will be undefined.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns one of the <a href="MILES_INSTALL_STATUS.html">MILES_INSTALL_STATUS</a> constants.</p>
+<h4>Discussion</h4>
+<p>For compatibility with other Miles platforms, you should use the <a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a> function instead of this DOS-only function. </p><p> The SETSOUND Audio Configuration Utility program is provided as an extensible, device-independent installation and configuration program for MSS drivers. SETSOUND presents a list of all MSS drivers in the current working directory to the end user, allowing any desired driver to be selected and configured for use with an MSS application. The MSS example programs use <a href="AIL_install_MDI_INI.html">AIL_install_MDI_INI</a> and <a href="AIL_install_DIG_INI.html">AIL_install_DIG_INI</a> to load and initialize XMIDI and digital audio drivers in a single step, eliminating the need to specify driver names on the DOS command line and ensuring compatibility with all end-user I/O configurations. </p><p> RAD Game Tools strongly recommends use of the SETSOUND utility to create DIG.INI and MDI.INI files describing the user's driver choices and configurations. MSS applications may then use the <a href="AIL_install_DIG_INI.html">AIL_install_DIG_INI</a> and <a href="AIL_install_MDI_INI.html">AIL_install_MDI_INI</a> functions instead of calling <a href="AIL_install_DIG_driv6dbdaa.html">AIL_install_DIG_driver_file</a> or <a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a> directly. This function calls <a href="AIL_read_INI.html">AIL_read_INI</a> to load the current DIG.INI file, and passes the parameters from the DIG.INI file to <a href="AIL_install_DIG_driv6dbdaa.html">AIL_install_DIG_driver_file</a>. Refer to the descriptions of these functions for a detailed summary of <a href="AIL_install_DIG_INI.html">AIL_install_DIG_INI</a> 's operation. </p><p> A return value of <a href="MILES_INSTALL_STATUS.html#AIL_NO_INI_FILE">AIL_NO_INI_FILE</a> generally arises from failure to run SETSOUND prior to launching the application. It does <i>not</i> indicate failure to detect sound hardware or problems related to driver initialization. These conditions are indicated by a return value of <a href="MILES_INSTALL_STATUS.html#AIL_INIT_FAILURE">AIL_INIT_FAILURE</a>. </p><p> You can use the <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a> function to specify an alternate path to load the .DIG driver from (if the load fails from the current directory).</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Sections:</b>
+<a href="SETSOUND - MSS Soundv7472s.html">SETSOUND - MSS Sound Configuration Utility</a><br>
+<b>Related Functions:</b>
+<a href="AIL_close_digital_driver.html">AIL_close_digital_driver</a>, <a href="AIL_install_DIG_INI.html">AIL_install_DIG_INI</a>, <a href="AIL_install_DIG_driv6dbdaa.html">AIL_install_DIG_driver_file</a>, <a href="AIL_install_MDI_INI.html">AIL_install_MDI_INI</a>, <a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a>, <a href="AIL_open_digital_driver.html">AIL_open_digital_driver</a>, <a href="AIL_read_INI.html">AIL_read_INI</a>, <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="MILES_INSTALL_STATUS.html">MILES_INSTALL_STATUS</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

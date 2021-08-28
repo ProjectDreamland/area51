@@ -1,0 +1,66 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_sequence_position</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the number of beats and measures elapsed since a given XMIDI sequence began playing.">
+<meta name="ms-hkwd" content="AIL_sequence_position">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_sequence_position</h1>
+<p>The function  <b>AIL_sequence_position</b> returns the number of beats and measures elapsed since a given XMIDI sequence began playing.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_sequence_position.html" class=trn>AIL_sequence_position</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp*</b><i>beat</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp*</b><i>measure</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sequence for which position information is desired.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>beat</i></dt>
+<dd>if not NULL, should point to a long integer into which will be stored the current sequence beat count.</dd>
+<dt><i>measure</i></dt>
+<dd>if not NULL, should point to a long integer into which will be stored the current sequence measure count.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The current beat and measure counts are stored in the variables pointed to by the parameters *beat and *measure.</p>
+<h4>Discussion</h4>
+<p>This function is used to let the application know when a new beat or measure has begun, for indexing, layering, or animation purposes. You can use the <a href="AIL_sequence_ms_position.html">AIL_sequence_ms_position</a> function to track a sequence's current position in milliseconds. </p><p> To allow an application extra time to respond to the beginning of a new beat or bar, the <a href="MILES_PREFERENCES.html#MDI_QUANT_ADVANCE">MDI_QUANT_ADVANCE</a> preference may be set at any time to cause beat and measure counts to be reported a given number of XMIDI intervals (typically 1/120 second) "ahead" of their current position. <a href="MILES_PREFERENCES.html#MDI_QUANT_ADVANCE">MDI_QUANT_ADVANCE</a>'s default preference value is 1. </p><p> The beat and measure counters are constantly updated as long as the XMIDI sequence is playing, and are reset to 0 during a call to <a href="AIL_start_sequence.html">AIL_start_sequence</a>. Generally, applications should watch for and pay attention to <i>changes</i> in the beat or measure count, rather than attempting to interpret their absolute values. </p><p> Both counters are reset to 0 when an MSS-specific XMIDI Control Change event of type 118 (76h) is encountered during playback of the sequence. This event may be embedded to ensure the validity of the beat and measure counters at critical junctures in the sequence, such as track index points. </p><p> During the XMIDI conversion process, a certain amount of MIDI timing precision is necessarily lost. Very rarely, a sequence with numerous meter map changes can cause the reported beat and measure count to temporarily lose "sync" with the actual beat and measure count as reported by the time display in the MIDI sequencer used to create the sequence. Applications which require near-perfect timing precision may be able to overcome this potential problem by increasing the XMIDI quantization rate in the <a href="MILES_PREFERENCES.html#MDI_SERVICE_RATE">MDI_SERVICE_RATE</a> preference in the runtime system before calling <a href="AIL_MIDI_to_XMI.html">AIL_MIDI_to_XMI</a>, or, if all else fails, use XMIDI Callback Trigger controllers to inform the application of critical sequence points. It may also help to advance the sequence's MIDI events in each measure so that they begin a few ticks into the first beat of their measure.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Sections:</b>
+<a href="XMIDI Clear Beat-Barqpkh7a.html">XMIDI Clear Beat-Bar Count (118)</a><br>
+<b>Related Functions:</b>
+<a href="AILBEATCB.html">AILBEATCB</a>, <a href="AIL_MIDI_to_XMI.html">AIL_MIDI_to_XMI</a>, <a href="AIL_branch_index.html">AIL_branch_index</a>, <a href="AIL_register_beat_casg9aaa.html">AIL_register_beat_callback</a>, <a href="AIL_sequence_ms_position.html">AIL_sequence_ms_position</a>, <a href="AIL_set_sequence_ms_rl07ba.html">AIL_set_sequence_ms_position</a>, <a href="AIL_start_sequence.html">AIL_start_sequence</a><br>
+<b>Related Basic Types:</b>
+<a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="S32.html">S32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

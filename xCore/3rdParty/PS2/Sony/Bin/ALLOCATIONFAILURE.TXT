@@ -1,0 +1,127 @@
+   0,        1, new   ,      256, 0x00C88050,  503, plementation/x_array_private.hpp,  
+   0,        2, new   ,     7168, 0x00C88190,  503, plementation/x_array_private.hpp,  
+   0,        3, new   ,     7168, 0x00C89DD0,  503, plementation/x_array_private.hpp,  
+   0,        4, new   ,     4096, 0x00C8BA10,  503, plementation/x_array_private.hpp,  
+   0,        5, malloc,   401408, 0x00C8CA50,  250, pport/CollisionMgr/PolyCache.cpp,  
+   0,        6, malloc,    93184, 0x00CEEA90,  252, pport/CollisionMgr/PolyCache.cpp,  
+   0,        7, malloc,   506880, 0x00D056D0,  254, pport/CollisionMgr/PolyCache.cpp,  
+   0,        8, malloc,     6052, 0x00D81310,  256, pport/CollisionMgr/PolyCache.cpp,  
+   0,        9, malloc,      768, 0x00D82AF0,  502, ore/Auxiliary/MiscUtils/Guid.cpp,  \ guid_lookup::Resize() 
+   0,       10, malloc,     4036, 0x00D82E30,  531, ore/Auxiliary/MiscUtils/Guid.cpp,  \ guid_lookup::Resize() 
+   0,       11, new   ,      128, 0x00D83E30,  503, plementation/x_array_private.hpp,  
+   0,       13, new   ,     4624, 0x00D85150,  503, plementation/x_array_private.hpp,  
+   0,       15, new   ,       80, 0x00D863B0,  206, ./Ps2/iopmanager.cpp            ,  
+   0,       16, malloc,     8192, 0x00D86450,  339, ./Implementation/x_threads.cpp  ,  
+   0,       17, new   ,       80, 0x00D88490,  749, ./Implementation/x_threads.cpp  ,  
+   0,       18, malloc,   131072, 0x00D88530,  339, ./Implementation/x_threads.cpp  ,  
+   0,       19, new   ,       96, 0x00DA8570,  635, ./MemCard/memcard_ps2.cpp       ,  \ DYNAMIC \ STARTUP 
+   0,       20, new   ,       80, 0x00DA8610,  652, ./MemCard/memcard_ps2.cpp       ,  \ DYNAMIC \ STARTUP 
+   0,       21, malloc,     8192, 0x00DA86B0,  339, ./Implementation/x_threads.cpp  ,  \ DYNAMIC \ STARTUP 
+   0,       22, new   ,       96, 0x00DAA6F0,  112, ./Ps2/ps2_pad.cpp               ,  \ DYNAMIC \ STARTUP \ eng_Init() 
+   0,       23, malloc,      128, 0x00DAA790,   24, ./Implementation/x_mqueue.cpp   ,  \ DYNAMIC \ STARTUP \ eng_Init() 
+   0,       24, new   ,       96, 0x00DAA850,  113, ./Ps2/ps2_pad.cpp               ,  \ DYNAMIC \ STARTUP \ eng_Init() 
+   0,       25, malloc,      128, 0x00DAA8F0,   24, ./Implementation/x_mqueue.cpp   ,  \ DYNAMIC \ STARTUP \ eng_Init() 
+   0,       26, malloc,    49152, 0x00DAA9B0,  923, ./Ps2/ps2_vram.cpp              ,  \ DYNAMIC \ STARTUP \ eng_Init() \ vram_Init() 
+   0,       27, malloc,     1264, 0x00DB69F0,  177, ./Common/e_Text.cpp             ,  \ DYNAMIC \ STARTUP \ eng_Init() 
+   0,       28, malloc,   283712, 0x00DB6F30,  232, ./Common/e_ScratchMem.cpp       ,  \ DYNAMIC \ STARTUP \ eng_Init() \ smem_Init() 
+   0,       29, malloc,   283712, 0x00F00050,  233, ./Common/e_ScratchMem.cpp       ,  \ DYNAMIC \ STARTUP \ eng_Init() \ smem_Init() 
+   0,       30, new   ,       80, 0x00F454D0,  163, ./IOManager/io_mgr.cpp          ,  \ DYNAMIC \ STARTUP 
+   0,       31, malloc,     8192, 0x00F45570,  339, ./Implementation/x_threads.cpp  ,  \ DYNAMIC \ STARTUP 
+   0,       32, malloc,    33024, 0x00F475B0,   30, ./IOManager/io_cache.cpp        ,  \ DYNAMIC \ STARTUP \ io_cache::Init() 
+   0,       33, new   ,     1168, 0x00F4F6F0,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP 
+   0,       34, malloc,     2048, 0x00F4FBD0,   29, ./Common/e_Virtual.cpp          ,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       35, new   ,        4, 0x00F50410,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       36, malloc,    14336, 0x00F50450,   29, ./Common/e_Virtual.cpp          ,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       37, new   ,        4, 0x00F53C90,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       38, malloc,     2048, 0x00F53CD0,   29, ./Common/e_Virtual.cpp          ,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       39, new   ,        4, 0x00F54510,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       40, malloc,     6144, 0x00F54550,   29, ./Common/e_Virtual.cpp          ,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       41, new   ,        4, 0x00F55D90,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       42, malloc,     6144, 0x00F55DD0,   29, ./Common/e_Virtual.cpp          ,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       43, new   ,        4, 0x00F57610,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       44, malloc,     2048, 0x00F57650,   29, ./Common/e_Virtual.cpp          ,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       45, new   ,        4, 0x00F57E90,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       46, malloc,     4096, 0x00F57ED0,   29, ./Common/e_Virtual.cpp          ,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       47, new   ,        4, 0x00F58F10,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       48, malloc,     8192, 0x00F58F50,   29, ./Common/e_Virtual.cpp          ,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,       49, new   ,        8, 0x00F5AF90,  503, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP \ io_fs::MountFileSystem() 
+   0,      162, new   ,    29120, 0x00F690D0,  433, plementation/x_array_private.hpp,  \ DYNAMIC \ STARTUP 
+   0,      163, new   ,     7184, 0x00F5AFD0,  297, ts/A51/xCore/x_files/x_array.hpp,  \ DYNAMIC \ STARTUP 
+   0,      164, new   ,      512, 0x00F5CC30,  300, ts/A51/xCore/x_files/x_array.hpp,  \ DYNAMIC \ STARTUP 
+   0,      165, malloc,  3153920, 0x01100050, 1390, /Hardware/audio_hardware_ps2.cpp,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init \ iop_channel_manager::Init() 
+   0,      166, malloc,     8192, 0x00F5CE70,   74, ./Common/e_SimpleAllocator.cpp  ,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init \ audio_stream_mgr::Init() 
+   0,      167, malloc,    65536, 0x00F702D0,   83, io/Hardware/audio_stream_ps2.cpp,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init \ audio_stream_mgr::Init() 
+   0,      168, malloc,    65536, 0x00F80310,   84, io/Hardware/audio_stream_ps2.cpp,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init \ audio_stream_mgr::Init() 
+   0,      169, new   ,      136, 0x00F5EEB0,   91, io/Hardware/audio_stream_ps2.cpp,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init \ audio_stream_mgr::Init() 
+   0,      170, new   ,      136, 0x00F5EF70,   91, io/Hardware/audio_stream_ps2.cpp,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init \ audio_stream_mgr::Init() 
+   0,      171, new   ,      136, 0x00F5F030,   91, io/Hardware/audio_stream_ps2.cpp,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init \ audio_stream_mgr::Init() 
+   0,      172, new   ,      136, 0x00F5F0F0,   91, io/Hardware/audio_stream_ps2.cpp,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init \ audio_stream_mgr::Init() 
+   0,      174, new   ,       80, 0x00F611F0,  576, ./Audio/audio_mgr.cpp           ,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init 
+   0,      175, malloc,     8192, 0x00F61290,  339, ./Implementation/x_threads.cpp  ,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init 
+   0,      176, new   ,       80, 0x00F632D0,  577, ./Audio/audio_mgr.cpp           ,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init 
+   0,      177, malloc,     8192, 0x00F63370,  339, ./Implementation/x_threads.cpp  ,  \ DYNAMIC \ STARTUP \ audio_manager::Init() \ audio_mgr::Init 
+   0,      178, new   ,        4, 0x00F653B0,  230, /Support/Animation/AnimEvent.cpp,  \ DYNAMIC \ STARTUP 
+   0,      179, malloc,       16, 0x00F653F0,   93, /Implementation/x_bytestream.cpp,  \ DYNAMIC \ STARTUP \ xbytestream::xbytestream() 
+   0,      180, new   ,        4, 0x00F65450,  231, /Support/Animation/AnimEvent.cpp,  \ DYNAMIC \ STARTUP 
+   0,      181, malloc,       16, 0x00F65490,   93, /Implementation/x_bytestream.cpp,  \ DYNAMIC \ STARTUP \ xbytestream::xbytestream() 
+   0,      182, malloc,   155648, 0x00F90350,  383, port/ResourceMgr/ResourceMgr.cpp,  \ DYNAMIC \ STARTUP \ RESOURCE MANAGER 
+   0,      183, new   ,       32, 0x00F654F0,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      184, malloc,     4096, 0x00F65550,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      185, malloc,     1024, 0x00F66590,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      186, new   ,       32, 0x00F669D0,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      187, malloc,    16384, 0x00FB6390,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      188, malloc,     1024, 0x00F66A30,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      189, new   ,       32, 0x00F66E70,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      190, malloc,     8192, 0x00F66ED0,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      191, malloc,       64, 0x00F68F10,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      192, new   ,       32, 0x00F68F90,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      193, malloc,     8192, 0x00FBA3D0,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      194, malloc,       64, 0x00F68FF0,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      195, new   ,       32, 0x00F69070,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      196, malloc,     8192, 0x00FBC410,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      197, malloc,       64, 0x00FBE450,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      198, new   ,       32, 0x00FBE4D0,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      199, malloc,     8192, 0x00FBE530,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      200, malloc,       64, 0x00FC0570,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      201, new   ,       32, 0x00FC05F0,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      202, malloc,     8192, 0x00FC0650,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      203, malloc,       64, 0x00FC2690,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      204, new   ,       32, 0x00FC2710,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      205, malloc,     8192, 0x00FC2770,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      206, malloc,       64, 0x00FC47B0,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      207, new   ,       32, 0x00FC4830,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      208, malloc,     8192, 0x00FC4890,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      209, malloc,       64, 0x00FC68D0,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      210, new   ,       32, 0x00FC6950,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      211, malloc,     8192, 0x00FC69B0,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      212, malloc,       64, 0x00FC89F0,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      213, new   ,       32, 0x00FC8A70,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      214, malloc,      256, 0x00FC8AD0,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      215, malloc,       64, 0x00FC8C10,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      216, new   ,       32, 0x00FC8C90,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      217, malloc,      128, 0x00FC8CF0,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      218, malloc,       64, 0x00FC8DB0,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      219, new   ,       32, 0x00FC8E30,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      220, malloc,      128, 0x00FC8E90,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      221, malloc,       64, 0x00FC8F50,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      222, new   ,       32, 0x00FC8FD0,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      223, malloc,      128, 0x00FC9030,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      224, malloc,       64, 0x00FC90F0,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      225, new   ,       32, 0x00FC9170,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      226, malloc,     8192, 0x00FC91D0,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      227, malloc,       64, 0x00FCB210,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      228, new   ,       32, 0x00FCB290,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      229, malloc,     8192, 0x00FCB2F0,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      230, malloc,       64, 0x00FCD330,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      231, new   ,       32, 0x00FCD3B0,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      232, malloc,     2048, 0x00FCD410,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      233, malloc,       64, 0x00FCDC50,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      234, new   ,       32, 0x00FCDCD0,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      235, malloc,     2048, 0x00FCDD30,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      236, malloc,       64, 0x00FCE570,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      237, new   ,       32, 0x00FCE5F0,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      238, malloc,     2048, 0x00FCE650,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      239, malloc,       64, 0x00FCEE90,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      240, new   ,       32, 0x00FCEF10,   26, ./Texture.cpp                   ,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA 
+   0,      241, malloc,     1024, 0x00FCEF70,  254, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC \ STARTUP \ PRELOAD \ TEXTURE DATA \ XBMP DATA 
+   0,      242, malloc,       64, 0x00FCF3B0,  265, ./Implementation/x_bitmap_io.cpp,  \ DYNAMIC 

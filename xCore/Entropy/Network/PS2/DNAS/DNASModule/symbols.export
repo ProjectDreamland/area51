@@ -1,0 +1,17 @@
+.noexport *
+.export dnas_Init
+.export dnas_InitAuthentication
+.export dnas_KillAuthentication
+.export dnas_Update
+.export dnas_Kill
+.export dnas_GetDownloadedContent
+.export dnas_SetDownloadedContent
+.export dnas_GetErrorLabel
+.export dnas_GetUniqueId
+.export dnas_GetState
+.export dnas_Encrypt
+.export dnas_Decrypt
+.export dnas_GetEncryptedLength
+.export dnas_GetDecryptedLength
+.export dnas_InitEncryption
+.export dnas_KillEncryption

@@ -1,0 +1,77 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_process_digital_audio</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="provides high-level access to the Miles sound mixer.">
+<meta name="ms-hkwd" content="AIL_process_digital_audio">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_process_digital_audio</h1>
+<p>The function  <b>AIL_process_digital_audio</b> provides high-level access to the Miles sound mixer.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_process_digital_audio.html" class=trn>AIL_process_digital_audio</a>(</b>
+<b>&nbsp&nbsp<a href="void.html" class=trn>void</a>&nbsp*</b><i>dest</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>destsize</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>destrate</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>destformat</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>num_srcs</i><b>,</b>
+<b>&nbsp&nbsp<a href="AILMIXINFO.html" class=trn>AILMIXINFO const *</a>&nbspconst *</b><i>srcs</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>destsize</i></dt>
+<dd>contains the size of the output buffer. If the mixer fills the output buffer, then it will return (allowing you to calling again and again until the source data is exhausted).</dd>
+<dt><i>destrate</i></dt>
+<dd>contains the output data rate that you want the destination buffer to be mixed to.</dd>
+<dt><i>destformat</i></dt>
+<dd>contains the format that you want the destination buffer to be mixed to. See the <a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a> flags for the possible output formats.</dd>
+<dt><i>num_srcs</i></dt>
+<dd>contains the number of buffers that you want to mix. If you don't want to mix multiple samples, then just pass 1 for this parameter.</dd>
+<dt><i>srcs</i></dt>
+<dd>is a pointer to an array of "num_srcs" <a href="AILMIXINFO.html">AILMIXINFO</a> structures. The only part of the <a href="AILMIXINFO.html">AILMIXINFO</a> structure that you need to set is the Info structure inside the <a href="AILMIXINFO.html">AILMIXINFO</a> structure. The Info structure is of type <a href="AILSOUNDINFO.html">AILSOUNDINFO</a>, so you can use <a href="AIL_WAV_info.html">AIL_WAV_info</a> to set the appropriate fields. See the example below for details.</dd>
+</dl>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>dest</i></dt>
+<dd>points to the output buffer.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The number of bytes mixed if the call was successful, or 0 if the call failed.</p>
+<h4>Discussion</h4>
+<p>You can use this function to mix one or more samples together, perform sample rate conversions - basically anything that the Miles mixer can do! </p><p> This function modifies the srcs data structures, so that you can call it over and over mixing the next pieces of the input data each call (this is handy when mixing through a small destination buffer. </p><p> This function can directly accept IMA ADPCM compressed data, but not MPEG Layer 3 compressed data. </p><p> You can use the <a href="AIL_WAV_info.html">AIL_WAV_info</a> function to automatically fill the input src->Info structures. However, the output data is raw data, so you should use <a href="AIL_WAV_file_write.html">AIL_WAV_file_write</a> if you need to write the output data in wave format. </p><p> Example: The following example will mix two wave files together and write out the result: </p><p></p><code><font size=3 color=#006000><pre><br>void* in1, * in2, * out;<br>AILMIXINFO mix[2];<br>U32 outsize, mixsize;<br>In1=AIL_file_read("file1.wav",0);<br>In2=AIL_file_read("file2.wav",0);<br>AIL_WAV_info(in1,&mix[0].Info);<br>AIL_WAV_info(in2,&mix[1].Info);<br>outsize=AIL_size_processed_digital_audio(44100,DIG_F_MONO_16,2,mix);<br>out=AIL_mem_alloc_lock(outsize);<br>mixsize=AIL_process_digital_audio(out,outsize,44100,DIG_F_MONO_16,2,mix);<br>AIL_WAV_file_write("mixed.wav",out,mixsize,44100,DIG_F_MONO_16);<br></pre></font></code><p></p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a>, <a href="Utility Services.html">Utility Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_WAV_file_write.html">AIL_WAV_file_write</a>, <a href="AIL_WAV_info.html">AIL_WAV_info</a>, <a href="AIL_set_3D_sample_file.html">AIL_set_3D_sample_file</a>, <a href="AIL_set_3D_sample_info.html">AIL_set_3D_sample_info</a>, <a href="AIL_size_processed_d4yjwo6.html">AIL_size_processed_digital_audio</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_DIGITAL_FORMAT.html">MILES_DIGITAL_FORMAT</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="void.html">void</a><br>
+<b>Related Structures:</b>
+<a href="AILMIXINFO.html">AILMIXINFO</a>, <a href="AILSOUNDINFO.html">AILSOUNDINFO</a><br>
+<b>Related FAQs:</b>
+<a href="How can I play stere982vwf.html">How can I play stereo or compressed digital files with the 3D API?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

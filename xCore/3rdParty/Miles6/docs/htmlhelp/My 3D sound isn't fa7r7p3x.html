@@ -1,0 +1,39 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>My 3D sound isn't falling off like I expected - what's going on?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="My 3D sound isn't falling off like I expected - what's going on?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>My 3D sound isn't falling off like I expected - what's going on?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>This is a common source of confusion. Basically, the most important thing to remember is that the maximum distance has <b>nothing</b> to do with the volume falloff curve! <b>Only the minimum distance matters for the falloff curve.</b> </p><p>The volume of a sample falls off by half every time the minimum distance is doubled. So, if you set your minimum distance to 3, then this falloff curve is in effect: </p><p>Distance: less than or equal to 3 meters. Volume: 100%.<br> Distance: 6 meters. Volume 50%.<br> Distance: 12 meters. Volume 25%.<br> Distance: 24 meters. Volume 12.5%.<br> Distance: 48 meters. Volume 6.25%.<br> etc... </p><p>So, you can see that the maximum distance doesn't affect the volume falloff curve at all! The maximum distance just sets a hard clip point - the volume is forced to be zero. </p><p>Also note that some DirectSound drivers don't implement the maximum distance correctly with the DSBCAPS_MUTE3DATMAXDISTANCE flag in effect (which Miles uses). At the maximum distance on these drivers, the volume doesn't drop to zero, instead, it just stops falling off.</p></td></tr>
+</table>
+<p><a href="How can I play stere982vwf.html">Next Topic (How can I play stereo or compressed digital files with the 3D API?)</a>  </p><p><a href="How do I play a 3D d5zrlfk.html">Previous Topic (How do I play a 3D digital sound?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Functions:</b>
+<a href="AIL_3D_sample_distances.html">AIL_3D_sample_distances</a>, <a href="AIL_set_3D_sample_dicyrnaa.html">AIL_set_3D_sample_distances</a><br>
+<b>Related FAQs:</b>
+<a href="How do I play a 3D d5zrlfk.html">How do I play a 3D digital sound?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,35 @@
+#IOP-ILB# [PsIIlibsd   3020]
+L libsd
+V 0x0105
+F 0x0000
+E 002 sceSdQuit
+E 004 sceSdInit
+E 005 sceSdSetParam
+E 006 sceSdGetParam
+E 007 sceSdSetSwitch
+E 008 sceSdGetSwitch
+E 009 sceSdSetAddr
+E 010 sceSdGetAddr
+E 011 sceSdSetCoreAttr
+E 012 sceSdGetCoreAttr
+E 013 sceSdNote2Pitch
+E 014 sceSdPitch2Note
+E 015 sceSdProcBatch
+E 016 sceSdProcBatchEx
+E 017 sceSdVoiceTrans
+E 018 sceSdBlockTrans
+E 019 sceSdVoiceTransStatus
+E 020 sceSdBlockTransStatus
+E 021 sceSdSetTransCallback
+E 022 sceSdSetIRQCallback
+E 023 sceSdSetEffectAttr
+E 024 sceSdGetEffectAttr
+E 025 sceSdClearEffectWorkArea
+E 026 sceSdSetTransIntrHandler
+E 027 sceSdSetSpu2IntrHandler
+E 028 sceSdGetTransIntrHandlerArgument
+E 029 sceSdGetSpu2IntrHandlerArgument
+E 030 sceSdStopTrans
+E 031 sceSdCleanEffectWorkArea
+E 032 sceSdSetEffectMode
+E 033 sceSdSetEffectModeParams

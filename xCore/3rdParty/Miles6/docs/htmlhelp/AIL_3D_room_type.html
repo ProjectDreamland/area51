@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_3D_room_type</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the current room type.">
+<meta name="ms-hkwd" content="AIL_3D_room_type">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_3D_room_type</h1>
+<p>The function  <b>AIL_3D_room_type</b> returns the current room type.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_3D_room_type.html" class=trn>AIL_3D_room_type</a>(</b>
+<b>&nbsp&nbsp<a href="HPROVIDER.html" class=trn>HPROVIDER</a>&nbsp</b><i>provider</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>provider</i></dt>
+<dd>indicates the provider to query.</dd>
+</dl>
+<h4>Returns</h4>
+<p>One of the <a href="MILES_ROOM_TYPE.html">MILES_ROOM_TYPE</a> constants.</p>
+<h4>Discussion</h4>
+<p>If the provider doesn't support room types, this function will return -1. </p><p> <a href="MILES_ROOM_TYPE.html#ENVIRONMENT_GENERIC">ENVIRONMENT_GENERIC</a> is most provider's default. Use <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a> to set control the amount of room effects applied to each sample. </p><p> Not all providers change the audio based on the room type. Currently only EAX, EAX 2, and A3D 2 support room types. On EAX providers, the room type is passed directly to EAX. On A3D 2, Miles builds geometry on the fly to match the reverb properties of the EAX room (as you can imagine, this works well for some room types and not so well for others). </p><p> You must use the <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a> on most samples when using the Fast 2D or Dolby providers, or your CPU-usage will be extremely high. On the Miles 2D providers, each sample with room effects costs about 7% on a P5/200 (3% on a Pentium II). </p><p> You can find out if the provider you are using supports room types by querying the current room type with <a href="AIL_3D_room_type.html">AIL_3D_room_type</a> if it returns a -1, then room type are unsupported. </p><p> Example files that use this function: EXAM3D.C </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="3D Digital Audio Services.html">3D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_3D_room_type.html">AIL_3D_room_type</a>, <a href="AIL_3D_sample_effect9obbaa.html">AIL_3D_sample_effects_level</a>, <a href="AIL_set_3D_room_type.html">AIL_set_3D_room_type</a>, <a href="AIL_set_3D_sample_efxf4lic.html">AIL_set_3D_sample_effects_level</a><br>
+<b>Related Basic Types:</b>
+<a href="HPROVIDER.html">HPROVIDER</a>, <a href="MILES_ROOM_TYPE.html">MILES_ROOM_TYPE</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

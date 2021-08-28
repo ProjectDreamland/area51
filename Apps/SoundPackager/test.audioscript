@@ -1,0 +1,16 @@
+package:
+C:\Projects\A51\Apps\SoundPackager\test [volume=0.80 priority=255 volduck=0.60]
+
+files:
+
+test0      cold NoLipSync   C:\Projects\A51\Apps\SoundPackager\test0.aif
+test1      cold NoLipSync   C:\Projects\A51\Apps\SoundPackager\test1.aif
+
+descriptors:
+
+test_it rlist
+{
+    test0
+    test1
+}
+

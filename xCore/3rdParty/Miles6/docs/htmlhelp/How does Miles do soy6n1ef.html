@@ -1,0 +1,35 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>How does Miles do sound prioritization?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="How does Miles do sound prioritization?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>How does Miles do sound prioritization?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>It doesn't. Philosophically, RAD has never been a big fan of handling sound prioritization at the library level. The way Miles works, the application can just allocate sample handles until it hits the system-imposed limit, and the application is responsible for reusing those handles in whatever way it sees fit. The application can use whatever criteria it wants to bump playing sounds (age, importance, distance, volume, etc.), or decide not to bump any at all if the new sound isn't that important. </p><p>A lot of that flexibility goes away, or becomes awkward to access, if you make Miles responsible for killing existing sounds in favor of new ones. </p><p></p></td></tr>
+</table>
+<p><a href="I can't seem to chanzj97c4.html">Next Topic (I can't seem to change the volume of my XMIDI sequences, what's going on?)</a>  </p><p><a href="How do I set an EAX 6606oe.html">Previous Topic (How do I set an EAX reverb room style?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

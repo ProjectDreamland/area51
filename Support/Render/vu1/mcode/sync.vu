@@ -1,0 +1,32 @@
+//==============================================================================
+//  sync.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode provides a simple method for sync'ing operations on vu1 and
+//  the GS. A call to sync will kick a dummy giftag to stall the system until
+//  everything is idle.
+//==============================================================================
+
+// DS NOTE: The compiler doesn't know how to check dependencies for microcode,
+// so we'll add and remove a line of comments to force the issue. What a pain!
+//==============================================================================
+
+#include "include.vu"
+
+.vu 
+.org MCODE_START_SYNC
+.align 4 
+.global VU1_SYNC_CODE_START
+.global VU1_SYNC_CODE_END
+
+//==============================================================================
+//==============================================================================
+//==============================================================================
+
+VU1_SYNC_CODE_START:
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+    nop[e]                                              nop
+    nop                                                 nop
+VU1_SYNC_CODE_END:

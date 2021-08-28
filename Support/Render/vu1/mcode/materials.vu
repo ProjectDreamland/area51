@@ -1,0 +1,1538 @@
+//==============================================================================
+//  materials.vu
+//
+//  Copyright (c) 2003-2004 Inevitable Entertainment Inc. All rights reserved.
+//
+//  This microcode checks the material flags, and will call the appropriate
+//  material routines for this piece of geometry.
+//==============================================================================
+
+
+#include "include.vu"
+
+.vu 
+.org MCODE_START_MATERIAL
+.align 4 
+.global VU1_MATERIAL_CODE_START
+.global VU1_MATERIAL_CODE_END
+
+
+VU1_MATERIAL_CODE_START:
+    nop                                                 ilw.x       FLAG,     VU1_Flags(vi00)
+
+    ; check for glowing geometry
+    nop                                                 iaddiu      ITMP, vi00, VU1_GLOWING
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, GLOWING_GEOMETRY
+    nop                                                 nop
+    GLOWING_GEOMETRY_RET:
+
+    ; check for fading geometry
+    nop                                                 iaddiu      ITMP, vi00, VU1_FADING_ALPHA
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, FADING_ALPHA
+    nop                                                 nop
+    FADING_ALPHA_RET:
+    
+    ; check for uv animation
+    nop                                                 iaddiu      ITMP, vi00, UVSCROLL_PASS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, UV_SCROLL
+    nop                                                 nop
+    UV_SCROLL_RET:
+
+    ; check for distortion material
+    nop                                                 iaddiu      ITMP, vi00, DISTORTION_PASS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, DISTORTION
+    nop                                                 nop
+    DISTORTION_RET:
+
+    ; check for a normal diffuse pass
+    nop                                                 iaddiu      ITMP, vi00, DIFFUSE_PASS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, DIFFUSE
+    nop                                                 nop
+    DIFFUSE_RET:
+
+    ; check for z-priming
+    nop                                                 iaddiu      ITMP, vi00, ZPRIME_PASS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, ZPRIME
+    nop                                                 nop
+    ZPRIME_RET:
+
+    ; check for a spotlight using the projected texture method
+    nop                                                 iaddiu      ITMP, vi00, VU1_SPOTLIGHT
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, SPOTLIGHT
+    nop                                                 nop
+
+    ; backup the uv1/normals (not necessary if we did a spotlight pass)
+    nop                                                 b           BACKUP_UV1
+    nop                                                 nop
+    SPOTLIGHT_RET:
+    BACKUP_RET:
+
+    ; Local Position, UV0 and UV1/Normal are Backed up to Next Buffer by this point
+    ; check for a detail map pass (must have both the instance AND material flag set for this one)
+    nop                                                 iaddiu      ITMP, vi00, VU1_DETAIL
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, DETAIL
+    nop                                                 nop
+    DETAIL_RET:
+
+    ; check for environment mapping
+    nop                                                 iaddiu      ITMP, vi00, USE_POSITIONS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, ENVIRONMENT_POSITIONS
+    
+    nop                                                 iaddiu      ITMP, vi00, ENVIRONMENT_PASS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, ENVIRONMENT_NORMALS
+    nop                                                 nop
+    ENV_MAP_RET:
+
+    ; check for a self-illumination pass
+    nop                                                 iaddiu      ITMP, vi00, SELFILLUM_PASS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, SELFILLUM
+    nop                                                 nop
+    SELFILLUM_RET:
+    
+    ; check for a shadow map pass
+    nop                                                 iaddiu      ITMP, vi00, VU1_SHADOW_PASS
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, SHADOW
+    nop                                                 nop
+    SHADOW_RET:
+    
+    ; check for a projected shadow pass
+    nop                                                 ilw.w       TI06, VU1_COUNT(BASE)
+    nop                                                 iaddiu      ITMP, vi00, VU1_PROJ_SHADOW_1
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 iand        ITMP, TI06, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, PROJ_SHADOW_1
+    nop                                                 nop
+    PROJ_SHADOW_1_RET:
+    nop                                                 iaddiu      ITMP, vi00, VU1_PROJ_SHADOW_2
+    nop                                                 iand        ITMP, TI06, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, PROJ_SHADOW_2
+    nop                                                 nop
+    PROJ_SHADOW_2_RET:
+
+    ; should we return to the clipper, or are we done?
+    nop                                                 iaddiu      ITMP, vi00, CLIPPER_PASS
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, DONE
+    nop                                                 nop
+    nop                                                 ilw.w       RETN, VU1C_Storage(vi00)
+    nop                                                 jr          RETN
+    nop                                                 nop
+
+    ; all of the passes have been completed
+    DONE:
+    nop[e]                                              nop
+    nop                                                 nop
+    nop[e]                                              nop
+    nop                                                 nop
+
+;==============================================================================
+;
+; Glowing geometry routine
+;
+;   Alters the material flags such that we end up turning off environment mapping
+;   and turning on self-illumination glow with diffuse lighting
+;
+;==============================================================================
+
+GLOWING_GEOMETRY:
+    ; Note that because glowing geometry is forced to be the last thing rendered,
+    ; we can actually overwrite memory in the material data. Normally we'd avoid
+    ; this sort of thing, but in this case we'll let it slide.
+    nop                                                 iaddiu  ITMP, vi00, ~(ENVIRONMENT_PASS|USE_WORLDSPACE|USE_POSITIONS)
+    nop                                                 iand    FLAG, FLAG, ITMP
+    nop                                                 iaddiu  ITMP, vi00, (SELFILLUM_PASS|SELFILLUM_PERPOLY|SELFILLUM_DIFFUSELIT);
+    nop                                                 ior     FLAG, FLAG, ITMP
+    nop                                                 ilw.w   ITMP, VU1_COUNT(BASE)
+    nop                                                 isw.w   ITMP, VU1_Flags(vi00)
+    nop                                                 iaddiu  ITMP, vi00, 0x80
+    nop                                                 isw.w   ITMP, VU1_COUNT(BASE)
+    nop                                                 iaddiu  ITMP, vi00, ALPHA_SDDD
+    nop                                                 isw.x   ITMP, VU1_EnvIllumAlpha(vi00)
+    nop                                                 iaddiu  ITMP, vi00, GS_ALPHA_1
+    nop                                                 b       GLOWING_GEOMETRY_RET
+    nop                                                 isw.z   ITMP, VU1_EnvIllumAlpha(vi00)
+
+
+;==============================================================================
+;
+; Fading alpha routine
+;
+;   Runs through all of the vertices, and sets the vertex alpha so they should
+;   fade out
+;
+;==============================================================================
+
+#define FOUT            TI00    // output ptr
+#define FEND            TI01    // loop terminator
+#define FALP            TI02    // alpha value
+
+FADING_ALPHA:
+    nop                                                 ilw.w       FALP, VU1_COUNT(BASE)
+    nop                                                 iadd        FOUT, BASE, vi00
+    nop                                                 iadd        FEND, FOUT, NUMV
+    nop                                                 iadd        FEND, FEND, NUMV
+    nop                                                 iadd        FEND, FEND, NUMV
+    nop                                                 iadd        FEND, FEND, NUMV
+    nop                                                 iaddiu      ITMP, vi00, 0xff
+    nop                                                 iand        FALP, FALP, ITMP
+    
+FADING_ALPHA_LOOP:
+    nop                                                 isw.w       FALP, VU1_RGB(FOUT)
+    nop                                                 iaddiu      FOUT, FOUT, VU1_VERT_SIZE
+    nop                                                 nop
+    nop                                                 ibne        FOUT, FEND, FADING_ALPHA_LOOP
+    nop                                                 nop
+    
+    nop                                                 b   FADING_ALPHA_RET
+    nop                                                 nop
+    
+#undef FOUT
+#undef FEND
+#undef FALP
+
+;==============================================================================
+;
+; UV Scrolling routine
+;
+;   Multiplies the scroll amount by the screen-space Q, and adds it to the
+;   already calculated screen-space ST value.
+;
+;==============================================================================
+
+#define UOUT                        TI00        // output ptr
+#define UEND                        TI01        // loop terminator
+#define UADD( x )                   TF00( x )   // amount to scroll
+#define UTEX( x )                   TF01( x )   // input uv
+#define UTCP( x )                   TF02( x )   // copy of input uv
+#define UADQ( x )                   TF03( x )   // amount to add multiplied by original q
+#define USCR( x )                   TF04( x )   // final scrolled uv value (UADQ + UTEX)
+
+
+UV_SCROLL:
+    nop                                                 lq.xy       UADD(xy),   VU1_COUNT(BASE)
+    nop                                                 iadd        UOUT, BASE, vi00
+    nop                                                 iadd        UEND, UOUT, NUMV
+    nop                                                 iadd        UEND, UEND, NUMV
+    itof0.xy        UADD(xy),   UADD(xy)                iadd        UEND, UEND, NUMV
+    nop                                                 iadd        UEND, UEND, NUMV
+    nop                                                 nop
+    nop                                                 loi         0.00392157  ; 1/255
+    muli.xy         UADD(xy),   UADD(xy),   i           nop
+    
+
+    ; loop preamble
+    nop                                                 lq.xyz      UTEX(xyz),  VU1_UV0(UOUT)                   ;               ; load uv0
+    nop                                                 nop                                                     ;               ;
+    nop                                                 nop                                                     ;               ;
+    nop                                                 nop                                                     ;               ;
+    mulz.xy         UADQ(xy),   UADD(xy),   UTEX(z)     move.xyz    UTCP(xyz),  UTEX(xyz)                       ; project uv0   ; copy uv0
+
+    nop                                                 lq.xyz      UTEX(xyz),  (VU1_UV0+VU1_VERT_SIZE*1)(UOUT) ;               ; load uv1
+    nop                                                 nop                                                     ;               ;
+    nop                                                 nop                                                     ;               ;
+    add.xy          USCR(xy),   UADQ(xy),   UTCP(xy)    nop                                                     ; scroll uv0    ;
+    mulz.xy         UADQ(xy),   UADD(xy),   UTEX(z)     move.xyz    UTCP(xyz),  UTEX(xyz)                       ; project uv1   ; copy uv1
+
+UV_SCROLL_LOOP:
+    nop                                                 lq.xyz      UTEX(xyz),  (VU1_UV0+VU1_VERT_SIZE*2)(UOUT) ;               ; load uv2
+    nop                                                 iaddiu      UOUT, UOUT, VU1_VERT_SIZE                   ;               ; vptr++
+    nop                                                 sq.xy       USCR(xy),   (VU1_UV0-VU1_VERT_SIZE)(UOUT)   ;               ; store uv0
+    add.xy          USCR(xy),   UADQ(xy),   UTCP(xy)    ibne        UOUT, UEND, UV_SCROLL_LOOP                  ; scroll uv1    ; loop
+    mulz.xy         UADQ(xy),   UADD(xy),   UTEX(z)     move.xyz    UTCP(xyz),  UTEX(xyz)                       ; project uv2   ; copy uv2
+
+    nop                                                 b           UV_SCROLL_RET
+    nop                                                 nop
+
+#undef UOUT
+#undef UEND
+#undef UADD
+#undef UTEX
+#undef UTCP
+#undef UADQ
+#undef USCR
+
+    
+;==============================================================================
+;    
+; Diffuse Pass
+;
+;   Sets up the context registers for a diffuse pass, and kicks the already
+;   transformed vertices
+;
+;==============================================================================
+
+DIFFUSE:
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 ilw.w       ITMP, VU1_COUNT(BASE)
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackAll(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1_DiffuseAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1_DiffuseTex(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context1Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 mfir.y      TF03(y),    ITMP                ; fill in the fixed alpha
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_NSRX        ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 b           DIFFUSE_RET
+    nop                                                 xgkick      KICK
+
+;==============================================================================
+;
+; Z-Priming
+;
+;   This routine renders the poly with the frame buffer masked out, but is
+;   useful for priming the z-buffer (used for fading geometry).
+;
+;==============================================================================
+
+ZPRIME:
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackAlpha(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1_DiffuseAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context2GifNoTex(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_NNNX        ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 b           ZPRIME_RET
+    nop                                                 xgkick      KICK
+
+;==============================================================================
+;
+; Calculate Environment Map UV's From Screen-space Positions
+;
+;   This routine sets the uv1 slot to wherever the screen position is scaled
+;   into [0..1]. An environment mapped texture has been precomputed so that
+;   these UV's actually make sense. Wacky stuff... 
+;
+;==============================================================================
+
+ENVIRONMENT_POSITIONS:
+
+#define EOUT                        TI00            // output ptr
+#define EEND                        TI01            // loop terminator
+#define EXYZ( x )                   TF00( x )       // screen xyz
+#define EFUV( x )                   TF01( x )       // uv/xyz in float form
+#define ESUV( x )                   TF02( x )       // uv after subtracting scissor offset
+#define EDUV( x )                   TF03( x )       // uv after scaling by 1/screen size
+#define ECNS( x )                   TF04( x )       // constant (1792,1792,1/512)
+
+    ; we need to account for bilinear filtering by bringing in the uv's half a pixel, so...
+    ; uv = (((pos-scissor)/scr_size)*63 + .5) / 64
+    ;    = (pos-scissor)/(scr_size*64/63) + .5/64
+    ;    = (pos-scissor)/(scr_size*64/63) + (.5*scr_size/63)/(scr_size*64/63)
+    ;    = (pos-scissor+.5*scr_size/63)/(scr_size*64/63)
+    ;  u = (pos-1792+.5*512/63) / (512*64/63)
+    ;    = (pos-1792+256/63)    / (32768/63)
+    ;    = (pos-1792+4.0635)    * 0.0019226
+    ;    = (pos-1787.9365) * 0.0019226
+
+    ; stall if uv1 is in use
+    nop                                                 iaddiu      ITMP, vi00, UV1_IN_USE
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, ENV_POSITION_DONT_STALL
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick      ITMP
+ENV_POSITION_DONT_STALL:
+    addw.zw         EDUV(zw),   vf00zw,     vf00w       loi         1787.9365
+    addi.xy         ECNS(xy),   vf00xy,     i           loi         0.0019226
+    addi.z          ECNS(z),    vf00z,      i           iadd        EOUT, BASE, vi00
+    nop                                                 iadd        EEND, EOUT, NUMV
+    nop                                                 iadd        EEND, EEND, NUMV
+    nop                                                 iadd        EEND, EEND, NUMV
+    nop                                                 iadd        EEND, EEND, NUMV
+
+    ; loop preamble
+    nop                                                 lq.xyzw     EXYZ(xyzw), VU1_XYZ(EOUT)                   ; load xyz0
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    itof4.xy        EFUV(xy),   EXYZ(xy)                nop                                                     ; xyz0->float
+    nop                                                 lq.xyzw     EXYZ(xyzw), VU1_XYZ+VU1_VERT_SIZE*1(EOUT)   ; load xyz1
+    nop                                                 nop
+    nop                                                 nop
+    sub.xy          ESUV(xy),   EFUV(xy),   ECNS(xy)    nop                                                     ; uv0-scissor
+    itof4.xy        EFUV(xy),   EXYZ(xy)                nop                                                     ; xyz1->float
+    nop                                                 lq.xyzw     EXYZ(xyzw), VU1_XYZ+VU1_VERT_SIZE*2(EOUT)   ; load xyz2
+    nop                                                 nop
+    mulz.xy         EDUV(xy),   ESUV(xy),   ECNS(z)     nop                                                     ; uv0/screen size
+    sub.xy          ESUV(xy),   EFUV(xy),   ECNS(xy)    nop                                                     ; uv1-scissor
+
+    ; the main loop
+ENVPOS_LOOP:
+    itof4.xy        EFUV(xy),   EXYZ(xy)                iaddiu      EOUT, EOUT, VU1_VERT_SIZE                   ; xyz2->float
+    nop                                                 lq.xyzw     EXYZ(xyzw), VU1_XYZ+VU1_VERT_SIZE*2(EOUT)   ; load xyz3
+    nop                                                 sq.xyz      EDUV(xyz),  VU1_UV1-VU1_VERT_SIZE(EOUT)     ; store uv0
+    mulz.xy         EDUV(xy),   ESUV(xy),   ECNS(z)     ibne        EOUT, EEND, ENVPOS_LOOP                     ; uv1/screen size
+    sub.xy          ESUV(xy),   EFUV(xy),   ECNS(xy)    nop                                                     ; uv2-scissor
+
+    nop                                                 b           ENVKICK
+    nop                                                 nop
+
+#undef EOUT
+#undef EEND
+#undef EXYZ
+#undef EFUV
+#undef ESUV
+#undef EDUV
+#undef ECNS
+
+;==============================================================================
+;
+; Calculate Environment Map UV's From Normals
+;
+;   This routine just calculate environment-mapped uvs using a texture matrix.
+;       a) load normal from backup buffer
+;       b) convert normal to float
+;       c) multiply normal by env. map matrix (3x2 matrix)
+;       d) scale by 16 to finish fixed-to-float conversion
+;       e) add .5 so it ranges from 0..1
+;       f) load projected q from first uv
+;       g) multiply (u,v,1) by projected q
+;       h) store result
+;       i) goto a
+;==============================================================================
+
+ENVIRONMENT_NORMALS:
+
+#define EMT0( x )                   TF00( x )           // texture matrix
+#define EMT1( x )                   TF01( x )           // texture matrix
+#define EMT2( x )                   TF02( x )           // texture matrix
+#define ENV0( x )                   TF03( x )           // matrix * L2W
+#define ENV1( x )                   TF04( x )           // matrix * L2W
+#define ENV2( x )                   TF05( x )           // matrix * L2W
+#define ENRM( x )                   TF06( x )           // the normal
+#define ETEX( x )                   TF07( x )           // normal*env. matrix
+#define ECNS( x )                   TF08( x )           // constant 0.5, 32*0.5
+#define EFNM( x )                   TF09( x )           // floating-point normal
+#define EETX( x )                   TF10( x )           // scaled and offset texture coords
+#define EPTX( x )                   TF11( x )           // projected texture coords
+#define EZTX( x )                   TF12( x )           // original projected Q value
+#define ENXT                        TI00                // ptr to backup buffer
+#define EOUT                        TI01                // ptr to output
+#define EEND                        TI02                // loop terminator
+
+    ; stall if uv1 is in use
+    nop                                                 iaddiu      ITMP, vi00, UV1_IN_USE
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, ENV_NORMALS_DONT_STALL
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick      ITMP
+ENV_NORMALS_DONT_STALL:
+    
+    addw.z          EETX(z),    vf00z,      vf00w       lq.xyzw     EMT0(xyzw), VU1_EnvMatrix0(vi00)
+    nop                                                 lq.xyzw     EMT1(xyzw), VU1_EnvMatrix1(vi00)
+    nop                                                 loi         0.5
+    addi.x          ECNS(x),    vf00x,      i           loi         16.0
+    addi.y          ECNS(y),    vf00y,      i           mr32.xyzw   EMT2(xyzw), EMT0(xyzw)
+    nop                                                 iadd        ENXT, NBUF, vi00
+    nop                                                 iadd        EOUT, BASE, vi00
+    nop                                                 iadd        EEND, EOUT, NUMV
+    nop                                                 mr32.xyzw   EMT2(xyzw), EMT2(xyzw)
+    nop                                                 iadd        EEND, EEND, NUMV
+    mulax.xy        acc,        EMT0(xy),   L2W2(x)     iadd        EEND, EEND, NUMV
+    madday.xy       acc,        EMT1(xy),   L2W2(y)     iadd        EEND, EEND, NUMV
+    maddz.xy        ENV2(xy),   EMT2(xy),   L2W2(z)     nop
+    mulax.xy        acc,        EMT0(xy),   L2W1(x)     nop
+    madday.xy       acc,        EMT1(xy),   L2W1(y)     nop
+    maddz.xy        ENV1(xy),   EMT2(xy),   L2W1(z)     lq.xyz      ENRM(xyz),  VU1_NORMAL(ENXT)                                        ; load normal0
+    mulax.xy        acc,        EMT0(xy),   L2W0(x)     nop
+    madday.xy       acc,        EMT1(xy),   L2W0(y)     nop
+    maddz.xy        ENV0(xy),   EMT2(xy),   L2W0(z)     nop
+
+    ; loop preamble
+    itof12.xyz      EFNM(xyz),  ENRM(xyz)               nop                                                         ; convert normal0
+
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 lq.xyz      ENRM(xyz),  VU1_NORMAL+VU1_VERT_SIZE(ENXT)                          ; load normal1
+    mulaz.xy        acc,        ENV2(xy),   EFNM(z)     nop                                                         ; xform uv0
+    madday.xy       acc,        ENV1(xy),   EFNM(y)     nop                                                         ; xform uv0
+    maddx.xy        ETEX(xy),   ENV0(xy),   EFNM(x)     nop                                                         ; xform uv0
+    itof12.xyz      EFNM(xyz),  ENRM(xyz)               nop                                                         ; convert normal1
+
+    nop                                                 nop
+    addax.xy        acc,        vf00xy,     ECNS(x)     nop                                                         ; offset uv0
+    maddy.xy        EETX(xy),   ETEX(xy),   ECNS(y)     lq.xyz      ENRM(xyz),  (VU1_NORMAL+VU1_VERT_SIZE*2)(ENXT)  ; scale uv0         ; load normal2
+    mulaz.xy        acc,        ENV2(xy),   EFNM(z)     lq.z        EZTX(z),    VU1_UV0(EOUT)                       ; xform uv1         ; load q0
+    madday.xy       acc,        ENV1(xy),   EFNM(y)     nop                                                         ; xform uv1
+    maddx.xy        ETEX(xy),   ENV0(xy),   EFNM(x)     nop                                                         ; xform uv1
+    itof12.xyz      EFNM(xyz),  ENRM(xyz)               nop                                                         ; convert normal2
+
+    ; the main loop
+ENVNRM_LOOP:
+    mulz.xyz        EPTX(xyz),  EETX(xyz),  EZTX(z)     iaddiu      ENXT, ENXT, VU1_VERT_SIZE                       ; project uv0       ; pNxt++
+    addax.xy        acc,        vf00xy,     ECNS(x)     iaddiu      EOUT, EOUT, VU1_VERT_SIZE                       ; offset uv1        ; pOut++
+    maddy.xy        EETX(xy),   ETEX(xy),   ECNS(y)     lq.xyz      ENRM(xyz),  (VU1_NORMAL+VU1_VERT_SIZE*2)(ENXT)  ; scale uv1         ; load normal3
+    mulaz.xy        acc,        ENV2(xy),   EFNM(z)     lq.z        EZTX(z),    VU1_UV0(EOUT)                       ; xform uv2         ; load q1
+    madday.xy       acc,        ENV1(xy),   EFNM(y)     sq.xyz      EPTX(xyz),  (VU1_UV1-VU1_VERT_SIZE)(EOUT)       ; xform uv2         ; store stq0
+    maddx.xy        ETEX(xy),   ENV0(xy),   EFNM(x)     ibne        EOUT, EEND, ENVNRM_LOOP                         ; xform uv2         ; loop
+    itof12.xyz      EFNM(xyz),  ENRM(xyz)               nop                                                         ; convert normal3
+
+    nop                                                 b           ENVKICK
+    nop                                                 nop
+
+#undef EMT0
+#undef EMT1
+#undef EMT2
+#undef ENV0
+#undef ENV1
+#undef ENV2
+#undef ENRM
+#undef ETEX
+#undef ECNS
+#undef EFNM
+#undef EETX
+#undef EPTX
+#undef EZTX
+#undef EFNM
+#undef ENXT
+#undef EOUT
+#undef EEND
+
+;==============================================================================
+;
+;   Environment Map Pass
+;
+;==============================================================================
+
+ENVKICK:
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackRGB(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1_EnvIllumAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_EnvTex(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context2Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 iaddiu      ITMP, vi00, GS_NOMIPS           ; turn off mipping
+    nop                                                 mfir.x      TF04(x),    ITMP                ; turn off mipping
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_SNRX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 iaddiu      ITMP, vi00, UV1_IN_USE
+    nop                                                 ior         FLAG, FLAG, ITMP
+    nop                                                 b           ENV_MAP_RET
+    nop                                                 xgkick      KICK
+
+;==============================================================================
+;
+;   Backup Second Set of UVs to Next Buffer
+;
+;==============================================================================
+
+BACKUP_UV1:
+
+#define BUV1( x )                   TF00( x )           // uv to back up
+#define BNXT                        TI00                // ptr to backup buffer
+#define BOUT                        TI01                // ptr to output
+#define BEND                        TI02                // loop terminator
+
+    nop                                                 iadd        BNXT, NBUF, vi00
+    nop                                                 iadd        BOUT, BASE, vi00
+    nop                                                 iadd        BEND, BOUT, NUMV
+    nop                                                 iadd        BEND, BEND, NUMV
+    nop                                                 iadd        BEND, BEND, NUMV
+    nop                                                 iadd        BEND, BEND, NUMV
+
+BACKUP_UV1_LOOP:
+    nop                                                 lq          BUV1(xyzw), VU1_UV1(BOUT)
+    nop                                                 iaddiu      BOUT, BOUT, VU1_VERT_SIZE
+    nop                                                 iaddiu      BNXT, BNXT, VU1_VERT_SIZE
+    nop                                                 ibne        BOUT, BEND, BACKUP_UV1_LOOP
+    nop                                                 sq          BUV1(xyzw), VU1_UV1-VU1_VERT_SIZE(BNXT)
+
+    nop                                                 b           BACKUP_RET
+    nop                                                 nop
+
+#undef BUV1
+#undef BNXT
+#undef BOUT
+#undef BEND
+    
+;==============================================================================
+;
+; Detail Map Pass
+;
+;   Scales the screen-space by uv's by a detail scale, stores them back, then
+;   renders the detail map pass.
+;
+;==============================================================================
+
+DETAIL:
+
+#define DSCL( x )                   TF00( x )           // detail scale
+#define DUV0( x )                   TF01( x )           // input uv
+#define DUV1( x )                   TF02( x )           // detail uv
+#define DOUT                        TI00                // ptr to output
+#define DEND                        TI01                // loop terminator
+#define DNXT                        TI02                // ptr to next buffer
+
+    nop                                                 lq.z        DSCL(z),    VU1_Flags(vi00)             ; Get Detail Scale
+    nop                                                 iadd        DOUT, BASE, vi00                        ; Get address of current buffer
+    nop                                                 iadd        DEND, DOUT, NUMV
+    nop                                                 iadd        DEND, DEND, NUMV
+    nop                                                 iadd        DEND, DEND, NUMV
+    nop                                                 iadd        DEND, DEND, NUMV 
+
+    ; loop preamble
+    nop                                                 lq.xyz      DUV0(xyz),  VU1_UV0(DOUT)               ; load uv 0
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    mulz.xy         DUV1(xy),   DUV0(xy),   DSCL(z)     nop                                                 ; scale uv 0
+    add.z           DUV1(z),    DUV0(z),    vf00z       nop                                                 ; project uv 0
+
+
+DETAIL_LOOP:
+    nop                                                 lq.xyz      DUV0(xyz),  (VU1_UV0+VU1_VERT_SIZE)(DOUT)   ; load uv 1
+    nop                                                 iaddiu      DOUT, DOUT, VU1_VERT_SIZE
+    nop                                                 nop
+    nop                                                 sq.xyz      DUV1(xyz),  (VU1_UV1-VU1_VERT_SIZE)(DOUT)   ; store uv 0
+    mulz.xy         DUV1(xy),   DUV0(xy),   DSCL(z)     ibne        DOUT, DEND, DETAIL_LOOP                     ; scale uv 1
+    add.z           DUV1(z),    DUV0(z),    vf00z       nop                                                     ; project uv 1
+
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackRGB(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1C_IntensityAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1_DetailTex(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context2Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 move.xy     TF01(xy),   vf00xy              ; turn clamping off
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_SNRX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif     ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 iaddiu      ITMP, vi00, UV1_IN_USE
+    nop                                                 ior         FLAG, FLAG, ITMP
+    nop                                                 b           DETAIL_RET
+    nop                                                 xgkick      KICK
+
+#undef DSCL
+#undef DUV0
+#undef DUV1
+#undef DADD
+#undef DOUT
+#undef DEND
+#undef DNXT
+
+;==============================================================================
+;
+; Self Illumination Pass
+;
+;   This routine a) copies screen uv's from uv0 to uv1
+;                b) renders the diffuse texture again in decal mode using the
+;                   destination alpha to determine which parts are illuminated
+;                c) re-renders the self-illumination to the front-buffer alpha
+;                d) resets the frame buffer register             
+;
+;==============================================================================
+
+SELFILLUM:
+
+    ; if we're using the diffuse lighting, but just doing a glow, skip the
+    ; self-illum portion and go straight to the glow
+    nop                                                 iaddiu      ITMP, vi00, SELFILLUM_DIFFUSELIT
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, SKIP_SELFILLUM_DECAL
+
+    ; if we're fading the geometry out, skip the self-illum portion and go straight to the glow
+    nop                                                 iaddiu      ITMP, vi00, VU1_FADING_ALPHA
+    nop                                                 iand        ITMP, INST, ITMP
+    nop                                                 nop
+    nop                                                 ibne        ITMP, vi00, SKIP_SELFILLUM_DECAL
+
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackAll(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1_EnvIllumAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1_DecalTex(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context1Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_NSRX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 xgkick      KICK
+    
+SKIP_SELFILLUM_DECAL:
+    ; now if we are rendering with a per-poly glow, we need to set that alpha value everywhere,
+    ; otherwise, we just render into the front buffer alpha
+
+    nop                                                 iaddiu      ITMP, vi00, SELFILLUM_PERPOLY
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, DO_GLOW_PERPIXEL
+    
+#define GOUT        TI00
+#define GEND        TI01
+#define GTMP        TI02
+#define GFA1(x)     TF00(x)
+#define GFA2(x)     TF01(x)
+    nop                                                 ilw.w       GTMP, VU1_COUNT(BASE)
+    nop                                                 lq.w        GFA2(w), VU1_Flags(vi00)
+    nop                                                 iadd        GOUT, BASE, vi00
+    nop                                                 iaddiu      ITMP, vi00, 0xff
+    nop                                                 iand        GTMP, GTMP, ITMP
+    nop                                                 mfir.w      GFA1(w), GTMP
+    nop                                                 iadd        GEND, GOUT, NUMV
+    nop                                                 iadd        GEND, GEND, NUMV
+    itof0.w         GFA2(w),    GFA2(w)                 iadd        GEND, GEND, NUMV
+    itof0.w         GFA1(w),    GFA1(w)                 iadd        GEND, GEND, NUMV
+    nop                                                 loi         0.0078125   ; 1/128
+    nop                                                 nop
+    nop                                                 nop
+    mul.w           GFA1(w),    GFA1(w),    GFA2(w)     nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    muli.w          GFA1(w),    GFA1(w),    i           nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    ftoi0.w         GFA1(w),    GFA1(w)                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+      
+PERPOLY_GLOW_LOOP:
+    nop                                                 sq.w        GFA1(w), VU1_UV0(GOUT)
+    nop                                                 iaddiu      GOUT, GOUT, VU1_VERT_SIZE
+    nop                                                 nop
+    nop                                                 ibne        GOUT, GEND, PERPOLY_GLOW_LOOP
+    nop                                                 nop
+#undef GOUT
+#undef GEND
+#undef GTMP
+#undef GFA1
+#undef GFA2
+
+    ; load up the registers with the glow settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameFrontAlpha(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1_DiffuseAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1_DiffuseTex(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context2GifNoTex(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 iaddiu      ITMP, vi00, GS_FRAME_2          ; use context 2 frame
+    nop                                                 mfir.z      TF02(z),    ITMP                ; use context 2 frame
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_NRNX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 iaddiu      ITMP, vi00, ~UV1_IN_USE
+    nop                                                 iand        FLAG, FLAG, ITMP
+    nop                                                 b           SELFILLUM_RET
+    nop                                                 xgkick      KICK
+    
+DO_GLOW_PERPIXEL:
+    ; load up the registers with the glow settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameFrontAlpha(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1_DiffuseAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1_DiffuseTex(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context1Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_NSRX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 iaddiu      ITMP, vi00, ~UV1_IN_USE
+    nop                                                 iand        FLAG, FLAG, ITMP
+    nop                                                 b           SELFILLUM_RET
+    nop                                                 xgkick      KICK
+
+;==============================================================================
+;
+;   Character shadow passes - comes from the alpha channel of the z-buffer
+;
+;==============================================================================
+
+SHADOW:
+#define POUT                        TI00            // pointer to output
+#define PEND                        TI01            // loop terminator
+#define PCNS(x)                     TF00(x)         // constants for scissor and scale
+#define PXYZ(x)                     TF01(x)         // input position in screen space
+#define PFLT(x)                     TF02(x)         // position convert to floating-point
+#define PUV1(x)                     TF03(x)         // final uv
+
+    addw.z          PUV1(z),    vf00z,      vf00w       loi         3.5         ; 1792/512
+    addi.xy         PCNS(xy),   vf00xy,     i           loi         0.001953125 ; 1/512
+    addi.z          PCNS(z),    vf00z,      i           iadd        POUT, BASE, vi00
+    nop                                                 iadd        PEND, POUT, NUMV
+    nop                                                 iadd        PEND, PEND, NUMV
+    nop                                                 iadd        PEND, PEND, NUMV
+    nop                                                 iadd        PEND, PEND, NUMV
+
+    ; stall if uv1 is in use
+    nop                                                 iaddiu      ITMP, vi00, UV1_IN_USE
+    nop                                                 iand        ITMP, FLAG, ITMP
+    nop                                                 nop
+    nop                                                 ibeq        ITMP, vi00, SHADOW_DONT_STALL
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick      ITMP
+SHADOW_DONT_STALL:
+
+    ; loop preamble
+    nop                                                 lq.xy       PXYZ(xy),   VU1_XYZ(POUT)                   ;               ; load pos0
+    nop                                                 nop                                                     ;               ;
+    nop                                                 nop                                                     ;               ;
+
+    nop                                                 nop                                                     ;
+    itof4.xy        PFLT(xy),   PXYZ(xy)                nop                                                     ; pos0->float
+    nop                                                 lq.xy       PXYZ(xy),   (VU1_XYZ+VU1_VERT_SIZE)(POUT)   ;               ; load pos1
+    nop                                                 nop                                                     ;               ;
+    suba.xy         acc,        vf00xy,     PCNS(xy)    nop                                                     ; scissor uv0   ;
+
+SHADOW_LOOP:
+    maddz.xy        PUV1(xy),   PFLT(xy),   PCNS(z)     iaddiu      POUT, POUT, VU1_VERT_SIZE                   ; scale uv0     ; vptr++
+    itof4.xy        PFLT(xy),   PXYZ(xy)                nop                                                     ; pos1->float
+    nop                                                 lq.xy       PXYZ(xy),   (VU1_XYZ+VU1_VERT_SIZE)(POUT)   ;               ; load pos2
+    nop                                                 ibne        POUT, PEND, SHADOW_LOOP                     ;               ; loop
+    suba.xy         acc,        vf00xy,     PCNS(xy)    sq.xyz      PUV1(xyz),  (VU1_UV1-VU1_VERT_SIZE)(POUT)   ; scissor uv1   ; store uv0
+
+#undef POUT
+#undef PEND
+#undef PCNS
+#undef PXYZ
+#undef PFLT
+#undef PUV1
+
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackRGB(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1C_IntensityAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1C_ShadowTex(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context2Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 iaddiu      ITMP, vi00, GS_NOMIPS           ; turn mipping off
+    nop                                                 mfir.x      TF05(x),    ITMP                ; turn mipping off
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_SNRX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 iaddiu      ITMP, vi00, UV1_IN_USE
+    nop                                                 ior         FLAG, FLAG, ITMP
+    nop                                                 b           SHADOW_RET
+    nop                                                 xgkick      KICK
+
+;==============================================================================
+;
+;   Projected Shadow Passes - comes from artist-specified textures
+;
+;==============================================================================
+
+#define PREG( x )                   TF22( x )       // gs texture register
+#define PMT0( x )                   TF00( x )       // projection matrix
+#define PMT1( x )                   TF01( x )       // projection matrix
+#define PMT2( x )                   TF02( x )       // projection matrix
+#define PMT3( x )                   TF03( x )       // projection matrix
+#define PRJ0( x )                   TF04( x )       // projection matrix * L2W
+#define PRJ1( x )                   TF05( x )       // projection matrix * L2W
+#define PRJ2( x )                   TF06( x )       // projection matrix * L2W
+#define PRJ3( x )                   TF07( x )       // projection matrix * L2W
+#define PXYZ( x )                   TF08( x )       // position
+#define PTEX( x )                   TF09( x )       // final uv
+#define PNXT                        TI00            // pointer to backup buffer
+#define POUT                        TI01            // pointer to output
+#define PEND                        TI02            // loop terminator
+    
+PROJ_SHADOW_1:
+    nop                                                 lq.xyzw     PMT0(xyzw), VU1C_ProjShadow0Mat0(vi00)
+    nop                                                 lq.xyzw     PMT1(xyzw), VU1C_ProjShadow0Mat1(vi00)
+    nop                                                 lq.xyzw     PMT2(xyzw), VU1C_ProjShadow0Mat2(vi00)
+    nop                                                 lq.xyzw     PMT3(xyzw), VU1C_ProjShadow0Mat3(vi00)
+    nop                                                 bal         RETN, DO_PROJ_SHADOW
+    nop                                                 lq.xyzw     PREG(xyzw), VU1C_ProjShadow0Tex(vi00)
+    nop                                                 b           PROJ_SHADOW_1_RET
+    nop                                                 nop
+
+PROJ_SHADOW_2:    
+    nop                                                 lq.xyzw     PMT0(xyzw), VU1C_ProjShadow1Mat0(vi00)
+    nop                                                 lq.xyzw     PMT1(xyzw), VU1C_ProjShadow1Mat1(vi00)
+    nop                                                 lq.xyzw     PMT2(xyzw), VU1C_ProjShadow1Mat2(vi00)
+    nop                                                 lq.xyzw     PMT3(xyzw), VU1C_ProjShadow1Mat3(vi00)
+    nop                                                 bal         RETN, DO_PROJ_SHADOW
+    nop                                                 lq.xyzw     PREG(xyzw), VU1C_ProjShadow1Tex(vi00)
+    nop                                                 b           PROJ_SHADOW_2_RET
+    nop                                                 nop
+    
+DO_PROJ_SHADOW:
+    ; concatenate the projection and l2w matrices while simultaneoustly
+    ; setting up our buffer pointers and doing a conditional sync stall
+    mulaw.xyzw      acc,        PMT3(xyzw), L2W0(w)     iadd        PNXT, NBUF, vi00
+    maddaz.xyzw     acc,        PMT2(xyzw), L2W0(z)     iadd        POUT, BASE, vi00
+    madday.xyzw     acc,        PMT1(xyzw), L2W0(y)     iadd        PEND, POUT, NUMV
+    maddx.xyzw      PRJ0(xyzw), PMT0(xyzw), L2W0(x)     iadd        PEND, PEND, NUMV
+    mulaw.xyzw      acc,        PMT3(xyzw), L2W1(w)     iadd        PEND, PEND, NUMV
+    maddaz.xyzw     acc,        PMT2(xyzw), L2W1(z)     iadd        PEND, PEND, NUMV
+    madday.xyzw     acc,        PMT1(xyzw), L2W1(y)     nop
+    maddx.xyzw      PRJ1(xyzw), PMT0(xyzw), L2W1(x)     nop
+    mulaw.xyzw      acc,        PMT3(xyzw), L2W2(w)     nop
+    maddaz.xyzw     acc,        PMT2(xyzw), L2W2(z)     nop
+    madday.xyzw     acc,        PMT1(xyzw), L2W2(y)     nop
+    maddx.xyzw      PRJ2(xyzw), PMT0(xyzw), L2W2(x)     iaddiu      ITMP, vi00, UV1_IN_USE
+    mulaw.xyzw      acc,        PMT3(xyzw), L2W3(w)     iand        ITMP, FLAG, ITMP
+    maddaz.xyzw     acc,        PMT2(xyzw), L2W3(z)     nop
+    madday.xyzw     acc,        PMT1(xyzw), L2W3(y)     ibeq        ITMP, vi00, PROJ_SHADOW_DONT_STALL
+    maddx.xyzw      PRJ3(xyzw), PMT0(xyzw), L2W3(x)     iaddiu      ITMP, vi00, VU1C_RegLoadGif
+    nop                                                 xgkick      ITMP
+PROJ_SHADOW_DONT_STALL:
+
+    ; unoptimized loop (nops indicate where stalls would occur)
+PROJ_SHADOW_LOOP:
+    nop                                                 lq.xyz      PXYZ(xyz),  VU1_XYZ(PNXT)           ; load vert in local space
+    nop                                                 lq.z        PTEX(z),    VU1_UV0(POUT)           ; load Q from screen space data
+    nop                                                 nop
+    mulaw.xyw       acc,        PRJ3(xyw),  vf00w       nop                                             ; vert * proj matrix
+    maddaz.xyw      acc,        PRJ2(xyw),  PXYZ(z)     nop                                             ; vert * proj matrix
+    madday.xyw      acc,        PRJ1(xyw),  PXYZ(y)     nop                                             ; vert * proj matrix
+    maddx.xyw       PTEX(xyw),  PRJ0(xyw),  PXYZ(x)     nop                                             ; vert * proj matrix
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    mulz.xy         PTEX(xy),   PTEX(xy),   PTEX(z)     nop                                             ; pre-mult xy by original Q
+    mulw.z          PTEX(z),    PTEX(z),    PTEX(w)     nop                                             ; q = original q times projected q
+    nop                                                 iaddiu      POUT, POUT, VU1_VERT_SIZE           ; pOut++
+    nop                                                 iaddiu      PNXT, PNXT, VU1_VERT_SIZE           ; pNxt++
+    nop                                                 ibne        POUT, PEND, PROJ_SHADOW_LOOP        ; loop
+    nop                                                 sq.xyz      PTEX(xyz),  VU1_UV1-VU1_VERT_SIZE(POUT) ; store result
+
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackRGB(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1C_IntensityAlpha(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context2Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 iaddiu      ITMP, vi00, GS_NOMIPS           ; turn mipping off
+    nop                                                 mfir.x      TF05(x),    ITMP                ; turn mipping off
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_SNRX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings    
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     PREG(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 iaddiu      ITMP, vi00, UV1_IN_USE
+    nop                                                 ior         FLAG, FLAG, ITMP
+    nop                                                 jr          RETN
+    nop                                                 xgkick      KICK
+
+#undef PREG
+#undef PMT0
+#undef PMT1
+#undef PMT2
+#undef PMT3
+#undef PRJ0
+#undef PRJ1
+#undef PRJ2
+#undef PRJ3
+#undef PXYZ
+#undef PTEX
+#undef PNXT
+#undef POUT
+#undef PEND
+
+
+;==============================================================================
+;
+;   Projected Spotlight Pass
+;
+;   The math behind the spotlight will (a) transform and project the vertex
+;   position into the projector's space, and (b) calculate an alpha value based
+;   on distance and incident angle.
+;
+;   The microcode is performing this code (in an unoptimized form):
+;       a) Transform vert (Note that after transform Q is stored in W, and Z
+;          is a parametric value between the projector's near and far planes.
+;          This is different from a traditional projection matrix, but makes
+;          the microcode happy.)
+;       b) The transformed vert becomes our UVs. Set up Q such that the
+;          hardware will handle perspective-correction properly. You can find
+;          this math in some papers on the net, but it boils down to:
+;          st = xy*original q
+;          q  = original q * transformed q
+;       c) Clamp the distance to avoid negatives.
+;       d) Convert the normal to float
+;       e) Calculate Dir.Dot( Normal ). (Dir still isn't normalized at this point!)
+;       f) Clamp Dot to zero to avoid negatives
+;       g) Scale Dot by 32*128. (32 to finish off the float conversion and 128
+;          is the alpha range)
+;       h) Multiply dot by 1/length(dir) and add ambient of 64
+;       i) Scale that intensity by the distance (from step (a))
+;       j) Convert intensity to fixed-point
+;       k) move intensity from x to w
+;       l) store results
+;
+;   In microcode, the above stuff gets really really confusing (optimized or unoptimized).
+;   Your best bet is to lay it out in Excel and color code the registers being
+;   used.
+;
+;==============================================================================
+
+SPOTLIGHT:
+
+#define SLP0( x )       TF10( x )   // temp input projection matrix (before concatenation)
+#define SLP1( x )       TF11( x )   // temp input projection matrix (before concatenation)
+#define SLP2( x )       TF12( x )   // temp input projection matrix (before concatenation)
+#define SLP3( x )       TF13( x )   // temp input projection matrix (before concatenation)
+#define STP0( x )       TF14( x )   // temp for putting spot position in local space
+#define STP1( x )       TF15( x )   // temp for putting spot position in local space
+#define STP2( x )       TF16( x )   // temp for putting spot position in local space
+#define SONE( x )       TF17( x )   // temp for putting spot position in local space (1,1,1,?)
+#define SPR0( x )       TF00( x )   // projection matrix col0
+#define SPR1( x )       TF01( x )   // projection matrix col1
+#define SPR2( x )       TF02( x )   // projection matrix col2
+#define SPR3( x )       TF03( x )   // projection matrix col3
+#define SPOT( x )       TF04( x )   // spotlight position
+#define SCNS( x )       TF05( x )   // constant (1,ambient,scale,?)
+#define SORQ( x )       TF06( x )   // original q value from projected vert (z only)
+#define SQCP( x )       TF07( x )   // copy of original q value (required after loop optimization)
+#define SPOS( x )       TF08( x )   // input vertex position
+#define STRN( x )       TF09( x )   // transformed vert position
+#define STCP( x )       TF10( x )   // copy of transformed vert position (required after loop optimization)
+#define SSTQ( x )       TF11( x )   // projected and final uv
+#define SNRM( x )       SORQ( x )   //*input normal
+#define SNB0( x )       TF12( x )   // first backup of normal
+#define SNB1( x )       TF13( x )   // second backup of normal
+#define SDIR( x )       TF14( x )   // direction (spotlight pos - vert point)
+#define SDR1            TF14_NOCOMP // same as direction, but used for eleng instruction
+#define SLEN( x )       STRN( x )   //*length of dir vector (w only)   
+#define SDST( x )       TF15( x )   // clamped distance of transformed vert
+#define SFNM( x )       TF16( x )   // input normal as float
+#define SMUL( x )       SFNM( x )   //*normal * light dir (before normalization)
+#define SDOT( x )       SFNM( x )   //*components of SMUL added together
+#define SCDT( x )       TF17( x )   // clamped SDOT
+#define SSDT( x )       SCDT( x )   //*SCDT scaled by itof multiplier and intensity range
+#define SNDT( x )       SCDT( x )   //*Normalized SSDT with ambient added
+#define SINT( x )       SCDT( x )   //*Intensity multiplied by distance
+#define SALX( x )       TF18( x )   // final alpha value stored in X
+#define SALW( x )       SALX( x )   // final alpha value stored in W
+
+// '*' indicates register re-use
+
+#define SNXT            TI00        // ptr to backup buffer
+#define SOUT            TI01        // ptr to input/output buffer
+#define SEND            TI02        // loop end marker
+
+    addw.xyz        SCNS(xyz),  vf00xyz,    vf00w       lq.xyzw     SPOT(xyzw), VU1C_SpotlightPos(vi00)         ; load up constant      ; load spotlight pos
+    addw.xyz        SONE(xyz),  vf00xyz,    vf00w       lq.xyzw     SLP3(xyzw), VU1C_SpotlightMat3(vi00)        ; load up constant      ; load proj matrix
+    nop                                                 lq.xyzw     SLP2(xyzw), VU1C_SpotlightMat2(vi00)        ;                       ; load proj matrix
+    nop                                                 lq.xyzw     SLP1(xyzw), VU1C_SpotlightMat1(vi00)        ;                       ; load proj matrix
+    sub.xyz         SPOT(xyz),  SPOT(xyz),  L2W3(xyz)   lq.xyzw     SLP0(xyzw), VU1C_SpotlightMat0(vi00)        ; spos->local-space     ; load proj matrix
+    mulaw.xyzw      acc,        SLP3(xyzw), L2W3(w)     iadd        SNXT, NBUF, vi00                            ; proj*l2w              ; setup next ptr
+    maddaz.xyzw     acc,        SLP2(xyzw), L2W3(z)     iadd        SOUT, BASE, vi00                            ; proj*l2w              ; setup vptr
+    madday.xyzw     acc,        SLP1(xyzw), L2W3(y)     iadd        SEND, SOUT, NUMV                            ; proj*l2w              ; setup end marker
+    maddx.xyzw      SPR3(xyzw), SLP0(xyzw), L2W3(x)     iadd        SEND, SEND, NUMV                            ; proj*l2w              ; setup end marker
+    mulaw.xyzw      acc,        SLP3(xyzw), L2W2(w)     iadd        SEND, SEND, NUMV                            ; proj*l2w              ; setup end marker
+    maddaz.xyzw     acc,        SLP2(xyzw), L2W2(z)     iadd        SEND, SEND, NUMV                            ; proj*l2w              ; setup end marker
+    madday.xyzw     acc,        SLP1(xyzw), L2W2(y)     nop                                                     ; proj*l2w
+    maddx.xyzw      SPR2(xyzw), SLP0(xyzw), L2W2(x)     nop                                                     ; proj*l2w
+    mulaw.xyzw      acc,        SLP3(xyzw), L2W1(w)     nop                                                     ; proj*l2w
+    maddaz.xyzw     acc,        SLP2(xyzw), L2W1(z)     nop                                                     ; proj*l2w
+    madday.xyzw     acc,        SLP1(xyzw), L2W1(y)     nop                                                     ; proj*l2w
+    maddx.xyzw      SPR1(xyzw), SLP0(xyzw), L2W1(x)     nop                                                     ; proj*l2w
+    mulaw.xyzw      acc,        SLP3(xyzw), L2W0(w)     nop                                                     ; proj*l2w
+    maddaz.xyzw     acc,        SLP2(xyzw), L2W0(z)     nop                                                     ; proj*l2w
+    madday.xyzw     acc,        SLP1(xyzw), L2W0(y)     nop                                                     ; proj*l2w
+    maddx.xyzw      SPR0(xyzw), SLP0(xyzw), L2W0(x)     nop                                                     ; proj*l2w
+    mul.xyz         STP0(xyz),  L2W0(xyz),  SPOT(xyz)   nop                                                     ; spos->local-space
+    mul.xyz         STP1(xyz),  L2W1(xyz),  SPOT(xyz)   nop                                                     ; spos->local-space
+    mul.xyz         STP2(xyz),  L2W2(xyz),  SPOT(xyz)   loi         64.0                                        ; spos->local-space     ; i = ambient
+    addi.y          SCNS(y),    vf00y,      i           loi         4096.0                                      ; cons.y = ambient      ; i = scale
+    addi.z          SCNS(z),    vf00z,      i           nop                                                     ; cons.z = scale
+    addaz.x         acc,        STP0(x),    STP0(z)     nop                                                     ; spos->local-space
+    maddy.x         SPOT(x),    SONE(x),    STP0(y)     nop                                                     ; spos->local-space
+    addaz.y         acc,        STP1(y),    STP1(z)     nop                                                     ; spos->local-space
+    maddx.y         SPOT(y),    SONE(y),    STP1(x)     nop                                                     ; spos->local-space
+    adday.z         acc,        STP2(z),    STP2(y)     nop                                                     ; spos->local-space
+    maddx.z         SPOT(z),    SONE(z),    STP2(x)     nop                                                     ; spos->local-space
+
+    ; loop preamble
+    nop                                                 lq.xyzw     SPOS(xyzw), VU1_XYZ(SNXT)                       ;                       ; load pos 0
+    nop                                                 nop                                                         ;                       ;
+    nop                                                 nop                                                         ;                       ;
+    nop                                                 nop                                                         ;                       ;
+    sub.xyz         SDIR(xyz),  SPOT(xyz),  SPOS(xyz)   nop                                                         ; calc dir 0            ;
+    nop                                                 nop                                                         ;                       ;
+    nop                                                 nop                                                         ;                       ;
+    nop                                                 nop                                                         ;                       ;
+    nop                                                 eleng       p,          SDR1                                ;                       ; start length 0
+    mulaw.xyzw      acc,        SPR3(xyzw), vf00w       nop                                                         ; xform vert 0          ;
+    maddaz.xyzw     acc,        SPR2(xyzw), SPOS(z)     lq.xyzw     SNRM(xyzw), VU1_NORMAL(SOUT)                    ; xform vert 0          ; load normal 0
+    nop                                                 nop                                                         ;                       ;
+    nop                                                 nop                                                         ;                       ;
+    madday.xyzw     acc,        SPR1(xyzw), SPOS(y)     nop                                                         ; xform vert 0          ;
+    itof12.xyz      SFNM(xyz),  SNRM(xyz)               move.xyzw   SNB0(xyzw), SNRM(xyzw)                          ; normal->float 0       ; first copy normal 0
+    maddx.xyzw      STRN(xyzw), SPR0(xyzw), SPOS(x)     nop                                                         ; xform vert 0          ;
+    nop                                                 lq.z        SORQ(z),    VU1_UV0(SOUT)                       ;                       ; load orig q 0
+    nop                                                 lq.xyzw     SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*1)(SNXT)     ;                       ; load pos 1
+    mul.xyz         SMUL(xyz),  SFNM(xyz),  SDIR(xyz)   nop                                                         ; dot*normal 0          ;
+    nop                                                 nop                                                         ;                       ;
+
+    nop                                                 nop                                                         ;                       ;
+    nop                                                 move.xyzw   STCP(xyzw), STRN(xyzw)                          ;                       ; copy trans vert 0
+    sub.xyz         SDIR(xyz),  SPOT(xyz),  SPOS(xyz)   nop                                                         ; calc dir 1            ;
+    mulz.xy         SSTQ(xy),   STRN(xy),   SORQ(z)     nop                                                         ; project stq 0         ;
+    addaz.x         acc,        SMUL(x),    SMUL(z)     nop                                                         ; add dot comp. 0       ;
+    nop                                                 move.xyzw   SQCP(xyzw), SORQ(xyzw)                          ;                       ; copy orig q 0
+    maddy.x         SDOT(x),    SCNS(x),    SMUL(y)     eleng       p,          SDR1                                ; add dot comp. 0       ; start length 1
+    mulaw.xyzw      acc,        SPR3(xyzw), vf00w       mfp.w       SLEN(w),    p                                   ; xform vert 1          ; get length 0
+    maddaz.xyzw     acc,        SPR2(xyzw), SPOS(z)     lq.xyzw     SNRM(xyzw), VU1_NORMAL+(VU1_VERT_SIZE*1)(SOUT)  ; xform vert 1          ; load normal 1
+    nop                                                 nop                                                         ;                       ;
+    maxx.x          SCDT(x),    SDOT(x),    vf00x       move.xyzw   SNB1(xzyw), SNB0(xyzw)                          ; clamp dot 0           ; second copy normal 0
+    madday.xyzw     acc,        SPR1(xyzw), SPOS(y)     div         q, vf00w,   SLEN(w)                             ; xform vert 1          ; 1/length 0
+    itof12.xyz      SFNM(xyz),  SNRM(xyz)               move.xyzw   SNB0(xyzw), SNRM(xyzw)                          ; normal->float 1       ; first copy normal 1
+    maddx.xyzw      STRN(xyzw), SPR0(xyzw), SPOS(x)     nop                                                         ; xform vert 1          ;
+    mulz.x          SSDT(x),    SCDT(x),    SCNS(z)     lq.z        SORQ(z),    VU1_UV0+(VU1_VERT_SIZE*1)(SOUT)     ; scale int 0           ; load orig q 1
+    mulw.z          SSTQ(z),    SQCP(z),    STCP(w)     lq.xyzw     SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*2)(SNXT)     ; project q 0           ; load pos 2
+    mul.xyz         SMUL(xyz),  SFNM(xyz),  SDIR(xyz)   nop                                                         ; dot*normal 1          ;
+    maxx.z          SDST(z),    STCP(z),    vf00x       nop                                                         ; clamp dist 0          ;
+    
+SPOTLIGHT_LOOP:
+    mulaq.x         acc,        SSDT(x),    q           nop                                                         ; normalize int 0       ;
+    maddy.x         SNDT(x),    SCNS(x),    SCNS(y)     move.xyzw   STCP(xyzw), STRN(xyzw)                          ; add ambient 0         ; copy trans vert 1
+    sub.xyz         SDIR(xyz),  SPOT(xyz),  SPOS(xyz)   sq.xyz      SSTQ(xyz),  VU1_UV1(SOUT)                       ; calc dir 2            ; store stq 0
+    mulz.xy         SSTQ(xy),   STRN(xy),   SORQ(z)     iaddiu      SOUT, SOUT, VU1_VERT_SIZE                       ; project stq 1         ; sout++
+    addaz.x         acc,        SMUL(x),    SMUL(z)     iaddiu      SNXT, SNXT, VU1_VERT_SIZE                       ; add dot comp. 1       ; snxt++
+    mulz.x          SINT(x),    SNDT(x),    SDST(z)     move.xyzw   SQCP(xyzw), SORQ(xyzw)                          ; int*dist 0            ; copy orig q 1
+    maddy.x         SDOT(x),    SCNS(x),    SMUL(y)     eleng       p,          SDR1                                ; add dot comp. 1       ; start length 2
+    mulaw.xyzw      acc,        SPR3(xyzw), vf00w       mfp.w       SLEN(w),    p                                   ; xform vert 2          ; get length 1
+    maddaz.xyzw     acc,        SPR2(xyzw), SPOS(z)     lq.xyzw     SNRM(xyzw), VU1_NORMAL+(VU1_VERT_SIZE*1)(SOUT)  ; xform vert 2          ; load normal 2
+    ftoi0.x         SALX(x),    SINT(x)                 sq.xyzw     SNB1(xyzw), VU1_NORMAL-(VU1_VERT_SIZE*1)(SNXT)  ; int->fixed 0          ; backup normal 0
+    maxx.x          SCDT(x),    SDOT(x),    vf00x       move.xyzw   SNB1(xzyw), SNB0(xyzw)                          ; clamp dot 1           ; second copy normal 1
+    madday.xyzw     acc,        SPR1(xyzw), SPOS(y)     div         q, vf00w,   SLEN(w)                             ; xform vert 2          ; 1/length 1
+    itof12.xyz      SFNM(xyz),  SNRM(xyz)               move.xyzw   SNB0(xyzw), SNRM(xyzw)                          ; normal->float 2       ; first copy normal 2
+    maddx.xyzw      STRN(xyzw), SPR0(xyzw), SPOS(x)     mr32.xyzw   SALW(xyzw), SALX(xyzw)                          ; xform vert 2          ; int x->w 0
+    mulz.x          SSDT(x),    SCDT(x),    SCNS(z)     lq.z        SORQ(z),    VU1_UV0+(VU1_VERT_SIZE*1)(SOUT)     ; scale int 1           ; load orig q 2
+    mulw.z          SSTQ(z),    SQCP(z),    STCP(w)     lq.xyzw     SPOS(xyzw), VU1_XYZ+(VU1_VERT_SIZE*2)(SNXT)     ; project q 1           ; load pos 3
+    mul.xyz         SMUL(xyz),  SFNM(xyz),  SDIR(xyz)   ibne        SOUT, SEND, SPOTLIGHT_LOOP                      ; dot*normal 2          ; loop
+    maxx.z          SDST(z),    STCP(z),    vf00x       sq.w        SALW(w),    VU1_UV0-(VU1_VERT_SIZE*1)(SOUT)     ; clamp dist 1          ; store int 0
+
+#undef SLP0
+#undef SLP1
+#undef SLP2
+#undef SLP3
+#undef STP0
+#undef STP1
+#undef STP2
+#undef SPR0
+#undef SPR1
+#undef SPR2
+#undef SPR3
+#undef SPOT
+#undef SCNS
+#undef SORQ
+#undef SQCP
+#undef SPOS
+#undef STRN
+#undef STCP
+#undef SSTQ
+#undef SNRM
+#undef SNB0
+#undef SNB1
+#undef SDIR
+#undef SLEN
+#undef SDST
+#undef SFNM
+#undef SMUL
+#undef SDOT
+#undef SCDT
+#undef SSDT
+#undef SNDT
+#undef SINT
+#undef SALX
+#undef SALW
+
+#undef SNXT
+#undef SOUT
+#undef SEND
+
+    ;--------------------------------------------------------------------------
+    ; kick the spotlight alpha into the frame buffer alpha channel
+    ;--------------------------------------------------------------------------
+
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackAlpha(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1_DiffuseAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1C_SpotlightTex(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context2Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 iaddiu      ITMP, vi00, GS_NOMIPS           ; turn off mipping
+    nop                                                 mfir.x      TF05(x),    ITMP                ; turn off mipping
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_SRNX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif             ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 xgkick      KICK
+
+    ;--------------------------------------------------------------------------
+    ; re-render the diffuse texture with full color into the frame buffer using
+    ; destination alpha
+    ;--------------------------------------------------------------------------
+
+    ; load up the registers with the appropriate settings
+    nop                                                 iaddiu      EOPB, vi00, 0x7FFF
+    nop                                                 iaddiu      EOPB, EOPB, 1
+    nop                                                 ior         NVRT, EOPB, NUMV
+    nop                                                 iaddiu      NREG, vi00, 5
+    nop                                                 lq.xyzw     TF00(xyzw), VU1C_RegLoadGif(vi00)
+    nop                                                 lq.xyzw     TF01(xyzw), VU1C_Clamp(vi00)
+    nop                                                 lq.xyzw     TF02(xyzw), VU1C_FrameBackAll(vi00)
+    nop                                                 lq.xyzw     TF03(xyzw), VU1C_SpotlightAlpha(vi00)
+    nop                                                 lq.xyzw     TF04(xyzw), VU1_DecalTex(vi00)
+    nop                                                 lq.xyzw     TF05(xyzw), VU1_Mips(vi00)
+    nop                                                 lq.yw       TF06(yw),   VU1C_Context1Gif(vi00)
+    nop                                                 mfir.x      TF00(x),    NREG                ; fill in the reg load giftag
+    nop                                                 iaddiu      ITMP, vi00, GIFREGS_NSRX        ; fill in the primitive giftag
+    nop                                                 mfir.x      TF06(x),    NVRT                ; fill in the primitive giftag
+    nop                                                 mfir.z      TF06(z),    ITMP                ; fill in the primitive giftag
+
+    ; stall the previous pass
+    nop                                                 iaddiu      ITMP, vi00, VU1C_RegLoadGif     ; Wait for GS to finish
+    nop                                                 xgkick      ITMP
+
+    ; render with the appropriate settings
+    nop                                                 iaddiu      KICK, BASE, VU1_REG5LOAD_GIFTAG
+    nop                                                 sq.xyzw     TF00(xyzw), 0(KICK)
+    nop                                                 sq.xyzw     TF01(xyzw), 1(KICK)
+    nop                                                 sq.xyzw     TF02(xyzw), 2(KICK)
+    nop                                                 sq.xyzw     TF03(xyzw), 3(KICK)
+    nop                                                 sq.xyzw     TF04(xyzw), 4(KICK)
+    nop                                                 sq.xyzw     TF05(xyzw), 5(KICK)
+    nop                                                 sq.xyzw     TF06(xyzw), 6(KICK)
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 b           SPOTLIGHT_RET
+    nop                                                 xgkick      KICK
+
+;==============================================================================
+;
+;   Distortion material pass
+;
+;   This code will generate uvs based on the screen space position and the
+;   normal. The basic idea is to warp the screen based on the input normals.
+;   At the edges of the character, hopefully the normals will be pointed
+;   to the left and right.
+;
+;==============================================================================
+
+#define DXYZ( x )           TF00( x )   // input screen position
+#define DFPS( x )           TF01( x )   // screen position in floating-point
+#define DNRM( x )           TF02( x )   // input normal
+#define DFNM( x )           TF03( x )   // input normal as float
+#define DXNM( x )           TF04( x )   // normal transformed to view space
+#define DUV0( x )           TF05( x )   // uv gotten by adding normal to screen position
+#define DCNS( x )           TF06( x )   // constants (1792, 1/512, 32*DistortionScale/512)
+#define DMT0( x )           TF07( x )   // normal xform matrix col 0
+#define DMT1( x )           TF08( x )   // normal xform matrix col 1
+#define DMT2( x )           TF09( x )   // normal xform matrix col 2
+#define DST0( x )           TF10( x )   // DMT * L2W
+#define DST1( x )           TF11( x )   // DMT * L2W
+#define DST2( x )           TF12( x )   // DMT * L2W
+
+#define DNXT                TI00        // pointer to next buffer
+#define DOUT                TI01        // pointer to current buffer
+#define DEND                TI02        // end marker
+
+DISTORTION:
+    nop                                                 lq.xyzw     DMT0(xyzw), VU1_EnvMatrix0(vi00)
+    nop                                                 lq.xyzw     DMT1(xyzw), VU1_EnvMatrix1(vi00)
+    nop                                                 loi         1792.0
+    addi.x          DCNS(x),    vf00x,      i           loi         0.001953125
+    addi.y          DCNS(y),    vf00y,      i           loi         0.5
+    addi.z          DCNS(z),    vf00z,      i           mr32.xyzw   DMT2(xyzw), DMT0(xyzw)
+    addw.z          DUV0(z),    vf00z,      vf00w       iadd        DNXT, NBUF, vi00
+    nop                                                 iadd        DOUT, BASE, vi00
+    nop                                                 iadd        DEND, DOUT, NUMV
+    nop                                                 mr32.xyzw   DMT2(xyzw), DMT2(xyzw)
+    nop                                                 iadd        DEND, DEND, NUMV
+    mulax.xy        acc,        DMT0(xy),   L2W2(x)     iadd        DEND, DEND, NUMV
+    madday.xy       acc,        DMT1(xy),   L2W2(y)     iadd        DEND, DEND, NUMV
+    maddz.xy        DST2(xy),   DMT2(xy),   L2W2(z)     iaddiu      ITMP, vi00, 0x80
+    mulax.xy        acc,        DMT0(xy),   L2W1(x)     nop
+    madday.xy       acc,        DMT1(xy),   L2W1(y)     nop
+    maddz.xy        DST1(xy),   DMT2(xy),   L2W1(z)     nop
+    mulax.xy        acc,        DMT0(xy),   L2W0(x)     nop
+    madday.xy       acc,        DMT1(xy),   L2W0(y)     nop
+    maddz.xy        DST0(xy),   DMT2(xy),   L2W0(z)     nop
+
+DISTORTION_LOOP:
+    nop                                                 lq.xy       DXYZ(xy),   VU1_XYZ(DOUT)
+    nop                                                 lq.xyz      DNRM(xyz),  VU1_NORMAL(DOUT)
+    nop                                                 iaddiu      DNXT, DNXT, VU1_VERT_SIZE
+    nop                                                 iaddiu      DOUT, DOUT, VU1_VERT_SIZE
+    itof4.xy        DFPS(xy),   DXYZ(xy)                nop
+    itof12.xyz      DFNM(xyz),  DNRM(xyz)               nop
+    nop                                                 nop
+    nop                                                 nop
+    subx.xy         DFPS(xy),   DFPS(xy),   DCNS(x)     nop
+    mulaz.xy        acc,        DST2(xy),   DFNM(z)     nop
+    madday.xy       acc,        DST1(xy),   DFNM(y)     nop
+    maddx.xy        DXNM(xy),   DST0(xy),   DFNM(x)     nop
+    nop                                                 nop
+    nop                                                 nop
+    mulay.xy        acc,        DFPS(xy),   DCNS(y)     nop
+    maddz.xy        DUV0(xy),   DXNM(xy),   DCNS(z)     nop
+    nop                                                 nop
+    nop                                                 nop
+    nop                                                 ibne        DOUT, DEND, DISTORTION_LOOP
+    nop                                                 sq.xyz      DUV0(xyz),  (VU1_UV0-VU1_VERT_SIZE)(DOUT)
+
+    nop                                                 b           DISTORTION_RET
+    nop                                                 nop
+
+#undef DXYZ
+#undef DFPS
+#undef DNRM
+#undef DFNM
+#undef DXNM
+#undef DUV0
+#undef DCNS
+#undef DMT0
+#undef DMT1
+#undef DMT2
+#undef DST0
+#undef DST1
+#undef DST2
+
+#undef DNXT
+#undef DOUT
+#undef DEND
+
+VU1_MATERIAL_CODE_END:

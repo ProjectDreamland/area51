@@ -1,0 +1,53 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_release_sequence_handle</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="frees a sequence handle for later allocation by AIL_allocate_sequence_handle.">
+<meta name="ms-hkwd" content="AIL_release_sequence_handle">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_release_sequence_handle</h1>
+<p>The function  <b>AIL_release_sequence_handle</b> frees a sequence handle for later allocation by AIL_allocate_sequence_handle.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_release_sequence2icfaa.html" class=trn>AIL_release_sequence_handle</a>(</b>
+<b>&nbsp&nbsp<a href="HSEQUENCE.html" class=trn>HSEQUENCE</a>&nbsp</b><i>S</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>S</i></dt>
+<dd>indicates the sequence handle to release.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>Many applications which follow the guidelines for sequence allocation and playback under <a href="AIL_allocate_sequenc2icfaa.html">AIL_allocate_sequence_handle</a> and <a href="AIL_init_sequence.html">AIL_init_sequence</a> will not need to use this function at all. This is because sequence handles, once allocated, may be reused as many times as desired. See the descriptions of the two functions mentioned above for more information. </p><p> After a sequence handle is released, no further calls to any sequence-based functions may be executed with the released handle. </p><p> MSS version 2's "delayed release" feature is not available in MSS version 3, since sequence handles no longer need to be released and reallocated in order to play new sequences. </p><p> Upon termination of the application program, it is not necessary to return allocated sequence handles to the MSS system with <a href="AIL_release_sequence2icfaa.html">AIL_release_sequence_handle</a> calls.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_allocate_sequenc2icfaa.html">AIL_allocate_sequence_handle</a>, <a href="AIL_init_sequence.html">AIL_init_sequence</a>, <a href="AIL_release_sequence2icfaa.html">AIL_release_sequence_handle</a>, <a href="AIL_stop_sequence.html">AIL_stop_sequence</a><br>
+<b>Related Basic Types:</b>
+<a href="HSEQUENCE.html">HSEQUENCE</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

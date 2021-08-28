@@ -1,0 +1,338 @@
+;==============================================================================
+;
+;   VU1 Renderer by JP
+;
+;==============================================================================
+
+#include "include1.vu"
+
+.vu
+
+.align 4
+
+.global VU1_RENDER_CODE_START
+.global VU1_RENDER_CODE_END
+
+;==============================================================================
+
+VU1_RENDER_CODE_START:
+
+    NOP                                                     B INIT                      ;  0
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B SETL2S                    ;  2
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B SETL2C                    ;  4
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B SETC2S                    ;  6
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B FAST                      ;  8
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B SLOW                      ; 10
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B FAST_LIT                  ; 12
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B SLOW_LIT                  ; 14
+    NOP                                                     NOP
+    
+    NOP                                                     B BREAKPOINT                ; 16
+    NOP                                                     NOP
+
+    NOP                                                     B POLY_CLIP_PLANE_POS_X     ; 18
+    NOP                                                     NOP                                         
+                                                                                                       
+    NOP                                                     B POLY_CLIP_PLANE_POS_Y     ; 20
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B POLY_CLIP_PLANE_POS_Z     ; 22
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B POLY_CLIP_PLANE_NEG_X     ; 24
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B POLY_CLIP_PLANE_NEG_Y     ; 26
+    NOP                                                     NOP                         
+                                                                                        
+    NOP                                                     B POLY_CLIP_PLANE_NEG_Z     ; 28
+    NOP                                                     NOP
+
+;==============================================================================
+
+INIT:
+
+    NOP[E]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+
+SETL2S:
+
+    NOP                                                     LQ L2S0(xyzw), 0(VI00)
+    NOP                                                     LQ L2S1(xyzw), 1(VI00)
+    NOP                                                     LQ L2S2(xyzw), 2(VI00)
+    NOP                                                     LQ L2S3(xyzw), 3(VI00)
+    NOP[E]                                                  NOP    
+    NOP                                                     NOP    
+
+;==============================================================================
+
+SETL2C:
+
+    NOP                                                     LQ L2C0(xyzw), 0(VI00)
+    NOP                                                     LQ L2C1(xyzw), 1(VI00)
+    NOP                                                     LQ L2C2(xyzw), 2(VI00)
+    NOP                                                     LQ L2C3(xyzw), 3(VI00)
+    NOP[E]                                                  NOP
+    NOP                                                     NOP    
+
+;==============================================================================
+
+SETC2S:
+
+    NOP                                                     LQ C2S0(xyzw), 0(VI00)
+    NOP                                                     LQ C2S1(xyzw), 1(VI00)
+    NOP                                                     LQ C2S2(xyzw), 2(VI00)
+    NOP                                                     LQ C2S3(xyzw), 3(VI00)
+    NOP[E]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+
+BREAKPOINT:
+
+    NOP[D]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+;
+;   Fast Renderer - No Clipping
+;
+;==============================================================================
+
+FAST:
+
+    NOP                                                     XTOP BASE
+    NOP                                                     ILW.x NUMV, 0(BASE)                 ; Get number of vertices
+    
+    NOP                                                     IADDIU VSRC, BASE, 1                ; Get pointer to source vertex data
+    NOP                                                     IADD   ENDM, VSRC, NUMV             ; Get pointer to end address
+    NOP                                                     IADD   TSRC, VSRC, NUMV             ; Get pointer to source texture coordinates
+    NOP                                                     IADD   CSRC, TSRC, NUMV             ; Get pointer to source color data
+    NOP                                                     IADDIU DEST, BASE, VU1_DEST         ; Get pointer to destination memory (output buffer)
+    
+FAST_LOOP:
+    
+    NOP                                                     LQI       IXYZ(xyzw), (VSRC++)
+    NOP                                                     LQI       ITEX(xyzw), (TSRC++)
+    NOP                                                     LQI       IRGB(xyzw), (CSRC++)
+    
+    MULAx.xyzw  ACC,        L2S0(xyzw), IXYZ(x)             NOP
+    MADDAy.xyzw ACC,        L2S1(xyzw), IXYZ(y)             NOP
+    MADDAz.xyzw ACC,        L2S2(xyzw), IXYZ(z)             NOP
+    MADDw.xyzw  OXYZ(xyzw), L2S3(xyzw), VF00w               NOP
+    
+    ITOF15.xy   ITEX(xy),   ITEX(xy)                        NOP
+    NOP                                                     DIV Q,    VF00w,      OXYZ(w)
+    NOP                                                     WAITQ
+    MULq.xyz    OXYZ(xyz),  OXYZ(xyz), Q                    NOP
+    MULq.xyz    OTEX(xyz),  ITEX(xyz), Q                    NOP
+    
+    FTOI4.xyz   OXYZ(xyz),  OXYZ(xyz)                       NOP
+    NOP                                                     MOVE.w    OXYZ(w),    IXYZ(w)
+    
+    NOP                                                     SQI       OTEX(xyzw), (DEST++)
+    NOP                                                     SQI       IRGB(xyzw), (DEST++)
+    NOP                                                     SQI       OXYZ(xyzw), (DEST++)
+    NOP                                                     IBNE      VSRC, ENDM, FAST_LOOP
+    NOP                                                     NOP    
+
+    NOP                                                     LQ        TMP1(xyzw), VU1_GIFTAG(VI00)
+    NOP                                                     IADDIU    VI11, VI00, 0x7FFF
+    NOP                                                     IADDIU    VI11, VI11, 1
+    NOP                                                     IOR       VI11, VI11, NUMV
+    NOP                                                     IADDIU    VI12, BASE, VU1_DEST_GIFTAG
+    NOP                                                     SQ        TMP1(xyzw), 0(VI12)
+    NOP                                                     ISW.x     VI11, 0(VI12)
+    NOP                                                     NOP
+    NOP                                                     XGKICK    VI12
+    NOP                                                     NOP
+
+    NOP[E]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+;
+;   Slow Renderer - Performs Clipping
+;
+;==============================================================================
+
+SLOW:
+    
+    NOP                                                     XTOP   BASE
+    NOP                                                     ILW.x  NUMV, 0(BASE)                ; Get number of vertices
+    NOP                                                     IADDIU ITMP, VI00,  0x7FFF          ;
+    NOP                                                     NOP
+    NOP                                                     IBGTZ  NUMV, SLOW_OK                ; Check if break flag is set
+    NOP                                                     IAND   NUMV, NUMV, ITMP             ; Mask off break flag
+    NOP[D]                                                  NOP                                 ; Breakpoint
+    NOP                                                     NOP
+
+SLOW_OK:    
+    
+    NOP                                                     IADDIU VSRC, BASE, 1                ; Get pointer to source vertex data
+    NOP                                                     IADD   ENDM, VSRC, NUMV             ; Get pointer to end address
+    NOP                                                     IADD   TSRC, VSRC, NUMV             ; Get pointer to source texture coordinates
+    NOP                                                     IADD   CSRC, TSRC, NUMV             ; Get pointer to source color data
+    NOP                                                     IADDIU DEST, BASE, VU1_DEST         ; Get pointer to destination memory (output buffer)
+    
+    NOP                                                     IADDIU ITMP, ITMP, 1
+    NOP                                                     MFIR.w ADCBit(w), ITMP              ; Get ADC bit in a register
+
+    NOP                                                     IADDIU StripDestAddr, VI00, CLIPPER_STRIP_BUFFER0
+    NOP                                                     FCSET     0                         ; Clear clip flags
+
+SLOW_LOOP:
+
+    NOP                                                     LQI       POS2(xyzw), (VSRC++)      ; Load next vertex
+    NOP                                                     LQI       TEX2(xyzw), (TSRC++)
+    NOP                                                     LQI       COL2(xyzw), (CSRC++)
+    
+    MULAx.xyzw  ACC,        L2C0(xyzw), POS2(x)             MOVE.w    TADC(w),    POS2(w)
+    MADDAy.xyzw ACC,        L2C1(xyzw), POS2(y)             NOP
+    MADDAz.xyzw ACC,        L2C2(xyzw), POS2(z)             NOP
+    MADDw.xyzw  POS2(xyzw), L2C3(xyzw), VF00w               MTIR      ITMP,       TADC(w)    
+
+    CLIPw.xyz   POS2(xyz),  POS2(w)                         NOP
+    NOP                                                     IBNE      ITMP, VI00, SLOW_NEXT
+    ITOF15.xy   TEX2(xy),   TEX2(xy)                        NOP
+
+    ;
+    ; Perform trivial accept test
+    ;
+
+    NOP                                                     NOP
+    NOP                                                     FCAND     ITMP, CLIP_TRI_FLAGS
+    NOP                                                     NOP
+    NOP                                                     IBEQ      ITMP, VI00, SLOW_NEXT
+    NOP                                                     NOP
+
+    ;
+    ; Check clipping flags
+    ;
+    
+    NOP                                                     IADD      CLIP, VI00, VI00          ; Clear trivial reject flag
+    NOP                                                     FCOR      ITMP, ~CLIP_TRI_POS_X     ; Test if all vertices are > +x
+    NOP                                                     IOR       CLIP, CLIP, ITMP
+    NOP                                                     FCOR      ITMP, ~CLIP_TRI_NEG_X     ; Test if all vertices are < -x
+    NOP                                                     IOR       CLIP, CLIP, ITMP
+    NOP                                                     FCOR      ITMP, ~CLIP_TRI_POS_Y     ; Test if all vertices are > +y
+    NOP                                                     IOR       CLIP, CLIP, ITMP
+    NOP                                                     FCOR      ITMP, ~CLIP_TRI_NEG_Y     ; Test if all vertices are < -y
+    NOP                                                     IOR       CLIP, CLIP, ITMP
+    NOP                                                     FCAND     ITMP, CLIP_TRI_POS_Z      ; Test if ANY vertices are > +z
+    NOP                                                     IOR       CLIP, CLIP, ITMP
+    NOP                                                     FCOR      ITMP, ~CLIP_TRI_NEG_Z     ; Test if all vertices are < -z
+    NOP                                                     IOR       CLIP, CLIP, ITMP
+    
+    ;
+    ; Perform trivial reject test
+    ;
+    
+    NOP                                                     NOP
+    NOP                                                     IBEQ      CLIP, VI00, SLOW_IN       ; Branch if flag was never set during tests
+    NOP                                                     NOP
+    NOP                                                     MOVE.w    TADC(w), ADCBit(w)        ; ALL verts are outside a plane so set ADC bit so this tri wont render
+ 
+    NOP                                                     B         SLOW_NEXT
+    NOP                                                     NOP
+
+SLOW_IN:
+    
+    ;
+    ; Call the clipper
+    ;
+
+    NOP                                                     BAL       ClipperReturnAddr, CLIP_TRI
+    NOP                                                     MOVE.w    TADC(w), ADCBit(w)        ; We are going to clip so dont draw this tri
+
+SLOW_NEXT:
+    
+    MULAx.xyzw  ACC,        C2S0(xyzw), POS2(x)             NOP
+    MADDAy.xyzw ACC,        C2S1(xyzw), POS2(y)             NOP
+    MADDAz.xyzw ACC,        C2S2(xyzw), POS2(z)             NOP
+    MADDw.xyzw  TPOS(xyzw), C2S3(xyzw), POS2(w)             NOP
+    
+    NOP                                                     DIV Q,    VF00w,      TPOS(w)
+    NOP                                                     WAITQ
+
+    MULq.xyz    TTEX(xyz),  TEX2(xyz),  Q                   MOVE.w    TPOS(w),    TADC(w)
+    MULq.xyz    TPOS(xyz),  TPOS(xyz),  Q                   NOP
+    FTOI4.xyz   TPOS(xyz),  TPOS(xyz)                       NOP
+
+    NOP                                                     SQI       TTEX(xyzw), (DEST++)
+    NOP                                                     SQI       COL2(xyzw), (DEST++)
+    NOP                                                     SQI       TPOS(xyzw), (DEST++)
+
+    NOP                                                     MOVE      POS0(xyzw), POS1(xyzw)    ; Roll vertex registers
+    NOP                                                     MOVE      POS1(xyzw), POS2(xyzw)
+    NOP                                                     MOVE      TEX0(xyzw), TEX1(xyzw)
+    NOP                                                     MOVE      TEX1(xyzw), TEX2(xyzw)
+    NOP                                                     MOVE      COL0(xyzw), COL1(xyzw)
+    NOP                                                     MOVE      COL1(xyzw), COL2(xyzw)
+    
+    NOP                                                     IBNE      VSRC, ENDM, SLOW_LOOP
+    NOP                                                     NOP    
+
+    NOP                                                     LQ        TMP1(xyzw), VU1_GIFTAG(VI00)
+    NOP                                                     IADDIU    VI11, VI00, 0x7FFF
+    NOP                                                     IADDIU    VI11, VI11, 1
+    NOP                                                     IOR       VI11, VI11, NUMV
+    NOP                                                     IADDIU    VI12, BASE, VU1_DEST_GIFTAG
+    NOP                                                     SQ        TMP1(xyzw), 0(VI12)
+    NOP                                                     ISW.x     VI11, 0(VI12)
+    NOP                                                     NOP
+    NOP                                                     XGKICK    VI12
+    NOP                                                     NOP
+
+    NOP[E]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+;
+;   Fast Lit Renderer - No Clipping
+;
+;==============================================================================
+
+FAST_LIT:
+
+    NOP[D]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+;
+;   Slow Lit Renderer - Performs Clipping
+;
+;==============================================================================
+
+SLOW_LIT:
+
+    NOP[D]                                                  NOP
+    NOP                                                     NOP
+
+;==============================================================================
+
+#include "clipper.vu"
+
+;==============================================================================
+
+VU1_RENDER_CODE_END:
+
+;==============================================================================
+
+

@@ -1,0 +1,9 @@
+NAME            QUICK16
+
+DESCRIPTION     'MSS Quick API Example'
+EXETYPE         WINDOWS
+STUB            'WINSTUB.EXE'
+CODE            PRELOAD FIXED
+DATA            PRELOAD FIXED MULTIPLE
+HEAPSIZE        1024
+STACKSIZE       8192

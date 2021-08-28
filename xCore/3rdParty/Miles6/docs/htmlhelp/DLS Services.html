@@ -1,0 +1,91 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>DLS Services</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="DLS Services">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>DLS Services</h1>
+<h4>Discussion</h4>
+<p> The Miles Sound System DLS Extensions package delivers full support for the MIDI Manufacturers Association's Downloadable Sounds (DLS) Level 1 specification. Available for Win16, Win32, MacOS and DOS, the DLS Extensions package consists of a simple application program interface (API) provided by either a statically- or dynamically-linked library. </p><p> The Downloadable Sounds Level 1 Architecture enables the author to define an instrument by combining a sample waveform with <i>articulation</i> <i>information -</i> a description of how to modulate the volume and pitch of the wave data in response to input from the General MIDI control set. A file containing DLS 1 instruments may be played directly in software with the MSS DLS Extensions package, or downloaded to any hardware device that supports the standard, and subsequently invoked from within a MIDI file without any special effort on the composer's part. In this way, the DLS standard delivers a common playback experience across a wide range of synthesizer platforms, eliminating concerns about inconsistencies between General MIDI instrument sets while simultaneously easing the creative restrictions imposed by the default General MIDI instrument palette. </p><p> <b>Authoring Guidelines</b> </p><p> To create DLS files, you will, of course, need a DLS editor. Several companies (the usual suspects, you might say) are working on DLS editors, but the only editor available at this writing (March 1, 1998) is SynthAuthor, which is available from the M.M.A.<http://www.midi.org> for $40.00. </p><p> The Miles Sound System's DLS support is designed for use with the existing MSS MIDI subsystem. All XMIDI functions, controllers, and features are available when DLS is in use. DLS patches are invoked in the normal way, with MIDI Program Change messages; however, it is recommended that the General MIDI bank-select controllers (0 and 32) be used instead of XMIDI Patch Bank Select (114) for all future work. In the MSS software DLS synthesizer, XMIDI Patch Bank Select emulates the GM bank controllers correctly, but this emulation is not supported by hardware-based synthesizer platforms. </p><p> <b>Hardware/Software Interoperability</b> </p><p> Under 32-bit Windows, the internal MSS software synthesizer API is upwardly-compatible with the API supported by the S3 86C617 Sonic Vibes(TM); chipset. Consequently, it is possible to design your application to choose between hardware- and software-based DLS providers at runtime. </p><p> This is why the Miles DLS services allow you to specify a DLS provider DLL filename in the <a href="AIL_DLS_open.html">AIL_DLS_open</a> function - right now, you can use NULL for the software synthesizer, "S3BASE.DLL" for hardware support on Sonic Vibes sound cards, and "VORT_DLS.DLL" for hardware support on Aureal Vortex chipsets. Future versions of the Miles Sound System will be delivered with support via similar DLLs for additional platforms, such as Microsoft DirectMusic's hardware abstraction layer, so it is strongly recommended that Win32 applications provide for dynamic selection of DLS provider DLLs. </p><p> <b>Software Performance and Preferences</b> </p><p> The Miles software synthesizer has many options to control the amount of CPU it extracts. Not only can you control the quality at which the digital sound from the synthesizer is created (rate, bits, and channels), but you can also adjust filtering and reverb parameters with the DLS preferences described in the <i><a href="Preferences.html">Preferences</a></i> section.</p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc><a href="DLS Services.html">DLS Services</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_open.html">AIL_DLS_open</a></td>
+<td height=25 valign=top class=toc>opens a handle to a downloadable sample device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_close.html">AIL_DLS_close</a></td>
+<td height=25 valign=top class=toc>closes a previously opened DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_DLS_CLOSE_FLAGS.html">MILES_DLS_CLOSE_FLAGS</a></td>
+<td height=25 valign=top class=toc>specifies optional closing flags to AIL_DLS_close.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_load_file.html">AIL_DLS_load_file</a></td>
+<td height=25 valign=top class=toc>loads an uncompressed DLS file into the specified DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_load_memory.html">AIL_DLS_load_memory</a></td>
+<td height=25 valign=top class=toc>loads an uncompressed DLS file memory image into the specified
+
+          DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_unload.html">AIL_DLS_unload</a></td>
+<td height=25 valign=top class=toc>unloads a previously loaded DLS file ID and makes the sample
+
+          memory available for other DLS files.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="MILES_DLS_UNLOAD.html">MILES_DLS_UNLOAD</a></td>
+<td height=25 valign=top class=toc>describes optional DLS unload flags.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_compact.html">AIL_DLS_compact</a></td>
+<td height=25 valign=top class=toc>compacts the memory of a hardware DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_get_info.html">AIL_DLS_get_info</a></td>
+<td height=25 valign=top class=toc>retrieves information about the specified DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AILDLSINFO.html">AILDLSINFO</a></td>
+<td height=25 valign=top class=toc>specifies the details for a DLS device.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_set_reverb.html">AIL_DLS_set_reverb</a></td>
+<td height=25 valign=top class=toc>changes the global simple reverb settings
+
+          on the DLS software synthesizer.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="AIL_DLS_get_reverb.html">AIL_DLS_get_reverb</a></td>
+<td height=25 valign=top class=toc>retrieves the simple reverb settings of the
+
+          DLS software synthesizer.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_DLS_open</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="opens a handle to a downloadable sample device.">
+<meta name="ms-hkwd" content="AIL_DLS_open">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_DLS_open</h1>
+<p>The function  <b>AIL_DLS_open</b> opens a handle to a downloadable sample device.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HDLSDEVICE.html" class=trn>HDLSDEVICE</a> <a href="AIL_DLS_open.html" class=trn>AIL_DLS_open</a>(</b>
+<b>&nbsp&nbsp<a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a>&nbsp</b><i>mdi</i><b>,</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i><b>,</b>
+<b>&nbsp&nbsp<a href="char const P.html" class=trn>char const *</a>&nbsp</b><i>DLS_dll_name</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>flags</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>rate</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>bits</i><b>,</b>
+<b>&nbsp&nbsp<a href="U32.html" class=trn>U32</a>&nbsp</b><i>channels</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>mdi</i></dt>
+<dd>indicates the Miles MIDI handle that will be used for the DLS playback (this is only necessary for the software synthesizer).</dd>
+<dt><i>dig</i></dt>
+<dd>indicates the Miles digital sound handle that will be used for the DLS playback (this is only necessary for the software synthesizer).</dd>
+<dt><i>DLS_dll_name</i></dt>
+<dd>indicates the DLS provider DLL name to use. This should be NULL for the software synthesizer, "S3BASE.DLL" for the Sonic Vibes hardware DLS card, or "VORT_DLS.DLL" for Aureal Vortex DLS cards. In the future, RAD plans to create other DLS provider DLLs, so you should have some method for your application to accept new DLS provider filenames.</dd>
+<dt><i>flags</i></dt>
+<dd>should currently be zero.</dd>
+<dt><i>rate</i></dt>
+<dd>indicates the rate that the software synthesizer should use. Note that you don't have to match the output rate of the digital driver, so if you need to improve performance, you can slow down the digital MIDI synthesis without affecting the sound quality of the rest of the game. You should generally use the same rate that the DLS file's samples use, and you shouldn't run the synthesizer any faster than the digital driver is running.</dd>
+<dt><i>bits</i></dt>
+<dd>indicates the bit quality to use for the software synthesizer (8 or 16 bits). Note that switching from 16-bit output mode to 8-bit output mode won't improve performance all that much. You should generally use the same bit size that the DLS file's samples use, and you shouldn't run the synthesizer in 16-bit mode if the digital driver is in 8-bit mode.</dd>
+<dt><i>channels</i></dt>
+<dd>indicates the number of channels to use for the software synthesizer (1 is mono, 2 is stereo). Running the software synthesizer in mono mode increases performance, but you will lose any intended stereo effects in the sequence. You shouldn't run the synthesizer in stereo mode if the digital driver is in mono.</dd>
+</dl>
+<h4>Returns</h4>
+<p>The DLS device handle to be used with the other Miles DLS functions.</p>
+<h4>Discussion</h4>
+<p>Hardware systems are usually very limited in amount of DLS memory that you can use. In fact, to be DLS-1 compatible, a DLS synthesizer need only provide 512K of memory. </p><p> In the future, RAD plans to create other DLS provider DLLs, so you should have some method for your application to accept new DLS provider filenames. </p><p> The higher the quality of the sound, the higher the CPU usage. If you plan to support a wide range of CPUs, then you should provide a method of allowing the performance to be scaled (from 11Khz, mono, 8-bit with no filtering and no reverb up to 44 Khz, stereo, 16-bit with filtering and reverb). You can use the Miles Sound Player to gauge the performance hit of the various options with your own sequences.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="DLS Services.html">DLS Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_DLS_close.html">AIL_DLS_close</a>, <a href="AIL_quick_handles.html">AIL_quick_handles</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="HDLSDEVICE.html">HDLSDEVICE</a>, <a href="HMDIDRIVER.html">HMDIDRIVER</a>, <a href="MILES_OPEN_XMIDI_FLAGS.html">MILES_OPEN_XMIDI_FLAGS</a>, <a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="U32.html">U32</a>, <a href="char const P.html">char const *</a><br>
+<b>Related FAQs:</b>
+<a href="How do I play an XMIsog05o.html">How do I play an XMIDI file with a DLS instrument set?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

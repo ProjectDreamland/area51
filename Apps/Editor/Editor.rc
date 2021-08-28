@@ -1,0 +1,579 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Editor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Editor.ico"
+IDR_EDITORTYPE          ICON                    "res\\EditorDoc.ico"
+IDR_PROJECT_VIEW        ICON                    "res\\idr_proj.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+IDB_IMGLIST_VIEW        BITMAP                  "res\\ImgView.bmp"
+IDR_BUILDBAR            BITMAP                  "res\\EditorBuildToolBar.bmp"
+IDR_PROJ_TOOLBAR        BITMAP                  "res\\proj_too.bmp"
+IDR_HELP_BROSWER        BITMAP                  "res\\helpbraw.bmp"
+IDR_PROJ_RICHTEXTCTRL   BITMAP                  "res\\proj_ric.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_MENU_FILE_NEW
+    BUTTON      ID_MENU_FILE_OPEN
+    BUTTON      ID_MENU_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_BUILDBAR TOOLBAR  17, 16
+BEGIN
+    BUTTON      ID_BUILD
+    BUTTON      ID_COMPILE
+    BUTTON      ID_BUILD_STOP
+    BUTTON      ID_ADD_RES_DESC
+END
+
+IDR_PROJ_TOOLBAR TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_PROJ_CREATE_NEW_THEME
+    BUTTON      ID_INSERT_THEME
+    BUTTON      ID_REMOVE_THEME
+END
+
+IDR_HELP_BROSWER TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_BACK
+    BUTTON      ID_FOWARD
+    BUTTON      ID_STOP
+    BUTTON      ID_REFRESH
+    BUTTON      ID_GO_HOME
+END
+
+IDR_PROJ_RICHTEXTCTRL TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_PROJ_TEXT_UNDO
+    BUTTON      ID_PROJ_TEXT_REDO
+    SEPARATOR
+    BUTTON      ID_PROJ_TEXT_CUT
+    BUTTON      ID_PROJ_TEXT_COPY
+    BUTTON      ID_PROJ_TEXT_PASTE
+    SEPARATOR
+    BUTTON      ID_PROJ_TEXT_BOLD
+    BUTTON      ID_PROJ_TEXT_ITALICS
+    BUTTON      ID_PROJ_TEXT_UNDERL
+    SEPARATOR
+    BUTTON      ID_PROJ_TEXT_COLOR
+    SEPARATOR
+    BUTTON      ID_PROJ_TEXT_FONT_TYPE
+    SEPARATOR
+    BUTTON      ID_PROJ_TEXT_FONT_SIZE
+    SEPARATOR
+    BUTTON      ID_PROJ_TEXT_L_ALIGN
+    BUTTON      ID_PROJ_TEXT_C_ALIGN
+    BUTTON      ID_PROJ_TEXT_R_ALIGN
+    SEPARATOR
+    BUTTON      ID_PROJ_TEXT_BULLETS
+    SEPARATOR
+    BUTTON      ID_PROJ_TEXT_SELECTALL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU_MAINFRAME MENUEX 
+BEGIN
+    POPUP "&File",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                33818,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Open...\tCtrl+O",            33811,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Close",                      33812,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Save\tCtrl+K",               33813,MFT_STRING,MFS_ENABLED
+        MENUITEM "Save &As...",                 33814,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Import Level...",             33827,MFT_STRING,MFS_ENABLED
+        MENUITEM "Export Level...",             33822,MFT_STRING,MFS_ENABLED
+        MENUITEM "Build Level DFS",             33826,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Export Level to 3D Max",      33825,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Save Settings",               33820,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Recent File",                 33900,MFT_STRING,MFS_GRAYED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "E&xit",                       57665,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&Edit",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               57643,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Redo\tCtrl+Y",               57644,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                57635,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Copy\tCtrl+C",               57634,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Paste\tCtrl+V",              57637,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&View",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&Reset Windows && Toolbars...", 34000,
+        MFT_STRING | MFT_RIGHTJUSTIFY,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "&Toolbar",                    59392,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Status Bar",                 59393,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "Additional Views",               65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Additional Views",            33781,MFT_STRING,MFS_GRAYED
+    END
+    POPUP "&Help",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&About Editor...",            57664,MFT_STRING,MFS_ENABLED
+    END
+END
+
+IDR_MENU_WORLD MENUEX 
+BEGIN
+    POPUP "&File",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                33818,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Open...\tCtrl+O",            33811,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Close",                      33812,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Save\tCtrl+K",               33813,MFT_STRING,MFS_ENABLED
+        MENUITEM "Save &As...",                 33814,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Import Level...",             33827,MFT_STRING,MFS_ENABLED
+        MENUITEM "Export Level...",             33822,MFT_STRING,MFS_ENABLED
+        MENUITEM "Build Level DFS",             33826,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Export Level to 3D Max",      33825,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Save Settings",               33820,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Recent File",                 33900,MFT_STRING,MFS_GRAYED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "E&xit",                       57665,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&Edit",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               57643,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Redo\tCtrl+Y",               57644,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                57635,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Copy\tCtrl+C",               57634,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Paste\tCtrl+V",              57637,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        POPUP "Maintenance",                    65535,MFT_STRING,MFS_ENABLED
+        BEGIN
+            MENUITEM "Zone Cleanup",                34009,MFT_STRING,
+            MFS_ENABLED
+        END
+    END
+    POPUP "Debug",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Invulnerable",                34006,MFT_STRING,MFS_ENABLED
+        MENUITEM "Infinite Ammo",               34007,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "Selection",                      65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Select All",                  34001,MFT_STRING,MFS_ENABLED
+        MENUITEM "Select None",                 34002,MFT_STRING,MFS_ENABLED
+        MENUITEM "Invert Selection",            34003,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Hide Selected",               34004,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&View",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Render &Icons",               32907,MFT_STRING,MFS_ENABLED
+        MENUITEM "Render Grid",                 32794,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Goto Player",                 32926,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "&Reset Windows && Toolbars...", 34000,
+        MFT_STRING | MFT_RIGHTJUSTIFY,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "&Toolbar",                    59392,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Status Bar",                 59393,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "Additional Views",               65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Additional Views",            33781,MFT_STRING,MFS_GRAYED
+    END
+    POPUP "&Help",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&About Editor...",            57664,MFT_STRING,MFS_ENABLED
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_ADD_DESCRIPTOR,      VIRTKEY, CONTROL, NOINVERT
+    "E",            ID_ADD_ELEMENT,         VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_ADD_PACKAGE,         VIRTKEY, CONTROL, NOINVERT
+    "K",            ID_MENU_FILE_SAVE,      VIRTKEY, CONTROL, NOINVERT
+    "L",            ID_SHOW_REPORT,         VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_MENU_FILE_NEW,       VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_MENU_FILE_OPEN,      VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_REFRENCE_DESCRIPTOR, VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        IDM_POPUP_MENU_DELETE,  VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "W",            IDM_POPUP_CREATE_TO_DESC, VIRTKEY, CONTROL, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Editor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Editor Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright © 2002",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,5,7,0
+ PRODUCTVERSION 0,5,7,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "Editor MFC Application"
+            VALUE "FileVersion", "0, 5, 7, 0"
+            VALUE "InternalName", "Editor"
+            VALUE "LegalCopyright", "Copyright © Inevitable Entertainment, Inc. 2003"
+            VALUE "OriginalFilename", "Editor.EXE"
+            VALUE "ProductName", "Editor Application"
+            VALUE "ProductVersion", "0, 5, 7, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AVI
+//
+
+IDR_WEB_THINKING        AVI                     "res\\web_thin.avi"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+END
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "Inevitable Editor"
+END
+
+STRINGTABLE 
+BEGIN
+    IDR_EDITORTYPE          "\nEditor\nEditor\n\n\nEditor.Document\nEditor Document"
+    IDR_PROJECT_VIEW        "\nProject\nProject\n\n\nProject.Document\nEditor Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Editor"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_COMPILE              "Compile selected resource"
+    ID_BUILD_STOP           "Stop the compilation of resources"
+    ID_BUILD                "Build resources"
+    ID_ADD_RES_DESC_01      "Add additional view"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_PROJ_CREATE_NEW_THEME 
+                            "Creates a new theme and it add it into the working project\nAdd Theme"
+    ID_INSERT_THEME         "Inserts an existing theme into the project.\nInsert theme"
+    ID_REMOVE_THEME         "Remove Theme\nRemove Theme from Project"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_MRU_LIST             "Open recent file"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_RESETWINDOWS    "Reset window layout on next load\nReset window layout"
+    ID_DEBUG_INVULNERABLE   "Invulnerable\nInvulnerable"
+    ID_DEBUG_INFINITEAMMO   "Infinite Ammo\nInfinite Ammo"
+    ID_MAINTENANCE_ZONECLEANUP "Zone Cleanup\nZone Cleanup"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Editor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

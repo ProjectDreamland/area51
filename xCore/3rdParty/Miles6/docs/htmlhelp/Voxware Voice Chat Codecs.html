@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Voxware Voice Chat Codecs</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Voxware Voice Chat Codecs">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Voxware Voice Chat Codecs</h1>
+<h4>Discussion</h4>
+<p> The Miles Sound System includes Audio Stream Interface (ASI)-based support for the popular Voxware™ MetaVoice compression and decompression libraries. Available for use by MSS developers on a royalty-free basis, this package includes the RT29 and RT24 fixed-rate codecs which are capable of compression and decompression of speech at bit rates of 2900 and 2400 bits per second, respectively; and the VR12 variable-rate codec which operates at varying bit rates between 600 and 1800 bits per second. Compared to standard 8-kHz 16-bit monaural voice input at 128,000 bits per second, these bit rates correspond to compression ratios between 50:1 and 100:1! </p><p>It's important, however, to understand that the Voxware codecs are not general-purpose audio compression resources. They achieve their spectacular performance by emulating the acoustical characteristics of the human vocal tract with specific, highly-refined DSP techniques and data models. Consequently, the MetaVoice technology should not be viewed as a competitor to IMA ADPCM, MP3, and other popular compression standards, but rather as a complementary technology that addresses the bandwidth/performance shortcomings of conventional codecs with respect to speech compression. Put another way, if you try to compress music or sound-effects samples with Voxware's low-bandwidth codecs, you'll be unlikely to recognize, much less appreciate, the decompressed result. </p><p>Using these high-performance codecs effectively in your application requires that you understand their capabilities and limitations, and plan your communications architecture carefully. To use the Miles Sound System's codecs for voice communications in a networked environment, you'll need to be comfortable with four basic aspects of the job. Most of these points are illustrated for demonstration purposes in the MSSCHTC.CPP (client) and MSSCHTS.CPP (server) example programs included with MSS. </p>
+<p><a href="Working with Voice Input.html">Next Topic (Working with Voice Input)</a>  </p><p><a href="Implementing Voice Chat.html">Previous Topic (Implementing Voice Chat)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Implementing Voice Chat.html">Implementing Voice Chat</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

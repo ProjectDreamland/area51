@@ -1,0 +1,35 @@
+create c:/Projects/A51/xCore/x_files/_PS2-OptDebug/x_files.lib
+addmod ./_ps2-optdebug/ps2_callstack.obj
+addmod ./_ps2-optdebug/x_bitmap.obj
+addmod ./_ps2-optdebug/x_bitmap_cmap.obj
+addmod ./_ps2-optdebug/x_bitmap_convert.obj
+addmod ./_ps2-optdebug/x_bitmap_io.obj
+addmod ./_ps2-optdebug/x_bitmap_quant.obj
+addmod ./_ps2-optdebug/x_bitmap_resize.obj
+addmod ./_ps2-optdebug/x_bitstream.obj
+addmod ./_ps2-optdebug/x_bytestream.obj
+addmod ./_ps2-optdebug/x_context.obj
+addmod ./_ps2-optdebug/x_debug.obj
+addmod ./_ps2-optdebug/x_files.obj
+addmod ./_ps2-optdebug/x_flare.obj
+addmod ./_ps2-optdebug/x_locale.obj
+addmod ./_ps2-optdebug/x_log.obj
+addmod ./_ps2-optdebug/x_malloc.obj
+addmod ./_ps2-optdebug/x_math.obj
+addmod ./_ps2-optdebug/x_math_basic.obj
+addmod ./_ps2-optdebug/x_math_misc.obj
+addmod ./_ps2-optdebug/x_math_sphere.obj
+addmod ./_ps2-optdebug/x_memfile.obj
+addmod ./_ps2-optdebug/x_memory.obj
+addmod ./_ps2-optdebug/x_mqueue.obj
+addmod ./_ps2-optdebug/x_mutex.obj
+addmod ./_ps2-optdebug/x_plus.obj
+addmod ./_ps2-optdebug/x_stdio.obj
+addmod ./_ps2-optdebug/x_string.obj
+addmod ./_ps2-optdebug/x_threads.obj
+addmod ./_ps2-optdebug/x_threads_ps2.obj
+addmod ./_ps2-optdebug/x_time.obj
+addmod ./_ps2-optdebug/x_tool.obj
+addmod ./_ps2-optdebug/x_vsprintf.obj
+save
+end 

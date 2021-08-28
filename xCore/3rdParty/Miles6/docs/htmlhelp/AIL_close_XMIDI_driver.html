@@ -1,0 +1,53 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_close_XMIDI_driver</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="shuts down and closes a MIDI music driver which was opened by a previous call to AIL_open_XMIDI_driver.">
+<meta name="ms-hkwd" content="AIL_close_XMIDI_driver">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_close_XMIDI_driver</h1>
+<p>The function  <b>AIL_close_XMIDI_driver</b> shuts down and closes a MIDI music driver which was opened by a previous call to AIL_open_XMIDI_driver.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="AIL_close_XMIDI_driver.html" class=trn>AIL_close_XMIDI_driver</a>(</b>
+<b>&nbsp&nbsp<a href="HMDIDRIVER.html" class=trn>HMDIDRIVER</a>&nbsp</b><i>mdi</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>mdi</i></dt>
+<dd>indicates the driver to shut down and unload from memory.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>It is not necessary to call this function immediately prior to application termination, as <a href="AIL_shutdown.html">AIL_shutdown</a> can be used to shut down and close all loaded drivers. </p><p> Under DOS, MacOS, or Win16, this function must not be invoked from an interrupt-based callback function.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="XMIDI Services.html">XMIDI Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_install_MDI_INI.html">AIL_install_MDI_INI</a>, <a href="AIL_install_MDI_driv6dbdaa.html">AIL_install_MDI_driver_file</a>, <a href="AIL_midiOutOpen.html">AIL_midiOutOpen</a>, <a href="AIL_open_XMIDI_driver.html">AIL_open_XMIDI_driver</a>, <a href="AIL_shutdown.html">AIL_shutdown</a>, <a href="AIL_uninstall_driver.html">AIL_uninstall_driver</a><br>
+<b>Related Basic Types:</b>
+<a href="HMDIDRIVER.html">HMDIDRIVER</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

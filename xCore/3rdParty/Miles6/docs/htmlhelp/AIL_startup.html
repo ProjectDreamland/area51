@@ -1,0 +1,50 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_startup</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="initializes the Miles Sound System and prepares for the installation and use of sound drivers.">
+<meta name="ms-hkwd" content="AIL_startup">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_startup</h1>
+<p>The function  <b>AIL_startup</b> initializes the Miles Sound System and prepares for the installation and use of sound drivers.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="AIL_startup.html" class=trn>AIL_startup</a>(</b><b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Returns</h4>
+<p>Non-zero if the library was initialized, zero if the library was initialized in an earlier call to <a href="AIL_startup.html">AIL_startup</a>.</p>
+<h4>Discussion</h4>
+<p>This function must be called before <i>any</i> other API functions except <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a> are used. You can call this function multiple times, but the system will only be initialized the first time. </p><p> You must call <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a> to set your application's Miles directory <i>before</i> calling this function. </p><p> You can also call <a href="AIL_quick_startup.html">AIL_quick_startup</a> to initialize the Miles system. </p><p> You must call <a href="AIL_shutdown.html">AIL_shutdown</a> if you call this function. </p><p> Under DOS, MacOS and Win16, this function must not be invoked from an interrupt-based callback function. </p><p> Example files that use this function: All</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="System Services.html">System Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_last_error.html">AIL_last_error</a>, <a href="AIL_quick_startup.html">AIL_quick_startup</a>, <a href="AIL_set_redist_directory.html">AIL_set_redist_directory</a>, <a href="AIL_set_timer_divisor.html">AIL_set_timer_divisor</a>, <a href="AIL_set_timer_frequency.html">AIL_set_timer_frequency</a>, <a href="AIL_set_timer_period.html">AIL_set_timer_period</a>, <a href="AIL_shutdown.html">AIL_shutdown</a>, <a href="AIL_startup.html">AIL_startup</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="S32.html">S32</a><br>
+<b>Related FAQs:</b>
+<a href="How do I initialize owpc2p.html">How do I initialize the Miles Sound System for use?</a>, <a href="I'm setting a preferwfslqr.html">I'm setting a preference and it isn't having any effect - what's going on?</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

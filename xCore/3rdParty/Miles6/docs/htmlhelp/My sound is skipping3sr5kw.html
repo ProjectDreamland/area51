@@ -1,0 +1,41 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>My sound is skipping on Win32 - what can I do?</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="My sound is skipping on Win32 - what can I do?">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<table>
+<tr valign=top><td><b><p>Q:</p></b></td><td><b><p>My sound is skipping on Win32 - what can I do?</p></b></td></tr>
+<tr valign=top><td><p>A:</p></td><td><p>Under Win32, mixing happens on a background thread (on the other Miles platforms, mixing occurs on an interrupt). Unlike interrupts, threads are subject to starvation - that is, depending on CPU load, one thread can be neglected for a period of time. </p><p>When that happens to the Miles mixing thread, then the digital audio can "skip" momentarily. Fortunately, on NT based Win32 platforms, this rarely happens - you really have to try to cause a skip on NT. Unfortunately, on the Windows 9x based platforms, it is fairly easy to cause the Miles thread to starve. The easiest way to trigger starvation is to do a lot of sustained disk IO on an IDE-based device. </p><p>So, regardless of the cause of the problem, we just want the user to have a good experience. A simple way to fix the problem is to just mix ahead farther - if we mix ahead 200 milliseconds, then we can tolerate a thread dropout of up to 200 ms with no trouble! The only problem is that now our latency is 200 ms - fine for some games, but terrible for others! </p><p>Fortunately, there is a good compromise. By using the <a href="AIL_get_timer_highesqwlaaa.html">AIL_get_timer_highest_delay</a> function, you can track the length of the thread starvations as they occur. </p><p>So, let's say you have a game that skips when you read in the level data from the disk. The best way to fix the problem is something like this: </p><p>1) Call <a href="AIL_get_timer_highesqwlaaa.html">AIL_get_timer_highest_delay</a> before you start the IO (this clears the previous high value). </p><p>2) Do all your IO. </p><p>3) Call <a href="AIL_get_timer_highesqwlaaa.html">AIL_get_timer_highest_delay</a> and record it. </p><p>Run your game on a couple machines and keep track of the high value. It's usually going to be something around 150 milliseconds, but get a good reading with your game's pattern of IO. </p><p>Now we just bump up the latency during the IO and then bump it back down after - you get the best of both worlds - good latency in the general case, and enough mix ahead to handle the IO dropouts. Once you know roughly what latency you have to cover, simply do something like this: </p><p>1) Call <a href="AIL_set_preference.html">AIL_set_preference</a> on <a href="MILES_PREFERENCES.html#DIG_DS_MIX_FRAGMENT_CNT">DIG_DS_MIX_FRAGMENT_CNT</a> to your highest timer delay divided by 8 (each fragment in Miles is 8 ms). </p><p>2) Call <a href="AIL_serve.html">AIL_serve</a> to make sure that the mix-ahead buffer is filled. </p><p>3) Do all your IO. </p><p>4) Call <a href="AIL_set_preference.html">AIL_set_preference</a> on <a href="MILES_PREFERENCES.html#DIG_DS_MIX_FRAGMENT_CNT">DIG_DS_MIX_FRAGMENT_CNT</a> to set it back to its default value of 8. </p></td></tr>
+</table>
+<p><a href="My application is crs22pi6.html">Next Topic (My application is crashing - what should I try?)</a>  </p><p><a href="How much latency doe841zus.html">Previous Topic (How much latency does Miles have?)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="FAQs and How Tos.html">FAQs and How Tos</a><br>
+<b>Related Sections:</b>
+<a href="Sharing the CPU unde2nabaa.html">Sharing the CPU under Win32</a><br>
+<b>Related Functions:</b>
+<a href="AIL_get_timer_highesqwlaaa.html">AIL_get_timer_highest_delay</a>, <a href="AIL_serve.html">AIL_serve</a>, <a href="AIL_set_preference.html">AIL_set_preference</a><br>
+<b>Related Basic Types:</b>
+<a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

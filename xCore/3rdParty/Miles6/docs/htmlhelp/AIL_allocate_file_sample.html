@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>AIL_allocate_file_sample</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="loads a memory-resident .VOC file, uncompressed .WAV file, IMA ADPCM compressed .WAV file, .WAV-wrapped MPEG Layer 3 file.">
+<meta name="ms-hkwd" content="AIL_allocate_file_sample">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>AIL_allocate_file_sample</h1>
+<p>The function  <b>AIL_allocate_file_sample</b> loads a memory-resident .VOC file, uncompressed .WAV file, IMA ADPCM compressed .WAV file, .WAV-wrapped MPEG Layer 3 file.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HSAMPLE.html" class=trn>HSAMPLE</a> <a href="AIL_allocate_file_sample.html" class=trn>AIL_allocate_file_sample</a>(</b>
+<b>&nbsp&nbsp<a href="HDIGDRIVER.html" class=trn>HDIGDRIVER</a>&nbsp</b><i>dig</i><b>,</b>
+<b>&nbsp&nbsp<a href="void const P.html" class=trn>void const *</a>&nbsp</b><i>file_image</i><b>,</b>
+<b>&nbsp&nbsp<a href="S32.html" class=trn>S32</a>&nbsp</b><i>block</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>dig</i></dt>
+<dd>specifies which digital audio driver is to play the file's audio data.</dd>
+<dt><i>file_image</i></dt>
+<dd>points to the start of the file image in memory.</dd>
+<dt><i>block</i></dt>
+<dd>specifies a block number to play in the file. block is ignored with formats for which MSS does not support multiple blocks, such as the .WAV format.</dd>
+</dl>
+<h4>Returns</h4>
+<p>A handle to an available sample slot, or NULL if no sample handles are available or if an error occurred while parsing the file image.</p>
+<h4>Discussion</h4>
+<p>This function offers a convenient way to play data contained in Creative Labs .VOC files or Microsoft Windows-compatible .WAV files, as long as the entire file can be loaded into system memory. (Larger samples must be played as raw data, double-buffered from disk as in the example program DBTEST.EXE.) </p><p> This function will only load an MPEG Layer-3 file if it is wrapped in a Microsoft WAVE header wrapper. To load a standard MP3 file, use the <a href="AIL_set_named_sample_file.html">AIL_set_named_sample_file</a> function. </p><p> You can also use the <a href="AIL_WAV_info.html">AIL_WAV_info</a> function described in the Utility Services chapter to obtain information about a wave file. </p><p> . To start playing the file, it is necessary only to call <a href="AIL_start_sample.html">AIL_start_sample</a> with the handle returned from <a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a>. As soon as the file finishes playing, the application's end-of-file callback function (if any) is invoked, and the sample handle is released automatically with a call to <a href="AIL_release_sample_handle.html">AIL_release_sample_handle</a>. Of course, the two playback methods may be mixed freely, but the application must not allocate all available sample handles with <a href="AIL_allocate_sample_ijfaaa.html">AIL_allocate_sample_handle</a> since <a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a> must be able to allocate (and later release) one sample handle for each file played. </p><p> sample handles, the <a href="AIL_set_sample_file.html">AIL_set_sample_file</a> function may be called to initialize a sample's address, length, type, and flags to play a given .VOC or .WAV file. Prior to starting playback with <a href="AIL_start_sample.html">AIL_start_sample</a>, the sample's volume, pitch, panpot setting, and other parameters may be set if desired. Otherwise, the default values stored by <a href="AIL_init_sample.html">AIL_init_sample</a> will be in effect. </p><p> Once playback has been started with <a href="AIL_start_sample.html">AIL_start_sample</a>, the application must make certain that the file is still playing before adjusting its volume, pitch, or other parameters which involve use of the sample handle. This is because the sample handle will be released automatically when the file finishes playing, effectively invalidating it. While alteration of the parameters of a released sample handle is not harmful in itself, it may cause unexpected effects when the same sample handle is reallocated later for playback of unrelated sample data. Use <a href="AIL_register_EOF_callback.html">AIL_register_EOF_callback</a>, if necessary, to help determine when the end of a sample file has been reached. If this is inconvenient, it may be more advisable for the application to allocate and manage its own sample handles, and use the <a href="AIL_set_sample_file.html">AIL_set_sample_file</a> function instead of <a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a>. </p><p> Example files that use this function: DIGPLAY.C</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="2D Digital Audio Services.html">2D Digital Audio Services</a><br>
+<b>Related Functions:</b>
+<a href="AIL_WAV_info.html">AIL_WAV_info</a>, <a href="AIL_allocate_file_sample.html">AIL_allocate_file_sample</a>, <a href="AIL_allocate_sample_ijfaaa.html">AIL_allocate_sample_handle</a>, <a href="AIL_init_sample.html">AIL_init_sample</a>, <a href="AIL_register_EOF_callback.html">AIL_register_EOF_callback</a>, <a href="AIL_release_sample_handle.html">AIL_release_sample_handle</a>, <a href="AIL_set_named_sample_file.html">AIL_set_named_sample_file</a>, <a href="AIL_set_sample_address.html">AIL_set_sample_address</a>, <a href="AIL_set_sample_file.html">AIL_set_sample_file</a>, <a href="AIL_set_sample_playbug1eaa.html">AIL_set_sample_playback_rate</a>, <a href="AIL_set_sample_type.html">AIL_set_sample_type</a>, <a href="AIL_start_sample.html">AIL_start_sample</a><br>
+<b>Related Basic Types:</b>
+<a href="HDIGDRIVER.html">HDIGDRIVER</a>, <a href="HSAMPLE.html">HSAMPLE</a>, <a href="MILES_PREFERENCES.html">MILES_PREFERENCES</a>, <a href="S32.html">S32</a>, <a href="void const P.html">void const *</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

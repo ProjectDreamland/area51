@@ -1,0 +1,3 @@
+FILE "PV2.0.2_for_libs_302.iso" BINARY
+  TRACK 01 MODE2/2048
+    INDEX 01 00:00:00

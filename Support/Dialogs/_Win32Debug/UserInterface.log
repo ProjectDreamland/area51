@@ -1,0 +1,29 @@
+﻿  ui_font.cpp
+c:\projects\old\a51\support\ui\ui_font.cpp(335): error C2065: 'XBOX_BUTTON_START': undeclared identifier
+c:\projects\old\a51\support\ui\ui_font.cpp(441): error C2065: 'XBOX_BUTTON_START': undeclared identifier
+c:\projects\old\a51\support\ui\ui_font.cpp(777): error C2065: 'XBOX_BUTTON_START': undeclared identifier
+c:\projects\old\a51\support\ui\ui_font.cpp(980): error C2065: 'XBOX_BUTTON_START': undeclared identifier
+c:\projects\old\a51\support\ui\ui_font.cpp(1153): error C2065: 'XBOX_BUTTON_START': undeclared identifier
+c:\projects\old\a51\support\ui\ui_font.cpp(1502): error C2065: 'XBOX_BUTTON_START': undeclared identifier
+c:\projects\old\a51\support\ui\ui_font.cpp(1572): warning C4244: 'argument': conversion from 's32' to 'f32', possible loss of data
+c:\projects\old\a51\support\ui\ui_font.cpp(1574): warning C4244: 'argument': conversion from 's32' to 'f32', possible loss of data
+c:\projects\old\a51\support\ui\ui_font.cpp(1577): warning C4244: 'argument': conversion from 's32' to 'f32', possible loss of data
+c:\projects\old\a51\support\ui\ui_font.cpp(1579): warning C4244: 'argument': conversion from 's32' to 'f32', possible loss of data
+c:\projects\old\a51\support\ui\ui_font.cpp(1581): warning C4244: 'argument': conversion from 's32' to 'f32', possible loss of data
+c:\projects\old\a51\support\ui\ui_font.cpp(1584): warning C4244: 'argument': conversion from 's32' to 'f32', possible loss of data
+  dlg_MemcardSelect.cpp
+c:\projects\old\a51\support\dialogs\dlg_memcardselect.cpp(260): error C2572: 'dlg_memcard_select::Configure': redefinition of default argument: parameter 1
+  c:\projects\old\a51\support\dialogs\dlg_memcardselect.hpp(63): note: see declaration of 'dlg_memcard_select::Configure'
+  dlg_Stats.cpp
+c:\projects\old\a51\support\dialogs\dlg_stats.cpp(307): error C2039: 'GetAllCareerStats': is not a member of 'match_mgr'
+  c:\projects\old\a51\support\networkmgr\matchmgr.hpp(583): note: see declaration of 'match_mgr'
+  dlg_OnlineConnectXBOX.cpp
+c:\projects\old\a51\support\dialogs\xbox\dlg_onlineconnectxbox.cpp(475): error C2039: 'GetOptionalMessage': is not a member of 'match_mgr'
+  c:\projects\old\a51\support\networkmgr\matchmgr.hpp(583): note: see declaration of 'match_mgr'
+c:\projects\old\a51\support\dialogs\xbox\dlg_onlineconnectxbox.cpp(671): error C2039: 'GetOptionalMessage': is not a member of 'match_mgr'
+  c:\projects\old\a51\support\networkmgr\matchmgr.hpp(583): note: see declaration of 'match_mgr'
+c:\projects\old\a51\support\dialogs\xbox\dlg_onlineconnectxbox.cpp(1089): error C2039: 'UpdateLiveAccounts': is not a member of 'match_mgr'
+  c:\projects\old\a51\support\networkmgr\matchmgr.hpp(583): note: see declaration of 'match_mgr'
+c:\projects\old\a51\support\dialogs\xbox\dlg_onlineconnectxbox.cpp(1351): error C2039: 'GetOptionalMessage': is not a member of 'match_mgr'
+  c:\projects\old\a51\support\networkmgr\matchmgr.hpp(583): note: see declaration of 'match_mgr'
+  Generating Code...

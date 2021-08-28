@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Extended MIDI IFF (.XMI) Structure</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Extended MIDI IFF (.XMI) Structure">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Miles Sound System SDK 6.1c</a></i>
+</td>
+</tr>
+</table>
+<h1>Extended MIDI IFF (.XMI) Structure</h1>
+<h4>Discussion</h4>
+<p> XMIDI sequence files are "preprocessed" MIDI sequence files. Created by the Miles Sound Studio utility described in the Tools Reference <i><a href="Miles Sound System Tq6hmqc.html#Section">Section</a></i> (or the <a href="AIL_MIDI_to_XMI.html">AIL_MIDI_to_XMI</a> function), XMIDI files are stored in accordance with Electronic Arts' Interchange File Format (EA IFF 85) standard . Below is a summary of the XMIDI format's technical details, which is presented as an aid to application developers with specialized needs not supported directly by the Miles Sound System. </p><p>The XMIDI file format preserves all of the information needed to faithfully reproduce the MIDI sequence's original sound, while discarding elements of the MIDI storage format that are redundant, inefficient, or otherwise unnecessary for real-time playback. An XMIDI file containing a single translated MIDI sequence often requires from 10% to 30% less storage space, and can be performed with substantially less background processing time. </p><p>Each XMIDI file contains a single IFF "CAT" chunk of type XMID. The CAT chunk contains at least one XMIDI sequence, whose local chunks are stored within a "FORM" chunk of type XMID. The XMIDI file may contain a chunk of type FORM XDIR which contains information about the file's collection of XMIDI sequences. The XDIR chunk is for the application's benefit, and is not currently required by the XMIDI drivers. </p><p>In the expression below, <len> signifies a 32-bit "big endian" (or Motorola 680XX-style, MSB first) chunk length, which includes neither itself nor its preceding 4-character CAT , FORM, or local chunk name. Square brackets enclose optional chunks; ellipses are placed after the closing braces of chunks or data items which may be repeated. </p><p></p><code><font size=3 color=#006000><pre><br>[  <br>  FORM < len > XDIR<br>  {<br>    INFO < len ><br>    U16 # of FORMs XMID in file, 1-65535<br>  }<br>]<br>CAT < len > XMID<br>{<br>  FORM < len > XMID<br>  {<br>    [<br>      TIMB < len ><br>      U16 # of timbre list entries, 0-16384<br>      {<br>        U8 patch number 0-127<br>        U8 timbre bank 0-127<br>      }<br>      ...<br>    ]<br>    [<br>      RBRN < len ><br>      U16 # of branch point offsets, 0-127<br>      {<br>        U16 Sequence Branch Index controller value 0-127<br>        U32 controller offset from start of EVNT chunk<br>      }<br>      ...<br>    ]<br>    EVNT < len ><br>    {<br>      U8 interval count (if < 128)<br>      U8 <MIDI event> (if > 127)<br>    }<br>    ...<br>  }<br>  ...<br>}<br></pre></font></code><p></p><p> TIMB and RBRN are optional chunks. RBRN is included only if XMIDI Sequence Branch Index (120) controllers appear in the original MIDI sequence. The mandatory EVNT chunk contains the quantized sequence events. EVNT must appear as the last local chunk in FORM XMID, while the other local chunks may appear in any order. <MIDI event> consists of any MIDI Channel Voice, System Exclusive, or Meta-event except Note Off. The MIDI 'running status' convention is not used. Note On events are followed by their duration in intervals, expressed as a MIDI variable-length quantity (i.e., a string of 7-bit bytes stored most significant byte first, with the high bit set in all bytes except the last). </p>
+<p><a href="Extended MIDI Globalxqjz2b.html">Next Topic (Extended MIDI Global Timbre Library File Format)</a>  </p><p><a href="XMIDI Sequence Branc6vf3eb.html">Previous Topic (XMIDI Sequence Branch Index (120))</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Extended MIDI Techniid0f6g.html">Extended MIDI Technical Reference</a><br>
+<b>Related Sections:</b>
+<a href="Miles Sound Studio.html">Miles Sound Studio</a><br>
+<b>Related Functions:</b>
+<a href="AIL_MIDI_to_XMI.html">AIL_MIDI_to_XMI</a>, <a href="AIL_init_sequence.html">AIL_init_sequence</a></p>
+<p align=center>
+<a href="mailto:Miles@radgametools.com">For technical support, e-mail Miles@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/miles.htm?from=help6.1c">&#169; Copyright 1991-2001 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

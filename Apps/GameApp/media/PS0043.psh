@@ -1,0 +1,25 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;   PS0043.PSH: kPS_PROJ_SHADOW2_TO_LIGHTMAP
+;
+;   Diffuse texture is multiplied by the result of the first projected shadow,
+;   and then it's multiplied again by the result of the second projected
+;   shadow.
+;
+;   t0 - diffuse texture
+;   t1 - proj shadow (128==1.0, so can brighten or darken)
+;   t2 - second proj shadow
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;   tex t0
+;   tex t1
+;   tex t2
+
+;==----------------------------------------------------------------------------
+;
+;   Blend diffuse with texel, write glow to alpha
+;
+;==----------------------------------------------------------------------------
+
+    mul_x2 r0,t0.a,t1.a
