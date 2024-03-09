@@ -30,3 +30,7 @@ To contribute, please fork the repository, make your changes, and submit a pull 
 ## Releases
 
 [Here](https://github.com/ProjectDreamland/area51/releases/)
+
+## Discord
+
+Join the community Discord [here](https://discord.gg/7gGhFSjxsq)
