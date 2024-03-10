@@ -1,8 +1,0 @@
-﻿  IAL.cpp
-c:\projects\old\a51\xcore\entropy\audio\ial\ial.cpp(6): fatal error C1083: Cannot open include file: '3rdparty\DirectX9\dsound.h': No such file or directory
-  d3deng_input.cpp
-c:\projects\old\a51\xcore\entropy\d3dengine\d3deng_input.cpp(9): fatal error C1083: Cannot open include file: '3rdParty\DirectX9\dinput.h': No such file or directory
-  d3deng_vram.cpp
-c:\projects\old\a51\xcore\entropy\d3dengine\d3deng_vram.cpp(48): error C2065: 'i': undeclared identifier
-c:\projects\old\a51\xcore\entropy\d3dengine\d3deng_vram.cpp(48): error C2228: left of '.iNext' must have class/struct/union
-  Generating Code...

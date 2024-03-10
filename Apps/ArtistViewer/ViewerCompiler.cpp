@@ -451,7 +451,10 @@ void CompileFxs( config& Config, config::system System )
         xstring Params, Line ;
 
         // Eg.
-        // C:\GameData\A51\Apps\Compilers_Dev\fx_Export.exe         // "C:\GameData\A51\Source\Art\Particles\AH_barrelleak_000.fxs"        // -PS2 "C:\GameData\A51\Release\PS2\AH_Barrelleak_000.fxo" 
+        // C:\GameData\A51\Apps\Compilers_Dev\fx_Export.exe 
+        // "C:\GameData\A51\Source\Art\Particles\AH_barrelleak_000.fxs"
+        // -PS2 "C:\GameData\A51\Release\PS2\AH_Barrelleak_000.fxo" 
+
         // Split up source name
         char Drive [ X_MAX_DRIVE ];
         char Dir   [ X_MAX_DIR   ];
