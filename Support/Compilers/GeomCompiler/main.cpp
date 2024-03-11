@@ -190,7 +190,9 @@ void main( s32 argc, char* argv[] )
     // TEMP
     // Use this to debug a geom that is crashing the compiler
     //argc = 2;
-    //argv[0] = "C:\\GameData\\A51\\Apps\\Compilers_Dev\\GeomCompiler.exe";    //argv[1] = "@C:\\GameData\\A51\\Apps\\Temp\\mp_avatar_bind.skingeom.32.txt";           
+    //argv[0] = "C:\\GameData\\A51\\Apps\\Compilers_Dev\\GeomCompiler.exe";
+    //argv[1] = "@C:\\GameData\\A51\\Apps\\Temp\\mp_avatar_bind.skingeom.32.txt";
+           
     // Parse the command line
     if( CommandLine.Parse( argc, argv ) )
     {
