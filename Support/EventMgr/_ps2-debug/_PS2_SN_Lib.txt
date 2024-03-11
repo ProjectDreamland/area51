@@ -1,4 +1,0 @@
-create c:/Projects/A51/Support/EventMgr/_PS2-Debug/EventMgr.lib
-addmod ./_ps2-debug/EventMgr.obj
-save
-end 

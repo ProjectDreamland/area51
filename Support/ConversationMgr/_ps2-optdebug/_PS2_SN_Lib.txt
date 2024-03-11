@@ -1,4 +1,0 @@
-create c:/Projects/A51/Support/ConversationMgr/_PS2-OptDebug/ConversationMgr.lib
-addmod ./_ps2-optdebug/ConversationMgr.obj
-save
-end 

@@ -1,3 +1,0 @@
-﻿  AudioMgr.cpp
-c:\projects\old\a51\support\audiomgr\audiomgr.cpp(525): error C2660: 'audio_mgr::PlayVolumeClipped': function does not take 3 arguments
-c:\projects\old\a51\support\audiomgr\audiomgr.cpp(527): error C2661: 'audio_mgr::Play': no overloaded function takes 3 arguments

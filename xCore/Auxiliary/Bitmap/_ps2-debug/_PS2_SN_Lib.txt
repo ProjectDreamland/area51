@@ -1,8 +1,0 @@
-create c:/Projects/A51/xCore/Auxiliary/Bitmap/_PS2-Debug/aux_Bitmap.lib
-addmod ./_ps2-debug/aux_Bitmap.obj
-addmod ./_ps2-debug/DefaultBMP.obj
-addmod ./_ps2-debug/Load_BMP.obj
-addmod ./_ps2-debug/Load_PSD.obj
-addmod ./_ps2-debug/Load_TGA.obj
-save
-end 
