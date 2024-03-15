@@ -330,9 +330,9 @@ node_modules/
 # Visual Studio 6 auto-generated project file (contains which files were open etc.)
 *.vbp
 
-# Visual Studio 6 workspace and project file (working project files containing files to include in project)
-*.dsw
-*.dsp
+## # Visual Studio 6 workspace and project file (working project files containing files to include in project)
+## *.dsw
+## *.dsp
 
 # Visual Studio 6 technical files
 *.ncb
@@ -463,6 +463,7 @@ Xbox-Release/
 !**/COPYING.LIB
 !**/ENCVAG.DLL
 !**/ENCVAG.LIB
+!**/Mp3dec.asi
 !**/Mss32.dll
 !**/XT4100Libd.dll
 !**/dsptool.dll
@@ -477,11 +478,15 @@ Xbox-Release/
 !xCore/3rdParty/DirectX9/*.lib
 !xCore/3rdParty/Miles6/Examples/Win/*.dll
 !xCore/3rdParty/Miles6/Examples/Win/*.exe
+!xCore/3rdParty/Miles6/Examples/Win/*.m3d
 !xCore/3rdParty/Miles6/Examples/console/*.dll
 !xCore/3rdParty/Miles6/Examples/console/*.exe
 !xCore/3rdParty/Miles6/lib/win/*.lib
 !xCore/3rdParty/Miles6/redist/win32/
-!xCore/3rdParty/Miles6/redist/win32/Mss32.dll
+!xCore/3rdParty/Miles6/redist/win32/*.asi
+!xCore/3rdParty/Miles6/redist/win32/*.dll
+!xCore/3rdParty/Miles6/redist/win32/*.flt
+!xCore/3rdParty/Miles6/redist/win32/*.m3d
 !xCore/3rdParty/Miles6/src/M3d/Rsx/*.lib
 !xCore/3rdParty/Miles6/src/win/Dodefs.exe
 !xCore/3rdParty/Miles6/tools/win/*.dll
