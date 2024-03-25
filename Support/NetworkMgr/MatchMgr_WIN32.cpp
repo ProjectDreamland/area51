@@ -9,6 +9,8 @@
 //
 //==============================================================================
 
+#if 0
+
 #if !defined(TARGET_PC)
 #error This should only be included for PC gamespy support.
 #endif
@@ -2181,3 +2183,5 @@ void match_mgr::SendFeedback( u64 Identifier, const char* pName, player_feedback
 
     ASSERTS( FALSE, "Not implemented yet" );
 }
+
+#endif

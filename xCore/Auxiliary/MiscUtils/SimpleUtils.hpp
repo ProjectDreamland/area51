@@ -5,7 +5,7 @@
 #include <x_types.hpp>
 #include <x_stdio.hpp>
 
-#include "Objects\Object.hpp"
+#include "..\..\..\Support\Objects\Object.hpp"
 #include "..\auxiliary\miscutils\property.hpp"
 #include "..\auxiliary\miscutils\PropertyEnum.hpp"
 #include "..\support\Characters\AlertPackage.hpp"

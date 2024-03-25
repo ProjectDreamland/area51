@@ -9,6 +9,8 @@
 //
 //==============================================================================
 
+#if 0
+
 #if !defined(TARGET_PS2)
 #error This should only be included for PS2 gamespy support.
 #endif
@@ -2813,3 +2815,5 @@ void match_mgr::ParseMessageOfTheDay( const char* pBuffer )
     LOG_MESSAGE( "match_mgr::ParseMessageOfTheDay", "Manifest Version:%d MOTD:%s", m_RemoteManifestVersion, GetMessageOfTheDay() );
     m_HasNewContent = (m_RemoteManifestVersion > m_LocalManifestVersion );
 }
+
+#endif

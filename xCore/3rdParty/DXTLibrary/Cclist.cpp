@@ -417,7 +417,7 @@ static xbool CheckAlpha(ccNode *n, ccNode *nn)
 void ccList::SortAlpha()
 {
 
-	Sort(&(NodeCheckFlipFunc)CheckAlpha);
+	Sort((NodeCheckFlipFunc)CheckAlpha);
 }
 
 

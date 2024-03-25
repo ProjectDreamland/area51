@@ -3,7 +3,7 @@
 //=========================================================================
 // OBJECT DESCRIPTION
 //=========================================================================
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 
 void response_list::AddFlags( u32 newFlags )
 {

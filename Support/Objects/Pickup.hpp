@@ -19,7 +19,7 @@
 #include "Render\RigidGeom.hpp"
 #include "Render\Render.hpp"
 #include "Objects\Render\RigidInst.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 //nclude "Hud\Focus_Inst.hpp"
 #include "Inventory/Inventory2.hpp"
 #include "NetProjectile.hpp"

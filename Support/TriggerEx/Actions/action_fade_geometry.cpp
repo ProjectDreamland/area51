@@ -10,7 +10,7 @@
 
 #include "action_fade_geometry.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "Entropy.hpp"
 #include "Obj_Mgr\Obj_Mgr.hpp"
 #include "Objects\Render\RenderInst.hpp"

@@ -10,7 +10,7 @@
 #include "alienshield.hpp"
 #include "e_Draw.hpp"
 #include "CollisionMgr\PolyCache.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "AlienOrb.hpp"
 #include "TemplateMgr\TemplateMgr.hpp"
 #include "Player.hpp"
