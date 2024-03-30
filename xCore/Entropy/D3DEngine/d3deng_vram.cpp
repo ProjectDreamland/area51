@@ -41,7 +41,10 @@ void vram_Init( void )
     //
     // Initialize the empty list
     //
-    for( s32 i=0; i<MAX_TEXTURES-1; i++ )
+
+    s32 i = 0;
+
+    for(; i<MAX_TEXTURES-1; i++ )
     {
         s_List[i].iNext = i+1;
     }

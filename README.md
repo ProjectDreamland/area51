@@ -27,6 +27,29 @@ The main goal is to get the source code into a buildable state on modern systems
 To contribute, please fork the repository, make your changes, and submit a pull request with your updates. For discussion, collaboration, and support, join our community on platforms like Discord or participate in GitHub Discussions for this project.
 
 
+## How to Build
+Currently, the only compiler supported is Visual Studio and Win32 configuration. 
+Build system is based on CMake, so version of Visual Studio is doesn't mean, it's should be higher or equal to Visual Studio 2013.
+
+For build project run from command-line:
+
+Visual Studio 2019+:
+```
+cmake -B build -A Win32
+```
+
+Visual Studio 2013-2017:
+```
+cmake -B build
+```
+
+After you should run:
+```
+cmake --build build --config Release
+```
+
+Release or Debug binaries are located in bin folder.
+
 ## Releases
 
 [Here](https://github.com/ProjectDreamland/area51/releases/)

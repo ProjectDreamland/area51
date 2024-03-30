@@ -15,7 +15,7 @@
 #include "x_types.hpp"
 #include "Auxiliary\MiscUtils\PropertyEnum.hpp"
 #include "..\TriggerEx_Conditionals.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 
 //=========================================================================
 // Check Property

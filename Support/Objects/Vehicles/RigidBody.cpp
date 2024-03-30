@@ -1,3 +1,4 @@
+#ifndef DISABLE_LEGACY_CODE
 //==============================================================================
 //
 //  RigidBody.cpp
@@ -729,4 +730,4 @@ bbox GetRigidGeomBoneBBox( const rigid_geom* pRigidGeom, s32 iBone )
 }
 
 //==============================================================================
-
+#endif

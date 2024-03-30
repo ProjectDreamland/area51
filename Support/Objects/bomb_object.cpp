@@ -22,7 +22,7 @@
 
 #include "Render\Render.hpp"
 #include "Debris\Debris_mgr.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "objects\player.hpp"
 
 //=============================================================================

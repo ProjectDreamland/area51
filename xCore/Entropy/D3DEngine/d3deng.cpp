@@ -16,6 +16,8 @@
 #pragma comment( lib, "winmm" )
 
 // Auto include DirectX libs in a .NET build
+// #NOTE: Moved to the CMake script of GameApp.
+#if 0
 #if _MSC_VER >= 1300
 #ifdef CONFIG_DEBUG
 #pragma comment( lib, "dsound.lib" )
@@ -29,6 +31,7 @@
 #pragma comment( lib, "d3d9.lib" )
 #pragma comment( lib, "dxguid.lib" )
 #pragma comment( lib, "dinput8.lib" )
+#endif
 #endif
 #endif
 

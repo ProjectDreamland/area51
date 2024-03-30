@@ -1,3 +1,4 @@
+#ifndef DISABLE_LEGACY_CODE
 #include "Obj_mgr\obj_mgr.hpp"
 #include "WeaponGauss.hpp"
 #include "ProjectileBullett.hpp"
@@ -475,3 +476,4 @@ xbool weapon_gauss::CanIntereptSecondaryFire( s32 nFireAnimIndex )
 }
 
 //==============================================================================
+#endif

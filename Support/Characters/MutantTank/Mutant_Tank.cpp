@@ -9,7 +9,7 @@
 //=========================================================================
 
 #include "Mutant_Tank.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "Gamelib\StatsMgr.hpp"
 #include "Objects\Player.hpp"
 #include "Objects\SuperDestructible.hpp"

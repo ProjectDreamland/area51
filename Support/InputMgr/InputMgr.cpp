@@ -310,7 +310,7 @@ void input_pad::OnUpdate( s32 iPlatform, f32 DeltaTime )
             }
         }
 
-#ifdef TARGET_PC
+#if defined( TARGET_PC ) && !defined(X_RETAIL)
         if ( Log.IsValue && g_InputText )
         {
             x_printfxy( INPUT_TEXT_COLUMN, g_InputTextLine++, 

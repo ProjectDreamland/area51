@@ -1,6 +1,6 @@
 #include "debris_frag_explosion.hpp"
 #include "NetworkMgr\Networkmgr.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "..\Objects\Player.hpp"
 #include "objects\ParticleEmiter.hpp"
 #include "Decals\DecalMgr.hpp"

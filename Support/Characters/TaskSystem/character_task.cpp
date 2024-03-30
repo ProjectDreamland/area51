@@ -10,7 +10,7 @@
 
 #include "character_task.hpp"
 #include "character_task_set.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 
 static const s32        MAX_STRING_TASK_DESC_LEN = 255;
 

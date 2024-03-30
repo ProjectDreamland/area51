@@ -3,7 +3,7 @@
 #include "Objects\WeaponSMP.hpp"
 #include "Objects\WeaponShotgun.hpp"
 #include "Objects\SuperDestructible.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 
 //=========================================================================
 // DEFINES

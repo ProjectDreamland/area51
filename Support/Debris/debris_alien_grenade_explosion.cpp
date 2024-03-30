@@ -1,6 +1,6 @@
 #include "debris_alien_grenade_explosion.hpp"
 #include "NetworkMgr\Networkmgr.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "..\Objects\Player.hpp"
 #include "objects\ParticleEmiter.hpp"
 #include "Tracers\TracerMgr.hpp"

@@ -1,0 +1,75 @@
+set(X_FILES_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
+
+file(GLOB X_FILES_SRC
+	"${X_FILES_PATH}/*.cpp"
+	"${X_FILES_PATH}/*.hpp"
+)
+
+set(X_FILES_IMPLEMENTATION_SRC
+"${X_FILES_PATH}/Implementation/x_array_private.hpp"
+"${X_FILES_PATH}/Implementation/x_bitmap.cpp"
+"${X_FILES_PATH}/Implementation/x_bitmap_cmap.cpp"
+"${X_FILES_PATH}/Implementation/x_bitmap_convert.cpp"
+"${X_FILES_PATH}/Implementation/x_bitmap_dxtc.cpp"
+"${X_FILES_PATH}/Implementation/x_bitmap_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_bitmap_io.cpp"
+"${X_FILES_PATH}/Implementation/x_bitmap_quant.cpp"
+"${X_FILES_PATH}/Implementation/x_bitmap_resize.cpp"
+"${X_FILES_PATH}/Implementation/x_bitstream.cpp"
+"${X_FILES_PATH}/Implementation/x_bytestream.cpp"
+"${X_FILES_PATH}/Implementation/x_color_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_context.cpp"
+"${X_FILES_PATH}/Implementation/x_debug.cpp"
+"${X_FILES_PATH}/Implementation/x_files.cpp"
+"${X_FILES_PATH}/Implementation/x_files_private.hpp"
+"${X_FILES_PATH}/Implementation/x_flare.cpp"
+"${X_FILES_PATH}/Implementation/x_locale.cpp"
+"${X_FILES_PATH}/Implementation/x_log.cpp"
+"${X_FILES_PATH}/Implementation/x_log_private.hpp"
+"${X_FILES_PATH}/Implementation/x_malloc.cpp"
+"${X_FILES_PATH}/Implementation/x_math.cpp"
+"${X_FILES_PATH}/Implementation/x_math_basic.cpp"
+"${X_FILES_PATH}/Implementation/x_math_bb_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_m4_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_misc.cpp"
+"${X_FILES_PATH}/Implementation/x_math_p_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_q_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_r3_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_rect_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_sphere.cpp"
+"${X_FILES_PATH}/Implementation/x_math_sph_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_v2_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_v3_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_math_v4_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_memfile.cpp"
+"${X_FILES_PATH}/Implementation/x_memory.cpp"
+"${X_FILES_PATH}/Implementation/x_memory_private.hpp"
+"${X_FILES_PATH}/Implementation/x_mqueue.cpp"
+"${X_FILES_PATH}/Implementation/x_mqueue_private.hpp"
+"${X_FILES_PATH}/Implementation/x_mutex.cpp"
+"${X_FILES_PATH}/Implementation/x_mutex_private.hpp"
+"${X_FILES_PATH}/Implementation/x_plus.cpp"
+#"${X_FILES_PATH}/Implementation/x_profile.cpp"
+"${X_FILES_PATH}/Implementation/x_semaphore_private.hpp"
+"${X_FILES_PATH}/Implementation/x_stdio.cpp"
+"${X_FILES_PATH}/Implementation/x_stdio_private.hpp"
+"${X_FILES_PATH}/Implementation/x_string.cpp"
+"${X_FILES_PATH}/Implementation/x_string_inline.hpp"
+"${X_FILES_PATH}/Implementation/x_threads.cpp"
+"${X_FILES_PATH}/Implementation/x_threads_pc.cpp"
+"${X_FILES_PATH}/Implementation/x_threads_private.hpp"
+"${X_FILES_PATH}/Implementation/x_time.cpp"
+"${X_FILES_PATH}/Implementation/x_tool.cpp"
+"${X_FILES_PATH}/Implementation/x_tool_private.hpp"
+"${X_FILES_PATH}/Implementation/x_vsprintf.cpp"
+)
+
+# TODO: Remove to separated CMake script!
+file(GLOB X_FILES_DXT_SRC
+	"${CMAKE_SOURCE_DIR}/xCore/3rdParty/DXTLibrary/*.cpp"
+	"${CMAKE_SOURCE_DIR}/xCore/3rdParty/DXTLibrary/*.h"
+)
+
+add_library(x_files STATIC ${X_FILES_IMPLEMENTATION_SRC} ${X_FILES_SRC} ${X_FILES_DXT_SRC})
+set_xcore_defaults(x_files)

@@ -6,6 +6,8 @@
 #include "x_bytestream.hpp"
 #include "x_log.hpp"
 
+// #TODO: Rebuild Miles MP3 coder or replace with liblame
+
 //------------------------------------------------------------------------------
 
 #define VALID_STREAM( pStream ) ((pStream >= &g_AudioStreamMgr.m_AudioStreams[0]) && (pStream <= &g_AudioStreamMgr.m_AudioStreams[MAX_AUDIO_STREAMS-1]))
@@ -125,7 +127,7 @@ audio_mp3_mgr::~audio_mp3_mgr( void )
 void audio_mp3_mgr::Init( void )
 {
     ASSERT( s_Initialized == FALSE );
-    ASI_startup();
+  //  ASI_startup();
     s_Initialized = TRUE;
 }
 
@@ -134,7 +136,7 @@ void audio_mp3_mgr::Init( void )
 void audio_mp3_mgr::Kill( void )
 {
     ASSERT( s_Initialized );
-    ASI_shutdown();
+   // ASI_shutdown();
     s_Initialized = FALSE;
 }
 
@@ -145,7 +147,7 @@ void audio_mp3_mgr::Open( audio_stream* pStream )
     ASSERT( s_Initialized );
     ASSERT( VALID_STREAM(pStream) );
     pStream->CursorMP3 = 0;
-    pStream->HandleMP3 = (void*)ASI_stream_open( (U32)pStream, mp3_fetch_data, pStream->Samples[0].Sample.WaveformLength );
+  //  pStream->HandleMP3 = (void*)ASI_stream_open( (U32)pStream, mp3_fetch_data, pStream->Samples[0].Sample.WaveformLength );
 }
 
 //------------------------------------------------------------------------------
@@ -155,8 +157,8 @@ void audio_mp3_mgr::Close( audio_stream* pStream )
     ASSERT( s_Initialized );
     ASSERT( VALID_STREAM(pStream) );
 
-    if( pStream->HandleMP3 )
-        ASI_stream_close( (s32)pStream->HandleMP3 );
+  //  if( pStream->HandleMP3 )
+   //   ASI_stream_close( (s32)pStream->HandleMP3 );
     pStream->HandleMP3 = NULL;
 }
 
@@ -208,7 +210,7 @@ void audio_mp3_mgr::Decode( audio_stream* pStream, s16* pBufferL, s16* pBufferR,
         }
 
         // Decode it.
-        ASI_stream_process( (s32)pStream->HandleMP3, pDest, nBytes );
+       // ASI_stream_process( (s32)pStream->HandleMP3, pDest, nBytes );
 
         // Need to "un-interleave"?
         if( bIsStereo )

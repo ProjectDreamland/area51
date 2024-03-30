@@ -13,7 +13,7 @@
 #include "GameLib\RenderContext.hpp"
 #include "Render\RigidGeom.hpp"
 #include "NetworkMgr\Networkmgr.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "..\Objects\Player.hpp"
 
 //=============================================================================

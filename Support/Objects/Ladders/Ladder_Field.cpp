@@ -4,7 +4,7 @@
 #include "Ladder_Field.hpp"
 #include "Obj_mgr\obj_mgr.hpp"
 #include "entropy.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "CollisionMgr\PolyCache.hpp"
 
 

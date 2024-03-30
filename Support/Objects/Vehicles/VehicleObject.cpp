@@ -1,3 +1,4 @@
+#ifndef DISABLE_LEGACY_CODE
 //=========================================================================
 //
 //  VehicleObject.cpp
@@ -11,6 +12,8 @@
 #include "VehicleObject.hpp"
 #include "Obj_mgr\obj_mgr.hpp"
 #include "Entropy.hpp"
+
+
 
 //=========================================================================
 // DEFINES
@@ -398,3 +401,4 @@ void vehicle_object::ComputeView( view& View )
 }
 
 //=============================================================================
+#endif // DISABLE_LEGACY_CODE
