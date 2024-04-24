@@ -474,6 +474,7 @@ _XboxRetail/
 !Scratch/SA/MakeSystem/xbmpTool.exe
 !Support/Compilers/A51SoundPkg/SoundPackager.exe
 !Support/NetworkMgr/Voice/Logitech/Lib/*.lib
+!xCore/3rdParty/BinkXbox/Lib/*.lib
 !xCore/3rdParty/CodeJock/XTSetup_4100.exe
 !xCore/3rdParty/DirectX9/*.lib
 !xCore/3rdParty/Miles6/Examples/Win/*.dll
