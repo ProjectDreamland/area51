@@ -522,9 +522,9 @@ voice_id audio_manager::Play( const char* pIdentifier, sound_type SoundType, con
     vector3     FinalPos  = Position;
 
     if( VolumeClipped )
-        VoiceID = g_AudioMgr.PlayVolumeClipped( pIdentifier, FinalPos, AutoStart );
+        VoiceID = g_AudioMgr.PlayVolumeClipped( pIdentifier, FinalPos, ZoneID, AutoStart );
     else
-        VoiceID = g_AudioMgr.Play( pIdentifier, FinalPos, AutoStart );
+        VoiceID = g_AudioMgr.Play( pIdentifier, FinalPos, ZoneID, AutoStart, VolumeClipped );
   
     m_Receiver[ m_CurrentReceiverCursor ].Guid      = Guid;
     m_Receiver[ m_CurrentReceiverCursor ].Pos       = FinalPos;

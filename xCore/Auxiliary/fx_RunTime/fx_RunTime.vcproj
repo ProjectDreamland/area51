@@ -1,2257 +1,964 @@
 <?xml version="1.0" encoding="Windows-1252"?>
-<VisualStudioProject
-	ProjectType="Visual C++"
-	Version="7.10"
-	Name="fx_RunTime"
-	SccProjectName="fx_RunTime"
-	SccLocalPath=".">
-	<Platforms>
-		<Platform
-			Name="Win32"/>
-	</Platforms>
-	<Configurations>
-		<Configuration
-			Name="GCN DevKit Release|Win32"
-			OutputDirectory=".\GCN-DevKit-Release"
-			IntermediateDirectory=".\GCN-DevKit-Release"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_GCN_DEV;HW2;VENDOR_SN;$(USERNAME)"
-				StringPooling="TRUE"
-				RuntimeLibrary="1"
-				EnableFunctionLevelLinking="TRUE"
-				PrecompiledHeaderFile=".\GCN-DevKit-Release/fx_RunTime.pch"
-				AssemblerListingLocation=".\GCN-DevKit-Release/"
-				ObjectFile=".\GCN-DevKit-Release/"
-				ProgramDataBaseFileName=".\GCN-DevKit-Release/"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\GCN-DevKit-Release\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Debug|Win32"
-			OutputDirectory=".\Debug"
-			IntermediateDirectory=".\Debug"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="_LIB;X_DEBUG;X_ASSERT;$(USERNAME);WIN32;_DEBUG"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Debug/fx_RunTime.pch"
-				AssemblerListingLocation=".\Debug/"
-				ObjectFile=".\Debug/"
-				ProgramDataBaseFileName=".\Debug/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="4"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\Debug\fx_RunTime.lib"
-				SuppressStartupBanner="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="GCN DVD Debug|Win32"
-			OutputDirectory=".\GCN-DVD-Debug"
-			IntermediateDirectory=".\GCN-DVD-Debug"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_GCN_DVD;X_DEBUG;X_ASSERT;HW2;_DEBUG;VENDOR_SN;$(USERNAME)"
-				RuntimeLibrary="1"
-				PrecompiledHeaderFile=".\GCN-DVD-Debug/fx_RunTime.pch"
-				AssemblerListingLocation=".\GCN-DVD-Debug/"
-				ObjectFile=".\GCN-DVD-Debug/"
-				ProgramDataBaseFileName=".\GCN-DVD-Debug/"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\GCN-DVD-Debug\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2 Client Debug|Win32"
-			OutputDirectory=".\PS2-Client-Debug"
-			IntermediateDirectory=".\PS2-Client-Debug"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2_CLIENT;VENDOR_SN;X_DEBUG;X_ASSERT;$(USERNAME)"
-				RuntimeLibrary="1"
-				PrecompiledHeaderFile=".\PS2-Client-Debug/fx_RunTime.pch"
-				AssemblerListingLocation=".\PS2-Client-Debug/"
-				ObjectFile=".\PS2-Client-Debug/"
-				ProgramDataBaseFileName=".\PS2-Client-Debug/"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\PS2-Client-Debug\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2 DVD Debug|Win32"
-			OutputDirectory=".\PS2-DVD-Debug"
-			IntermediateDirectory=".\PS2-DVD-Debug"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="X_DEBUG;X_ASSERT;TARGET_PS2_DVD;VENDOR_SN;$(USERNAME)"
-				RuntimeLibrary="1"
-				PrecompiledHeaderFile=".\PS2-DVD-Debug/fx_RunTime.pch"
-				AssemblerListingLocation=".\PS2-DVD-Debug/"
-				ObjectFile=".\PS2-DVD-Debug/"
-				ProgramDataBaseFileName=".\PS2-DVD-Debug/"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\PS2-DVD-Debug\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="GCN DevKit Debug|Win32"
-			OutputDirectory=".\GCN-DevKit-Debug"
-			IntermediateDirectory=".\GCN-DevKit-Debug"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_GCN_DEV;X_DEBUG;X_ASSERT;VENDOR_SN;$(USERNAME);HW2"
-				RuntimeLibrary="1"
-				PrecompiledHeaderFile=".\GCN-DevKit-Debug/fx_RunTime.pch"
-				AssemblerListingLocation=".\GCN-DevKit-Debug/"
-				ObjectFile=".\GCN-DevKit-Debug/"
-				ProgramDataBaseFileName=".\GCN-DevKit-Debug/"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\GCN-DevKit-Debug\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2 DevKit Release|Win32"
-			OutputDirectory=".\PS2-DevKit-Release"
-			IntermediateDirectory=".\PS2-DevKit-Release"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2_DEV;VENDOR_SN;$(USERNAME)"
-				StringPooling="TRUE"
-				RuntimeLibrary="1"
-				EnableFunctionLevelLinking="TRUE"
-				PrecompiledHeaderFile=".\PS2-DevKit-Release/fx_RunTime.pch"
-				AssemblerListingLocation=".\PS2-DevKit-Release/"
-				ObjectFile=".\PS2-DevKit-Release/"
-				ProgramDataBaseFileName=".\PS2-DevKit-Release/"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\PS2-DevKit-Release\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2 Client Release|Win32"
-			OutputDirectory=".\PS2-Client-Release"
-			IntermediateDirectory=".\PS2-Client-Release"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2_CLIENT;VENDOR_SN;$(USERNAME)"
-				StringPooling="TRUE"
-				RuntimeLibrary="1"
-				EnableFunctionLevelLinking="TRUE"
-				PrecompiledHeaderFile=".\PS2-Client-Release/fx_RunTime.pch"
-				AssemblerListingLocation=".\PS2-Client-Release/"
-				ObjectFile=".\PS2-Client-Release/"
-				ProgramDataBaseFileName=".\PS2-Client-Release/"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\PS2-Client-Release\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Xbox Release|Win32"
-			OutputDirectory=".\Release"
-			IntermediateDirectory=".\Release"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
-				OptimizeForProcessor="2"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_XBOX_DVD;X_DEBUG;X_ASSERT;$(USERNAME)"
-				StringPooling="TRUE"
-				RuntimeLibrary="4"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Release/fx_RunTime.pch"
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\Release\fx_RunTime.lib"
-				SuppressStartupBanner="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2 DevKit Debug|Win32"
-			OutputDirectory=".\PS2-DevKit-Debug"
-			IntermediateDirectory=".\PS2-DevKit-Debug"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2_DEV;VENDOR_SN;X_DEBUG;X_ASSERT;$(USERNAME)"
-				RuntimeLibrary="1"
-				PrecompiledHeaderFile=".\PS2-DevKit-Debug/fx_RunTime.pch"
-				AssemblerListingLocation=".\PS2-DevKit-Debug/"
-				ObjectFile=".\PS2-DevKit-Debug/"
-				ProgramDataBaseFileName=".\PS2-DevKit-Debug/"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\PS2-DevKit-Debug\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Release|Win32"
-			OutputDirectory=".\Release"
-			IntermediateDirectory=".\Release"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="_LIB;$(USERNAME);WIN32;NDEBUG"
-				StringPooling="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Release/fx_RunTime.pch"
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\Release\fx_RunTime.lib"
-				SuppressStartupBanner="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="GCN DVD Release|Win32"
-			OutputDirectory=".\GCN-DVD-Release"
-			IntermediateDirectory=".\GCN-DVD-Release"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_GCN_DVD;HW2;VENDOR_SN;$(USERNAME)"
-				StringPooling="TRUE"
-				RuntimeLibrary="1"
-				EnableFunctionLevelLinking="TRUE"
-				PrecompiledHeaderFile=".\GCN-DVD-Release/fx_RunTime.pch"
-				AssemblerListingLocation=".\GCN-DVD-Release/"
-				ObjectFile=".\GCN-DVD-Release/"
-				ProgramDataBaseFileName=".\GCN-DVD-Release/"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\GCN-DVD-Release\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Xbox Debug|Win32"
-			OutputDirectory=".\Debug"
-			IntermediateDirectory=".\Debug"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_XBOX_DEV;X_DEBUG;X_ASSERT;$(USERNAME)"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="5"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Debug/fx_RunTime.pch"
-				AssemblerListingLocation=".\Debug/"
-				ObjectFile=".\Debug/"
-				ProgramDataBaseFileName=".\Debug/"
-				BrowseInformation="1"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="4"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\Debug\fx_RunTime.lib"
-				SuppressStartupBanner="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2 DVD Release|Win32"
-			OutputDirectory=".\PS2-DVD-Release"
-			IntermediateDirectory=".\PS2-DVD-Release"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2_DVD;VENDOR_SN;$(USERNAME)"
-				StringPooling="TRUE"
-				RuntimeLibrary="1"
-				EnableFunctionLevelLinking="TRUE"
-				PrecompiledHeaderFile=".\PS2-DVD-Release/fx_RunTime.pch"
-				AssemblerListingLocation=".\PS2-DVD-Release/"
-				ObjectFile=".\PS2-DVD-Release/"
-				ProgramDataBaseFileName=".\PS2-DVD-Release/"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\PS2-DVD-Release\fx_RunTime.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-	</Configurations>
-	<References>
-	</References>
-	<Files>
-		<Filter
-			Name="Implementation"
-			Filter="">
-			<File
-				RelativePath="fx_Ctrl.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Effect.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Element.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Handle.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_LinearKeyCtrl.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Mgr.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Mgr_insert.hpp">
-			</File>
-			<File
-				RelativePath="fx_Mgr_private.hpp">
-			</File>
-			<File
-				RelativePath="fx_SmoothKeyCtrl.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-		</Filter>
-		<Filter
-			Name="Elements"
-			Filter="">
-			<File
-				RelativePath="fx_Cylinder.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Cylinder.hpp">
-			</File>
-			<File
-				RelativePath="fx_Plane.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Plane.hpp">
-			</File>
-			<File
-				RelativePath="fx_ShockWave.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_ShockWave.hpp">
-			</File>
-			<File
-				RelativePath="fx_SPEmitter.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_SPEmitter.hpp">
-			</File>
-			<File
-				RelativePath="fx_Sphere.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Sphere.hpp">
-			</File>
-			<File
-				RelativePath="fx_Sprite.cpp">
-				<FileConfiguration
-					Name="GCN DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 Client Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DevKit Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="GCN DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Xbox Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2 DVD Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="fx_Sprite.hpp">
-			</File>
-		</Filter>
-		<File
-			RelativePath="fx_Mgr.hpp">
-		</File>
-	</Files>
-	<Globals>
-	</Globals>
+<VisualStudioProject ProjectType="Visual C++" Version="7.10" Name="fx_RunTime">
+  <Platforms>
+    <Platform Name="Win32" />
+    <Platform Name="Xbox" />
+  </Platforms>
+  <Configurations>
+    <Configuration Name="GCN DevKit Release|Win32" OutputDirectory=".\GCN-DevKit-Release" IntermediateDirectory=".\GCN-DevKit-Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_GCN_DEV;HW2;VENDOR_SN;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="1" EnableFunctionLevelLinking="TRUE" PrecompiledHeaderFile=".\GCN-DevKit-Release/fx_RunTime.pch" AssemblerListingLocation=".\GCN-DevKit-Release/" ObjectFile=".\GCN-DevKit-Release/" ProgramDataBaseFileName=".\GCN-DevKit-Release/" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\GCN-DevKit-Release\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="Debug|Win32" OutputDirectory=".\Debug" IntermediateDirectory=".\Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="_LIB;X_DEBUG;X_ASSERT;$(USERNAME);WIN32;_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/fx_RunTime.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\Debug\fx_RunTime.lib" SuppressStartupBanner="TRUE" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="GCN DVD Debug|Win32" OutputDirectory=".\GCN-DVD-Debug" IntermediateDirectory=".\GCN-DVD-Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_GCN_DVD;X_DEBUG;X_ASSERT;HW2;_DEBUG;VENDOR_SN;$(USERNAME)" RuntimeLibrary="1" PrecompiledHeaderFile=".\GCN-DVD-Debug/fx_RunTime.pch" AssemblerListingLocation=".\GCN-DVD-Debug/" ObjectFile=".\GCN-DVD-Debug/" ProgramDataBaseFileName=".\GCN-DVD-Debug/" DebugInformationFormat="3" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\GCN-DVD-Debug\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="PS2 Client Debug|Win32" OutputDirectory=".\PS2-Client-Debug" IntermediateDirectory=".\PS2-Client-Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2_CLIENT;VENDOR_SN;X_DEBUG;X_ASSERT;$(USERNAME)" RuntimeLibrary="1" PrecompiledHeaderFile=".\PS2-Client-Debug/fx_RunTime.pch" AssemblerListingLocation=".\PS2-Client-Debug/" ObjectFile=".\PS2-Client-Debug/" ProgramDataBaseFileName=".\PS2-Client-Debug/" DebugInformationFormat="3" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-Client-Debug\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="PS2 DVD Debug|Win32" OutputDirectory=".\PS2-DVD-Debug" IntermediateDirectory=".\PS2-DVD-Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="X_DEBUG;X_ASSERT;TARGET_PS2_DVD;VENDOR_SN;$(USERNAME)" RuntimeLibrary="1" PrecompiledHeaderFile=".\PS2-DVD-Debug/fx_RunTime.pch" AssemblerListingLocation=".\PS2-DVD-Debug/" ObjectFile=".\PS2-DVD-Debug/" ProgramDataBaseFileName=".\PS2-DVD-Debug/" DebugInformationFormat="3" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-DVD-Debug\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="GCN DevKit Debug|Win32" OutputDirectory=".\GCN-DevKit-Debug" IntermediateDirectory=".\GCN-DevKit-Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_GCN_DEV;X_DEBUG;X_ASSERT;VENDOR_SN;$(USERNAME);HW2" RuntimeLibrary="1" PrecompiledHeaderFile=".\GCN-DevKit-Debug/fx_RunTime.pch" AssemblerListingLocation=".\GCN-DevKit-Debug/" ObjectFile=".\GCN-DevKit-Debug/" ProgramDataBaseFileName=".\GCN-DevKit-Debug/" DebugInformationFormat="3" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\GCN-DevKit-Debug\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="PS2 DevKit Release|Win32" OutputDirectory=".\PS2-DevKit-Release" IntermediateDirectory=".\PS2-DevKit-Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2_DEV;VENDOR_SN;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="1" EnableFunctionLevelLinking="TRUE" PrecompiledHeaderFile=".\PS2-DevKit-Release/fx_RunTime.pch" AssemblerListingLocation=".\PS2-DevKit-Release/" ObjectFile=".\PS2-DevKit-Release/" ProgramDataBaseFileName=".\PS2-DevKit-Release/" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-DevKit-Release\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="PS2 Client Release|Win32" OutputDirectory=".\PS2-Client-Release" IntermediateDirectory=".\PS2-Client-Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2_CLIENT;VENDOR_SN;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="1" EnableFunctionLevelLinking="TRUE" PrecompiledHeaderFile=".\PS2-Client-Release/fx_RunTime.pch" AssemblerListingLocation=".\PS2-Client-Release/" ObjectFile=".\PS2-Client-Release/" ProgramDataBaseFileName=".\PS2-Client-Release/" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-Client-Release\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="Xbox Release|Win32" OutputDirectory=".\Release" IntermediateDirectory=".\Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" OptimizeForProcessor="2" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_XBOX_DVD;X_DEBUG;X_ASSERT;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="4" EnableFunctionLevelLinking="TRUE" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Release/fx_RunTime.pch" AssemblerListingLocation=".\Release/" ObjectFile=".\Release/" ProgramDataBaseFileName=".\Release/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="3" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\Release\fx_RunTime.lib" SuppressStartupBanner="TRUE" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="PS2 DevKit Debug|Win32" OutputDirectory=".\PS2-DevKit-Debug" IntermediateDirectory=".\PS2-DevKit-Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2_DEV;VENDOR_SN;X_DEBUG;X_ASSERT;$(USERNAME)" RuntimeLibrary="1" PrecompiledHeaderFile=".\PS2-DevKit-Debug/fx_RunTime.pch" AssemblerListingLocation=".\PS2-DevKit-Debug/" ObjectFile=".\PS2-DevKit-Debug/" ProgramDataBaseFileName=".\PS2-DevKit-Debug/" DebugInformationFormat="3" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-DevKit-Debug\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="Release|Win32" OutputDirectory=".\Release" IntermediateDirectory=".\Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
+      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="_LIB;$(USERNAME);WIN32;NDEBUG" StringPooling="TRUE" RuntimeLibrary="0" EnableFunctionLevelLinking="TRUE" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Release/fx_RunTime.pch" AssemblerListingLocation=".\Release/" ObjectFile=".\Release/" ProgramDataBaseFileName=".\Release/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="3" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\Release\fx_RunTime.lib" SuppressStartupBanner="TRUE" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="GCN DVD Release|Win32" OutputDirectory=".\GCN-DVD-Release" IntermediateDirectory=".\GCN-DVD-Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_GCN_DVD;HW2;VENDOR_SN;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="1" EnableFunctionLevelLinking="TRUE" PrecompiledHeaderFile=".\GCN-DVD-Release/fx_RunTime.pch" AssemblerListingLocation=".\GCN-DVD-Release/" ObjectFile=".\GCN-DVD-Release/" ProgramDataBaseFileName=".\GCN-DVD-Release/" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\GCN-DVD-Release\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="Debug|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="4">
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support" PreprocessorDefinitions="TARGET_XBOX,CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="5" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/fx_RunTime.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" BrowseInformation="1" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" SuppressStartupBanner="TRUE" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+    </Configuration>
+    <Configuration Name="PS2 DVD Release|Win32" OutputDirectory=".\PS2-DVD-Release" IntermediateDirectory=".\PS2-DVD-Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
+      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2_DVD;VENDOR_SN;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="1" EnableFunctionLevelLinking="TRUE" PrecompiledHeaderFile=".\PS2-DVD-Release/fx_RunTime.pch" AssemblerListingLocation=".\PS2-DVD-Release/" ObjectFile=".\PS2-DVD-Release/" ProgramDataBaseFileName=".\PS2-DVD-Release/" CompileAs="0" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-DVD-Release\fx_RunTime.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="OptDebug|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="4">
+      <Tool Name="VCCLCompilerTool" AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary" PreprocessorDefinitions="TARGET_XBOX,CONFIG_OPTDEBUG" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+    </Configuration>
+    <Configuration Name="QA|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="4">
+      <Tool Name="VCCLCompilerTool" AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary" PreprocessorDefinitions="TARGET_XBOX,CONFIG_QA" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+    </Configuration>
+    <Configuration Name="Retail|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="4">
+      <Tool Name="VCCLCompilerTool" AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary" PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+    </Configuration>
+  </Configurations>
+  <References>
+  </References>
+  <Files>
+    <Filter Name="Implementation" Filter="">
+      <File RelativePath="fx_Ctrl.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Effect.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Element.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Handle.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_LinearKeyCtrl.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Mgr.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Mgr_insert.hpp">
+        <FileConfiguration Name="Debug|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Mgr_private.hpp">
+        <FileConfiguration Name="Debug|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_SmoothKeyCtrl.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+    </Filter>
+    <Filter Name="Elements" Filter="">
+      <File RelativePath="fx_Cylinder.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Cylinder.hpp">
+      </File>
+      <File RelativePath="fx_Plane.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Plane.hpp">
+      </File>
+      <File RelativePath="fx_ShockWave.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_ShockWave.hpp">
+      </File>
+      <File RelativePath="fx_SPEmitter.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_SPEmitter.hpp">
+      </File>
+      <File RelativePath="fx_Sphere.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Sphere.hpp">
+      </File>
+      <File RelativePath="fx_Sprite.cpp">
+        <FileConfiguration Name="GCN DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 Client Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Xbox Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DevKit Debug|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="GCN DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Xbox">
+          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
+        </FileConfiguration>
+        <FileConfiguration Name="PS2 DVD Release|Win32">
+          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
+        </FileConfiguration>
+        <FileConfiguration Name="OptDebug|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="QA|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Retail|Xbox">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+      </File>
+      <File RelativePath="fx_Sprite.hpp">
+      </File>
+    </Filter>
+    <File RelativePath="fx_Mgr.hpp">
+    </File>
+  </Files>
+  <Globals>
+  </Globals>
 </VisualStudioProject>
