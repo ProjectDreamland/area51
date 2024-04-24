@@ -39,7 +39,7 @@ The following prerequisites are required to build the source tree for Xbox:
 2. Xbox SDK - any version should work but only tested with 5849
 3. You'll need to create an environment variable called **X** that points to the xCore directory of the source tree. For example, if the source tree is located at 'D:\area51' the **X** environment variable should point to 'D:\area51\xCore'.
 
-Once the prerequisites are completed you should be able to open the Xbox VS solution located at 'Apps\GameApp.sln'. Valid build targets are: XBOX-Debug, XBOX-OptDebug, XBOX-QA, and XBOX-Retail.
+Once the prerequisites are completed you should be able to open the Xbox VS solution located at 'Apps\GameApp\A51.sln'. Valid build targets are: XBOX-Debug, XBOX-OptDebug, XBOX-QA, and XBOX-Retail.
 
 ## Releases
 
