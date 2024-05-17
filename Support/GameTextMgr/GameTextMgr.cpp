@@ -10,7 +10,7 @@
 #include "ConversationMgr\ConversationMgr.hpp"
 #include "Objects\HudObject.hpp"
 #include "Sound\SimpleSoundEmitter.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 
 #ifndef X_EDITOR
 #include "NetworkMgr\MsgMgr.hpp"

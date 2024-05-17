@@ -1,4 +1,3 @@
-#ifndef DISABLE_LEGACY_CODE
 //=========================================================================
 //
 //  ANIMDATA.CPP
@@ -1612,4 +1611,3 @@ void anim_loader::Unload( void* pData, const char* pFileName  )
 }
 
 //==============================================================================
-#endif // !DISABLE_LEGACY_CODE

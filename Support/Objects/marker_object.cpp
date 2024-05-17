@@ -14,7 +14,7 @@
 
 #ifdef X_EDITOR
 #include "Dictionary\global_dictionary.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #endif
 
 

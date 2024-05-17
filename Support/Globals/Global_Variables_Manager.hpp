@@ -15,7 +15,7 @@
 #include <x_types.hpp>
 #include <x_array.hpp>
 #include "Auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "x_bitstream.hpp"
 
 //=========================================================================

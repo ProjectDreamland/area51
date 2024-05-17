@@ -29,16 +29,7 @@ void memcard_hardware::Kill( void )
 {
 }
 
-void memcard_hardware::AllocIOBuffer(void)
-{
-}
-
 //------------------------------------------------------------------------------
-
-u32 memcard_hardware::GetFreeSpace(void)
-{
-    return u32(0);
-}
 
 void memcard_hardware::SendMessage( s32 Message )
 {
@@ -76,7 +67,7 @@ void memcard_hardware::InitiateOperation( void )
 
 //------------------------------------------------------------------------------
 
-s32 memcard_hardware::GetFileList( xarray<mc_file_info>& FileList )
+s32 memcard_hardware::GetFileList( xarray<xstring>& FileList )
 {
     (void) FileList;
 return 0;
@@ -86,11 +77,6 @@ return 0;
 
 void memcard_hardware::InvalidateFileList( void )
 {
-}
-
-memcard_error memcard_hardware::GetCardStatus(s32 CardId)
-{
-    return MEMCARD_FATAL_ERROR;
 }
 
 //------------------------------------------------------------------------------

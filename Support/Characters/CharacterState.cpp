@@ -2,7 +2,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "CharacterState.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\..\MiscUtils\SimpleUtils.hpp"
 #include "God.hpp"
 #include "Character.hpp"
 

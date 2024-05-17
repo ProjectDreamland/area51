@@ -15,7 +15,7 @@
 #include "Characters\GenericNPC\GenericNPC.hpp"
 #include "GameLib\RenderContext.hpp"
 #include "Objects\NewWeapon.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Debris\debris_rigid.hpp"
 #include "Objects\door.hpp"
 #include "Decals\DecalMgr.hpp"

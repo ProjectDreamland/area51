@@ -1,4 +1,3 @@
-#ifndef DISABLE_LEGACY_CODE
 //=============================================================================================
 // SEEKER PROJECTILE
 //=============================================================================================
@@ -656,5 +655,3 @@ void alien_turret_projectile::AvoidObstacles      ( xbool bAvoid )
 {
     m_bAvoidObstacles = bAvoid;
 }
-
-#endif

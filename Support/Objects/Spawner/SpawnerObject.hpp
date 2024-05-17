@@ -2,7 +2,7 @@
 #define __SPAWNEROBJECT_HPP__
 
 #include "..\Object.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 //#include "..\Support\Globals\Global_Variables_Manager.hpp"
 
 class spawner_object : public object

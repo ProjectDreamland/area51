@@ -13,7 +13,7 @@
 #include "Entropy\e_Draw.hpp"
 #include "player.hpp"
 #include "ProjectileBullett.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "objects\GrenadeProjectile.hpp"
 #include "Dictionary\global_dictionary.hpp"
 #include "TemplateMgr\TemplateMgr.hpp"

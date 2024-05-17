@@ -1,4 +1,3 @@
-#ifndef DISABLE_LEGACY_CODE
 //=========================================================================
 //
 //  ANIMCOMPRESS.CPP
@@ -987,5 +986,3 @@ void CompressAnimationData( bitstream&          aBS,
 
 //=========================================================================
 
-
-#endif // !DISABLE_LEGACY_CODE

@@ -14,7 +14,7 @@
 
 #include "condition_line_of_sight.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Entropy.hpp"
 #include "collisionmgr\collisionmgr.hpp"
 #include "objects\player.hpp"

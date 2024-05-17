@@ -16,7 +16,7 @@
 #include "Obj_mgr\Obj_mgr.hpp"
 #include "..\auxiliary\fx_RunTime\Fx_Mgr.hpp"
 #include "..\Auxiliary\Miscutils\Dictionary.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 
 //=========================================================================
 // CLASS

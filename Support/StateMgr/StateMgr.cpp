@@ -941,8 +941,8 @@ void state_mgr::CheckControllers( void )
 #if !defined(X_EDITOR)
 
 #ifdef TARGET_PC
-    input_gadget ControllerQuery;
-    input_gadget AnalogQuery;
+    (void) input_gadget ControllerQuery;
+    (void) input_gadget AnalogQuery;
     return;
 #endif
 

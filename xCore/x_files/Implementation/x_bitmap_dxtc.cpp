@@ -40,8 +40,7 @@
 #           include <windows.h>
 #           include "..\..\3rdParty\Xbox\Include\D3d8.h"
 #           include "..\..\3rdParty\Xbox\Include\XGraphics.h"
-//#           pragma comment( lib, "xgraphics.lib" )
-//#           pragma comment( lib, "..\\..\\3rdParty\\Xbox\\lib\\xgraphics.lib" )
+#           pragma comment( lib, "xgraphics.lib" )
 #       endif
 #   endif
 #else

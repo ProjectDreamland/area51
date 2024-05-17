@@ -27,28 +27,19 @@ The main goal is to get the source code into a buildable state on modern systems
 To contribute, please fork the repository, make your changes, and submit a pull request with your updates. For discussion, collaboration, and support, join our community on platforms like Discord or participate in GitHub Discussions for this project.
 
 
-## How to Build
-Currently, the only compiler supported is Visual Studio and Win32 configuration. 
-Build system is based on CMake, so version of Visual Studio is doesn't mean, it's should be higher or equal to Visual Studio 2013.
+## Building
 
-For build project run from command-line:
+### Xbox
 
-Visual Studio 2019+:
-```
-cmake -B build -A Win32
-```
+When building for Xbox it's recommended to use Windows XP (VM or otherwise) as some applications/tools may have compatibility issues with newer versions of Windows.
 
-Visual Studio 2013-2017:
-```
-cmake -B build
-```
+The following prerequisites are required to build the source tree for Xbox:
 
-After you should run:
-```
-cmake --build build --config Release
-```
+1. Visual Studio .Net 2003
+2. Xbox SDK - any version should work but only tested with 5849
+3. You'll need to create an environment variable called **X** that points to the xCore directory of the source tree. For example, if the source tree is located at 'D:\area51' the **X** environment variable should point to 'D:\area51\xCore'.
 
-Release or Debug binaries are located in bin folder.
+Once the prerequisites are completed you should be able to open the Xbox VS solution located at 'Apps\GameApp\A51.sln'. Valid build targets are: XBOX-Debug, XBOX-OptDebug, XBOX-QA, and XBOX-Retail.
 
 ## Releases
 

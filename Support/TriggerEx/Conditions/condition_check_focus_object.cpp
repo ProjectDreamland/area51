@@ -10,7 +10,7 @@
 
 #include "condition_check_focus_object.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Entropy.hpp"
 #include "..\Support\Objects\focusobject.hpp"
 

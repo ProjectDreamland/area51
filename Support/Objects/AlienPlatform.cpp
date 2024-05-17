@@ -7,7 +7,7 @@
 #include "CollisionMgr\PolyCache.hpp"
 #include "GameLib\RigidGeomCollision.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "..\Support\Objects\Player.hpp"
 #include "InputMgr\GamePad.hpp"
 #include "Objects\Path.hpp"

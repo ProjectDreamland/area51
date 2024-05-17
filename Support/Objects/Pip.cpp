@@ -5,7 +5,7 @@
 #include "Pip.hpp"
 #include "Camera.hpp"
 #include "Render\editor_icons.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "EventMgr\EventMgr.hpp"
 #include "Render\LightMgr.hpp"
 #include "PlaySurface.hpp"

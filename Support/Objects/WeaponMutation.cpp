@@ -27,7 +27,7 @@
 #include "Gamelib/DebugCheats.hpp"
 #include "PerceptionMgr\PerceptionMgr.hpp"
 #include "objects\ProjectileMutantParasite2.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 
 //=========================================================================
 // DEFINES and CONSTS

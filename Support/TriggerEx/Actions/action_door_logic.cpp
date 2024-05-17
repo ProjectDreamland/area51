@@ -10,7 +10,7 @@
 
 #include "action_door_logic.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Entropy.hpp"
 #include "Obj_Mgr\Obj_Mgr.hpp"
 

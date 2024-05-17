@@ -1,7 +1,7 @@
 
 #include "reactivesurface.hpp"
 #include "Dictionary\Global_Dictionary.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Player.hpp"
 
 xstring g_ReactiveSurfaceStringList;
