@@ -6,7 +6,7 @@
 #include "..\e_Engine.hpp"
 
 #define DIRECTINPUT_VERSION  0x0800
-#include "3rdParty\DirectX9\dinput.h"
+#include "dinput.h"
 
 ///////////////////////////////////////////////////////////////////////////
 // DEFINES

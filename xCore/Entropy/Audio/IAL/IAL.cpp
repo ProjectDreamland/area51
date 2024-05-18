@@ -3,7 +3,7 @@
 
 #include <windows.h>
 #include <mmreg.h>
-#include "3rdparty\DirectX9\dsound.h"
+#include "dsound.h"
 
 #include "x_files.hpp"
 #include "x_threads.hpp"
