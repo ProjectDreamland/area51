@@ -1,0 +1,57 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MeshUtil", "MeshUtil.vcproj", "{D345C69D-CF83-4F24-98E9-4527D163FBC6}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		GCN DevKit Debug = GCN DevKit Debug
+		GCN DevKit Release = GCN DevKit Release
+		GCN DVD Debug = GCN DVD Debug
+		GCN DVD Release = GCN DVD Release
+		PS2 Client Debug = PS2 Client Debug
+		PS2 Client Release = PS2 Client Release
+		PS2 DevKit Debug = PS2 DevKit Debug
+		PS2 DevKit Release = PS2 DevKit Release
+		PS2 DVD Debug = PS2 DVD Debug
+		PS2 DVD Release = PS2 DVD Release
+		Release = Release
+		Xbox Debug = Xbox Debug
+		Xbox Release = Xbox Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Debug.ActiveCfg = Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Debug.Build.0 = Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.GCN DevKit Debug.ActiveCfg = GCN DevKit Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.GCN DevKit Debug.Build.0 = GCN DevKit Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.GCN DevKit Release.ActiveCfg = GCN DevKit Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.GCN DevKit Release.Build.0 = GCN DevKit Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.GCN DVD Debug.ActiveCfg = GCN DVD Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.GCN DVD Debug.Build.0 = GCN DVD Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.GCN DVD Release.ActiveCfg = GCN DVD Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.GCN DVD Release.Build.0 = GCN DVD Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 Client Debug.ActiveCfg = PS2 Client Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 Client Debug.Build.0 = PS2 Client Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 Client Release.ActiveCfg = PS2 Client Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 Client Release.Build.0 = PS2 Client Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 DevKit Debug.ActiveCfg = PS2 DevKit Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 DevKit Debug.Build.0 = PS2 DevKit Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 DevKit Release.ActiveCfg = PS2 DevKit Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 DevKit Release.Build.0 = PS2 DevKit Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 DVD Debug.ActiveCfg = PS2 DVD Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 DVD Debug.Build.0 = PS2 DVD Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 DVD Release.ActiveCfg = PS2 DVD Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.PS2 DVD Release.Build.0 = PS2 DVD Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Release.ActiveCfg = Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Release.Build.0 = Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Xbox Debug.ActiveCfg = Xbox Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Xbox Debug.Build.0 = Xbox Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Xbox Release.ActiveCfg = Xbox Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Xbox Release.Build.0 = Xbox Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
