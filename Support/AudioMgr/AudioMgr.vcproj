@@ -34,7 +34,7 @@
       <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
     </Configuration>
     <Configuration Name="Debug|Win32" OutputDirectory=".\Debug" IntermediateDirectory=".\Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\audiomgr,$(X)\Auxiliary,$(X)\..\support" PreprocessorDefinitions="_LIB;X_DEBUG;X_ASSERT;$(USERNAME);WIN32;_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/audiomgr.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\audiomgr,$(X)\Auxiliary,$(X)\..\support" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/audiomgr.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
       <Tool Name="VCCustomBuildTool" />
       <Tool Name="VCLibrarianTool" OutputFile=".\Debug\audiomgr.lib" SuppressStartupBanner="TRUE" />
       <Tool Name="VCMIDLTool" />
@@ -62,7 +62,7 @@
       <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
     </Configuration>
     <Configuration Name="Release|Win32" OutputDirectory=".\Release" IntermediateDirectory=".\Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
-      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X)\..\support,$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\audiomgr,$(X)\Auxiliary" PreprocessorDefinitions="_LIB;$(USERNAME);WIN32;NDEBUG" StringPooling="TRUE" RuntimeLibrary="0" EnableFunctionLevelLinking="TRUE" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Release/audiomgr.pch" AssemblerListingLocation=".\Release/" ObjectFile=".\Release/" ProgramDataBaseFileName=".\Release/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="3" CompileAs="0" />
+      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X)\..\support,$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\audiomgr,$(X)\Auxiliary" PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL" StringPooling="TRUE" RuntimeLibrary="0" EnableFunctionLevelLinking="TRUE" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Release/audiomgr.pch" AssemblerListingLocation=".\Release/" ObjectFile=".\Release/" ProgramDataBaseFileName=".\Release/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="3" CompileAs="0" />
       <Tool Name="VCCustomBuildTool" />
       <Tool Name="VCLibrarianTool" OutputFile=".\Release\audiomgr.lib" SuppressStartupBanner="TRUE" />
       <Tool Name="VCMIDLTool" />
@@ -174,13 +174,7 @@
       <FileConfiguration Name="PS2 DVD Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 Client Debug|Win32">
@@ -205,6 +199,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
