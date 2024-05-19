@@ -23,7 +23,7 @@ BitmapEditor   | Partially/Only as lib
 DecalEditor    | Partially/Only as lib
 DecalCompiler  | Yes
 DFSTool        | Yes
-Editor         | No
+Editor         | Partially/Only as compiled/relased form
 EDRscDesc      | No
 EffectsEditor  | Partially/Only as lib
 ELFTool        | Yes
