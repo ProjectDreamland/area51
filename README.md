@@ -24,7 +24,7 @@ BitmapEditor   | Partially/Only as lib/Check the Editor
 DecalEditor    | Partially/Only as lib/Check the Editor
 DecalCompiler  | Yes
 DFSTool        | Yes
-Editor         | Partially/Only as release form
+Editor         | Partially/Only as [relase](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor) form
 EDRscDesc      | No
 EffectsEditor  | Partially/Only as lib/Check the Editor
 ELFTool        | Yes
