@@ -13,9 +13,32 @@ At the moment, only a 9 tools are functioning. Game build doesn't work. Valid bu
 ## Successfully compiled tools
 Name           | Description             | Compiled
 ---------------| ----------------------- | -------
-Art2Code       | Animation Group         | Yes
-ArtistViewer   | Animation               | No
-AudioEditor    | Animation Graph      | No
+Art2Code       | Undentified             | Yes
+ArtistViewer   | Undentified             | No
+AudioEditor    | Sound editor            | Partially/Only as lib
+BinaryString   | Undentified             | Partially/Only as lib
+BitmapEditor   | Undentified             | Partially/Only as lib
+DecalEditor    | Animation Graph         | Yes
+DFSTool        | DFS Archive Manager     | Yes
+Editor         | Game Asset Editor       | No
+EDRscDesc      | Undentified             | No
+EffectsEditor  | Particle editor         | Partially/Only as lib
+ELFTool        | Undentified             | Yes
+EventEditor    | Script editor           | Partially/Only as lib
+FontEditor     | Font editor             | Yes
+FxEditor       | Particle editor         | Yes
+GameApp        | Area 51                 | No
+LocoEditor     | Undentified             | No
+MeshViewer     | Mesh viewer/compiler    | No
+PropertyEditor | Undentified             | No
+SoundPackager  | Sound File Manager      | Partially/Only as lib
+Viewer         | Undentified             | No
+WinControls    | Undentified             | No
+WorldEditor    | Level editor            | No
+XBMPTool       | XBMP File Manager       | Yes
+XBMPViewer     | XBMP File Viewer        | Yes
+xCL            | Undentified             | Yes
+xTool          | Undentified             | Yes
 
 ## Releases
 
