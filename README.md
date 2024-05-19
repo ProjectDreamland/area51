@@ -16,21 +16,21 @@ Name           | Compiled
 Art2Code       | Yes
 ArtistViewer   | No
 AnimCompiler   | Yes
-AudioEditor    | Partially/Only as lib
+AudioEditor    | Partially/Only as lib/Check Editor
 A51SoundPKG    | Yes
-BinaryString   | Partially/Only as lib
-BitmapEditor   | Partially/Only as lib
-DecalEditor    | Partially/Only as lib
+BinaryString   | Partially/Only as lib/Check Editor
+BitmapEditor   | Partially/Only as lib/Check Editor
+DecalEditor    | Partially/Only as lib/Check Editor
 DecalCompiler  | Yes
 DFSTool        | Yes
-Editor         | Partially/Only as compiled/relased form
+Editor         | Partially/Only as release form
 EDRscDesc      | No
-EffectsEditor  | Partially/Only as lib
+EffectsEditor  | Partially/Only as lib/Check Editor
 ELFTool        | Yes
-EventEditor    | Partially/Only as lib
-FontEditor     | Partially/Only as lib
+EventEditor    | Partially/Only as lib/Check Editor
+FontEditor     | Partially/Only as lib/Check Editor
 FontBuilder    | Yes
-FxEditor       | Partially/Only as lib
+FxEditor       | Partially/Only as lib/Check Editor
 FXCompiler     | Yes
 GameApp        | No
 LocoEditor     | No
