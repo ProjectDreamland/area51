@@ -15,20 +15,22 @@ Name           | Compiled
 ---------------| ----------------------
 Art2Code       | Yes
 ArtistViewer   | No
+AnimCompiler   | Yes
 AudioEditor    | Partially/Only as lib
 A51SoundPKG    | Yes
 BinaryString   | Partially/Only as lib
 BitmapEditor   | Partially/Only as lib
-DecalEditor    | Yes
+DecalEditor    | Partially/Only as lib
+DecalCompiler  | Yes
 DFSTool        | Yes
 Editor         | No
 EDRscDesc      | No
 EffectsEditor  | Partially/Only as lib
 ELFTool        | Yes
 EventEditor    | Partially/Only as lib
-FontEditor     | Yes
+FontEditor     | Partially/Only as lib
 FontBuilder    | Yes
-FxEditor       | Yes
+FxEditor       | Partially/Only as lib
 FXCompiler     | Yes
 GameApp        | No
 LocoEditor     | No
