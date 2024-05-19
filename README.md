@@ -10,6 +10,13 @@ The following prerequisites are required to build the source tree for PC:
 
 At the moment, only a 9 tools are functioning. Game build doesn't work. Valid build targets are: Debug Win32. Retail/Relase Win32 is temporary broken.
 
+## Successfully compiled tools
+Name           | Description             | Compiled
+---------------| ----------------------- | -------
+Art2Code       | Animation Group         | Yes
+ArtistViewer   | Animation               | No
+AudioEditor    | Animation Graph      | No
+
 ## Releases
 
 [Here](https://github.com/ProjectDreamland/area51/releases/)
