@@ -11,34 +11,38 @@ The following prerequisites are required to build the source tree for PC:
 At the moment, only a 9 tools are functioning. Game build doesn't work. Valid build targets are: Debug Win32. Retail/Relase Win32 is temporary broken.
 
 ## List of compiled tools
-Name           | Description             | Compiled
----------------| ----------------------- | -------
-Art2Code       | Undentified             | Yes
-ArtistViewer   | Undentified             | No
-AudioEditor    | Sound editor            | Partially/Only as lib
-BinaryString   | Undentified             | Partially/Only as lib
-BitmapEditor   | Undentified             | Partially/Only as lib
-DecalEditor    | Animation Graph         | Yes
-DFSTool        | DFS Archive Manager     | Yes
-Editor         | Game Asset Editor       | No
-EDRscDesc      | Undentified             | No
-EffectsEditor  | Particle editor         | Partially/Only as lib
-ELFTool        | Undentified             | Yes
-EventEditor    | Script editor           | Partially/Only as lib
-FontEditor     | Font editor             | Yes
-FxEditor       | Particle editor         | Yes
-GameApp        | Area 51                 | No
-LocoEditor     | Undentified             | No
-MeshViewer     | Mesh viewer/compiler    | No
-PropertyEditor | Undentified             | No
-SoundPackager  | Sound File Manager      | Partially/Only as lib
-Viewer         | Undentified             | No
-WinControls    | Undentified             | No
-WorldEditor    | Level editor            | No
-XBMPTool       | XBMP File Manager       | Yes
-XBMPViewer     | XBMP File Viewer        | Yes
-xCL            | Undentified             | Yes
-xTool          | Undentified             | Yes
+Name           | Compiled
+---------------| ----------------------
+Art2Code       | Yes
+ArtistViewer   | No
+AudioEditor    | Partially/Only as lib
+A51SoundPKG    | Yes
+BinaryString   | Partially/Only as lib
+BitmapEditor   | Partially/Only as lib
+DecalEditor    | Yes
+DFSTool        | Yes
+Editor         | No
+EDRscDesc      | No
+EffectsEditor  | Partially/Only as lib
+ELFTool        | Yes
+EventEditor    | Partially/Only as lib
+FontEditor     | Yes
+FontBuilder    | Yes
+FxEditor       | Yes
+FXCompiler     | Yes
+GameApp        | No
+LocoEditor     | No
+MeshViewer     | No
+PropertyEditor | No
+SoundPackager  | Partially/Only as lib
+StringTool     | Yes
+Viewer         | No
+WinControls    | No
+WorldEditor    | No
+XBMPTool       | Yes
+XBMPViewer     | Yes
+xCL            | Yes
+xTool          | Yes
 
 ## Releases
 
