@@ -62,7 +62,7 @@
       <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
     </Configuration>
     <Configuration Name="Debug|Win32" OutputDirectory=".\Debug" IntermediateDirectory=".\Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/Render.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support" PreprocessorDefinitions="_LIB;WIN32;_DEBUG;TARGET_PC;CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/Render.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
       <Tool Name="VCCustomBuildTool" />
       <Tool Name="VCLibrarianTool" OutputFile=".\Debug\Render.lib" SuppressStartupBanner="TRUE" />
       <Tool Name="VCMIDLTool" />
@@ -981,16 +981,10 @@
         <FileConfiguration Name="PS2 Client Debug|Win32" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
         </FileConfiguration>
-        <FileConfiguration Name="Debug|Win32">
-          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-        </FileConfiguration>
         <FileConfiguration Name="Debug|Xbox" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
         </FileConfiguration>
         <FileConfiguration Name="PS2 DVD Release|Win32" ExcludedFromBuild="TRUE">
-          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-        </FileConfiguration>
-        <FileConfiguration Name="Release|Win32">
           <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
         </FileConfiguration>
         <FileConfiguration Name="PS2 DevKit Debug|Win32" ExcludedFromBuild="TRUE">
@@ -1006,6 +1000,12 @@
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
         <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+	    <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+	    <FileConfiguration Name="Debug|Win32">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
       </File>
@@ -1040,6 +1040,12 @@
         <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
+	    <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+	    <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
       </File>
       <File RelativePath="VertexMgr.cpp">
         <FileConfiguration Name="Xbox Release|Win32">
@@ -1054,16 +1060,10 @@
         <FileConfiguration Name="PS2 Client Debug|Win32" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
         </FileConfiguration>
-        <FileConfiguration Name="Debug|Win32">
-          <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-        </FileConfiguration>
         <FileConfiguration Name="Debug|Xbox" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
         </FileConfiguration>
         <FileConfiguration Name="PS2 DVD Release|Win32" ExcludedFromBuild="TRUE">
-          <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-        </FileConfiguration>
-        <FileConfiguration Name="Release|Win32">
           <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
         </FileConfiguration>
         <FileConfiguration Name="PS2 DevKit Debug|Win32" ExcludedFromBuild="TRUE">
@@ -1079,6 +1079,12 @@
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
         <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+	    <FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+	    <FileConfiguration Name="Debug|Win32">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
       </File>
@@ -1111,6 +1117,12 @@
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
         <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+		<FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+	    <FileConfiguration Name="Debug|Win32">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
       </File>
@@ -1186,16 +1198,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1211,6 +1217,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1229,16 +1241,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1254,6 +1260,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1272,16 +1284,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1297,6 +1303,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1315,16 +1327,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1340,6 +1346,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1358,16 +1370,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32" ExcludedFromBuild="TRUE">
         <Tool Name="VCCustomBuildTool" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox" ExcludedFromBuild="TRUE">
         <Tool Name="VCCustomBuildTool" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
         <Tool Name="VCCustomBuildTool" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32" ExcludedFromBuild="TRUE">
@@ -1385,6 +1391,12 @@
       <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
     </File>
     <File RelativePath="MaterialArray.cpp">
       <FileConfiguration Name="Xbox Release|Win32">
@@ -1399,16 +1411,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1424,6 +1430,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1456,16 +1468,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox" ExcludedFromBuild="TRUE">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1481,6 +1487,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1497,6 +1509,12 @@
       <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
     </File>
     <File RelativePath="Render.cpp">
       <FileConfiguration Name="Xbox Release|Win32">
@@ -1511,16 +1529,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1536,6 +1548,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1554,16 +1572,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1579,6 +1591,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1597,16 +1615,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1622,6 +1634,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1701,16 +1719,10 @@
       <FileConfiguration Name="PS2 Client Debug|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
-      <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" />
-      </FileConfiguration>
       <FileConfiguration Name="Debug|Xbox">
         <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Release|Win32">
         <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
       </FileConfiguration>
       <FileConfiguration Name="PS2 DevKit Debug|Win32">
@@ -1726,6 +1738,12 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Release|Win32">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -1745,6 +1763,12 @@
         <FileConfiguration Name="Retail|Xbox">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
+		<FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
       </File>
       <File RelativePath="Xbox\LeastSquares.hpp">
         <FileConfiguration Name="OptDebug|Xbox" ExcludedFromBuild="TRUE">
@@ -1754,6 +1778,12 @@
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
         <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+		<FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
       </File>

@@ -70,7 +70,7 @@
       <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
     </Configuration>
     <Configuration Name="Debug|Win32" OutputDirectory=".\Debug" IntermediateDirectory=".\Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X)\..\support,$(X)\x_files,$(X)\Entropy,$(X)\Entropy\Audio,$(X)\3rdParty,$(X)\3rdParty\DirectX9" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/Entropy.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X)\..\support,$(X)\x_files,$(X)\Entropy,$(X)\Entropy\Audio,$(X)\3rdParty,$(X)\3rdParty\DirectX9" PreprocessorDefinitions="_LIB;WIN32;_DEBUG;TARGET_PC;CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/Entropy.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
       <Tool Name="VCCustomBuildTool" />
       <Tool Name="VCLibrarianTool" OutputFile=".\Debug\Entropy.lib" SuppressStartupBanner="TRUE" />
       <Tool Name="VCMIDLTool" />
@@ -5083,10 +5083,10 @@
         <FileConfiguration Name="Retail|Xbox">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
-	    <FileConfiguration Name="Release|Win32">
+	    <FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
-		<FileConfiguration Name="Debug|Win32">
+		<FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
       </File>
@@ -5491,10 +5491,10 @@
           <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-		  <FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+		  <FileConfiguration Name="Release|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-		  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+		  <FileConfiguration Name="Debug|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
         </File>
