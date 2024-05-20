@@ -564,6 +564,9 @@
         <FileConfiguration Name="Retail|Xbox">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
+		<FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
       </File>
       <File RelativePath="..\Ui\ui_manager.hpp">
       </File>
@@ -1006,6 +1009,9 @@
         <FileConfiguration Name="Retail|Xbox">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
+		<FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
       </File>
       <File RelativePath=".\Xbox\dlg_OnlineMainXBOX.cpp">
         <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
@@ -1368,6 +1374,9 @@
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
         <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+	    <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
       </File>
@@ -2249,6 +2258,9 @@
       <FileConfiguration Name="Retail|Xbox">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
     </File>
     <File RelativePath=".\dlg_Feedback.hpp">
     </File>
@@ -2263,6 +2275,9 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -2979,6 +2994,9 @@
       <FileConfiguration Name="Retail|Xbox">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
     </File>
     <File RelativePath=".\dlg_OnlineJoin.hpp">
       <FileConfiguration Name="Debug|Xbox">
@@ -3016,6 +3034,9 @@
       </FileConfiguration>
       <FileConfiguration Name="PS2-Profile|Xbox">
         <Tool Name="VCCustomBuildTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
     <File RelativePath=".\dlg_OnlineLevelSelect.cpp">
@@ -3083,6 +3104,9 @@
       <FileConfiguration Name="Retail|Xbox">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
     </File>
     <File RelativePath=".\dlg_OnlineLogin.hpp">
       <FileConfiguration Name="Debug|Xbox">
@@ -3121,6 +3145,9 @@
       <FileConfiguration Name="PS2-Profile|Xbox">
         <Tool Name="VCCustomBuildTool" />
       </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
     </File>
     <File RelativePath=".\dlg_OnlinePlayers.cpp">
       <FileConfiguration Name="Debug|Xbox">
@@ -3133,6 +3160,9 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -3172,6 +3202,9 @@
       </FileConfiguration>
       <FileConfiguration Name="PS2-Profile|Xbox">
         <Tool Name="VCCustomBuildTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+        <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
     <File RelativePath=".\dlg_PauseMain.cpp">
@@ -3341,6 +3374,9 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
@@ -3937,6 +3973,9 @@
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
       <FileConfiguration Name="Retail|Xbox">
+        <Tool Name="VCCLCompilerTool" />
+      </FileConfiguration>
+	  <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
         <Tool Name="VCCLCompilerTool" />
       </FileConfiguration>
     </File>
