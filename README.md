@@ -40,7 +40,7 @@ MeshViewer     | No
 PropertyEditor | No
 SoundPackager  | Yes
 StringTool     | Yes
-Viewer         | Partially/Only as lib/Check the Editor
+Viewer         | No
 WinControls    | No
 WorldEditor    | Partially/Only as lib/Check the Editor
 XBMPTool       | Yes
