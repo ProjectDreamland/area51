@@ -25,7 +25,7 @@ DecalEditor    | Partially/Only as lib/Check the Editor
 DecalCompiler  | Yes
 DFSTool        | Yes
 Editor         | Partially/Only as [relase](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor) form
-EDRscDesc      | No
+EDRscDesc      | Partially/Only as lib/Check the Editor
 EffectsEditor  | Yes
 ELFTool        | Yes
 EventEditor    | Partially/Only as lib/Check the Editor
@@ -35,13 +35,13 @@ FxEditor       | Partially/Only as lib/Check the Editor
 FXCompiler     | Yes
 GameApp        | No
 GeomCompiler   | Yes
-LocoEditor     | No
-MeshViewer     | No
-PropertyEditor | No
+LocoEditor     | Partially/Only as lib/Check the Editor
+MeshViewer     | Partially/Only as lib/Check the Editor
+PropertyEditor | Partially/Only as lib/Check the Editor
 SoundPackager  | Yes
 StringTool     | Yes
 Viewer         | No
-WinControls    | No
+WinControls    | Partially/Only as lib/Check the Editor
 WorldEditor    | Partially/Only as lib/Check the Editor
 XBMPTool       | Yes
 XBMPViewer     | Yes
