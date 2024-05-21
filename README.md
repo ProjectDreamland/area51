@@ -34,6 +34,7 @@ FontBuilder    | Yes
 FxEditor       | Partially/Only as lib/Check the Editor
 FXCompiler     | Yes
 GameApp        | No
+GeomCompiler   | Yes
 LocoEditor     | No
 MeshViewer     | No
 PropertyEditor | No
