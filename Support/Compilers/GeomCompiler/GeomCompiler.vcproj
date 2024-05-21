@@ -40,6 +40,7 @@
 				AdditionalDependencies="$(X)\3rdParty\Xbox\Lib\xgraphics.lib"
 				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/GeomCompiler.exe"
 				LinkIncremental="2"
+				IgnoreDefaultLibraryNames="LIBC.lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/GeomCompiler.pdb"
 				SubSystem="1"
@@ -246,6 +247,12 @@
 			</File>
 			<File
 				RelativePath="..\..\..\xCore\Auxiliary\MiscUtils\Guid.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\xCore\MeshUtil\RawSettings.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\xCore\MeshUtil\RawSettings.hpp">
 			</File>
 			<File
 				RelativePath="..\..\..\xCore\Auxiliary\MiscUtils\mem_stream.cpp">

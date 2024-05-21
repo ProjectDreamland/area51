@@ -128,7 +128,7 @@ xbool LoadBitmap( xbitmap& Bitmap, const char* pFileName )
         {
             W /= 2;
             H /= 2;
-            Bitmap.Resize(W,H,TRUE);
+           // Bitmap.Resize(W,H,TRUE);
         }
     }
 
