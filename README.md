@@ -38,11 +38,11 @@ GeomCompiler   | Yes
 LocoEditor     | No
 MeshViewer     | No
 PropertyEditor | No
-SoundPackager  | Partially/Only as lib
+SoundPackager  | Yes
 StringTool     | Yes
-Viewer         | No
+Viewer         | Partially/Only as lib/Check the Editor
 WinControls    | No
-WorldEditor    | No
+WorldEditor    | Partially/Only as lib/Check the Editor
 XBMPTool       | Yes
 XBMPViewer     | Yes
 xCL            | Yes
