@@ -4016,6 +4016,12 @@
         <FileConfiguration Name="Retail|Xbox">
           <Tool Name="VCCLCompilerTool" />
         </FileConfiguration>
+		<FileConfiguration Name="Release|Win32">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
+        <FileConfiguration Name="Debug|Win32">
+          <Tool Name="VCCLCompilerTool" />
+        </FileConfiguration>
       </File>
     </Filter>
     <File RelativePath="NetworkMgr.cpp">

@@ -3831,10 +3831,10 @@
           <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-		  <FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+		  <FileConfiguration Name="Release|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-          <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+          <FileConfiguration Name="Debug|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
         </File>
@@ -3872,10 +3872,10 @@
           <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-		  <FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+		  <FileConfiguration Name="Release|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-          <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+          <FileConfiguration Name="Debug|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
         </File>
@@ -3913,10 +3913,10 @@
           <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-		  <FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+		  <FileConfiguration Name="Release|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-          <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+          <FileConfiguration Name="Debug|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
         </File>
@@ -3954,10 +3954,10 @@
           <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-		  <FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+		  <FileConfiguration Name="Release|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
-          <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+          <FileConfiguration Name="Debug|Win32">
             <Tool Name="VCCLCompilerTool" />
           </FileConfiguration>
         </File>
@@ -4110,6 +4110,7 @@
             <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
           </FileConfiguration>
           <FileConfiguration Name="PS2 Client Release|Win32" ExcludedFromBuild="TRUE">
+            <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
             <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
           </FileConfiguration>
           <FileConfiguration Name="OptDebug|Xbox" ExcludedFromBuild="TRUE">

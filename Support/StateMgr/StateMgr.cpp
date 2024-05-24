@@ -247,16 +247,16 @@ void state_mgr::Init( void )
 #ifdef TARGET_PS2
     dlg_online_eula_register        ( g_UiMgr );
 #endif
-    dlg_online_connect_register     ( g_UiMgr );
+    //dlg_online_connect_register     ( g_UiMgr );
     dlg_online_main_register        ( g_UiMgr );
     dlg_online_host_register        ( g_UiMgr );
     dlg_online_host_options_register( g_UiMgr );
-    dlg_online_join_register        ( g_UiMgr );
+    //dlg_online_join_register        ( g_UiMgr );
     dlg_join_filter_register        ( g_UiMgr );
     dlg_online_level_select_register( g_UiMgr );
-    dlg_online_players_register     ( g_UiMgr );
-    dlg_friends_register            ( g_UiMgr );
-    dlg_players_register            ( g_UiMgr );
+    //dlg_online_players_register     ( g_UiMgr );
+    //dlg_friends_register            ( g_UiMgr );
+    //dlg_players_register            ( g_UiMgr );
     dlg_start_game_register         ( g_UiMgr );
     dlg_load_game_register          ( g_UiMgr );
     dlg_level_desc_register         ( g_UiMgr );
@@ -280,7 +280,7 @@ void state_mgr::Init( void )
     dlg_campaign_menu_register      ( g_UiMgr );
     dlg_lore_menu_register          ( g_UiMgr );
 #ifndef TARGET_XBOX
-    dlg_memcard_select_register     ( g_UiMgr );
+    //dlg_memcard_select_register     ( g_UiMgr );
 #endif
     dlg_vote_map_register           ( g_UiMgr );
     dlg_vote_kick_register          ( g_UiMgr );
@@ -288,11 +288,11 @@ void state_mgr::Init( void )
     dlg_change_map_register         ( g_UiMgr );
     dlg_kick_player_register        ( g_UiMgr );
     dlg_team_change_register        ( g_UiMgr );
-    dlg_online_login_register       ( g_UiMgr );
+    //dlg_online_login_register       ( g_UiMgr );
     dlg_submenu_register            ( g_UiMgr );
-    dlg_feedback_register           ( g_UiMgr );
+    //dlg_feedback_register           ( g_UiMgr );
     dlg_secrets_menu_register       ( g_UiMgr );
-    dlg_stats_register              ( g_UiMgr );
+    //dlg_stats_register              ( g_UiMgr );
     dlg_autosave_register           ( g_UiMgr );
     dlg_credits_register            ( g_UiMgr );
     dlg_extras_register             ( g_UiMgr );
@@ -12333,7 +12333,7 @@ void state_mgr::ExitPauseOnlineMemcardSelect( void )
 void state_mgr::SetActiveControllerID( s32 ID )
 {
     m_ActiveControllerID = ID;
-    g_VoiceMgr.GetHeadset().SetActiveHeadset( ID );
+    //g_VoiceMgr.GetHeadset().SetActiveHeadset( ID );
 }
 
 //=========================================================================

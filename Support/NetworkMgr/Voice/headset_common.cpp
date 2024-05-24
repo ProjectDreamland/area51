@@ -95,6 +95,7 @@ s32 headset::GetNumBytesInWriteFifo( void )
 }
 
 //==============================================================================
+/*
 void headset::SetActiveHeadset( s32 HeadsetIndex )
 {
     if( HeadsetIndex != m_ActiveHeadset )
@@ -117,3 +118,15 @@ void headset::SetActiveHeadset( s32 HeadsetIndex )
         }
     }
 }
+*/
+void headset::OnHeadsetInsert( void )
+{
+}
+
+//==============================================================================
+
+void headset::OnHeadsetRemove( void )
+{
+}
+
+//==============================================================================
