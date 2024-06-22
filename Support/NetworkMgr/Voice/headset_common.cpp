@@ -95,7 +95,7 @@ s32 headset::GetNumBytesInWriteFifo( void )
 }
 
 //==============================================================================
-/*
+#if defined ( TARGET_XBOX )
 void headset::SetActiveHeadset( s32 HeadsetIndex )
 {
     if( HeadsetIndex != m_ActiveHeadset )
@@ -118,7 +118,7 @@ void headset::SetActiveHeadset( s32 HeadsetIndex )
         }
     }
 }
-*/
+#endif
 
 #if defined ( TARGET_PC )
 void headset::OnHeadsetInsert( void )
