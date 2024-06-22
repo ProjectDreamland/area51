@@ -119,6 +119,8 @@ void headset::SetActiveHeadset( s32 HeadsetIndex )
     }
 }
 */
+
+#if defined ( TARGET_PC )
 void headset::OnHeadsetInsert( void )
 {
 }
@@ -130,3 +132,4 @@ void headset::OnHeadsetRemove( void )
 }
 
 //==============================================================================
+#endif
