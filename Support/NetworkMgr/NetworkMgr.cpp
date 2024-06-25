@@ -127,6 +127,11 @@ void network_mgr::Kill( void )
 
 //==============================================================================
 void network_mgr::SetOnline( xbool IsOnline )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     if( m_IsOnline && !IsOnline )
     {
@@ -221,6 +226,7 @@ void network_mgr::SetOnline( xbool IsOnline )
     net_SetVersionKey( g_ServerVersion );
     m_IsOnline = IsOnline;
 }
+#endif
 //==============================================================================
 void network_mgr::Update( f32 DeltaTime )
 {
@@ -270,6 +276,11 @@ void network_mgr::Update( f32 DeltaTime )
     ExitReason = g_ActiveConfig.GetExitReason();
 
     if( m_IsOnline && (m_LocalSocket.IsEmpty()==FALSE) )
+	#if defined ( TARGET_PC )
+    {
+    }
+    #endif
+    #if defined ( TARGET_XBOX )
     {
         // Verify that the network connection didn't just get yanked from
         // beneath us (cable disconnect, dropped etc).
@@ -326,7 +337,7 @@ void network_mgr::Update( f32 DeltaTime )
             }
         }
     }
-
+#endif
     ExitReason = GAME_EXIT_CONTINUE;
     // Update the client or server.
     if( m_pServer )
@@ -513,6 +524,11 @@ void network_mgr::BeginLogin( void )
 //==============================================================================
 
 void network_mgr::BecomeServer( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     LOG_APP_NAME( "SERVER" );
 
@@ -545,7 +561,7 @@ void network_mgr::BecomeServer( void )
 
     g_ActiveConfig.SetExitReason( GAME_EXIT_CONTINUE );
 }
-
+#endif
 //==============================================================================
 //
 void network_mgr::ReenterGame( void )
@@ -564,6 +580,11 @@ void network_mgr::ReenterGame( void )
 
 //==============================================================================
 void network_mgr::Disconnect( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
 
     if( m_pServer )
@@ -589,7 +610,7 @@ void network_mgr::Disconnect( void )
         m_pClient = NULL;
     }
 }
-
+#endif
 //==============================================================================
 void network_mgr::KickPlayer( s32 Index )
 {

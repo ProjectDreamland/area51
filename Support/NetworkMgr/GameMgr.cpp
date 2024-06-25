@@ -1183,10 +1183,15 @@ void game_mgr::Connect(       s32&    PlayerIndex,
     // Muting.
     {
         // On XBox this will lookup the mutelist from the XBox Live service
+		#if defined ( TARGET_PC )
+        {
+        }
+        #endif
+        #if defined ( TARGET_XBOX )
         xbool IsMuted = g_MatchMgr.IsPlayerMuted( Identifier );
 
         g_VoiceMgr.SetLocallyMuted( PlayerIndex, IsMuted );
-
+        #endif
         /*
         if( IsMuted == TRUE )
             LOG_MESSAGE( "game_mgr::Connect", "Locally muting player %d", PlayerIndex );
@@ -2178,10 +2183,15 @@ void game_mgr::AcceptUpdate( const bitstream& BS )
                     if( (OldConnected == FALSE) && (Player.IsConnected == TRUE) )
                     {
                         // On XBox this will lookup the mutelist from the XBox Live service
+						#if defined ( TARGET_PC )
+                        {
+                        }
+                        #endif
+                        #if defined ( TARGET_XBOX )
                         xbool IsMuted = g_MatchMgr.IsPlayerMuted( Player.Identifier );
 
                         g_VoiceMgr.SetLocallyMuted( i, IsMuted );
-
+                        #endif
                         /*
                         if( IsMuted == TRUE )
                             LOG_MESSAGE( "game_mgr::AcceptUpdate", "Locally muting player %d", i );
