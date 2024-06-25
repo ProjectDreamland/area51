@@ -6150,6 +6150,11 @@ void state_mgr::ExitServerPlayers( void )
 //=========================================================================
 
 void state_mgr::EnterOnlinePlayers( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     // Create players menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -6161,6 +6166,7 @@ void state_mgr::EnterOnlinePlayers( void )
     g_UiMgr->SetUserBackground( g_UiUserID, "background1" );
 #endif
 }
+#endif
 
 //=========================================================================
 
@@ -6240,6 +6246,11 @@ void state_mgr::ExitOnlineFeedback( void )
 //=========================================================================
 
 void state_mgr::EnterOnlineFeedbackFriend( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     // Create feedback menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -6259,7 +6270,7 @@ void state_mgr::EnterOnlineFeedbackFriend( void )
         }
     }
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::UpdateOnlineFeedbackFriend( void )
@@ -8195,6 +8206,11 @@ void state_mgr::ExitPauseOnlineFriends( void )
 //=========================================================================
 
 void state_mgr::EnterPauseOnlinePlayers( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     // Create players menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -8207,7 +8223,7 @@ void state_mgr::EnterPauseOnlinePlayers( void )
     ((dlg_players*)m_CurrentDialog)->EnableBlackout();
     ((dlg_players*)m_CurrentDialog)->Configure( PLAYER_MODE_INGAME );
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::UpdatePauseOnlinePlayers( void )
@@ -8278,6 +8294,11 @@ void state_mgr::ExitPauseOnlineFeedback( void )
 //=========================================================================
 
 void state_mgr::EnterPauseOnlineFeedbackFriend( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     // Create feedback menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -8298,7 +8319,7 @@ void state_mgr::EnterPauseOnlineFeedbackFriend( void )
     }
     ((dlg_feedback*)m_CurrentDialog)->EnableBlackout();
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::UpdatePauseOnlineFeedbackFriend( void )
