@@ -33,7 +33,7 @@ FontEditor     | Partially/Only as lib/Check the Editor
 FontBuilder    | Yes
 FxEditor       | Partially/Only as lib/Check the Editor
 FXCompiler     | Yes
-GameApp        | No
+GameApp        | Partially/Game doesn't boot
 GeomCompiler   | Yes
 LocoEditor     | Partially/Only as lib/Check the Editor
 MeshViewer     | Partially/Only as lib/Check the Editor
