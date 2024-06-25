@@ -1,6 +1,6 @@
 # Area 51 (2005) Source Code
 
-## Building PC Build
+## Building PC Code
 
 The following prerequisites are required to build the source tree for PC:
 
