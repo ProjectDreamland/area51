@@ -18,32 +18,32 @@ Name           | Compiled
 Art2Code       | Yes
 ArtistViewer   | No
 AnimCompiler   | Yes
-AudioEditor    | Partially/Only as lib/Check the Editor
+AudioEditor    | Yes/Only as lib/Check the Editor
 A51SoundPKG    | Yes
-BinaryString   | Partially/Only as lib/Check the Editor
-BitmapEditor   | Partially/Only as lib/Check the Editor
-DecalEditor    | Partially/Only as lib/Check the Editor
+BinaryString   | Yes/Only as lib/Check the Editor
+BitmapEditor   | Yes/Only as lib/Check the Editor
+DecalEditor    | Yes/Only as lib/Check the Editor
 DecalCompiler  | Yes
 DFSTool        | Yes
 Editor         | Partially/Only as [relase](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor) form
-EDRscDesc      | Partially/Only as lib/Check the Editor
+EDRscDesc      | Yes/Only as lib/Check the Editor
 EffectsEditor  | Yes
 ELFTool        | Yes
-EventEditor    | Partially/Only as lib/Check the Editor
-FontEditor     | Partially/Only as lib/Check the Editor
+EventEditor    | Yes/Only as lib/Check the Editor
+FontEditor     | Yes/Only as lib/Check the Editor
 FontBuilder    | Yes
-FxEditor       | Partially/Only as lib/Check the Editor
+FxEditor       | Yes/Only as lib/Check the Editor
 FXCompiler     | Yes
-GameApp        | Partially/Game doesn't boot
+GameApp        | Yes/Game doesn't boot
 GeomCompiler   | Yes
-LocoEditor     | Partially/Only as lib/Check the Editor
-MeshViewer     | Partially/Only as lib/Check the Editor
-PropertyEditor | Partially/Only as lib/Check the Editor
+LocoEditor     | Yes/Only as lib/Check the Editor
+MeshViewer     | Yes/Only as lib/Check the Editor
+PropertyEditor | Yes/Only as lib/Check the Editor
 SoundPackager  | Yes
 StringTool     | Yes
 Viewer         | No
-WinControls    | Partially/Only as lib/Check the Editor
-WorldEditor    | Partially/Only as lib/Check the Editor
+WinControls    | Yes/Only as lib/Check the Editor
+WorldEditor    | Yes/Only as lib/Check the Editor
 XBMPTool       | Yes
 XBMPViewer     | Yes
 xCL            | Yes
