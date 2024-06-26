@@ -78,8 +78,8 @@ enum memcard_mode
 #endif
 
 #ifdef TARGET_PC
-#   define MAX_CARD_SLOTS   1
-#   define MAX_PLAYER_SLOTS 3
+#   define MAX_CARD_SLOTS   4 // increased the value from 1 to 4
+#   define MAX_PLAYER_SLOTS 10 // increased the value from 3 to 10
 #endif
 
 #ifndef __id
