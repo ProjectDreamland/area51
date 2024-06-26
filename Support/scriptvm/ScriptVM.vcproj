@@ -67,7 +67,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files"
-				PreprocessorDefinitions="_LIB;X_DEBUG;X_ASSERT;$(USERNAME);WIN32;_DEBUG"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
 				RuntimeLibrary="1"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="2"
