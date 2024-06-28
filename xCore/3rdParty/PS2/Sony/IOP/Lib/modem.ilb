@@ -1,6 +1,0 @@
-#IOP-ILB# [PsIImodem   3020]
-L modem
-V 0x0101
-F 0x0000
-E 004 sceModemRegisterDevice
-E 005 sceModemUnregisterDevice
