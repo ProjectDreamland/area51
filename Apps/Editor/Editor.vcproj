@@ -15,82 +15,6 @@
 	</Platforms>
 	<Configurations>
 		<Configuration
-			Name="EDITOR-OptDebug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="0"
-			WholeProgramOptimization="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="FALSE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)/x_Files,$(X)/Entropy,$(X)/MeshUtil,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG,APP_EDITOR"
-				StringPooling="TRUE"
-				MinimalRebuild="TRUE"
-				ExceptionHandling="TRUE"
-				RuntimeLibrary="0"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="0"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderThrough="BaseStdAfx.h"
-				BrowseInformation="1"
-				WarningLevel="3"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Shlwapi.lib nafxcw.lib libcmt.lib"
-				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="$(X)/3rdParty/DirectX9"
-				IgnoreDefaultLibraryNames="libcd.lib"
-				GenerateDebugInformation="TRUE"
-				SubSystem="2"
-				StackReserveSize="8388608"
-				TargetMachine="1"/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/Editor.tlb"
-				HeaderFileName=""/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"
-				AdditionalIncludeDirectories="../AudioEditor;../WinControls;../WorldEditor;../EventEditor;../LocoEditor;../MeshViewer;../EDRscDesc"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
 			Name="EDITOR-Debug|Win32"
 			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
@@ -102,7 +26,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)/x_Files,$(X)/Entropy,$(X)/MeshUtil,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR,X_EDITOR"
 				BasicRuntimeChecks="1"
 				RuntimeLibrary="1"
 				BufferSecurityCheck="TRUE"
@@ -171,15 +95,6 @@
 			<File
 				RelativePath="Lighting.cpp">
 				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -195,15 +110,6 @@
 			</File>
 			<File
 				RelativePath="OutputCtrl.cpp">
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
 					<Tool
@@ -221,15 +127,6 @@
 			<File
 				RelativePath="Project.cpp">
 				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -244,15 +141,6 @@
 			</File>
 			<File
 				RelativePath="RaycastLighting.cpp">
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
 					<Tool
@@ -270,15 +158,6 @@
 			<File
 				RelativePath="ResourceDesc.cpp">
 				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -294,15 +173,6 @@
 			</File>
 			<File
 				RelativePath="SlowLighting.cpp">
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
 					<Tool
@@ -329,15 +199,6 @@
 				<File
 					RelativePath="Axis3d.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -353,15 +214,6 @@
 				</File>
 				<File
 					RelativePath="BaseDocument.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -379,15 +231,6 @@
 				<File
 					RelativePath="BaseFrame.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -404,15 +247,6 @@
 				<File
 					RelativePath="BaseStdAfx.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -427,15 +261,6 @@
 				</File>
 				<File
 					RelativePath="BaseView.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -453,15 +278,6 @@
 				<File
 					RelativePath="Grid3d.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -476,15 +292,6 @@
 				</File>
 				<File
 					RelativePath="PaletteView.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -501,15 +308,6 @@
 				<File
 					RelativePath="RealTimeMessage.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -525,15 +323,6 @@
 				</File>
 				<File
 					RelativePath="View3D.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -555,15 +344,6 @@
 				<File
 					RelativePath="BugBase.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -579,15 +359,6 @@
 				</File>
 				<File
 					RelativePath="ChildFrm.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -605,15 +376,6 @@
 				<File
 					RelativePath="DisableScreenSave.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -629,15 +391,6 @@
 				</File>
 				<File
 					RelativePath="Editor.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -655,15 +408,6 @@
 				<File
 					RelativePath="HelpView.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -679,15 +423,6 @@
 				</File>
 				<File
 					RelativePath="LogView.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -705,15 +440,6 @@
 				<File
 					RelativePath="MainFrm.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -729,15 +455,6 @@
 				</File>
 				<File
 					RelativePath="MyRichEditCtrl.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -755,15 +472,6 @@
 				<File
 					RelativePath="OutputBar.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -779,15 +487,6 @@
 				</File>
 				<File
 					RelativePath="ProjectDoc.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -805,15 +504,6 @@
 				<File
 					RelativePath="ProjectFrame.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -829,15 +519,6 @@
 				</File>
 				<File
 					RelativePath="ProjectView.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -861,15 +542,6 @@
 				<File
 					RelativePath="RscView.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -885,15 +557,6 @@
 				</File>
 				<File
 					RelativePath="TabDoc.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -911,15 +574,6 @@
 				<File
 					RelativePath="TabView.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -936,15 +590,6 @@
 				<File
 					RelativePath="TextEditor.cpp">
 					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
@@ -960,15 +605,6 @@
 				</File>
 				<File
 					RelativePath="TextEditorView.cpp">
-					<FileConfiguration
-						Name="EDITOR-OptDebug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BrowseInformation="1"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32">
 						<Tool
@@ -993,13 +629,6 @@
 			</File>
 			<File
 				RelativePath="Editor.rc">
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCResourceCompilerTool"
-						PreprocessorDefinitions=""
-						AdditionalIncludeDirectories=""/>
-				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
 					<Tool

@@ -52,7 +52,7 @@
       <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
     </Configuration>
 	<Configuration Name="Debug|Win32" OutputDirectory="$(ProjectDir)_$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support" PreprocessorDefinitions="_LIB;WIN32;_DEBUG;TARGET_PC;CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/Render.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/Render.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
       <Tool Name="VCCustomBuildTool" />
       <Tool Name="VCLibrarianTool" OutputFile=".\Debug\Render.lib" SuppressStartupBanner="TRUE" />
       <Tool Name="VCMIDLTool" />
@@ -66,7 +66,7 @@
       <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
     </Configuration>
 	<Configuration Name="EDITOR-Debug|Win32" OutputDirectory="$(ProjectDir)_$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/Render.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="1" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/Render.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
       <Tool Name="VCCustomBuildTool" />
       <Tool Name="VCLibrarianTool" OutputFile=".\Debug\Render.lib" SuppressStartupBanner="TRUE" />
       <Tool Name="VCMIDLTool" />
