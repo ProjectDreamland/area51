@@ -1,7 +1,11 @@
 # Area 51 (2005) Source Code
 
-## Building PC Code
+## Join our Discord
 
+[![Join our Discord](https://github.com/gabengaGamer/area51-pc/assets/54669564/bac6c8a8-2d95-4513-8943-c5c26bd09173)](https://discord.gg/7gGhFSjxsq)
+
+## Building PC Code
+https://discord.gg/7gGhFSjxsq
 The following prerequisites are required to build the source tree for PC:
 
 1. Visual Studio .Net 2003
@@ -48,7 +52,3 @@ XBMPTool       | Yes
 XBMPViewer     | Yes
 xCL            | Yes
 xTool          | Yes
-
-## Discord
-
-Join the community Discord [here](https://discord.gg/7gGhFSjxsq)
