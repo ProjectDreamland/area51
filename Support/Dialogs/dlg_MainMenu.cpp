@@ -25,7 +25,7 @@
 
 ui_manager::control_tem MainMenuControls[] = 
 {
-#ifdef TARGET_XBOX	
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     { IDC_MAIN_MENU_CAMPAIGN,           "IDS_MAIN_MENU_CAMPAIGN",   "button",   60,  60, 120, 40, 0, 0, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
     { IDC_MAIN_MENU_MULTI,              "IDS_MAIN_MENU_MULTI",      "button",   60, 100, 120, 40, 0, 1, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
     { IDC_MAIN_MENU_ONLINE,             "IDS_MAIN_MENU_ONLINE",     "button",   60, 140, 120, 40, 0, 2, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
@@ -130,7 +130,7 @@ xbool dlg_main_menu::Create( s32                        UserID,
     Success = ui_dialog::Create( UserID, pManager, pDialogTem, Position, pParent, Flags );
 
     m_pButtonCampaign       = (ui_button*)  FindChildByID( IDC_MAIN_MENU_CAMPAIGN           );
-#ifdef TARGET_XBOX
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     m_pButtonMultiPlayer    = (ui_button*)  FindChildByID( IDC_MAIN_MENU_MULTI              );
 #endif
     m_pButtonOnline         = (ui_button*)  FindChildByID( IDC_MAIN_MENU_ONLINE             );
@@ -159,7 +159,7 @@ xbool dlg_main_menu::Create( s32                        UserID,
 
     // switch off the buttons to start
     m_pButtonCampaign     ->SetFlag(ui_win::WF_VISIBLE, FALSE);
-#ifdef TARGET_XBOX
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     m_pButtonMultiPlayer  ->SetFlag(ui_win::WF_VISIBLE, FALSE);
 #endif
     m_pButtonOnline       ->SetFlag(ui_win::WF_VISIBLE, FALSE);    
@@ -171,7 +171,7 @@ xbool dlg_main_menu::Create( s32                        UserID,
     m_pSilentLoginText    ->SetFlag(ui_win::WF_VISIBLE, FALSE);
 #endif
 
-#if defined(LAN_PARTY_BUILD) & defined(TARGET_XBOX)
+#if defined(LAN_PARTY_BUILD) & defined(TARGET_PS2) || defined(TARGET_XBOX)	
     m_pButtonMultiPlayer ->SetFlag(ui_win::WF_DISABLED, TRUE);
 #endif
 
@@ -300,7 +300,7 @@ void dlg_main_menu::OnPadSelect( ui_win* pWin )
             m_CurrentControl =  IDC_MAIN_MENU_CAMPAIGN;
             m_State = DIALOG_STATE_SELECT;
         }
-#ifdef TARGET_XBOX
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
         else if( pWin == (ui_win*)m_pButtonMultiPlayer )
         {
             g_AudioMgr.Play("Select_Norm");
@@ -351,7 +351,7 @@ void dlg_main_menu::OnUpdate ( ui_win* pWin, f32 DeltaTime )
         {
             // turn on the buttons
             m_pButtonCampaign     ->SetFlag(ui_win::WF_VISIBLE, TRUE);
-#ifdef TARGET_XBOX
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
             m_pButtonMultiPlayer  ->SetFlag(ui_win::WF_VISIBLE, TRUE);
 #endif  
             m_pButtonOnline       ->SetFlag(ui_win::WF_VISIBLE, TRUE);    
@@ -436,7 +436,7 @@ void dlg_main_menu::OnUpdate ( ui_win* pWin, f32 DeltaTime )
         g_UiMgr->SetScreenHighlight( m_pButtonCampaign->GetPosition() );
         highLight = 0;
     }
-#ifdef TARGET_XBOX	
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     else if( m_pButtonMultiPlayer->GetFlags(WF_HIGHLIGHT) )
     {
         g_UiMgr->SetScreenHighlight( m_pButtonMultiPlayer->GetPosition() );

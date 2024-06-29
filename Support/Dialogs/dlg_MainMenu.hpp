@@ -23,7 +23,7 @@
 enum menu_menu_controls
 {
     IDC_MAIN_MENU_CAMPAIGN,
-#ifdef TARGET_XBOX
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     IDC_MAIN_MENU_MULTI,
 #endif
     IDC_MAIN_MENU_ONLINE,
@@ -68,7 +68,7 @@ public:
 protected:
     ui_frame*           m_pFrame1;
     ui_button*          m_pButtonCampaign;
-#ifdef TARGET_XBOX	
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     ui_button*          m_pButtonMultiPlayer;   
 #endif    
     ui_button*          m_pButtonOnline;    
