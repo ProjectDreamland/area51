@@ -2780,7 +2780,7 @@ void state_mgr::UpdateMainMenu( void )
                         }
                     }
                     break;
-
+#ifdef TARGET_XBOX	
                     case IDC_MAIN_MENU_MULTI:
                     {
                         // clear the profiles and controller requests
@@ -2794,7 +2794,7 @@ void state_mgr::UpdateMainMenu( void )
                         SetState( SM_MULTI_PLAYER_MENU );
                     }
                     break;
-
+#endif    
                     case IDC_MAIN_MENU_ONLINE:
                     {
 #ifdef TARGET_PS2
