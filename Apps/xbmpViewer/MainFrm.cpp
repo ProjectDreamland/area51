@@ -116,7 +116,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;      // fail to create
 	}
 
-/*
+    //test unlock
     XT_STATUSPANE   PaneInfo;
     PaneInfo.cxText = 100;
     PaneInfo.nID = 0;
@@ -129,7 +129,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
     m_wndStatusBar.SetPaneInfoEx( INDICATOR_TOTAL, &PaneInfo );
     m_wndStatusBar.AddIndicator( 10000+INDICATOR_SELECTED, INDICATOR_SELECTED );
     m_wndStatusBar.SetPaneInfoEx( INDICATOR_SELECTED, &PaneInfo );
-*/
+    //test unlock
 
     m_wndStatusBar.SetPaneWidth( 1, 100 );
     m_wndStatusBar.SetPaneWidth( 2, 100 );
@@ -210,10 +210,11 @@ void CMainFrame::OnClose()
 {
 	// Save control bar postion.
 	SaveBarState(_T("Control Bar State"));
-
+/* FUCK THIS SHIT
 	CXTRegistryManager regManager;
     regManager.WriteProfileString( _T("Settings"), _T("Current Folder"), m_wndExplorerBar.GetPath() );
     regManager.WriteProfileString( _T("Settings"), _T("Current File"  ), g_CmdLineFile              );
+*/
 	// Save frame window size and position.
 	m_wndPosition.SaveWindowPos(this);
 
@@ -232,9 +233,11 @@ BOOL CMainFrame::ShowWindowEx(int nCmdShow)
 	nCmdShow = m_wndPosition.showCmd;
 
     // Load Settings from registry
+/* FUCK THIS SHIT
 	CXTRegistryManager regManager;
     CString Folder = regManager.GetProfileString( _T("Settings"), _T("Current Folder"), _T("") );
     CString File   = regManager.GetProfileString( _T("Settings"), _T("Current File"  ), _T("") );
+
 
     // If not found then set to c:
     if( Folder.IsEmpty() )
@@ -251,6 +254,7 @@ BOOL CMainFrame::ShowWindowEx(int nCmdShow)
         g_CmdLineFile = File;
 
     m_wndExplorerBar.SetPath( Folder );
+	*/
 
 	return ShowWindow(nCmdShow);
 }
