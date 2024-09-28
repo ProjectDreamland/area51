@@ -25,27 +25,27 @@ CMainFrame* g_pMainFrame = NULL;
 IMPLEMENT_DYNAMIC(CMainFrame, CXTFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CXTFrameWnd)
-	//{{AFX_MSG_MAP(CMainFrame)
-	ON_WM_CREATE()
-	ON_WM_CLOSE()
-	ON_WM_SETFOCUS()
-	ON_WM_ACTIVATE()
+    //{{AFX_MSG_MAP(CMainFrame)
+    ON_WM_CREATE()
+    ON_WM_CLOSE()
+    ON_WM_SETFOCUS()
+    ON_WM_ACTIVATE()
     ON_MESSAGE( NM_DIRCHANGED, OnDirChanged )
     ON_MESSAGE( NM_NEWBITMAP, OnNewBitmap )
-	ON_COMMAND(ID_CONVERT_TGA, OnConvertTga)
-	ON_UPDATE_COMMAND_UI(ID_CONVERT_TGA, OnUpdateConvertTga)
-	ON_COMMAND(ID_CONVERT_XBMP, OnConvertXbmp)
-	ON_UPDATE_COMMAND_UI(ID_CONVERT_XBMP, OnUpdateConvertXbmp)
-	//}}AFX_MSG_MAP
+    ON_COMMAND(ID_CONVERT_TGA, OnConvertTga)
+    ON_UPDATE_COMMAND_UI(ID_CONVERT_TGA, OnUpdateConvertTga)
+    ON_COMMAND(ID_CONVERT_XBMP, OnConvertXbmp)
+    ON_UPDATE_COMMAND_UI(ID_CONVERT_XBMP, OnUpdateConvertXbmp)
+    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
 {
-	ID_SEPARATOR,           // status line indicator
-	0,
-	0, //ID_INDICATOR_CAPS,
-	0, //ID_INDICATOR_NUM,
-	0, //ID_INDICATOR_SCRL,
+    ID_SEPARATOR,           // status line indicator
+    0,
+    0, //ID_INDICATOR_CAPS,
+    0, //ID_INDICATOR_NUM,
+    0, //ID_INDICATOR_SCRL,
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -53,7 +53,7 @@ static UINT indicators[] =
 
 CMainFrame::CMainFrame()
 {
-	// TODO: add member initialization code here
+    // TODO: add member initialization code here
 //    x_Init();
 
     g_pMainFrame = this;
@@ -66,8 +66,8 @@ CMainFrame::~CMainFrame()
 
 int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (CXTFrameWnd::OnCreate(lpCreateStruct) == -1)
-		return -1;
+    if (CXTFrameWnd::OnCreate(lpCreateStruct) == -1)
+        return -1;
 
     // Enable/Disable XP GUI Mode
     xtAfxData.bXPMode = TRUE;
@@ -75,28 +75,28 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
     // Enable/Disable Menu Shadows
     xtAfxData.bMenuShadows = TRUE;
 
-	// create the window to occupy the client area of the frame
-	if(!m_wndFileList.Create( NULL, NULL, AFX_WS_DEFAULT_VIEW|WS_CLIPCHILDREN|WS_CHILD, CRect(0, 0, 0, 0), this, AFX_IDW_PANE_FIRST ) )
-	{
-		TRACE0("Failed to create view window\n");
-		return -1;
-	}
+    // create the window to occupy the client area of the frame
+    if(!m_wndFileList.Create( NULL, NULL, AFX_WS_DEFAULT_VIEW|WS_CLIPCHILDREN|WS_CHILD, CRect(0, 0, 0, 0), this, AFX_IDW_PANE_FIRST ) )
+    {
+        TRACE0("Failed to create view window\n");
+        return -1;
+    }
 
-	if (!m_wndMenuBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP
-		| CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
-		!m_wndMenuBar.LoadMenuBar(IDR_MAINFRAME))
-	{
-		TRACE0("Failed to create menubar\n");
-		return -1;      // fail to create
-	}
-	
-	if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP
-		| CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
-		!m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;      // fail to create
-	}
+    if (!m_wndMenuBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP
+        | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
+        !m_wndMenuBar.LoadMenuBar(IDR_MAINFRAME))
+    {
+        TRACE0("Failed to create menubar\n");
+        return -1;      // fail to create
+    }
+    
+    if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP
+        | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
+        !m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
+    {
+        TRACE0("Failed to create toolbar\n");
+        return -1;      // fail to create
+    }
 
     if( !m_wndExplorerBar.Create( this, IDW_EXPLORERBAR, _T("Explorer"), CSize(400,400), CBRS_LEFT) )
     {
@@ -110,13 +110,13 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
         return -1;
     }
 
-	if (!m_wndStatusBar.Create(this) ||
-		!m_wndStatusBar.SetIndicators(indicators,
-		  sizeof(indicators)/sizeof(UINT)))
-	{
-		TRACE0("Failed to create status bar\n");
-		return -1;      // fail to create
-	}
+    if (!m_wndStatusBar.Create(this) ||
+        !m_wndStatusBar.SetIndicators(indicators,
+          sizeof(indicators)/sizeof(UINT)))
+    {
+        TRACE0("Failed to create status bar\n");
+        return -1;      // fail to create
+    }
 
     
     XT_STATUSPANE   PaneInfo;
@@ -139,38 +139,38 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
     m_wndStatusBar.SetPaneWidth( 4, 100 );
 
     // Setup docking
-	m_wndMenuBar.    EnableDockingEx( CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT );
-	m_wndToolBar.    EnableDockingEx( CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT );
-	m_wndExplorerBar.EnableDockingEx( CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT|CBRS_XT_GRIPPER_GRAD );
-	m_wndPreviewBar. EnableDockingEx( CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT|CBRS_XT_GRIPPER_GRAD );
-	EnableDockingEx(CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT);
-	DockControlBar(&m_wndMenuBar);
-	DockControlBar(&m_wndToolBar);
+    m_wndMenuBar.    EnableDockingEx( CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT );
+    m_wndToolBar.    EnableDockingEx( CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT );
+    m_wndExplorerBar.EnableDockingEx( CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT|CBRS_XT_GRIPPER_GRAD );
+    m_wndPreviewBar. EnableDockingEx( CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT|CBRS_XT_GRIPPER_GRAD );
+    EnableDockingEx(CBRS_ALIGN_ANY, CBRS_XT_SEMIFLAT);
+    DockControlBar(&m_wndMenuBar);
+    DockControlBar(&m_wndToolBar);
     DockControlBar(&m_wndExplorerBar );
-	DockControlBar(&m_wndPreviewBar);
+    DockControlBar(&m_wndPreviewBar);
 
-	// Cool menus
-	InstallCoolMenus(IDR_MAINFRAME);
+    // Cool menus
+    InstallCoolMenus(IDR_MAINFRAME);
 
     m_wndFileList.SetActiveWindow();
     m_wndFileList.SendMessage( WM_ACTIVATE, WA_ACTIVE );
 
-	return 0;
+    return 0;
 }
 
 BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
-	if( !CXTFrameWnd::PreCreateWindow(cs) )
-		return FALSE;
-	// TODO: Modify the Window class or styles here by modifying
-	//  the CREATESTRUCT cs
+    if( !CXTFrameWnd::PreCreateWindow(cs) )
+        return FALSE;
+    // TODO: Modify the Window class or styles here by modifying
+    //  the CREATESTRUCT cs
 
-	cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
-	cs.lpszClass = AfxRegisterWndClass( 0 );
-	// Helps to reduce screen flicker.
-	cs.lpszClass = AfxRegisterWndClass( 0, NULL, NULL, AfxGetApp()->LoadIcon(IDR_MAINFRAME) );
+    cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
+    cs.lpszClass = AfxRegisterWndClass( 0 );
+    // Helps to reduce screen flicker.
+    cs.lpszClass = AfxRegisterWndClass( 0, NULL, NULL, AfxGetApp()->LoadIcon(IDR_MAINFRAME) );
 
-	return TRUE;
+    return TRUE;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -179,12 +179,12 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 #ifdef _DEBUG
 void CMainFrame::AssertValid() const
 {
-	CXTFrameWnd::AssertValid();
+    CXTFrameWnd::AssertValid();
 }
 
 void CMainFrame::Dump(CDumpContext& dc) const
 {
-	CXTFrameWnd::Dump(dc);
+    CXTFrameWnd::Dump(dc);
 }
 
 #endif //_DEBUG
@@ -194,49 +194,49 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 void CMainFrame::OnSetFocus(CWnd* pOldWnd)
 {
-	// forward focus to the view window
-	m_wndFileList.SetFocus();
+    // forward focus to the view window
+    m_wndFileList.SetFocus();
 }
 
 BOOL CMainFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
 {
-	// let the view have first crack at the command
-	if( m_wndFileList.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo) )
-		return TRUE;
+    // let the view have first crack at the command
+    if( m_wndFileList.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo) )
+        return TRUE;
 
-	// otherwise, do default handling
-	return CXTFrameWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
+    // otherwise, do default handling
+    return CXTFrameWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
 void CMainFrame::OnClose() 
 {
-	// Save control bar postion.
-	SaveBarState(_T("Control Bar State"));
+    // Save control bar postion.
+    SaveBarState(_T("Control Bar State"));
 /* FUCK THIS SHIT
-	CXTRegistryManager regManager;
+    CXTRegistryManager regManager;
     regManager.WriteProfileString( _T("Settings"), _T("Current Folder"), m_wndExplorerBar.GetPath() );
     regManager.WriteProfileString( _T("Settings"), _T("Current File"  ), g_CmdLineFile              );
 */
-	// Save frame window size and position.
-	m_wndPosition.SaveWindowPos(this);
+    // Save frame window size and position.
+    m_wndPosition.SaveWindowPos(this);
 
-	CXTFrameWnd::OnClose();
+    CXTFrameWnd::OnClose();
 }
 
 BOOL CMainFrame::ShowWindowEx(int nCmdShow)
 {
-	ASSERT_VALID(this);
+    ASSERT_VALID(this);
 
-	// Restore control bar postion.
+    // Restore control bar postion.
     LoadBarState(_T("Control Bar State"));
 
-	// Restore frame window size and position.
-	m_wndPosition.LoadWindowPos(this);
-	nCmdShow = m_wndPosition.showCmd;
+    // Restore frame window size and position.
+    m_wndPosition.LoadWindowPos(this);
+    nCmdShow = m_wndPosition.showCmd;
 
     // Load Settings from registry
 /* FUCK THIS SHIT
-	CXTRegistryManager regManager;
+    CXTRegistryManager regManager;
     CString Folder = regManager.GetProfileString( _T("Settings"), _T("Current Folder"), _T("") );
     CString File   = regManager.GetProfileString( _T("Settings"), _T("Current File"  ), _T("") );
 
@@ -256,9 +256,9 @@ BOOL CMainFrame::ShowWindowEx(int nCmdShow)
         g_CmdLineFile = File;
 
     m_wndExplorerBar.SetPath( Folder );
-	*/
+    */
 
-	return ShowWindow(nCmdShow);
+    return ShowWindow(nCmdShow);
 }
 
 LRESULT CMainFrame::OnDirChanged( WPARAM wParam, LPARAM lParam )
@@ -276,7 +276,7 @@ LRESULT CMainFrame::OnNewBitmap( WPARAM wParam, LPARAM lParam )
 
 void CMainFrame::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized) 
 {
-	CXTFrameWnd::OnActivate(nState, pWndOther, bMinimized);
+    CXTFrameWnd::OnActivate(nState, pWndOther, bMinimized);
 
     // TODO: Add your message handler code here
     m_wndFileList.SendMessage( WM_ACTIVATE, WA_ACTIVE );
@@ -500,33 +500,33 @@ void CMainFrame::OnConvertXbmp()
                                     {
                                         b.GCNUnswizzleData();
                                     }
-									*/
-									
-									//IT IS VERY IMPORTANT TO FOLLOW CONSISTENCY!!!!
-									//PLATFORM DEFINICATIONS
-									//COMPRESSION TYPE
-									//MIPS
+                                    */
+                                    
+                                    //IT IS VERY IMPORTANT TO FOLLOW CONSISTENCY!!!!
+                                    //PLATFORM DEFINICATIONS
+                                    //COMPRESSION TYPE
+                                    //MIPS
 
                                     //Convert to XBMP
                                     auxbmp_ConvertToD3D(b); //PC only
-									
-									//Default PC compression
-                                    b.ConvertFormat(xbitmap::FMT_32_ARGB_8888);	
-									
-									//MIPS only support images with a power of two.
-									int width  = b.GetWidth();
+                                    
+                                    //Default PC compression
+                                    b.ConvertFormat(xbitmap::FMT_32_ARGB_8888);    
+                                    
+                                    //MIPS only support images with a power of two.
+                                    int width  = b.GetWidth();
                                     int height = b.GetHeight();
-									
+                                    
                                     if (IsPowerOfTwo(width) && IsPowerOfTwo(height))
-                                    {		
-								        int nMips = 4; //TEMP Solution
-										
-									    if( (nMips > 0) && (nMips <= 16) )
+                                    {        
+                                        int nMips = 4; //TEMP Solution
+                                        
+                                        if( (nMips > 0) && (nMips <= 16) )
                                         {
                                             b.BuildMips(nMips);
                                         }
-									}
-									
+                                    }
+                                    
                                     //Save the file as XBMP
                                     if (b.Save(OutFile))
 

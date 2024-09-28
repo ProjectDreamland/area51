@@ -53,7 +53,7 @@ CFileList::~CFileList()
     s_Files.Clear();
 
     LeaveCriticalSection( &s_CriticalSection );
-	DeleteCriticalSection( &s_CriticalSection );
+    DeleteCriticalSection( &s_CriticalSection );
 }
 
 void CFileList::Thread( void )
@@ -124,8 +124,8 @@ void CFileList::Thread( void )
             // Tell UI to add files to list control
             PostMessage( NM_POPULATELIST );
 
-			xtimer	RefreshTimer;
-			RefreshTimer.Start();
+            xtimer    RefreshTimer;
+            RefreshTimer.Start();
 
             // Loop through the files
             for( s32 i=0 ; i<s_Files.GetCount() ; i++ )
@@ -152,9 +152,9 @@ void CFileList::Thread( void )
                     pFile->nMips    = b.GetNMips();
                     pFile->GotInfo  = TRUE;
 */
-					xbitmap::info Info;
+                    xbitmap::info Info;
                     auxbmp_Info( Path, Info );
-					const xbitmap::format_info& FormatInfo = xbitmap::GetFormatInfo( Info.Format );
+                    const xbitmap::format_info& FormatInfo = xbitmap::GetFormatInfo( Info.Format );
 
                     pFile->FormatID = Info.Format;
                     pFile->Format   = FormatInfo.pString;
@@ -165,13 +165,13 @@ void CFileList::Thread( void )
                     pFile->GotInfo  = TRUE;
                 }
 
-				if( RefreshTimer.ReadMs() > 200.0f )
-				{
-					RefreshTimer.Reset();
-//					PostMessage( NM_REFRESHLIST );
-				}
+                if( RefreshTimer.ReadMs() > 200.0f )
+                {
+                    RefreshTimer.Reset();
+//                    PostMessage( NM_REFRESHLIST );
+                }
             }
-			PostMessage( NM_REFRESHLIST );
+            PostMessage( NM_REFRESHLIST );
         }
     }
 }
@@ -266,18 +266,18 @@ static int CALLBACK fnCompare( LPARAM lParam1, LPARAM lParam2, LPARAM lParamSort
 /////////////////////////////////////////////////////////////////////////////
 
 BEGIN_MESSAGE_MAP(CFileList, CWnd)
-	//{{AFX_MSG_MAP(CFileList)
-	ON_WM_CREATE()
-	ON_WM_SIZE()
-	ON_WM_DESTROY()
+    //{{AFX_MSG_MAP(CFileList)
+    ON_WM_CREATE()
+    ON_WM_SIZE()
+    ON_WM_DESTROY()
     ON_MESSAGE( NM_DIRCHANGED, OnDirChanged )
     ON_MESSAGE( NM_POPULATELIST, OnPopulateList )
     ON_MESSAGE( NM_REFRESHLIST, OnRefreshList )
     ON_NOTIFY( LVN_ITEMCHANGED, AFX_IDW_PANE_FIRST, OnItemChanged )
     ON_NOTIFY( LVN_COLUMNCLICK, AFX_IDW_PANE_FIRST, OnColumnClick )
     ON_NOTIFY( LVN_DELETEALLITEMS, AFX_IDW_PANE_FIRST, OnDeleteAllItems )
-	ON_WM_ACTIVATE()
-	//}}AFX_MSG_MAP
+    ON_WM_ACTIVATE()
+    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -285,23 +285,23 @@ END_MESSAGE_MAP()
 
 BOOL CFileList::PreCreateWindow(CREATESTRUCT& cs) 
 {
-	// TODO: Add your specialized code here and/or call the base class
+    // TODO: Add your specialized code here and/or call the base class
 
-	if( !CWnd::PreCreateWindow(cs) )
+    if( !CWnd::PreCreateWindow(cs) )
         return FALSE;
 
-	cs.dwExStyle |= WS_EX_CLIENTEDGE;
-	cs.style &= ~WS_BORDER;
-	cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW|CS_DBLCLKS, 
-		::LoadCursor(NULL, IDC_ARROW), HBRUSH(COLOR_WINDOW+1), NULL);
+    cs.dwExStyle |= WS_EX_CLIENTEDGE;
+    cs.style &= ~WS_BORDER;
+    cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW|CS_DBLCLKS, 
+        ::LoadCursor(NULL, IDC_ARROW), HBRUSH(COLOR_WINDOW+1), NULL);
 
-	return TRUE;
+    return TRUE;
 }
 
 int CFileList::OnCreate(LPCREATESTRUCT lpCreateStruct) 
 {
-	if (CWnd::OnCreate(lpCreateStruct) == -1)
-		return -1;
+    if (CWnd::OnCreate(lpCreateStruct) == -1)
+        return -1;
 
     // Create the list
     m_List.Create( WS_VISIBLE|WS_CHILD|LVS_REPORT|LVS_SHOWSELALWAYS/*|LVS_SINGLESEL*/, CRect(0,0,0,0), this, AFX_IDW_PANE_FIRST );
@@ -322,14 +322,14 @@ int CFileList::OnCreate(LPCREATESTRUCT lpCreateStruct)
     s_pFileList = this;
     s_pFileListThread = new xthread( FileListThread, "FileList", 65536, THREAD_BASE_PRIORITY );
 
-	return 0;
+    return 0;
 }
 
 void CFileList::OnSize(UINT nType, int cx, int cy) 
 {
-	CWnd::OnSize(nType, cx, cy);
-	
-	// TODO: Add your message handler code here
+    CWnd::OnSize(nType, cx, cy);
+    
+    // TODO: Add your message handler code here
     if( m_List.GetSafeHwnd() )
     {
         CRect rc;
@@ -390,7 +390,7 @@ LRESULT CFileList::OnPopulateList( WPARAM wParam, LPARAM lParam )
 
     LeaveCriticalSection( &s_CriticalSection );
 
-	// If an item should be selected select it
+    // If an item should be selected select it
     if( iSelect != -1 )
     {
         m_List.SetItemState( iSelect, LVIS_SELECTED, LVIS_SELECTED );
@@ -406,15 +406,15 @@ LRESULT CFileList::OnPopulateList( WPARAM wParam, LPARAM lParam )
 
     m_List.SortItems( fnCompare, (LPARAM)&m_List );
 
-	// If an item was selected ensure it is visible
-	if( iSelect )
-	{
-		POSITION Pos = m_List.GetFirstSelectedItemPosition();
-		if( Pos )
-		{
-			m_List.EnsureVisible( m_List.GetNextSelectedItem(Pos), FALSE );
-		}
-	}
+    // If an item was selected ensure it is visible
+    if( iSelect )
+    {
+        POSITION Pos = m_List.GetFirstSelectedItemPosition();
+        if( Pos )
+        {
+            m_List.EnsureVisible( m_List.GetNextSelectedItem(Pos), FALSE );
+        }
+    }
 
     m_List.SetRedraw( TRUE );
 
@@ -483,10 +483,10 @@ LRESULT CFileList::OnRefreshList( WPARAM wParam, LPARAM lParam )
 
 void CFileList::OnDestroy() 
 {
-	CWnd::OnDestroy();
+    CWnd::OnDestroy();
 
-	// Kill the thread
-	delete s_pFileListThread;
+    // Kill the thread
+    delete s_pFileListThread;
 }
 
 void CFileList::OnItemChanged( NMHDR* pHeader, LRESULT* pResult )
@@ -560,8 +560,8 @@ void CFileList::OnDeleteAllItems( NMHDR* pHeader, LRESULT* pResult )
 
 void CFileList::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized) 
 {
-	CWnd::OnActivate(nState, pWndOther, bMinimized);
-	
-	// TODO: Add your message handler code here
+    CWnd::OnActivate(nState, pWndOther, bMinimized);
+    
+    // TODO: Add your message handler code here
     m_List.SendMessage( WM_ACTIVATE, WA_ACTIVE );
 }
