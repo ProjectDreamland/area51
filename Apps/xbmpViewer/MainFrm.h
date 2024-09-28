@@ -79,6 +79,8 @@ protected:
 	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
 	afx_msg void OnConvertTga();
 	afx_msg void OnUpdateConvertTga(CCmdUI* pCmdUI);
+	afx_msg void OnConvertXbmp();
+	afx_msg void OnUpdateConvertXbmp(CCmdUI* pCmdUI);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

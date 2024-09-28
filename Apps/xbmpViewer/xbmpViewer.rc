@@ -107,8 +107,9 @@ IDR_MAINFRAME MENU PRELOAD DISCARDABLE
 BEGIN
     POPUP "&File"
     BEGIN
-	    MENUITEM "Convert Selection", ID_CONVERT_TGA
-		MENUITEM SEPARATOR
+        MENUITEM "Convert XBMP To TGA",         ID_CONVERT_TGA
+        MENUITEM "Convert TGA To XBMP",         ID_CONVERT_XBMP
+        MENUITEM SEPARATOR
         MENUITEM "E&xit",                       ID_APP_EXIT
     END
     POPUP "&Edit"

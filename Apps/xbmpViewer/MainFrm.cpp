@@ -34,6 +34,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CXTFrameWnd)
     ON_MESSAGE( NM_NEWBITMAP, OnNewBitmap )
 	ON_COMMAND(ID_CONVERT_TGA, OnConvertTga)
 	ON_UPDATE_COMMAND_UI(ID_CONVERT_TGA, OnUpdateConvertTga)
+	ON_COMMAND(ID_CONVERT_XBMP, OnConvertXbmp)
+	ON_UPDATE_COMMAND_UI(ID_CONVERT_XBMP, OnUpdateConvertXbmp)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -303,6 +305,8 @@ void CMainFrame::SetStatusPane( int Index, const CString& String )
 }
 
 /////////////////////////////////////////////////////////////////////////////
+//// XBMP TO TGA
+/////////////////////////////////////////////////////////////////////////////
 
 void CMainFrame::OnUpdateConvertTga(CCmdUI* pCmdUI) 
 {
@@ -407,3 +411,134 @@ void CMainFrame::OnConvertTga()
 }
 
 /////////////////////////////////////////////////////////////////////////////
+//// TGA TO XBMP
+/////////////////////////////////////////////////////////////////////////////
+
+bool IsPowerOfTwo(int n)
+{
+    return (n > 0) && ((n & (n - 1)) == 0);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+void CMainFrame::OnUpdateConvertXbmp(CCmdUI* pCmdUI) 
+{
+    pCmdUI->Enable( TRUE );
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+void CMainFrame::OnConvertXbmp() 
+{
+    // Get the export folder
+    IShellFolder* pShellFolder;
+    if (SHGetDesktopFolder(&pShellFolder) == NOERROR)
+    {
+        LPITEMIDLIST pIDList;
+
+        if (pShellFolder->ParseDisplayName(NULL, NULL, L"", NULL, &pIDList, NULL) == NOERROR)
+        {
+            if (pIDList)
+            {
+                BROWSEINFO BrowseInfo;
+                BrowseInfo.hwndOwner = GetSafeHwnd();
+                BrowseInfo.pidlRoot = pIDList;
+                BrowseInfo.pszDisplayName = NULL;
+                BrowseInfo.ulFlags = BIF_NEWDIALOGSTYLE;
+                BrowseInfo.lpfn = NULL;
+                BrowseInfo.lParam = NULL;
+                BrowseInfo.iImage = 0;
+                BrowseInfo.lpszTitle = NULL;
+
+                LPITEMIDLIST pIDList = SHBrowseForFolder(&BrowseInfo);
+
+                if (pIDList)
+                {
+                    char Buffer[32768] = {0};
+
+                    if (SHGetPathFromIDList(pIDList, Buffer))
+                    {
+                        xstring OutPath = Buffer;
+                        if ((OutPath.GetLength() > 0) &&
+                            (OutPath[OutPath.GetLength() - 1] != '/') &&
+                            (OutPath[OutPath.GetLength() - 1] != '\\'))
+                        {
+                            OutPath += "\\";
+
+                            //Get the root path and list of files selected
+                            xstring Path = m_wndFileList.GetPath();
+                            xarray<file_rec*> Array = m_wndFileList.GetSelected();
+
+                            CProgress Progress;
+
+                            Progress.Create(IDD_PROGRESS, this);
+                            Progress.SetWindowText("Converting TGA to XBMP...");
+                            Progress.ShowWindow(SW_SHOW);
+
+                            //Go through each file
+                            for (s32 i = 0; i < Array.GetCount(); i++)
+                            {
+                                file_rec* pFile = Array[i];
+                                if (pFile)
+                                {
+                                    char Drive[_MAX_DRIVE];
+                                    char Dir[_MAX_DIR];
+                                    char FName[_MAX_FNAME];
+                                    char Ext[_MAX_EXT];
+                                    _splitpath(pFile->Name, Drive, Dir, FName, Ext);
+                                    xstring InFile = Path + pFile->Name;
+                                    xstring OutFile = OutPath + FName + ".xbmp";
+
+                                    Progress.SetText(xfs("%d of %d - %s", i + 1, Array.GetCount(), pFile->Name));
+
+                                    //Load the TGA file
+                                    xbitmap b;
+                                    if (!auxbmp_Load(b, InFile))
+
+                                    /* TEST GCN TWEAKS
+                                    if (b.GetFlags() & xbitmap::FLAG_GCN_DATA_SWIZZLED)
+                                    {
+                                        b.GCNUnswizzleData();
+                                    }
+									*/
+									
+									//IT IS VERY IMPORTANT TO FOLLOW CONSISTENCY!!!!
+									//PLATFORM DEFINICATIONS
+									//COMPRESSION TYPE
+									//MIPS
+
+                                    //Convert to XBMP
+                                    auxbmp_ConvertToD3D(b); //PC only
+									
+									//Default PC compression
+                                    b.ConvertFormat(xbitmap::FMT_32_ARGB_8888);	
+									
+									//MIPS only support images with a power of two.
+									int width  = b.GetWidth();
+                                    int height = b.GetHeight();
+									
+                                    if (IsPowerOfTwo(width) && IsPowerOfTwo(height))
+                                    {		
+								        int nMips = 4; //TEMP Solution
+										
+									    if( (nMips > 0) && (nMips <= 16) )
+                                        {
+                                            b.BuildMips(nMips);
+                                        }
+									}
+									
+                                    //Save the file as XBMP
+                                    if (b.Save(OutFile))
+
+                                    Progress.SetProgress((i + 1) * 100 / Array.GetCount());
+                                }
+                            }
+
+                            Progress.DestroyWindow();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

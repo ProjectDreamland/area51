@@ -14,6 +14,8 @@
 #define IDC_TEXT                        1005
 #define ID_MIP                          32773
 #define ID_CONVERT_TGA                  32774
+#define ID_CONVERT_XBMP                 32775
+#define IDD_CONVERT_XBMP_DIALOG         32776
 #define IDW_EXPLORERBAR                 59402
 #define IDW_PREVIEWBAR                  59403
 
