@@ -630,8 +630,8 @@ void CListBase::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
                           (m_pListCtrl->GetStyle() & LVS_SHOWSELALWAYS) != 0;
   bool bLVHasFocus      = m_pListCtrl->GetFocus() == m_pListCtrl;
   bool bItemHasFocus    = pItem->state & LVIS_FOCUSED  && bLVHasFocus;
-	bool bSelected        = (pItem->state & LVIS_SELECTED) != 0;
-	bool bReallySelected  = bSelected && bLVHasFocus;
+  bool bSelected        = (pItem->state & LVIS_SELECTED) != 0;
+  bool bReallySelected  = bSelected && bLVHasFocus;
   bool bFullRowSelected = (m_dwExtendedStyle & LVS_EX_FULLROWSELECT) != 0;
 
   CRect rcItem;                   // rectangle bounding complete item
@@ -663,7 +663,7 @@ void CListBase::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	if (bReallySelected)
 	{
     dwHiLiteBk =
-      pItem->iItem == m_nHotItem ? m_dwHotLite : GetSysColor(COLOR_HIGHLIGHT);
+    pItem->iItem == m_nHotItem ? m_dwHotLite : GetSysColor(COLOR_HIGHLIGHT);
     brushHiLite.CreateSolidBrush(dwHiLiteBk);
 	}
 	else if (bAlwaysSelected)
@@ -705,10 +705,10 @@ void CListBase::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
   {
     LVITEM* pSubItem  = nIndex > 0 ? GetLVITEM(pItem->iItem, nIndex) : pItem;
     CRect   rcSubItem;                  // rectangle bounding subitem
-	  CRect   rcText;                     // output rectangle
+    CRect   rcText;                     // output rectangle
     DWORD   dwBkColor =                 // background color of curremt column
-      m_bColorSortColumn && nIndex+1 == abs(m_nSortColumn) ?
-      m_dwColSortColor : m_pListCtrl->GetBkColor();
+    m_bColorSortColumn && nIndex+1 == abs(m_nSortColumn) ?
+    m_dwColSortColor : m_pListCtrl->GetBkColor();
     CBrush  brushBk(dwBkColor);
 
     // consider column margins

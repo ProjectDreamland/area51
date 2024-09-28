@@ -141,7 +141,7 @@ void CFileList::Thread( void )
 
                 // Fill in all the info about the bitmap
                 {
-#if 0
+/*
                     xbitmap b;
                     auxbmp_Load( b, Path );
                     pFile->FormatID = b.GetFormat();
@@ -151,7 +151,7 @@ void CFileList::Thread( void )
                     pFile->BitDepth = b.GetBPP();
                     pFile->nMips    = b.GetNMips();
                     pFile->GotInfo  = TRUE;
-#else
+*/
 					xbitmap::info Info;
                     auxbmp_Info( Path, Info );
 					const xbitmap::format_info& FormatInfo = xbitmap::GetFormatInfo( Info.Format );
@@ -163,7 +163,6 @@ void CFileList::Thread( void )
                     pFile->BitDepth = FormatInfo.BPP;
                     pFile->nMips    = Info.nMips;
                     pFile->GotInfo  = TRUE;
-#endif
                 }
 
 				if( RefreshTimer.ReadMs() > 200.0f )

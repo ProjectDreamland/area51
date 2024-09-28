@@ -116,7 +116,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;      // fail to create
 	}
 
-    //test unlock
+    
     XT_STATUSPANE   PaneInfo;
     PaneInfo.cxText = 100;
     PaneInfo.nID = 0;
@@ -129,7 +129,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
     m_wndStatusBar.SetPaneInfoEx( INDICATOR_TOTAL, &PaneInfo );
     m_wndStatusBar.AddIndicator( 10000+INDICATOR_SELECTED, INDICATOR_SELECTED );
     m_wndStatusBar.SetPaneInfoEx( INDICATOR_SELECTED, &PaneInfo );
-    //test unlock
+ 
 
     m_wndStatusBar.SetPaneWidth( 1, 100 );
     m_wndStatusBar.SetPaneWidth( 2, 100 );
