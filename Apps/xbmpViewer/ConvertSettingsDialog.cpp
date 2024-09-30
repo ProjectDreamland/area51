@@ -56,7 +56,7 @@ BOOL CConvertSettingsDialog::OnInitDialog()
 
     //Default settings for UI.
     m_CtrlPlatformCombo.SetCurSel(0);  //"PC" by default.
-    m_CtrlFormatCombo.SetCurSel(0);    //"32_ARGB_8888" by default, for PC.
+    m_CtrlFormatCombo.SetCurSel(2);    //"32_ARGB_8888" by default, for PC.
 
     return TRUE;
 }

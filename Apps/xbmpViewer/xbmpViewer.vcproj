@@ -278,6 +278,12 @@
 				RelativePath="BitmapViewer.h">
 			</File>
 			<File
+				RelativePath=".\ConvertSettingsDialog.cpp">
+			</File>
+			<File
+				RelativePath=".\ConvertSettingsDialog.h">
+			</File>
+			<File
 				RelativePath="ExplorerBar.cpp">
 				<FileConfiguration
 					Name="Release|Win32">
