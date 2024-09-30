@@ -509,39 +509,10 @@ void CMainFrame::OnConvertXbmp()
                                         if (!auxbmp_Load(b, InFile))                
                                     
                                         //IT IS VERY IMPORTANT TO FOLLOW CONSISTENCY!!!!
-                                        //PLATFORM DEFINICATIONS
                                         //COMPRESSION TYPE
+                                        //PLATFORM DEFINICATIONS
                                         //MIPS
-
-                                        if (platform == _T("PC") || platform == _T("Xbox"))
-                                        {
-                                            auxbmp_ConvertToD3D(b); // PC oder Xducks conversion.
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected PC or XBOX VERSION !!!"));
-                                            #endif
-                                        }
-                                        else if (platform == _T("PS2"))
-                                        {
-                                            auxbmp_ConvertToPS2(b);  // PS2 conversion.
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected PS2 VERSION !!!"));
-                                            #endif
-                                        }
-                                        else if (platform == _T("GameCube"))
-                                        {
-                                            auxbmp_ConvertToGCN(b);  // GameCube conversion.
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected GameCum VERSION !!!"));
-                                            #endif
-                                        }
-                                        else if (platform == _T("Native"))
-                                        {
-                                            auxbmp_ConvertToNative(b);  // Native conversion.
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected Native VERSION !!!"));
-                                            #endif
-                                        }
-                                        
+										
 /////////////////////////////////////////////////////////////////////////////
 //// YANDERE DEV CODE
 /////////////////////////////////////////////////////////////////////////////                                        
@@ -646,7 +617,36 @@ void CMainFrame::OnConvertXbmp()
                                         
 /////////////////////////////////////////////////////////////////////////////
 //// YANDERE DEV CODE - END
-/////////////////////////////////////////////////////////////////////////////                                            
+/////////////////////////////////////////////////////////////////////////////
+
+                                        if (platform == _T("PC") || platform == _T("Xbox"))
+                                        {
+                                            auxbmp_ConvertToD3D(b); // PC oder Xducks conversion.
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected PC or XBOX VERSION !!!"));
+                                            #endif
+                                        }
+                                        else if (platform == _T("PS2"))
+                                        {
+                                            auxbmp_ConvertToPS2(b);  // PS2 conversion.
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected PS2 VERSION !!!"));
+                                            #endif
+                                        }
+                                        else if (platform == _T("GameCube"))
+                                        {
+                                            auxbmp_ConvertToGCN(b);  // GameCube conversion.
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected GameCum VERSION !!!"));
+                                            #endif
+                                        }
+                                        else if (platform == _T("Native"))
+                                        {
+                                            auxbmp_ConvertToNative(b);  // Native conversion.
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected Native VERSION !!!"));
+                                            #endif
+                                        }                                                                                  
 
                                         //MIPS only support images with a power of two.
                                         int width = b.GetWidth();
