@@ -15,15 +15,23 @@
 #define ID_MIP                          32773
 #define ID_CONVERT_TGA                  32774
 #define ID_CONVERT_XBMP                 32775
-#define IDD_CONVERT_XBMP_DIALOG         32776
 #define IDW_EXPLORERBAR                 59402
 #define IDW_PREVIEWBAR                  59403
+//#define ID_FILE_REFRESH                 32780
+
+// XBMP settings values
+// 
+#define IDD_CONVERT_XBMP_DIALOG         1488
+#define IDC_PLATFORM_COMBO              1489
+#define IDC_FORMAT_COMBO                1490
+#define IDC_MIP_EDIT                    1491
+
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_3D_CONTROLS                     1
+#define _APS_3D_CONTROLS                1
 #define _APS_NEXT_RESOURCE_VALUE        144
 #define _APS_NEXT_COMMAND_VALUE         32775
 #define _APS_NEXT_CONTROL_VALUE         1006

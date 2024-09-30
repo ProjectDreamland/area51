@@ -7,12 +7,15 @@
 #include "MainFrm.h"
 #include "Resource.h"
 #include "Progress.h"
+#include "ConvertSettingsDialog.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #endif
+
+//#define HappyDebuger
 
 extern CString g_CmdLinePath;
 extern CString g_CmdLineFile;
@@ -430,111 +433,247 @@ void CMainFrame::OnUpdateConvertXbmp(CCmdUI* pCmdUI)
 
 void CMainFrame::OnConvertXbmp() 
 {
-    // Get the export folder
-    IShellFolder* pShellFolder;
-    if (SHGetDesktopFolder(&pShellFolder) == NOERROR)
+    //Get settings window
+    CConvertSettingsDialog dlg;
+
+    //OK = Cheezy man
+    if (dlg.DoModal() == IDOK)
     {
-        LPITEMIDLIST pIDList;
+        //Get settings
+        CString platform = dlg.m_SelectedPlatform;
+        CString format = dlg.m_SelectedFormat;
+        int mipLevels = dlg.m_MipLevels;
 
-        if (pShellFolder->ParseDisplayName(NULL, NULL, L"", NULL, &pIDList, NULL) == NOERROR)
+        //Get the export folder
+        IShellFolder* pShellFolder;
+        if (SHGetDesktopFolder(&pShellFolder) == NOERROR)
         {
-            if (pIDList)
+            LPITEMIDLIST pIDList;
+
+            if (pShellFolder->ParseDisplayName(NULL, NULL, L"", NULL, &pIDList, NULL) == NOERROR)
             {
-                BROWSEINFO BrowseInfo;
-                BrowseInfo.hwndOwner = GetSafeHwnd();
-                BrowseInfo.pidlRoot = pIDList;
-                BrowseInfo.pszDisplayName = NULL;
-                BrowseInfo.ulFlags = BIF_NEWDIALOGSTYLE;
-                BrowseInfo.lpfn = NULL;
-                BrowseInfo.lParam = NULL;
-                BrowseInfo.iImage = 0;
-                BrowseInfo.lpszTitle = NULL;
-
-                LPITEMIDLIST pIDList = SHBrowseForFolder(&BrowseInfo);
-
                 if (pIDList)
                 {
-                    char Buffer[32768] = {0};
+                    BROWSEINFO BrowseInfo;
+                    BrowseInfo.hwndOwner = GetSafeHwnd();
+                    BrowseInfo.pidlRoot = pIDList;
+                    BrowseInfo.pszDisplayName = NULL;
+                    BrowseInfo.ulFlags = BIF_NEWDIALOGSTYLE;
+                    BrowseInfo.lpfn = NULL;
+                    BrowseInfo.lParam = NULL;
+                    BrowseInfo.iImage = 0;
+                    BrowseInfo.lpszTitle = NULL;
 
-                    if (SHGetPathFromIDList(pIDList, Buffer))
+                    LPITEMIDLIST pIDList = SHBrowseForFolder(&BrowseInfo);
+
+                    if (pIDList)
                     {
-                        xstring OutPath = Buffer;
-                        if ((OutPath.GetLength() > 0) &&
-                            (OutPath[OutPath.GetLength() - 1] != '/') &&
-                            (OutPath[OutPath.GetLength() - 1] != '\\'))
+                        char Buffer[32768] = {0};
+
+                        if (SHGetPathFromIDList(pIDList, Buffer))
                         {
-                            OutPath += "\\";
-
-                            //Get the root path and list of files selected
-                            xstring Path = m_wndFileList.GetPath();
-                            xarray<file_rec*> Array = m_wndFileList.GetSelected();
-
-                            CProgress Progress;
-
-                            Progress.Create(IDD_PROGRESS, this);
-                            Progress.SetWindowText("Converting TGA to XBMP...");
-                            Progress.ShowWindow(SW_SHOW);
-
-                            //Go through each file
-                            for (s32 i = 0; i < Array.GetCount(); i++)
+                            xstring OutPath = Buffer;
+                            if ((OutPath.GetLength() > 0) &&
+                                (OutPath[OutPath.GetLength() - 1] != '/') &&
+                                (OutPath[OutPath.GetLength() - 1] != '\\'))
                             {
-                                file_rec* pFile = Array[i];
-                                if (pFile)
+                                OutPath += "\\";
+
+                                //Get the root path and list of files selected
+                                xstring Path = m_wndFileList.GetPath();
+                                xarray<file_rec*> Array = m_wndFileList.GetSelected();
+
+                                CProgress Progress;
+                                Progress.Create(IDD_PROGRESS, this);
+                                Progress.SetWindowText("Converting TGA to XBMP...");
+                                Progress.ShowWindow(SW_SHOW);
+
+                                //Go through each file
+                                for (s32 i = 0; i < Array.GetCount(); i++)
                                 {
-                                    char Drive[_MAX_DRIVE];
-                                    char Dir[_MAX_DIR];
-                                    char FName[_MAX_FNAME];
-                                    char Ext[_MAX_EXT];
-                                    _splitpath(pFile->Name, Drive, Dir, FName, Ext);
-                                    xstring InFile = Path + pFile->Name;
-                                    xstring OutFile = OutPath + FName + ".xbmp";
-
-                                    Progress.SetText(xfs("%d of %d - %s", i + 1, Array.GetCount(), pFile->Name));
-
-                                    //Load the TGA file
-                                    xbitmap b;
-                                    if (!auxbmp_Load(b, InFile))
-
-                                    /* TEST GCN TWEAKS
-                                    if (b.GetFlags() & xbitmap::FLAG_GCN_DATA_SWIZZLED)
+                                    file_rec* pFile = Array[i];
+                                    if (pFile)
                                     {
-                                        b.GCNUnswizzleData();
-                                    }
-                                    */
-                                    
-                                    //IT IS VERY IMPORTANT TO FOLLOW CONSISTENCY!!!!
-                                    //PLATFORM DEFINICATIONS
-                                    //COMPRESSION TYPE
-                                    //MIPS
+                                        char Drive[_MAX_DRIVE];
+                                        char Dir[_MAX_DIR];
+                                        char FName[_MAX_FNAME];
+                                        char Ext[_MAX_EXT];
+                                        _splitpath(pFile->Name, Drive, Dir, FName, Ext);
+                                        xstring InFile = Path + pFile->Name;
+                                        xstring OutFile = OutPath + FName + ".xbmp";
 
-                                    //Convert to XBMP
-                                    auxbmp_ConvertToD3D(b); //PC only
+                                        Progress.SetText(xfs("%d of %d - %s", i + 1, Array.GetCount(), pFile->Name));
+
+                                        //Load the TGA file
+                                        xbitmap b;
+                                        if (!auxbmp_Load(b, InFile))                
                                     
-                                    //Default PC compression
-                                    b.ConvertFormat(xbitmap::FMT_32_ARGB_8888);    
-                                    
-                                    //MIPS only support images with a power of two.
-                                    int width  = b.GetWidth();
-                                    int height = b.GetHeight();
-                                    
-                                    if (IsPowerOfTwo(width) && IsPowerOfTwo(height))
-                                    {        
-                                        int nMips = 4; //TEMP Solution
-                                        
-                                        if( (nMips > 0) && (nMips <= 16) )
+                                        //IT IS VERY IMPORTANT TO FOLLOW CONSISTENCY!!!!
+                                        //PLATFORM DEFINICATIONS
+                                        //COMPRESSION TYPE
+                                        //MIPS
+
+                                        if (platform == _T("PC") || platform == _T("Xbox"))
                                         {
-                                            b.BuildMips(nMips);
+                                            auxbmp_ConvertToD3D(b); // PC oder Xducks conversion.
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected PC or XBOX VERSION !!!"));
+                                            #endif
+                                        }
+                                        else if (platform == _T("PS2"))
+                                        {
+                                            auxbmp_ConvertToPS2(b);  // PS2 conversion.
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected PS2 VERSION !!!"));
+                                            #endif
+                                        }
+                                        else if (platform == _T("GameCube"))
+                                        {
+                                            auxbmp_ConvertToGCN(b);  // GameCube conversion.
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected GameCum VERSION !!!"));
+                                            #endif
+                                        }
+                                        else if (platform == _T("Native"))
+                                        {
+                                            auxbmp_ConvertToNative(b);  // Native conversion.
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected Native VERSION !!!"));
+                                            #endif
+                                        }
+                                        
+/////////////////////////////////////////////////////////////////////////////
+//// YANDERE DEV CODE
+/////////////////////////////////////////////////////////////////////////////                                        
+
+                                        if (format == _T("32_RGBA_8888"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_32_RGBA_8888);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 32_RGBA_8888 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("32_RGBU_8888"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_32_RGBU_8888);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 32_RGBU_8888 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("32_ARGB_8888"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_32_ARGB_8888);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 32_ARGB_8888 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("32_URGB_8888"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_32_URGB_8888);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 32_URGB_8888 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("24_RGB_888"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_24_RGB_888);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 24_RGB_888 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("16_RGBA_4444"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_16_RGBA_4444);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 16_RGBA_4444 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == __T("16_ARGB_4444"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_16_ARGB_4444);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 16_ARGB_4444 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("16_RGBA_5551"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_16_RGBA_5551);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 16_RGBA_5551 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("16_RGBU_5551"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_16_RGBU_5551);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 16_RGBU_5551 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("16_ARGB_1555"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_16_ARGB_1555);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 16_ARGB_1555 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("16_URGB_1555"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_16_URGB_1555);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 16_URGB_1555 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("16_RGB_565"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_16_RGB_565);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression 16_RGB_565 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("P4_RGB_565"))
+                                        {
+                                            b.ConvertFormat(xbitmap::FMT_P4_RGB_565);
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected compression P4_RGB_565 !!!"));
+                                            #endif
+                                        }
+                                        else if (format == _T("NoComp"))
+                                        {
+                                            #ifdef HappyDebuger
+                                            AfxMessageBox(_T("Selected NoComp !!!"));
+                                            #endif
+                                        }
+                                        
+/////////////////////////////////////////////////////////////////////////////
+//// YANDERE DEV CODE - END
+/////////////////////////////////////////////////////////////////////////////                                            
+
+                                        //MIPS only support images with a power of two.
+                                        int width = b.GetWidth();
+                                        int height = b.GetHeight();
+
+                                        if (mipLevels > 0 && mipLevels <= 16)
+                                        {
+                                            if (IsPowerOfTwo(width) && IsPowerOfTwo(height))
+                                            {
+                                                b.BuildMips(mipLevels);
+                                            }
+                                            else
+                                            {
+                                                AfxMessageBox(_T("Warning: Generation of MIP maps possible only for images with a power of two!"));
+                                            }
+                                        }
+
+                                        //Save the file as XBMP
+                                        if (b.Save(OutFile))
+                                        {
+                                            Progress.SetProgress((i + 1) * 100 / Array.GetCount());
                                         }
                                     }
-                                    
-                                    //Save the file as XBMP
-                                    if (b.Save(OutFile))
-
-                                    Progress.SetProgress((i + 1) * 100 / Array.GetCount());
                                 }
-                            }
 
-                            Progress.DestroyWindow();
+                                Progress.DestroyWindow();
+                            }
                         }
                     }
                 }
@@ -542,3 +681,4 @@ void CMainFrame::OnConvertXbmp()
         }
     }
 }
+

@@ -132,8 +132,8 @@ BEGIN
     BEGIN
         MENUITEM "&About XbmpViewer...",        ID_APP_ABOUT
     END
+	//MENUITEM     "Refresh",                     ID_FILE_REFRESH
 END
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -182,6 +182,23 @@ BEGIN
     CTEXT           "Static",IDC_TEXT,7,7,286,14,SS_CENTERIMAGE
 END
 
+IDD_CONVERT_XBMP_DIALOG DIALOGEX 0, 0, 250, 120
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Conversion settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Platform:", -1, 10, 10, 100, 10
+    COMBOBOX        IDC_PLATFORM_COMBO, 120, 10, 100, 50, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    LTEXT           "Format:", -1, 10, 40, 100, 10
+    COMBOBOX        IDC_FORMAT_COMBO, 120, 40, 100, 50, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    LTEXT           "Mip Levels (0-16):", -1, 10, 70, 100, 10
+    EDITTEXT        IDC_MIP_EDIT, 120, 70, 100, 14, ES_NUMBER | ES_AUTOHSCROLL
+
+    PUSHBUTTON      "OK", IDOK, 50, 97, 50, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 150, 97, 50, 14
+END
 
 #ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////

@@ -16,7 +16,7 @@ class CPreviewBar : public CXTDockWindow
 {
 // Construction
 public:
-	CPreviewBar();
+    CPreviewBar();
 
 // Attributes
 public:
@@ -31,27 +31,27 @@ public:
     void    RepositionWindows( void );
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CPreviewBar)
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CPreviewBar)
+    //}}AFX_VIRTUAL
 
 // Implementation
 public:
-	virtual ~CPreviewBar();
+    virtual ~CPreviewBar();
 
-	// Generated message map functions
+    // Generated message map functions
 protected:
-	//{{AFX_MSG(CPreviewBar)
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnWindowPosChanged(WINDOWPOS FAR* lpwndpos);
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-	//}}AFX_MSG
+    //{{AFX_MSG(CPreviewBar)
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnWindowPosChanged(WINDOWPOS FAR* lpwndpos);
+    afx_msg void OnSize(UINT nType, int cx, int cy);
+    afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+    afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+    //}}AFX_MSG
     afx_msg LRESULT OnNewBitmap(WPARAM, LPARAM);
     afx_msg LRESULT OnNewMipLevel(WPARAM, LPARAM);
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

@@ -16,7 +16,7 @@
 enum indicators
 {
     INDICATOR_NULL = 0,
-	INDICATOR_COLOR,
+    INDICATOR_COLOR,
     INDICATOR_TOTAL,
     INDICATOR_SELECTED,
     INDICATOR_FOCUS,
@@ -24,11 +24,11 @@ enum indicators
 
 class CMainFrame : public CXTFrameWnd
 {
-	
+    
 public:
-	CMainFrame();
+    CMainFrame();
 protected: 
-	DECLARE_DYNAMIC(CMainFrame)
+    DECLARE_DYNAMIC(CMainFrame)
 
 // Attributes
 public:
@@ -38,51 +38,51 @@ public:
     void    SetStatusPane   ( int Index, const CString& String );
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CMainFrame)
-	public:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CMainFrame)
+    public:
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+    virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
+    //}}AFX_VIRTUAL
 
     afx_msg LRESULT OnDirChanged(WPARAM, LPARAM);
     afx_msg LRESULT OnNewBitmap(WPARAM, LPARAM);
 
 // Implementation
 public:
-	virtual ~CMainFrame();
+    virtual ~CMainFrame();
 #ifdef _DEBUG
-	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
+    virtual void AssertValid() const;
+    virtual void Dump(CDumpContext& dc) const;
 #endif
 
 protected:  // control bar embedded members
     CExplorerBar    m_wndExplorerBar;
     CPreviewBar     m_wndPreviewBar;
-	CXTStatusBar    m_wndStatusBar;
-	CXTToolBar      m_wndToolBar;
-	CFileList       m_wndFileList;
+    CXTStatusBar    m_wndStatusBar;
+    CXTToolBar      m_wndToolBar;
+    CFileList       m_wndFileList;
 
 // Generated message map functions
 protected:
-	CXTWindowPos     m_wndPosition;
+    CXTWindowPos     m_wndPosition;
 
 public:
-	// Overrode CWnd implementation to restore saved window position.
-	BOOL ShowWindowEx(int nCmdShow);
+    // Overrode CWnd implementation to restore saved window position.
+    BOOL ShowWindowEx(int nCmdShow);
 
 protected:
-	//{{AFX_MSG(CMainFrame)
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnClose();
-	afx_msg void OnSetFocus(CWnd *pOldWnd);
-	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
-	afx_msg void OnConvertTga();
-	afx_msg void OnUpdateConvertTga(CCmdUI* pCmdUI);
-	afx_msg void OnConvertXbmp();
-	afx_msg void OnUpdateConvertXbmp(CCmdUI* pCmdUI);
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+    //{{AFX_MSG(CMainFrame)
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnClose();
+    afx_msg void OnSetFocus(CWnd *pOldWnd);
+    afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
+    afx_msg void OnConvertTga();
+    afx_msg void OnUpdateConvertTga(CCmdUI* pCmdUI);
+    afx_msg void OnConvertXbmp();
+    afx_msg void OnUpdateConvertXbmp(CCmdUI* pCmdUI);
+    //}}AFX_MSG
+    DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////
