@@ -579,7 +579,12 @@ void CFileList::OnRButtonDown(UINT nFlags, CPoint point)
         CMenu* pSubMenu = menu.GetSubMenu(0);
         if (pSubMenu)
         {
-            pSubMenu->TrackPopupMenu(TPM_RIGHTBUTTON, point.x, point.y, this);
+            UINT nCmd = pSubMenu->TrackPopupMenu(TPM_RIGHTBUTTON | TPM_RETURNCMD, point.x, point.y, this);
+
+            if (nCmd != 0)
+            {
+                SendMessage(WM_COMMAND, nCmd);
+            }
         }
     }
     CWnd::OnRButtonDown(nFlags, point);
