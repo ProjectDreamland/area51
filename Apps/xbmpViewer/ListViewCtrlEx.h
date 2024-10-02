@@ -91,6 +91,9 @@ private:
     bool            OnLButtonDblClk      ( CPoint point );
     bool            OnLButtonDown        ( CPoint point );
     void            OnLButtonUp          ( void );
+    bool            OnRButtonDblClk      ( CPoint point );
+    bool            OnRButtonDown        ( CPoint point );
+    void            OnRButtonUp          ( void );
     void            OnMouseMove          ( CPoint point );
     bool            OnNotify             ( LPARAM lParam );
     bool            OnSetExtendedStyle   ( DWORD dwMask, DWORD dwExStyle, LPDWORD pdwResult );
@@ -159,10 +162,13 @@ protected:
     afx_msg void OnSetFocus(CWnd* pOldWnd);
     afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
     afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
+    afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+    afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+    afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
+    afx_msg void OnRButtonDblClk(UINT nFlags, CPoint point);
     afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
     afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
     afx_msg void OnMouseMove(UINT nFlags, CPoint point);
-    afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
     //}}AFX_MSG
     afx_msg BOOL    OnColumnclick     (NMHDR* pNMHDR, LRESULT* pResult);
     afx_msg void    OnCustomDraw      (NMHDR* pNMHDR, LRESULT* pResult);
@@ -206,10 +212,13 @@ protected:
     afx_msg void OnSetFocus(CWnd* pOldWnd);
     afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
     afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
+    afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+    afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+    afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
+    afx_msg void OnRButtonDblClk(UINT nFlags, CPoint point);
     afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
     afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
     afx_msg void OnMouseMove(UINT nFlags, CPoint point);
-    afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
     //}}AFX_MSG
     afx_msg BOOL    OnColumnclick     (NMHDR* pNMHDR, LRESULT* pResult);
     afx_msg void    OnCustomDraw      (NMHDR* pNMHDR, LRESULT* pResult);

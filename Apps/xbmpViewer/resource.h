@@ -26,6 +26,11 @@
 #define IDC_FORMAT_COMBO                1490
 #define IDC_MIP_EDIT                    1491
 
+// XBMP settings values
+// 
+#define IDR_CONTEXT_MENU               32780
+#define ID_CONTEXT_CONVERT_TGA         6343
+#define ID_CONTEXT_CONVERT_XBMP        6344
 
 // Next default values for new objects
 // 

@@ -139,6 +139,29 @@ void CListCtrlEx::OnLButtonUp(UINT nFlags, CPoint point)
     CListCtrl::OnLButtonUp(nFlags, point);
 }
 
+/*** The user double-clicks the right mouse button ****************************/
+void CListCtrlEx::OnRButtonDblClk(UINT nFlags, CPoint point) 
+{
+  if (!CListBase::OnRButtonDblClk(point))
+    CListCtrl::OnRButtonDblClk(nFlags, point);
+}
+
+/*** The user presses the right mouse button **********************************/
+void CListCtrlEx::OnRButtonDown(UINT nFlags, CPoint point)
+{
+  if (!CListBase::OnRButtonDown(point))
+    GetParent()->SendMessage(WM_RBUTTONDOWN, (WPARAM)nFlags, MAKELPARAM(point.x, point.y)); //Блять, я хз как ещё реализовывать эту поеботу.
+    CListCtrl::OnRButtonDown(nFlags, point); //Оно не работает :(
+  CListBase::OnMouseMove(point);
+}
+
+/*** The user releases the right mouse button *********************************/
+void CListCtrlEx::OnRButtonUp(UINT nFlags, CPoint point) 
+{
+  CListBase::OnRButtonUp();
+    CListCtrl::OnRButtonUp(nFlags, point);
+}
+
 /*** The mouse has been moved ************************************************/
 void CListCtrlEx::OnMouseMove(UINT nFlags, CPoint point) 
 {
@@ -205,11 +228,14 @@ BEGIN_MESSAGE_MAP(CListCtrlEx, CListCtrl)
     ON_WM_KILLFOCUS()
     ON_WM_SETFOCUS()
     ON_WM_LBUTTONDOWN()
+    ON_WM_LBUTTONUP()
     ON_WM_LBUTTONDBLCLK()
+    ON_WM_RBUTTONDOWN()
+    ON_WM_RBUTTONUP()
+    ON_WM_RBUTTONDBLCLK()
     ON_WM_KEYDOWN()
     ON_WM_KEYUP()
     ON_WM_MOUSEMOVE()
-    ON_WM_LBUTTONUP()
     //}}AFX_MSG_MAP
   ON_MESSAGE(LVM_GETEXTENDEDLISTVIEWSTYLE , OnGetExtendedStyle)
   ON_MESSAGE(LVM_HITTEST, OnHitTest)
@@ -323,6 +349,29 @@ void CListViewEx::OnLButtonUp(UINT nFlags, CPoint point)
     CListView::OnLButtonUp(nFlags, point);
 }
 
+/*** The user double-clicks the right mouse button ****************************/
+void CListViewEx::OnRButtonDblClk(UINT nFlags, CPoint point) 
+{
+  if (!CListBase::OnRButtonDblClk(point))
+    CListView::OnRButtonDblClk(nFlags, point);
+}
+
+/*** The user presses the right mouse button **********************************/
+void CListViewEx::OnRButtonDown(UINT nFlags, CPoint point) 
+{
+  if (!CListBase::OnRButtonDown(point))
+    CListView::OnRButtonDown(nFlags, point);
+  CListBase::OnMouseMove(point);
+}
+
+
+/*** The user releases the right mouse button *********************************/
+void CListViewEx::OnRButtonUp(UINT nFlags, CPoint point) 
+{
+  CListBase::OnRButtonUp();
+    CListView::OnRButtonUp(nFlags, point);
+}
+
 /*** The mouse has been moved ************************************************/
 void CListViewEx::OnMouseMove(UINT nFlags, CPoint point) 
 {
@@ -389,11 +438,14 @@ BEGIN_MESSAGE_MAP(CListViewEx, CListView)
     ON_WM_KILLFOCUS()
     ON_WM_SETFOCUS()
     ON_WM_LBUTTONDOWN()
+    ON_WM_LBUTTONUP()
     ON_WM_LBUTTONDBLCLK()
+    ON_WM_RBUTTONDOWN()
+    ON_WM_RBUTTONUP()
+    ON_WM_RBUTTONDBLCLK()
     ON_WM_KEYDOWN()
     ON_WM_KEYUP()
     ON_WM_MOUSEMOVE()
-    ON_WM_LBUTTONUP()
     //}}AFX_MSG_MAP
   ON_MESSAGE(LVM_GETEXTENDEDLISTVIEWSTYLE , OnGetExtendedStyle)
   ON_MESSAGE(LVM_HITTEST, OnHitTest)
@@ -1600,6 +1652,49 @@ void CListBase::OnLButtonUp()
 
   if (m_pListCtrl->GetStyle() & LVS_OWNERDRAWFIXED)
     if (m_hcursorCustom) SetCursor(m_hcursorCustom);
+}
+
+/*** The user double-clicks the right mouse button ****************************/
+bool CListBase::OnRButtonDblClk(CPoint point)
+{
+    return true;
+}
+
+/*** The user presses the right mouse button **********************************/
+bool CListBase::OnRButtonDown(CPoint point)
+{
+    ASSERT(m_pListCtrl);
+
+    if (m_pListCtrl->GetStyle() & LVS_OWNERDRAWFIXED)
+    {
+        if (m_hcursorCustom)
+            SetCursor(m_hcursorCustom);
+
+        UINT flags;
+        int nItem = m_pListCtrl->HitTest(point, &flags);
+
+        if (nItem            >= 0                 &&
+            m_dwExtendedStyle & LVS_EX_CHECKBOXES &&
+            flags            == LVHT_ONITEMSTATEICON)
+        {
+            m_pListCtrl->SetCheck(nItem, !m_pListCtrl->GetCheck(nItem));
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/*** The user releases the right mouse button *********************************/
+void CListBase::OnRButtonUp()
+{
+
 }
 
 /*** The mouse has been moved ************************************************/

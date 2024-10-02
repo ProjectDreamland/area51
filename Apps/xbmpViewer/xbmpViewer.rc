@@ -97,6 +97,21 @@ BEGIN
     BUTTON      ID_APP_ABOUT
 END
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// Right menu
+//
+
+
+IDR_CONTEXT_MENU MENU
+BEGIN
+    POPUP "Context Menu"
+    BEGIN
+        MENUITEM "Convert to TGA",  ID_CONTEXT_CONVERT_TGA
+        MENUITEM "Convert to XBMP", ID_CONTEXT_CONVERT_XBMP
+    END
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

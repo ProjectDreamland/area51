@@ -512,7 +512,7 @@ void CMainFrame::OnConvertXbmp()
                                         //COMPRESSION TYPE
                                         //PLATFORM DEFINICATIONS
                                         //MIPS
-										
+                                        
 /////////////////////////////////////////////////////////////////////////////
 //// YANDERE DEV CODE
 /////////////////////////////////////////////////////////////////////////////                                        

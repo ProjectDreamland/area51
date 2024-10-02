@@ -40,6 +40,10 @@ class CFileList : public CWnd
 // Construction
 public:
     CFileList();
+    
+public:    
+    void OnContextConvertTga();
+    void OnContextConvertXbmp();
 
 // Attributes
 public:
@@ -74,6 +78,7 @@ protected:
     afx_msg void OnItemChanged( NMHDR* pHeader, LRESULT* pResult );
     afx_msg void OnColumnClick( NMHDR* pHeader, LRESULT* pResult );
     afx_msg void OnDeleteAllItems( NMHDR* pHeader, LRESULT* pResult );
+    afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
     afx_msg LRESULT OnDirChanged(WPARAM, LPARAM);
     afx_msg LRESULT OnPopulateList(WPARAM, LPARAM);
     afx_msg LRESULT OnRefreshList(WPARAM, LPARAM);

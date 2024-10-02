@@ -270,12 +270,15 @@ BEGIN_MESSAGE_MAP(CFileList, CWnd)
     ON_WM_CREATE()
     ON_WM_SIZE()
     ON_WM_DESTROY()
+    ON_WM_RBUTTONDOWN()
     ON_MESSAGE( NM_DIRCHANGED, OnDirChanged )
     ON_MESSAGE( NM_POPULATELIST, OnPopulateList )
     ON_MESSAGE( NM_REFRESHLIST, OnRefreshList )
     ON_NOTIFY( LVN_ITEMCHANGED, AFX_IDW_PANE_FIRST, OnItemChanged )
     ON_NOTIFY( LVN_COLUMNCLICK, AFX_IDW_PANE_FIRST, OnColumnClick )
     ON_NOTIFY( LVN_DELETEALLITEMS, AFX_IDW_PANE_FIRST, OnDeleteAllItems )
+    ON_COMMAND(ID_CONTEXT_CONVERT_TGA, &CFileList::OnContextConvertTga)
+    ON_COMMAND(ID_CONTEXT_CONVERT_XBMP, &CFileList::OnContextConvertXbmp)
     ON_WM_ACTIVATE()
     //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
@@ -564,4 +567,38 @@ void CFileList::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
     
     // TODO: Add your message handler code here
     m_List.SendMessage( WM_ACTIVATE, WA_ACTIVE );
+}
+
+void CFileList::OnRButtonDown(UINT nFlags, CPoint point)
+{
+    ClientToScreen(&point);
+
+    CMenu menu;
+    if (menu.LoadMenu(IDR_CONTEXT_MENU))
+    {
+        CMenu* pSubMenu = menu.GetSubMenu(0);
+        if (pSubMenu)
+        {
+            pSubMenu->TrackPopupMenu(TPM_RIGHTBUTTON, point.x, point.y, this);
+        }
+    }
+    CWnd::OnRButtonDown(nFlags, point);
+}
+
+void CFileList::OnContextConvertTga()
+{
+    CMainFrame* pMainFrame = (CMainFrame*)AfxGetMainWnd();
+    if (pMainFrame)
+    {
+        pMainFrame->OnConvertTga();
+    }
+}
+
+void CFileList::OnContextConvertXbmp()
+{
+    CMainFrame* pMainFrame = (CMainFrame*)AfxGetMainWnd();
+    if (pMainFrame)
+    {
+        pMainFrame->OnConvertXbmp();
+    }
 }
