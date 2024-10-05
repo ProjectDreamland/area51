@@ -94,7 +94,7 @@ int main( int argc, char** argv )
     // Find matching files
     if( (hFile = _findfirst( argv[1], &fx_file )) == -1L )
     {
-        printf( "No matching files found!\n\n" );
+        x_printf( "No matching files found!\n\n" );
         return -1;
     }
     else
@@ -135,7 +135,7 @@ void ExportFile( const char* pFileName )
     // Clear the log of errors
     g_ErrorLog.Clear();
 
-//  printf( "Processing %s\n", pFileName );
+    //x_printf( "Processing %s\n", pFileName );
 
     // Apply export override values.
     if( pExportPC   )        Effect.m_ExportPC   = pExportPC;
@@ -149,7 +149,7 @@ void ExportFile( const char* pFileName )
         export Export;
         Export.ConstructData( &Effect, EXPORT_TARGET_PC );
         Export.SaveData( (const char*)Effect.m_ExportPC, EXPORT_TARGET_PC );
-    //  printf( " - PC  : %s\n", Effect.m_ExportPC );
+        x_printf( " -PC  : %s\n", Effect.m_ExportPC );
     }
 
     // Export to PS2
@@ -158,18 +158,16 @@ void ExportFile( const char* pFileName )
         export Export;
         Export.ConstructData( &Effect, EXPORT_TARGET_PS2 );
         Export.SaveData( (const char*)Effect.m_ExportPS2, EXPORT_TARGET_PS2 );
-    //  printf( " - PS2 : %s\n", Effect.m_ExportPS2 );
+        x_printf( " -PS2 : %s\n", Effect.m_ExportPS2 );
     }
 
     // Export to GCN
     if( !Effect.m_ExportGCN.IsEmpty() )
-    {
-        /*
+    {   
         export Export;
         Export.ConstructData( &Effect, EXPORT_TARGET_GCN );
         Export.SaveData( (const char*)Effect.m_ExportGCN, EXPORT_TARGET_GCN );
-    //  printf( " - GCN : %s\n", Effect.m_ExportGCN );
-        */
+        x_printf( " -GCN : %s\n", Effect.m_ExportGCN );
     }
 
     // Export to XBOX
@@ -178,6 +176,6 @@ void ExportFile( const char* pFileName )
         export Export;
         Export.ConstructData( &Effect, EXPORT_TARGET_XBOX );
         Export.SaveData( (const char*)Effect.m_ExportXBOX, EXPORT_TARGET_XBOX );
-    //  printf( " - XBOX: %s\n", Effect.m_ExportXBOX );
+        x_printf( " -XBOX: %s\n", Effect.m_ExportXBOX );
     } 
 }
