@@ -163,8 +163,10 @@ void ExecuteScript( command_line& CommandLine )
                         s32 W = (w>256) ? 256:w;
                         s32 H = (h>256) ? 256:h;
                         if( (W!=w) || (H!=h) )
-                            Xbox.Resize( W,H );
-
+                        {
+                            //Xbox.Resize( W,H );
+                            x_throw( "Image resolution is not a w256 x h256!");
+                        }
                         // convert to A8 ......................................
 
                         Xbox.BuildMips( 4 );

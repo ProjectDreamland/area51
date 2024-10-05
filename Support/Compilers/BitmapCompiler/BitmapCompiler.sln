@@ -19,70 +19,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommandLine", "..\..\..\xCo
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 4
-		SccProjectUniqueName0 = BitmapCompiler.vcproj
-		SccProjectName0 = Perforce\u0020Project
-		SccLocalPath0 = .
-		SccProvider0 = MSSCCI:Perforce\u0020SCM
-		CanCheckoutShared = true
-		SccProjectUniqueName1 = ..\\..\\..\\xCore\\x_files\\x_files.vcproj
-		SccProjectName1 = Perforce\u0020Project
-		SccLocalPath1 = ..\\..\\..
-		SccProvider1 = MSSCCI:Perforce\u0020SCM
-		CanCheckoutShared = true
-		SccProjectFilePathRelativizedFromConnection1 = xCore\\x_files\\
-		SccProjectUniqueName2 = ..\\..\\..\\xCore\\Auxiliary\\Bitmap\\aux_Bitmap.vcproj
-		SccProjectName2 = Perforce\u0020Project
-		SccLocalPath2 = ..\\..\\..
-		SccProvider2 = MSSCCI:Perforce\u0020SCM
-		CanCheckoutShared = true
-		SccProjectFilePathRelativizedFromConnection2 = xCore\\Auxiliary\\Bitmap\\
-		SccProjectUniqueName3 = ..\\..\\..\\xCore\\Auxiliary\\CommandLine\\CommandLine.vcproj
-		SccProjectName3 = Perforce\u0020Project
-		SccLocalPath3 = ..\\..\\..\\xCore\\Auxiliary\\CommandLine
-		SccProvider3 = MSSCCI:Perforce\u0020SCM
-		CanCheckoutShared = true
-	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		WIN32-Debug = WIN32-Debug
-		WIN32-OptDebug = WIN32-OptDebug
-		WIN32-QA = WIN32-QA
-		WIN32-Retail = WIN32-Retail
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-Debug.ActiveCfg = Debug|Win32
 		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-Debug.Build.0 = Debug|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-OptDebug.Build.0 = OptDebug|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-QA.ActiveCfg = QA|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-QA.Build.0 = QA|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-Retail.ActiveCfg = Retail|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-Retail.Build.0 = Retail|Win32
 		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Debug.ActiveCfg = Debug|Win32
 		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Debug.Build.0 = Debug|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-OptDebug.Build.0 = OptDebug|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-QA.ActiveCfg = QA|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-QA.Build.0 = QA|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Retail.ActiveCfg = Retail|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Retail.Build.0 = Retail|Win32
 		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Debug.ActiveCfg = Debug|Win32
 		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Debug.Build.0 = Debug|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-OptDebug.Build.0 = OptDebug|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-QA.ActiveCfg = QA|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-QA.Build.0 = QA|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Retail.ActiveCfg = Retail|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Retail.Build.0 = Retail|Win32
 		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-Debug.ActiveCfg = Debug|Win32
 		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-Debug.Build.0 = Debug|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-OptDebug.ActiveCfg = OptDebug|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-OptDebug.Build.0 = OptDebug|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-QA.ActiveCfg = QA|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-QA.Build.0 = QA|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-Retail.ActiveCfg = Retail|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-Retail.Build.0 = Retail|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
