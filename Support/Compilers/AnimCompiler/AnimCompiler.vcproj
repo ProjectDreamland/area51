@@ -13,81 +13,9 @@
 	</Platforms>
 	<Configurations>
 		<Configuration
-			Name="OptDebug|Win32"
-			OutputDirectory="C:\GameData\A51\Apps\Compilers_Dev"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2"
-			WholeProgramOptimization="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X)\..,$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\..\Support\Animation,$(X)\..\Support\ResourceMgr,$(X)\Auxiliary\MiscUtils,$(X)\..\Support,$(X)\..\Support\Render"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG,_CONSOLE,ANIM_COMPILER"
-				StringPooling="TRUE"
-				ExceptionHandling="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile=""
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.exe"
-				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.pdb"
-				SubSystem="1"
-				TargetMachine="1"/>
-			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.tlb"
-				HeaderFileName=""/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="C:\GameData\A51\Apps\Compilers_Dev"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
@@ -100,10 +28,7 @@
 				BasicRuntimeChecks="1"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Debug/AnimCompiler.pch"
-				AssemblerListingLocation=".\Debug/"
-				ObjectFile=".\Debug/"
-				ProgramDataBaseFileName=".\Debug/"
+				PrecompiledHeaderFile="$(OutDir)/AnimCompiler.pch"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="4"
@@ -112,16 +37,16 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.exe"
+				OutputFile="$(OutDir)/AnimCompiler.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.pdb"
+				ProgramDatabaseFile="$(OutDir)/AnimCompiler.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"
-				TypeLibraryName="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.tlb"
+				TypeLibraryName="$(OutDir)/AnimCompiler.tlb"
 				HeaderFileName=""/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
@@ -132,150 +57,6 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Retail|Win32"
-			OutputDirectory="C:\GameData\A51\Apps\Compilers_Dev"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="0"
-			WholeProgramOptimization="TRUE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X)\..,$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\..\Support\Animation,$(X)\..\Support\ResourceMgr,$(X)\Auxiliary\MiscUtils,$(X)\..\Support,$(X)\..\Support\Render"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL,_CONSOLE,ANIM_COMPILER"
-				StringPooling="TRUE"
-				ExceptionHandling="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile=""
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.exe"
-				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.pdb"
-				SubSystem="1"
-				TargetMachine="1"/>
-			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.tlb"
-				HeaderFileName=""/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="QA|Win32"
-			OutputDirectory="C:\GameData\A51\Apps\Compilers_Dev"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X)\..,$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\..\Support\Animation,$(X)\..\Support\ResourceMgr,$(X)\Auxiliary\MiscUtils,$(X)\..\Support,$(X)\..\Support\Render"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_QA_CONSOLE;ANIM_COMPILER;"
-				StringPooling="TRUE"
-				ExceptionHandling="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile=""
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.exe"
-				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.pdb"
-				SubSystem="1"
-				TargetMachine="1"/>
-			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName="C:\GameData\A51\Apps\Compilers_Dev/AnimCompiler.tlb"
-				HeaderFileName=""/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
 				Culture="1033"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
@@ -301,14 +82,6 @@
 			<File
 				RelativePath="..\..\ResourceMgr\ResourceMgr.cpp">
 				<FileConfiguration
-					Name="OptDebug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -316,22 +89,6 @@
 						AdditionalIncludeDirectories=""
 						PreprocessorDefinitions=""
 						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
 				</FileConfiguration>
 			</File>
 			<File
@@ -341,14 +98,6 @@
 		<File
 			RelativePath="AnimCompiler.cpp">
 			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
@@ -356,22 +105,6 @@
 					AdditionalIncludeDirectories=""
 					PreprocessorDefinitions=""
 					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -380,14 +113,6 @@
 		<File
 			RelativePath="..\..\Animation\AnimCompress.cpp">
 			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
@@ -395,22 +120,6 @@
 					AdditionalIncludeDirectories=""
 					PreprocessorDefinitions=""
 					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -419,14 +128,6 @@
 		<File
 			RelativePath="..\..\Animation\AnimDecompress.cpp">
 			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
@@ -434,35 +135,11 @@
 					AdditionalIncludeDirectories=""
 					PreprocessorDefinitions=""
 					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
 			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="..\..\Animation\AnimEvent.cpp">
 			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
@@ -470,35 +147,11 @@
 					AdditionalIncludeDirectories=""
 					PreprocessorDefinitions=""
 					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
 			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="..\..\Animation\AnimGroup.cpp">
 			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
@@ -506,35 +159,11 @@
 					AdditionalIncludeDirectories=""
 					PreprocessorDefinitions=""
 					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
 			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="..\..\Animation\AnimInfo.cpp">
 			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
@@ -542,35 +171,11 @@
 					AdditionalIncludeDirectories=""
 					PreprocessorDefinitions=""
 					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
 			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="..\..\Animation\AnimKeyData.cpp">
 			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
@@ -578,35 +183,11 @@
 					AdditionalIncludeDirectories=""
 					PreprocessorDefinitions=""
 					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
 			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="main.cpp">
 			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
@@ -614,22 +195,6 @@
 					AdditionalIncludeDirectories=""
 					PreprocessorDefinitions=""
 					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
 			</FileConfiguration>
 		</File>
 	</Files>
