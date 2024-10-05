@@ -24,7 +24,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support,$(X)\..\Apps\MeshViewer"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,_CONSOLE"
+				PreprocessorDefinitions="TARGET_PC,X_DEBUG"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
@@ -38,7 +38,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(X)\3rdParty\Xbox\Lib\xgraphics.lib"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/GeomCompiler.exe"
+				OutputFile="$(OutDir)/GeomCompiler.exe"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="LIBC.lib"
 				GenerateDebugInformation="TRUE"
