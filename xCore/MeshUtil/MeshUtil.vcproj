@@ -50,7 +50,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X)\Auxiliary\Parsing,$(X)\..\Support,$(X)\MeshUtil,$(X)\x_files,$(X)\Auxiliary\Bitmap,$(X)\Parsing,$(X)"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
+				DebugInformationFormat="4"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				Optimization="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool

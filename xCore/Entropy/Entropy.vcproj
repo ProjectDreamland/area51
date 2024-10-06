@@ -50,7 +50,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X)\..\support,$(X)\x_files,$(X)\Entropy,$(X)\Entropy\Audio,$(X)\3rdParty,$(X)\3rdParty\DirectX9"
-				PreprocessorDefinitions="TARGET_PC;CONFIG_DEBUG"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
+				DebugInformationFormat="4"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				Optimization="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool

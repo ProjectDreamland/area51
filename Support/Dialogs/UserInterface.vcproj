@@ -52,7 +52,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
+				DebugInformationFormat="4"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				Optimization="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool

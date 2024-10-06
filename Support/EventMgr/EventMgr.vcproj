@@ -51,7 +51,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X)\..\Support,$(X)\Auxiliary,$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\Eventmgr"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
+				DebugInformationFormat="4"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				Optimization="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
