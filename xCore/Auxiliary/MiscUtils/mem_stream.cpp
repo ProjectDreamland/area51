@@ -122,7 +122,7 @@ void mem_stream::Write( const void* pData, s32 Count )
 
     // Now Write the data
     // TODO: Change Indian here
-    x_memcpy( &m_pPtr[m_Pos], pData, Count );
+    x_memmove( &m_pPtr[m_Pos], pData, Count );
     m_Pos += Count;
 }
 

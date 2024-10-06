@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audiomgr", "AudioMgr.vcproj", "{55221814-70E0-430B-8947-881F19D9EE9F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug Win32 = Debug Win32
+		Debug Xbox = Debug Xbox
+		OptDebug Xbox = OptDebug Xbox
+		QA Xbox = QA Xbox
+		Release Win32 = Release Win32
+		Retail Xbox = Retail Xbox
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Debug Win32.ActiveCfg = Debug|Win32
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Debug Win32.Build.0 = Debug|Win32
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Debug Xbox.ActiveCfg = Debug|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Debug Xbox.Build.0 = Debug|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.OptDebug Xbox.ActiveCfg = OptDebug|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.OptDebug Xbox.Build.0 = OptDebug|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.QA Xbox.ActiveCfg = QA|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.QA Xbox.Build.0 = QA|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Release Win32.ActiveCfg = Release|Win32
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Release Win32.Build.0 = Release|Win32
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Retail Xbox.ActiveCfg = Retail|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Retail Xbox.Build.0 = Retail|Xbox
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

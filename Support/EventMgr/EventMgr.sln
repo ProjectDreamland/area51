@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EventMgr", "EventMgr.vcproj", "{363B0366-F4A2-4622-8ED8-225D1B5166B7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug Win32 = Debug Win32
+		Debug Xbox = Debug Xbox
+		OptDebug Xbox = OptDebug Xbox
+		QA Xbox = QA Xbox
+		Release Win32 = Release Win32
+		Retail Xbox = Retail Xbox
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.Debug Win32.ActiveCfg = Debug|Win32
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.Debug Win32.Build.0 = Debug|Win32
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.Debug Xbox.ActiveCfg = Debug|Xbox
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.Debug Xbox.Build.0 = Debug|Xbox
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.OptDebug Xbox.ActiveCfg = OptDebug|Xbox
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.OptDebug Xbox.Build.0 = OptDebug|Xbox
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.QA Xbox.ActiveCfg = QA|Xbox
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.QA Xbox.Build.0 = QA|Xbox
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.Release Win32.ActiveCfg = Release|Win32
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.Release Win32.Build.0 = Release|Win32
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.Retail Xbox.ActiveCfg = Retail|Xbox
+		{363B0366-F4A2-4622-8ED8-225D1B5166B7}.Retail Xbox.Build.0 = Retail|Xbox
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

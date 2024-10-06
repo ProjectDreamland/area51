@@ -1,216 +1,291 @@
 <?xml version="1.0" encoding="Windows-1252"?>
-<VisualStudioProject ProjectType="Visual C++" Version="7.10" Name="StringMgr">
-  <Platforms>
-    <Platform Name="Win32" />
-    <Platform Name="Xbox" />
-  </Platforms>
-  <Configurations>
-    <Configuration Name="PS2 DevKit Release|Win32" OutputDirectory=".\PS2-DevKit-Release" IntermediateDirectory=".\PS2-DevKit-Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_PS2_DEV;VENDOR_SN;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="4" EnableFunctionLevelLinking="TRUE" PrecompiledHeaderFile=".\PS2-DevKit-Release/StringMgr.pch" AssemblerListingLocation=".\PS2-DevKit-Release/" ObjectFile=".\PS2-DevKit-Release/" ProgramDataBaseFileName=".\PS2-DevKit-Release/" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-DevKit-Release\StringMgr.lib" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2 Client Release|Win32" OutputDirectory=".\PS2-Client-Release" IntermediateDirectory=".\PS2-Client-Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_PS2_CLIENT;VENDOR_SN;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="4" EnableFunctionLevelLinking="TRUE" PrecompiledHeaderFile=".\PS2-Client-Release/StringMgr.pch" AssemblerListingLocation=".\PS2-Client-Release/" ObjectFile=".\PS2-Client-Release/" ProgramDataBaseFileName=".\PS2-Client-Release/" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-Client-Release\StringMgr.lib" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2 DevKit Debug|Win32" OutputDirectory=".\PS2-DevKit-Debug" IntermediateDirectory=".\PS2-DevKit-Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_PS2_DEV;VENDOR_SN;X_DEBUG;X_ASSERT;$(USERNAME)" RuntimeLibrary="5" PrecompiledHeaderFile=".\PS2-DevKit-Debug/StringMgr.pch" AssemblerListingLocation=".\PS2-DevKit-Debug/" ObjectFile=".\PS2-DevKit-Debug/" ProgramDataBaseFileName=".\PS2-DevKit-Debug/" DebugInformationFormat="3" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-DevKit-Debug\StringMgr.lib" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="Release|Win32" OutputDirectory=".\Release" IntermediateDirectory=".\Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
-      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL" StringPooling="TRUE" RuntimeLibrary="4" EnableFunctionLevelLinking="TRUE" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Release/StringMgr.pch" AssemblerListingLocation=".\Release/" ObjectFile=".\Release/" ProgramDataBaseFileName=".\Release/" WarningLevel="3" SuppressStartupBanner="TRUE" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\Release\StringMgr.lib" SuppressStartupBanner="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2 DVD Debug|Win32" OutputDirectory=".\PS2-DVD-Debug" IntermediateDirectory=".\PS2-DVD-Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="X_DEBUG;X_ASSERT;TARGET_PS2_DVD;VENDOR_SN;$(USERNAME)" RuntimeLibrary="5" PrecompiledHeaderFile=".\PS2-DVD-Debug/StringMgr.pch" AssemblerListingLocation=".\PS2-DVD-Debug/" ObjectFile=".\PS2-DVD-Debug/" ProgramDataBaseFileName=".\PS2-DVD-Debug/" DebugInformationFormat="3" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-DVD-Debug\StringMgr.lib" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="Xbox Release|Win32" OutputDirectory=".\Release" IntermediateDirectory=".\Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" OptimizeForProcessor="2" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_XBOX_DVD;X_DEBUG;X_ASSERT;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="4" EnableFunctionLevelLinking="TRUE" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Release/StringMgr.pch" AssemblerListingLocation=".\Release/" ObjectFile=".\Release/" ProgramDataBaseFileName=".\Release/" WarningLevel="3" SuppressStartupBanner="TRUE" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\Release\StringMgr.lib" SuppressStartupBanner="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="Debug|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="4">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_XBOX,CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="5" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/StringMgr.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" BrowseInformation="1" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" SuppressStartupBanner="TRUE" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-    </Configuration>
-    <Configuration Name="PS2 Client Debug|Win32" OutputDirectory=".\PS2-Client-Debug" IntermediateDirectory=".\PS2-Client-Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_PS2_CLIENT;VENDOR_SN;X_DEBUG;X_ASSERT;$(USERNAME)" RuntimeLibrary="5" PrecompiledHeaderFile=".\PS2-Client-Debug/StringMgr.pch" AssemblerListingLocation=".\PS2-Client-Debug/" ObjectFile=".\PS2-Client-Debug/" ProgramDataBaseFileName=".\PS2-Client-Debug/" DebugInformationFormat="3" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-Client-Debug\StringMgr.lib" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="Debug|Win32" OutputDirectory=".\Debug" IntermediateDirectory=".\Debug" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE" CharacterSet="2">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG" BasicRuntimeChecks="3" RuntimeLibrary="5" UsePrecompiledHeader="2" PrecompiledHeaderFile=".\Debug/StringMgr.pch" AssemblerListingLocation=".\Debug/" ObjectFile=".\Debug/" ProgramDataBaseFileName=".\Debug/" WarningLevel="3" SuppressStartupBanner="TRUE" DebugInformationFormat="4" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\Debug\StringMgr.lib" SuppressStartupBanner="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2 DVD Release|Win32" OutputDirectory=".\PS2-DVD-Release" IntermediateDirectory=".\PS2-DVD-Release" ConfigurationType="4" UseOfMFC="0" ATLMinimizesCRunTimeLibraryUsage="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="2" InlineFunctionExpansion="1" AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support" PreprocessorDefinitions="TARGET_PS2_DVD;VENDOR_SN;$(USERNAME)" StringPooling="TRUE" RuntimeLibrary="4" EnableFunctionLevelLinking="TRUE" PrecompiledHeaderFile=".\PS2-DVD-Release/StringMgr.pch" AssemblerListingLocation=".\PS2-DVD-Release/" ObjectFile=".\PS2-DVD-Release/" ProgramDataBaseFileName=".\PS2-DVD-Release/" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" OutputFile=".\PS2-DVD-Release\StringMgr.lib" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="1033" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="OptDebug|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="4">
-      <Tool Name="VCCLCompilerTool" AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary" PreprocessorDefinitions="TARGET_XBOX,CONFIG_OPTDEBUG" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-    </Configuration>
-    <Configuration Name="QA|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="4">
-      <Tool Name="VCCLCompilerTool" AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary" PreprocessorDefinitions="TARGET_XBOX,CONFIG_QA" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-    </Configuration>
-    <Configuration Name="Retail|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="4">
-      <Tool Name="VCCLCompilerTool" AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary" PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLibrarianTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-    </Configuration>
-  </Configurations>
-  <References>
-  </References>
-  <Files>
-    <File RelativePath="StringMgr.cpp">
-      <FileConfiguration Name="PS2 DevKit Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="PS2 Client Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="PS2 DevKit Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="PS2 DVD Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Xbox Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="Debug|Xbox">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" BasicRuntimeChecks="3" BrowseInformation="1" />
-      </FileConfiguration>
-      <FileConfiguration Name="PS2 Client Debug|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="PS2 DVD Release|Win32">
-        <Tool Name="VCCLCompilerTool" Optimization="2" AdditionalIncludeDirectories="" PreprocessorDefinitions="" />
-      </FileConfiguration>
-      <FileConfiguration Name="OptDebug|Xbox">
-        <Tool Name="VCCLCompilerTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="QA|Xbox">
-        <Tool Name="VCCLCompilerTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="Retail|Xbox">
-        <Tool Name="VCCLCompilerTool" />
-      </FileConfiguration>
-	  <FileConfiguration Name="Release|Win32">
-        <Tool Name="VCCLCompilerTool" />
-      </FileConfiguration>
-	  <FileConfiguration Name="Debug|Win32">
-        <Tool Name="VCCLCompilerTool" />
-      </FileConfiguration>
-    </File>
-    <File RelativePath="StringMgr.hpp">
-    </File>
-  </Files>
-  <Globals>
-  </Globals>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="StringMgr"
+	ProjectGUID="{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+		<Platform
+			Name="Xbox"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\support"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_DEBUG"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+		</Configuration>
+		<Configuration
+			Name="OptDebug|Win32"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="OptDebug|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_OPTDEBUG"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+		</Configuration>
+		<Configuration
+			Name="QA|Win32"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="QA|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_QA"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+		</Configuration>
+		<Configuration
+			Name="Retail|Win32"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Retail|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<File
+			RelativePath="StringMgr.cpp">
+			<FileConfiguration
+				Name="Debug|Xbox">
+				<Tool
+					Name="VCCLCompilerTool"
+					Optimization="0"
+					AdditionalIncludeDirectories=""
+					PreprocessorDefinitions=""
+					BasicRuntimeChecks="3"
+					BrowseInformation="1"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="StringMgr.hpp">
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
 </VisualStudioProject>

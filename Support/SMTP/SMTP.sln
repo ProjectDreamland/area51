@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SMTP", "SMTP.vcproj", "{400DF6E5-DDEF-4668-A50B-C611A4F50538}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		EDITOR-Debug = EDITOR-Debug
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{400DF6E5-DDEF-4668-A50B-C611A4F50538}.EDITOR-Debug.ActiveCfg = EDITOR-Debug|Win32
+		{400DF6E5-DDEF-4668-A50B-C611A4F50538}.EDITOR-Debug.Build.0 = EDITOR-Debug|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
