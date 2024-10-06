@@ -520,13 +520,13 @@
         <FileConfiguration Name="Retail|Xbox" ExcludedFromBuild="TRUE">
           <Tool Name="VCCLCompilerTool"/>
         </FileConfiguration>
-		<FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE">
+		<FileConfiguration Name="Release|Win32" ExcludedFromBuild="TRUE"> <!-- pc_render.cpp is pulled up by render.cpp for PC platform. -->
           <Tool Name="VCCLCompilerTool"/>
         </FileConfiguration>
-		<FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
+		<FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE"> <!-- pc_render.cpp is pulled up by render.cpp for PC platform. -->
           <Tool Name="VCCLCompilerTool"/>
         </FileConfiguration>
-		<FileConfiguration Name="EDITOR-Debug|Win32" ExcludedFromBuild="TRUE">
+		<FileConfiguration Name="EDITOR-Debug|Win32" ExcludedFromBuild="TRUE"> <!-- pc_render.cpp is pulled up by render.cpp for PC platform. -->
           <Tool Name="VCCLCompilerTool"/>
         </FileConfiguration>
       </File>
