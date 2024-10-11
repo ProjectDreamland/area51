@@ -23,8 +23,7 @@
 
 s32 PlaySimpleMovie( const char* movieName );
 
-
-#if defined(TARGET_PS2)
+#ifdef TARGET_PS2
 #include "movieplayer_ps2.hpp"
 #else
 #include "movieplayer_bink.hpp"
@@ -63,11 +62,9 @@ private:
     friend  void    s_MoviePlayerThread(void*);
 };
 
-
-#if !defined( TARGET_PC )
+#ifdef TARGET_PC
 extern movie_player Movie;
 #endif
-
 
 xbool       movie_Play          (const char* pFilename,const xbool IsLooped=FALSE,const xbool Modal=TRUE);
 void        movie_Stop          (void);

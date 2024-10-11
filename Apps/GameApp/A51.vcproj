@@ -8,7 +8,7 @@
     <Configuration Name="Debug|Win32" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1" WholeProgramOptimization="FALSE">
       <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG" MinimalRebuild="TRUE" BasicRuntimeChecks="3" SmallerTypeCheck="FALSE" RuntimeLibrary="1" BufferSecurityCheck="TRUE" EnableFunctionLevelLinking="FALSE" EnableEnhancedInstructionSet="0" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="4" CompileAs="0" />
       <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9" IgnoreDefaultLibraryNames="libci.lib" GenerateDebugInformation="TRUE" />
+      <Tool Name="VCLinkerTool" AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib" AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win" IgnoreDefaultLibraryNames="libci.lib" GenerateDebugInformation="TRUE" />
       <Tool Name="VCMIDLTool" />
       <Tool Name="VCPostBuildEventTool" />
       <Tool Name="VCPreBuildEventTool" />

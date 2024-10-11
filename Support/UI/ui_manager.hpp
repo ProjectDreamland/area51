@@ -499,13 +499,7 @@ public:
 
     void            CheckForEndDialog       ( s32 UserID );
 
-#if defined(X_RETAIL)
     u32             GetActiveController     ( void )                { return m_ActiveController; }
-#else
-    u32             GetActiveController     ( void )                { ASSERTS(bInProcessInput, 
-                                                                      "Cannot use GetActiveController in this context.");
-                                                                      return m_ActiveController; }
-#endif
 
     f32             GetAlphaTime            ( void )                { return m_AlphaTime; }
 

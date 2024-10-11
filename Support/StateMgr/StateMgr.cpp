@@ -546,7 +546,9 @@ const char* state_mgr::GetStateName( sm_states State )
 
         LABEL_STRING( SM_MAIN_MENU );
         LABEL_STRING( SM_SETTINGS_MENU );
+#ifdef TARGET_XBOX		
         LABEL_STRING( SM_SETTINGS_HEADSET );
+#endif		
         LABEL_STRING( SM_SETTINGS_MEMCARD_SELECT );
         LABEL_STRING( SM_MANAGE_PROFILES );
         LABEL_STRING( SM_MANAGE_PROFILE_OPTIONS );
@@ -1335,7 +1337,9 @@ void state_mgr::EnterState( sm_states State )
         case SM_PRESS_START_SCREEN:             EnterPressStart();                  break;
         case SM_MAIN_MENU:                      EnterMainMenu();                    break;
         case SM_SETTINGS_MENU:                  EnterSettingsMenu();                break;
+#ifdef TARGET_XBOX
         case SM_SETTINGS_HEADSET:               EnterSettingsHeadset();             break;
+#endif
         case SM_SETTINGS_MEMCARD_SELECT:        EnterSettingsMemcardSelect();       break;
         case SM_MANAGE_PROFILES:                EnterManageProfiles();              break;
         case SM_MANAGE_PROFILE_OPTIONS:         EnterManageProfileOptions();        break;
@@ -1574,7 +1578,9 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_PRESS_START_SCREEN:             UpdatePressStart();                 break;
         case SM_MAIN_MENU:                      UpdateMainMenu();                   break;
         case SM_SETTINGS_MENU:                  UpdateSettingsMenu();               break;
+#ifdef TARGET_XBOX		
         case SM_SETTINGS_HEADSET:               UpdateSettingsHeadset();            break;
+#endif
         case SM_SETTINGS_MEMCARD_SELECT:        UpdateSettingsMemcardSelect();      break;
 
         case SM_MANAGE_PROFILES:                UpdateManageProfiles();             break;
@@ -2341,6 +2347,10 @@ xstring SelectBestClip( const char* pName )
     }
 #endif
 
+#ifdef TARGET_PC
+        return (const char*)xfs( "%s_640x480_%d",pName,30 );
+#endif
+
 #ifdef TARGET_PS2
     xbool bIsPal;
     eng_GetPALMode( bIsPal );
@@ -2864,12 +2874,13 @@ void state_mgr::UpdateSettingsMenu( void )
                 SetState( SM_MAIN_MENU );
             }
             break;
-
+#ifdef TARGET_XBOX
             case DIALOG_STATE_SELECT:
             {
                 SetState( SM_SETTINGS_HEADSET );
             }
             break;
+#endif			
 
             case DIALOG_STATE_MEMCARD_ERROR:
             {
@@ -2887,7 +2898,7 @@ void state_mgr::ExitSettingsMenu( void )
 }
 
 //=========================================================================
-
+#ifdef TARGET_XBOX
 void state_mgr::EnterSettingsHeadset( void )
 {
     //  create options main menu
@@ -2923,7 +2934,7 @@ void state_mgr::UpdateSettingsHeadset( void )
 void state_mgr::ExitSettingsHeadset( void )
 {
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::EnterSettingsMemcardSelect( void )
@@ -10229,7 +10240,13 @@ void state_mgr::EnterMultiPlayerLoadMission( void )
 //=========================================================================
 
 void state_mgr::UpdateMultiPlayerLoadMission( void )
+#if defined ( TARGET_PC ) 
 {
+} 
+#endif
+#if defined ( TARGET_XBOX ) 
+{
+	
     if( m_bShowingScores==FALSE )
     {
         ASSERT( m_CurrentDialog != NULL );
@@ -10289,10 +10306,15 @@ void state_mgr::UpdateMultiPlayerLoadMission( void )
         }
     }
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::ExitMultiPlayerLoadMission( void )
+#if defined ( TARGET_PC ) 
+{
+} 
+#endif
+#if defined ( TARGET_XBOX ) 
 {
     if( m_bShowingScores )
     {
@@ -10317,6 +10339,7 @@ void state_mgr::ExitMultiPlayerLoadMission( void )
     g_DemoIdleTimer.Start();
 #endif
 }
+#endif
 
 //=========================================================================
 void state_mgr::EnterServerCooldown( void )
@@ -10533,7 +10556,7 @@ void state_mgr::DisableBackgoundMovie( void )
 
 void state_mgr::PlayMovie( const char* pFilename, xbool bResident, xbool bLooped )
 {
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
     if( !m_bPlayMovie )
     {
         // startup movie player
@@ -10552,7 +10575,7 @@ void state_mgr::PlayMovie( const char* pFilename, xbool bResident, xbool bLooped
 
 void state_mgr::CloseMovie( void )
 {
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
     if( m_bPlayMovie )
     {
         // close movie and shutdown player

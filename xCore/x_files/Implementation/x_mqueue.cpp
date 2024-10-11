@@ -158,7 +158,7 @@ void *xmesgq::Recv(s32 flags)
         if (IsEmpty())
         {
             x_EndAtomic();
-            return FALSE;
+            return NULL;
         }
     }
     else

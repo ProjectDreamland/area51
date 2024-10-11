@@ -6068,36 +6068,12 @@
 			Filter="">
 			<File
 				RelativePath="..\MoviePlayer\MoviePlayer.cpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\MoviePlayer\MoviePlayer.hpp">
 			</File>
 			<File
-				RelativePath="..\MoviePlayer\MoviePlayer_Bink.cpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
+				RelativePath="..\MoviePlayer\MoviePlayer_bink.cpp">
 			</File>
 			<File
 				RelativePath="..\MoviePlayer\MoviePlayer_bink.hpp">

@@ -24,7 +24,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support,$(X)\..\Apps\MeshViewer"
-				PreprocessorDefinitions="TARGET_PC,X_DEBUG"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
@@ -38,13 +38,170 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="$(X)\3rdParty\Xbox\Lib\xgraphics.lib"
-				OutputFile="$(OutDir)/GeomCompiler.exe"
+				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/GeomCompiler.exe"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="LIBC.lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/GeomCompiler.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="OptDebug|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1"
+			CharacterSet="0">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="2"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support,$(X)\..\Apps\MeshViewer"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG,_CONSOLE"
+				StringPooling="TRUE"
+				MinimalRebuild="FALSE"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="FALSE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="xgraphics.lib"
+				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/GeomCompiler.exe"
+				LinkIncremental="1"
+				IgnoreDefaultLibraryNames="libc"
+				GenerateDebugInformation="TRUE"
+				SubSystem="1"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="QA|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support,$(X)\..\Apps\MeshViewer"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_QA,_CONSOLE"
+				RuntimeLibrary="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="xgraphics.lib"
+				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/GeomCompiler.exe"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Retail|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1"
+			WholeProgramOptimization="TRUE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="2"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support,$(X)\..\Apps\MeshViewer"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL,_CONSOLE"
+				StringPooling="TRUE"
+				RuntimeLibrary="0"
+				BufferSecurityCheck="FALSE"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				WarningLevel="3"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/LTCG"
+				AdditionalDependencies="xgraphics.lib"
+				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/GeomCompiler.exe"
+				IgnoreDefaultLibraryNames="libc"
+				GenerateDebugInformation="TRUE"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -92,6 +249,12 @@
 				RelativePath="..\..\..\xCore\Auxiliary\MiscUtils\Guid.hpp">
 			</File>
 			<File
+				RelativePath="..\..\..\xCore\MeshUtil\RawSettings.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\xCore\MeshUtil\RawSettings.hpp">
+			</File>
+			<File
 				RelativePath="..\..\..\xCore\Auxiliary\MiscUtils\mem_stream.cpp">
 			</File>
 			<File
@@ -102,12 +265,6 @@
 			</File>
 			<File
 				RelativePath="..\..\..\xCore\Auxiliary\MiscUtils\Property.hpp">
-			</File>
-			<File
-				RelativePath="..\..\..\xCore\MeshUtil\RawSettings.cpp">
-			</File>
-			<File
-				RelativePath="..\..\..\xCore\MeshUtil\RawSettings.hpp">
 			</File>
 			<File
 				RelativePath="..\..\..\Apps\MeshViewer\RigidDesc.cpp">

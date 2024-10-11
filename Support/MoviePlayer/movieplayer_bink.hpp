@@ -3,60 +3,44 @@
 
 #include "x_target.hpp"
 
-#if defined(TARGET_PS2)
+#ifdef TARGET_PS2
 #error This file should not be included for PlayStation 2. Please check your exclusions on your project spec.
 #endif
 
-
-//#include "x_files.hpp"
-//#include "x_threads.hpp"
-//#include "Entropy.hpp"
-//#include "audio/audio_hardware.hpp"
-
-#include "entropy.hpp"
-
-//------ Gamecube definitions and includes
-#if defined(TARGET_GCN)
-#include "dolphin/os.h"
-
-#define MOVIE_FIXED_WIDTH   640
-#define MOVIE_STRIP_WIDTH   64
-#define MOVIE_STRIP_HEIGHT  512
-
-#define MOVIE_BITMAP_FORMAT (xbitmap::FMT_32_ARGB_8888)
-#define BINK_BITMAP_FORMAT	BINKSURFACE32
-#define XBITMAP_FLAGS       (xbitmap::FLAG_GCN_DATA_SWIZZLED)
-#define __RADNGC__
-#ifndef GEKKO
-#define GEKKO
-#endif
+#include "x_files.hpp"
+#include "Entropy.hpp"
+#include "audio/audio_hardware.hpp"
 
 //------ XBox definitions and includes
-#elif defined(TARGET_XBOX)
-
+#ifdef TARGET_XBOX
 #define MOVIE_FIXED_WIDTH   640
 #define MOVIE_STRIP_WIDTH   640
 #define MOVIE_STRIP_HEIGHT  512
 
 #define MOVIE_BITMAP_FORMAT (xbitmap::FMT_32_ARGB_8888)
-#define BINK_BITMAP_FORMAT	BINKSURFACE32
+#define BINK_BITMAP_FORMAT    BINKSURFACE32
 #define XBITMAP_FLAGS       (0)
 #define __RADXBOX__
 
-//------ PC definitions and includes
-#elif defined(TARGET_PC)
-
-#define MOVIE_BITMAP_FORMAT (xbitmap::FMT_32_RGBA_8888)
-#define BINK_BITMAP_FORMAT	BINKSURFACE32
-#define XBITMAP_FLAGS       (0)
-
-#else
-
-#error "Need bitmap type definitions for bink playback"
-
+#include <3rdParty\BinkXbox\Include\bink.h>
 #endif
 
-#include <3rdParty\BinkXbox\Include\bink.h>
+//------ PC definitions and includes
+#ifdef TARGET_PC
+#define MOVIE_FIXED_WIDTH   640
+#define MOVIE_STRIP_WIDTH   640
+//#define MOVIE_STRIP_HEIGHT  512
+
+#define MOVIE_BITMAP_FORMAT (xbitmap::FMT_32_URGB_8888)
+#define BINK_BITMAP_FORMAT    BINKSURFACE32
+#define XBITMAP_FLAGS       (0)
+#define __RADWIN__
+
+#include <3rdParty\BinkXBOX\Include\bink.h>
+
+//Actually Bink XBOX is multi-platform, so we can use its libraries for PC, except binkw32.lib and binkw32.dll
+//#include <3rdParty\BinkSDK\bink.h>
+#endif
 
 class movie_private
 {
@@ -89,7 +73,7 @@ public:
 private:
     xbool           m_IsRunning;            // Player background thread is running
     xbitmap*        m_pBitmaps[2];
-    xmesgq*         m_pqFrameAvail;          // A bitmap has been decoded, rendered and ready for decoding again
+    xmesgq*         m_pqFrameAvail;         // A bitmap has been decoded, rendered and ready for decoding again
     xbool           m_IsFinished;           // Movie is complete
     s32             m_nMaxBitmaps;          // Number of bitmaps allocated (for 640 wide)
     s32             m_nBitmaps;             // Number of bitmaps used
@@ -106,6 +90,5 @@ private:
     vector3         m_Pos;
 #endif
 };
-
 
 #endif // MOVIEPLAYER_HPP
