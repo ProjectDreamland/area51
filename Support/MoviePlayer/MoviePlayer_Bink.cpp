@@ -17,7 +17,7 @@ movie_player Movie;
 #endif
 
 #ifdef TARGET_PC
-#define NUM_BUFFERS 2 // or 1 ?
+#define NUM_BUFFERS 1 // or 2 ?
 #endif
 
 //------------------------------------------------------------------------------
@@ -46,35 +46,8 @@ void movie_private::Init(void)
     m_pqFrameAvail = new xmesgq(2);
 
     m_nMaxBitmaps = MOVIE_FIXED_WIDTH / MOVIE_STRIP_WIDTH;
-#ifdef TARGET_XBOX
-/*
-    for (s32 i=0;i<NUM_BUFFERS;i++)
-    {
-        u32 nFrameBufferBytes = 640*480*sizeof(s32);
-        m_pBitmaps[i] = new xbitmap;
-        ASSERT( m_pBitmaps[i] );
 
-        IDirect3DSurface8* Surface;
-        texture_factory::handle Handle = g_TextureFactory.Create(
-            "Movie player"      , // Resource name
-            640*4               , // Pitch
-            640                 , // Width
-            480                 , // Height
-            Surface             , // Surface
-            D3DFMT_LIN_A8R8G8B8 , // Diffuse buffer format
-            kPOOL_TILED );
-
-        m_pBitmaps[i]->Setup( MOVIE_BITMAP_FORMAT,640,480,FALSE,(byte*)Handle->GetPtr() );
-
-        extern s32 vram_Register( texture_factory::handle );
-        s32 ID = vram_Register( Handle );
-        m_pBitmaps[i]->Preregistered();
-        m_pBitmaps[i]->SetVRAMID(ID);
-    }
-    m_nBitmaps=1;
-*/
-#endif
-    m_Language = XL_LANG_ENGLISH;   // defined as 0
+    m_Language = XL_LANG_ENGLISH;
     m_Volume = 1.0f;
 }
 
@@ -113,7 +86,7 @@ xbool movie_private::Open(const char* pFilename, xbool PlayResident, xbool IsLoo
         m_IsFinished = TRUE;
         return FALSE;
     }
-
+    
     BinkSetVolume(m_Handle, m_Language, (s32)(m_Volume * 32767));
     m_Width = m_Handle->Width;
     m_Height = m_Handle->Height;
@@ -131,10 +104,8 @@ xbool movie_private::Open(const char* pFilename, xbool PlayResident, xbool IsLoo
 //------------------------------------------------------------------------------
 void movie_private::SetVolume(f32 Volume)
 {
-#if defined(TARGET_PC)
     m_Volume = Volume;
     BinkSetVolume(m_Handle,m_Language,(s32)(m_Volume*32767));
-#endif
 }
 
 //------------------------------------------------------------------------------
@@ -142,6 +113,7 @@ void movie_private::Close(void)
 {
     if (!m_Handle)
         return;
+    BinkClose(m_Handle);
     m_Handle = NULL;  
     Kill();
 }
@@ -151,9 +123,7 @@ void movie_private::Pause(void)
 {
     if (Movie.IsPlaying())
     {
-#ifdef TARGET_PC
     BinkPause(m_Handle,1);
-#endif
     }
 }
 
@@ -162,9 +132,7 @@ void movie_private::Resume(void)
 {
     if (Movie.IsPlaying())
     {
-#ifdef TARGET_PC
     BinkPause(m_Handle,0);
-#endif
     }
 }
 
@@ -196,7 +164,7 @@ void movie_private::Kill(void)
         {
             vram_Unregister( *m_pBitmaps[i] );
             m_pBitmaps[i]->DePreregister();
-	        delete m_pBitmaps[i];
+            delete m_pBitmaps[i];
             m_pBitmaps[i] = NULL;
         }
     }
@@ -234,10 +202,10 @@ xbitmap* movie_private::Decode(void)
 
     D3DLOCKED_RECT LockedRect;
     VERIFY(!pBackBuffer->LockRect(&LockedRect, NULL, 0));
-	
-	s32 WindowWidth, WindowHeight;
+    
+    s32 WindowWidth, WindowHeight;
     eng_GetRes(WindowWidth, WindowHeight);
-	x_printf("Window Width: %d, Window Height: %d\n", WindowWidth, WindowHeight);
+    //x_printf("Window Width: %d, Window Height: %d\n", WindowWidth, WindowHeight);
 
     u8* pBuffer = (u8*)LockedRect.pBits;
     BinkCopyToBuffer

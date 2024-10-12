@@ -62,9 +62,7 @@ private:
     friend  void    s_MoviePlayerThread(void*);
 };
 
-#ifdef TARGET_PC
 extern movie_player Movie;
-#endif
 
 xbool       movie_Play          (const char* pFilename,const xbool IsLooped=FALSE,const xbool Modal=TRUE);
 void        movie_Stop          (void);

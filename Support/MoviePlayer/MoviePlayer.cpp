@@ -27,8 +27,8 @@ void movie_player::Init(void)
 {
     // TODO: CTetrick - I'll clean this up... 
     // in a hurry now - I think PS2 needs the lang set prior to init.
-    // will verify and clean up ASAP.
-    m_Private.Init();    
+    // will verify and clean up ASAP.    
+    m_Private.Init();
     SetLanguage( x_GetLocale() );
 }
 
@@ -140,28 +140,28 @@ void movie_player::SetLanguage(const s32 Language)
 //=========================================================================
 s32 PlaySimpleMovie(const char* movieName)
 {
-    view View;
-    s32 width;
-    s32 height;
+    //view    View;
+    s32     width;
+    s32     height;
     vector2 Pos;
     vector2 Size;
-    xbool ret = FALSE;
-
+    xbool   ret     = FALSE;
+    
     Movie.Init();
     global_settings& Settings = g_StateMgr.GetActiveSettings();
-    Movie.SetVolume(Settings.GetVolume(VOLUME_SPEECH) / 100.0f);
-
+    Movie.SetVolume( Settings.GetVolume( VOLUME_SPEECH ) / 100.0f );
+ 
     ret = Movie.Open(movieName, FALSE, FALSE);
 
-    if (ret)
+    if( ret )
     {
-        View.SetXFOV(R_60);
-        View.SetPosition(vector3(0, 0, 200));
-        View.LookAtPoint(vector3(0, 0, 0));
-        View.SetZLimits(0.1f, 1000.0f);
-        eng_MaximizeViewport(View);
-        eng_SetView(View);
-        eng_GetRes(width, height);
+        //View.SetXFOV( R_60 );
+        //View.SetPosition( vector3(0,0,200) );
+        //View.LookAtPoint( vector3(  0,  0,  0) );
+        //View.SetZLimits ( 0.1f, 1000.0f );
+        //eng_MaximizeViewport( View );
+        //eng_SetView         ( View ) ;
+        eng_GetRes(width,height);
 #ifdef TARGET_PS2
         Size.X = (f32)width;
         Size.Y = (f32)height;
@@ -169,34 +169,41 @@ s32 PlaySimpleMovie(const char* movieName)
         Size.X = 640.0f;
         Size.Y = 480.0f;
 #endif
-        Pos.X = (width - Size.X) / 2.0f;
-        Pos.Y = (height - Size.Y) / 2.0f;
+
+        Pos.X = (width-Size.X)/2.0f;
+        Pos.Y = (height-Size.Y)/2.0f;
 
         xbool done = FALSE;
 
-        while (!done)
+        while(!done)
         {
             if (ret)
             {
-                if (!Movie.IsPlaying())
+                if (!Movie.IsPlaying() )
                     break;
-                g_InputMgr.Update(1.0f / 60.0f);
-                g_NetworkMgr.Update(1.0f / 60.0f);
-                Movie.Render(Pos, Size);
+                g_InputMgr.Update  ( 1.0f / 60.0f );
+                g_NetworkMgr.Update( 1.0f / 60.0f );
+                Movie.Render(Pos,Size);
                 eng_PageFlip();
+
 #ifdef TARGET_XBOX
+                //if( (g_ActiveConfig.GetExitReason()!=GAME_EXIT_CONTINUE) && (g_ActiveConfig.GetExitReason()!=GAME_EXIT_GAME_COMPLETE) )
+                //{
+                //  done = TRUE;
+                //}
                 if( input_WasPressed( INPUT_XBOX_BTN_START, -1 ) || input_WasPressed( INPUT_XBOX_BTN_A, -1 ) ) 
+#else
+                if( input_WasPressed( INPUT_PS2_BTN_CROSS, 0 ) || input_WasPressed( INPUT_PS2_BTN_CROSS, 1 ) ) 
 #endif
-#ifdef TARGET_PS2
-                if( input_WasPressed( INPUT_PS2_BTN_CROSS, 0 ) || input_WasPressed( INPUT_PS2_BTN_CROSS, 1 ) )
-#endif
+                done = TRUE;
+
             }
         }
         eng_PageFlip();
         Movie.Close();
     }
     Movie.Kill();
-    return ret;
+    return( ret );
 }
 
 
