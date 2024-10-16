@@ -34,96 +34,96 @@ The comments for them have also been changed to reflect their
 specific use inside the Persistent Storage SDK.
 **************************/
 #if 0
-	/* Error codes */
-	#define GE_NOERROR		0
-	#define GE_NOSOCKET		1 /* Unable to create a socket */
-	#define GE_NODNS		2 /* Unable to resolve a DNS name */
-	#define GE_NOCONNECT	3 /* Unable to connect to stats server, or connection lost */
-	#define GE_BUSY			4 /* Not used */
-	#define GE_DATAERROR	5 /* Bad data from the stats server */
+    /* Error codes */
+    #define GE_NOERROR        0
+    #define GE_NOSOCKET        1 /* Unable to create a socket */
+    #define GE_NODNS        2 /* Unable to resolve a DNS name */
+    #define GE_NOCONNECT    3 /* Unable to connect to stats server, or connection lost */
+    #define GE_BUSY            4 /* Not used */
+    #define GE_DATAERROR    5 /* Bad data from the stats server */
 
-	/* You need to fill these in with your game-specific info */
-	extern char gcd_secret_key[256];
-	extern char gcd_gamename[256];
+    /* You need to fill these in with your game-specific info */
+    extern char gcd_secret_key[256];
+    extern char gcd_gamename[256];
 
-	/********
-	InitStatsConnection
+    /********
+    InitStatsConnection
 
-	DESCRIPTION
-	Opens a connection to the stats / persistent storage server. Should be done before calling
-	any of the other persistent storage functions. May block for 1-2 secs
-	while the connection is established so you will want to do this before
-	gameplay starts or in another thread.
+    DESCRIPTION
+    Opens a connection to the stats / persistent storage server. Should be done before calling
+    any of the other persistent storage functions. May block for 1-2 secs
+    while the connection is established so you will want to do this before
+    gameplay starts or in another thread.
 
-	PARAMETERS
-	gameport: integer port associated with your server (may be the same as
-		your developer spec query port). If not	appropriate for your game, pass in 0.
+    PARAMETERS
+    gameport: integer port associated with your server (may be the same as
+        your developer spec query port). If not    appropriate for your game, pass in 0.
 
-	RETURNS
-	GE_NODNS: Unable to resolve stats server DNS
-	GE_NOSOCKET: Unable to create data socket
-	GE_NOCONNECT: Unable to connect to stats server
-	GE_DATAERROR: Unable to receive challenge from stats server, or bad challenge
-	GE_NOERROR: Connected to stats server and ready to send data
+    RETURNS
+    GE_NODNS: Unable to resolve stats server DNS
+    GE_NOSOCKET: Unable to create data socket
+    GE_NOCONNECT: Unable to connect to stats server
+    GE_DATAERROR: Unable to receive challenge from stats server, or bad challenge
+    GE_NOERROR: Connected to stats server and ready to send data
 
-	Note: If the connection fails, all Persistent Storage functions will fail.
-	*********/
-	int InitStatsConnection(int gameport);
+    Note: If the connection fails, all Persistent Storage functions will fail.
+    *********/
+    int InitStatsConnection(int gameport);
 
-	/********
-	IsStatsConnected
+    /********
+    IsStatsConnected
 
-	DESCRIPTION
-	Returns whether or not you are currently connected to the stats server. Even
-	if your initial connection was successful, you may lose connection later and
-	want to try to reconnnect.
-	If a callback returns unsuccessfully, check this function to see if it was
-	because of a disconnection.
+    DESCRIPTION
+    Returns whether or not you are currently connected to the stats server. Even
+    if your initial connection was successful, you may lose connection later and
+    want to try to reconnnect.
+    If a callback returns unsuccessfully, check this function to see if it was
+    because of a disconnection.
 
-	RETURNS
-	1 if connected, 0 otherwise
-	*********/
-	int IsStatsConnected();
+    RETURNS
+    1 if connected, 0 otherwise
+    *********/
+    int IsStatsConnected();
 
-	/********
-	CloseStatsConnection
+    /********
+    CloseStatsConnection
 
-	DESCRIPTION
-	Closes the connection to the stats server. You should do this when done
-	with the connection.
-	*********/
-	void CloseStatsConnection(void);
+    DESCRIPTION
+    Closes the connection to the stats server. You should do this when done
+    with the connection.
+    *********/
+    void CloseStatsConnection(void);
 
-	/********
-	GetChallenge
+    /********
+    GetChallenge
 
-	DESCRIPTION
-	Returns the string to pass as the challenge to the GenerateAuth function.
+    DESCRIPTION
+    Returns the string to pass as the challenge to the GenerateAuth function.
 
-	PARAMETERS
-	game: Pass in NULL (or your current game, if you are also using the Stats SDK)
+    PARAMETERS
+    game: Pass in NULL (or your current game, if you are also using the Stats SDK)
 
-	RETURNS
-	A string to pass to GenerateAuth to create the authentication hash
-	*********/
-	char *GetChallenge(statsgame_t game);
+    RETURNS
+    A string to pass to GenerateAuth to create the authentication hash
+    *********/
+    char *GetChallenge(statsgame_t game);
 
-	/********
-	GenerateAuth
+    /********
+    GenerateAuth
 
-	DESCRIPTION
-	Used to generate on the "challengeresponse" parameter for the PreAuthenticatePlayer
-	functions. 
+    DESCRIPTION
+    Used to generate on the "challengeresponse" parameter for the PreAuthenticatePlayer
+    functions. 
 
-	PARAMETERS
-	challenge: The challenge string generated by GetChallange.
-	password: The CD Key (un-hashed) or profile password
-	response: The output authentication string
+    PARAMETERS
+    challenge: The challenge string generated by GetChallange.
+    password: The CD Key (un-hashed) or profile password
+    response: The output authentication string
 
-	RETURNS
-	A pointer to response
-	*********/
-	char *GenerateAuth(char *challenge, gsi_char *password,/*[out]*/char response[33]);
+    RETURNS
+    A pointer to response
+    *********/
+    char *GenerateAuth(char *challenge, gsi_char *password,/*[out]*/char response[33]);
 #endif //#ifdef 0 section from gstats.h
 
 /*************************
@@ -132,19 +132,19 @@ the Persistent Storage SDK
 **************************/
 
 #ifndef GSI_UNICODE
-#define GenerateAuth				GenerateAuthA
-#define PreAuthenticatePlayerCD		PreAuthenticatePlayerCDA
-#define GetProfileIDFromCD			GetProfileIDFromCDA
-#define GetPersistDataValues		GetPersistDataValuesA
+#define GenerateAuth                GenerateAuthA
+#define PreAuthenticatePlayerCD        PreAuthenticatePlayerCDA
+#define GetProfileIDFromCD            GetProfileIDFromCDA
+#define GetPersistDataValues        GetPersistDataValuesA
 #define GetPersistDataValuesModified GetPersistDataValuesModifiedA
-#define SetPersistDataValues		SetPersistDataValuesA
+#define SetPersistDataValues        SetPersistDataValuesA
 #else
-#define GenerateAuth				GenerateAuthW
-#define PreAuthenticatePlayerCD		PreAuthenticatePlayerCDW
-#define GetProfileIDFromCD			GetProfileIDFromCDW
-#define GetPersistDataValues		GetPersistDataValuesW
+#define GenerateAuth                GenerateAuthW
+#define PreAuthenticatePlayerCD        PreAuthenticatePlayerCDW
+#define GetProfileIDFromCD            GetProfileIDFromCDW
+#define GetPersistDataValues        GetPersistDataValuesW
 #define GetPersistDataValuesModified GetPersistDataValuesModifiedW
-#define SetPersistDataValues		SetPersistDataValuesW
+#define SetPersistDataValues        SetPersistDataValuesW
 #endif
 
 /********
@@ -192,15 +192,15 @@ profileid: The profileid of the user who the data was requested for
 type: The type of persistent data being returned
 index: The persistent data index
 success: 1 if the data was retrieved successfully 
-		 2 if the data had not been modified since the time requested
-		< 1 if there was an error
+         2 if the data had not been modified since the time requested
+        < 1 if there was an error
 modified: The last time the data for this index was modified (any persist type)
-		Only returned if success is 1
+        Only returned if success is 1
 data: Pointer to the data being returned. Note: you must use or copy
-	off the data before returning from the callback, as it may be freed or overwritten
-	once the callback is complete.
+    off the data before returning from the callback, as it may be freed or overwritten
+    once the callback is complete.
 len:  Length of the data being returned. 0 indicates that no data was stored on the server
-	(if success was 1)
+    (if success was 1)
 instance: Opaque value passed into the GetPersistData function (for your use)
 *****************/
 typedef void (*PersDataCallbackFn)(int localid, int profileid, persisttype_t type, int index, int success, time_t modified, char *data, int len, void *instance);
@@ -259,20 +259,20 @@ same game if needed.
 
 PARAMETERS
 localid: Your game-specific reference number for this player, returned in the callback
-	to allow you to identify which player it is referring to.
+    to allow you to identify which player it is referring to.
 profileid: (PreAuthenticatePlayerPM) The profileid of the player being authenicated. This can be obtained in the 
-	Presence & Messaging SDK through gpIDFromProfile()
+    Presence & Messaging SDK through gpIDFromProfile()
 nick: (PreAuthenticatePlayerCD) Nickname of the player to authenticate. Note that the nickname is not actually
-	authenticated, it is simply used to determine which profile under the authenticated CD Key to use.
-	Each CD Key can have mutiple profiles, each using a different nick.
+    authenticated, it is simply used to determine which profile under the authenticated CD Key to use.
+    Each CD Key can have mutiple profiles, each using a different nick.
 keyhash: (PreAuthenticatePlayerCD) Hash of the player's CD Key. If used on the server, this can be obtained from gcd_getkeyhash
-	On the client, you can easily get the hash by calling GenerateAuth() with challenge as an empty string ("")
-	and the CD Key has the password parameter.
+    On the client, you can easily get the hash by calling GenerateAuth() with challenge as an empty string ("")
+    and the CD Key has the password parameter.
 challengeresponse: Result of the GenerateAuth() call, after passing in the challenge and the client's 
-	password or CD Key
+    password or CD Key
 PersAuthCallbackFn: Callback to be called after the authentication is complete
 instance: Pointer that will be passed to the callback function (for your use)
-	Typically used for passing an object or structure pointer into the callback.
+    Typically used for passing an object or structure pointer into the callback.
 *****************/
 void PreAuthenticatePlayerPartner(int localid, char* authtoken, char *challengeresponse, PersAuthCallbackFn callback, void *instance);
 void PreAuthenticatePlayerPM(int localid, int profileid,  char *challengeresponse, PersAuthCallbackFn callback, void *instance);
@@ -290,7 +290,7 @@ with PreAuthenticatePlayerCD.
 
 PARAMETERS
 localid: Your game-specific reference number for this player, returned in the callback
-	to allow you to identify which player it is referring to.
+    to allow you to identify which player it is referring to.
 nick: The nick of the user whose profileid you are looking up
 keyhash: The CD Key Hash of the user whose profileid you are looking up
 ProfileCallbackFn: Callback to be called when the lookup is completed
@@ -309,16 +309,16 @@ player can get any other player's public data.
 
 PARAMETERS
 localid: Your game-specific reference number for this player, returned in the callback
-	to allow you to identify which player it is referring to.
+    to allow you to identify which player it is referring to.
 profileid: The profileid of the player whose data you are looking up. 
-	Returned by gpIDFromProfile() in the Presence & Messaging SDK, or using GetProfileIDFromCD
+    Returned by gpIDFromProfile() in the Presence & Messaging SDK, or using GetProfileIDFromCD
 type: The type of persistent data you are looking up
 index: Each profile can have multiple persistent data records associated with them. Usually you
-	just want to use index 0.
+    just want to use index 0.
 modifiedsince: A time value to limit the request for data. Data will only be returned if it has been
-	modified since the time provided. If data has not been modified since that time, the callback will be
-	called with a success value that indicates it is unmodified.
-	Note: modification time is tracked for the given profileid/index, not on a per persisttype basis
+    modified since the time provided. If data has not been modified since that time, the callback will be
+    called with a success value that indicates it is unmodified.
+    Note: modification time is tracked for the given profileid/index, not on a per persisttype basis
 PersDataCallbackFn: Callback that will be called with the data when it is returned
 ProfileCallbackFn: Callback to be called when the lookup is completed
 instance: Pointer that will be passed to the callback function (for your use)
@@ -337,16 +337,16 @@ unless no data is available (in which case len will be 0 in the callback).
 
 PARAMETERS
 localid: Your game-specific reference number for this player, returned in the callback
-	to allow you to identify which player it is referring to.
+    to allow you to identify which player it is referring to.
 profileid: The profileid of the player whose data you are looking up. 
-	Returned by gpIDFromProfile() in the Presence & Messaging SDK, or using GetProfileIDFromCD
+    Returned by gpIDFromProfile() in the Presence & Messaging SDK, or using GetProfileIDFromCD
 type: The type of persistent data you are looking up
 index: Each profile can have multiple persistent data records associated with them. Usually you
-	just want to use index 0.
+    just want to use index 0.
 modifiedsince: A time value to limit the request for data. Data will only be returned if it has been
-	modified since the time provided. If data has not been modified since that time, the callback will be
-	called with a success value that indicates it is unmodified.
-	Note: modification time is tracked for the given profileid/index, not on a per-persisttype or per-key basis
+    modified since the time provided. If data has not been modified since that time, the callback will be
+    called with a success value that indicates it is unmodified.
+    Note: modification time is tracked for the given profileid/index, not on a per-persisttype or per-key basis
 keys: A "\" delimited list of the keys you want returned (for example: "\clan\color\homepage\birthday")
 PersDataCallbackFn: Callback that will be called with the data when it is returned
 instance: Pointer that will be passed to the callback function (for your use)
@@ -363,15 +363,15 @@ The profileid for whom the data is being set MUST have been authenticated alread
 
 PARAMETERS
 localid: Your game-specific reference number for this player, returned in the callback
-	to allow you to identify which player it is referring to.
+    to allow you to identify which player it is referring to.
 profileid: The profileid of the player whose data you are setting. 
-	The player must have already been authenticated with one of the PreAuthenticatePlayer functions.
+    The player must have already been authenticated with one of the PreAuthenticatePlayer functions.
 type: The type of persistent data you are setting. Only rw data is setable.
 index: Each profile can have multiple persistent data records associated with them. Usually you
-	just want to use index 0.
+    just want to use index 0.
 data: The persistent data to be saved
 len: The length of the data. If you are setting key\value delimited data, make 
-	sure the "len" parameter includes length of the null terminator
+    sure the "len" parameter includes length of the null terminator
 PersDataSaveCallbackFn: Callback that will be called with the data save is complete
 instance: Pointer that will be passed to the callback function (for your use)
 *****************/
@@ -387,12 +387,12 @@ they keyvalues parameter will be updated, the other pairs will stay the same.
 
 PARAMETERS
 localid: Your game-specific reference number for this player, returned in the callback
-	to allow you to identify which player it is referring to.
+    to allow you to identify which player it is referring to.
 profileid: The profileid of the player whose data you are setting. 
-	The player must have already been authenticated with one of the PreAuthenticatePlayer functions.
+    The player must have already been authenticated with one of the PreAuthenticatePlayer functions.
 type: The type of persistent data you are setting. Only rw data is setable.
 index: Each profile can have multiple persistent data records associated with them. Usually you
-	just want to use index 0.
+    just want to use index 0.
 keyvalues: The key\value pairs to be updated (for example: \clan\The A-Team\homepage\http://www.myclan.net\age\15)
 PersDataSaveCallbackFn: Callback that will be called with the data save is complete
 instance: Pointer that will be passed to the callback function (for your use)

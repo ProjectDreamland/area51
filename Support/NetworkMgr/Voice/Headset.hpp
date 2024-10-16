@@ -130,7 +130,7 @@ private:
 //#if defined(TARGET_PS2)||defined(TARGET_XBOX)
         void            OnHeadsetInsert             ( void );
         void            OnHeadsetRemove             ( void );
-//#endif		
+//#endif        
         //
         // PS2 Private Variables
         //

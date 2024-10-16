@@ -61,11 +61,11 @@ typedef struct
 ///////////////////////////////
 typedef struct GPICallbackData
 {
-	GPICallback callback;
-	void * arg;
-	int type;
-	int operationID;
-	struct GPICallbackData * pnext;
+    GPICallback callback;
+    void * arg;
+    int type;
+    int operationID;
+    struct GPICallbackData * pnext;
 } GPICallbackData;
 
 //FUNCTIONS

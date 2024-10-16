@@ -17,15 +17,15 @@ qr2regkeys.h contains defines for all of the reserved keys currently available.
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef GSI_UNICODE
-#define qr2_init			qr2_initA
-#define qr2_init_socket		qr2_init_socketA
-#define qr2_parse_query		qr2_parse_queryA
-#define qr2_buffer_add		qr2_buffer_addA
+#define qr2_init            qr2_initA
+#define qr2_init_socket        qr2_init_socketA
+#define qr2_parse_query        qr2_parse_queryA
+#define qr2_buffer_add        qr2_buffer_addA
 #else
-#define qr2_init			qr2_initW
-#define qr2_init_socket		qr2_init_socketW
-#define qr2_parse_query		qr2_parse_queryW
-#define qr2_buffer_add		qr2_buffer_addW
+#define qr2_init            qr2_initW
+#define qr2_init_socket        qr2_init_socketW
+#define qr2_parse_query        qr2_parse_queryW
+#define qr2_buffer_add        qr2_buffer_addW
 #endif
 
 
@@ -126,11 +126,11 @@ server key.
 [keyid] is the key being requested.
 [outbuf] is the destination buffer for the value information. Use qr2_buffer_add to report the value.
 [userdata] is the pointer that was passed into qr2_init. You can use this for an
-	object or structure pointer if needed.
+    object or structure pointer if needed.
 If you don't have a value for the provided keyid, you should add a empty ("") string to the buffer.
 ********/
 typedef void (*qr2_serverkeycallback_t)(int keyid, qr2_buffer_t outbuf, void *userdata);
-	
+    
 /********
 qr2_playerteamkeycallback_t
 -------------------
@@ -142,12 +142,12 @@ The team key callback is called when a client requests the value for a team key.
 [index] is the 0-based index of the player or team being requested.
 [outbuf] is the destination buffer for the value information. Use qr2_buffer_add to report the value.
 [userdata] is the pointer that was passed into qr2_init. You can use this for an
-	object or structure pointer if needed.
+    object or structure pointer if needed.
 If you don't have a value for the provided keyid, you should add a empty ("") string to the buffer.
 ********/
-typedef void (*qr2_playerteamkeycallback_t)(int keyid, int index, qr2_buffer_t outbuf, void *userdata);	
+typedef void (*qr2_playerteamkeycallback_t)(int keyid, int index, qr2_buffer_t outbuf, void *userdata);    
 
-	
+    
 /********
 qr2_keylistcallback_t
 -------------------
@@ -155,13 +155,13 @@ This is the prototype for one of the callback functions you will need to provide
 The key list callback is called when the SDK needs to determine all of the keys you game has
 values for.
 [keytype] is the type of keys being requested (server, player, team). You should only add keys
-	of this type to the keybuffer.
+    of this type to the keybuffer.
 [keybuffer] is the structure that holds the list of keys. Use qr2_keybuffer_add to add a key
-	to the buffer.
+    to the buffer.
 [userdata] is the pointer that was passed into qr2_init. You can use this for an
-	object or structure pointer if needed.
+    object or structure pointer if needed.
 ********/
-typedef void (*qr2_keylistcallback_t)(qr2_key_type keytype, qr2_keybuffer_t keybuffer, void *userdata);	
+typedef void (*qr2_keylistcallback_t)(qr2_key_type keytype, qr2_keybuffer_t keybuffer, void *userdata);    
 
 
 /********
@@ -171,10 +171,10 @@ This is the prototype for one of the callback functions you will need to provide
 The count callback is used by the SDK to get a count of player or teams on the server.
 [keytype] should be used to determine whether the player or team count is being requested (key_player or key_team will be passed)
 [userdata] is the pointer that was passed into qr2_init. You can use this for an
-	object or structure pointer if needed.
+    object or structure pointer if needed.
 If your game does not support teams, you can return 0 for the count of teams.
 ********/
-typedef int  (*qr2_countcallback_t)(qr2_key_type keytype, void *userdata);	
+typedef int  (*qr2_countcallback_t)(qr2_key_type keytype, void *userdata);    
 
 /********
 qr2_adderrorcallback_t
@@ -184,16 +184,16 @@ The add error callback is called in response to a message from the master server
 [error] is a code that can be used to determine the specific listing error.
 [errmsg] is a human-readable error string returned from the master server.
 [userdata] is the pointer that was passed into qr2_init. You can use this for an
-	object or structure pointer if needed.
+    object or structure pointer if needed.
 The most common error that will be returned is if the master is unable to list the server due to a firewall or proxy
 that would block incoming game packets.
 ********/
-typedef void (*qr2_adderrorcallback_t)(qr2_error_t error, gsi_char *errmsg, void *userdata);	
+typedef void (*qr2_adderrorcallback_t)(qr2_error_t error, gsi_char *errmsg, void *userdata);    
 
 
 //todo - document
-typedef void (*qr2_natnegcallback_t)(int cookie, void *userdata);	
-typedef void (*qr2_clientmessagecallback_t)(gsi_char *data, int len, void *userdata);	
+typedef void (*qr2_natnegcallback_t)(int cookie, void *userdata);    
+typedef void (*qr2_clientmessagecallback_t)(gsi_char *data, int len, void *userdata);    
 typedef void (*qr2_publicaddresscallback_t)(unsigned int ip, unsigned short port, void *userdata);
 
 void qr2_register_natneg_callback(qr2_t qrec, qr2_natnegcallback_t nncallback);
@@ -206,7 +206,7 @@ QR2_REGISTER_KEY
 --------------------
 Use this function to register custom server, player, and team keys that your server reports.
 [keyid] is the ID number you have chosen for this key. The first NUM_RESERVED_KEYS (50) keys are reserved, all other
-	keyid values up to MAX_REGISTERED_KEYS (254) are available for your use.
+    keyid values up to MAX_REGISTERED_KEYS (254) are available for your use.
 [key] is the string name of the key. Player keys should end in "_" (such as "score_") and team keys should end in "_t".
 All custom keys should be registered prior to calling qr2_init. Reserved keys are already registered and should not be
 passed to this function.
@@ -220,41 +220,41 @@ QR2_INIT
 This function initializes the Query and Reporting SDK and prepares the SDK to accept incoming
 queries and send heartbeats to the master server.
 [qrec] if not null, will be filled with the qr2_t instance for this server.
-	If you are not using more than one instance of the Query & Reporting SDK you
-	can pass in NULL for this value.
+    If you are not using more than one instance of the Query & Reporting SDK you
+    can pass in NULL for this value.
 [ip] is an optional parameter that determines which dotted IP address to bind to on
-	a multi-homed machine. You can pass NULL to bind to all IP addresses.
-	If your game networking supports binding to user-specified IPs, you should make sure the same IP
-	is bound by the Query and Reporting SDK.
+    a multi-homed machine. You can pass NULL to bind to all IP addresses.
+    If your game networking supports binding to user-specified IPs, you should make sure the same IP
+    is bound by the Query and Reporting SDK.
 [baseport] is the port to accept queries on. If baseport is not available, the
-	Query and Reporting SDK will scan for an available port in the range of 
-	baseport -> baseport + NUM_PORTS_TO_TRY
-	Optionally, you can pass in 0 to have a port chosen automatically
-	(makes it harder for debugging/testing).
+    Query and Reporting SDK will scan for an available port in the range of 
+    baseport -> baseport + NUM_PORTS_TO_TRY
+    Optionally, you can pass in 0 to have a port chosen automatically
+    (makes it harder for debugging/testing).
 [gamename] is the unique gamename that you were given
 [secretkey] is your unique secret key
 [ispublic] is 1 if the server should send heartbeats to the GameSpy master server and be publicly listed, 
-	If 0, the server will only be available for LAN browsing
+    If 0, the server will only be available for LAN browsing
 [natnegotiate] is 1 if the server supports GameSpy's NAT-negotiation technology (or another similar technology)
-	 which allows hosting behind a NAT. If you do not support NAT-negotiation (i.e. a 3rd party handshake server), 
-	 pass 0 to prevent the server from being listed if it is behind a NAT that cannot be traversed by outside clients.
+     which allows hosting behind a NAT. If you do not support NAT-negotiation (i.e. a 3rd party handshake server), 
+     pass 0 to prevent the server from being listed if it is behind a NAT that cannot be traversed by outside clients.
 [qr2_*_callback] are your callback functions, these cannot be NULL
 [userdata] is an optional, implementation specific parameter that will be
-	passed to all callback functions. Use it to store an object or structure
-	pointer if needed.
+    passed to all callback functions. Use it to store an object or structure
+    pointer if needed.
 
 Returns
 e_qrnoerror is successful, otherwise one of the qr2_error_t constants above.
 ************/
 qr2_error_t qr2_init(/*[out]*/qr2_t *qrec, const gsi_char *ip, int baseport, const gsi_char *gamename, const gsi_char *secret_key,
-			int ispublic, int natnegotiate,
-			qr2_serverkeycallback_t server_key_callback,
-			qr2_playerteamkeycallback_t player_key_callback,
-			qr2_playerteamkeycallback_t team_key_callback,
-			qr2_keylistcallback_t key_list_callback,
-			qr2_countcallback_t playerteam_count_callback,
-			qr2_adderrorcallback_t adderror_callback,
-			void *userdata);
+            int ispublic, int natnegotiate,
+            qr2_serverkeycallback_t server_key_callback,
+            qr2_playerteamkeycallback_t player_key_callback,
+            qr2_playerteamkeycallback_t team_key_callback,
+            qr2_keylistcallback_t key_list_callback,
+            qr2_countcallback_t playerteam_count_callback,
+            qr2_adderrorcallback_t adderror_callback,
+            void *userdata);
 
 /************
 QR2_INIT_SOCKET
@@ -266,20 +266,20 @@ behind a NAT proxy possible (see the documentation for more information).
 You must also use qr2_parse_query to pass in any data received for the QR SDK
 on the socket, since the SDK will not try to read any data off the socket directly.
 [s] is the UDP socket to use for heartbeats and query replies. It must be a valid
-	socket and should be bound to a port before calling qr_init_socket. It can be
-	blocking or non-blocking.
+    socket and should be bound to a port before calling qr_init_socket. It can be
+    blocking or non-blocking.
 [boundport] is the local port that the socket is bound to.
 All other parameters are the same as described in qr2_init.
 ************/
 qr2_error_t qr2_init_socket(/*[out]*/qr2_t *qrec, SOCKET s, int boundport, const gsi_char *gamename, const gsi_char *secret_key,
-					 int ispublic, int natnegotiate,
-					 qr2_serverkeycallback_t server_key_callback,
-					 qr2_playerteamkeycallback_t player_key_callback,
-					 qr2_playerteamkeycallback_t team_key_callback,
-					 qr2_keylistcallback_t key_list_callback,
-					 qr2_countcallback_t playerteam_count_callback,
-					 qr2_adderrorcallback_t adderror_callback,
-					 void *userdata);
+                     int ispublic, int natnegotiate,
+                     qr2_serverkeycallback_t server_key_callback,
+                     qr2_playerteamkeycallback_t player_key_callback,
+                     qr2_playerteamkeycallback_t team_key_callback,
+                     qr2_keylistcallback_t key_list_callback,
+                     qr2_countcallback_t playerteam_count_callback,
+                     qr2_adderrorcallback_t adderror_callback,
+                     void *userdata);
 
 /*******************
 QR2_THINK
@@ -362,58 +362,58 @@ void qr2_buffer_add_int(qr2_buffer_t outbuf, int value);
 typedef void (*cdkey_process_t)(char *buf, int len, struct sockaddr *fromaddr);
 struct qr2_implementation_s
 {
-	SOCKET hbsock;
-	char gamename[64];
-	char secret_key[64];
-	char instance_key[REQUEST_KEY_LEN];
-	qr2_serverkeycallback_t server_key_callback;
-	qr2_playerteamkeycallback_t player_key_callback;
-	qr2_playerteamkeycallback_t team_key_callback;
-	qr2_keylistcallback_t key_list_callback;
-	qr2_countcallback_t playerteam_count_callback;
-	qr2_adderrorcallback_t adderror_callback;					
-	qr2_natnegcallback_t nn_callback;
-	qr2_clientmessagecallback_t cm_callback;
-	qr2_publicaddresscallback_t pa_callback;
+    SOCKET hbsock;
+    char gamename[64];
+    char secret_key[64];
+    char instance_key[REQUEST_KEY_LEN];
+    qr2_serverkeycallback_t server_key_callback;
+    qr2_playerteamkeycallback_t player_key_callback;
+    qr2_playerteamkeycallback_t team_key_callback;
+    qr2_keylistcallback_t key_list_callback;
+    qr2_countcallback_t playerteam_count_callback;
+    qr2_adderrorcallback_t adderror_callback;                    
+    qr2_natnegcallback_t nn_callback;
+    qr2_clientmessagecallback_t cm_callback;
+    qr2_publicaddresscallback_t pa_callback;
 
-	gsi_time lastheartbeat;
-	gsi_time lastka;
-	int userstatechangerequested;
-	int listed_state;
-	int ispublic;	 
-	int qport;
-	int read_socket;
-	int nat_negotiate;
-	struct sockaddr_in hbaddr;
-	cdkey_process_t cdkeyprocess;
-	int client_message_keys[RECENT_CLIENT_MESSAGES_TO_TRACK];
-	int cur_message_key;
-	unsigned int publicip;
-	unsigned short publicport;
-	void *udata;
+    gsi_time lastheartbeat;
+    gsi_time lastka;
+    int userstatechangerequested;
+    int listed_state;
+    int ispublic;     
+    int qport;
+    int read_socket;
+    int nat_negotiate;
+    struct sockaddr_in hbaddr;
+    cdkey_process_t cdkeyprocess;
+    int client_message_keys[RECENT_CLIENT_MESSAGES_TO_TRACK];
+    int cur_message_key;
+    unsigned int publicip;
+    unsigned short publicport;
+    void *udata;
 };
 
 // These need to be defined, even in GSI_UNICODE MODE
 void qr2_parse_queryA(qr2_t qrec, char *query, int len, struct sockaddr *sender);
 void qr2_buffer_addA(qr2_buffer_t outbuf, const char *value);
 qr2_error_t qr2_initA(/*[out]*/qr2_t *qrec, const char *ip, int baseport, const char *gamename, const char *secret_key,
-			int ispublic, int natnegotiate,
-			qr2_serverkeycallback_t server_key_callback,
-			qr2_playerteamkeycallback_t player_key_callback,
-			qr2_playerteamkeycallback_t team_key_callback,
-			qr2_keylistcallback_t key_list_callback,
-			qr2_countcallback_t playerteam_count_callback,
-			qr2_adderrorcallback_t adderror_callback,
-			void *userdata);
+            int ispublic, int natnegotiate,
+            qr2_serverkeycallback_t server_key_callback,
+            qr2_playerteamkeycallback_t player_key_callback,
+            qr2_playerteamkeycallback_t team_key_callback,
+            qr2_keylistcallback_t key_list_callback,
+            qr2_countcallback_t playerteam_count_callback,
+            qr2_adderrorcallback_t adderror_callback,
+            void *userdata);
 qr2_error_t qr2_init_socketA(/*[out]*/qr2_t *qrec, SOCKET s, int boundport, const char *gamename, const char *secret_key,
-					 int ispublic, int natnegotiate,
-					 qr2_serverkeycallback_t server_key_callback,
-					 qr2_playerteamkeycallback_t player_key_callback,
-					 qr2_playerteamkeycallback_t team_key_callback,
-					 qr2_keylistcallback_t key_list_callback,
-					 qr2_countcallback_t playerteam_count_callback,
-					 qr2_adderrorcallback_t adderror_callback,
-					 void *userdata);
+                     int ispublic, int natnegotiate,
+                     qr2_serverkeycallback_t server_key_callback,
+                     qr2_playerteamkeycallback_t player_key_callback,
+                     qr2_playerteamkeycallback_t team_key_callback,
+                     qr2_keylistcallback_t key_list_callback,
+                     qr2_countcallback_t playerteam_count_callback,
+                     qr2_adderrorcallback_t adderror_callback,
+                     void *userdata);
 
 
 #ifdef __cplusplus

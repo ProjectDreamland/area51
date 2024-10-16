@@ -54,8 +54,8 @@ void ghiUnlock(void);
 #ifdef HTTP_LOG
 void ghiLog
 (
-	char * buffer,
-	int len
+    char * buffer,
+    int len
 );
 #else
 #define ghiLog(b, c)
@@ -65,29 +65,29 @@ void ghiLog
 ///////////////////////////////////////
 GHTTPBool ghiSocketSelect
 (
-	SOCKET socket,
-	GHTTPBool * readFlag,
-	GHTTPBool * writeFlag,
-	GHTTPBool * exceptFlag
+    SOCKET socket,
+    GHTTPBool * readFlag,
+    GHTTPBool * writeFlag,
+    GHTTPBool * exceptFlag
 );
 
 // Possible results from ghiDoReceive.
 //////////////////////////////////////
 typedef enum
 {
-	GHIRecvData,    // Data was received.
-	GHINoData,      // No data was available.
-	GHIConnClosed,  // The connection was closed.
-	GHIError        // There was a socket error.
+    GHIRecvData,    // Data was received.
+    GHINoData,      // No data was available.
+    GHIConnClosed,  // The connection was closed.
+    GHIError        // There was a socket error.
 } GHIRecvResult;
 
 // Receive some data.
 /////////////////////
 GHIRecvResult ghiDoReceive
 (
-	GHIConnection * connection,
-	char buffer[],
-	int * bufferLen
+    GHIConnection * connection,
+    char buffer[],
+    int * bufferLen
 );
 
 // Do a send on the connection's socket.
@@ -96,18 +96,18 @@ GHIRecvResult ghiDoReceive
 ////////////////////////////////////////////
 int ghiDoSend
 (
-	GHIConnection * connection,
-	const char * buffer,
-	int len
+    GHIConnection * connection,
+    const char * buffer,
+    int len
 );
 
 // Results for ghtTrySendThenBuffer.
 ////////////////////////////////////
 typedef enum
 {
-	GHITrySendError,     // There was an error sending.
-	GHITrySendSent,      // Everything was sent.
-	GHITrySendBuffered   // Some or all of the data was buffered.
+    GHITrySendError,     // There was an error sending.
+    GHITrySendSent,      // Everything was sent.
+    GHITrySendBuffered   // Some or all of the data was buffered.
 } GHITrySendResult;
 
 // Sends whatever it can on the socket.
@@ -115,24 +115,24 @@ typedef enum
 ////////////////////////////////////////////////////
 GHITrySendResult ghiTrySendThenBuffer
 (
-	GHIConnection * connection,
-	const char * buffer,
-	int len
+    GHIConnection * connection,
+    const char * buffer,
+    int len
 );
 
 // Set the proxy server.
 ////////////////////////
 GHTTPBool ghiSetProxy
 (
-	const char * server
+    const char * server
 );
 
 // Set the throttle settings.
 /////////////////////////////
 void ghiThrottleSettings
 (
-	int bufferSize,
-	gsi_time timeDelay
+    int bufferSize,
+    gsi_time timeDelay
 );
 
 #ifdef UNDER_CE

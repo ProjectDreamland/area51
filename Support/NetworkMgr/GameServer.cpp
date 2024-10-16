@@ -54,8 +54,8 @@ game_server::game_server( void )
 
     ClearBanList();
 
-	g_ClientsDropped = 0;
-	g_ClientsConnected = 0;
+    g_ClientsDropped = 0;
+    g_ClientsConnected = 0;
 
     m_LocalPlayerCount = 0;
     for( i=0; i<NET_MAX_PER_CLIENT; i++ )
@@ -264,12 +264,12 @@ void game_server::ProcessLoginRequest( const net_address& Remote, netstream& Bit
     }
 
     if( GetClientCount() >= g_ActiveConfig.GetMaxPlayerCount() )
-	{
+    {
         RefuseLogin( Remote, GAME_EXIT_SERVER_FULL );
         LOG_WARNING( "game_server::ProcessLoginRequest", 
                      "Client dropped because too many clients(%d).\n", *(s32*)UniqueId );
         return;
-	}
+    }
 
     // Check if client is already in list
     xbool FoundClient=FALSE;
@@ -306,14 +306,14 @@ void game_server::ProcessLoginRequest( const net_address& Remote, netstream& Bit
         return;
     }
 
-	if( GetAveragePing() > 600.0f )
-	{
+    if( GetAveragePing() > 600.0f )
+    {
         RefuseLogin( Remote, GAME_EXIT_SERVER_BUSY );
-		g_ClientsConnected++;
-		g_ClientsDropped++;
+        g_ClientsConnected++;
+        g_ClientsDropped++;
         LOG_WARNING( "game_server::ProcessLoginRequest", "Server dropped because it was too busy client(%d).\n", *(s32*)UniqueId );
         return;
-	}
+    }
 
     // It wasn't in the list
     if( !FoundClient )
@@ -450,7 +450,7 @@ xbool game_server::ReceivePacket( const net_address& Remote, netstream& BitStrea
 xbool   s_ForceClientDrop    = FALSE;
 f32     g_ShipDelayPingLimit = 500.0f;
 f32     g_ShipDelayModifier  =   2.5f;
-f32		s_KickTimeout        =  10.0f;
+f32        s_KickTimeout        =  10.0f;
 xtimer  s_KickTimer;
 
 //==============================================================================
@@ -477,23 +477,23 @@ exit_reason game_server::Update( f32 DeltaTime )
         }
     }
 
-	// If our average client ping time is greater than 1000ms, 
-	// for 10 seconds then we look for the last client that 
-	// joined and kick them.
-	if ( (GetAveragePing() > KICK_PING_THRESHOLD) || s_ForceClientDrop)
-	{
-		if (s_KickTimer.IsRunning() || s_ForceClientDrop)
-		{
-			if ( (s_KickTimer.ReadSec() > s_KickTimeout) || s_ForceClientDrop)
-			{
+    // If our average client ping time is greater than 1000ms, 
+    // for 10 seconds then we look for the last client that 
+    // joined and kick them.
+    if ( (GetAveragePing() > KICK_PING_THRESHOLD) || s_ForceClientDrop)
+    {
+        if (s_KickTimer.IsRunning() || s_ForceClientDrop)
+        {
+            if ( (s_KickTimer.ReadSec() > s_KickTimeout) || s_ForceClientDrop)
+            {
                 s32 Index;
 
                 Index = m_MaxClients-1;
                 s_ForceClientDrop = FALSE;
-				for( i=0; i<m_MaxClients; i++ )
-				{
-					if( m_pClients[Index].IsConnected() )
-					{
+                for( i=0; i<m_MaxClients; i++ )
+                {
+                    if( m_pClients[Index].IsConnected() )
+                    {
                         LOG_ERROR("game_server::Update","Disconnecting client %d, Average Ping:%2.02f, KickTimer:%2.02f",Index,GetAveragePing(),(f32)s_KickTimer.ReadSec());
                         {
                             s32 j;
@@ -506,29 +506,29 @@ exit_reason game_server::Update( f32 DeltaTime )
                             }
                         }
                         m_pClients[Index].Disconnect( GAME_EXIT_SERVER_BUSY );
-						// 20 seconds until we drop another client
-						s_KickTimeout = 15.0f;
-						g_ClientsDropped++;
-						break;
-					}
-					s_KickTimer.Stop();
-					s_KickTimer.Reset();
+                        // 20 seconds until we drop another client
+                        s_KickTimeout = 15.0f;
+                        g_ClientsDropped++;
+                        break;
+                    }
+                    s_KickTimer.Stop();
+                    s_KickTimer.Reset();
                     Index--;
-				}
-			}
-		}
-		else
-		{
-			s_KickTimer.Reset();
-			s_KickTimer.Start();
-		}
-	}
-	else
-	{
-		s_KickTimer.Stop();
-		s_KickTimer.Reset();
-		s_KickTimeout = 10.0f;
-	}
+                }
+            }
+        }
+        else
+        {
+            s_KickTimer.Reset();
+            s_KickTimer.Start();
+        }
+    }
+    else
+    {
+        s_KickTimer.Stop();
+        s_KickTimer.Reset();
+        s_KickTimeout = 10.0f;
+    }
 
     // Now figure out if it is time to send an update packet to
     // each of the attached clients
@@ -679,25 +679,25 @@ void game_server::DisplayPings( s32 L )
 
 f32 game_server::GetAveragePing( void )
 {
-	f32 average = 0.0f;
-	s32 count   = 0;
-	s32 i;
+    f32 average = 0.0f;
+    s32 count   = 0;
+    s32 i;
 
-	for( i=0; i<m_MaxClients; i++ )
-	{
-		if( m_pClients[i].IsConnected() && m_pClients[i].HasMapLoaded() )
-		{
-			count++;
-			average += m_pClients[i].m_ConnMgr.GetPing();
-		}
-	}
+    for( i=0; i<m_MaxClients; i++ )
+    {
+        if( m_pClients[i].IsConnected() && m_pClients[i].HasMapLoaded() )
+        {
+            count++;
+            average += m_pClients[i].m_ConnMgr.GetPing();
+        }
+    }
 
-	if( count )
-	{
-		return( average / count );
-	}
+    if( count )
+    {
+        return( average / count );
+    }
 
-	return( 0.0f );
+    return( 0.0f );
 }
 
 //=========================================================================
@@ -901,18 +901,18 @@ xbool game_server::IsInGame( s32 clientIndex )
 
 s32 game_server::GetClientCount( void )
 {
-	s32 i;
-	s32 Count;
+    s32 i;
+    s32 Count;
 
-	Count = 0;
-	for (i=0;i<m_MaxClients;i++)
-	{
-		if (m_pClients[i].IsConnected())
-		{
-			Count++;
-		}
-	}
-	return Count;
+    Count = 0;
+    for (i=0;i<m_MaxClients;i++)
+    {
+        if (m_pClients[i].IsConnected())
+        {
+            Count++;
+        }
+    }
+    return Count;
 }
 
 //=========================================================================

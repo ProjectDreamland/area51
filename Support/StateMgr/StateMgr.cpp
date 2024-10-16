@@ -10109,11 +10109,6 @@ void state_mgr::ExitReloadCheckpoint( void )
 // These states display the score table between online level loads.
 //
 void state_mgr::EnterMultiPlayerLoadMission( void )
-#if defined ( TARGET_PC ) 
-{
-} 
-#endif
-#if defined ( TARGET_XBOX ) 
 {
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
     m_CurrentDialog = NULL;
@@ -10236,15 +10231,9 @@ void state_mgr::EnterMultiPlayerLoadMission( void )
         g_MatchMgr.SetState( MATCH_UPDATE_SERVER );
     }
 }
-#endif
 //=========================================================================
 
 void state_mgr::UpdateMultiPlayerLoadMission( void )
-#if defined ( TARGET_PC ) 
-{
-} 
-#endif
-#if defined ( TARGET_XBOX ) 
 {
 	
     if( m_bShowingScores==FALSE )
@@ -10306,15 +10295,9 @@ void state_mgr::UpdateMultiPlayerLoadMission( void )
         }
     }
 }
-#endif
 //=========================================================================
 
 void state_mgr::ExitMultiPlayerLoadMission( void )
-#if defined ( TARGET_PC ) 
-{
-} 
-#endif
-#if defined ( TARGET_XBOX ) 
 {
     if( m_bShowingScores )
     {
@@ -10339,7 +10322,6 @@ void state_mgr::ExitMultiPlayerLoadMission( void )
     g_DemoIdleTimer.Start();
 #endif
 }
-#endif
 
 //=========================================================================
 void state_mgr::EnterServerCooldown( void )

@@ -31,10 +31,10 @@ extern "C" {
 //////////////////////////////////
 GHTTPRequest ghttpGetA
 (
-	const char * URL,       	// The URL for the file ("http://host.domain[:port]/path/filename").
-	GHTTPBool blocking,         // If true, this call doesn't return until the file has been recevied.
-	ghttpCompletedCallback completedCallback,  // Called when the file has been received.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,           // The URL for the file ("http://host.domain[:port]/path/filename").
+    GHTTPBool blocking,         // If true, this call doesn't return until the file has been recevied.
+    ghttpCompletedCallback completedCallback,  // Called when the file has been received.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Get a file from an http server.
@@ -52,16 +52,16 @@ GHTTPRequest ghttpGetA
 ///////////////////////////////////////////////////////
 GHTTPRequest ghttpGetExA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
-	char * buffer,              // Optional user-supplied buffer.  Set to NULL to have one allocated.
-	int bufferSize,             // The size of the user-supplied buffer in bytes.  0 if buffer is NULL.
-	GHTTPPost post,             // Optional data to be posted.
-	GHTTPBool throttle,         // If true, throttle this connection's download speed.
-	GHTTPBool blocking,         // If true, this call doesn't return until the file has been recevied.
-	ghttpProgressCallback progressCallback,    // Called periodically with progress updates.
-	ghttpCompletedCallback completedCallback,  // Called when the file has been received.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
+    char * buffer,              // Optional user-supplied buffer.  Set to NULL to have one allocated.
+    int bufferSize,             // The size of the user-supplied buffer in bytes.  0 if buffer is NULL.
+    GHTTPPost post,             // Optional data to be posted.
+    GHTTPBool throttle,         // If true, throttle this connection's download speed.
+    GHTTPBool blocking,         // If true, this call doesn't return until the file has been recevied.
+    ghttpProgressCallback progressCallback,    // Called periodically with progress updates.
+    ghttpCompletedCallback completedCallback,  // Called when the file has been received.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Gets a file and saves it to disk.
@@ -69,11 +69,11 @@ GHTTPRequest ghttpGetExA
 ////////////////////////////////////
 GHTTPRequest ghttpSaveA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	const char * filename,  // The path and name to store the file as locally.
-	GHTTPBool blocking,         // If true, this call doesn't return until the file has been recevied.
-	ghttpCompletedCallback completedCallback,  // Called when the file has been received.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    const char * filename,  // The path and name to store the file as locally.
+    GHTTPBool blocking,         // If true, this call doesn't return until the file has been recevied.
+    ghttpCompletedCallback completedCallback,  // Called when the file has been received.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Gets a file and saves it to disk.
@@ -83,15 +83,15 @@ GHTTPRequest ghttpSaveA
 /////////////////////////////////////////
 GHTTPRequest ghttpSaveExA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	const char * filename,  // The path and name to store the file as locally.
-	const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
-	GHTTPPost post,             // Optional data to be posted.
-	GHTTPBool throttle,         // If true, throttle this connection's download speed.
-	GHTTPBool blocking,         // If true, this call doesn't return until the file has been recevied.
-	ghttpProgressCallback progressCallback,    // Called periodically with progress updates.
-	ghttpCompletedCallback completedCallback,  // Called when the file has been received.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    const char * filename,  // The path and name to store the file as locally.
+    const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
+    GHTTPPost post,             // Optional data to be posted.
+    GHTTPBool throttle,         // If true, throttle this connection's download speed.
+    GHTTPBool blocking,         // If true, this call doesn't return until the file has been recevied.
+    ghttpProgressCallback progressCallback,    // Called periodically with progress updates.
+    ghttpCompletedCallback completedCallback,  // Called when the file has been received.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Streams a file from an http server.
@@ -99,11 +99,11 @@ GHTTPRequest ghttpSaveExA
 //////////////////////////////////////
 GHTTPRequest ghttpStreamA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	GHTTPBool blocking,         // If true, this call doesn't return until the file has finished streaming.
-	ghttpProgressCallback progressCallback,    // Called whenever new data is received.
-	ghttpCompletedCallback completedCallback,  // Called when the file has finished streaming.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    GHTTPBool blocking,         // If true, this call doesn't return until the file has finished streaming.
+    ghttpProgressCallback progressCallback,    // Called whenever new data is received.
+    ghttpCompletedCallback completedCallback,  // Called when the file has finished streaming.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Streams a file from an http server.
@@ -112,14 +112,14 @@ GHTTPRequest ghttpStreamA
 //////////////////////////////////////
 GHTTPRequest ghttpStreamExA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
-	GHTTPPost post,             // Optional data to be posted.
-	GHTTPBool throttle,         // If true, throttle this connection's download speed.
-	GHTTPBool blocking,         // If true, this call doesn't return until the file has finished streaming.
-	ghttpProgressCallback progressCallback,    // Called whenever new data is received.
-	ghttpCompletedCallback completedCallback,  // Called when the file has finished streaming.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
+    GHTTPPost post,             // Optional data to be posted.
+    GHTTPBool throttle,         // If true, throttle this connection's download speed.
+    GHTTPBool blocking,         // If true, this call doesn't return until the file has finished streaming.
+    ghttpProgressCallback progressCallback,    // Called whenever new data is received.
+    ghttpCompletedCallback completedCallback,  // Called when the file has finished streaming.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Does a file request without actually getting the file.
@@ -128,10 +128,10 @@ GHTTPRequest ghttpStreamExA
 /////////////////////////////////////////////////////////////////////////////
 GHTTPRequest ghttpHeadA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	GHTTPBool blocking,         // If true, this call doesn't return until finished
-	ghttpCompletedCallback completedCallback,  // Called when the request has finished.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    GHTTPBool blocking,         // If true, this call doesn't return until finished
+    ghttpCompletedCallback completedCallback,  // Called when the request has finished.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Does a file request without actually getting the file.
@@ -141,13 +141,13 @@ GHTTPRequest ghttpHeadA
 /////////////////////////////////////////////////////////////////////////////
 GHTTPRequest ghttpHeadExA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
-	GHTTPBool throttle,         // If true, throttle this connection's download speed.
-	GHTTPBool blocking,         // If true, this call doesn't return until finished
-	ghttpProgressCallback progressCallback,    // Called whenever new data is received.
-	ghttpCompletedCallback completedCallback,  // Called when the request has finished.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
+    GHTTPBool throttle,         // If true, throttle this connection's download speed.
+    GHTTPBool blocking,         // If true, this call doesn't return until finished
+    ghttpProgressCallback progressCallback,    // Called whenever new data is received.
+    ghttpCompletedCallback completedCallback,  // Called when the request has finished.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Does an HTTP POST, which can be used to upload data to a web server.
@@ -158,11 +158,11 @@ GHTTPRequest ghttpHeadExA
 ///////////////////////////////////////////////////////////////////////////////////
 GHTTPRequest ghttpPostA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	GHTTPPost post,             // The data to be posted.
-	GHTTPBool blocking,         // If true, this call doesn't return until finished
-	ghttpCompletedCallback completedCallback,  // Called when the file has finished streaming.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    GHTTPPost post,             // The data to be posted.
+    GHTTPBool blocking,         // If true, this call doesn't return until finished
+    ghttpCompletedCallback completedCallback,  // Called when the file has finished streaming.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 // Does an HTTP POST, which can be used to upload data to a web server.
@@ -175,14 +175,14 @@ GHTTPRequest ghttpPostA
 ///////////////////////////////////////////////////////////////////////////////////
 GHTTPRequest ghttpPostExA
 (
-	const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
-	const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
-	GHTTPPost post,             // The data to be posted.
-	GHTTPBool throttle,         // If true, throttle this connection's download speed.
-	GHTTPBool blocking,         // If true, this call doesn't return until finished
-	ghttpProgressCallback progressCallback,    // Called whenever new data is received.
-	ghttpCompletedCallback completedCallback,  // Called when the file has finished streaming.
-	void * param                // User-data to be passed to the callbacks.
+    const char * URL,       // The URL for the file ("http://host.domain[:port]/path/filename").
+    const char * headers,   // Optional headers to pass with the request.  Can be NULL or "".
+    GHTTPPost post,             // The data to be posted.
+    GHTTPBool throttle,         // If true, throttle this connection's download speed.
+    GHTTPBool blocking,         // If true, this call doesn't return until finished
+    ghttpProgressCallback progressCallback,    // Called whenever new data is received.
+    ghttpCompletedCallback completedCallback,  // Called when the file has finished streaming.
+    void * param                // User-data to be passed to the callbacks.
 );
 
 
@@ -193,8 +193,8 @@ GHTTPRequest ghttpPostExA
 ////////////////////////////////////////////////////////////////
 const char * ghttpGetResponseStatus
 (
-	GHTTPRequest request,       // The request to get the response state of.
-	int * statusCode            // If not NULL, the status code is stored here.
+    GHTTPRequest request,       // The request to get the response state of.
+    int * statusCode            // If not NULL, the status code is stored here.
 );
 
 // Gets headers returned by the http server.
@@ -203,14 +203,14 @@ const char * ghttpGetResponseStatus
 ////////////////////////////////////////////
 const char * ghttpGetHeaders
 (
-	GHTTPRequest request
+    GHTTPRequest request
 );
 
 // Gets the URL for a given request.
 ////////////////////////////////////
 const char * ghttpGetURL
 (
-	GHTTPRequest request
+    GHTTPRequest request
 );
 
 // Sets a proxy server address.  The address should be of the
@@ -220,16 +220,16 @@ const char * ghttpGetURL
 //////////////////////////////////////////////////////////////////
 GHTTPBool ghttpSetProxyA
 (
-	const char * server
+    const char * server
 );
 
 // Adds a string to the post object.
 ////////////////////////////////////
 GHTTPBool ghttpPostAddStringA
 (
-	GHTTPPost post,             // The post object to add to.
-	const char * name,      // The name to attach to this string.
-	const char * string     // The actual string.
+    GHTTPPost post,             // The post object to add to.
+    const char * name,      // The name to attach to this string.
+    const char * string     // The actual string.
 );
 
 // Adds a disk file to the post object.
@@ -242,11 +242,11 @@ GHTTPBool ghttpPostAddStringA
 /////////////////////////////////////////////////////////////////////////////
 GHTTPBool ghttpPostAddFileFromDiskA
 (
-	GHTTPPost post,                 // The post object to add to.
-	const char * name,          // The name to attach to this file.
-	const char * filename,      // The name (and possibly path) to the file to upload.
-	const char * reportFilename,// The filename given to the web server.
-	const char * contentType    // The MIME type for this file.
+    GHTTPPost post,                 // The post object to add to.
+    const char * name,          // The name to attach to this file.
+    const char * filename,      // The name (and possibly path) to the file to upload.
+    const char * reportFilename,// The filename given to the web server.
+    const char * contentType    // The MIME type for this file.
 );
 
 // Adds a file, in memory, to the post object.
@@ -261,12 +261,12 @@ GHTTPBool ghttpPostAddFileFromDiskA
 //////////////////////////////////////////////////////////////////////////
 GHTTPBool ghttpPostAddFileFromMemoryA
 (
-	GHTTPPost post,             // The post object to add to.
-	const char * name,      // The name to attach to this string.
-	const char * buffer,		// The data to send.
-	int bufferLen,              // The number of bytes of data to send.
-	const char * reportFilename,  // The filename given to the web server.
-	const char * contentType    // The MIME type for this file.
+    GHTTPPost post,             // The post object to add to.
+    const char * name,      // The name to attach to this string.
+    const char * buffer,        // The data to send.
+    int bufferLen,              // The number of bytes of data to send.
+    const char * reportFilename,  // The filename given to the web server.
+    const char * contentType    // The MIME type for this file.
 );
 
 

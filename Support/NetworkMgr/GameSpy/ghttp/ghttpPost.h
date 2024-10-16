@@ -25,93 +25,93 @@ extern "C" {
 
 typedef enum
 {
-	GHIPostingError,
-	GHIPostingDone,
-	GHIPostingPosting
+    GHIPostingError,
+    GHIPostingDone,
+    GHIPostingPosting
 } GHIPostingResult;
 
 typedef struct GHIPostingState
 {
-	DArray states;
-	int index;
-	int bytesPosted;
-	int totalBytes;
-	ghttpPostCallback callback;
-	void * param;
+    DArray states;
+    int index;
+    int bytesPosted;
+    int totalBytes;
+    ghttpPostCallback callback;
+    void * param;
 } GHIPostingState;
 
 GHTTPPost ghiNewPost
 (
-	void
+    void
 );
 
 void ghiPostSetAutoFree
 (
-	GHTTPPost post,
-	GHTTPBool autoFree
+    GHTTPPost post,
+    GHTTPBool autoFree
 );
 
 GHTTPBool ghiIsPostAutoFree
 (
-	GHTTPPost post
+    GHTTPPost post
 );
 
 void ghiFreePost
 (
-	GHTTPPost post
+    GHTTPPost post
 );
 
 GHTTPBool ghiPostAddString
 (
-	GHTTPPost post,
-	const char * name,
-	const char * string
+    GHTTPPost post,
+    const char * name,
+    const char * string
 );
 
 GHTTPBool ghiPostAddFileFromDisk
 (
-	GHTTPPost post,
-	const char * name,
-	const char * filename,
-	const char * reportFilename,
-	const char * contentType
+    GHTTPPost post,
+    const char * name,
+    const char * filename,
+    const char * reportFilename,
+    const char * contentType
 );
 
 GHTTPBool ghiPostAddFileFromMemory
 (
-	GHTTPPost post,
-	const char * name,
-	const char * buffer,
-	int bufferLen,
-	const char * reportFilename,
-	const char * contentType
+    GHTTPPost post,
+    const char * name,
+    const char * buffer,
+    int bufferLen,
+    const char * reportFilename,
+    const char * contentType
 );
 
 void ghiPostSetCallback
 (
-	GHTTPPost post,
-	ghttpPostCallback callback,
-	void * param
+    GHTTPPost post,
+    ghttpPostCallback callback,
+    void * param
 );
 
 const char * ghiPostGetContentType
 (
-	struct GHIConnection * connection
+    struct GHIConnection * connection
 );
 
 GHTTPBool ghiPostInitState
 (
-	struct GHIConnection * connection
+    struct GHIConnection * connection
 );
 
 void ghiPostCleanupState
 (
-	struct GHIConnection * connection
+    struct GHIConnection * connection
 );
 
 GHIPostingResult ghiPostDoPosting
 (
-	struct GHIConnection * connection
+    struct GHIConnection * connection
 );
 
 #ifdef __cplusplus

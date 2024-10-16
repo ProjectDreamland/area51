@@ -231,8 +231,8 @@ void init_lpc10_encoder_state( LPC10_ENCODER_STATE *st )
     st->z22 = 0.0f;
     for (i = 0; i < 540; i++) 
     {
-	    st->inbuf[i] = 0.0f;
-	    st->pebuf[i] = 0.0f;
+        st->inbuf[i] = 0.0f;
+        st->pebuf[i] = 0.0f;
     }
     for (i = 0; i < 696; i++) st->lpbuf[i] = 0.0f;
     for (i = 0; i < 312; i++) st->ivbuf[i] = 0.0f;
@@ -289,8 +289,8 @@ void init_lpc10_decoder_state( LPC10_DECODER_STATE *st )
     for (i = 0; i < 30; i++) st->drc[i] = 0;
     for (i = 0; i < 3; i++) 
     {
-	    st->dpit[i] = 0;
-	    st->drms[i] = 0;
+        st->dpit[i] = 0;
+        st->drms[i] = 0;
     }
     for (i = 0; i < 360; i++) st->buf[i] = 0.0f;
     st->buflen = 180;
@@ -299,8 +299,8 @@ void init_lpc10_decoder_state( LPC10_DECODER_STATE *st )
     st->ipo = 0;
     for (i = 0; i < 166; i++)
     {
-	    st->exc[i] = 0.0f;
-    	st->exc2[i] = 0.0f;
+        st->exc[i] = 0.0f;
+        st->exc2[i] = 0.0f;
     }
     st->lpi1 = 0.0f;
     st->lpi2 = 0.0f;
@@ -348,10 +348,10 @@ int LPC10FrameEncode( s16 *in, u8 *out )
 
     /* pack the bits */
     x_memset( out, 0, LPC10_BYTES_PER_EFRAME );
-	for (i = 0; i < LPC10_BITS_IN_COMPRESSED_FRAME; i++)
+    for (i = 0; i < LPC10_BITS_IN_COMPRESSED_FRAME; i++)
     {
         out[i >> 3] |= ((bits[i] != 0)? 1 : 0) << (i & 7);
-	}
+    }
 
     /* return 7 bytes encoded*/
     return LPC10_BYTES_PER_EFRAME;
@@ -370,10 +370,10 @@ int LPC10FrameDecode( u8 *in, s16 *out )
     f32     rms;
 
     /* unpack bits into array */
-	for (i = 0; i < LPC10_BITS_IN_COMPRESSED_FRAME; i++)
+    for (i = 0; i < LPC10_BITS_IN_COMPRESSED_FRAME; i++)
     {
         bits[i] = (in[i >> 3] & (1 << (i & 7))) != 0 ? 1 : 0;
-	}
+    }
 
     /* decode speech */
     {
@@ -409,15 +409,15 @@ void hp100( f32 *speech, s32 end, LPC10_ENCODER_STATE *st )
 
     for (i = 0; i < end; i++) 
     {
-	    err = *speech + z11 * 1.859076f - z21 * .8648249f;
-	    si = err - z11 * 2.f + z21;
-	    z21 = z11;
-	    z11 = err;
-	    err = si + z12 * 1.935715f - z22 * .9417004f;
-	    si = err - z12 * 2.f + z22;
-	    z22 = z12;
-	    z12 = err;
-	    *speech++ = si * .902428f;
+        err = *speech + z11 * 1.859076f - z21 * .8648249f;
+        si = err - z11 * 2.f + z21;
+        z21 = z11;
+        z11 = err;
+        err = si + z12 * 1.935715f - z22 * .9417004f;
+        si = err - z12 * 2.f + z22;
+        z22 = z12;
+        z12 = err;
+        *speech++ = si * .902428f;
     }
 
     st->z11 = z11;
@@ -525,9 +525,9 @@ void preemp( f32 *inbuf, f32 *pebuf, s32 nsamp, f32 coef, f32 *z )
 
     /* Function Body */
     for (i = 0; i< nsamp; ++i) {
-	    temp = *inbuf - coef * *z;
-	    *z = *inbuf++;
-	    *pebuf++ = temp;
+        temp = *inbuf - coef * *z;
+        *z = *inbuf++;
+        *pebuf++ = temp;
     }
 } 
 
@@ -608,7 +608,7 @@ void invert( f32 *phi, f32 *psi, f32 *rc )
     /* Local variables */
     f32 save;
     s32 i, j, k;
-    f32 v[100]	/* was [10][10] */;
+    f32 v[100]    /* was [10][10] */;
     
     /* Function Body */
     for (j = 0; j < 10; ++j) 
@@ -659,7 +659,7 @@ void energy( s32 len, f32 *speech, f32 *rms )
     *rms = 0.f;
     for (i = 1; i <= len; ++i) 
     {
-	    *rms += speech[i] * speech[i];
+        *rms += speech[i] * speech[i];
     }
 
     *rms = (f32)sqrtf(*rms / len);
@@ -1202,7 +1202,7 @@ void vparms(s32 *vwin, f32 *inbuf, f32 *lpbuf, s32 *buflim, s32 *half, f32 *dith
     *fbe = MIN((s32)x_round(ap_rms__ * 0.25f * (90.f / vlen),1.0f),32767);
 } /* vparms_ */
 
-static f32 vdc[100]	= { 0.f,1714.f,-110.f, 334.f,-4096.f,-654.f,3752.f,3769.f,0.f,1181.f,0.f,874.f,-97.f, 300.f,-4096.f,-1021.f,2451.f,2527.f,0.f,-500.f,0.f,510.f,-70.f, 250.f,-4096.f,-1270.f,2194.f,2491.f,0.f,-1500.f,0.f,500.f,-10.f, 200.f,-4096.f,-1300.f,2e3f,2e3f,0.f,-2e3f,0.f,500.f,0.f,0.f, -4096.f,-1300.f,2e3f,2e3f,0.f,-2500.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f, 0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f, 0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f, 0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f };
+static f32 vdc[100]    = { 0.f,1714.f,-110.f, 334.f,-4096.f,-654.f,3752.f,3769.f,0.f,1181.f,0.f,874.f,-97.f, 300.f,-4096.f,-1021.f,2451.f,2527.f,0.f,-500.f,0.f,510.f,-70.f, 250.f,-4096.f,-1270.f,2194.f,2491.f,0.f,-1500.f,0.f,500.f,-10.f, 200.f,-4096.f,-1300.f,2e3f,2e3f,0.f,-2e3f,0.f,500.f,0.f,0.f, -4096.f,-1300.f,2e3f,2e3f,0.f,-2500.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f, 0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f, 0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f, 0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f,0.f };
 static s32 nvdcl = 5;
 static f32 vdcl[10] = { 600.f,450.f,300.f,200.f,0.f,0.f,0.f,0.f,0.f,0.f };
 
@@ -1463,57 +1463,57 @@ void placea( s32 *ipitch, s32 *voibuf, s32 *obound, s32 *af, s32 *vwin, s32 *awi
     winv = voibuf[(*af << 1) + 1] == 1 || voibuf[(*af << 1) + 2] == 1;
     if ((allv || winv) && (*obound == 0)) 
     {
-	    i__ = (lrange + *ipitch - 1 - awin[((*af - 1) << 1) + 1]) / *ipitch;
-	    i__ *= *ipitch;
-	    i__ += awin[((*af - 1) << 1) + 1];
-    	l = *maxwin;
-    	k = (vwin[(*af << 1) + 1] + vwin[(*af << 1) + 2] + 1 - l) / 2;
-	    r__1 = (f32) (k - i__) / *ipitch;
-	    awin[(*af << 1) + 1] = i__ + (s32)x_round(r__1,1.0f) * *ipitch;
-	    awin[(*af << 1) + 2] = awin[(*af << 1) + 1] + l - 1;
-	    if (*obound >= 2 && awin[(*af << 1) + 2] > vwin[(*af << 1) + 2]) 
+        i__ = (lrange + *ipitch - 1 - awin[((*af - 1) << 1) + 1]) / *ipitch;
+        i__ *= *ipitch;
+        i__ += awin[((*af - 1) << 1) + 1];
+        l = *maxwin;
+        k = (vwin[(*af << 1) + 1] + vwin[(*af << 1) + 2] + 1 - l) / 2;
+        r__1 = (f32) (k - i__) / *ipitch;
+        awin[(*af << 1) + 1] = i__ + (s32)x_round(r__1,1.0f) * *ipitch;
+        awin[(*af << 1) + 2] = awin[(*af << 1) + 1] + l - 1;
+        if (*obound >= 2 && awin[(*af << 1) + 2] > vwin[(*af << 1) + 2]) 
         {
-	        awin[(*af << 1) + 1] -= *ipitch;
-	        awin[(*af << 1) + 2] -= *ipitch;
-	    }
-	    if ((*obound == 1 || *obound == 3) && awin[(*af << 1) + 1] < vwin[(*af << 1) + 1]) 
+            awin[(*af << 1) + 1] -= *ipitch;
+            awin[(*af << 1) + 2] -= *ipitch;
+        }
+        if ((*obound == 1 || *obound == 3) && awin[(*af << 1) + 1] < vwin[(*af << 1) + 1]) 
         {
-	        awin[(*af << 1) + 1] += *ipitch;
-	        awin[(*af << 1) + 2] += *ipitch;
-	    }
-	    while(awin[(*af << 1) + 2] > hrange) 
+            awin[(*af << 1) + 1] += *ipitch;
+            awin[(*af << 1) + 2] += *ipitch;
+        }
+        while(awin[(*af << 1) + 2] > hrange) 
         {
-	        awin[(*af << 1) + 1] -= *ipitch;
-	        awin[(*af << 1) + 2] -= *ipitch;
-	    }
-	    while(awin[(*af << 1) + 1] < lrange) 
+            awin[(*af << 1) + 1] -= *ipitch;
+            awin[(*af << 1) + 2] -= *ipitch;
+        }
+        while(awin[(*af << 1) + 1] < lrange) 
         {
-	        awin[(*af << 1) + 1] += *ipitch;
-	        awin[(*af << 1) + 2] += *ipitch;
-	    }
-	    ephase = TRUE;
+            awin[(*af << 1) + 1] += *ipitch;
+            awin[(*af << 1) + 2] += *ipitch;
+        }
+        ephase = TRUE;
     } 
     else 
     {
-	    awin[(*af << 1) + 1] = vwin[(*af << 1) + 1];
-	    awin[(*af << 1) + 2] = vwin[(*af << 1) + 2];
-	    ephase = FALSE;
+        awin[(*af << 1) + 1] = vwin[(*af << 1) + 1];
+        awin[(*af << 1) + 2] = vwin[(*af << 1) + 2];
+        ephase = FALSE;
     }
     j = (awin[(*af << 1) + 2] - awin[(*af << 1) + 1] + 1) / *ipitch * *ipitch;
     if (j == 0 || ! winv) 
     {
-	    ewin[(*af << 1) + 1] = vwin[(*af << 1) + 1];
-	    ewin[(*af << 1) + 2] = vwin[(*af << 1) + 2];
+        ewin[(*af << 1) + 1] = vwin[(*af << 1) + 1];
+        ewin[(*af << 1) + 2] = vwin[(*af << 1) + 2];
     } 
     else if (! ephase && *obound == 2) 
     {
-	    ewin[(*af << 1) + 1] = awin[(*af << 1) + 2] - j + 1;
-	    ewin[(*af << 1) + 2] = awin[(*af << 1) + 2];
+        ewin[(*af << 1) + 1] = awin[(*af << 1) + 2] - j + 1;
+        ewin[(*af << 1) + 2] = awin[(*af << 1) + 2];
     } 
     else 
     {
-	    ewin[(*af << 1) + 1] = awin[(*af << 1) + 1];
-	    ewin[(*af << 1) + 2] = awin[(*af << 1) + 1] + j - 1;
+        ewin[(*af << 1) + 1] = awin[(*af << 1) + 1];
+        ewin[(*af << 1) + 2] = awin[(*af << 1) + 1] + j - 1;
     }
 } 
 
@@ -1533,7 +1533,7 @@ void analys( f32 *speech, s32 *voice, s32 *pitch, f32 *rms, f32 *rc, LPC10_ENCOD
     f32 abuf[156];
     f32 *bias;
     s32 *awin;
-    s32 midx, ewin[6]	/* was [2][3] */;
+    s32 midx, ewin[6]    /* was [2][3] */;
     f32 ivrc[2], temp;
     f32 *zpre;
     s32 *vwin;
@@ -1549,7 +1549,7 @@ void analys( f32 *speech, s32 *voice, s32 *pitch, f32 *rms, f32 *rc, LPC10_ENCOD
     s32 mintau;
     f32 *rmsbuf;
     s32 minptr, maxptr;
-    f32 phi[100]	/* was [10][10] */, psi[10];
+    f32 phi[100]    /* was [10][10] */, psi[10];
     s32 lframe;
     
     /* Parameter adjustments */
@@ -2096,7 +2096,7 @@ s32 random()
     int the_random;
     
     /*   The following is a 16 bit 2's complement addition,
-    *   with overflow checking disabled	*/
+    *   with overflow checking disabled    */
     
     y[k] = (short)(y[k] + y[j]);
     
@@ -2343,32 +2343,32 @@ void synths( s32 *voice, s32 pitch, f32 rms, f32 *rc, f32 *speech, LPC10_DECODER
     pitch = MAX(i1,20);
     for (i = 1; i <= st->order; ++i) 
     {
-	    r__2 = rc[i];
-	    r__1 = MIN(r__2,.99f);
-	    rc[i] = MAX(r__1,-.99f);
+        r__2 = rc[i];
+        r__1 = MIN(r__2,.99f);
+        rc[i] = MAX(r__1,-.99f);
     }
     pitsyn( &st->order, &voice[1], &pitch, &rms, &rc[1], &st->lframe, ivuv, ipiti, rmsi, rci, &nout, &ratio, st );
     if (nout > 0) 
     {
-	    i1 = nout;
-	    for (j = 1; j <= i1; ++j) 
+        i1 = nout;
+        for (j = 1; j <= i1; ++j) 
         {
-	        irc2pc( &rci[j * 10 - 10], pc, 0.7f, &g2pass);
-	        bsynz( pc, ipiti[j - 1], &ivuv[j - 1], &buf[*buflen], &rmsi[j - 1], &ratio, &g2pass, st );
-	        deemp( &buf[*buflen], ipiti[j - 1], st);
-	        *buflen += ipiti[j - 1];
-	    }
+            irc2pc( &rci[j * 10 - 10], pc, 0.7f, &g2pass);
+            bsynz( pc, ipiti[j - 1], &ivuv[j - 1], &buf[*buflen], &rmsi[j - 1], &ratio, &g2pass, st );
+            deemp( &buf[*buflen], ipiti[j - 1], st);
+            *buflen += ipiti[j - 1];
+        }
 
-	    for (i = 1; i <= st->lframe; ++i) 
+        for (i = 1; i <= st->lframe; ++i) 
         {
-	        speech[i] = buf[i - 1] / 4096.f;
-	    }
-	    *buflen += -st->lframe;
-	    i1 = *buflen;
-	    for (i = 1; i <= i1; ++i) 
+            speech[i] = buf[i - 1] / 4096.f;
+        }
+        *buflen += -st->lframe;
+        i1 = *buflen;
+        for (i = 1; i <= i1; ++i) 
         {
-    	    buf[i - 1] = buf[i + st->lframe - 1];
-	    }
+            buf[i - 1] = buf[i + st->lframe - 1];
+        }
     }
 }
 

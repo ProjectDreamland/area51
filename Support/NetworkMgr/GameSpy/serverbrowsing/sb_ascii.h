@@ -26,7 +26,7 @@ devsupport@gamespy.com
 #ifdef __cplusplus
 extern "C" {
 #endif
-	
+    
 #include "../nonport.h"
 
 /*
@@ -52,16 +52,16 @@ Starts an update by downloading a list of servers from the master server, then q
 
 sb - The server browser object to update
 async - If SBTrue, the update will be initiated, and ServerListThink must be called for processing and querying to occur
-		If SBFalse, the function will not return until the initial list of servers has been completely updated
+        If SBFalse, the function will not return until the initial list of servers has been completely updated
 disconnectOnComplete - If SBTrue, the connection to the master server will be disconnected immediately after the list is downloaded.
-					   If SBFalse, the connection will be left open for additional data queries, and can be closed via ServerBrowserDisconnect
+                       If SBFalse, the connection will be left open for additional data queries, and can be closed via ServerBrowserDisconnect
 basicFields - This array of registered QR2 keys is used to determine the fields requested from servers during the initial "basic" update.
-				Only server keys listed in this array will be returned for servers.
+                Only server keys listed in this array will be returned for servers.
 numBasicFields - The number of fields in the basicFields array
 serverFilter - SQL Filter string that will be applied on the master server to limit the list of servers returned.
-				All server keys are available for filtering on the master server, as well as the master-defined "country" and "region" keys. 
-				Standard SQL syntax should be used. 
-				
+                All server keys are available for filtering on the master server, as well as the master-defined "country" and "region" keys. 
+                Standard SQL syntax should be used. 
+                
 ServerBrowserLimitUpdate
 ------------------------
 Identical to ServerBrowserUpdate, except that the number of servers returned can be limited
@@ -80,12 +80,12 @@ sb - The server browser object to add the server to
 ip - The dotted IP address of the server e.g. "1.2.3.4"
 port - The query port of the server
 viaMaster - If SBTrue, information about the server will be retrieved from the master server instead of attempting to query the server directly.
-				If a connection to the master server does not exist, it will be made to kept open afterwards.
-			If SBFalse, the server will be contacted directly for information.
+                If a connection to the master server does not exist, it will be made to kept open afterwards.
+            If SBFalse, the server will be contacted directly for information.
 async - If SBTrue, the update will be initiated, and ServerListThink must be called for processing and querying to occur
-		If SBFalse, the function will not return until the server has been successfully or unsuccessfully updated
+        If SBFalse, the function will not return until the server has been successfully or unsuccessfully updated
 fullUpdate - If SBTrue, all server keys/rules/player/team information will be retrieved
-			 If SBFalse, only the keys specified in the basicFields array of the ServerBrowserUpdate function will be retrieved */
+             If SBFalse, only the keys specified in the basicFields array of the ServerBrowserUpdate function will be retrieved */
 SBError ServerBrowserAuxUpdateIPA(ServerBrowser sb, const char *ip, unsigned short port, SBBool viaMaster, SBBool async, SBBool fullUpdate);
 
 /* ServerBrowserRemoveIP

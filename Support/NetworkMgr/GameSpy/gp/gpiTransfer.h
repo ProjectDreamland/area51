@@ -42,58 +42,58 @@ Please see the GameSpy Presence SDK documentation for more information
 ///////
 typedef enum
 {
-	GPITransferPinging,
-	GPITransferWaiting,
-	GPITransferTransferring,
-	GPITransferComplete,
-	GPITransferCancelled,
-	GPITransferNoConnection
+    GPITransferPinging,
+    GPITransferWaiting,
+    GPITransferTransferring,
+    GPITransferComplete,
+    GPITransferCancelled,
+    GPITransferNoConnection
 } GPITransferState;
 
 typedef struct GPITransferID_s
 {
-	int profileid;
-	unsigned int count;
-	unsigned int time;
+    int profileid;
+    unsigned int count;
+    unsigned int time;
 } GPITransferID;
 
 typedef struct
 {
-	GPITransferState state;
-	DArray files;
-	GPITransferID transferID;
-	int localID;
-	GPIBool sender;
-	GPProfile profile;
-	GPIPeer * peer;
-	int currentFile;
-	int throttle;
-	char * baseDirectory;
-	unsigned long lastSend;
-	char * message;
-	int totalSize;
-	int progress;
-	void * userData;
+    GPITransferState state;
+    DArray files;
+    GPITransferID transferID;
+    int localID;
+    GPIBool sender;
+    GPProfile profile;
+    GPIPeer * peer;
+    int currentFile;
+    int throttle;
+    char * baseDirectory;
+    unsigned long lastSend;
+    char * message;
+    int totalSize;
+    int progress;
+    void * userData;
 } GPITransfer;
 
 typedef struct
 {
-	char * path;
-	char * name;
-	
+    char * path;
+    char * name;
+    
 #ifdef GSI_UNICODE
-	unsigned short* name_W; // must have this since developers are given pointers to internal memory
-	unsigned short* path_W;
+    unsigned short* name_W; // must have this since developers are given pointers to internal memory
+    unsigned short* path_W;
 #endif
 
-	int progress;
-	int size;
-	int acknowledged;
-	FILE * file;
-	int flags;
-	unsigned long modTime;
-	MD5_CTX md5;
-	int reason;
+    int progress;
+    int size;
+    int acknowledged;
+    FILE * file;
+    int flags;
+    unsigned long modTime;
+    MD5_CTX md5;
+    int reason;
 } GPIFile;
 
 //FUNCTIONS

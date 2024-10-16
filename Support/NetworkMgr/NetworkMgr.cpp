@@ -276,7 +276,7 @@ void network_mgr::Update( f32 DeltaTime )
     ExitReason = g_ActiveConfig.GetExitReason();
 
     if( m_IsOnline && (m_LocalSocket.IsEmpty()==FALSE) )
-	#if defined ( TARGET_PC )
+    #if defined ( TARGET_PC )
     {
     }
     #endif

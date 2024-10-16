@@ -14,7 +14,7 @@
 //==============================================================================
 
 //==============================================================================
-//	INCLUDES
+//    INCLUDES
 //==============================================================================
 
 #include "logic_tdm.hpp"
@@ -42,7 +42,7 @@ enum
 };
 
 //==============================================================================
-//	FUNCTIONS
+//    FUNCTIONS
 //==============================================================================
 
 logic_tdm::logic_tdm( void )
@@ -101,7 +101,7 @@ void logic_tdm::RequestSpawn( s32 PlayerIndex, xbool Immediate )
   
     u32 TeamBits = GetTeamBits( PlayerIndex );
 
-	if( !m_Alive[PlayerIndex] && 
+    if( !m_Alive[PlayerIndex] && 
         ( (m_RespawnDelay[PlayerIndex] == 0.0f) || Immediate ) )
     {
         actor* pActor = (actor*)NetObjMgr.GetObjFromSlot( PlayerIndex );
@@ -138,7 +138,7 @@ void logic_tdm::PlayerDied( s32 Victim, s32 Killer, s32 PainType )
     ASSERT( g_NetworkMgr.IsServer() );
 
     (void)Killer;
-	(void)PainType;
+    (void)PainType;
 
     // The player could already be dead if killed on the server and a client
     // at approximately the same time since the client kill has latency.
