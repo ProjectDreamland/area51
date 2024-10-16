@@ -1,295 +1,1093 @@
 <?xml version="1.0" encoding="Windows-1252"?>
-<VisualStudioProject ProjectType="Visual C++" Version="7.10" Name="A51" ProjectGUID="{E8B6020E-7351-47c5-BAB8-765DA5E8B9B5}" RootNamespace="A51" Keyword="XboxProj">
-  <Platforms>
-    <Platform Name="Win32" />
-    <Platform Name="Xbox" />
-  </Platforms>
-  <Configurations>
-    <Configuration Name="Debug|Win32" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1" WholeProgramOptimization="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG" MinimalRebuild="TRUE" BasicRuntimeChecks="3" SmallerTypeCheck="FALSE" RuntimeLibrary="1" BufferSecurityCheck="TRUE" EnableFunctionLevelLinking="FALSE" EnableEnhancedInstructionSet="0" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="4" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib" AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win" IgnoreDefaultLibraryNames="libci.lib" GenerateDebugInformation="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="Debug|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_XBOX,CONFIG_DEBUG;" MinimalRebuild="FALSE" ExceptionHandling="FALSE" BasicRuntimeChecks="3" RuntimeLibrary="1" BufferSecurityCheck="TRUE" EnableFunctionLevelLinking="FALSE" ForceConformanceInForLoopScope="TRUE" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalDependencies="xapilibd.lib d3d8d.lib d3dx8d.lib xgraphicsd.lib dsoundd.lib dmusicd.lib xactengd.lib xsndtrkd.lib xvoiced.lib xonline.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib" AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="XboxDeploymentTool" RemotePath="xe:\$(SolutionName)\$(TargetName)(Debug).xbe" />
-      <Tool Name="XboxImageTool" AdditionalOptions="/INSERTFILE:dsstdfx.bin,dsp_program,RN&#xA;/INSERTFILE:media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN&#xA;/INSERTFILE:media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN&#xA;/INSERTFILE:media\ESRB_640x480.xbmp,ESRB_640x480,RN&#xA;/INSERTFILE:media\BadDisc_640x480.xbmp,BadDisc_640x480,RN&#xA;/INSERTFILE:media\BadDisc_French_640x480.xbmp,BadDisc_French_640x480,RN&#xA;/INSERTFILE:media\BadDisc_German_640x480.xbmp,BadDisc_German_640x480,RN&#xA;/INSERTFILE:media\BadDisc_Italian_640x480.xbmp,BadDisc_Italian_640x480,RN&#xA;/INSERTFILE:media\BadDisc_Spanish_640x480.xbmp,BadDisc_Spanish_640x480,RN&#xA;/INSERTFILE:media\PS0000.PSH,PS0000&#xA;/INSERTFILE:media\PS0001.PSH,PS0001&#xA;/INSERTFILE:media\PS0002.PSH,PS0002&#xA;/INSERTFILE:media\PS0003.PSH,PS0003&#xA;/INSERTFILE:media\PS0004.PSH,PS0004&#xA;/INSERTFILE:media\PS0005.PSH,PS0005&#xA;/INSERTFILE:media\PS0006.PSH,PS0006&#xA;/INSERTFILE:media\PS0007.PSH,PS0007&#xA;/INSERTFILE:media\PS0008.PSH,PS0008&#xA;/INSERTFILE:media\PS0009.PSH,PS0009&#xA;/INSERTFILE:media\PS0010.PSH,PS0010&#xA;/INSERTFILE:media\PS0011.PSH,PS0011&#xA;/INSERTFILE:media\PS0012.PSH,PS0012&#xA;/INSERTFILE:media\PS0013.PSH,PS0013&#xA;/INSERTFILE:media\PS0014.PSH,PS0014&#xA;/INSERTFILE:media\PS0015.PSH,PS0015&#xA;/INSERTFILE:media\PS0016.PSH,PS0016&#xA;/INSERTFILE:media\PS0017.PSH,PS0017&#xA;/INSERTFILE:media\PS0018.PSH,PS0018&#xA;/INSERTFILE:media\PS0019.PSH,PS0019&#xA;/INSERTFILE:media\PS0020.PSH,PS0020&#xA;/INSERTFILE:media\PS0021.PSH,PS0021&#xA;/INSERTFILE:media\PS0022.PSH,PS0022&#xA;/INSERTFILE:media\PS0023.PSH,PS0023&#xA;/INSERTFILE:media\PS0024.PSH,PS0024&#xA;/INSERTFILE:media\PS0025.PSH,PS0025&#xA;/INSERTFILE:media\PS0026.PSH,PS0026&#xA;/INSERTFILE:media\PS0027.PSH,PS0027&#xA;/INSERTFILE:media\PS0028.PSH,PS0028&#xA;/INSERTFILE:media\PS0029.PSH,PS0029&#xA;/INSERTFILE:media\PS0030.PSH,PS0030&#xA;/INSERTFILE:media\PS0031.PSH,PS0031&#xA;/INSERTFILE:media\PS0032.PSH,PS0032&#xA;/INSERTFILE:media\PS0033.PSH,PS0033&#xA;/INSERTFILE:media\PS0034.PSH,PS0034&#xA;/INSERTFILE:media\PS0035.PSH,PS0035&#xA;/INSERTFILE:media\PS0036.PSH,PS0036&#xA;/INSERTFILE:media\PS0037.PSH,PS0037&#xA;/INSERTFILE:media\PS0038.PSH,PS0038&#xA;/INSERTFILE:media\PS0039.PSH,PS0039&#xA;/INSERTFILE:media\PS0040.PSH,PS0040&#xA;/INSERTFILE:media\PS0041.PSH,PS0041&#xA;/INSERTFILE:media\PS0042.PSH,PS0042&#xA;/INSERTFILE:media\PS0043.PSH,PS0043&#xA;/INSERTFILE:media\PS0044.PSH,PS0044&#xA;/INSERTFILE:media\VS0000.VSH,VS0000&#xA;/INSERTFILE:media\VS0001.VSH,VS0001&#xA;/INSERTFILE:media\VS0002.VSH,VS0002&#xA;/INSERTFILE:media\VS0003.VSH,VS0003&#xA;/INSERTFILE:media\VS0004.VSH,VS0004&#xA;/INSERTFILE:media\VS0005.VSH,VS0005&#xA;/INSERTFILE:media\VS0006.VSH,VS0006&#xA;/INSERTFILE:media\VS0007.VSH,VS0007&#xA;/INSERTFILE:media\VS0008.VSH,VS0008&#xA;/INSERTFILE:media\VS0009.VSH,VS0009&#xA;/INSERTFILE:media\VS0010.VSH,VS0010&#xA;/INSERTFILE:media\VS0011.VSH,VS0011&#xA;/INSERTFILE:media\VS0012.VSH,VS0012&#xA;/INSERTFILE:media\VS0013.VSH,VS0013&#xA;/INSERTFILE:media\VS0014.VSH,VS0014&#xA;/INSERTFILE:media\VS0015.VSH,VS0015&#xA;/INSERTFILE:media\VS0016.VSH,VS0016&#xA;/INSERTFILE:media\VS0017.VSH,VS0017&#xA;/INSERTFILE:media\VS0018.VSH,VS0018&#xA;/INSERTFILE:media\VS0019.VSH,VS0019&#xA;/INSERTFILE:media\VS0020.VSH,VS0020&#xA;/INSERTFILE:media\VS0021.VSH,VS0021&#xA;/INSERTFILE:media\VS0022.VSH,VS0022&#xA;/INSERTFILE:media\VS0023.VSH,VS0023&#xA;/INSERTFILE:media\VS0024.VSH,VS0024&#xA;/INSERTFILE:media\VS0025.VSH,VS0025&#xA;/INSERTFILE:media\VS0026.VSH,VS0026&#xA;/INSERTFILE:media\VS0027.VSH,VS0027&#xA;/INSERTFILE:media\VS0028.VSH,VS0028&#xA;" StackSize="32768" LimitAvailableMemoryTo64MB="FALSE" FormatUD="TRUE" TitleID="0x4D570005" TitleName="Area51(Debug)" />
-    </Configuration>
-    <Configuration Name="OptDebug|Win32" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1" CharacterSet="0" WholeProgramOptimization="FALSE">
-      <Tool Name="VCCLCompilerTool" Optimization="3" GlobalOptimizations="TRUE" InlineFunctionExpansion="2" EnableIntrinsicFunctions="TRUE" FavorSizeOrSpeed="1" OmitFramePointers="TRUE" OptimizeForProcessor="2" OptimizeForWindowsApplication="TRUE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG" StringPooling="TRUE" MinimalRebuild="TRUE" ExceptionHandling="FALSE" BasicRuntimeChecks="0" RuntimeLibrary="0" BufferSecurityCheck="TRUE" EnableFunctionLevelLinking="TRUE" EnableEnhancedInstructionSet="1" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9" IgnoreDefaultLibraryNames="libc" GenerateDebugInformation="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="OptDebug|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1">
-      <Tool Name="VCCLCompilerTool" Optimization="3" GlobalOptimizations="TRUE" InlineFunctionExpansion="2" EnableIntrinsicFunctions="TRUE" FavorSizeOrSpeed="1" OmitFramePointers="TRUE" EnableFiberSafeOptimizations="TRUE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_XBOX,CONFIG_OPTDEBUG" StringPooling="TRUE" ExceptionHandling="FALSE" RuntimeLibrary="1" EnableFunctionLevelLinking="TRUE" EnableEnhancedInstructionSet="1" ForceConformanceInForLoopScope="TRUE" WarningLevel="3" WarnAsError="FALSE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalDependencies="xapilibd.lib d3d8d.lib d3dx8d.lib xgraphicsd.lib dsoundd.lib dmusicd.lib xactengd.lib xsndtrkd.lib xvoiced.lib xonline.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib" AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="XboxDeploymentTool" RemotePath="xe:\$(SolutionName)\$(TargetName)(OptDebug).xbe" />
-      <Tool Name="XboxImageTool" AdditionalOptions="/INSERTFILE:dsstdfx.bin,dsp_program,RN&#xA;/INSERTFILE:media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN&#xA;/INSERTFILE:media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN&#xA;/INSERTFILE:media\ESRB_640x480.xbmp,ESRB_640x480,RN&#xA;/INSERTFILE:media\BadDisc_640x480.xbmp,BadDisc_640x480,RN&#xA;/INSERTFILE:media\BadDisc_French_640x480.xbmp,BadDisc_French_640x480,RN&#xA;/INSERTFILE:media\BadDisc_German_640x480.xbmp,BadDisc_German_640x480,RN&#xA;/INSERTFILE:media\BadDisc_Italian_640x480.xbmp,BadDisc_Italian_640x480,RN&#xA;/INSERTFILE:media\BadDisc_Spanish_640x480.xbmp,BadDisc_Spanish_640x480,RN&#xA;/INSERTFILE:media\PS0000.PSH,PS0000&#xA;/INSERTFILE:media\PS0001.PSH,PS0001&#xA;/INSERTFILE:media\PS0002.PSH,PS0002&#xA;/INSERTFILE:media\PS0003.PSH,PS0003&#xA;/INSERTFILE:media\PS0004.PSH,PS0004&#xA;/INSERTFILE:media\PS0005.PSH,PS0005&#xA;/INSERTFILE:media\PS0006.PSH,PS0006&#xA;/INSERTFILE:media\PS0007.PSH,PS0007&#xA;/INSERTFILE:media\PS0008.PSH,PS0008&#xA;/INSERTFILE:media\PS0009.PSH,PS0009&#xA;/INSERTFILE:media\PS0010.PSH,PS0010&#xA;/INSERTFILE:media\PS0011.PSH,PS0011&#xA;/INSERTFILE:media\PS0012.PSH,PS0012&#xA;/INSERTFILE:media\PS0013.PSH,PS0013&#xA;/INSERTFILE:media\PS0014.PSH,PS0014&#xA;/INSERTFILE:media\PS0015.PSH,PS0015&#xA;/INSERTFILE:media\PS0016.PSH,PS0016&#xA;/INSERTFILE:media\PS0017.PSH,PS0017&#xA;/INSERTFILE:media\PS0018.PSH,PS0018&#xA;/INSERTFILE:media\PS0019.PSH,PS0019&#xA;/INSERTFILE:media\PS0020.PSH,PS0020&#xA;/INSERTFILE:media\PS0021.PSH,PS0021&#xA;/INSERTFILE:media\PS0022.PSH,PS0022&#xA;/INSERTFILE:media\PS0023.PSH,PS0023&#xA;/INSERTFILE:media\PS0024.PSH,PS0024&#xA;/INSERTFILE:media\PS0025.PSH,PS0025&#xA;/INSERTFILE:media\PS0026.PSH,PS0026&#xA;/INSERTFILE:media\PS0027.PSH,PS0027&#xA;/INSERTFILE:media\PS0028.PSH,PS0028&#xA;/INSERTFILE:media\PS0029.PSH,PS0029&#xA;/INSERTFILE:media\PS0030.PSH,PS0030&#xA;/INSERTFILE:media\PS0031.PSH,PS0031&#xA;/INSERTFILE:media\PS0032.PSH,PS0032&#xA;/INSERTFILE:media\PS0033.PSH,PS0033&#xA;/INSERTFILE:media\PS0034.PSH,PS0034&#xA;/INSERTFILE:media\PS0035.PSH,PS0035&#xA;/INSERTFILE:media\PS0036.PSH,PS0036&#xA;/INSERTFILE:media\PS0037.PSH,PS0037&#xA;/INSERTFILE:media\PS0038.PSH,PS0038&#xA;/INSERTFILE:media\PS0039.PSH,PS0039&#xA;/INSERTFILE:media\PS0040.PSH,PS0040&#xA;/INSERTFILE:media\PS0041.PSH,PS0041&#xA;/INSERTFILE:media\PS0042.PSH,PS0042&#xA;/INSERTFILE:media\PS0043.PSH,PS0043&#xA;/INSERTFILE:media\PS0044.PSH,PS0044&#xA;/INSERTFILE:media\VS0000.VSH,VS0000&#xA;/INSERTFILE:media\VS0001.VSH,VS0001&#xA;/INSERTFILE:media\VS0002.VSH,VS0002&#xA;/INSERTFILE:media\VS0003.VSH,VS0003&#xA;/INSERTFILE:media\VS0004.VSH,VS0004&#xA;/INSERTFILE:media\VS0005.VSH,VS0005&#xA;/INSERTFILE:media\VS0006.VSH,VS0006&#xA;/INSERTFILE:media\VS0007.VSH,VS0007&#xA;/INSERTFILE:media\VS0008.VSH,VS0008&#xA;/INSERTFILE:media\VS0009.VSH,VS0009&#xA;/INSERTFILE:media\VS0010.VSH,VS0010&#xA;/INSERTFILE:media\VS0011.VSH,VS0011&#xA;/INSERTFILE:media\VS0012.VSH,VS0012&#xA;/INSERTFILE:media\VS0013.VSH,VS0013&#xA;/INSERTFILE:media\VS0014.VSH,VS0014&#xA;/INSERTFILE:media\VS0015.VSH,VS0015&#xA;/INSERTFILE:media\VS0016.VSH,VS0016&#xA;/INSERTFILE:media\VS0017.VSH,VS0017&#xA;/INSERTFILE:media\VS0018.VSH,VS0018&#xA;/INSERTFILE:media\VS0019.VSH,VS0019&#xA;/INSERTFILE:media\VS0020.VSH,VS0020&#xA;/INSERTFILE:media\VS0021.VSH,VS0021&#xA;/INSERTFILE:media\VS0022.VSH,VS0022&#xA;/INSERTFILE:media\VS0023.VSH,VS0023&#xA;/INSERTFILE:media\VS0024.VSH,VS0024&#xA;/INSERTFILE:media\VS0025.VSH,VS0025&#xA;/INSERTFILE:media\VS0026.VSH,VS0026&#xA;/INSERTFILE:media\VS0027.VSH,VS0027&#xA;/INSERTFILE:media\VS0028.VSH,VS0028&#xA;" StackSize="131072" LimitAvailableMemoryTo64MB="FALSE" FormatUD="TRUE" TitleID="0x4D570005" />
-    </Configuration>
-    <Configuration Name="QA|Win32" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1" WholeProgramOptimization="TRUE">
-      <Tool Name="VCCLCompilerTool" Optimization="3" GlobalOptimizations="TRUE" InlineFunctionExpansion="2" EnableIntrinsicFunctions="TRUE" FavorSizeOrSpeed="1" OmitFramePointers="TRUE" EnableFiberSafeOptimizations="FALSE" OptimizeForProcessor="2" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PC,CONFIG_QA" StringPooling="TRUE" MinimalRebuild="TRUE" BasicRuntimeChecks="0" RuntimeLibrary="0" BufferSecurityCheck="FALSE" EnableEnhancedInstructionSet="1" UsePrecompiledHeader="0" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="QA|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1" WholeProgramOptimization="TRUE">
-      <Tool Name="VCCLCompilerTool" Optimization="3" GlobalOptimizations="TRUE" InlineFunctionExpansion="2" EnableIntrinsicFunctions="TRUE" FavorSizeOrSpeed="1" OmitFramePointers="TRUE" EnableFiberSafeOptimizations="TRUE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_XBOX,CONFIG_QA" StringPooling="TRUE" ExceptionHandling="FALSE" RuntimeLibrary="0" EnableFunctionLevelLinking="TRUE" EnableEnhancedInstructionSet="1" ForceConformanceInForLoopScope="TRUE" WarningLevel="3" WarnAsError="FALSE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalDependencies="xapilib.lib d3d8i.lib d3dx8.lib xgraphicsltcg.lib dsound.lib dmusic.lib xacteng.lib xsndtrk.lib xvoice.lib xonline.lib xboxkrnl.lib XbDm.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib" OptimizeReferences="2" EnableCOMDATFolding="2" AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="XboxDeploymentTool" ExcludedFromBuild="TRUE" RemotePath="xe:\$(SolutionName)\$(TargetName)(QA).xbe" />
-      <Tool Name="XboxImageTool" AdditionalOptions="/INSERTFILE:dsstdfx.bin,dsp_program,RN&#xA;/INSERTFILE:media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN&#xA;/INSERTFILE:media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN&#xA;/INSERTFILE:media\ESRB_640x480.xbmp,ESRB_640x480,RN&#xA;/INSERTFILE:media\BadDisc_640x480.xbmp,BadDisc_640x480,RN&#xA;/INSERTFILE:media\BadDisc_French_640x480.xbmp,BadDisc_French_640x480,RN&#xA;/INSERTFILE:media\BadDisc_German_640x480.xbmp,BadDisc_German_640x480,RN&#xA;/INSERTFILE:media\BadDisc_Italian_640x480.xbmp,BadDisc_Italian_640x480,RN&#xA;/INSERTFILE:media\BadDisc_Spanish_640x480.xbmp,BadDisc_Spanish_640x480,RN&#xA;/INSERTFILE:media\PS0000.PSH,PS0000&#xA;/INSERTFILE:media\PS0001.PSH,PS0001&#xA;/INSERTFILE:media\PS0002.PSH,PS0002&#xA;/INSERTFILE:media\PS0003.PSH,PS0003&#xA;/INSERTFILE:media\PS0004.PSH,PS0004&#xA;/INSERTFILE:media\PS0005.PSH,PS0005&#xA;/INSERTFILE:media\PS0006.PSH,PS0006&#xA;/INSERTFILE:media\PS0007.PSH,PS0007&#xA;/INSERTFILE:media\PS0008.PSH,PS0008&#xA;/INSERTFILE:media\PS0009.PSH,PS0009&#xA;/INSERTFILE:media\PS0010.PSH,PS0010&#xA;/INSERTFILE:media\PS0011.PSH,PS0011&#xA;/INSERTFILE:media\PS0012.PSH,PS0012&#xA;/INSERTFILE:media\PS0013.PSH,PS0013&#xA;/INSERTFILE:media\PS0014.PSH,PS0014&#xA;/INSERTFILE:media\PS0015.PSH,PS0015&#xA;/INSERTFILE:media\PS0016.PSH,PS0016&#xA;/INSERTFILE:media\PS0017.PSH,PS0017&#xA;/INSERTFILE:media\PS0018.PSH,PS0018&#xA;/INSERTFILE:media\PS0019.PSH,PS0019&#xA;/INSERTFILE:media\PS0020.PSH,PS0020&#xA;/INSERTFILE:media\PS0021.PSH,PS0021&#xA;/INSERTFILE:media\PS0022.PSH,PS0022&#xA;/INSERTFILE:media\PS0023.PSH,PS0023&#xA;/INSERTFILE:media\PS0024.PSH,PS0024&#xA;/INSERTFILE:media\PS0025.PSH,PS0025&#xA;/INSERTFILE:media\PS0026.PSH,PS0026&#xA;/INSERTFILE:media\PS0027.PSH,PS0027&#xA;/INSERTFILE:media\PS0028.PSH,PS0028&#xA;/INSERTFILE:media\PS0029.PSH,PS0029&#xA;/INSERTFILE:media\PS0030.PSH,PS0030&#xA;/INSERTFILE:media\PS0031.PSH,PS0031&#xA;/INSERTFILE:media\PS0032.PSH,PS0032&#xA;/INSERTFILE:media\PS0033.PSH,PS0033&#xA;/INSERTFILE:media\PS0034.PSH,PS0034&#xA;/INSERTFILE:media\PS0035.PSH,PS0035&#xA;/INSERTFILE:media\PS0036.PSH,PS0036&#xA;/INSERTFILE:media\PS0037.PSH,PS0037&#xA;/INSERTFILE:media\PS0038.PSH,PS0038&#xA;/INSERTFILE:media\PS0039.PSH,PS0039&#xA;/INSERTFILE:media\PS0040.PSH,PS0040&#xA;/INSERTFILE:media\PS0041.PSH,PS0041&#xA;/INSERTFILE:media\PS0042.PSH,PS0042&#xA;/INSERTFILE:media\PS0043.PSH,PS0043&#xA;/INSERTFILE:media\PS0044.PSH,PS0044&#xA;/INSERTFILE:media\VS0000.VSH,VS0000&#xA;/INSERTFILE:media\VS0001.VSH,VS0001&#xA;/INSERTFILE:media\VS0002.VSH,VS0002&#xA;/INSERTFILE:media\VS0003.VSH,VS0003&#xA;/INSERTFILE:media\VS0004.VSH,VS0004&#xA;/INSERTFILE:media\VS0005.VSH,VS0005&#xA;/INSERTFILE:media\VS0006.VSH,VS0006&#xA;/INSERTFILE:media\VS0007.VSH,VS0007&#xA;/INSERTFILE:media\VS0008.VSH,VS0008&#xA;/INSERTFILE:media\VS0009.VSH,VS0009&#xA;/INSERTFILE:media\VS0010.VSH,VS0010&#xA;/INSERTFILE:media\VS0011.VSH,VS0011&#xA;/INSERTFILE:media\VS0012.VSH,VS0012&#xA;/INSERTFILE:media\VS0013.VSH,VS0013&#xA;/INSERTFILE:media\VS0014.VSH,VS0014&#xA;/INSERTFILE:media\VS0015.VSH,VS0015&#xA;/INSERTFILE:media\VS0016.VSH,VS0016&#xA;/INSERTFILE:media\VS0017.VSH,VS0017&#xA;/INSERTFILE:media\VS0018.VSH,VS0018&#xA;/INSERTFILE:media\VS0019.VSH,VS0019&#xA;/INSERTFILE:media\VS0020.VSH,VS0020&#xA;/INSERTFILE:media\VS0021.VSH,VS0021&#xA;/INSERTFILE:media\VS0022.VSH,VS0022&#xA;/INSERTFILE:media\VS0023.VSH,VS0023&#xA;/INSERTFILE:media\VS0024.VSH,VS0024&#xA;/INSERTFILE:media\VS0025.VSH,VS0025&#xA;/INSERTFILE:media\VS0026.VSH,VS0026&#xA;/INSERTFILE:media\VS0027.VSH,VS0027&#xA;/INSERTFILE:media\VS0028.VSH,VS0028&#xA;" StackSize="131072" IncludeDebugInfo="FALSE" LimitAvailableMemoryTo64MB="FALSE" FormatUD="TRUE" TitleID="0x4D570005" TitleName="Area51" TitleImage="$(SolutionDir)\media\titleimage.xbx" SaveGameImage="$(SolutionDir)\media\saveimage.xbx" />
-    </Configuration>
-    <Configuration Name="Retail|Win32" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1" WholeProgramOptimization="TRUE">
-      <Tool Name="VCCLCompilerTool" Optimization="3" GlobalOptimizations="TRUE" InlineFunctionExpansion="2" EnableIntrinsicFunctions="TRUE" FavorSizeOrSpeed="1" OmitFramePointers="TRUE" EnableFiberSafeOptimizations="TRUE" OptimizeForProcessor="2" OptimizeForWindowsApplication="TRUE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL" StringPooling="TRUE" MinimalRebuild="FALSE" ExceptionHandling="FALSE" BasicRuntimeChecks="0" RuntimeLibrary="0" BufferSecurityCheck="FALSE" EnableFunctionLevelLinking="TRUE" EnableEnhancedInstructionSet="1" UsePrecompiledHeader="0" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="0" CompileAs="0" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="Retail|Xbox" OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)" ConfigurationType="1" WholeProgramOptimization="TRUE">
-      <Tool Name="VCCLCompilerTool" Optimization="3" GlobalOptimizations="TRUE" InlineFunctionExpansion="0" EnableIntrinsicFunctions="TRUE" FavorSizeOrSpeed="2" OmitFramePointers="TRUE" EnableFiberSafeOptimizations="TRUE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL" StringPooling="TRUE" ExceptionHandling="FALSE" RuntimeLibrary="0" EnableFunctionLevelLinking="TRUE" EnableEnhancedInstructionSet="1" ForceConformanceInForLoopScope="TRUE" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalDependencies="xapilib.lib d3d8ltcg.lib d3dx8.lib xgraphicsltcg.lib dsound.lib dmusic.lib xacteng.lib xsndtrk.lib xvoice.lib XOnlines.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib" GenerateDebugInformation="TRUE" OptimizeReferences="2" EnableCOMDATFolding="2" AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="XboxDeploymentTool" ExcludedFromBuild="TRUE" />
-      <Tool Name="XboxImageTool" AdditionalOptions="/INSERTFILE:dsstdfx.bin,dsp_program,RN&#xA;/INSERTFILE:media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN&#xA;/INSERTFILE:media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN&#xA;/INSERTFILE:media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN&#xA;/INSERTFILE:media\ESRB_640x480.xbmp,ESRB_640x480,RN&#xA;/INSERTFILE:media\BadDisc_640x480.xbmp,BadDisc_640x480,RN&#xA;/INSERTFILE:media\BadDisc_French_640x480.xbmp,BadDisc_French_640x480,RN&#xA;/INSERTFILE:media\BadDisc_German_640x480.xbmp,BadDisc_German_640x480,RN&#xA;/INSERTFILE:media\BadDisc_Italian_640x480.xbmp,BadDisc_Italian_640x480,RN&#xA;/INSERTFILE:media\BadDisc_Spanish_640x480.xbmp,BadDisc_Spanish_640x480,RN&#xA;/INSERTFILE:media\PS0000.PSH,PS0000&#xA;/INSERTFILE:media\PS0001.PSH,PS0001&#xA;/INSERTFILE:media\PS0002.PSH,PS0002&#xA;/INSERTFILE:media\PS0003.PSH,PS0003&#xA;/INSERTFILE:media\PS0004.PSH,PS0004&#xA;/INSERTFILE:media\PS0005.PSH,PS0005&#xA;/INSERTFILE:media\PS0006.PSH,PS0006&#xA;/INSERTFILE:media\PS0007.PSH,PS0007&#xA;/INSERTFILE:media\PS0008.PSH,PS0008&#xA;/INSERTFILE:media\PS0009.PSH,PS0009&#xA;/INSERTFILE:media\PS0010.PSH,PS0010&#xA;/INSERTFILE:media\PS0011.PSH,PS0011&#xA;/INSERTFILE:media\PS0012.PSH,PS0012&#xA;/INSERTFILE:media\PS0013.PSH,PS0013&#xA;/INSERTFILE:media\PS0014.PSH,PS0014&#xA;/INSERTFILE:media\PS0015.PSH,PS0015&#xA;/INSERTFILE:media\PS0016.PSH,PS0016&#xA;/INSERTFILE:media\PS0017.PSH,PS0017&#xA;/INSERTFILE:media\PS0018.PSH,PS0018&#xA;/INSERTFILE:media\PS0019.PSH,PS0019&#xA;/INSERTFILE:media\PS0020.PSH,PS0020&#xA;/INSERTFILE:media\PS0021.PSH,PS0021&#xA;/INSERTFILE:media\PS0022.PSH,PS0022&#xA;/INSERTFILE:media\PS0023.PSH,PS0023&#xA;/INSERTFILE:media\PS0024.PSH,PS0024&#xA;/INSERTFILE:media\PS0025.PSH,PS0025&#xA;/INSERTFILE:media\PS0026.PSH,PS0026&#xA;/INSERTFILE:media\PS0027.PSH,PS0027&#xA;/INSERTFILE:media\PS0028.PSH,PS0028&#xA;/INSERTFILE:media\PS0029.PSH,PS0029&#xA;/INSERTFILE:media\PS0030.PSH,PS0030&#xA;/INSERTFILE:media\PS0031.PSH,PS0031&#xA;/INSERTFILE:media\PS0032.PSH,PS0032&#xA;/INSERTFILE:media\PS0033.PSH,PS0033&#xA;/INSERTFILE:media\PS0034.PSH,PS0034&#xA;/INSERTFILE:media\PS0035.PSH,PS0035&#xA;/INSERTFILE:media\PS0036.PSH,PS0036&#xA;/INSERTFILE:media\PS0037.PSH,PS0037&#xA;/INSERTFILE:media\PS0038.PSH,PS0038&#xA;/INSERTFILE:media\PS0039.PSH,PS0039&#xA;/INSERTFILE:media\PS0040.PSH,PS0040&#xA;/INSERTFILE:media\PS0041.PSH,PS0041&#xA;/INSERTFILE:media\PS0042.PSH,PS0042&#xA;/INSERTFILE:media\PS0043.PSH,PS0043&#xA;/INSERTFILE:media\PS0044.PSH,PS0044&#xA;/INSERTFILE:media\VS0000.VSH,VS0000&#xA;/INSERTFILE:media\VS0001.VSH,VS0001&#xA;/INSERTFILE:media\VS0002.VSH,VS0002&#xA;/INSERTFILE:media\VS0003.VSH,VS0003&#xA;/INSERTFILE:media\VS0004.VSH,VS0004&#xA;/INSERTFILE:media\VS0005.VSH,VS0005&#xA;/INSERTFILE:media\VS0006.VSH,VS0006&#xA;/INSERTFILE:media\VS0007.VSH,VS0007&#xA;/INSERTFILE:media\VS0008.VSH,VS0008&#xA;/INSERTFILE:media\VS0009.VSH,VS0009&#xA;/INSERTFILE:media\VS0010.VSH,VS0010&#xA;/INSERTFILE:media\VS0011.VSH,VS0011&#xA;/INSERTFILE:media\VS0012.VSH,VS0012&#xA;/INSERTFILE:media\VS0013.VSH,VS0013&#xA;/INSERTFILE:media\VS0014.VSH,VS0014&#xA;/INSERTFILE:media\VS0015.VSH,VS0015&#xA;/INSERTFILE:media\VS0016.VSH,VS0016&#xA;/INSERTFILE:media\VS0017.VSH,VS0017&#xA;/INSERTFILE:media\VS0018.VSH,VS0018&#xA;/INSERTFILE:media\VS0019.VSH,VS0019&#xA;/INSERTFILE:media\VS0020.VSH,VS0020&#xA;/INSERTFILE:media\VS0021.VSH,VS0021&#xA;/INSERTFILE:media\VS0022.VSH,VS0022&#xA;/INSERTFILE:media\VS0023.VSH,VS0023&#xA;/INSERTFILE:media\VS0024.VSH,VS0024&#xA;/INSERTFILE:media\VS0025.VSH,VS0025&#xA;/INSERTFILE:media\VS0026.VSH,VS0026&#xA;/INSERTFILE:media\VS0027.VSH,VS0027&#xA;/INSERTFILE:media\VS0028.VSH,VS0028&#xA;" StackSize="131072" LimitAvailableMemoryTo64MB="TRUE" FormatUD="TRUE" TitleID="0x4D570005" TitleName="Area51" TitleImage="$(SolutionDir)\media\titleimage.xbx" SaveGameImage="$(SolutionDir)\media\saveimage.xbx" />
-    </Configuration>
-    <Configuration Name="PS2-Debug|Win32" OutputDirectory="$(ProjectDir)_$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)" ConfigurationType="1">
-      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2,CONFIG_DEBUG" MinimalRebuild="TRUE" RuntimeLibrary="5" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalOptions="/D:TARGET_PS2_DEV /D:" AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)" OutputFile="$(OutDir)/$(ProjectName).elf" LinkIncremental="2" IgnoreAllDefaultLibraries="FALSE" GenerateDebugInformation="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2-OptDebug|Win32" OutputDirectory="$(ProjectDir)_$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)" ConfigurationType="1">
-      <Tool Name="VCCLCompilerTool" Optimization="2" GlobalOptimizations="FALSE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2,CONFIG_OPTDEBUG" MinimalRebuild="TRUE" RuntimeLibrary="5" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalOptions="/D:TARGET_PS2_DEV /D:" AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)" OutputFile="$(OutDir)/$(ProjectName).elf" LinkIncremental="2" IgnoreAllDefaultLibraries="FALSE" GenerateDebugInformation="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2-Viewer|Win32" OutputDirectory="$(ProjectDir)_$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)" ConfigurationType="1">
-      <Tool Name="VCCLCompilerTool" Optimization="2" GlobalOptimizations="FALSE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2,CONFIG_VIEWER" MinimalRebuild="TRUE" RuntimeLibrary="5" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalOptions="/D:TARGET_PS2_DEV /D:" AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)" OutputFile="$(OutDir)/$(ProjectName).elf" LinkIncremental="2" IgnoreAllDefaultLibraries="FALSE" GenerateDebugInformation="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2-Retail|Win32" OutputDirectory="$(ProjectDir)_$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)" ConfigurationType="1">
-      <Tool Name="VCCLCompilerTool" Optimization="2" GlobalOptimizations="FALSE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2,CONFIG_RETAIL" MinimalRebuild="TRUE" RuntimeLibrary="5" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalOptions="/D:TARGET_PS2_DEV /D:" AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)" OutputFile="$(OutDir)/$(ProjectName).elf" LinkIncremental="2" IgnoreAllDefaultLibraries="FALSE" GenerateDebugInformation="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2-QA|Win32" OutputDirectory="$(ProjectDir)_$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)" ConfigurationType="1">
-      <Tool Name="VCCLCompilerTool" Optimization="2" GlobalOptimizations="FALSE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2,CONFIG_QA" MinimalRebuild="TRUE" RuntimeLibrary="5" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalOptions="/D:TARGET_PS2_DEV /D:" AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)" OutputFile="$(OutDir)/$(ProjectName).elf" LinkIncremental="2" IgnoreAllDefaultLibraries="FALSE" GenerateDebugInformation="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-    <Configuration Name="PS2-Profile|Win32" OutputDirectory="$(ProjectDir)_$(ConfigurationName)" IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)" ConfigurationType="1">
-      <Tool Name="VCCLCompilerTool" Optimization="2" GlobalOptimizations="FALSE" AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy" PreprocessorDefinitions="TARGET_PS2,CONFIG_PROFILE" MinimalRebuild="TRUE" RuntimeLibrary="0" UsePrecompiledHeader="2" WarningLevel="3" WarnAsError="TRUE" DebugInformationFormat="3" />
-      <Tool Name="VCCustomBuildTool" />
-      <Tool Name="VCLinkerTool" AdditionalOptions="/D:TARGET_PS2_DEV /D:" AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)" OutputFile="$(OutDir)/$(ProjectName).elf" LinkIncremental="2" IgnoreAllDefaultLibraries="FALSE" GenerateDebugInformation="TRUE" />
-      <Tool Name="VCMIDLTool" />
-      <Tool Name="VCPostBuildEventTool" />
-      <Tool Name="VCPreBuildEventTool" />
-      <Tool Name="VCPreLinkEventTool" />
-      <Tool Name="VCResourceCompilerTool" />
-      <Tool Name="VCWebServiceProxyGeneratorTool" />
-      <Tool Name="VCXMLDataGeneratorTool" />
-      <Tool Name="VCWebDeploymentTool" />
-      <Tool Name="VCManagedWrapperGeneratorTool" />
-      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
-    </Configuration>
-  </Configurations>
-  <References>
-  </References>
-  <Files>
-    <Filter Name="Configuration" Filter="">
-      <File RelativePath=".\Config.cpp">
-      </File>
-      <File RelativePath=".\Config.hpp">
-      </File>
-      <File RelativePath=".\IniFile.cpp">
-      </File>
-      <File RelativePath=".\IniFile.hpp">
-      </File>
-      <Filter Name="PS2" Filter="">
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Ps2\Config.ini">
-        </File>
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Ps2\eng_DiskMaps.txt">
-        </File>
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Ps2\FRE_DiskMaps.txt">
-        </File>
-      </Filter>
-      <Filter Name="XBOX" Filter="">
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Xbox\Config.ini">
-        </File>
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Xbox\eng_DiskMaps.txt">
-        </File>
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Xbox\FRE_DiskMaps.txt">
-        </File>
-      </Filter>
-      <Filter Name="PC" Filter="">
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Pc\Config.ini">
-        </File>
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Pc\eng_DiskMaps.txt">
-        </File>
-        <File RelativePath="..\..\..\..\GameData\A51\Release\Pc\FRE_DiskMaps.txt">
-        </File>
-      </Filter>
-    </Filter>
-    <Filter Name="Media" Filter="">
-      <File RelativePath=".\media\saves.rdf">
-        <FileConfiguration Name="QA|Xbox">
-          <Tool Name="VCCustomBuildTool" Description="Bundling saved games image" CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\saveimage.xbx&quot;" AdditionalDependencies="$(SolutionDir)\media\saveimage.tga" Outputs="$(SolutionDir)\media\saveimage.xbx" />
-        </FileConfiguration>
-        <FileConfiguration Name="Retail|Xbox">
-          <Tool Name="VCCustomBuildTool" Description="Bundling saved games image" CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\saveimage.xbx&quot;" AdditionalDependencies="$(SolutionDir)\media\saveimage.tga" Outputs="$(SolutionDir)\media\saveimage.xbx" />
-        </FileConfiguration>
-      </File>
-      <File RelativePath=".\media\title.rdf">
-        <FileConfiguration Name="QA|Xbox">
-          <Tool Name="VCCustomBuildTool" Description="Bundling title image" CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\titleimage.xbx&quot;" AdditionalDependencies="$(SolutionDir)\media\titleimage.tga" Outputs="$(SolutionDir)\media\titleimage.xbx" />
-        </FileConfiguration>
-        <FileConfiguration Name="Retail|Xbox">
-          <Tool Name="VCCustomBuildTool" Description="Bundling title image" CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\titleimage.xbx&quot;" AdditionalDependencies="$(SolutionDir)\media\titleimage.tga" Outputs="$(SolutionDir)\media\titleimage.xbx" />
-        </FileConfiguration>
-      </File>
-    </Filter>
-    <File RelativePath=".\main.cpp">
-    </File>
-    <File RelativePath=".\main.hpp">
-    </File>
-    <File RelativePath=".\main_pc.inl">
-    </File>
-    <File RelativePath=".\main_ps2.inl">
-      <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="OptDebug|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="QA|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="Retail|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-    </File>
-    <File RelativePath=".\main_xbox.inl">
-      <FileConfiguration Name="Debug|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="OptDebug|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="QA|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-      <FileConfiguration Name="Retail|Win32" ExcludedFromBuild="TRUE">
-        <Tool Name="VCCustomBuildTool" />
-      </FileConfiguration>
-    </File>
-    <File RelativePath=".\rtf_handler.cpp">
-    </File>
-    <File RelativePath=".\Version.cpp">
-    </File>
-  </Files>
-  <Globals>
-  </Globals>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="A51"
+	ProjectGUID="{E8B6020E-7351-47c5-BAB8-765DA5E8B9B5}"
+	RootNamespace="A51"
+	Keyword="XboxProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+		<Platform
+			Name="Xbox"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1"
+			WholeProgramOptimization="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="3"
+				SmallerTypeCheck="FALSE"
+				RuntimeLibrary="1"
+				BufferSecurityCheck="TRUE"
+				EnableFunctionLevelLinking="FALSE"
+				EnableEnhancedInstructionSet="0"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				WarnAsError="TRUE"
+				DebugInformationFormat="4"
+				CompileAs="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win"
+				IgnoreDefaultLibraryNames="libci.lib"
+				GenerateDebugInformation="TRUE"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_DEBUG;"
+				MinimalRebuild="FALSE"
+				ExceptionHandling="FALSE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				BufferSecurityCheck="TRUE"
+				EnableFunctionLevelLinking="FALSE"
+				ForceConformanceInForLoopScope="TRUE"
+				WarningLevel="3"
+				WarnAsError="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="xapilibd.lib d3d8d.lib d3dx8d.lib xgraphicsd.lib dsoundd.lib dmusicd.lib xactengd.lib xsndtrkd.lib xvoiced.lib xonline.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib"
+				AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"
+				RemotePath="xe:\$(SolutionName)\$(TargetName)(Debug).xbe"/>
+			<Tool
+				Name="XboxImageTool"
+				AdditionalOptions="/INSERTFILE:dsstdfx.bin,dsp_program,RN
+/INSERTFILE:media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
+/INSERTFILE:media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
+/INSERTFILE:media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
+/INSERTFILE:media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
+/INSERTFILE:media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
+/INSERTFILE:media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
+/INSERTFILE:media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
+/INSERTFILE:media\ESRB_640x480.xbmp,ESRB_640x480,RN
+/INSERTFILE:media\BadDisc_640x480.xbmp,BadDisc_640x480,RN
+/INSERTFILE:media\BadDisc_French_640x480.xbmp,BadDisc_French_640x480,RN
+/INSERTFILE:media\BadDisc_German_640x480.xbmp,BadDisc_German_640x480,RN
+/INSERTFILE:media\BadDisc_Italian_640x480.xbmp,BadDisc_Italian_640x480,RN
+/INSERTFILE:media\BadDisc_Spanish_640x480.xbmp,BadDisc_Spanish_640x480,RN
+/INSERTFILE:media\PS0000.PSH,PS0000
+/INSERTFILE:media\PS0001.PSH,PS0001
+/INSERTFILE:media\PS0002.PSH,PS0002
+/INSERTFILE:media\PS0003.PSH,PS0003
+/INSERTFILE:media\PS0004.PSH,PS0004
+/INSERTFILE:media\PS0005.PSH,PS0005
+/INSERTFILE:media\PS0006.PSH,PS0006
+/INSERTFILE:media\PS0007.PSH,PS0007
+/INSERTFILE:media\PS0008.PSH,PS0008
+/INSERTFILE:media\PS0009.PSH,PS0009
+/INSERTFILE:media\PS0010.PSH,PS0010
+/INSERTFILE:media\PS0011.PSH,PS0011
+/INSERTFILE:media\PS0012.PSH,PS0012
+/INSERTFILE:media\PS0013.PSH,PS0013
+/INSERTFILE:media\PS0014.PSH,PS0014
+/INSERTFILE:media\PS0015.PSH,PS0015
+/INSERTFILE:media\PS0016.PSH,PS0016
+/INSERTFILE:media\PS0017.PSH,PS0017
+/INSERTFILE:media\PS0018.PSH,PS0018
+/INSERTFILE:media\PS0019.PSH,PS0019
+/INSERTFILE:media\PS0020.PSH,PS0020
+/INSERTFILE:media\PS0021.PSH,PS0021
+/INSERTFILE:media\PS0022.PSH,PS0022
+/INSERTFILE:media\PS0023.PSH,PS0023
+/INSERTFILE:media\PS0024.PSH,PS0024
+/INSERTFILE:media\PS0025.PSH,PS0025
+/INSERTFILE:media\PS0026.PSH,PS0026
+/INSERTFILE:media\PS0027.PSH,PS0027
+/INSERTFILE:media\PS0028.PSH,PS0028
+/INSERTFILE:media\PS0029.PSH,PS0029
+/INSERTFILE:media\PS0030.PSH,PS0030
+/INSERTFILE:media\PS0031.PSH,PS0031
+/INSERTFILE:media\PS0032.PSH,PS0032
+/INSERTFILE:media\PS0033.PSH,PS0033
+/INSERTFILE:media\PS0034.PSH,PS0034
+/INSERTFILE:media\PS0035.PSH,PS0035
+/INSERTFILE:media\PS0036.PSH,PS0036
+/INSERTFILE:media\PS0037.PSH,PS0037
+/INSERTFILE:media\PS0038.PSH,PS0038
+/INSERTFILE:media\PS0039.PSH,PS0039
+/INSERTFILE:media\PS0040.PSH,PS0040
+/INSERTFILE:media\PS0041.PSH,PS0041
+/INSERTFILE:media\PS0042.PSH,PS0042
+/INSERTFILE:media\PS0043.PSH,PS0043
+/INSERTFILE:media\PS0044.PSH,PS0044
+/INSERTFILE:media\VS0000.VSH,VS0000
+/INSERTFILE:media\VS0001.VSH,VS0001
+/INSERTFILE:media\VS0002.VSH,VS0002
+/INSERTFILE:media\VS0003.VSH,VS0003
+/INSERTFILE:media\VS0004.VSH,VS0004
+/INSERTFILE:media\VS0005.VSH,VS0005
+/INSERTFILE:media\VS0006.VSH,VS0006
+/INSERTFILE:media\VS0007.VSH,VS0007
+/INSERTFILE:media\VS0008.VSH,VS0008
+/INSERTFILE:media\VS0009.VSH,VS0009
+/INSERTFILE:media\VS0010.VSH,VS0010
+/INSERTFILE:media\VS0011.VSH,VS0011
+/INSERTFILE:media\VS0012.VSH,VS0012
+/INSERTFILE:media\VS0013.VSH,VS0013
+/INSERTFILE:media\VS0014.VSH,VS0014
+/INSERTFILE:media\VS0015.VSH,VS0015
+/INSERTFILE:media\VS0016.VSH,VS0016
+/INSERTFILE:media\VS0017.VSH,VS0017
+/INSERTFILE:media\VS0018.VSH,VS0018
+/INSERTFILE:media\VS0019.VSH,VS0019
+/INSERTFILE:media\VS0020.VSH,VS0020
+/INSERTFILE:media\VS0021.VSH,VS0021
+/INSERTFILE:media\VS0022.VSH,VS0022
+/INSERTFILE:media\VS0023.VSH,VS0023
+/INSERTFILE:media\VS0024.VSH,VS0024
+/INSERTFILE:media\VS0025.VSH,VS0025
+/INSERTFILE:media\VS0026.VSH,VS0026
+/INSERTFILE:media\VS0027.VSH,VS0027
+/INSERTFILE:media\VS0028.VSH,VS0028
+"
+				StackSize="32768"
+				LimitAvailableMemoryTo64MB="FALSE"
+				FormatUD="TRUE"
+				TitleID="0x4D570005"
+				TitleName="Area51(Debug)"/>
+		</Configuration>
+		<Configuration
+			Name="OptDebug|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1"
+			CharacterSet="0"
+			WholeProgramOptimization="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				OptimizeForProcessor="2"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
+				StringPooling="TRUE"
+				MinimalRebuild="TRUE"
+				ExceptionHandling="FALSE"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="0"
+				BufferSecurityCheck="TRUE"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				WarnAsError="TRUE"
+				DebugInformationFormat="3"
+				CompileAs="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9"
+				IgnoreDefaultLibraryNames="libc"
+				GenerateDebugInformation="TRUE"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="OptDebug|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_OPTDEBUG"
+				StringPooling="TRUE"
+				ExceptionHandling="FALSE"
+				RuntimeLibrary="1"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				ForceConformanceInForLoopScope="TRUE"
+				WarningLevel="3"
+				WarnAsError="FALSE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="xapilibd.lib d3d8d.lib d3dx8d.lib xgraphicsd.lib dsoundd.lib dmusicd.lib xactengd.lib xsndtrkd.lib xvoiced.lib xonline.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib"
+				AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"
+				RemotePath="xe:\$(SolutionName)\$(TargetName)(OptDebug).xbe"/>
+			<Tool
+				Name="XboxImageTool"
+				AdditionalOptions="/INSERTFILE:dsstdfx.bin,dsp_program,RN
+/INSERTFILE:media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
+/INSERTFILE:media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
+/INSERTFILE:media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
+/INSERTFILE:media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
+/INSERTFILE:media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
+/INSERTFILE:media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
+/INSERTFILE:media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
+/INSERTFILE:media\ESRB_640x480.xbmp,ESRB_640x480,RN
+/INSERTFILE:media\BadDisc_640x480.xbmp,BadDisc_640x480,RN
+/INSERTFILE:media\BadDisc_French_640x480.xbmp,BadDisc_French_640x480,RN
+/INSERTFILE:media\BadDisc_German_640x480.xbmp,BadDisc_German_640x480,RN
+/INSERTFILE:media\BadDisc_Italian_640x480.xbmp,BadDisc_Italian_640x480,RN
+/INSERTFILE:media\BadDisc_Spanish_640x480.xbmp,BadDisc_Spanish_640x480,RN
+/INSERTFILE:media\PS0000.PSH,PS0000
+/INSERTFILE:media\PS0001.PSH,PS0001
+/INSERTFILE:media\PS0002.PSH,PS0002
+/INSERTFILE:media\PS0003.PSH,PS0003
+/INSERTFILE:media\PS0004.PSH,PS0004
+/INSERTFILE:media\PS0005.PSH,PS0005
+/INSERTFILE:media\PS0006.PSH,PS0006
+/INSERTFILE:media\PS0007.PSH,PS0007
+/INSERTFILE:media\PS0008.PSH,PS0008
+/INSERTFILE:media\PS0009.PSH,PS0009
+/INSERTFILE:media\PS0010.PSH,PS0010
+/INSERTFILE:media\PS0011.PSH,PS0011
+/INSERTFILE:media\PS0012.PSH,PS0012
+/INSERTFILE:media\PS0013.PSH,PS0013
+/INSERTFILE:media\PS0014.PSH,PS0014
+/INSERTFILE:media\PS0015.PSH,PS0015
+/INSERTFILE:media\PS0016.PSH,PS0016
+/INSERTFILE:media\PS0017.PSH,PS0017
+/INSERTFILE:media\PS0018.PSH,PS0018
+/INSERTFILE:media\PS0019.PSH,PS0019
+/INSERTFILE:media\PS0020.PSH,PS0020
+/INSERTFILE:media\PS0021.PSH,PS0021
+/INSERTFILE:media\PS0022.PSH,PS0022
+/INSERTFILE:media\PS0023.PSH,PS0023
+/INSERTFILE:media\PS0024.PSH,PS0024
+/INSERTFILE:media\PS0025.PSH,PS0025
+/INSERTFILE:media\PS0026.PSH,PS0026
+/INSERTFILE:media\PS0027.PSH,PS0027
+/INSERTFILE:media\PS0028.PSH,PS0028
+/INSERTFILE:media\PS0029.PSH,PS0029
+/INSERTFILE:media\PS0030.PSH,PS0030
+/INSERTFILE:media\PS0031.PSH,PS0031
+/INSERTFILE:media\PS0032.PSH,PS0032
+/INSERTFILE:media\PS0033.PSH,PS0033
+/INSERTFILE:media\PS0034.PSH,PS0034
+/INSERTFILE:media\PS0035.PSH,PS0035
+/INSERTFILE:media\PS0036.PSH,PS0036
+/INSERTFILE:media\PS0037.PSH,PS0037
+/INSERTFILE:media\PS0038.PSH,PS0038
+/INSERTFILE:media\PS0039.PSH,PS0039
+/INSERTFILE:media\PS0040.PSH,PS0040
+/INSERTFILE:media\PS0041.PSH,PS0041
+/INSERTFILE:media\PS0042.PSH,PS0042
+/INSERTFILE:media\PS0043.PSH,PS0043
+/INSERTFILE:media\PS0044.PSH,PS0044
+/INSERTFILE:media\VS0000.VSH,VS0000
+/INSERTFILE:media\VS0001.VSH,VS0001
+/INSERTFILE:media\VS0002.VSH,VS0002
+/INSERTFILE:media\VS0003.VSH,VS0003
+/INSERTFILE:media\VS0004.VSH,VS0004
+/INSERTFILE:media\VS0005.VSH,VS0005
+/INSERTFILE:media\VS0006.VSH,VS0006
+/INSERTFILE:media\VS0007.VSH,VS0007
+/INSERTFILE:media\VS0008.VSH,VS0008
+/INSERTFILE:media\VS0009.VSH,VS0009
+/INSERTFILE:media\VS0010.VSH,VS0010
+/INSERTFILE:media\VS0011.VSH,VS0011
+/INSERTFILE:media\VS0012.VSH,VS0012
+/INSERTFILE:media\VS0013.VSH,VS0013
+/INSERTFILE:media\VS0014.VSH,VS0014
+/INSERTFILE:media\VS0015.VSH,VS0015
+/INSERTFILE:media\VS0016.VSH,VS0016
+/INSERTFILE:media\VS0017.VSH,VS0017
+/INSERTFILE:media\VS0018.VSH,VS0018
+/INSERTFILE:media\VS0019.VSH,VS0019
+/INSERTFILE:media\VS0020.VSH,VS0020
+/INSERTFILE:media\VS0021.VSH,VS0021
+/INSERTFILE:media\VS0022.VSH,VS0022
+/INSERTFILE:media\VS0023.VSH,VS0023
+/INSERTFILE:media\VS0024.VSH,VS0024
+/INSERTFILE:media\VS0025.VSH,VS0025
+/INSERTFILE:media\VS0026.VSH,VS0026
+/INSERTFILE:media\VS0027.VSH,VS0027
+/INSERTFILE:media\VS0028.VSH,VS0028
+"
+				StackSize="131072"
+				LimitAvailableMemoryTo64MB="FALSE"
+				FormatUD="TRUE"
+				TitleID="0x4D570005"/>
+		</Configuration>
+		<Configuration
+			Name="QA|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1"
+			WholeProgramOptimization="TRUE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="2"
+				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_QA"
+				StringPooling="TRUE"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="0"
+				BufferSecurityCheck="FALSE"
+				EnableEnhancedInstructionSet="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				WarnAsError="TRUE"
+				DebugInformationFormat="3"
+				CompileAs="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="QA|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1"
+			WholeProgramOptimization="TRUE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_QA"
+				StringPooling="TRUE"
+				ExceptionHandling="FALSE"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				ForceConformanceInForLoopScope="TRUE"
+				WarningLevel="3"
+				WarnAsError="FALSE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="xapilib.lib d3d8i.lib d3dx8.lib xgraphicsltcg.lib dsound.lib dmusic.lib xacteng.lib xsndtrk.lib xvoice.lib xonline.lib xboxkrnl.lib XbDm.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib"
+				AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"
+				ExcludedFromBuild="TRUE"
+				RemotePath="xe:\$(SolutionName)\$(TargetName)(QA).xbe"/>
+			<Tool
+				Name="XboxImageTool"
+				AdditionalOptions="/INSERTFILE:dsstdfx.bin,dsp_program,RN
+/INSERTFILE:media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
+/INSERTFILE:media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
+/INSERTFILE:media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
+/INSERTFILE:media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
+/INSERTFILE:media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
+/INSERTFILE:media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
+/INSERTFILE:media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
+/INSERTFILE:media\ESRB_640x480.xbmp,ESRB_640x480,RN
+/INSERTFILE:media\BadDisc_640x480.xbmp,BadDisc_640x480,RN
+/INSERTFILE:media\BadDisc_French_640x480.xbmp,BadDisc_French_640x480,RN
+/INSERTFILE:media\BadDisc_German_640x480.xbmp,BadDisc_German_640x480,RN
+/INSERTFILE:media\BadDisc_Italian_640x480.xbmp,BadDisc_Italian_640x480,RN
+/INSERTFILE:media\BadDisc_Spanish_640x480.xbmp,BadDisc_Spanish_640x480,RN
+/INSERTFILE:media\PS0000.PSH,PS0000
+/INSERTFILE:media\PS0001.PSH,PS0001
+/INSERTFILE:media\PS0002.PSH,PS0002
+/INSERTFILE:media\PS0003.PSH,PS0003
+/INSERTFILE:media\PS0004.PSH,PS0004
+/INSERTFILE:media\PS0005.PSH,PS0005
+/INSERTFILE:media\PS0006.PSH,PS0006
+/INSERTFILE:media\PS0007.PSH,PS0007
+/INSERTFILE:media\PS0008.PSH,PS0008
+/INSERTFILE:media\PS0009.PSH,PS0009
+/INSERTFILE:media\PS0010.PSH,PS0010
+/INSERTFILE:media\PS0011.PSH,PS0011
+/INSERTFILE:media\PS0012.PSH,PS0012
+/INSERTFILE:media\PS0013.PSH,PS0013
+/INSERTFILE:media\PS0014.PSH,PS0014
+/INSERTFILE:media\PS0015.PSH,PS0015
+/INSERTFILE:media\PS0016.PSH,PS0016
+/INSERTFILE:media\PS0017.PSH,PS0017
+/INSERTFILE:media\PS0018.PSH,PS0018
+/INSERTFILE:media\PS0019.PSH,PS0019
+/INSERTFILE:media\PS0020.PSH,PS0020
+/INSERTFILE:media\PS0021.PSH,PS0021
+/INSERTFILE:media\PS0022.PSH,PS0022
+/INSERTFILE:media\PS0023.PSH,PS0023
+/INSERTFILE:media\PS0024.PSH,PS0024
+/INSERTFILE:media\PS0025.PSH,PS0025
+/INSERTFILE:media\PS0026.PSH,PS0026
+/INSERTFILE:media\PS0027.PSH,PS0027
+/INSERTFILE:media\PS0028.PSH,PS0028
+/INSERTFILE:media\PS0029.PSH,PS0029
+/INSERTFILE:media\PS0030.PSH,PS0030
+/INSERTFILE:media\PS0031.PSH,PS0031
+/INSERTFILE:media\PS0032.PSH,PS0032
+/INSERTFILE:media\PS0033.PSH,PS0033
+/INSERTFILE:media\PS0034.PSH,PS0034
+/INSERTFILE:media\PS0035.PSH,PS0035
+/INSERTFILE:media\PS0036.PSH,PS0036
+/INSERTFILE:media\PS0037.PSH,PS0037
+/INSERTFILE:media\PS0038.PSH,PS0038
+/INSERTFILE:media\PS0039.PSH,PS0039
+/INSERTFILE:media\PS0040.PSH,PS0040
+/INSERTFILE:media\PS0041.PSH,PS0041
+/INSERTFILE:media\PS0042.PSH,PS0042
+/INSERTFILE:media\PS0043.PSH,PS0043
+/INSERTFILE:media\PS0044.PSH,PS0044
+/INSERTFILE:media\VS0000.VSH,VS0000
+/INSERTFILE:media\VS0001.VSH,VS0001
+/INSERTFILE:media\VS0002.VSH,VS0002
+/INSERTFILE:media\VS0003.VSH,VS0003
+/INSERTFILE:media\VS0004.VSH,VS0004
+/INSERTFILE:media\VS0005.VSH,VS0005
+/INSERTFILE:media\VS0006.VSH,VS0006
+/INSERTFILE:media\VS0007.VSH,VS0007
+/INSERTFILE:media\VS0008.VSH,VS0008
+/INSERTFILE:media\VS0009.VSH,VS0009
+/INSERTFILE:media\VS0010.VSH,VS0010
+/INSERTFILE:media\VS0011.VSH,VS0011
+/INSERTFILE:media\VS0012.VSH,VS0012
+/INSERTFILE:media\VS0013.VSH,VS0013
+/INSERTFILE:media\VS0014.VSH,VS0014
+/INSERTFILE:media\VS0015.VSH,VS0015
+/INSERTFILE:media\VS0016.VSH,VS0016
+/INSERTFILE:media\VS0017.VSH,VS0017
+/INSERTFILE:media\VS0018.VSH,VS0018
+/INSERTFILE:media\VS0019.VSH,VS0019
+/INSERTFILE:media\VS0020.VSH,VS0020
+/INSERTFILE:media\VS0021.VSH,VS0021
+/INSERTFILE:media\VS0022.VSH,VS0022
+/INSERTFILE:media\VS0023.VSH,VS0023
+/INSERTFILE:media\VS0024.VSH,VS0024
+/INSERTFILE:media\VS0025.VSH,VS0025
+/INSERTFILE:media\VS0026.VSH,VS0026
+/INSERTFILE:media\VS0027.VSH,VS0027
+/INSERTFILE:media\VS0028.VSH,VS0028
+"
+				StackSize="131072"
+				IncludeDebugInfo="FALSE"
+				LimitAvailableMemoryTo64MB="FALSE"
+				FormatUD="TRUE"
+				TitleID="0x4D570005"
+				TitleName="Area51"
+				TitleImage="$(SolutionDir)\media\titleimage.xbx"
+				SaveGameImage="$(SolutionDir)\media\saveimage.xbx"/>
+		</Configuration>
+		<Configuration
+			Name="Retail|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1"
+			WholeProgramOptimization="TRUE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="2"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				StringPooling="TRUE"
+				MinimalRebuild="FALSE"
+				ExceptionHandling="FALSE"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="0"
+				BufferSecurityCheck="FALSE"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				WarnAsError="TRUE"
+				DebugInformationFormat="0"
+				CompileAs="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Retail|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1"
+			WholeProgramOptimization="TRUE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="2"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL"
+				StringPooling="TRUE"
+				ExceptionHandling="FALSE"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				ForceConformanceInForLoopScope="TRUE"
+				WarningLevel="3"
+				WarnAsError="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="xapilib.lib d3d8ltcg.lib d3dx8.lib xgraphicsltcg.lib dsound.lib dmusic.lib xacteng.lib xsndtrk.lib xvoice.lib XOnlines.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib"
+				AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib"
+				GenerateDebugInformation="TRUE"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"
+				ExcludedFromBuild="TRUE"/>
+			<Tool
+				Name="XboxImageTool"
+				AdditionalOptions="/INSERTFILE:dsstdfx.bin,dsp_program,RN
+/INSERTFILE:media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
+/INSERTFILE:media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
+/INSERTFILE:media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
+/INSERTFILE:media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
+/INSERTFILE:media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
+/INSERTFILE:media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
+/INSERTFILE:media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
+/INSERTFILE:media\ESRB_640x480.xbmp,ESRB_640x480,RN
+/INSERTFILE:media\BadDisc_640x480.xbmp,BadDisc_640x480,RN
+/INSERTFILE:media\BadDisc_French_640x480.xbmp,BadDisc_French_640x480,RN
+/INSERTFILE:media\BadDisc_German_640x480.xbmp,BadDisc_German_640x480,RN
+/INSERTFILE:media\BadDisc_Italian_640x480.xbmp,BadDisc_Italian_640x480,RN
+/INSERTFILE:media\BadDisc_Spanish_640x480.xbmp,BadDisc_Spanish_640x480,RN
+/INSERTFILE:media\PS0000.PSH,PS0000
+/INSERTFILE:media\PS0001.PSH,PS0001
+/INSERTFILE:media\PS0002.PSH,PS0002
+/INSERTFILE:media\PS0003.PSH,PS0003
+/INSERTFILE:media\PS0004.PSH,PS0004
+/INSERTFILE:media\PS0005.PSH,PS0005
+/INSERTFILE:media\PS0006.PSH,PS0006
+/INSERTFILE:media\PS0007.PSH,PS0007
+/INSERTFILE:media\PS0008.PSH,PS0008
+/INSERTFILE:media\PS0009.PSH,PS0009
+/INSERTFILE:media\PS0010.PSH,PS0010
+/INSERTFILE:media\PS0011.PSH,PS0011
+/INSERTFILE:media\PS0012.PSH,PS0012
+/INSERTFILE:media\PS0013.PSH,PS0013
+/INSERTFILE:media\PS0014.PSH,PS0014
+/INSERTFILE:media\PS0015.PSH,PS0015
+/INSERTFILE:media\PS0016.PSH,PS0016
+/INSERTFILE:media\PS0017.PSH,PS0017
+/INSERTFILE:media\PS0018.PSH,PS0018
+/INSERTFILE:media\PS0019.PSH,PS0019
+/INSERTFILE:media\PS0020.PSH,PS0020
+/INSERTFILE:media\PS0021.PSH,PS0021
+/INSERTFILE:media\PS0022.PSH,PS0022
+/INSERTFILE:media\PS0023.PSH,PS0023
+/INSERTFILE:media\PS0024.PSH,PS0024
+/INSERTFILE:media\PS0025.PSH,PS0025
+/INSERTFILE:media\PS0026.PSH,PS0026
+/INSERTFILE:media\PS0027.PSH,PS0027
+/INSERTFILE:media\PS0028.PSH,PS0028
+/INSERTFILE:media\PS0029.PSH,PS0029
+/INSERTFILE:media\PS0030.PSH,PS0030
+/INSERTFILE:media\PS0031.PSH,PS0031
+/INSERTFILE:media\PS0032.PSH,PS0032
+/INSERTFILE:media\PS0033.PSH,PS0033
+/INSERTFILE:media\PS0034.PSH,PS0034
+/INSERTFILE:media\PS0035.PSH,PS0035
+/INSERTFILE:media\PS0036.PSH,PS0036
+/INSERTFILE:media\PS0037.PSH,PS0037
+/INSERTFILE:media\PS0038.PSH,PS0038
+/INSERTFILE:media\PS0039.PSH,PS0039
+/INSERTFILE:media\PS0040.PSH,PS0040
+/INSERTFILE:media\PS0041.PSH,PS0041
+/INSERTFILE:media\PS0042.PSH,PS0042
+/INSERTFILE:media\PS0043.PSH,PS0043
+/INSERTFILE:media\PS0044.PSH,PS0044
+/INSERTFILE:media\VS0000.VSH,VS0000
+/INSERTFILE:media\VS0001.VSH,VS0001
+/INSERTFILE:media\VS0002.VSH,VS0002
+/INSERTFILE:media\VS0003.VSH,VS0003
+/INSERTFILE:media\VS0004.VSH,VS0004
+/INSERTFILE:media\VS0005.VSH,VS0005
+/INSERTFILE:media\VS0006.VSH,VS0006
+/INSERTFILE:media\VS0007.VSH,VS0007
+/INSERTFILE:media\VS0008.VSH,VS0008
+/INSERTFILE:media\VS0009.VSH,VS0009
+/INSERTFILE:media\VS0010.VSH,VS0010
+/INSERTFILE:media\VS0011.VSH,VS0011
+/INSERTFILE:media\VS0012.VSH,VS0012
+/INSERTFILE:media\VS0013.VSH,VS0013
+/INSERTFILE:media\VS0014.VSH,VS0014
+/INSERTFILE:media\VS0015.VSH,VS0015
+/INSERTFILE:media\VS0016.VSH,VS0016
+/INSERTFILE:media\VS0017.VSH,VS0017
+/INSERTFILE:media\VS0018.VSH,VS0018
+/INSERTFILE:media\VS0019.VSH,VS0019
+/INSERTFILE:media\VS0020.VSH,VS0020
+/INSERTFILE:media\VS0021.VSH,VS0021
+/INSERTFILE:media\VS0022.VSH,VS0022
+/INSERTFILE:media\VS0023.VSH,VS0023
+/INSERTFILE:media\VS0024.VSH,VS0024
+/INSERTFILE:media\VS0025.VSH,VS0025
+/INSERTFILE:media\VS0026.VSH,VS0026
+/INSERTFILE:media\VS0027.VSH,VS0027
+/INSERTFILE:media\VS0028.VSH,VS0028
+"
+				StackSize="131072"
+				LimitAvailableMemoryTo64MB="TRUE"
+				FormatUD="TRUE"
+				TitleID="0x4D570005"
+				TitleName="Area51"
+				TitleImage="$(SolutionDir)\media\titleimage.xbx"
+				SaveGameImage="$(SolutionDir)\media\saveimage.xbx"/>
+		</Configuration>
+		<Configuration
+			Name="PS2-Debug|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
+			Name="PS2-OptDebug|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
+			Name="PS2-Viewer|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
+			Name="PS2-Retail|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
+			Name="PS2-QA|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
+			Name="PS2-Profile|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Configuration"
+			Filter="">
+			<File
+				RelativePath=".\Config.cpp">
+			</File>
+			<File
+				RelativePath=".\Config.hpp">
+			</File>
+			<File
+				RelativePath=".\IniFile.cpp">
+			</File>
+			<File
+				RelativePath=".\IniFile.hpp">
+			</File>
+			<Filter
+				Name="PS2"
+				Filter="">
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Ps2\Config.ini">
+				</File>
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Ps2\eng_DiskMaps.txt">
+				</File>
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Ps2\FRE_DiskMaps.txt">
+				</File>
+			</Filter>
+			<Filter
+				Name="XBOX"
+				Filter="">
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Xbox\Config.ini">
+				</File>
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Xbox\eng_DiskMaps.txt">
+				</File>
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Xbox\FRE_DiskMaps.txt">
+				</File>
+			</Filter>
+			<Filter
+				Name="PC"
+				Filter="">
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Pc\Config.ini">
+				</File>
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Pc\eng_DiskMaps.txt">
+				</File>
+				<File
+					RelativePath="..\..\..\..\GameData\A51\Release\Pc\FRE_DiskMaps.txt">
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
+			Name="Media"
+			Filter="">
+			<File
+				RelativePath=".\media\saves.rdf">
+				<FileConfiguration
+					Name="QA|Xbox">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Bundling saved games image"
+						CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\saveimage.xbx&quot;"
+						AdditionalDependencies="$(SolutionDir)\media\saveimage.tga"
+						Outputs="$(SolutionDir)\media\saveimage.xbx"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Bundling saved games image"
+						CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\saveimage.xbx&quot;"
+						AdditionalDependencies="$(SolutionDir)\media\saveimage.tga"
+						Outputs="$(SolutionDir)\media\saveimage.xbx"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\media\title.rdf">
+				<FileConfiguration
+					Name="QA|Xbox">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Bundling title image"
+						CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\titleimage.xbx&quot;"
+						AdditionalDependencies="$(SolutionDir)\media\titleimage.tga"
+						Outputs="$(SolutionDir)\media\titleimage.xbx"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Bundling title image"
+						CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\titleimage.xbx&quot;"
+						AdditionalDependencies="$(SolutionDir)\media\titleimage.tga"
+						Outputs="$(SolutionDir)\media\titleimage.xbx"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<File
+			RelativePath=".\main.cpp">
+		</File>
+		<File
+			RelativePath=".\main.hpp">
+		</File>
+		<File
+			RelativePath=".\main_pc.inl">
+		</File>
+		<File
+			RelativePath=".\main_ps2.inl">
+			<FileConfiguration
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Retail|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\main_xbox.inl">
+			<FileConfiguration
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Retail|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\rtf_handler.cpp">
+		</File>
+		<File
+			RelativePath=".\Version.cpp">
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
 </VisualStudioProject>
