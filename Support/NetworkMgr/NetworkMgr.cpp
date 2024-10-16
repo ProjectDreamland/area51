@@ -524,11 +524,6 @@ void network_mgr::BeginLogin( void )
 //==============================================================================
 
 void network_mgr::BecomeServer( void )
-#if defined ( TARGET_PC )
-{
-}
-#endif
-#if defined ( TARGET_XBOX )
 {
     LOG_APP_NAME( "SERVER" );
 
@@ -561,7 +556,6 @@ void network_mgr::BecomeServer( void )
 
     g_ActiveConfig.SetExitReason( GAME_EXIT_CONTINUE );
 }
-#endif
 //==============================================================================
 //
 void network_mgr::ReenterGame( void )
@@ -580,11 +574,6 @@ void network_mgr::ReenterGame( void )
 
 //==============================================================================
 void network_mgr::Disconnect( void )
-#if defined ( TARGET_PC )
-{
-}
-#endif
-#if defined ( TARGET_XBOX )
 {
 
     if( m_pServer )
@@ -610,7 +599,6 @@ void network_mgr::Disconnect( void )
         m_pClient = NULL;
     }
 }
-#endif
 //==============================================================================
 void network_mgr::KickPlayer( s32 Index )
 {

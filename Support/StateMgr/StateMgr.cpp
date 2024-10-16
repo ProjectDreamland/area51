@@ -10448,13 +10448,7 @@ void state_mgr::ExitClientCooldown( void )
 
 //=========================================================================
 void state_mgr::EnterServerDisconnect( void )
-#if defined ( TARGET_PC )
 {
-}
-#endif
-#if defined ( TARGET_XBOX )
-{
-
     game_server& Server = g_NetworkMgr.GetServerObject();
     Server.SetState( STATE_SERVER_SHUTDOWN );
     if( g_NetworkMgr.IsOnline() )
@@ -10466,7 +10460,6 @@ void state_mgr::EnterServerDisconnect( void )
         g_MatchMgr.SetState( MATCH_IDLE );
     }
 }
-#endif
 //=========================================================================
 void state_mgr::UpdateServerDisconnect( void )
 {
@@ -10512,24 +10505,20 @@ void state_mgr::ExitClientDisconnect( void )
 
 void state_mgr::EnableBackgroundMovie( void )
 {
-#if !defined( X_EDITOR ) && !defined( TARGET_PC ) && (!CONFIG_IS_DEMO)
     s32 XRes, YRes;
     eng_GetRes( XRes, YRes );
     m_MovieSize.Set( (f32)XRes, (f32)YRes );
 
     m_MoviePosition.Set( 0.0f, 0.0f );
     m_bPlayMovie = Movie.Open( SelectBestClip("MenuBackground"),TRUE,TRUE );
-#endif
 }
 
 //=========================================================================
 
 void state_mgr::DisableBackgoundMovie( void )
 {
-#if !defined( X_EDITOR ) && !defined( TARGET_PC ) 
     Movie.Close();
     m_bPlayMovie = FALSE;
-#endif
     // kill background music
     KillFrontEndMusic();
 }
@@ -10538,7 +10527,6 @@ void state_mgr::DisableBackgoundMovie( void )
 
 void state_mgr::PlayMovie( const char* pFilename, xbool bResident, xbool bLooped )
 {
-#if defined( TARGET_PC )
     if( !m_bPlayMovie )
     {
         // startup movie player
@@ -10550,14 +10538,12 @@ void state_mgr::PlayMovie( const char* pFilename, xbool bResident, xbool bLooped
         Movie.Close();
     }
     m_bPlayMovie = Movie.Open( SelectBestClip(pFilename), bResident, bLooped );
-#endif
 }
 
 //=========================================================================
 
 void state_mgr::CloseMovie( void )
 {
-#if defined( TARGET_PC )
     if( m_bPlayMovie )
     {
         // close movie and shutdown player
@@ -10565,7 +10551,6 @@ void state_mgr::CloseMovie( void )
         Movie.Close();
         Movie.Kill();
     }
-#endif
 }
 
 //=========================================================================
