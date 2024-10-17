@@ -81,23 +81,7 @@
 			RelativePath=".\Smtp.h">
 		</File>
 		<File
-			RelativePath=".\Smtp.htm"
-			DeploymentContent="TRUE">
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-		</File>
-		<File
 			RelativePath=".\stdafx.cpp">
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\stdafx.h">

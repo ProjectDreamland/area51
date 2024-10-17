@@ -19,7 +19,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\..\support\Music_mgr,$(X)\x_files,$(X)\..\support,$(X)\auxiliary,$(X)\auxiliary\MiscUtils"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				DebugInformationFormat="0"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="1"
+				Optimization="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -165,16 +169,6 @@
 	<Files>
 		<File
 			RelativePath="music_mgr.cpp">
-			<FileConfiguration
-				Name="Debug|Xbox">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="0"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""
-					BasicRuntimeChecks="3"
-					BrowseInformation="1"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="music_mgr.hpp">

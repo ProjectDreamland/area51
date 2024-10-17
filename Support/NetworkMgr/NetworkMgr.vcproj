@@ -19,7 +19,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
+				DebugInformationFormat="0"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="1"
+				Optimization="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -321,62 +325,9 @@
 			</File>
 			<File
 				RelativePath="Blowfish.h">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ConnMgr.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ConnMgr.hpp">
@@ -422,42 +373,6 @@
 			</File>
 			<File
 				RelativePath="DebugTicker.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Dh.cpp">
@@ -500,81 +415,9 @@
 			</File>
 			<File
 				RelativePath="Dh.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="int.h">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="integer.cpp">
@@ -617,73 +460,9 @@
 			</File>
 			<File
 				RelativePath="integer.h">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="MatchMgr.hpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="MatchMgr_Common.cpp">
@@ -736,152 +515,33 @@
 			Filter="">
 			<File
 				RelativePath="ClientProxy.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ClientProxy.hpp">
 			</File>
 			<File
 				RelativePath="ClientProxyStates.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="GameClient.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="GameClient.hpp">
 			</File>
 			<File
 				RelativePath="GameClientStates.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="GameServer.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="GameServer.hpp">
 			</File>
 			<File
 				RelativePath="GameServerStates.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="GameState.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="GameState.hpp">
@@ -892,92 +552,24 @@
 			Filter="">
 			<File
 				RelativePath="GameMgr.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="GameMgr.hpp">
 			</File>
 			<File
 				RelativePath="GMMgr.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="GMMgr.hpp">
 			</File>
 			<File
 				RelativePath="logic_Base.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="logic_Base.hpp">
 			</File>
 			<File
 				RelativePath="logic_Campaign.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="logic_Campaign.hpp">
@@ -996,23 +588,6 @@
 			</File>
 			<File
 				RelativePath="logic_DM.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="logic_DM.hpp">
@@ -1055,59 +630,12 @@
 			</File>
 			<File
 				RelativePath="MsgMgr.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="MsgMgr.hpp">
 			</File>
 			<File
 				RelativePath="MsgQueue.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="MsqQueue.cpp">
@@ -1127,42 +655,6 @@
 			</File>
 			<File
 				RelativePath="Blender.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\Objects\GhostNet.cpp">
@@ -1218,93 +710,18 @@
 			</File>
 			<File
 				RelativePath="NetObj.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="NetObj.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="NetObjMgr.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="NetObjMgr.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\Objects\PlayerNet.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<Filter
 				Name="Defunct"
@@ -1350,42 +767,6 @@
 				</File>
 				<File
 					RelativePath="NetPickup.hpp">
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Retail|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="NetPlayer.cpp">
@@ -1428,42 +809,6 @@
 				</File>
 				<File
 					RelativePath="NetPlayer.hpp">
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Retail|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="NetRocket.cpp">
@@ -1506,42 +851,6 @@
 				</File>
 				<File
 					RelativePath="NetRocket.hpp">
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Retail|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
 				</File>
 			</Filter>
 		</Filter>
@@ -1596,42 +905,6 @@
 			</File>
 			<File
 				RelativePath="Move.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="MoveMgr.cpp">
@@ -1674,42 +947,6 @@
 			</File>
 			<File
 				RelativePath="MoveMgr.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
@@ -1717,23 +954,6 @@
 			Filter="">
 			<File
 				RelativePath="UpdateMgr.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="UpdateMgr.hpp">
@@ -1744,42 +964,6 @@
 			Filter="">
 			<File
 				RelativePath="Voice\Headset.hpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Voice\headset_common.cpp">
@@ -1885,23 +1069,6 @@
 			</File>
 			<File
 				RelativePath="Voice\VoiceProxy.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Voice\VoiceProxy.hpp">
@@ -1911,120 +1078,9 @@
 				Filter="">
 				<File
 					RelativePath="Voice\Logitech\Include\liblgaud.h">
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Retail|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="Voice\Logitech\Lib\liblgaud.lib">
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Retail|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Voice\Logitech\Include\liblgcodec.h">
-					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Retail|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
 				</File>
 			</Filter>
 			<Filter
@@ -2032,23 +1088,6 @@
 				Filter="">
 				<File
 					RelativePath="Voice\lpc10.cpp">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="2"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BasicRuntimeChecks="3"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Xbox"
 						ExcludedFromBuild="TRUE">
@@ -2076,50 +1115,9 @@
 				</File>
 				<File
 					RelativePath="Voice\lpc10.hpp">
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Retail|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Voice\speex.cpp">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="2"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							Optimization="0"
-							AdditionalIncludeDirectories=""
-							PreprocessorDefinitions=""
-							BasicRuntimeChecks="3"/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Xbox"
 						ExcludedFromBuild="TRUE">
@@ -2147,80 +1145,15 @@
 				</File>
 				<File
 					RelativePath="Voice\speex.hpp">
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Retail|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
 				</File>
 				<Filter
 					Name="Speex"
 					Filter="">
 					<File
 						RelativePath="Voice\Speex\arch.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\bits.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -2249,23 +1182,6 @@
 					<File
 						RelativePath="Voice\Speex\cb_search.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -2292,77 +1208,12 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\cb_search.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\cb_search_sse.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\exc_10_16_table.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -2391,23 +1242,6 @@
 					<File
 						RelativePath="Voice\Speex\exc_10_32_table.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -2434,23 +1268,6 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\exc_20_32_table.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -2479,23 +1296,6 @@
 					<File
 						RelativePath="Voice\Speex\exc_5_256_table.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -2522,23 +1322,6 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\exc_5_64_table.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -2567,23 +1350,6 @@
 					<File
 						RelativePath="Voice\Speex\exc_8_128_table.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -2611,23 +1377,6 @@
 					<File
 						RelativePath="Voice\Speex\filters.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -2654,158 +1403,21 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\filters.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\filters_sse.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\fixed_arm.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\fixed_debug.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\fixed_generic.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\gain_table.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -2834,23 +1446,6 @@
 					<File
 						RelativePath="Voice\Speex\gain_table_lbr.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -2877,23 +1472,6 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\hexc_10_32_table.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -2922,23 +1500,6 @@
 					<File
 						RelativePath="Voice\Speex\hexc_table.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -2965,23 +1526,6 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\high_lsp_tables.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3010,23 +1554,6 @@
 					<File
 						RelativePath="Voice\Speex\jitter.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -3053,23 +1580,6 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\lbr_48k_tables.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3098,23 +1608,6 @@
 					<File
 						RelativePath="Voice\Speex\lpc.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -3141,50 +1634,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\lpc.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\lsp.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3212,50 +1664,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\lsp.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\lsp_tables_nb.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3284,23 +1695,6 @@
 					<File
 						RelativePath="Voice\Speex\ltp.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -3327,77 +1721,12 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\ltp.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\ltp_sse.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\math_approx.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3425,50 +1754,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\math_approx.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\mdf.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3497,23 +1785,6 @@
 					<File
 						RelativePath="Voice\Speex\misc.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -3540,50 +1811,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\misc.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\modes.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3611,50 +1841,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\modes.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\nb_celp.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3682,50 +1871,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\nb_celp.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\preprocess.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3754,23 +1902,6 @@
 					<File
 						RelativePath="Voice\Speex\quant_lsp.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -3797,50 +1928,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\quant_lsp.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\sb_celp.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3868,50 +1958,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\sb_celp.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\smallft.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -3939,104 +1988,15 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\smallft.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_bits.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_callbacks.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -4064,77 +2024,12 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_callbacks.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_echo.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_header.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -4162,158 +2057,21 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_header.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_jitter.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_preprocess.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\speex_stereo.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\stack_alloc.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\stereo.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -4342,23 +2100,6 @@
 					<File
 						RelativePath="Voice\Speex\vbr.c">
 						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
-						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
 							<Tool
@@ -4385,50 +2126,9 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\vbr.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="Voice\Speex\vq.c">
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="2"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								Optimization="0"
-								AdditionalIncludeDirectories=""
-								PreprocessorDefinitions=""
-								BasicRuntimeChecks="3"/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Debug|Xbox"
 							ExcludedFromBuild="TRUE">
@@ -4456,30 +2156,6 @@
 					</File>
 					<File
 						RelativePath="Voice\Speex\vq.h">
-						<FileConfiguration
-							Name="Debug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="OptDebug|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="QA|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Retail|Xbox"
-							ExcludedFromBuild="TRUE">
-							<Tool
-								Name="VCCLCompilerTool"/>
-						</FileConfiguration>
 					</File>
 				</Filter>
 			</Filter>
@@ -4489,6 +2165,30 @@
 			Filter="">
 			<File
 				RelativePath=".\GameSpy\available.c">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GameSpy\available.h">
@@ -4498,24 +2198,120 @@
 			</File>
 			<File
 				RelativePath=".\GameSpy\callbacks.cpp">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GameSpy\callbacks.hpp">
 			</File>
 			<File
 				RelativePath=".\GameSpy\darray.c">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GameSpy\darray.h">
 			</File>
 			<File
 				RelativePath=".\GameSpy\EntropyAbstraction.cpp">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GameSpy\EntropyAbstraction.h">
 			</File>
 			<File
 				RelativePath=".\GameSpy\hashtable.c">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GameSpy\hashtable.h">
@@ -4525,15 +2321,87 @@
 			</File>
 			<File
 				RelativePath=".\GameSpy\md5c.c">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GameSpy\nonport.c">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GameSpy\nonport.h">
 			</File>
 			<File
 				RelativePath=".\GameSpy\stringutil.c">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GameSpy\stringutil.h">
@@ -4546,6 +2414,30 @@
 				</File>
 				<File
 					RelativePath=".\GameSpy\serverbrowsing\sb_crypt.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\serverbrowsing\sb_crypt.h">
@@ -4555,18 +2447,114 @@
 				</File>
 				<File
 					RelativePath=".\GameSpy\serverbrowsing\sb_queryengine.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\serverbrowsing\sb_server.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\serverbrowsing\sb_serverbrowsing.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\serverbrowsing\sb_serverbrowsing.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\serverbrowsing\sb_serverlist.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 			</Filter>
 			<Filter
@@ -4574,12 +2562,60 @@
 				Filter="">
 				<File
 					RelativePath=".\GameSpy\qr2\qr2.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\qr2\qr2.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\qr2\qr2regkeys.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\qr2\qr2regkeys.h">
@@ -4590,6 +2626,30 @@
 				Filter="">
 				<File
 					RelativePath=".\GameSpy\natneg\natneg.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\natneg\natneg.h">
@@ -4603,6 +2663,30 @@
 				Filter="">
 				<File
 					RelativePath=".\GameSpy\gstats\gbucket.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gstats\gbucket.h">
@@ -4612,6 +2696,30 @@
 				</File>
 				<File
 					RelativePath=".\GameSpy\gstats\gstats.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gstats\gstats.h">
@@ -4622,84 +2730,420 @@
 				Filter="">
 				<File
 					RelativePath=".\GameSpy\gp\gp.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gp.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpi.c">
+				    <FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpi.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiBuddy.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiBuddy.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiBuffer.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiBuffer.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiCallback.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiCallback.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiConnect.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiConnect.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiInfo.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiInfo.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiOperation.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiOperation.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiPeer.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiPeer.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiProfile.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiProfile.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiSearch.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiSearch.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiTransfer.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiTransfer.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiUnique.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiUnique.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiUtility.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\gp\gpiUtility.h">
@@ -4716,42 +3160,210 @@
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpBuffer.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpBuffer.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpCallbacks.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpCallbacks.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpCommon.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpCommon.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpConnection.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpConnection.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpMain.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpMain.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpPost.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpPost.h">
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpProcess.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GameSpy\ghttp\ghttpProcess.h">
@@ -4763,12 +3375,60 @@
 			Filter="">
 			<File
 				RelativePath=".\Downloader\archive.cpp">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Downloader\archive.hpp">
 			</File>
 			<File
 				RelativePath=".\Downloader\Downloader.cpp">
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Retail|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Downloader\Downloader.hpp">
@@ -4778,27 +3438,171 @@
 				Filter="">
 				<File
 					RelativePath=".\Downloader\zlib\adler32.c">
+				    <FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\compress.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\crc32.c">
+					 <FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\crc32.h">
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\deflate.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\deflate.h">
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\infback.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\inffast.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\inffast.h">
@@ -4808,24 +3612,120 @@
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\inflate.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\inflate.h">
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\inftrees.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\inftrees.h">
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\trees.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\trees.h">
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\uncompr.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\zconf.h">
@@ -4835,6 +3735,30 @@
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\zutil.c">
+					<FileConfiguration
+					    Name="Debug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="OptDebug|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="QA|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
+				    <FileConfiguration
+					    Name="Retail|Xbox"
+					    ExcludedFromBuild="TRUE">
+					    <Tool
+						    Name="VCCLCompilerTool"/>
+				    </FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\Downloader\zlib\zutil.h">
@@ -4843,65 +3767,12 @@
 		</Filter>
 		<File
 			RelativePath="NetworkMgr.cpp">
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="0"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""
-					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="NetworkMgr.hpp">
 		</File>
 		<File
 			RelativePath="ServerVersion.hpp">
-			<FileConfiguration
-				Name="Release|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
 		</File>
 	</Files>
 	<Globals>
