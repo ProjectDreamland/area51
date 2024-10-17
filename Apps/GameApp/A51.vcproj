@@ -1225,70 +1225,10 @@
 			RelativePath=".\main_pc.inl">
 		</File>
 		<File
-			RelativePath=".\main_ps2.inl">
-			<FileConfiguration
-				Name="Debug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-		</File>
-		<File
 			RelativePath=".\main_xbox.inl">
-			<FileConfiguration
-				Name="Debug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-		</File>
-		<File
-			RelativePath="..\..\Support\NetworkMgr\GameSpy\qr2\qr2.c">
-		</File>
-		<File
-			RelativePath="..\..\Support\NetworkMgr\GameSpy\qr2\qr2regkeys.c">
 		</File>
 		<File
 			RelativePath=".\rtf_handler.cpp">
-		</File>
-		<File
-			RelativePath="..\..\Support\NetworkMgr\GameSpy\serverbrowsing\sb_serverbrowsing.c">
 		</File>
 		<File
 			RelativePath=".\Version.cpp">
