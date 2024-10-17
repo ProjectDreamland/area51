@@ -60,7 +60,7 @@ public:
     inline xbool            IsEOF           ( void ) const { return m_Tokenizer.IsEOF();        }
     inline const char*      GetFileName     ( void )       { return m_Tokenizer.GetFilename();  }
 
-	inline s32				GetFieldCount   ( void ) const { return m_Record.nFields;    }
+    inline s32                GetFieldCount   ( void ) const { return m_Record.nFields;    }
     inline const char*      GetFieldName    ( s32 nIndex ) const { return m_Record.Field[nIndex].Name; }
     inline s32              GetFieldTypeCount ( s32 nIndex ) const { return m_Record.Field[nIndex].nTypes; }
            void             GetFieldTypeStr ( s32 nField, char* pString );
@@ -82,10 +82,10 @@ protected:
     #define TEXTFILE_MAX_FIELDS      32         // a:f b:f c:f d:f e:f f:f g:f h:f ...
     #define TEXTFILE_MAX_TYPES       16         // MaxTypes:ffffffffffffffff
     #define TEXTFILE_MAX_STRLENGTH   256        // "dssdfsdfsdsdfdsfsdfsfd ..." 
-	#define TEXTFILE_MAX_FLOATS		 16
-	#define TEXTFILE_MAX_INTS		 16
-	#define TEXTFILE_MAX_STRINGS	 4
-	#define TEXTFILE_MAX_GUIDS		 1
+    #define TEXTFILE_MAX_FLOATS         16
+    #define TEXTFILE_MAX_INTS         16
+    #define TEXTFILE_MAX_STRINGS     4
+    #define TEXTFILE_MAX_GUIDS         1
 
     struct data
     {

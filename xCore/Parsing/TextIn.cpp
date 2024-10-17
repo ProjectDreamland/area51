@@ -328,10 +328,10 @@ xbool text_in::ReadHeader( void )
 }
 
 //=========================================================================
-	#define TEXTFILE_MAX_FLOATS		 16
-	#define TEXTFILE_MAX_INTS		 16
-	#define TEXTFILE_MAX_STRINGS	 4
-	#define TEXTFILE_MAX_GUIDS		 1
+    #define TEXTFILE_MAX_FLOATS         16
+    #define TEXTFILE_MAX_INTS         16
+    #define TEXTFILE_MAX_STRINGS     4
+    #define TEXTFILE_MAX_GUIDS         1
 
 xbool text_in::ReadFields( void )
 {
@@ -360,7 +360,7 @@ xbool text_in::ReadFields( void )
             {
             case TYPE_FLOAT:    
                 {
-					ASSERT( Data.nFloats < TEXTFILE_MAX_FLOATS );
+                    ASSERT( Data.nFloats < TEXTFILE_MAX_FLOATS );
                     if( Type != token_stream::TOKEN_NUMBER && m_Tokenizer.IsFloat()== TRUE )
                         return ReportError( "Expecting a FLOAT but found something else" );
 
@@ -372,7 +372,7 @@ xbool text_in::ReadFields( void )
                 }
             case TYPE_INTEGER:
                 {
-					ASSERT( Data.nIntegers < TEXTFILE_MAX_INTS );
+                    ASSERT( Data.nIntegers < TEXTFILE_MAX_INTS );
                     if( Type != token_stream::TOKEN_NUMBER && m_Tokenizer.IsFloat()== FALSE )
                         return ReportError( "Expecting a INTEGER but found something else" );
 
@@ -382,7 +382,7 @@ xbool text_in::ReadFields( void )
                 }
             case TYPE_STRING:
                 {
-					ASSERT( Data.nStrings < TEXTFILE_MAX_STRINGS );
+                    ASSERT( Data.nStrings < TEXTFILE_MAX_STRINGS );
                     if( Type != token_stream::TOKEN_STRING )
                         return ReportError( "Expecting a STRING but found something else" );
 
@@ -393,7 +393,7 @@ xbool text_in::ReadFields( void )
 
             case TYPE_GUID:
                 {
-					ASSERT( Data.nGuids < TEXTFILE_MAX_GUIDS );
+                    ASSERT( Data.nGuids < TEXTFILE_MAX_GUIDS );
                     if( Type != token_stream::TOKEN_STRING )
                         return ReportError( "Expecting a GUID but found something else" );
 
@@ -579,9 +579,9 @@ xbool text_in::GetField( const char* pFieldName, ... )
     {
         data&   Data  = m_pData[ m_FieldMatch[ m_RecordTypeNumber ].Index ];
         field&  Field = m_Record.Field[ m_FieldMatch[ m_RecordTypeNumber ].Index ];
-		// Make sure we're giving the correct data.
-		if(xstring(pFieldName).Find(xstring(Field.Name)) == -1)
-			return FALSE;
+        // Make sure we're giving the correct data.
+        if(xstring(pFieldName).Find(xstring(Field.Name)) == -1)
+            return FALSE;
 
         x_va_list   Args;
         x_va_start( Args, pFieldName );
