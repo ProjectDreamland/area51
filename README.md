@@ -38,7 +38,7 @@ FontEditor     | Yes/Only as lib/Check the [Editor](https://github.com/gabengaGa
 FontBuilder    | Yes
 FxEditor       | Yes/Only as lib/Check the [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
 FXCompiler     | Yes
-GameApp        | Yes/Only menu works/Game doesn't boot
+GameApp        | Yes/Models doesn't boot
 GeomCompiler   | Yes
 LocoEditor     | Yes/Only as lib/Check the [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
 MeshViewer     | Yes/Only as lib/Check the [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
