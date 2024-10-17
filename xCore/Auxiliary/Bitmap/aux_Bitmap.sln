@@ -7,13 +7,9 @@ Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug Win32 = Debug Win32
 		Debug Xbox = Debug Xbox
-		OptDebug Win32 = OptDebug Win32
 		OptDebug Xbox = OptDebug Xbox
-		QA Win32 = QA Win32
 		QA Xbox = QA Xbox
 		Release Win32 = Release Win32
-		Release Xbox = Release Xbox
-		Retail Win32 = Retail Win32
 		Retail Xbox = Retail Xbox
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
@@ -21,20 +17,12 @@ Global
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Debug Win32.Build.0 = Debug|Win32
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Debug Xbox.ActiveCfg = Debug|Xbox
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Debug Xbox.Build.0 = Debug|Xbox
-		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.OptDebug Win32.ActiveCfg = OptDebug|Win32
-		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.OptDebug Win32.Build.0 = OptDebug|Win32
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.OptDebug Xbox.ActiveCfg = OptDebug|Xbox
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.OptDebug Xbox.Build.0 = OptDebug|Xbox
-		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.QA Win32.ActiveCfg = QA|Win32
-		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.QA Win32.Build.0 = QA|Win32
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.QA Xbox.ActiveCfg = QA|Xbox
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.QA Xbox.Build.0 = QA|Xbox
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Release Win32.ActiveCfg = Release|Win32
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Release Win32.Build.0 = Release|Win32
-		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Release Xbox.ActiveCfg = Release|Xbox
-		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Release Xbox.Build.0 = Release|Xbox
-		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Retail Win32.ActiveCfg = Retail|Win32
-		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Retail Win32.Build.0 = Retail|Win32
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Retail Xbox.ActiveCfg = Retail|Xbox
 		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Retail Xbox.Build.0 = Retail|Xbox
 	EndGlobalSection
