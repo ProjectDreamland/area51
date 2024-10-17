@@ -209,12 +209,12 @@ configure:2871: result: file_magic file format pei*-i386(.*architecture: i386)?
 configure:2884: checking command to parse nm output
 configure:2961: gcc -c  -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386    -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64      conftest.c >&5
 configure:2964: $? = 0
-configure:2968: nm conftest.o \| sed -n -e 's/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)\{0,1\}$/\1 \2\3 \3/p' \> conftest.nm
+configure:2968: nm conftest.o \| sed -n -e 's/^.*[     ]\([ABCDGISTW][ABCDGISTW]*\)[     ][     ]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)\{0,1\}$/\1 \2\3 \3/p' \> conftest.nm
 configure:2971: $? = 0
 cannot find nm_test_var in conftest.nm
 configure:2961: gcc -c  -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386    -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64      conftest.c >&5
 configure:2964: $? = 0
-configure:2968: nm conftest.o \| sed -n -e 's/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(_\)\([_A-Za-z][_A-Za-z0-9]*\)\{0,1\}$/\1 \2\3 \3/p' \> conftest.nm
+configure:2968: nm conftest.o \| sed -n -e 's/^.*[     ]\([ABCDGISTW][ABCDGISTW]*\)[     ][     ]*\(_\)\([_A-Za-z][_A-Za-z0-9]*\)\{0,1\}$/\1 \2\3 \3/p' \> conftest.nm
 configure:2971: $? = 0
 configure:3023: gcc -o conftest.exe  -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386    -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64       -Wl,-s -Wl,--enable-auto-import  conftest.c conftstm.o >&5
 conftest.c:6: warning: `main' is usually a function
@@ -705,7 +705,7 @@ lt_cv_prog_cc_static=-static
 lt_cv_prog_cc_static_works=yes
 lt_cv_prog_cc_wl=-Wl,
 lt_cv_prog_gnu_ld=yes
-lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(_\)\([_A-Za-z][_A-Za-z0-9]*\)\{0,1\}$/\1 \2\3 \3/p'\'''
+lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[     ]\([ABCDGISTW][ABCDGISTW]*\)[     ][     ]*\(_\)\([_A-Za-z][_A-Za-z0-9]*\)\{0,1\}$/\1 \2\3 \3/p'\'''
 nls_cv_use_gnu_gettext=yes
 
 ## ----------------- ##

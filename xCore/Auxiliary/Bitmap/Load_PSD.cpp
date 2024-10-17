@@ -388,7 +388,7 @@ xbool psd_Info( const char* pFileName, xbitmap::info& BitmapInfo )
 {
     psd_info    Info;
     byte        Buffer[26];
-	s32			BytesRead;
+    s32            BytesRead;
     X_FILE*     pFile = NULL;
 
     xbitmap::format Format = xbitmap::FMT_NULL;
@@ -461,11 +461,11 @@ xbool psd_Info( const char* pFileName, xbitmap::info& BitmapInfo )
     // Done reading from file.
     x_fclose( pFile );
 
-	// Fill in the xbitmap::info struct
-	BitmapInfo.W      = Info.Width;
-	BitmapInfo.H      = Info.Height;
-	BitmapInfo.nMips  = 0;
-	BitmapInfo.Format = Format;
+    // Fill in the xbitmap::info struct
+    BitmapInfo.W      = Info.Width;
+    BitmapInfo.H      = Info.Height;
+    BitmapInfo.nMips  = 0;
+    BitmapInfo.Format = Format;
 
     // Success!
     return( TRUE );

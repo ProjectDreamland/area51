@@ -17,7 +17,7 @@
   
   CC = gcc
 ! CFLAGS =  -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386 \
-! 	-D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 
+!     -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 
   CPPFLAGS =   -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64     
   CC_FOR_BUILD = $(CC)
   CFLAGS_FOR_BUILD = $(CFLAGS)
@@ -32,24 +32,24 @@
   all:            libpcre.la  pcretest.exe pcregrep.exe  winshared
   
 ! pcregrep.exe: libpcre.la pcregrep.o  winshared
-! 		$(LINK) -o pcregrep.exe pcregrep.o -lpcre
+!         $(LINK) -o pcregrep.exe pcregrep.o -lpcre
   
 ! pcretest.exe: libpcre.la  pcretest.o  winshared
-! 		$(LINK) $(PURIFY) $(EFENCE) -o pcretest.exe  pcretest.o \
-! 		-lpcre 
+!         $(LINK) $(PURIFY) $(EFENCE) -o pcretest.exe  pcretest.o \
+!         -lpcre 
   
   libpcre.la:     $(OBJ)
-  		-rm -f libpcre.la
+          -rm -f libpcre.la
 --- 103,114 ----
   
   all:            libpcre.la  pcretest.exe pcregrep.exe  winshared
   
 ! pcregrep.exe: libpcre.la pcregrep.o pcregrep-rc.o  winshared
-! 		$(LINK) -o pcregrep.exe pcregrep.o pcregrep-rc.o -lpcre -lgw32c -lole32 -luuid
+!         $(LINK) -o pcregrep.exe pcregrep.o pcregrep-rc.o -lpcre -lgw32c -lole32 -luuid
   
 ! pcretest.exe: libpcre.la  pcretest.o  pcretest-rc.o winshared
-! 		$(LINK) $(PURIFY) $(EFENCE) -o pcretest.exe  pcretest.o pcretest-rc.o \
-! 		-lpcre -lgw32c -lole32 -luuid
+!         $(LINK) $(PURIFY) $(EFENCE) -o pcretest.exe  pcretest.o pcretest-rc.o \
+!         -lpcre -lgw32c -lole32 -luuid
   
   libpcre.la:     $(OBJ)
-  		-rm -f libpcre.la
+          -rm -f libpcre.la

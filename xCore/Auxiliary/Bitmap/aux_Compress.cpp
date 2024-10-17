@@ -30,10 +30,10 @@
 #else
 enum DXTCMethod
 {
-	DC_None,
-	DC_DXT1,
-	DC_DXT3,
-	DC_DXT5,
+    DC_None,
+    DC_DXT1,
+    DC_DXT3,
+    DC_DXT5,
 };
 #endif
 
@@ -55,11 +55,11 @@ static AlphaType GetAlphaUsage( xbitmap& Source )
     if( Source.GetBPP( )<16 )
         return AT_None;
 
-    s32	x,y,i;
-    s32	Unique;
-    u32	Usage[256];
-	x_memset( Usage,0,sizeof( Usage ));
-	//
+    s32    x,y,i;
+    s32    Unique;
+    u32    Usage[256];
+    x_memset( Usage,0,sizeof( Usage ));
+    //
     //  Count all the different values used
     //
     for( i=0;i<=Source.GetNMips ( );i++ )
@@ -76,19 +76,19 @@ static AlphaType GetAlphaUsage( xbitmap& Source )
         }
     }
     //
-	//  Count the number of unique alpha values
+    //  Count the number of unique alpha values
     //
-	Unique = 0;
-	for( x=0;x<256;x++ )
-		Unique += ( Usage[x]!=0 );
+    Unique = 0;
+    for( x=0;x<256;x++ )
+        Unique += ( Usage[x]!=0 );
     //
-	//  Based on the unique alphas, classify the image
+    //  Based on the unique alphas, classify the image
     //
-	switch(Unique)
-	{
-	    case 0:
+    switch(Unique)
+    {
+        case 0:
             return AT_None;
-    	case 1:
+        case 1:
             if( Usage[0xFF] ) return AT_None;
             if( Usage[0x00] )
             {
@@ -101,16 +101,16 @@ static AlphaType GetAlphaUsage( xbitmap& Source )
                 }
             }
             return AT_Constant;
-    	case 2:
-    		if(Usage[0] && Usage[0xff])
-	    		return AT_Binary;
-		    if(Usage[0])
-    			return AT_ConstantBinary;
-			return AT_DualConstant;
+        case 2:
+            if(Usage[0] && Usage[0xff])
+                return AT_Binary;
+            if(Usage[0])
+                return AT_ConstantBinary;
+            return AT_DualConstant;
 
-	    default:
-		    return AT_Modulated;
-	}
+        default:
+            return AT_Modulated;
+    }
 }
 #endif
 
@@ -157,15 +157,15 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
             case DC_None:
                 switch( GetAlphaUsage( Temp ))
                 {
-		            case AT_ConstantBinary:
-		            case AT_Constant:
-		            case AT_Binary:
-		            case AT_None:
+                    case AT_ConstantBinary:
+                    case AT_Constant:
+                    case AT_Binary:
+                    case AT_None:
                         Dxtc.CompressDXT1( &DxtImage );
                         Format = xbitmap::FMT_DXT1;
                         break;
-		            case AT_DualConstant:
-		            case AT_Modulated:
+                    case AT_DualConstant:
+                    case AT_Modulated:
                         Dxtc.CompressDXT3( &DxtImage );
                         Format = xbitmap::FMT_DXT3;
                         break;
@@ -214,7 +214,7 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
         //  Duplicate pixels( assumes RGBA not ARGB)
         //
         DxtImage.DiffuseError( 8,5,6,5 );
-    	Dxtc.FromImage32( &DxtImage,Method );
+        Dxtc.FromImage32( &DxtImage,Method );
         if( !i )
         {
             Method = Dxtc.GetMethod( );
@@ -299,13 +299,13 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
             case DC_None:
                 switch( GetAlphaUsage( Temp ))
                 {
-		            case AT_ConstantBinary:
-		            case AT_Constant:
-		            case AT_Binary:
-		            case AT_None:
+                    case AT_ConstantBinary:
+                    case AT_Constant:
+                    case AT_Binary:
+                    case AT_None:
                         goto Dxt1;
-		            case AT_DualConstant:
-		            case AT_Modulated:
+                    case AT_DualConstant:
+                    case AT_Modulated:
                         goto Dxt3;
                 }
 
@@ -355,13 +355,13 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
         case DC_None:
             switch( GetAlphaUsage( Temp ))
             {
-	            case AT_ConstantBinary:
-	            case AT_Constant:
-	            case AT_Binary:
-	            case AT_None:
+                case AT_ConstantBinary:
+                case AT_Constant:
+                case AT_Binary:
+                case AT_None:
                     goto dxt1;
-	            case AT_DualConstant:
-	            case AT_Modulated:
+                case AT_DualConstant:
+                case AT_Modulated:
                     goto dxt3;
             }
 
@@ -648,7 +648,7 @@ xcolor auxbmp_ReadPixelColorDXT3( const xbitmap& Bitmap,s32 X,s32 Y,s32 Mip )
         if( pOld!=pSrc )
         {
             PlotDXT1     ( pSrc+4,Cache,4 );
-		    PlotDXT3Alpha( pSrc  ,Cache,4 );
+            PlotDXT3Alpha( pSrc  ,Cache,4 );
             pOld = pSrc;
         }
 

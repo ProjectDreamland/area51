@@ -1,8 +1,8 @@
 /bin/sh ./libtool --mode=link gcc -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386 -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I. -I.   -o pcretest.exe  pcretest.o  pcretest-rc.o\
-	libpcre.la -lgw32c 
+    libpcre.la -lgw32c 
 gcc -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386 -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I. -I. -o .libs/pcretest.exe pcretest.o pcretest-rc.o -Wl,--export-all-symbols -Wl,--export-dynamic  .libs/libimp-pcre.a -lgw32c -Wl,--rpath -Wl,c:/progra~1/Pcre/lib
 creating pcretest.exe
-/bin/sh ./libtool --mode=link gcc -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386 -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I. -I. -o pcregrep.exe pcregrep.o pcregrep-rc.o libpcre.la -lgw32c	-luuid -lole32
+/bin/sh ./libtool --mode=link gcc -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386 -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I. -I. -o pcregrep.exe pcregrep.o pcregrep-rc.o libpcre.la -lgw32c    -luuid -lole32
 gcc -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386 -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 -I. -I. -o .libs/pcregrep.exe pcregrep.o pcregrep-rc.o -Wl,--export-all-symbols -Wl,--export-dynamic  .libs/libimp-pcre.a -lgw32c -luuid -lole32 -Wl,--rpath -Wl,c:/progra~1/Pcre/lib
 creating pcregrep.exe
 cp .libs/pcre.dll .

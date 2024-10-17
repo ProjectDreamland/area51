@@ -67,14 +67,14 @@ fi
 # Name of the executable.
 as_me=`$as_basename "$0" ||
 $as_expr X/"$0" : '.*/\([^/][^/]*\)/*$' \| \
-	 X"$0" : 'X\(//\)$' \| \
-	 X"$0" : 'X\(/\)$' \| \
-	 .     : '\(.\)' 2>/dev/null ||
+     X"$0" : 'X\(//\)$' \| \
+     X"$0" : 'X\(/\)$' \| \
+     .     : '\(.\)' 2>/dev/null ||
 echo X/"$0" |
     sed '/^.*\/\([^/][^/]*\)\/*$/{ s//\1/; q; }
-  	  /^X\/\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\/\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\/\(\/\/\)$/{ s//\1/; q; }
+        /^X\/\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
 
 
 # PATH needs CR, and LINENO needs CR and PATH.
@@ -136,21 +136,21 @@ do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
   for as_base in sh bash ksh sh5; do
-	 case $as_dir in
-	 /*)
-	   if ("$as_dir/$as_base" -c '
+     case $as_dir in
+     /*)
+       if ("$as_dir/$as_base" -c '
   as_lineno_1=$LINENO
   as_lineno_2=$LINENO
   as_lineno_3=`(expr $as_lineno_1 + 1) 2>/dev/null`
   test "x$as_lineno_1" != "x$as_lineno_2" &&
   test "x$as_lineno_3"  = "x$as_lineno_2" ') 2>/dev/null; then
-	     $as_unset BASH_ENV || test "${BASH_ENV+set}" != set || { BASH_ENV=; export BASH_ENV; }
-	     $as_unset ENV || test "${ENV+set}" != set || { ENV=; export ENV; }
-	     CONFIG_SHELL=$as_dir/$as_base
-	     export CONFIG_SHELL
-	     exec "$CONFIG_SHELL" "$0" ${1+"$@"}
-	   fi;;
-	 esac
+         $as_unset BASH_ENV || test "${BASH_ENV+set}" != set || { BASH_ENV=; export BASH_ENV; }
+         $as_unset ENV || test "${ENV+set}" != set || { ENV=; export ENV; }
+         CONFIG_SHELL=$as_dir/$as_base
+         export CONFIG_SHELL
+         exec "$CONFIG_SHELL" "$0" ${1+"$@"}
+       fi;;
+     esac
        done
 done
 ;;
@@ -190,7 +190,7 @@ echo "$as_me: error: cannot create $as_me.lineno; rerun with a POSIX shell" >&2;
 
 case `echo "testing\c"; echo 1,2,3`,`echo -n testing; echo 1,2,3` in
   *c*,-n*) ECHO_N= ECHO_C='
-' ECHO_T='	' ;;
+' ECHO_T='    ' ;;
   *c*,*  ) ECHO_N=-n ECHO_C= ECHO_T= ;;
   *)       ECHO_N= ECHO_C='\c' ECHO_T= ;;
 esac
@@ -238,7 +238,7 @@ as_tr_sh="sed y%*+%pp%;s%[^_$as_cr_alnum]%_%g"
 # We need space, tab and new line, in precisely that order.
 as_nl='
 '
-IFS=" 	$as_nl"
+IFS="     $as_nl"
 
 # CDPATH.
 $as_unset CDPATH
@@ -556,9 +556,9 @@ CEOF
       (echo ':t
   /@[a-zA-Z_][a-zA-Z_0-9]*@/!b' && cat $tmp/subs.frag) >$tmp/subs-$ac_sed_frag.sed
       if test -z "$ac_sed_cmds"; then
-  	ac_sed_cmds="sed -f $tmp/subs-$ac_sed_frag.sed"
+      ac_sed_cmds="sed -f $tmp/subs-$ac_sed_frag.sed"
       else
-  	ac_sed_cmds="$ac_sed_cmds | sed -f $tmp/subs-$ac_sed_frag.sed"
+      ac_sed_cmds="$ac_sed_cmds | sed -f $tmp/subs-$ac_sed_frag.sed"
       fi
       ac_sed_frag=`expr $ac_sed_frag + 1`
       ac_beg=$ac_end
@@ -591,10 +591,10 @@ $as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$ac_file" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
   { if $as_mkdir_p; then
     mkdir -p "$ac_dir"
   else
@@ -610,10 +610,10 @@ $as_expr X"$as_dir" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$as_dir" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
     done
     test ! -n "$as_dirs" || mkdir $as_dirs
   fi || { { echo "$as_me:$LINENO: error: cannot create directory \"$ac_dir\"" >&5
@@ -701,13 +701,13 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
          fi;;
       esac
     done` || { (exit 1); exit 1; }
-  sed "/^[ 	]*VPATH[ 	]*=/{
+  sed "/^[     ]*VPATH[     ]*=/{
 s/:*\$(srcdir):*/:/;
 s/:*\${srcdir}:*/:/;
 s/:*@srcdir@:*/:/;
-s/^\([^=]*=[ 	]*\):*/\1/;
+s/^\([^=]*=[     ]*\):*/\1/;
 s/:*$//;
-s/^[^=]*=[ 	]*$//;
+s/^[^=]*=[     ]*$//;
 }
 
 :t
@@ -741,12 +741,12 @@ done
 # NAME is the cpp macro being defined and VALUE is the value it is being given.
 #
 # ac_d sets the value in "#define NAME VALUE" lines.
-ac_dA='s,^\([ 	]*\)#\([ 	]*define[ 	][ 	]*\)'
-ac_dB='[ 	].*$,\1#\2'
+ac_dA='s,^\([     ]*\)#\([     ]*define[     ][     ]*\)'
+ac_dB='[     ].*$,\1#\2'
 ac_dC=' '
 ac_dD=',;t'
 # ac_u turns "#undef NAME" without trailing blanks into "#define NAME VALUE".
-ac_uA='s,^\([ 	]*\)#\([ 	]*\)undef\([ 	][ 	]*\)'
+ac_uA='s,^\([     ]*\)#\([     ]*\)undef\([     ][     ]*\)'
 ac_uB='$,\1#\2define\3'
 ac_uC=' '
 ac_uD=',;t'
@@ -794,14 +794,14 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
       esac
     done` || { (exit 1); exit 1; }
   # Remove the trailing spaces.
-  sed 's/[ 	]*$//' $ac_file_inputs >$tmp/in
+  sed 's/[     ]*$//' $ac_file_inputs >$tmp/in
 
   # Handle all the #define templates only if necessary.
-  if grep "^[ 	]*#[ 	]*define" $tmp/in >/dev/null; then
+  if grep "^[     ]*#[     ]*define" $tmp/in >/dev/null; then
   # If there are no defines, we may have an empty if/fi
   :
   cat >$tmp/defines.sed <<CEOF
-/^[ 	]*#[ 	]*define/!b
+/^[     ]*#[     ]*define/!b
 t clr
 : clr
 ${ac_dA}PACKAGE_NAME${ac_dB}PACKAGE_NAME${ac_dC}""${ac_dD}
@@ -832,7 +832,7 @@ CEOF
 
   # Handle all the #undef templates
   cat >$tmp/undefs.sed <<CEOF
-/^[ 	]*#[ 	]*undef/!b
+/^[     ]*#[     ]*undef/!b
 t clr
 : clr
 ${ac_uA}PACKAGE_NAME${ac_uB}PACKAGE_NAME${ac_uC}""${ac_uD}
@@ -854,7 +854,7 @@ ${ac_uA}STDC_HEADERS${ac_uB}STDC_HEADERS${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_LIMITS_H${ac_uB}HAVE_LIMITS_H${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_MEMMOVE${ac_uB}HAVE_MEMMOVE${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_STRERROR${ac_uB}HAVE_STRERROR${ac_uC}1${ac_uD}
-s,^[ 	]*#[ 	]*undef[ 	][ 	]*[a-zA-Z_][a-zA-Z_0-9]*,/* & */,
+s,^[     ]*#[     ]*undef[     ][     ]*[a-zA-Z_][a-zA-Z_0-9]*,/* & */,
 CEOF
   sed -f $tmp/undefs.sed $tmp/in >$tmp/out
   rm -f $tmp/in
@@ -883,10 +883,10 @@ $as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$ac_file" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
       { if $as_mkdir_p; then
     mkdir -p "$ac_dir"
   else
@@ -902,10 +902,10 @@ $as_expr X"$as_dir" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$as_dir" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
     done
     test ! -n "$as_dirs" || mkdir $as_dirs
   fi || { { echo "$as_me:$LINENO: error: cannot create directory \"$ac_dir\"" >&5
@@ -935,10 +935,10 @@ $as_expr X"$ac_dest" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$ac_dest" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
   ac_builddir=.
 
 if test "$ac_dir" != .; then

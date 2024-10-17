@@ -65,14 +65,14 @@ fi
 # Name of the executable.
 as_me=`$as_basename "$0" ||
 $as_expr X/"$0" : '.*/\([^/][^/]*\)/*$' \| \
-	 X"$0" : 'X\(//\)$' \| \
-	 X"$0" : 'X\(/\)$' \| \
-	 .     : '\(.\)' 2>/dev/null ||
+     X"$0" : 'X\(//\)$' \| \
+     X"$0" : 'X\(/\)$' \| \
+     .     : '\(.\)' 2>/dev/null ||
 echo X/"$0" |
     sed '/^.*\/\([^/][^/]*\)\/*$/{ s//\1/; q; }
-  	  /^X\/\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\/\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\/\(\/\/\)$/{ s//\1/; q; }
+        /^X\/\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
 
 
 # PATH needs CR, and LINENO needs CR and PATH.
@@ -133,21 +133,21 @@ do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
   for as_base in sh bash ksh sh5; do
-	 case $as_dir in
-	 /*)
-	   if ("$as_dir/$as_base" -c '
+     case $as_dir in
+     /*)
+       if ("$as_dir/$as_base" -c '
   as_lineno_1=$LINENO
   as_lineno_2=$LINENO
   as_lineno_3=`(expr $as_lineno_1 + 1) 2>/dev/null`
   test "x$as_lineno_1" != "x$as_lineno_2" &&
   test "x$as_lineno_3"  = "x$as_lineno_2" ') 2>/dev/null; then
-	     $as_unset BASH_ENV || test "${BASH_ENV+set}" != set || { BASH_ENV=; export BASH_ENV; }
-	     $as_unset ENV || test "${ENV+set}" != set || { ENV=; export ENV; }
-	     CONFIG_SHELL=$as_dir/$as_base
-	     export CONFIG_SHELL
-	     exec "$CONFIG_SHELL" "$0" ${1+"$@"}
-	   fi;;
-	 esac
+         $as_unset BASH_ENV || test "${BASH_ENV+set}" != set || { BASH_ENV=; export BASH_ENV; }
+         $as_unset ENV || test "${ENV+set}" != set || { ENV=; export ENV; }
+         CONFIG_SHELL=$as_dir/$as_base
+         export CONFIG_SHELL
+         exec "$CONFIG_SHELL" "$0" ${1+"$@"}
+       fi;;
+     esac
        done
 done
 ;;
@@ -186,7 +186,7 @@ done
 
 case `echo "testing\c"; echo 1,2,3`,`echo -n testing; echo 1,2,3` in
   *c*,-n*) ECHO_N= ECHO_C='
-' ECHO_T='	' ;;
+' ECHO_T='    ' ;;
   *c*,*  ) ECHO_N=-n ECHO_C= ECHO_T= ;;
   *)       ECHO_N= ECHO_C='\c' ECHO_T= ;;
 esac
@@ -234,7 +234,7 @@ as_tr_sh="sed y%*+%pp%;s%[^_$as_cr_alnum]%_%g"
 # We need space, tab and new line, in precisely that order.
 as_nl='
 '
-IFS=" 	$as_nl"
+IFS="     $as_nl"
 
 # CDPATH.
 $as_unset CDPATH
@@ -314,7 +314,7 @@ else
   #
   # So, first we look for a working echo in the user's PATH.
 
-  IFS="${IFS= 	}"; save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR}"
+  IFS="${IFS=     }"; save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR}"
   for dir in $PATH /usr/ucb; do
     if (test -f $dir/echo || test -f $dir/echo$ac_exeext) &&
        test "X`($dir/echo '\t') 2>/dev/null`" = 'X\t' &&
@@ -334,7 +334,7 @@ else
       # This shell has a builtin print -r that does the trick.
       echo='print -r'
     elif (test -f /bin/ksh || test -f /bin/ksh$ac_exeext) &&
-	 test "X$CONFIG_SHELL" != X/bin/ksh; then
+     test "X$CONFIG_SHELL" != X/bin/ksh; then
       # If we have ksh, try running configure again with it.
       ORIGINAL_CONFIG_SHELL=${CONFIG_SHELL-/bin/sh}
       export ORIGINAL_CONFIG_SHELL
@@ -345,44 +345,44 @@ else
       # Try using printf.
       echo='printf %s\n'
       if test "X`($echo '\t') 2>/dev/null`" = 'X\t' &&
-	 echo_testing_string=`($echo "$echo_test_string") 2>/dev/null` &&
-	 test "X$echo_testing_string" = "X$echo_test_string"; then
-	# Cool, printf works
-	:
+     echo_testing_string=`($echo "$echo_test_string") 2>/dev/null` &&
+     test "X$echo_testing_string" = "X$echo_test_string"; then
+    # Cool, printf works
+    :
       elif echo_testing_string=`($ORIGINAL_CONFIG_SHELL "$0" --fallback-echo '\t') 2>/dev/null` &&
-	   test "X$echo_testing_string" = 'X\t' &&
-	   echo_testing_string=`($ORIGINAL_CONFIG_SHELL "$0" --fallback-echo "$echo_test_string") 2>/dev/null` &&
-	   test "X$echo_testing_string" = "X$echo_test_string"; then
-	CONFIG_SHELL=$ORIGINAL_CONFIG_SHELL
-	export CONFIG_SHELL
-	SHELL="$CONFIG_SHELL"
-	export SHELL
-	echo="$CONFIG_SHELL $0 --fallback-echo"
+       test "X$echo_testing_string" = 'X\t' &&
+       echo_testing_string=`($ORIGINAL_CONFIG_SHELL "$0" --fallback-echo "$echo_test_string") 2>/dev/null` &&
+       test "X$echo_testing_string" = "X$echo_test_string"; then
+    CONFIG_SHELL=$ORIGINAL_CONFIG_SHELL
+    export CONFIG_SHELL
+    SHELL="$CONFIG_SHELL"
+    export SHELL
+    echo="$CONFIG_SHELL $0 --fallback-echo"
       elif echo_testing_string=`($CONFIG_SHELL "$0" --fallback-echo '\t') 2>/dev/null` &&
-	   test "X$echo_testing_string" = 'X\t' &&
-	   echo_testing_string=`($CONFIG_SHELL "$0" --fallback-echo "$echo_test_string") 2>/dev/null` &&
-	   test "X$echo_testing_string" = "X$echo_test_string"; then
-	echo="$CONFIG_SHELL $0 --fallback-echo"
+       test "X$echo_testing_string" = 'X\t' &&
+       echo_testing_string=`($CONFIG_SHELL "$0" --fallback-echo "$echo_test_string") 2>/dev/null` &&
+       test "X$echo_testing_string" = "X$echo_test_string"; then
+    echo="$CONFIG_SHELL $0 --fallback-echo"
       else
-	# maybe with a smaller string...
-	prev=:
+    # maybe with a smaller string...
+    prev=:
 
-	for cmd in 'echo test' 'sed 2q "$0"' 'sed 10q "$0"' 'sed 20q "$0"' 'sed 50q "$0"'; do
-	  if (test "X$echo_test_string" = "X`eval $cmd`") 2>/dev/null
-	  then
-	    break
-	  fi
-	  prev="$cmd"
-	done
+    for cmd in 'echo test' 'sed 2q "$0"' 'sed 10q "$0"' 'sed 20q "$0"' 'sed 50q "$0"'; do
+      if (test "X$echo_test_string" = "X`eval $cmd`") 2>/dev/null
+      then
+        break
+      fi
+      prev="$cmd"
+    done
 
-	if test "$prev" != 'sed 50q "$0"'; then
-	  echo_test_string=`eval $prev`
-	  export echo_test_string
-	  exec ${ORIGINAL_CONFIG_SHELL-${CONFIG_SHELL-/bin/sh}} "$0" ${1+"$@"}
-	else
-	  # Oops.  We lost completely, so just stick with echo.
-	  echo=echo
-	fi
+    if test "$prev" != 'sed 50q "$0"'; then
+      echo_test_string=`eval $prev`
+      export echo_test_string
+      exec ${ORIGINAL_CONFIG_SHELL-${CONFIG_SHELL-/bin/sh}} "$0" ${1+"$@"}
+    else
+      # Oops.  We lost completely, so just stick with echo.
+      echo=echo
+    fi
       fi
     fi
   fi
@@ -871,10 +871,10 @@ $as_expr X"$0" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$0" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
   srcdir=$ac_confdir
   if test ! -r $srcdir/$ac_unique_file; then
     srcdir=..
@@ -1168,7 +1168,7 @@ do
     -q | -quiet | --quiet | --quie | --qui | --qu | --q \
     | -silent | --silent | --silen | --sile | --sil)
       continue ;;
-    *" "*|*"	"*|*[\[\]\~\#\$\^\&\*\(\)\{\}\\\|\;\<\>\?\"\']*)
+    *" "*|*"    "*|*[\[\]\~\#\$\^\&\*\(\)\{\}\\\|\;\<\>\?\"\']*)
       ac_arg=`echo "$ac_arg" | sed "s/'/'\\\\\\\\''/g"` ;;
     esac
     case $ac_pass in
@@ -1223,7 +1223,7 @@ _ASBOX
     *ac_space=\ *)
       sed -n \
         "s/'"'"'/'"'"'\\\\'"'"''"'"'/g;
-    	  s/^\\([_$as_cr_alnum]*_cv_[_$as_cr_alnum]*\\)=\\(.*\\)/\\1='"'"'\\2'"'"'/p"
+          s/^\\([_$as_cr_alnum]*_cv_[_$as_cr_alnum]*\\)=\\(.*\\)/\\1='"'"'\\2'"'"'/p"
       ;;
     *)
       sed -n \
@@ -1255,7 +1255,7 @@ _ASBOX
       echo
       for ac_var in $ac_subst_files
       do
-	eval ac_val=$`echo $ac_var`
+    eval ac_val=$`echo $ac_var`
         echo "$ac_var='"'"'$ac_val'"'"'"
       done | sort
       echo
@@ -1384,7 +1384,7 @@ echo "$as_me:   current value: $ac_new_val" >&2;}
   # Pass precious variables to config.status.
   if test "$ac_new_set" = set; then
     case $ac_new_val in
-    *" "*|*"	"*|*[\[\]\~\#\$\^\&\*\(\)\{\}\\\|\;\<\>\?\"\']*)
+    *" "*|*"    "*|*[\[\]\~\#\$\^\&\*\(\)\{\}\\\|\;\<\>\?\"\']*)
       ac_arg=$ac_var=`echo "$ac_new_val" | sed "s/'/'\\\\\\\\''/g"` ;;
     *) ac_arg=$ac_var=$ac_new_val ;;
     esac
@@ -1874,9 +1874,9 @@ if test "$cross_compiling" != yes; then
     cross_compiling=no
   else
     if test "$cross_compiling" = maybe; then
-	cross_compiling=yes
+    cross_compiling=yes
     else
-	{ { echo "$as_me:$LINENO: error: cannot run C compiled programs.
+    { { echo "$as_me:$LINENO: error: cannot run C compiled programs.
 If you meant to cross compile, use \`--host'.
 See \`config.log' for more details." >&5
 echo "$as_me: error: cannot run C compiled programs.
@@ -2149,11 +2149,11 @@ return f (e, argv, 0) != argv[0]  ||  f (e, argv, 1) != argv[1];
 _ACEOF
 # Don't try gcc -ansi; that turns off useful extensions and
 # breaks some systems' header files.
-# AIX			-qlanglvl=ansi
-# Ultrix and OSF/1	-std1
-# HP-UX 10.20 and later	-Ae
-# HP-UX older versions	-Aa -D_HPUX_SOURCE
-# SVR4			-Xc -D__EXTENSIONS__
+# AIX            -qlanglvl=ansi
+# Ultrix and OSF/1    -std1
+# HP-UX 10.20 and later    -Ae
+# HP-UX older versions    -Aa -D_HPUX_SOURCE
+# SVR4            -Xc -D__EXTENSIONS__
 for ac_arg in "" -qlanglvl=ansi -std1 -Ae "-Aa -D_HPUX_SOURCE" "-Xc -D__EXTENSIONS__"
 do
   CC="$ac_save_CC $ac_arg"
@@ -2428,7 +2428,7 @@ no) enable_shared=no ;;
 *)
   enable_shared=no
   # Look at the argument we got.  We use all the common list separators.
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:,"
+  IFS="${IFS=     }"; ac_save_ifs="$IFS"; IFS="${IFS}:,"
   for pkg in $enableval; do
     if test "X$pkg" = "X$p"; then
       enable_shared=yes
@@ -2450,7 +2450,7 @@ no) enable_static=no ;;
 *)
   enable_static=no
   # Look at the argument we got.  We use all the common list separators.
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:,"
+  IFS="${IFS=     }"; ac_save_ifs="$IFS"; IFS="${IFS}:,"
   for pkg in $enableval; do
     if test "X$pkg" = "X$p"; then
       enable_static=yes
@@ -2472,7 +2472,7 @@ no) enable_fast_install=no ;;
 *)
   enable_fast_install=no
   # Look at the argument we got.  We use all the common list separators.
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:,"
+  IFS="${IFS=     }"; ac_save_ifs="$IFS"; IFS="${IFS}:,"
   for pkg in $enableval; do
     if test "X$pkg" = "X$p"; then
       enable_fast_install=yes
@@ -2565,7 +2565,7 @@ echo $ECHO_N "checking for ld used by GCC... $ECHO_C" >&6
       # Canonicalize the path of ld
       ac_prog=`echo $ac_prog| sed 's%\\\\%/%g'`
       while echo $ac_prog | grep "$re_direlt" > /dev/null 2>&1; do
-	ac_prog=`echo $ac_prog| sed "s%$re_direlt%/%"`
+    ac_prog=`echo $ac_prog| sed "s%$re_direlt%/%"`
       done
       test -z "$LD" && LD="$ac_prog"
       ;;
@@ -2589,7 +2589,7 @@ if test "${lt_cv_path_LD+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
   if test -z "$LD"; then
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR-:}"
+  IFS="${IFS=     }"; ac_save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR-:}"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -f "$ac_dir/$ac_prog" || test -f "$ac_dir/$ac_prog$ac_exeext"; then
@@ -2598,9 +2598,9 @@ else
       # but apparently some GNU ld's only accept -v.
       # Break only if it was the GNU/non-GNU ld that we prefer.
       if "$lt_cv_path_LD" -v 2>&1 < /dev/null | egrep '(GNU|with BFD)' > /dev/null; then
-	test "$with_gnu_ld" != no && break
+    test "$with_gnu_ld" != no && break
       else
-	test "$with_gnu_ld" != yes && break
+    test "$with_gnu_ld" != yes && break
       fi
     fi
   done
@@ -2659,7 +2659,7 @@ else
   # Let the user override the test.
   lt_cv_path_NM="$NM"
 else
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR-:}"
+  IFS="${IFS=     }"; ac_save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR-:}"
   for ac_dir in $PATH /usr/ccs/bin /usr/ucb /bin; do
     test -z "$ac_dir" && ac_dir=.
     tmp_nm=$ac_dir/${ac_tool_prefix}nm
@@ -2669,14 +2669,14 @@ else
       #   nm: unknown option "B" ignored
       # Tru64's nm complains that /dev/null is an invalid object file
       if ($tmp_nm -B /dev/null 2>&1 | sed '1q'; exit 0) | egrep '(/dev/null|Invalid file or object type)' >/dev/null; then
-	lt_cv_path_NM="$tmp_nm -B"
-	break
+    lt_cv_path_NM="$tmp_nm -B"
+    break
       elif ($tmp_nm -p /dev/null 2>&1 | sed '1q'; exit 0) | egrep /dev/null >/dev/null; then
-	lt_cv_path_NM="$tmp_nm -p"
-	break
+    lt_cv_path_NM="$tmp_nm -p"
+    break
       else
-	lt_cv_path_NM=${lt_cv_path_NM="$tmp_nm"} # keep the first match, but
-	continue # so that we can try to find one that supports BSD flags
+    lt_cv_path_NM=${lt_cv_path_NM="$tmp_nm"} # keep the first match, but
+    continue # so that we can try to find one that supports BSD flags
       fi
     fi
   done
@@ -2941,7 +2941,7 @@ fi
 for ac_symprfx in "" "_"; do
 
   # Write the raw and C identifiers.
-lt_cv_sys_global_symbol_pipe="sed -n -e 's/^.*[ 	]\($symcode$symcode*\)[ 	][ 	]*\($ac_symprfx\)$sympat$opt_cr$/$symxfrm/p'"
+lt_cv_sys_global_symbol_pipe="sed -n -e 's/^.*[     ]\($symcode$symcode*\)[     ][     ]*\($ac_symprfx\)$sympat$opt_cr$/$symxfrm/p'"
 
   # Check to see that the pipe works correctly.
   pipe_works=no
@@ -2972,24 +2972,24 @@ EOF
   (exit $ac_status); } && test -s "$nlist"; then
       # Try sorting and uniquifying the output.
       if sort "$nlist" | uniq > "$nlist"T; then
-	mv -f "$nlist"T "$nlist"
+    mv -f "$nlist"T "$nlist"
       else
-	rm -f "$nlist"T
+    rm -f "$nlist"T
       fi
 
       # Make sure that we snagged all the symbols we need.
       if egrep ' nm_test_var$' "$nlist" >/dev/null; then
-	if egrep ' nm_test_func$' "$nlist" >/dev/null; then
-	  cat <<EOF > conftest.$ac_ext
+    if egrep ' nm_test_func$' "$nlist" >/dev/null; then
+      cat <<EOF > conftest.$ac_ext
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 EOF
-	  # Now generate the symbol file.
-	  eval "$lt_cv_global_symbol_to_cdecl"' < "$nlist" >> conftest.$ac_ext'
+      # Now generate the symbol file.
+      eval "$lt_cv_global_symbol_to_cdecl"' < "$nlist" >> conftest.$ac_ext'
 
-	  cat <<EOF >> conftest.$ac_ext
+      cat <<EOF >> conftest.$ac_ext
 #if defined (__STDC__) && __STDC__
 # define lt_ptr_t void *
 #else
@@ -3005,8 +3005,8 @@ const struct {
 lt_preloaded_symbols[] =
 {
 EOF
-	  sed "s/^$symcode$symcode* \(.*\) \(.*\)$/  {\"\2\", (lt_ptr_t) \&\2},/" < "$nlist" >> conftest.$ac_ext
-	  cat <<\EOF >> conftest.$ac_ext
+      sed "s/^$symcode$symcode* \(.*\) \(.*\)$/  {\"\2\", (lt_ptr_t) \&\2},/" < "$nlist" >> conftest.$ac_ext
+      cat <<\EOF >> conftest.$ac_ext
   {0, (lt_ptr_t) 0}
 };
 
@@ -3014,26 +3014,26 @@ EOF
 }
 #endif
 EOF
-	  # Now try linking the two files.
-	  mv conftest.$ac_objext conftstm.$ac_objext
-	  save_LIBS="$LIBS"
-	  save_CFLAGS="$CFLAGS"
-	  LIBS="conftstm.$ac_objext"
-	  CFLAGS="$CFLAGS$no_builtin_flag"
-	  if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+      # Now try linking the two files.
+      mv conftest.$ac_objext conftstm.$ac_objext
+      save_LIBS="$LIBS"
+      save_CFLAGS="$CFLAGS"
+      LIBS="conftstm.$ac_objext"
+      CFLAGS="$CFLAGS$no_builtin_flag"
+      if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
   (eval $ac_link) 2>&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); } && test -s conftest; then
-	    pipe_works=yes
-	  fi
-	  LIBS="$save_LIBS"
-	  CFLAGS="$save_CFLAGS"
-	else
-	  echo "cannot find nm_test_func in $nlist" >&5
-	fi
+        pipe_works=yes
+      fi
+      LIBS="$save_LIBS"
+      CFLAGS="$save_CFLAGS"
+    else
+      echo "cannot find nm_test_func in $nlist" >&5
+    fi
       else
-	echo "cannot find nm_test_var in $nlist" >&5
+    echo "cannot find nm_test_var in $nlist" >&5
       fi
     else
       echo "cannot run $lt_cv_sys_global_symbol_pipe" >&5
@@ -3712,15 +3712,15 @@ else
     if test -f $ac_dir/${ac_tool_prefix}file; then
       lt_cv_path_MAGIC_CMD="$ac_dir/${ac_tool_prefix}file"
       if test -n "$file_magic_test_file"; then
-	case $deplibs_check_method in
-	"file_magic "*)
-	  file_magic_regex="`expr \"$deplibs_check_method\" : \"file_magic \(.*\)\"`"
-	  MAGIC_CMD="$lt_cv_path_MAGIC_CMD"
-	  if eval $file_magic_cmd \$file_magic_test_file 2> /dev/null |
-	    egrep "$file_magic_regex" > /dev/null; then
-	    :
-	  else
-	    cat <<EOF 1>&2
+    case $deplibs_check_method in
+    "file_magic "*)
+      file_magic_regex="`expr \"$deplibs_check_method\" : \"file_magic \(.*\)\"`"
+      MAGIC_CMD="$lt_cv_path_MAGIC_CMD"
+      if eval $file_magic_cmd \$file_magic_test_file 2> /dev/null |
+        egrep "$file_magic_regex" > /dev/null; then
+        :
+      else
+        cat <<EOF 1>&2
 
 *** Warning: the command libtool uses to detect shared libraries,
 *** $file_magic_cmd, produces output that libtool cannot recognize.
@@ -3732,8 +3732,8 @@ else
 *** bug-libtool@gnu.org
 
 EOF
-	  fi ;;
-	esac
+      fi ;;
+    esac
       fi
       break
     fi
@@ -3776,15 +3776,15 @@ else
     if test -f $ac_dir/file; then
       lt_cv_path_MAGIC_CMD="$ac_dir/file"
       if test -n "$file_magic_test_file"; then
-	case $deplibs_check_method in
-	"file_magic "*)
-	  file_magic_regex="`expr \"$deplibs_check_method\" : \"file_magic \(.*\)\"`"
-	  MAGIC_CMD="$lt_cv_path_MAGIC_CMD"
-	  if eval $file_magic_cmd \$file_magic_test_file 2> /dev/null |
-	    egrep "$file_magic_regex" > /dev/null; then
-	    :
-	  else
-	    cat <<EOF 1>&2
+    case $deplibs_check_method in
+    "file_magic "*)
+      file_magic_regex="`expr \"$deplibs_check_method\" : \"file_magic \(.*\)\"`"
+      MAGIC_CMD="$lt_cv_path_MAGIC_CMD"
+      if eval $file_magic_cmd \$file_magic_test_file 2> /dev/null |
+        egrep "$file_magic_regex" > /dev/null; then
+        :
+      else
+        cat <<EOF 1>&2
 
 *** Warning: the command libtool uses to detect shared libraries,
 *** $file_magic_cmd, produces output that libtool cannot recognize.
@@ -3796,8 +3796,8 @@ else
 *** bug-libtool@gnu.org
 
 EOF
-	  fi ;;
-	esac
+      fi ;;
+    esac
       fi
       break
     fi
@@ -4258,7 +4258,7 @@ else
       ;;
     sysv4*MP*)
       if test -d /usr/nec; then
-	 lt_cv_prog_cc_pic=-Kconform_pic
+     lt_cv_prog_cc_pic=-Kconform_pic
       fi
       ;;
     *)
@@ -4344,8 +4344,8 @@ else
 
     sysv4*MP*)
       if test -d /usr/nec ;then
-	lt_cv_prog_cc_pic='-Kconform_pic'
-	lt_cv_prog_cc_static='-Bstatic'
+    lt_cv_prog_cc_pic='-Kconform_pic'
+    lt_cv_prog_cc_static='-Bstatic'
       fi
       ;;
 
@@ -4402,18 +4402,18 @@ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (exit $ac_status); }; }; then
         case $host_os in
       hpux9* | hpux10* | hpux11*)
-	# On HP-UX, both CC and GCC only warn that PIC is supported... then
-	# they create non-PIC objects.  So, if there were any warnings, we
-	# assume that PIC is not supported.
-	if test -s conftest.err; then
-	  lt_cv_prog_cc_pic_works=no
-	else
-	  lt_cv_prog_cc_pic_works=yes
-	fi
-	;;
+    # On HP-UX, both CC and GCC only warn that PIC is supported... then
+    # they create non-PIC objects.  So, if there were any warnings, we
+    # assume that PIC is not supported.
+    if test -s conftest.err; then
+      lt_cv_prog_cc_pic_works=no
+    else
+      lt_cv_prog_cc_pic_works=yes
+    fi
+    ;;
       *)
-	lt_cv_prog_cc_pic_works=yes
-	;;
+    lt_cv_prog_cc_pic_works=yes
+    ;;
       esac
 
 else
@@ -4446,7 +4446,7 @@ fi
 if test -n "$lt_cv_prog_cc_shlib"; then
   { echo "$as_me:$LINENO: WARNING: \`$CC' requires \`$lt_cv_prog_cc_shlib' to build shared libraries" >&5
 echo "$as_me: WARNING: \`$CC' requires \`$lt_cv_prog_cc_shlib' to build shared libraries" >&2;}
-  if echo "$old_CC $old_CFLAGS " | egrep -e "[ 	]$lt_cv_prog_cc_shlib[ 	]" >/dev/null; then :
+  if echo "$old_CC $old_CFLAGS " | egrep -e "[     ]$lt_cv_prog_cc_shlib[     ]" >/dev/null; then :
   else
    { echo "$as_me:$LINENO: WARNING: add \`$lt_cv_prog_cc_shlib' to the CC or CFLAGS env variable and reconfigure" >&5
 echo "$as_me: WARNING: add \`$lt_cv_prog_cc_shlib' to the CC or CFLAGS env variable and reconfigure" >&2;}
@@ -4868,7 +4868,7 @@ EOF
     if test "x$lt_cv_need_dllmain" = "xyes"; then
       ltdll_obj='$output_objdir/$soname-ltdll.'"$ac_objext "
       ltdll_cmds='test -f $output_objdir/$soname-ltdll.c || sed -e "/^# \/\* ltdll\.c starts here \*\//,/^# \/\* ltdll.c ends here \*\// { s/^# //; p; }" -e d < [$]0 > $output_objdir/$soname-ltdll.c~
-	test -f $output_objdir/$soname-ltdll.$ac_objext || (cd $output_objdir && $CC -c $soname-ltdll.c)~'
+    test -f $output_objdir/$soname-ltdll.$ac_objext || (cd $output_objdir && $CC -c $soname-ltdll.c)~'
     else
       ltdll_obj=
       ltdll_cmds=
@@ -4967,9 +4967,9 @@ EOF
     *)
       # ancient GNU ld didn't support --whole-archive et. al.
       if $LD --help 2>&1 | egrep 'no-whole-archive' > /dev/null; then
-	whole_archive_flag_spec="$wlarc"'--whole-archive$convenience '"$wlarc"'--no-whole-archive'
+    whole_archive_flag_spec="$wlarc"'--whole-archive$convenience '"$wlarc"'--no-whole-archive'
       else
-	whole_archive_flag_spec=
+    whole_archive_flag_spec=
       fi
       ;;
     esac
@@ -5003,10 +5003,10 @@ else
     if test "$GCC" = yes; then
       collect2name=`${CC} -print-prog-name=collect2`
       if test -f "$collect2name" && \
-	 strings "$collect2name" | grep resolve_lib_name >/dev/null
+     strings "$collect2name" | grep resolve_lib_name >/dev/null
       then
-	# We have reworked collect2
-	hardcode_direct=yes
+    # We have reworked collect2
+    hardcode_direct=yes
       else
         # We have old collect2
         hardcode_direct=unsupported
@@ -5159,7 +5159,7 @@ else
     hardcode_libdir_separator=:
     hardcode_direct=yes
     hardcode_minus_L=yes # Not in the search PATH, but as the default
-			 # location of the library.
+             # location of the library.
     export_dynamic_flag_spec='${wl}-E'
     ;;
 
@@ -5220,7 +5220,7 @@ else
     hardcode_libdir_separator=:
     ;;
 
-  osf4* | osf5*)	# as osf3* with the addition of -msym flag
+  osf4* | osf5*)    # as osf3* with the addition of -msym flag
     if test "$GCC" = yes; then
       allow_undefined_flag=' ${wl}-expect_unresolved ${wl}\*'
       archive_cmds='$CC -shared${allow_undefined_flag} $libobjs $deplibs $compiler_flags ${wl}-msym ${wl}-soname ${wl}$soname `test -n "$verstring" && echo ${wl}-set_version ${wl}$verstring` ${wl}-update_registry ${wl}${output_objdir}/so_locations -o $lib'
@@ -5250,7 +5250,7 @@ else
     # object files and a static libstdc++, better avoid it by now
     archive_cmds='$LD -G${allow_undefined_flag} -h $soname -o $lib $libobjs $deplibs $linker_flags'
     archive_expsym_cmds='$echo "{ global:" > $lib.exp~cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $lib.exp~$echo "local: *; };" >> $lib.exp~
-		$LD -G${allow_undefined_flag} -M $lib.exp -h $soname -o $lib $libobjs $deplibs $linker_flags~$rm $lib.exp'
+        $LD -G${allow_undefined_flag} -M $lib.exp -h $soname -o $lib $libobjs $deplibs $linker_flags~$rm $lib.exp'
     hardcode_libdir_flag_spec='-R$libdir'
     hardcode_shlibpath_var=no
     case $host_os in
@@ -5299,7 +5299,7 @@ else
     # object files and a static libstdc++, better avoid it by now
     archive_cmds='$LD -G${allow_undefined_flag} -h $soname -o $lib $libobjs $deplibs $linker_flags'
     archive_expsym_cmds='$echo "{ global:" > $lib.exp~cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $lib.exp~$echo "local: *; };" >> $lib.exp~
-		$LD -G${allow_undefined_flag} -M $lib.exp -h $soname -o $lib $libobjs $deplibs $linker_flags~$rm $lib.exp'
+        $LD -G${allow_undefined_flag} -M $lib.exp -h $soname -o $lib $libobjs $deplibs $linker_flags~$rm $lib.exp'
     hardcode_libdir_flag_spec=
     hardcode_shlibpath_var=no
     runpath_var='LD_RUN_PATH'
@@ -6206,7 +6206,7 @@ echo $ECHO_N "checking whether a program can dlopen itself... $ECHO_C" >&6
 if test "${lt_cv_dlopen_self+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  	  if test "$cross_compiling" = yes; then :
+        if test "$cross_compiling" = yes; then :
   lt_cv_dlopen_self=cross
 else
     lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
@@ -6222,12 +6222,12 @@ else
 #include <stdio.h>
 
 #ifdef RTLD_GLOBAL
-#  define LT_DLGLOBAL		RTLD_GLOBAL
+#  define LT_DLGLOBAL        RTLD_GLOBAL
 #else
 #  ifdef DL_GLOBAL
-#    define LT_DLGLOBAL		DL_GLOBAL
+#    define LT_DLGLOBAL        DL_GLOBAL
 #  else
-#    define LT_DLGLOBAL		0
+#    define LT_DLGLOBAL        0
 #  endif
 #endif
 
@@ -6235,18 +6235,18 @@ else
    find out it does not work in some platform. */
 #ifndef LT_DLLAZY_OR_NOW
 #  ifdef RTLD_LAZY
-#    define LT_DLLAZY_OR_NOW		RTLD_LAZY
+#    define LT_DLLAZY_OR_NOW        RTLD_LAZY
 #  else
 #    ifdef DL_LAZY
-#      define LT_DLLAZY_OR_NOW		DL_LAZY
+#      define LT_DLLAZY_OR_NOW        DL_LAZY
 #    else
 #      ifdef RTLD_NOW
-#        define LT_DLLAZY_OR_NOW	RTLD_NOW
+#        define LT_DLLAZY_OR_NOW    RTLD_NOW
 #      else
 #        ifdef DL_NOW
-#          define LT_DLLAZY_OR_NOW	DL_NOW
+#          define LT_DLLAZY_OR_NOW    DL_NOW
 #        else
-#          define LT_DLLAZY_OR_NOW	0
+#          define LT_DLLAZY_OR_NOW    0
 #        endif
 #      endif
 #    endif
@@ -6304,7 +6304,7 @@ echo $ECHO_N "checking whether a statically linked program can dlopen itself... 
 if test "${lt_cv_dlopen_self_static+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  	  if test "$cross_compiling" = yes; then :
+        if test "$cross_compiling" = yes; then :
   lt_cv_dlopen_self_static=cross
 else
     lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
@@ -6320,12 +6320,12 @@ else
 #include <stdio.h>
 
 #ifdef RTLD_GLOBAL
-#  define LT_DLGLOBAL		RTLD_GLOBAL
+#  define LT_DLGLOBAL        RTLD_GLOBAL
 #else
 #  ifdef DL_GLOBAL
-#    define LT_DLGLOBAL		DL_GLOBAL
+#    define LT_DLGLOBAL        DL_GLOBAL
 #  else
-#    define LT_DLGLOBAL		0
+#    define LT_DLGLOBAL        0
 #  endif
 #endif
 
@@ -6333,18 +6333,18 @@ else
    find out it does not work in some platform. */
 #ifndef LT_DLLAZY_OR_NOW
 #  ifdef RTLD_LAZY
-#    define LT_DLLAZY_OR_NOW		RTLD_LAZY
+#    define LT_DLLAZY_OR_NOW        RTLD_LAZY
 #  else
 #    ifdef DL_LAZY
-#      define LT_DLLAZY_OR_NOW		DL_LAZY
+#      define LT_DLLAZY_OR_NOW        DL_LAZY
 #    else
 #      ifdef RTLD_NOW
-#        define LT_DLLAZY_OR_NOW	RTLD_NOW
+#        define LT_DLLAZY_OR_NOW    RTLD_NOW
 #      else
 #        ifdef DL_NOW
-#          define LT_DLLAZY_OR_NOW	DL_NOW
+#          define LT_DLLAZY_OR_NOW    DL_NOW
 #        else
-#          define LT_DLLAZY_OR_NOW	0
+#          define LT_DLLAZY_OR_NOW    0
 #        endif
 #      endif
 #    endif
@@ -6456,9 +6456,9 @@ else
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }
       then
-	lt_cv_archive_cmds_need_lc=no
+    lt_cv_archive_cmds_need_lc=no
       else
-	lt_cv_archive_cmds_need_lc=yes
+    lt_cv_archive_cmds_need_lc=yes
       fi
       allow_undefined_flag=$save_allow_undefined_flag
     else
@@ -6893,10 +6893,10 @@ EOF
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 #  */
 #
-# #include <stdio.h>		/* for printf() */
-# #include <unistd.h>		/* for open(), lseek(), read() */
-# #include <fcntl.h>		/* for O_RDONLY, O_BINARY */
-# #include <string.h>		/* for strdup() */
+# #include <stdio.h>        /* for printf() */
+# #include <unistd.h>        /* for open(), lseek(), read() */
+# #include <fcntl.h>        /* for O_RDONLY, O_BINARY */
+# #include <string.h>        /* for strdup() */
 #
 # /* O_BINARY isn't required (or even defined sometimes) under Unix */
 # #ifndef O_BINARY
@@ -6949,44 +6949,44 @@ EOF
 #
 #     dll = open(filename, O_RDONLY|O_BINARY);
 #     if (dll < 1)
-# 	return 1;
+#     return 1;
 #
 #     dll_name = filename;
 #
 #     for (i=0; filename[i]; i++)
-# 	if (filename[i] == '/' || filename[i] == '\\'  || filename[i] == ':')
-# 	    dll_name = filename + i +1;
+#     if (filename[i] == '/' || filename[i] == '\\'  || filename[i] == ':')
+#         dll_name = filename + i +1;
 #
 #     pe_header_offset = pe_get32 (dll, 0x3c);
 #     opthdr_ofs = pe_header_offset + 4 + 20;
 #     num_entries = pe_get32 (dll, opthdr_ofs + 92);
 #
 #     if (num_entries < 1) /* no exports */
-# 	return 1;
+#     return 1;
 #
 #     export_rva = pe_get32 (dll, opthdr_ofs + 96);
 #     export_size = pe_get32 (dll, opthdr_ofs + 100);
 #     nsections = pe_get16 (dll, pe_header_offset + 4 +2);
 #     secptr = (pe_header_offset + 4 + 20 +
-# 	      pe_get16 (dll, pe_header_offset + 4 + 16));
+#           pe_get16 (dll, pe_header_offset + 4 + 16));
 #
 #     expptr = 0;
 #     for (i = 0; i < nsections; i++)
 #     {
-# 	char sname[8];
-# 	unsigned long secptr1 = secptr + 40 * i;
-# 	unsigned long vaddr = pe_get32 (dll, secptr1 + 12);
-# 	unsigned long vsize = pe_get32 (dll, secptr1 + 16);
-# 	unsigned long fptr = pe_get32 (dll, secptr1 + 20);
-# 	lseek(dll, secptr1, SEEK_SET);
-# 	read(dll, sname, 8);
-# 	if (vaddr <= export_rva && vaddr+vsize > export_rva)
-# 	{
-# 	    expptr = fptr + (export_rva - vaddr);
-# 	    if (export_rva + export_size > vaddr + vsize)
-# 		export_size = vsize - (export_rva - vaddr);
-# 	    break;
-# 	}
+#     char sname[8];
+#     unsigned long secptr1 = secptr + 40 * i;
+#     unsigned long vaddr = pe_get32 (dll, secptr1 + 12);
+#     unsigned long vsize = pe_get32 (dll, secptr1 + 16);
+#     unsigned long fptr = pe_get32 (dll, secptr1 + 20);
+#     lseek(dll, secptr1, SEEK_SET);
+#     read(dll, sname, 8);
+#     if (vaddr <= export_rva && vaddr+vsize > export_rva)
+#     {
+#         expptr = fptr + (export_rva - vaddr);
+#         if (export_rva + export_size > vaddr + vsize)
+#         export_size = vsize - (export_rva - vaddr);
+#         break;
+#     }
 #     }
 #
 #     expdata = (unsigned char*)malloc(export_size);
@@ -7000,8 +7000,8 @@ EOF
 #     printf ("EXPORTS\n");
 #     for (i = 0; i<nexp; i++)
 #     {
-# 	unsigned long name_rva = pe_as32 (erva+name_rvas+i*4);
-# 	printf ("\t%s @ %ld ;\n", erva+name_rva, 1+ i);
+#     unsigned long name_rva = pe_as32 (erva+name_rvas+i*4);
+#     printf ("\t%s @ %ld ;\n", erva+name_rva, 1+ i);
 #     }
 #
 #     return 0;
@@ -7739,7 +7739,7 @@ _ACEOF
       # substitution turns \\\\ into \\, and sed turns \\ into \).
       sed -n \
         "s/'/'\\\\''/g;
-    	  s/^\\([_$as_cr_alnum]*_cv_[_$as_cr_alnum]*\\)=\\(.*\\)/\\1='\\2'/p"
+          s/^\\([_$as_cr_alnum]*_cv_[_$as_cr_alnum]*\\)=\\(.*\\)/\\1='\\2'/p"
       ;;
     *)
       # `set' quotes correctly as required by POSIX, so do not add quotes.
@@ -7774,13 +7774,13 @@ test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
 # trailing colons and then remove the whole line if VPATH becomes empty
 # (actually we leave an empty line to preserve line numbers).
 if test "x$srcdir" = x.; then
-  ac_vpsub='/^[ 	]*VPATH[ 	]*=/{
+  ac_vpsub='/^[     ]*VPATH[     ]*=/{
 s/:*\$(srcdir):*/:/;
 s/:*\${srcdir}:*/:/;
 s/:*@srcdir@:*/:/;
-s/^\([^=]*=[ 	]*\):*/\1/;
+s/^\([^=]*=[     ]*\):*/\1/;
 s/:*$//;
-s/^[^=]*=[ 	]*$//;
+s/^[^=]*=[     ]*$//;
 }'
 fi
 
@@ -7880,14 +7880,14 @@ fi
 # Name of the executable.
 as_me=`$as_basename "$0" ||
 $as_expr X/"$0" : '.*/\([^/][^/]*\)/*$' \| \
-	 X"$0" : 'X\(//\)$' \| \
-	 X"$0" : 'X\(/\)$' \| \
-	 .     : '\(.\)' 2>/dev/null ||
+     X"$0" : 'X\(//\)$' \| \
+     X"$0" : 'X\(/\)$' \| \
+     .     : '\(.\)' 2>/dev/null ||
 echo X/"$0" |
     sed '/^.*\/\([^/][^/]*\)\/*$/{ s//\1/; q; }
-  	  /^X\/\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\/\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\/\(\/\/\)$/{ s//\1/; q; }
+        /^X\/\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
 
 
 # PATH needs CR, and LINENO needs CR and PATH.
@@ -7949,21 +7949,21 @@ do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
   for as_base in sh bash ksh sh5; do
-	 case $as_dir in
-	 /*)
-	   if ("$as_dir/$as_base" -c '
+     case $as_dir in
+     /*)
+       if ("$as_dir/$as_base" -c '
   as_lineno_1=$LINENO
   as_lineno_2=$LINENO
   as_lineno_3=`(expr $as_lineno_1 + 1) 2>/dev/null`
   test "x$as_lineno_1" != "x$as_lineno_2" &&
   test "x$as_lineno_3"  = "x$as_lineno_2" ') 2>/dev/null; then
-	     $as_unset BASH_ENV || test "${BASH_ENV+set}" != set || { BASH_ENV=; export BASH_ENV; }
-	     $as_unset ENV || test "${ENV+set}" != set || { ENV=; export ENV; }
-	     CONFIG_SHELL=$as_dir/$as_base
-	     export CONFIG_SHELL
-	     exec "$CONFIG_SHELL" "$0" ${1+"$@"}
-	   fi;;
-	 esac
+         $as_unset BASH_ENV || test "${BASH_ENV+set}" != set || { BASH_ENV=; export BASH_ENV; }
+         $as_unset ENV || test "${ENV+set}" != set || { ENV=; export ENV; }
+         CONFIG_SHELL=$as_dir/$as_base
+         export CONFIG_SHELL
+         exec "$CONFIG_SHELL" "$0" ${1+"$@"}
+       fi;;
+     esac
        done
 done
 ;;
@@ -8003,7 +8003,7 @@ echo "$as_me: error: cannot create $as_me.lineno; rerun with a POSIX shell" >&2;
 
 case `echo "testing\c"; echo 1,2,3`,`echo -n testing; echo 1,2,3` in
   *c*,-n*) ECHO_N= ECHO_C='
-' ECHO_T='	' ;;
+' ECHO_T='    ' ;;
   *c*,*  ) ECHO_N=-n ECHO_C= ECHO_T= ;;
   *)       ECHO_N= ECHO_C='\c' ECHO_T= ;;
 esac
@@ -8051,7 +8051,7 @@ as_tr_sh="sed y%*+%pp%;s%[^_$as_cr_alnum]%_%g"
 # We need space, tab and new line, in precisely that order.
 as_nl='
 '
-IFS=" 	$as_nl"
+IFS="     $as_nl"
 
 # CDPATH.
 $as_unset CDPATH
@@ -8409,9 +8409,9 @@ _ACEOF
       (echo ':t
   /@[a-zA-Z_][a-zA-Z_0-9]*@/!b' && cat $tmp/subs.frag) >$tmp/subs-$ac_sed_frag.sed
       if test -z "$ac_sed_cmds"; then
-  	ac_sed_cmds="sed -f $tmp/subs-$ac_sed_frag.sed"
+      ac_sed_cmds="sed -f $tmp/subs-$ac_sed_frag.sed"
       else
-  	ac_sed_cmds="$ac_sed_cmds | sed -f $tmp/subs-$ac_sed_frag.sed"
+      ac_sed_cmds="$ac_sed_cmds | sed -f $tmp/subs-$ac_sed_frag.sed"
       fi
       ac_sed_frag=`expr $ac_sed_frag + 1`
       ac_beg=$ac_end
@@ -8446,10 +8446,10 @@ $as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$ac_file" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
   { if $as_mkdir_p; then
     mkdir -p "$ac_dir"
   else
@@ -8465,10 +8465,10 @@ $as_expr X"$as_dir" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$as_dir" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
     done
     test ! -n "$as_dirs" || mkdir $as_dirs
   fi || { { echo "$as_me:$LINENO: error: cannot create directory \"$ac_dir\"" >&5
@@ -8595,12 +8595,12 @@ cat >>$CONFIG_STATUS <<\_ACEOF
 # NAME is the cpp macro being defined and VALUE is the value it is being given.
 #
 # ac_d sets the value in "#define NAME VALUE" lines.
-ac_dA='s,^\([ 	]*\)#\([ 	]*define[ 	][ 	]*\)'
-ac_dB='[ 	].*$,\1#\2'
+ac_dA='s,^\([     ]*\)#\([     ]*define[     ][     ]*\)'
+ac_dB='[     ].*$,\1#\2'
 ac_dC=' '
 ac_dD=',;t'
 # ac_u turns "#undef NAME" without trailing blanks into "#define NAME VALUE".
-ac_uA='s,^\([ 	]*\)#\([ 	]*\)undef\([ 	][ 	]*\)'
+ac_uA='s,^\([     ]*\)#\([     ]*\)undef\([     ][     ]*\)'
 ac_uB='$,\1#\2define\3'
 ac_uC=' '
 ac_uD=',;t'
@@ -8648,7 +8648,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
       esac
     done` || { (exit 1); exit 1; }
   # Remove the trailing spaces.
-  sed 's/[ 	]*$//' $ac_file_inputs >$tmp/in
+  sed 's/[     ]*$//' $ac_file_inputs >$tmp/in
 
 _ACEOF
 
@@ -8671,9 +8671,9 @@ s/[\\&,]/\\&/g
 s,[\\$`],\\&,g
 t clear
 : clear
-s,^[ 	]*#[ 	]*define[ 	][ 	]*\([^ 	(][^ 	(]*\)\(([^)]*)\)[ 	]*\(.*\)$,${ac_dA}\1${ac_dB}\1\2${ac_dC}\3${ac_dD},gp
+s,^[     ]*#[     ]*define[     ][     ]*\([^     (][^     (]*\)\(([^)]*)\)[     ]*\(.*\)$,${ac_dA}\1${ac_dB}\1\2${ac_dC}\3${ac_dD},gp
 t end
-s,^[ 	]*#[ 	]*define[ 	][ 	]*\([^ 	][^ 	]*\)[ 	]*\(.*\)$,${ac_dA}\1${ac_dB}\1${ac_dC}\2${ac_dD},gp
+s,^[     ]*#[     ]*define[     ][     ]*\([^     ][^     ]*\)[     ]*\(.*\)$,${ac_dA}\1${ac_dB}\1${ac_dC}\2${ac_dD},gp
 : end
 _ACEOF
 # If some macros were called several times there might be several times
@@ -8687,13 +8687,13 @@ rm -f confdef2sed.sed
 # example, in the case of _POSIX_SOURCE, which is predefined and required
 # on some systems where configure will not decide to define it.
 cat >>conftest.undefs <<\_ACEOF
-s,^[ 	]*#[ 	]*undef[ 	][ 	]*[a-zA-Z_][a-zA-Z_0-9]*,/* & */,
+s,^[     ]*#[     ]*undef[     ][     ]*[a-zA-Z_][a-zA-Z_0-9]*,/* & */,
 _ACEOF
 
 # Break up conftest.defines because some shells have a limit on the size
 # of here documents, and old seds have small limits too (100 cmds).
 echo '  # Handle all the #define templates only if necessary.' >>$CONFIG_STATUS
-echo '  if grep "^[ 	]*#[ 	]*define" $tmp/in >/dev/null; then' >>$CONFIG_STATUS
+echo '  if grep "^[     ]*#[     ]*define" $tmp/in >/dev/null; then' >>$CONFIG_STATUS
 echo '  # If there are no defines, we may have an empty if/fi' >>$CONFIG_STATUS
 echo '  :' >>$CONFIG_STATUS
 rm -f conftest.tail
@@ -8702,7 +8702,7 @@ do
   # Write a limited-size here document to $tmp/defines.sed.
   echo '  cat >$tmp/defines.sed <<CEOF' >>$CONFIG_STATUS
   # Speed up: don't consider the non `#define' lines.
-  echo '/^[ 	]*#[ 	]*define/!b' >>$CONFIG_STATUS
+  echo '/^[     ]*#[     ]*define/!b' >>$CONFIG_STATUS
   # Work around the forget-to-reset-the-flag bug.
   echo 't clr' >>$CONFIG_STATUS
   echo ': clr' >>$CONFIG_STATUS
@@ -8729,7 +8729,7 @@ do
   # Write a limited-size here document to $tmp/undefs.sed.
   echo '  cat >$tmp/undefs.sed <<CEOF' >>$CONFIG_STATUS
   # Speed up: don't consider the non `#undef'
-  echo '/^[ 	]*#[ 	]*undef/!b' >>$CONFIG_STATUS
+  echo '/^[     ]*#[     ]*undef/!b' >>$CONFIG_STATUS
   # Work around the forget-to-reset-the-flag bug.
   echo 't clr' >>$CONFIG_STATUS
   echo ': clr' >>$CONFIG_STATUS
@@ -8769,10 +8769,10 @@ $as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$ac_file" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
       { if $as_mkdir_p; then
     mkdir -p "$ac_dir"
   else
@@ -8788,10 +8788,10 @@ $as_expr X"$as_dir" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$as_dir" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
     done
     test ! -n "$as_dirs" || mkdir $as_dirs
   fi || { { echo "$as_me:$LINENO: error: cannot create directory \"$ac_dir\"" >&5
@@ -8823,10 +8823,10 @@ $as_expr X"$ac_dest" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
          .     : '\(.\)' 2>/dev/null ||
 echo X"$ac_dest" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{ s//\1/; q; }
-  	  /^X\(\/\/\)[^/].*/{ s//\1/; q; }
-  	  /^X\(\/\/\)$/{ s//\1/; q; }
-  	  /^X\(\/\).*/{ s//\1/; q; }
-  	  s/.*/./; q'`
+        /^X\(\/\/\)[^/].*/{ s//\1/; q; }
+        /^X\(\/\/\)$/{ s//\1/; q; }
+        /^X\(\/\).*/{ s//\1/; q; }
+        s/.*/./; q'`
   ac_builddir=.
 
 if test "$ac_dir" != .; then

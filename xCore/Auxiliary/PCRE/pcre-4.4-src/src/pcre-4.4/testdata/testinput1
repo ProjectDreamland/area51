@@ -1296,7 +1296,7 @@
     *** Failers
     abc
 
-/^a	b
+/^a    b
       c/x
     abc
 

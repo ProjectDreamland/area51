@@ -1,6 +1,6 @@
 diff -cr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' -I 'pcre-4.4-orig*' pcre-4.4-orig/Makefile pcre-4.4/Makefile
-*** pcre-4.4-orig/Makefile	Mon Aug 25 22:30:42 2003
---- pcre-4.4/Makefile	Thu Aug 28 16:55:20 2003
+*** pcre-4.4-orig/Makefile    Mon Aug 25 22:30:42 2003
+--- pcre-4.4/Makefile    Thu Aug 28 16:55:20 2003
 ***************
 *** 61,67 ****
   # The compiler, C flags, preprocessor flags, etc
@@ -15,7 +15,7 @@ diff -cr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' -I 
   
   CC = gcc
 ! CFLAGS =  -Wall -O3 -mms-bitfields -fms-extensions -fno-rtti -fno-exceptions -march=i386 \
-! 		-D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64
+!         -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64
   CPPFLAGS =   -D__GTHREAD_HIDE_WIN32API -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64     
   CC_FOR_BUILD = $(CC)
   CFLAGS_FOR_BUILD = $(CFLAGS)
@@ -46,7 +46,7 @@ diff -cr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' -I 
   
 + # Rule to make compiled resource (Windows)
 + %-rc.o: %.rc
-+ 	windres -i $< -o $@
++     windres -i $< -o $@
 + 
   ##############################################################################
   
@@ -57,74 +57,74 @@ diff -cr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' -I 
   all:            libpcre.la  pcretest.exe pcregrep.exe  winshared
   
 ! pcregrep.exe: libpcre.la pcregrep.o  winshared
-! 		$(LINK) -o pcregrep.exe pcregrep.o libpcre.la
+!         $(LINK) -o pcregrep.exe pcregrep.o libpcre.la
   
 ! pcretest.exe: libpcre.la  pcretest.o  winshared
-! 		$(LINK) $(PURIFY) $(EFENCE) -o pcretest.exe  pcretest.o \
-! 		libpcre.la 
+!         $(LINK) $(PURIFY) $(EFENCE) -o pcretest.exe  pcretest.o \
+!         libpcre.la 
   
   libpcre.la:     $(OBJ)
-  		-rm -f libpcre.la
+          -rm -f libpcre.la
 --- 103,114 ----
   
   all:            libpcre.la  pcretest.exe pcregrep.exe  winshared
   
 ! pcregrep.exe: libpcre.la pcregrep.o pcregrep-rc.o  winshared
-! 		$(LINK) -o pcregrep.exe pcregrep.o pcregrep-rc.o libpcre.la -lgw32c	-luuid -lole32
+!         $(LINK) -o pcregrep.exe pcregrep.o pcregrep-rc.o libpcre.la -lgw32c    -luuid -lole32
   
 ! pcretest.exe: libpcre.la  pcretest.o  pcretest-rc.o winshared
-! 		$(LINK) $(PURIFY) $(EFENCE) -o pcretest.exe  pcretest.o  pcretest-rc.o\
-! 		libpcre.la -lgw32c 
+!         $(LINK) $(PURIFY) $(EFENCE) -o pcretest.exe  pcretest.o  pcretest-rc.o\
+!         libpcre.la -lgw32c 
   
   libpcre.la:     $(OBJ)
-  		-rm -f libpcre.la
+          -rm -f libpcre.la
 ***************
 *** 148,156 ****
   
   winshared : .libs/pcre.dll .libs/pcreposix.dll
   
 ! .libs/pcre.dll : libpcre.la
-  	$(CC) $(CFLAGS) -shared -o $@ \
-! 	-Wl,--whole-archive .libs/libpcre.a \
-  	-Wl,--out-implib,.libs/libpcre.dll.a \
-  	-Wl,--output-def,.libs/pcre.dll-def \
-  	-Wl,--export-all-symbols \
+      $(CC) $(CFLAGS) -shared -o $@ \
+!     -Wl,--whole-archive .libs/libpcre.a \
+      -Wl,--out-implib,.libs/libpcre.dll.a \
+      -Wl,--output-def,.libs/pcre.dll-def \
+      -Wl,--export-all-symbols \
 --- 153,161 ----
   
   winshared : .libs/pcre.dll .libs/pcreposix.dll
   
-! .libs/pcre.dll : libpcre.la	 pcre-rc.o
-  	$(CC) $(CFLAGS) -shared -o $@ \
-! 	-Wl,--whole-archive .libs/libpcre.a pcre-rc.o \
-  	-Wl,--out-implib,.libs/libpcre.dll.a \
-  	-Wl,--output-def,.libs/pcre.dll-def \
-  	-Wl,--export-all-symbols \
+! .libs/pcre.dll : libpcre.la     pcre-rc.o
+      $(CC) $(CFLAGS) -shared -o $@ \
+!     -Wl,--whole-archive .libs/libpcre.a pcre-rc.o \
+      -Wl,--out-implib,.libs/libpcre.dll.a \
+      -Wl,--output-def,.libs/pcre.dll-def \
+      -Wl,--export-all-symbols \
 ***************
 *** 165,174 ****
-  	mv libpcre.la.tmp libpcre.la
+      mv libpcre.la.tmp libpcre.la
   
   
 ! .libs/pcreposix.dll: libpcreposix.la libpcre.la
-  	$(CC) $(CFLAGS) -shared -o $@ \
-! 	-Wl,--whole-archive .libs/libpcreposix.a \
-! 	-Wl,--out-implib,.libs/pcreposix.dll.a \
-  	-Wl,--output-def,.libs/libpcreposix.dll-def \
-  	-Wl,--export-all-symbols \
-  	-Wl,--no-whole-archive .libs/libpcre.a
+      $(CC) $(CFLAGS) -shared -o $@ \
+!     -Wl,--whole-archive .libs/libpcreposix.a \
+!     -Wl,--out-implib,.libs/pcreposix.dll.a \
+      -Wl,--output-def,.libs/libpcreposix.dll-def \
+      -Wl,--export-all-symbols \
+      -Wl,--no-whole-archive .libs/libpcre.a
 --- 170,179 ----
-  	mv libpcre.la.tmp libpcre.la
+      mv libpcre.la.tmp libpcre.la
   
   
-! .libs/pcreposix.dll: libpcreposix.la libpcre.la	pcreposix-rc.o
-  	$(CC) $(CFLAGS) -shared -o $@ \
-! 	-Wl,--whole-archive .libs/libpcreposix.a pcreposix-rc.o \
-! 	-Wl,--out-implib,.libs/libpcreposix.dll.a \
-  	-Wl,--output-def,.libs/libpcreposix.dll-def \
-  	-Wl,--export-all-symbols \
-  	-Wl,--no-whole-archive .libs/libpcre.a
+! .libs/pcreposix.dll: libpcreposix.la libpcre.la    pcreposix-rc.o
+      $(CC) $(CFLAGS) -shared -o $@ \
+!     -Wl,--whole-archive .libs/libpcreposix.a pcreposix-rc.o \
+!     -Wl,--out-implib,.libs/libpcreposix.dll.a \
+      -Wl,--output-def,.libs/libpcreposix.dll-def \
+      -Wl,--export-all-symbols \
+      -Wl,--no-whole-archive .libs/libpcre.a
 diff -cr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' -I 'pcre-4.4-orig*' pcre-4.4-orig/RunTest.in pcre-4.4/RunTest.in
-*** pcre-4.4-orig/RunTest.in	Thu Aug 21 12:43:10 2003
---- pcre-4.4/RunTest.in	Thu Aug 28 16:42:55 2003
+*** pcre-4.4-orig/RunTest.in    Thu Aug 21 12:43:10 2003
+--- pcre-4.4/RunTest.in    Thu Aug 28 16:42:55 2003
 ***************
 *** 52,58 ****
   

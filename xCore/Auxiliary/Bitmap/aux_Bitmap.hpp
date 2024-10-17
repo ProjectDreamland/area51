@@ -50,7 +50,7 @@ void    auxbmp_MakeDiffuseFromB  (  xbitmap& Dest, const xbitmap& Source );
 
 void    auxbmp_CreateAFromR      (  xbitmap& Dest, const xbitmap& Source );
 
-		// MergeDiffuseAndOpacity Creates an RGBA888 xbitmap from a diffuse and opacity map (Opacity map must be exactly the same size as diffuse map)
+        // MergeDiffuseAndOpacity Creates an RGBA888 xbitmap from a diffuse and opacity map (Opacity map must be exactly the same size as diffuse map)
 void    auxbmp_MergeDiffuseAndOpacity( xbitmap& Dest, const xbitmap& diffuse, const xbitmap& opacity, xbool useRedChannelForOpacity = FALSE );
 
         // forces alpha values to 0x00 or 0xff - sets color of transparent texel to be average of surrounding opaque texels
