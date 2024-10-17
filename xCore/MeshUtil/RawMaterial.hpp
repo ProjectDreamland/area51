@@ -219,7 +219,7 @@ struct rawmaterial
 
 //=========================================================================
 
-	static const char *	m_CachedFile;
+    static const char *    m_CachedFile;
 
 };
 
