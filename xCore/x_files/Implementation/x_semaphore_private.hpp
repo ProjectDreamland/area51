@@ -21,11 +21,11 @@ public:
                         xsema           ( s32 count,s32 initial);
                        ~xsema           ( void );
 
-		    xbool       Acquire         ( s32 Flags );
+            xbool       Acquire         ( s32 Flags );
             xbool       Release         ( s32 Flags );
 
-            void        Acquire         ( void )			{ Acquire(X_TH_BLOCK); };
-			void 		Release			( void )			{ Release(X_TH_BLOCK); };
+            void        Acquire         ( void )            { Acquire(X_TH_BLOCK); };
+            void         Release            ( void )            { Release(X_TH_BLOCK); };
 
 protected:
             xbool       m_Initialized;

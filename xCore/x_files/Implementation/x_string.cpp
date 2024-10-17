@@ -172,7 +172,7 @@ xfs::~xfs( void )
 void xstring::EnsureCapacity( s32 NewCapacity )
 {
     s32  NewBufferSize;
-	s32  OldBufferSize;
+    s32  OldBufferSize;
 
     // Since there is always a terminating NULL and we store the buffer size and
     // string length in the buffer, it must be at least 9 bytes larger than the 
@@ -181,21 +181,21 @@ void xstring::EnsureCapacity( s32 NewCapacity )
 
     NewBufferSize = ALIGN_16( NewCapacity + 9 );
     NewCapacity   = NewBufferSize - 9;
-	OldBufferSize = BUFFER_SIZE;
+    OldBufferSize = BUFFER_SIZE;
 
     if( NewBufferSize > BUFFER_SIZE )
     {
-		if ( (m_pData - 8) == m_LocalData)
-		{
-			m_pData = (char*)x_malloc(NewBufferSize) + 8;
-			x_memcpy(m_pData - 8,m_LocalData,OldBufferSize);
-		}
-		else
-		{
-			// Careful!  We must back the pointer off by 8, and then advance by 8.
-			m_pData = (char*)x_realloc( m_pData - 8, NewBufferSize ) + 8;
-			ASSERT( m_pData-8 );
-		}
+        if ( (m_pData - 8) == m_LocalData)
+        {
+            m_pData = (char*)x_malloc(NewBufferSize) + 8;
+            x_memcpy(m_pData - 8,m_LocalData,OldBufferSize);
+        }
+        else
+        {
+            // Careful!  We must back the pointer off by 8, and then advance by 8.
+            m_pData = (char*)x_realloc( m_pData - 8, NewBufferSize ) + 8;
+            ASSERT( m_pData-8 );
+        }
         BUFFER_SIZE = NewBufferSize;
     }
 }
@@ -218,16 +218,16 @@ xstring::xstring( s32 Reserve )
     // See comments in EnsureCapacity for why we added 9 and aligned to 16.
     s32 BufferSize = ALIGN_16( Reserve + 9 );
 
-	if (BufferSize <= (s32)sizeof(m_LocalData))
-	{
-		BufferSize = sizeof(m_LocalData);
-		m_pData = m_LocalData + 8;
-	}
-	else
-	{
-		m_pData = (char*)x_malloc( BufferSize ) + 8;
-		ASSERT( m_pData-8 );
-	}
+    if (BufferSize <= (s32)sizeof(m_LocalData))
+    {
+        BufferSize = sizeof(m_LocalData);
+        m_pData = m_LocalData + 8;
+    }
+    else
+    {
+        m_pData = (char*)x_malloc( BufferSize ) + 8;
+        ASSERT( m_pData-8 );
+    }
 
     BUFFER_SIZE   = BufferSize;
     STRING_LENGTH = 0;
@@ -238,8 +238,8 @@ xstring::xstring( s32 Reserve )
 
 xstring::xstring( char Character )
 {
-	m_pData = m_LocalData+8;
-	BUFFER_SIZE   = sizeof(m_LocalData);
+    m_pData = m_LocalData+8;
+    BUFFER_SIZE   = sizeof(m_LocalData);
     STRING_LENGTH =  1;
     m_pData[0]    = Character;
     m_pData[1]    = '\0';
@@ -255,19 +255,19 @@ xstring::xstring( const char* pString )
     s32 Len        = x_strlen( pString );
     s32 BufferSize = ALIGN_16( Len + 9 );
 
-	if (BufferSize <= (s32)sizeof(m_LocalData))
-	{
-		m_pData = m_LocalData+8;
-		BufferSize = sizeof(m_LocalData);
-	}
-	else
-	{
-		m_pData = (char*)x_malloc( BufferSize ) + 8;
-		ASSERT( m_pData-8 );
-	}
+    if (BufferSize <= (s32)sizeof(m_LocalData))
+    {
+        m_pData = m_LocalData+8;
+        BufferSize = sizeof(m_LocalData);
+    }
+    else
+    {
+        m_pData = (char*)x_malloc( BufferSize ) + 8;
+        ASSERT( m_pData-8 );
+    }
 
-	BUFFER_SIZE   = BufferSize;
-	STRING_LENGTH = Len;
+    BUFFER_SIZE   = BufferSize;
+    STRING_LENGTH = Len;
 
     x_strcpy( m_pData, pString );
 }
@@ -282,19 +282,19 @@ xstring::xstring( const char* pString, s32 Length )
     s32 Len        = Length;
     s32 BufferSize = ALIGN_16( Len + 9 );
 
-	if (BufferSize <= (s32)sizeof(m_LocalData))
-	{
-		m_pData = m_LocalData+8;
-		BufferSize = sizeof(m_LocalData);
-	}
-	else
-	{
-		m_pData = (char*)x_malloc( BufferSize ) + 8;
-		ASSERT( m_pData-8 );
+    if (BufferSize <= (s32)sizeof(m_LocalData))
+    {
+        m_pData = m_LocalData+8;
+        BufferSize = sizeof(m_LocalData);
+    }
+    else
+    {
+        m_pData = (char*)x_malloc( BufferSize ) + 8;
+        ASSERT( m_pData-8 );
 
-	}
-	BUFFER_SIZE   = BufferSize;
-	STRING_LENGTH = Len;
+    }
+    BUFFER_SIZE   = BufferSize;
+    STRING_LENGTH = Len;
     x_memcpy( m_pData, pString, Length );
     m_pData[Length] = '\0';
 }
@@ -308,15 +308,15 @@ xstring::xstring( const xstring& String )
     s32 BufferSize = ALIGN_16( Len + 9 );
 
     if (BufferSize <= (s32)sizeof(m_LocalData))
-	{
-		m_pData = m_LocalData + 8;
-		BufferSize = sizeof(m_LocalData);
-	}
-	else
-	{
-		m_pData = (char*)x_malloc( BufferSize ) + 8;
-		ASSERT( m_pData-8 );
-	}
+    {
+        m_pData = m_LocalData + 8;
+        BufferSize = sizeof(m_LocalData);
+    }
+    else
+    {
+        m_pData = (char*)x_malloc( BufferSize ) + 8;
+        ASSERT( m_pData-8 );
+    }
 
     BUFFER_SIZE   = BufferSize;
     STRING_LENGTH = Len;
@@ -333,15 +333,15 @@ xstring::xstring( const xwstring& String )
     s32 BufferSize = ALIGN_16( Len + 9 );
 
     if (BufferSize <= (s32)sizeof(m_LocalData))
-	{
-		m_pData = m_LocalData + 8;
-		BufferSize = sizeof(m_LocalData);
-	}
-	else
-	{
-		m_pData = (char*)x_malloc( BufferSize ) + 8;
-		ASSERT( m_pData-8 );
-	}
+    {
+        m_pData = m_LocalData + 8;
+        BufferSize = sizeof(m_LocalData);
+    }
+    else
+    {
+        m_pData = (char*)x_malloc( BufferSize ) + 8;
+        ASSERT( m_pData-8 );
+    }
 
     BUFFER_SIZE   = BufferSize;
     STRING_LENGTH = Len;
@@ -381,8 +381,8 @@ void xstring::FreeExtra( void )
 {
     s32 Size = ALIGN_16( STRING_LENGTH+9 );
 
-	if ((m_pData - 8) == m_LocalData)
-		return;
+    if ((m_pData - 8) == m_LocalData)
+        return;
 
     if( Size <= (s32)sizeof(m_LocalData) )
     {
@@ -1523,7 +1523,7 @@ xbool xstring::SaveFile( const char* pFileName, xbool Append ) const
 void xwstring::EnsureCapacity( s32 NewCapacity )
 {
     s32  NewBufferSize;
-	s32	 OldBufferSize;
+    s32     OldBufferSize;
 
     // Since there is always a terminating NULL and we store the buffer size and
     // string length in the buffer, it must be at least 10 bytes larger than the 
@@ -1531,24 +1531,24 @@ void xwstring::EnsureCapacity( s32 NewCapacity )
     // more for the terminating NULL.)  Furthermore, in order to reduce heap 
     // activity, the allocation is rounded up to a multiple of 16.
 
-	OldBufferSize = BUFFER_SIZE;
+    OldBufferSize = BUFFER_SIZE;
     NewBufferSize = ALIGN_16( (NewCapacity << 1) + 10 );
     NewCapacity   = (NewBufferSize - 10) >> 1;
 
     if( NewBufferSize > BUFFER_SIZE )
     {
-		if ( (m_pData - 4) == m_LocalData)
-		{
-			m_pData = (xwchar*)x_malloc( NewBufferSize ) + 4;
-			ASSERT(m_pData);
-			x_memcpy(m_pData-4,m_LocalData,OldBufferSize);
-		}
-		else
-		{
-			// Careful!  We must back the pointer off by 4, and then advance by 4.
-			m_pData = (xwchar*)x_realloc( m_pData - 4, NewBufferSize ) + 4;
-			ASSERT( m_pData-4 );
-		}
+        if ( (m_pData - 4) == m_LocalData)
+        {
+            m_pData = (xwchar*)x_malloc( NewBufferSize ) + 4;
+            ASSERT(m_pData);
+            x_memcpy(m_pData-4,m_LocalData,OldBufferSize);
+        }
+        else
+        {
+            // Careful!  We must back the pointer off by 4, and then advance by 4.
+            m_pData = (xwchar*)x_realloc( m_pData - 4, NewBufferSize ) + 4;
+            ASSERT( m_pData-4 );
+        }
         BUFFER_SIZE = NewBufferSize;
     }
 }
@@ -1557,7 +1557,7 @@ void xwstring::EnsureCapacity( s32 NewCapacity )
 
 xwstring::xwstring( void )
 {
-	m_pData		  = m_LocalData+4;
+    m_pData          = m_LocalData+4;
     BUFFER_SIZE   = sizeof(m_LocalData);
     STRING_LENGTH =  0;
     m_pData[0]    = NULL;
@@ -1571,15 +1571,15 @@ xwstring::xwstring( s32 Reserve )
     s32 BufferSize = ALIGN_16( (Reserve << 1) + 10 );
 
     if (BufferSize <= (s32)sizeof(m_LocalData))
-	{
-		m_pData = m_LocalData+4;
-		BufferSize = sizeof(m_LocalData);
-	}
-	else
-	{
-		m_pData = (xwchar*)x_malloc( BufferSize ) + 4;
-		ASSERT( m_pData-4 );
-	}
+    {
+        m_pData = m_LocalData+4;
+        BufferSize = sizeof(m_LocalData);
+    }
+    else
+    {
+        m_pData = (xwchar*)x_malloc( BufferSize ) + 4;
+        ASSERT( m_pData-4 );
+    }
 
     BUFFER_SIZE   = BufferSize;
     STRING_LENGTH = 0;
@@ -1590,7 +1590,7 @@ xwstring::xwstring( s32 Reserve )
 
 xwstring::xwstring( xwchar WideChar )
 {
-	m_pData		  = m_LocalData+4;
+    m_pData          = m_LocalData+4;
     BUFFER_SIZE   = sizeof(m_LocalData);
     STRING_LENGTH =  1;
     m_pData[0]    = WideChar;
@@ -1607,16 +1607,16 @@ xwstring::xwstring( const xwchar* pWideString )
     s32 Len        = x_wstrlen( pWideString );
     s32 BufferSize = ALIGN_16( (Len << 1) + 10 );
 
-	if (BufferSize<= (s32)sizeof(m_LocalData))
-	{
-		m_pData = m_LocalData+4;
-		BufferSize = sizeof(m_LocalData);
-	}
-	else
-	{
-		m_pData = (xwchar*)x_malloc( BufferSize ) + 4;
-		ASSERT( m_pData-4 );
-	}
+    if (BufferSize<= (s32)sizeof(m_LocalData))
+    {
+        m_pData = m_LocalData+4;
+        BufferSize = sizeof(m_LocalData);
+    }
+    else
+    {
+        m_pData = (xwchar*)x_malloc( BufferSize ) + 4;
+        ASSERT( m_pData-4 );
+    }
 
     BUFFER_SIZE   = BufferSize;
     STRING_LENGTH = Len;
@@ -1633,16 +1633,16 @@ xwstring::xwstring( const char* pString )
     s32 Len        = pString ? x_strlen( pString ) : 0;
     s32 BufferSize = ALIGN_16( (Len << 1) + 10 );
 
-	if (BufferSize<= (s32)sizeof(m_LocalData))
-	{
-		m_pData = m_LocalData+4;
-		BufferSize = sizeof(m_LocalData);
-	}
-	else
-	{
-		m_pData = (xwchar*)x_malloc( BufferSize ) + 4;
-		ASSERT( m_pData-4 );
-	}
+    if (BufferSize<= (s32)sizeof(m_LocalData))
+    {
+        m_pData = m_LocalData+4;
+        BufferSize = sizeof(m_LocalData);
+    }
+    else
+    {
+        m_pData = (xwchar*)x_malloc( BufferSize ) + 4;
+        ASSERT( m_pData-4 );
+    }
 
     s32 i=0;
     for( ; i<Len ; i++ )
@@ -1663,16 +1663,16 @@ xwstring::xwstring( const xwstring& WideString )
     s32 Len        = WideString.GetLength();
     s32 BufferSize = ALIGN_16( (Len << 1) + 10 );
 
-	if (BufferSize<= (s32)sizeof(m_LocalData))
-	{
-		m_pData = &m_LocalData[4];
-		BufferSize = sizeof(m_LocalData);
-	}
-	else
-	{
-		m_pData = (xwchar*)x_malloc( BufferSize ) + 4;
-		ASSERT( m_pData-4 );
-	}
+    if (BufferSize<= (s32)sizeof(m_LocalData))
+    {
+        m_pData = &m_LocalData[4];
+        BufferSize = sizeof(m_LocalData);
+    }
+    else
+    {
+        m_pData = (xwchar*)x_malloc( BufferSize ) + 4;
+        ASSERT( m_pData-4 );
+    }
 
     BUFFER_SIZE   = BufferSize;
     STRING_LENGTH = Len;
@@ -1703,7 +1703,7 @@ void xwstring::FreeExtra( void )
     s32 Size = ALIGN_16( (STRING_LENGTH << 1) + 10 );
 
     if ( (m_pData - 4 ) == m_LocalData)
-		return;
+        return;
 
     if( Size <= (s32)sizeof(m_LocalData) )
     {

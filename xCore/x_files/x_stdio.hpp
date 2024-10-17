@@ -74,11 +74,11 @@ s32     x_flength   ( X_FILE* pFile );
 //  FILE TIME FUNCTIONS
 //==============================================================================
 //
-//  x_GetFileTime	- Returns true if file is present and also returns the 
-//					- system dependent time the file was last written to.
+//  x_GetFileTime    - Returns true if file is present and also returns the 
+//                    - system dependent time the file was last written to.
 //
 //==============================================================================
-xbool	x_GetFileTime( const char* pFileName, u64& FileTime );
+xbool    x_GetFileTime( const char* pFileName, u64& FileTime );
 
 //==============================================================================
 //  FORMATTED STRING FUNCTIONS

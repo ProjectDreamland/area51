@@ -766,132 +766,132 @@ xcolor xbitmap::GetPixelColor( s32 X, s32 Y, s32 Mip ) const
 
     // Find from swizzled xbox ************************************************
 
-	if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 32 )
-	{
-        //--	GCN Docs
-        //-- 	Appendix A. GCN Texture Formats
+    if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 32 )
+    {
+        //--    GCN Docs
+        //--     Appendix A. GCN Texture Formats
         //--
         //--    Texel
         //--    | 15 - A[7:0] - 8 | 7 - R[7:0] - 0 |
         //--    | 15 - G[7:0] - 8 | 7 - B[7:0] - 0 |
         //--
         //--    32bit Format : 4x4 texels / 2 cache lines
-        //--    -S			 -S
-        //--   | 0 1 2 3	 | 0 1 2 3	  | 0 AR 7 | 8 AR F |
-        //--   T 4 5 6 7     T 4 5 6 7	  Byte0		   Byte31
-        //-- 	 8 9 A B	   8 9 A B	                     
-        //-- 	 C D E F	   C D E F	  | 0 GB 7 | 8 GB F |
-        //-- 	   AR			 GB		  Byte0		   Byte31
+        //--    -S             -S
+        //--   | 0 1 2 3     | 0 1 2 3      | 0 AR 7 | 8 AR F |
+        //--   T 4 5 6 7     T 4 5 6 7      Byte0           Byte31
+        //--      8 9 A B       8 9 A B                         
+        //--      C D E F       C D E F      | 0 GB 7 | 8 GB F |
+        //--        AR             GB          Byte0           Byte31
 
-		s32 BaseW = W / 4;
-		s32 BaseX = X / 4;
-		s32 BaseY = Y / 4;
+        s32 BaseW = W / 4;
+        s32 BaseX = X / 4;
+        s32 BaseY = Y / 4;
 
-		s32 OffsetX = X % 4;
-		s32 OffsetY = Y % 4;
+        s32 OffsetX = X % 4;
+        s32 OffsetY = Y % 4;
 
-		s32 BaseID = BaseY * BaseW + BaseX;
-		s32 OffsetID = OffsetY * 4 + OffsetX;
+        s32 BaseID = BaseY * BaseW + BaseX;
+        s32 OffsetID = OffsetY * 4 + OffsetX;
 
-		s32 BlockOffset = 64 * BaseID;
+        s32 BlockOffset = 64 * BaseID;
 
-		pPixel = m_Data.pPixel;
-		pPixel += m_NMips ? m_Data.pMip[Mip].Offset : 0;
+        pPixel = m_Data.pPixel;
+        pPixel += m_NMips ? m_Data.pMip[Mip].Offset : 0;
 
-		xcolor C;
+        xcolor C;
 
-		C.A = (pPixel + BlockOffset + 2 * OffsetID)[0];
-		C.R = (pPixel + BlockOffset + 2 * OffsetID)[1];
-		C.G = (pPixel + BlockOffset + 32 + 2 * OffsetID)[0];
-		C.B = (pPixel + BlockOffset + 32 + 2 * OffsetID)[1];
+        C.A = (pPixel + BlockOffset + 2 * OffsetID)[0];
+        C.R = (pPixel + BlockOffset + 2 * OffsetID)[1];
+        C.G = (pPixel + BlockOffset + 32 + 2 * OffsetID)[0];
+        C.B = (pPixel + BlockOffset + 32 + 2 * OffsetID)[1];
 
-		return( C );
-	}
-	else if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 24 )
-	{
+        return( C );
+    }
+    else if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 24 )
+    {
         ASSERTS(FALSE,"GetPixelColor Needs Un-Swizzle code written for 24BPP");
-	}
-	else if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 16 )
-	{
+    }
+    else if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 16 )
+    {
         ASSERTS(FALSE,"GetPixelColor Needs Un-Swizzle code written for 16BPP");
-	}
-	else if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 8 )
-	{
+    }
+    else if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 8 )
+    {
         ASSERTS(FALSE,"GetPixelColor Needs Un-Swizzle code written for 8BPP");
-	}
-	else if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 4 )
-	{
+    }
+    else if( m_Flags & FLAG_GCN_DATA_SWIZZLED && GetBPP() == 4 )
+    {
         ASSERTS(FALSE,"GetPixelColor Needs Un-Swizzle code written for 4BPP");
 
-        //--	4bit Format : 8x8 texels / 1 cashe line
+        //--    4bit Format : 8x8 texels / 1 cashe line
         //--    Texel
-        //--	| 0 - 1F | 20 - 3F |
-        //--	Byte0 ------- Byte31
+        //--    | 0 - 1F | 20 - 3F |
+        //--    Byte0 ------- Byte31
 
-		s32 BaseW = W / 8;
-		s32 BaseX = X / 8;
-		s32 BaseY = Y / 8;
+        s32 BaseW = W / 8;
+        s32 BaseX = X / 8;
+        s32 BaseY = Y / 8;
 
-		s32 OffsetX = X % 8;
-		s32 OffsetY = Y % 8;
+        s32 OffsetX = X % 8;
+        s32 OffsetY = Y % 8;
 
-		s32 BaseID = BaseY * BaseW + BaseX;
-		s32 OffsetID = OffsetY * 8 + OffsetX;
+        s32 BaseID = BaseY * BaseW + BaseX;
+        s32 OffsetID = OffsetY * 8 + OffsetX;
 
-		s32 BlockOffset = 32 * BaseID;
+        s32 BlockOffset = 32 * BaseID;
 
-		pPixel = m_Data.pPixel;
-		pPixel += m_NMips ? m_Data.pMip[Mip].Offset : 0;
+        pPixel = m_Data.pPixel;
+        pPixel += m_NMips ? m_Data.pMip[Mip].Offset : 0;
 
-		xcolor C;
+        xcolor C;
 
-		C.A = (pPixel + BlockOffset + 2 * OffsetID)[0];
-		C.R = (pPixel + BlockOffset + 2 * OffsetID)[1];
-		C.G = (pPixel + BlockOffset + 2 * OffsetID)[2];
-		C.B = (pPixel + BlockOffset + 2 * OffsetID)[3];
-	}
-	else
-	{
-		pPixel  = m_Data.pPixel;
-		pPixel += m_NMips ? m_Data.pMip[Mip].Offset : 0;
-		pPixel += (( Y * W ) * Format.BPP) >> 3;
-		pPixel += ((     X ) * Format.BPP) >> 3;                   
+        C.A = (pPixel + BlockOffset + 2 * OffsetID)[0];
+        C.R = (pPixel + BlockOffset + 2 * OffsetID)[1];
+        C.G = (pPixel + BlockOffset + 2 * OffsetID)[2];
+        C.B = (pPixel + BlockOffset + 2 * OffsetID)[3];
+    }
+    else
+    {
+        pPixel  = m_Data.pPixel;
+        pPixel += m_NMips ? m_Data.pMip[Mip].Offset : 0;
+        pPixel += (( Y * W ) * Format.BPP) >> 3;
+        pPixel += ((     X ) * Format.BPP) >> 3;                   
 
-		// If this is a palette based bitmap, we must read the index and then 
-		// recompute the address to the desired color in the CLUT.
+        // If this is a palette based bitmap, we must read the index and then 
+        // recompute the address to the desired color in the CLUT.
 
-		if( Format.ClutBased )
-		{
-			s32 Index;
+        if( Format.ClutBased )
+        {
+            s32 Index;
 
-			if( Format.BPP == 4 )
-			{
-				// Nibbles flipped?
-				if (m_Flags & FLAG_4BIT_NIBBLES_FLIPPED)
-					Index = (X & 0x01) ? (*pPixel >> 4) : (*pPixel & 0x0F);
-				else
-					Index = (X & 0x01) ? (*pPixel & 0x0F) : (*pPixel >> 4);
-			}
-			else
-			{
-				Index = *pPixel;
-			}
+            if( Format.BPP == 4 )
+            {
+                // Nibbles flipped?
+                if (m_Flags & FLAG_4BIT_NIBBLES_FLIPPED)
+                    Index = (X & 0x01) ? (*pPixel >> 4) : (*pPixel & 0x0F);
+                else
+                    Index = (X & 0x01) ? (*pPixel & 0x0F) : (*pPixel >> 4);
+            }
+            else
+            {
+                Index = *pPixel;
+            }
 
-			if( m_Flags & FLAG_PS2_CLUT_SWIZZLED )
-				Index = GetPS2SwizzledIndex( Index );
+            if( m_Flags & FLAG_PS2_CLUT_SWIZZLED )
+                Index = GetPS2SwizzledIndex( Index );
 
-			// We now have the index, find the pixel's color in the palette.
+            // We now have the index, find the pixel's color in the palette.
 
-			ASSERT( m_pClut );
-			ASSERT( Index < (m_ClutSize / (Format.BPC >> 3)) );
-			pPixel  = m_pClut;
-			pPixel += (Index * Format.BPC) >> 3;
-		}
+            ASSERT( m_pClut );
+            ASSERT( Index < (m_ClutSize / (Format.BPC >> 3)) );
+            pPixel  = m_pClut;
+            pPixel += (Index * Format.BPC) >> 3;
+        }
 
-		// We'll use an internal helper function for the rest.
+        // We'll use an internal helper function for the rest.
 
-		return( ReadColor( pPixel ) );
-	}
+        return( ReadColor( pPixel ) );
+    }
 
     ASSERT( 0 );
     return XCOLOR_BLACK;
@@ -1495,9 +1495,9 @@ void xbitmap::GCNPackTileRGB565( u32 x, u32 y, u8* dstPtr, s32 Mip )
             xcolor C = GetPixelColor( (x+col), (y+row), Mip );
 
             *pData       = ( ( C.R & 0xF8)       | ((C.G & 0xE0) >> 5) );  // byte0 is upper 5 bits of red, upper 3 of green
-			*(pData + 1) = ( ((C.G & 0x1C) << 3) | ( C.B >> 3)         );  // byte1 is lower 3 bits of green, upper 5 of blue
-			
-			pData += 2;	
+            *(pData + 1) = ( ((C.G & 0x1C) << 3) | ( C.B >> 3)         );  // byte1 is lower 3 bits of green, upper 5 of blue
+            
+            pData += 2;    
 
         } // end for col loop           
     } // end for row loop  
@@ -1564,14 +1564,14 @@ void xbitmap::GCNPackTile_C4( u32 x, u32 y, u8* dstPtr, s32 Mip )
             u8  Idx = GetPixelIndex( x+col, y+row, Mip );
             // Grab direct if even
             if( col %2 == 0 )
-			{
-				*pData = ((Idx & 0x0F) << 4);
-			}
-			else    // Grab, mask, and incr.
-			{
-				*pData |= (Idx & 0x0F);
-				pData++;
-			}	            
+            {
+                *pData = ((Idx & 0x0F) << 4);
+            }
+            else    // Grab, mask, and incr.
+            {
+                *pData |= (Idx & 0x0F);
+                pData++;
+            }                
         }               
     }               
 }

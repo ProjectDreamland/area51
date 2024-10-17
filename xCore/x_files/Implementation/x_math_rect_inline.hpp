@@ -313,7 +313,7 @@ xbool irect::Intersect( irect& R, const irect& Rect )
 inline
 xbool irect::PointInRect( s32 X, s32 Y)
 {
-	return ((X >= l) && (X <= r) && (Y >= t) && (Y <= b));
+    return ((X >= l) && (X <= r) && (Y >= t) && (Y <= b));
 }
 //==============================================================================
 inline

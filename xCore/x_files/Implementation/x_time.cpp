@@ -107,7 +107,7 @@ xtick x_GetTime( void )
 #include <windows.h>
 #else
 #ifdef CONFIG_RETAIL
-#   define D3DCOMPILE_PUREDEVICE 1	
+#   define D3DCOMPILE_PUREDEVICE 1    
 #endif
 #include <xtl.h>
 #endif

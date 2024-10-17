@@ -38,7 +38,7 @@
 
 inline s32 xstring::GetLength( void ) const
 {
-	return( STRING_LENGTH );
+    return( STRING_LENGTH );
 }
 
 //==============================================================================
@@ -91,7 +91,7 @@ inline char& xstring::operator [] ( s32 Index )
 
 inline s32 xwstring::GetLength( void ) const
 {
-	return( STRING_LENGTH );
+    return( STRING_LENGTH );
 }
 
 //==============================================================================

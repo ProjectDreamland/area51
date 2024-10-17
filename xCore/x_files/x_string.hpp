@@ -306,7 +306,7 @@ private:
 
 protected:
         char*       m_pData;
-		char		m_LocalData[XSTRING_LOCAL_LENGTH];
+        char        m_LocalData[XSTRING_LOCAL_LENGTH];
 };
 
 //==============================================================================
@@ -409,7 +409,7 @@ private:
 
 protected:
         xwchar*     m_pData;
-		xwchar		m_LocalData[XSTRING_LOCAL_LENGTH];
+        xwchar        m_LocalData[XSTRING_LOCAL_LENGTH];
 };
 
 //==============================================================================

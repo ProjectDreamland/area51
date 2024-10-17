@@ -81,15 +81,15 @@ const x_language x_GetConsoleLanguage( void )
 
     switch( XGetLanguage() )
     {
-        case XC_LANGUAGE_PORTUGUESE:return XL_LANG_PORTUGUESE;	break;
-        case XC_LANGUAGE_JAPANESE:	return XL_LANG_JAPANESE;	break;
-        case XC_LANGUAGE_TCHINESE:	return XL_LANG_TCHINESE;	break;
-        case XC_LANGUAGE_KOREAN:	return XL_LANG_KOREAN;	    break;
-        case XC_LANGUAGE_ENGLISH:	return XL_LANG_ENGLISH;	    break;
-        case XC_LANGUAGE_FRENCH:	return XL_LANG_FRENCH;  	break;
-        case XC_LANGUAGE_GERMAN:	return XL_LANG_GERMAN;	    break;
-        case XC_LANGUAGE_SPANISH:	return XL_LANG_SPANISH;	    break;
-        case XC_LANGUAGE_ITALIAN:	return XL_LANG_ITALIAN;	    break;
+        case XC_LANGUAGE_PORTUGUESE:return XL_LANG_PORTUGUESE;    break;
+        case XC_LANGUAGE_JAPANESE:    return XL_LANG_JAPANESE;    break;
+        case XC_LANGUAGE_TCHINESE:    return XL_LANG_TCHINESE;    break;
+        case XC_LANGUAGE_KOREAN:    return XL_LANG_KOREAN;        break;
+        case XC_LANGUAGE_ENGLISH:    return XL_LANG_ENGLISH;        break;
+        case XC_LANGUAGE_FRENCH:    return XL_LANG_FRENCH;      break;
+        case XC_LANGUAGE_GERMAN:    return XL_LANG_GERMAN;        break;
+        case XC_LANGUAGE_SPANISH:    return XL_LANG_SPANISH;        break;
+        case XC_LANGUAGE_ITALIAN:    return XL_LANG_ITALIAN;        break;
 
         default:
             ASSERTS(0, "XBOX returned unknown language.");
@@ -101,11 +101,11 @@ const x_language x_GetConsoleLanguage( void )
     switch( sceScfGetLanguage() )
     {
         case SCE_JAPANESE_LANGUAGE:     return XL_LANG_JAPANESE;    break;
-        case SCE_ENGLISH_LANGUAGE:	    return XL_LANG_ENGLISH;	    break;
-        case SCE_FRENCH_LANGUAGE:	    return XL_LANG_FRENCH;	    break;
-        case SCE_SPANISH_LANGUAGE:	    return XL_LANG_SPANISH; 	break;
-        case SCE_GERMAN_LANGUAGE:	    return XL_LANG_GERMAN;	    break;
-        case SCE_ITALIAN_LANGUAGE:      return XL_LANG_ITALIAN;	    break;
+        case SCE_ENGLISH_LANGUAGE:        return XL_LANG_ENGLISH;        break;
+        case SCE_FRENCH_LANGUAGE:        return XL_LANG_FRENCH;        break;
+        case SCE_SPANISH_LANGUAGE:        return XL_LANG_SPANISH;     break;
+        case SCE_GERMAN_LANGUAGE:        return XL_LANG_GERMAN;        break;
+        case SCE_ITALIAN_LANGUAGE:      return XL_LANG_ITALIAN;        break;
         case SCE_DUTCH_LANGUAGE:        return XL_LANG_DUTCH;       break;
         case SCE_PORTUGUESE_LANGUAGE:   return XL_LANG_PORTUGUESE;  break;
 

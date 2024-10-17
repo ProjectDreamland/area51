@@ -575,10 +575,10 @@ union vector3
         vector3         GetClosestPToLSeg       ( const vector3& Start, const vector3& End ) const;
         vector3         GetClosestVToLSeg       ( const vector3& Start, const vector3& End ) const;
         f32             GetClosestPToLSegRatio  ( const vector3& Start, const vector3& End ) const;
-		f32				ClosestPointToRectangle ( const vector3& P0,   // Origin from the edges. 
-												  const vector3& E0, 
-												  const vector3& E1,	
-												  vector3&       OutClosestPoint ) const;
+        f32                ClosestPointToRectangle ( const vector3& P0,   // Origin from the edges. 
+                                                  const vector3& E0, 
+                                                  const vector3& E1,    
+                                                  vector3&       OutClosestPoint ) const;
 
 
 friend  f32             v3_Dot                  ( const vector3& V1, const vector3& V2 );
