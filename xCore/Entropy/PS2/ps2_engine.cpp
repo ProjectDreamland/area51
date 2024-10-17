@@ -206,15 +206,15 @@ static sceGsDBuff       s_db;
 
 void ShowSplash(void)
 {
-    s32				handle,length;
-    io_buffer*		mem;
-    u8*				pData;
-    s32				i;
-    s32				xoffset,yoffset;
-    sceGsLoadImage	gsimage;
-    u32*			pPalette;
-    u32*			pLineBuffer;
-    s32				Height;
+    s32                handle,length;
+    io_buffer*        mem;
+    u8*                pData;
+    s32                i;
+    s32                xoffset,yoffset;
+    sceGsLoadImage    gsimage;
+    u32*            pPalette;
+    u32*            pLineBuffer;
+    s32                Height;
 
 
     ClearVram();
@@ -289,10 +289,10 @@ void ShowSplash(void)
         s32 Language = sceScfGetLanguage();
         switch( Language )
         {
-        case SCE_ENGLISH_LANGUAGE:	    x_strcat( Path, "ENG" ); break;
-        case SCE_FRENCH_LANGUAGE:	    x_strcat( Path, "FRE" ); break;
-        case SCE_SPANISH_LANGUAGE:	    x_strcat( Path, "SPA" ); break;
-        case SCE_GERMAN_LANGUAGE:	    x_strcat( Path, "GER" ); break;
+        case SCE_ENGLISH_LANGUAGE:        x_strcat( Path, "ENG" ); break;
+        case SCE_FRENCH_LANGUAGE:        x_strcat( Path, "FRE" ); break;
+        case SCE_SPANISH_LANGUAGE:        x_strcat( Path, "SPA" ); break;
+        case SCE_GERMAN_LANGUAGE:        x_strcat( Path, "GER" ); break;
         case SCE_ITALIAN_LANGUAGE:      x_strcat( Path, "ITA" ); break;
         default:                        x_strcat( Path, "ENG" ); break;
         }
@@ -338,13 +338,13 @@ void ShowSplash(void)
             pLineBuffer[j] = pPalette[ShowSplashGetPS2SwizzledIndex(*pData)];
             pData++;
         }
-        sceGsSetDefLoadImage(&gsimage,  0,					// Base address of dest buffer
-            mem->Width/64,		// Width of transfer
-            SCE_GS_PSMCT32,		// Data format
-            xoffset,			// Dest X
-            i+yoffset,			// Dest Y
-            mem->Width,			// Dest width
-            1					// Dest height
+        sceGsSetDefLoadImage(&gsimage,  0,                    // Base address of dest buffer
+            mem->Width/64,        // Width of transfer
+            SCE_GS_PSMCT32,        // Data format
+            xoffset,            // Dest X
+            i+yoffset,            // Dest Y
+            mem->Width,            // Dest width
+            1                    // Dest height
             );
         FlushCache(0);
         sceGsExecLoadImage(&gsimage, (u_long128*)pLineBuffer);
@@ -515,10 +515,10 @@ void eng_Init(void)
     printf("ENGINE: Initializing dmas\n");
     {
         sceDmaEnv denv;
-	    sceDmaReset(1);
-	    sceDmaGetEnv(&denv);
-	    denv.notify = 0x0100; // enable Ch.8 CPCOND 
-	    sceDmaPutEnv(&denv);
+        sceDmaReset(1);
+        sceDmaGetEnv(&denv);
+        denv.notify = 0x0100; // enable Ch.8 CPCOND 
+        sceDmaPutEnv(&denv);
     }
 
     //
@@ -599,41 +599,41 @@ void eng_Sync( void )
 //=========================================================================
 void ps2_ResetHardware(void)
 {
-	s32 pmode;
-	s32 omode;
+    s32 pmode;
+    s32 omode;
 
-	sceDmaReset( 1 );
-	sceDevVif0Reset();
-	sceDevVu0Reset();
-	sceDevVif1Reset();
-	sceDevVu1Reset();
-	sceDevGifReset();
-	sceDevVu1PutDBit(1);
-	sceGsResetPath();
+    sceDmaReset( 1 );
+    sceDevVif0Reset();
+    sceDevVu0Reset();
+    sceDevVif1Reset();
+    sceDevVu1Reset();
+    sceDevGifReset();
+    sceDevVu1PutDBit(1);
+    sceGsResetPath();
 
 #if 0
-	if ( s_ProgressiveScan && !s_PalMode)
-	{
-		pmode = SCE_GS_NOINTERLACE;
-		omode = SCE_GS_DTV480P;
-	}
-	else
+    if ( s_ProgressiveScan && !s_PalMode)
+    {
+        pmode = SCE_GS_NOINTERLACE;
+        omode = SCE_GS_DTV480P;
+    }
+    else
 #endif
-	{
-		pmode = SCE_GS_INTERLACE;
-		if (s_PalMode)
-		{
-			omode = SCE_GS_PAL;
-			s_YRes = 512;
-		}
-		else
-		{
-			omode = SCE_GS_NTSC;
-		}
-	}
+    {
+        pmode = SCE_GS_INTERLACE;
+        if (s_PalMode)
+        {
+            omode = SCE_GS_PAL;
+            s_YRes = 512;
+        }
+        else
+        {
+            omode = SCE_GS_NTSC;
+        }
+    }
 
     sceGsResetGraph(0,pmode,omode,SCE_GS_FIELD);
-	sceGsResetPath();
+    sceGsResetPath();
 
     // reinitialize the dlist
     DLIST.Kill();
@@ -769,7 +769,7 @@ xbool eng_InBeginEnd(void)
 xbool eng_Begin( const char* pTaskName )
 {
     ASSERT( !eng_InBeginEnd() );
-	
+    
     s_InsideTask = TRUE;
     if( pTaskName == NULL )
         pTaskName = "unknown";
@@ -875,7 +875,7 @@ static void DumpFrameBuffer( const char* pFileName )
     //
     // KILL THE MIFO
     //
-	DLIST.Disable();
+    DLIST.Disable();
 
     // Build and execute image store
     sceGsStoreImage gsimage;
@@ -886,9 +886,9 @@ static void DumpFrameBuffer( const char* pFileName )
         s32 N = MIN(NLines,LINES_PER_CHUNK);
         sceGsSetDefStoreImage(&gsimage, Offset*XRes/64, XRes / 64, SCE_GS_PSMCT32, 0, 0, XRes, N);
 
-	    FlushCache(0);
-	    sceGsExecStoreImage(&gsimage, (u_long128*)(pBuffer));
-	    sceGsSyncPath(0, 0);
+        FlushCache(0);
+        sceGsExecStoreImage(&gsimage, (u_long128*)(pBuffer));
+        sceGsSyncPath(0, 0);
 
         NLines -= N;
         Offset += N;
@@ -1147,7 +1147,7 @@ void    eng_PrintStats      ( void )
     eng_GetStats(Count, CPU, GS, INT, VBL, FPS) ;
 
     //x_DebugMsg("================ Engine Stats ================\n");
-	//x_DebugMsg("%1d CPU:%4.1f  GS:%4.1f  INT:%4.1f  VBL:%4.1f  FPS:%4.1f\n", Count, CPU, GS, INT, VBL, FPS) ;
+    //x_DebugMsg("%1d CPU:%4.1f  GS:%4.1f  INT:%4.1f  VBL:%4.1f  FPS:%4.1f\n", Count, CPU, GS, INT, VBL, FPS) ;
     //dmaman_PrintTaskStats();
 
     {
@@ -1256,7 +1256,7 @@ void ps2eng_Begin( s32 argc, char* argv[] )
 #endif
 
     #ifdef VENDOR_MW
-	mwInit();    /* To initialize the C++ runtime */
+    mwInit();    /* To initialize the C++ runtime */
     #endif
 
     //
@@ -1386,7 +1386,7 @@ void ps2eng_Begin( s32 argc, char* argv[] )
 
 
     // Init iop
-	g_IopManager.Init();
+    g_IopManager.Init();
 
 #if defined( EXCEPTION_HANDLER )
     except_Init();
@@ -1404,13 +1404,13 @@ void ps2eng_Begin( s32 argc, char* argv[] )
 
 void ps2eng_End( void )
 {
-	g_IopManager.Kill();
+    g_IopManager.Kill();
     // Do low-level kill
     //TIME_Kill();
     x_Kill();
     
     #ifdef VENDOR_MW
-	mwExit();    /* Clean up, destroy constructed global objects */
+    mwExit();    /* Clean up, destroy constructed global objects */
     #endif
 #ifdef INCLUDE_DEMO_CYCLE
     sceDemoEnd(SCE_DEMO_ENDREASON_PLAYABLE_QUIT);

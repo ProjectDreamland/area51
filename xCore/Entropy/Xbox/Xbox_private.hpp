@@ -172,7 +172,7 @@ namespace render
             texture stage states and their values.
             */
 
-    	u32 m_iData[ D3DTSS_MAXSTAGES ][ D3DTSS_MAX ];
+        u32 m_iData[ D3DTSS_MAXSTAGES ][ D3DTSS_MAX ];
     };
 
     //! Render state object.

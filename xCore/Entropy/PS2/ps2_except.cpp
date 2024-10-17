@@ -172,7 +172,7 @@ void InitGS(void)
     else
         sceGsResetGraph(0, SCE_GS_INTERLACE, SCE_GS_NTSC, SCE_GS_FRAME);
     sceGsSetDefDBuff(&db, SCE_GS_PSMCT32, SCREEN_WIDTH, SCREEN_HEIGHT,
-	       SCE_GS_ZGEQUAL, SCE_GS_PSMZ24, SCE_GS_CLEAR);
+           SCE_GS_ZGEQUAL, SCE_GS_PSMZ24, SCE_GS_CLEAR);
 
     sceGsSyncVCallback(NULL);
 
@@ -183,8 +183,8 @@ void InitGS(void)
 
     // add alpha environment packet
     sceVif1PkReserve(&VifPkt,
-	       sceGsSetDefAlphaEnv((sceGsAlphaEnv *)VifPkt.pCurrent,0)
-	       * 4);
+           sceGsSetDefAlphaEnv((sceGsAlphaEnv *)VifPkt.pCurrent,0)
+           * 4);
     sceVif1PkCloseGifTag(&VifPkt);
     sceVif1PkCloseDirectCode(&VifPkt);
     sceVif1PkEnd(&VifPkt, 0);
@@ -195,7 +195,7 @@ void InitGS(void)
     sceDmaSend(p1,(long128*)(((u_int)(VifPkt.pBase)) & 0x8fffffff));
     // wait for Gs initialize packet end
     sceGsSyncPath(0,0);
-    while(!sceGsSyncV(0));	// display next in odd field when interlace
+    while(!sceGsSyncV(0));    // display next in odd field when interlace
 }
 
 void InitExceptionBuffer(exception_type type)
@@ -405,10 +405,10 @@ void    except_ee_Handler(u32 stat,u32 cause,u32 epc,u32 bva,u32 bpa,u128 *gpr)
 
 //        exception_Send();
         if( frame & 1 )
-          {	// interrace half pixcel adjust
-	    sceGsSetHalfOffset( &db.draw1, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
+          {    // interrace half pixcel adjust
+        sceGsSetHalfOffset( &db.draw1, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
           } else {
-	    sceGsSetHalfOffset( &db.draw0, 2048, 2048, sceGsSyncV( 0 )  ^ 0x01 );
+        sceGsSetHalfOffset( &db.draw0, 2048, 2048, sceGsSyncV( 0 )  ^ 0x01 );
           }
         iFlushCache( 0 );
         sceGsSyncPath( 0, 0 );
@@ -466,10 +466,10 @@ void    except_iop_Handler(void *p,void *d)
 
 //        exception_Send();
         if( frame & 1 )
-          {	// interrace half pixcel adjust
-	    sceGsSetHalfOffset( &db.draw1, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
+          {    // interrace half pixcel adjust
+        sceGsSetHalfOffset( &db.draw1, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
           } else {
-	    sceGsSetHalfOffset( &db.draw0, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
+        sceGsSetHalfOffset( &db.draw0, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
           }
         iFlushCache( 0 );
         sceGsSyncPath( 0, 0 );
@@ -477,7 +477,7 @@ void    except_iop_Handler(void *p,void *d)
     }
 }
 
-typedef	void (hndlr)(u_int, u_int, u_int, u_int, u_int, u_long128 *);
+typedef    void (hndlr)(u_int, u_int, u_int, u_int, u_int, u_long128 *);
 
 xbool   except_assert_Handler( const char* pFileName,
                       s32         LineNumber,
@@ -489,10 +489,10 @@ xbool   except_assert_Handler( const char* pFileName,
     xbool retry;
     static char HourGlass[]=".o0O0o";
 
-	if (pFileName==NULL)
-	{
-		pFileName = "<unknown>";
-	}
+    if (pFileName==NULL)
+    {
+        pFileName = "<unknown>";
+    }
 
     if (x_strlen(pFileName) > 37)
     {
@@ -516,14 +516,14 @@ xbool   except_assert_Handler( const char* pFileName,
     ExceptionBuffer.Data.Assert.LineNumber = LineNumber;
     ExceptionBuffer.Data.Assert.StackPointer = (u32)(&stacktop)+0x24;
     x_strcpy(ExceptionBuffer.Data.Assert.Filename,pFileName);
-	if (pExprString)
-	{
-		x_strcpy(ExceptionBuffer.Data.Assert.Expression,pExprString);
-	}
-	else
-	{
-		ExceptionBuffer.Data.Assert.Expression[0]=0x0;
-	}
+    if (pExprString)
+    {
+        x_strcpy(ExceptionBuffer.Data.Assert.Expression,pExprString);
+    }
+    else
+    {
+        ExceptionBuffer.Data.Assert.Expression[0]=0x0;
+    }
     MakeRawStackDump((void *)((u32)(&stacktop)+0x24),ExceptionBuffer.Data.Assert.RawStack,32);
     MakeCookedStackDump((void *)((u32)(&stacktop)+0x24),ExceptionBuffer.Data.Assert.CookedStack,32);
 
@@ -556,10 +556,10 @@ xbool   except_assert_Handler( const char* pFileName,
     
         sceExcepConsPrintf("FILE: %s\n",pFileName);
         sceExcepConsPrintf("LINE: %d\n",LineNumber);
-		if (pExprString)
-		{
-			sceExcepConsPrintf("EXPR: %s\n",pExprString);
-		}
+        if (pExprString)
+        {
+            sceExcepConsPrintf("EXPR: %s\n",pExprString);
+        }
 
         if (pMessageString)
         {
@@ -575,10 +575,10 @@ xbool   except_assert_Handler( const char* pFileName,
         sceExcepConsPrintf("%c",HourGlass[(frame>>3) % 6]);
 //        exception_Send();
         if( frame & 1 )
-          {	// interrace half pixcel adjust
-	    sceGsSetHalfOffset( &db.draw1, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
+          {    // interrace half pixcel adjust
+        sceGsSetHalfOffset( &db.draw1, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
           } else {
-	    sceGsSetHalfOffset( &db.draw0, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
+        sceGsSetHalfOffset( &db.draw0, 2048, 2048, sceGsSyncV( 0 ) ^ 0x01 );
           }
         iFlushCache( 0 );
         sceGsSyncPath( 0, 0 );

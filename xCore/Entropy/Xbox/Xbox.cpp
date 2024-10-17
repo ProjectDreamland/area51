@@ -493,7 +493,7 @@ namespace xbox
         /** This member keeps track of whether we're running or not.
             */
 
-	    u32 m_bRunning : 1;
+        u32 m_bRunning : 1;
 
         //! Start time
         /** This is the start time in cycles.
@@ -2298,33 +2298,33 @@ void eng_Reboot( reboot_reason Reason )
     }
     #else
     {
-	    LD_LAUNCH_DASHBOARD DashConfig;
+        LD_LAUNCH_DASHBOARD DashConfig;
 
-	    x_memset( &DashConfig, 0, sizeof(DashConfig) );
-	    //eng_Kill();
-	    switch( Reason )
-	    {
-	    case REBOOT_QUIT:
-		    DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_MAIN_MENU;
-		    break;
-	    case REBOOT_MANAGE:
-		    DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_NETWORK_CONFIGURATION;
-		    break;
-	    case REBOOT_NEWUSER:
-		    DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_NEW_ACCOUNT_SIGNUP;
-		    break;
-	    case REBOOT_MESSAGE:
-		    DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_ACCOUNT_MANAGEMENT;
-		    break;
+        x_memset( &DashConfig, 0, sizeof(DashConfig) );
+        //eng_Kill();
+        switch( Reason )
+        {
+        case REBOOT_QUIT:
+            DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_MAIN_MENU;
+            break;
+        case REBOOT_MANAGE:
+            DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_NETWORK_CONFIGURATION;
+            break;
+        case REBOOT_NEWUSER:
+            DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_NEW_ACCOUNT_SIGNUP;
+            break;
+        case REBOOT_MESSAGE:
+            DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_ACCOUNT_MANAGEMENT;
+            break;
         case REBOOT_UPDATE:
             XOnlineTitleUpdate(NULL);
             // Deliberate fallthrough just in case this routine returns.
-	    default:
-		    ASSERT( FALSE );
-		    DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_MAIN_MENU;
-		    break;
-	    }
-	    XLaunchNewImage( NULL, (LAUNCH_DATA*)&DashConfig );
+        default:
+            ASSERT( FALSE );
+            DashConfig.dwReason = XLD_LAUNCH_DASHBOARD_MAIN_MENU;
+            break;
+        }
+        XLaunchNewImage( NULL, (LAUNCH_DATA*)&DashConfig );
     }
     #endif
 }

@@ -116,7 +116,7 @@ void sys_net_Init(void)
     g_Net.m_pSendThread = new xthread(net_PeriodicSend,"Net Periodic Send",8192,1);
     g_Net.m_pRecvThread = new xthread(net_PeriodicRecv,"Net Periodic Recv",8192,1);
 
-	x_DebugMsg("Net init reported a system id of 0x%08x\n",net_GetSystemId());
+    x_DebugMsg("Net init reported a system id of 0x%08x\n",net_GetSystemId());
   
     g_Net.m_LockMutex.Exit();
 }
@@ -174,7 +174,7 @@ void    net_GetConnectStatus (connect_status &Status)
     Status.Status           = DialStatus.Status;
     Status.ConnectSpeed     = DialStatus.ConnectSpeed;
     Status.TimeoutRemaining = DialStatus.TimeoutRemaining;
-	x_strcpy(Status.ErrorText,DialStatus.ErrorText);
+    x_strcpy(Status.ErrorText,DialStatus.ErrorText);
 }
 
 //-----------------------------------------------------------------------------
@@ -802,10 +802,10 @@ void net_PeriodicSend(void)
 
     while( TRUE ) 
     {
-	    result = sceSifBindRpc ( &s_SendClientData, INEV_NET_SEND_DEV, 0 );
+        result = sceSifBindRpc ( &s_SendClientData, INEV_NET_SEND_DEV, 0 );
         ASSERTS(result>=0,"error: sceSifBindRpc for PeriodicSend failed");
 
-	    if( s_SendClientData.serve != 0 ) break;
+        if( s_SendClientData.serve != 0 ) break;
     }
     x_DebugMsg("Send init complete\n");
 
@@ -973,10 +973,10 @@ void    net_ActivateConfig(xbool on)
 //-----------------------------------------------------------------------------
 s32 net_GetSystemId(void)
 {
-	s32 sysid;
+    s32 sysid;
 
     netiop_SendSyncRequest(NETCMD_GET_SYSID,NULL,0,&sysid,sizeof(sysid));
-	return sysid;
+    return sysid;
 }
 
 //-----------------------------------------------------------------------------

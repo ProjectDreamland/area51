@@ -1195,7 +1195,7 @@ void texture_factory::cube_buffer::Kill()
 {
     SanityCheckTNV();
 
-	BlockUntilNotBusy( );
+    BlockUntilNotBusy( );
 
     if( !m_bAlias )
         g_TextureFactory.m_Allocator[m_iPool].Free( m_Ptr );
@@ -1427,7 +1427,7 @@ void texture_factory::palette::Init( void )
 
 void texture_factory::palette::Kill( void )
 {
-	BlockUntilNotBusy( );
+    BlockUntilNotBusy( );
 
     g_TextureFactory.m_Allocator[kPOOL_GENERAL].Free( m_Ptr );
 

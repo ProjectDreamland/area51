@@ -103,11 +103,11 @@ struct net_config_list
 
 struct connect_status
 {
-        s32		        nRetries;                       // Number of retries attempted so far
-        s32		        TimeoutRemaining;               // Amount of timeout remaining in seconds
-        s32		        Status;                         // Various flags showing status of connection
-        s32		        ConnectSpeed;                   // Speed at which we connected
-	    char	        ErrorText[128];					// Error message
+        s32                nRetries;                       // Number of retries attempted so far
+        s32                TimeoutRemaining;               // Amount of timeout remaining in seconds
+        s32                Status;                         // Various flags showing status of connection
+        s32                ConnectSpeed;                   // Speed at which we connected
+        char            ErrorText[128];                    // Error message
 };
 
 

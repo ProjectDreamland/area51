@@ -364,7 +364,7 @@ void io_device::ProcessReadRequest( io_request* pRequest )
     io_device_file* pFile;
     s32             Adjust;
 
-	// BW - On PS2, having a zero m_pBuffer is valid if the destination address 
+    // BW - On PS2, having a zero m_pBuffer is valid if the destination address 
     // is not the local memory space.
     ASSERT( pRequest->m_pBuffer || pRequest->m_Destination);
 
@@ -450,10 +450,10 @@ void io_device::ProcessReadRequest( io_request* pRequest )
     //
     // Do the asynch read.
     //
-	// BW - If we are transferring data to anything other than the main memory address space,
-	// go ahead and transfer it to where it is supposed to be but bear in mind that the device
-	// must be aware of the differences between memory spaces and deal with alignment that may
-	// cause.
+    // BW - If we are transferring data to anything other than the main memory address space,
+    // go ahead and transfer it to where it is supposed to be but bear in mind that the device
+    // must be aware of the differences between memory spaces and deal with alignment that may
+    // cause.
     //
     if( Length + pRequest->m_Offset > pFile->Length )
     {
@@ -461,22 +461,22 @@ void io_device::ProcessReadRequest( io_request* pRequest )
         ASSERT( Length > 0 );
     }
 
-	if (pRequest->m_Destination==0)
-	{
-		Success = PhysicalRead( pFile, 
+    if (pRequest->m_Destination==0)
+    {
+        Success = PhysicalRead( pFile, 
                                 pFile->pBuffer, 
                                 Length, 
                                 pRequest->m_Offset+pRequest->m_ChunkOffset, 
                                 pRequest->m_Destination );
-	}
-	else
-	{
-		Success = PhysicalRead( pFile, 
-								(void*)((s32)pRequest->m_pBuffer+pRequest->m_ChunkOffset), 
-								Length, 
-								pRequest->m_Offset+pRequest->m_ChunkOffset, 
-								pRequest->m_Destination );
-	}
+    }
+    else
+    {
+        Success = PhysicalRead( pFile, 
+                                (void*)((s32)pRequest->m_pBuffer+pRequest->m_ChunkOffset), 
+                                Length, 
+                                pRequest->m_Offset+pRequest->m_ChunkOffset, 
+                                pRequest->m_Destination );
+    }
 
     // TODO: Handle Errors.
     ASSERT( Success );
@@ -609,7 +609,7 @@ void io_device::Init()
             pFile->pNext = (pFile+1);
         }
 
-		pFile--;
+        pFile--;
         // Terminate list
         pFile->pNext = NULL;
 

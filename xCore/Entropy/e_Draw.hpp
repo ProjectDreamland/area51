@@ -49,13 +49,13 @@
 #define DRAW_BLEND_SUB      ( 1 <<  8 )     // Default: Multiplicative (alpha) ADD and SUB mutually exclusive
 #define DRAW_U_CLAMP        ( 1 <<  9 )     // Default: WRAP
 #define DRAW_V_CLAMP        ( 1 << 10 )     // Default: WRAP
-#define DRAW_KEEP_STATES	( 1 << 11 )		// Default: Off (doesn't set any render/texture-stage states)
+#define DRAW_KEEP_STATES    ( 1 << 11 )        // Default: Off (doesn't set any render/texture-stage states)
 #define DRAW_XBOX_NO_BEGIN  ( 1 << 12 )     // Default: Off
 #define DRAW_XBOX_WRITE_A   ( 1 << 13 )     // Default: Off (writes into the frame-buffer alpha channel)
 
 #define DRAW_CULL_NONE      ( 1 << 29 )     // Default: Cull CW
 #define DRAW_CUSTOM_MODE    ( 1 << 30 )     // Default: Off
-#define DRAW_HAS_NORMAL		( 1 << 31 )     // Default: has no normal
+#define DRAW_HAS_NORMAL        ( 1 << 31 )     // Default: has no normal
 
 #define DRAW_UV_CLAMP       (DRAW_U_CLAMP | DRAW_V_CLAMP)
 

@@ -471,8 +471,8 @@ void view::GetV2C( s32 ClipSize, matrix4& V2C ) const
         m_V2C(1,1) = (2 * m_ZNear) / (B - T) ;
         m_V2C(2,0) = (R + L) / (R - L) ;
         m_V2C(2,1) = (B + T) / (B - T) ;
-	    m_V2C(2,2) = (m_ZFar+m_ZNear)/(m_ZFar-m_ZNear);
-	    m_V2C(2,3) = 1.0f;
+        m_V2C(2,2) = (m_ZFar+m_ZNear)/(m_ZFar-m_ZNear);
+        m_V2C(2,3) = 1.0f;
         m_V2C(3,2) = (-2*m_ZNear*m_ZFar)/(m_ZFar-m_ZNear);
     }
 #endif // !defined( CONFIG_RETAIL )
@@ -1228,9 +1228,9 @@ void view::UpdateV2C( void ) const
         f32 Q = m_ZFar/( m_ZFar - m_ZNear);
         m_V2C(0,0) = -W;
         m_V2C(1,1) =  H;
-	    m_V2C(2,2) =  Q;
-	    m_V2C(3,2) = -Q*m_ZNear;
-	    m_V2C(2,3) =  1;
+        m_V2C(2,2) =  Q;
+        m_V2C(3,2) = -Q*m_ZNear;
+        m_V2C(2,3) =  1;
 
     #elif defined TARGET_XBOX
 
@@ -1239,9 +1239,9 @@ void view::UpdateV2C( void ) const
         f32 Q = m_ZFar/( m_ZFar - m_ZNear);
         m_V2C(0,0) = -W;
         m_V2C(1,1) =  H;
-	    m_V2C(2,2) =  Q;
-	    m_V2C(3,2) = -Q*m_ZNear;
-	    m_V2C(2,3) =  1;
+        m_V2C(2,2) =  Q;
+        m_V2C(3,2) = -Q*m_ZNear;
+        m_V2C(2,3) =  1;
 
     #elif defined(TARGET_PS2)
     
@@ -1254,9 +1254,9 @@ void view::UpdateV2C( void ) const
             f32 H = (f32)(1.0f / x_tan( m_YFOV*0.5f ));
             m_V2C(0,0) = -W;
             m_V2C(1,1) =  H;
-	        m_V2C(2,2) = (m_ZFar+m_ZNear)/(m_ZFar-m_ZNear);
-	        m_V2C(3,2) = (-2*m_ZNear*m_ZFar)/(m_ZFar-m_ZNear);
-	        m_V2C(2,3) = 1.0f;
+            m_V2C(2,2) = (m_ZFar+m_ZNear)/(m_ZFar-m_ZNear);
+            m_V2C(3,2) = (-2*m_ZNear*m_ZFar)/(m_ZFar-m_ZNear);
+            m_V2C(2,3) = 1.0f;
         }
 #if !defined( CONFIG_RETAIL )
         else
@@ -1278,8 +1278,8 @@ void view::UpdateV2C( void ) const
             m_V2C(1,1) = (2 * m_ZNear) / (B - T) ;
             m_V2C(2,0) = (R + L) / (R - L) ;
             m_V2C(2,1) = (B + T) / (B - T) ;
-	        m_V2C(2,2) = (m_ZFar+m_ZNear)/(m_ZFar-m_ZNear);
-	        m_V2C(2,3) = 1.0f;
+            m_V2C(2,2) = (m_ZFar+m_ZNear)/(m_ZFar-m_ZNear);
+            m_V2C(2,3) = 1.0f;
             m_V2C(3,2) = (-2*m_ZNear*m_ZFar)/(m_ZFar-m_ZNear);
         }
 #endif // !defined( CONFIG_RETAIL )
@@ -1299,19 +1299,19 @@ void view::UpdateC2S( void ) const
     {
         m_Dirty &= ~DIRTY_C2S;
 
-	    x_memset( &m_C2S, 0, sizeof(matrix4) );
+        x_memset( &m_C2S, 0, sizeof(matrix4) );
 
     #ifdef TARGET_PC
 
-	    f32 W = (m_ViewportX1 - m_ViewportX0+1)*0.5f;
-	    f32 H = (m_ViewportY1 - m_ViewportY0+1)*0.5f;
+        f32 W = (m_ViewportX1 - m_ViewportX0+1)*0.5f;
+        f32 H = (m_ViewportY1 - m_ViewportY0+1)*0.5f;
 
-	    m_C2S(0,0) =  W;
-	    m_C2S(1,1) = -H;
-	    m_C2S(2,2) =  1;
-	    m_C2S(3,3) =  1;
-	    m_C2S(3,0) =  W + m_ViewportX0;
-	    m_C2S(3,1) =  H + m_ViewportY0;
+        m_C2S(0,0) =  W;
+        m_C2S(1,1) = -H;
+        m_C2S(2,2) =  1;
+        m_C2S(3,3) =  1;
+        m_C2S(3,0) =  W + m_ViewportX0;
+        m_C2S(3,1) =  H + m_ViewportY0;
 
     #elif defined(TARGET_PS2)
 

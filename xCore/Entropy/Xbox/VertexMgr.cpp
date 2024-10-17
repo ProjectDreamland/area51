@@ -73,15 +73,15 @@ vert_factory::handle vert_factory::Alias( u32 nBytes,void* pData,aliasing_style 
     XGSetVertexBufferHeader( 0,0,0,0,Handle,0 );
 
     ASSERT( pData );
-	ASSERT(( Handle->Common & D3DCOMMON_INTREFCOUNT_MASK ) != D3DCOMMON_INTREFCOUNT_MASK );
+    ASSERT(( Handle->Common & D3DCOMMON_INTREFCOUNT_MASK ) != D3DCOMMON_INTREFCOUNT_MASK );
 
     //  -----------------------------------------------------------------------
     //
     //  Register and return
     //
-	Handle->Register( pData );
-	Handle->m_Ptr   = ( u8* )pData;
-	Handle->m_Len   = nBytes;
+    Handle->Register( pData );
+    Handle->m_Ptr   = ( u8* )pData;
+    Handle->m_Len   = nBytes;
     Handle->m_bAlias= true;
     return Handle;
 }
@@ -107,9 +107,9 @@ vert_factory::handle vert_factory::Create( const char* pResourceName,u32 nBytes,
     u8* Data = (u8*)m_Allocator.Alloc( pResourceName,nBytes );
     SanityCheckTNV();
 
-	Handle->Register( Data );
-	Handle->m_Len = nBytes;
-	Handle->m_Ptr = Data;
+    Handle->Register( Data );
+    Handle->m_Len = nBytes;
+    Handle->m_Ptr = Data;
     if( pRaw )
         x_memcpy( Data,pRaw,nBytes );
 
@@ -149,8 +149,8 @@ void vert_factory::buffer::Kill( void )
         m_Allocator.Free( m_Ptr );
 
     IDirect3DResource8::Common = 0;
-	IDirect3DResource8::Lock   = 0;
-	IDirect3DResource8::Data   = 0;
+    IDirect3DResource8::Lock   = 0;
+    IDirect3DResource8::Data   = 0;
 
     Init( );
 }
@@ -182,9 +182,9 @@ void vert_factory::buffer::Window( u32 Start )
     SanityCheckTNV();
 
     XGSetVertexBufferHeader( 0,0,0,0,this,0 );
-	ASSERT(( Common & D3DCOMMON_INTREFCOUNT_MASK ) != D3DCOMMON_INTREFCOUNT_MASK );
+    ASSERT(( Common & D3DCOMMON_INTREFCOUNT_MASK ) != D3DCOMMON_INTREFCOUNT_MASK );
     void* pNewBase = ((u8*)m_Ptr)+Start;
-	Register( pNewBase );
+    Register( pNewBase );
 }
 
 //=============================================================================

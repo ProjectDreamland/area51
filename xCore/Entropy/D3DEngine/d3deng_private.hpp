@@ -278,7 +278,7 @@ enum mouse_mode
     MOUSE_MODE_BUTTONS,
     MOUSE_MODE_NEVER,
     MOUSE_MODE_ALWAYS,
-	MOUSE_MODE_ABSOLUTE
+    MOUSE_MODE_ABSOLUTE
 };
 
 void  d3deng_SetMouseMode    ( mouse_mode Mode );

@@ -194,7 +194,7 @@ xbool io_device_dvd::PhysicalOpen( const char* pFilename, io_device_file* pFile 
 xbool io_device_dvd::PhysicalRead( io_device_file* pFile, void* pBuffer, s32 Length, s32 Offset, s32 AddressSpace )
 {
     xbool Success;
-	(void)AddressSpace;
+    (void)AddressSpace;
 
     // Just to make for certain we are NOT trying to transfer directly to vm space.
     ASSERTS( ((u32)pFile->pBuffer >> 24) >= 0x80,"Attempt to do a device read direct to virtual memory");
@@ -276,7 +276,7 @@ xbool io_device_dvd::PhysicalOpen( const char* pFilename, io_device_file* pFile 
 
 xbool io_device_dvd::PhysicalRead( io_device_file* pFile, void* pBuffer, s32 Length, s32 Offset, s32 AddressSpace )
 {
-	(void)AddressSpace;
+    (void)AddressSpace;
 
     // Just to make for certain we are NOT trying to transfer directly to vm space.
     ASSERTS( ((u32)pFile->pBuffer >> 24) == 0x80,"Attempt to do a device read direct to virtual memory");

@@ -1,51 +1,51 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DNASModule", "DNASModule\DNASModule.vcproj", "{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5} = {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}
-	EndProjectSection
+    ProjectSection(ProjectDependencies) = postProject
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5} = {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}
+    EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DNASModule_SCEE", "DNASModule\DNASModule_SCEE.vcproj", "{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
+    ProjectSection(ProjectDependencies) = postProject
+    EndProjectSection
 EndProject
 Global
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 3
-		SccProjectName0 = Perforce\u0020Project
-		SccLocalPath0 = .
-		SccProvider0 = MSSCCI:Perforce\u0020SCM
-		CanCheckoutShared = true
-		SolutionUniqueID = {83001826-022A-4060-8CF0-42298581BAE8}
-		SccProjectUniqueName1 = DNASModule\\DNASModule.vcproj
-		SccLocalPath1 = ..\\..\\..\\..\\..
-		CanCheckoutShared = true
-		SccProjectFilePathRelativizedFromConnection1 = xCore\\Entropy\\Network\\PS2\\DNAS\\DNASModule\\
-		SccProjectUniqueName2 = DNASModule\\DNASModule_SCEE.vcproj
-		SccLocalPath2 = ..\\..\\..\\..\\..
-		CanCheckoutShared = true
-		SccProjectFilePathRelativizedFromConnection2 = xCore\\Entropy\\Network\\PS2\\DNAS\\DNASModule\\
-	EndGlobalSection
-	GlobalSection(SolutionConfiguration) = preSolution
-		PS2-Debug = PS2-Debug
-		PS2-OptDebug = PS2-OptDebug
-		PS2-Retail = PS2-Retail
-	EndGlobalSection
-	GlobalSection(ProjectConfiguration) = postSolution
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Debug.ActiveCfg = PS2-Debug|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Debug.Build.0 = PS2-Debug|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-OptDebug.ActiveCfg = PS2-OptDebug|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-OptDebug.Build.0 = PS2-OptDebug|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Retail.ActiveCfg = PS2-Retail|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Retail.Build.0 = PS2-Retail|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Debug.ActiveCfg = PS2-Debug|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Debug.Build.0 = PS2-Debug|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-OptDebug.ActiveCfg = PS2-OptDebug|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-OptDebug.Build.0 = PS2-OptDebug|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Retail.ActiveCfg = PS2-Retail|Win32
-		{A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Retail.Build.0 = PS2-Retail|Win32
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
-	EndGlobalSection
+    GlobalSection(SourceCodeControl) = preSolution
+        SccNumberOfProjects = 3
+        SccProjectName0 = Perforce\u0020Project
+        SccLocalPath0 = .
+        SccProvider0 = MSSCCI:Perforce\u0020SCM
+        CanCheckoutShared = true
+        SolutionUniqueID = {83001826-022A-4060-8CF0-42298581BAE8}
+        SccProjectUniqueName1 = DNASModule\\DNASModule.vcproj
+        SccLocalPath1 = ..\\..\\..\\..\\..
+        CanCheckoutShared = true
+        SccProjectFilePathRelativizedFromConnection1 = xCore\\Entropy\\Network\\PS2\\DNAS\\DNASModule\\
+        SccProjectUniqueName2 = DNASModule\\DNASModule_SCEE.vcproj
+        SccLocalPath2 = ..\\..\\..\\..\\..
+        CanCheckoutShared = true
+        SccProjectFilePathRelativizedFromConnection2 = xCore\\Entropy\\Network\\PS2\\DNAS\\DNASModule\\
+    EndGlobalSection
+    GlobalSection(SolutionConfiguration) = preSolution
+        PS2-Debug = PS2-Debug
+        PS2-OptDebug = PS2-OptDebug
+        PS2-Retail = PS2-Retail
+    EndGlobalSection
+    GlobalSection(ProjectConfiguration) = postSolution
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Debug.ActiveCfg = PS2-Debug|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Debug.Build.0 = PS2-Debug|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-OptDebug.ActiveCfg = PS2-OptDebug|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-OptDebug.Build.0 = PS2-OptDebug|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Retail.ActiveCfg = PS2-Retail|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Retail.Build.0 = PS2-Retail|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Debug.ActiveCfg = PS2-Debug|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Debug.Build.0 = PS2-Debug|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-OptDebug.ActiveCfg = PS2-OptDebug|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-OptDebug.Build.0 = PS2-OptDebug|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Retail.ActiveCfg = PS2-Retail|Win32
+        {A3EBD7E0-21FB-4592-8685-919CAA59C1B5}.PS2-Retail.Build.0 = PS2-Retail|Win32
+    EndGlobalSection
+    GlobalSection(ExtensibilityGlobals) = postSolution
+    EndGlobalSection
+    GlobalSection(ExtensibilityAddIns) = postSolution
+    EndGlobalSection
 EndGlobal

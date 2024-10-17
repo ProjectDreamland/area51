@@ -66,7 +66,7 @@ void text_Init( void )
                       0,   0,
                       8,   8, 
                       8 );*/
-	text_SetParams( 512, 512,
+    text_SetParams( 512, 512,
                       0,   0,
                       8,   8, 
                       8 );

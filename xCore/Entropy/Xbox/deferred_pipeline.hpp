@@ -539,7 +539,7 @@ _cont:  push    edi
                 lea     esi,[esi+64]
                 lea     edi,[edi+64]
                 dec     ecx
-	            jnz    _loop
+                jnz    _loop
 
                 emms
 

@@ -48,7 +48,7 @@ u32 audio_package::LoadHotSample( X_FILE* f, hot_sample* pHotSample, u32 Aram )
     CONTEXT("audio_package::LoadHotSample");
 
 #ifdef TARGET_PS2
-	io_request Request;
+    io_request Request;
 #endif
 
     switch( pHotSample->CompressionType )
@@ -56,8 +56,8 @@ u32 audio_package::LoadHotSample( X_FILE* f, hot_sample* pHotSample, u32 Aram )
 #ifdef TARGET_GCN
         case ADPCM:
         {
-		    // Seek to sample offset within the file
-		    x_fseek( f, pHotSample->WaveformOffset, X_SEEK_SET );
+            // Seek to sample offset within the file
+            x_fseek( f, pHotSample->WaveformOffset, X_SEEK_SET );
 
             // Read the sample waveform
             void* TempBuffer = x_malloc( pHotSample->WaveformLength );
@@ -78,8 +78,8 @@ u32 audio_package::LoadHotSample( X_FILE* f, hot_sample* pHotSample, u32 Aram )
         case MP3:
         case PCM:
         {
-			// Seek to sample offset within the file
-			x_fseek( f, pHotSample->WaveformOffset, X_SEEK_SET );
+            // Seek to sample offset within the file
+            x_fseek( f, pHotSample->WaveformOffset, X_SEEK_SET );
             // Read the sample waveform
             x_fread( (void*)Aram, pHotSample->WaveformLength, 1, f );
 
@@ -92,8 +92,8 @@ u32 audio_package::LoadHotSample( X_FILE* f, hot_sample* pHotSample, u32 Aram )
         case ADPCM:
         case   PCM:
         {
-			// Seek to sample offset within the file
-			x_fseek( f, pHotSample->WaveformOffset, X_SEEK_SET );
+            // Seek to sample offset within the file
+            x_fseek( f, pHotSample->WaveformOffset, X_SEEK_SET );
             // Read the sample waveform
             x_fread( (void*)Aram, pHotSample->WaveformLength, 1, f );
 
@@ -103,16 +103,16 @@ u32 audio_package::LoadHotSample( X_FILE* f, hot_sample* pHotSample, u32 Aram )
 
 
 #ifdef TARGET_PS2
-		case ADPCM:
+        case ADPCM:
         {
             byte* TempBuffer = (byte*)x_malloc( pHotSample->WaveformLength );
             {
                 CONTEXT("HotSampleRead");
 
-		        // Seek to sample offset within the file
-		        x_fseek( f, pHotSample->WaveformOffset, X_SEEK_SET );
+                // Seek to sample offset within the file
+                x_fseek( f, pHotSample->WaveformOffset, X_SEEK_SET );
 
-			    // Set up an io manager read request but going to the audio ram address space
+                // Set up an io manager read request but going to the audio ram address space
 
                 x_fread( TempBuffer, pHotSample->WaveformLength, 1, f );
 
@@ -148,7 +148,7 @@ u32 audio_package::LoadHotSample( X_FILE* f, hot_sample* pHotSample, u32 Aram )
             // time to complete all the transfers.
             //****BW**** END HACK ALERT END HACK ALERT
             x_free( TempBuffer );
-			return pHotSample->WaveformLength;
+            return pHotSample->WaveformLength;
         }
 #endif
         default:

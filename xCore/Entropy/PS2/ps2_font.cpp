@@ -25,11 +25,11 @@
 
 struct header
 {
-	dmatag   DMA;       // DMA tag
-	giftag   PGIF;      // GIF for setting PRIM register
-	s64      Prim;      // PRIM register
-	s64      Color;		// RGBAQ register
-	giftag   GIF;		// GIF for actual primitives
+    dmatag   DMA;       // DMA tag
+    giftag   PGIF;      // GIF for setting PRIM register
+    s64      Prim;      // PRIM register
+    s64      Color;        // RGBAQ register
+    giftag   GIF;        // GIF for actual primitives
 };
 
 struct char_info
@@ -159,7 +159,7 @@ void font_EndChars( void )
                             0,    // context (1 or 2)
                             0);  // fragment value control (normal, fixed)
 
-	s_pHeader->Color = SCE_GS_SET_RGBAQ(s_CharColor.R,s_CharColor.G,s_CharColor.B,s_CharColor.A,1);
+    s_pHeader->Color = SCE_GS_SET_RGBAQ(s_CharColor.R,s_CharColor.G,s_CharColor.B,s_CharColor.A,1);
 
     // we may not have used all of the space available, so give back what
     // we can to the display list
@@ -183,23 +183,23 @@ void font_Render( char* Str, s32 NChars, xcolor Color, s32 PixelX, s32 PixelY )
     {
         s32 C;
         s32 CX,CY;
-	    s32 X0,Y0,X1,Y1;
+        s32 X0,Y0,X1,Y1;
         char_info* pCH;
 
         C  = (*Str++) - 32;
         CX = (C & 0xF);
         CY = (C >> 4 );
 
-	    X0 = (OFFSET_X<<4) + ((PixelX)<<4);
-	    Y0 = (OFFSET_Y<<4) + ((PixelY)<<4);
-	    X1 = (OFFSET_X<<4) + ((PixelX+CHAR_WIDTH)<<4);
-	    Y1 = (OFFSET_Y<<4) + ((PixelY+CHAR_HEIGHT)<<4);
+        X0 = (OFFSET_X<<4) + ((PixelX)<<4);
+        Y0 = (OFFSET_Y<<4) + ((PixelY)<<4);
+        X1 = (OFFSET_X<<4) + ((PixelX+CHAR_WIDTH)<<4);
+        Y1 = (OFFSET_Y<<4) + ((PixelY+CHAR_HEIGHT)<<4);
 
         pCH = s_pChar;
-	    pCH->T0 = SCE_GS_SET_UV( (8+(((CX<<4)+0)<<4)), (8+(((CY<<4)+0)<<4)) );
-	    pCH->P0 = SCE_GS_SET_XYZ(X0,Y0,0xFFFFFFFF);
-	    pCH->T1 = SCE_GS_SET_UV( (8+(((CX<<4)+16)<<4)), (8+(((CY<<4)+16)<<4)) );
-	    pCH->P1 = SCE_GS_SET_XYZ(X1,Y1,0xFFFFFFFF);
+        pCH->T0 = SCE_GS_SET_UV( (8+(((CX<<4)+0)<<4)), (8+(((CY<<4)+0)<<4)) );
+        pCH->P0 = SCE_GS_SET_XYZ(X0,Y0,0xFFFFFFFF);
+        pCH->T1 = SCE_GS_SET_UV( (8+(((CX<<4)+16)<<4)), (8+(((CY<<4)+16)<<4)) );
+        pCH->P1 = SCE_GS_SET_XYZ(X1,Y1,0xFFFFFFFF);
 
         PixelX += CHAR_WIDTH;
 
@@ -224,11 +224,11 @@ void font_EndRender( void )
 /*
 void font_Render( char* Str, s32 SX, s32 SY )
 {
-	while( *Str )
-	{
-		font_RenderC( *Str, SX, SY );
-		SX++;
-	}
+    while( *Str )
+    {
+        font_RenderC( *Str, SX, SY );
+        SX++;
+    }
 }
 
 //==========================================================================
@@ -239,7 +239,7 @@ void font_RenderC( char CH, s32 SX, s32 SY )
 
     s32 C;
     s32 CX,CY;
-	s32 X0,Y0,X1,Y1;
+    s32 X0,Y0,X1,Y1;
     char_info* pCH;
 
     SY++;
@@ -248,16 +248,16 @@ void font_RenderC( char CH, s32 SX, s32 SY )
     CX = (C & 0xF);
     CY = (C >> 4 );
 
-	X0 = (OFFSET_X<<4) + (((SX*13)+0)<<4);
-	Y0 = (OFFSET_Y<<4) + (((SY*18)+0)<<4);
-	X1 = (OFFSET_X<<4) + (((SX*13)+13)<<4);
-	Y1 = (OFFSET_Y<<4) + (((SY*18)+16)<<4);
+    X0 = (OFFSET_X<<4) + (((SX*13)+0)<<4);
+    Y0 = (OFFSET_Y<<4) + (((SY*18)+0)<<4);
+    X1 = (OFFSET_X<<4) + (((SX*13)+13)<<4);
+    Y1 = (OFFSET_Y<<4) + (((SY*18)+16)<<4);
 
     pCH = DLStruct(char_info);
-	pCH->T0 = SCE_GS_SET_UV( (8+(((CX<<4)+1)<<4)), (8+(((CY<<4)+0)<<4)) );
-	pCH->P0 = SCE_GS_SET_XYZ(X0,Y0,(1<<23));
-	pCH->T1 = SCE_GS_SET_UV( (8+(((CX<<4)+12)<<4)), (8+(((CY<<4)+16)<<4)) );
-	pCH->P1 = SCE_GS_SET_XYZ(X1,Y1,(1<<23));
+    pCH->T0 = SCE_GS_SET_UV( (8+(((CX<<4)+1)<<4)), (8+(((CY<<4)+0)<<4)) );
+    pCH->P0 = SCE_GS_SET_XYZ(X0,Y0,(1<<23));
+    pCH->T1 = SCE_GS_SET_UV( (8+(((CX<<4)+12)<<4)), (8+(((CY<<4)+16)<<4)) );
+    pCH->P1 = SCE_GS_SET_XYZ(X1,Y1,(1<<23));
 
     s_NChars++;
 

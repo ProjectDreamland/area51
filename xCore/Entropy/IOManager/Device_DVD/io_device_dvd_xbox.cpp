@@ -402,7 +402,7 @@ xbool io_device_dvd::PhysicalRead( io_device_file* pFile, void* pBuffer, s32 Len
     }
     // Suspend this thread until the callback gets a chance to run
     SleepEx(INFINITE,TRUE);
-	ASSERT(!s_InProgress);
+    ASSERT(!s_InProgress);
     return TRUE;
 }
 

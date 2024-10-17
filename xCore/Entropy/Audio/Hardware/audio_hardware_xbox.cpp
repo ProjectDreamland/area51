@@ -117,8 +117,8 @@ static void xbox_UpdateStreamADPCM( channel* pChannel )
     }
 
     if( pChannel->StreamData.pStream->StreamDone )
-	{
-		// Calculate absolute position
+    {
+        // Calculate absolute position
         pChannel->Hardware.CurrentPosition = pChannel->Hardware.BasePosition + pChannel->CurrBufferPosition;
 
         // Get actual number of bytes in the sample.
@@ -130,7 +130,7 @@ static void xbox_UpdateStreamADPCM( channel* pChannel )
             // Nuke it.
             g_AudioHardware.ReleaseChannel( pChannel );
         }
-	}
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -211,10 +211,10 @@ static LPDIRECTSOUNDBUFFER8 CreateBuffer( channel& Channel )
     dsbd.dwSize        = sizeof(DSBUFFERDESC);
     dsbd.dwFlags       = 0; //DSBCAPS_LOCDEFER; //DSBCAPS_CTRL3D;
     dsbd.lpwfxFormat   = &wfx;
-	dsbd.lpMixBins     = &Channel.Hardware.dsmb;  // Set the mix bins address.
+    dsbd.lpMixBins     = &Channel.Hardware.dsmb;  // Set the mix bins address.
 
-	Channel.Hardware.dsmb.dwMixBinCount = 4;
-	Channel.Hardware.dsmb.lpMixBinVolumePairs = Channel.Hardware.dsmbvp;
+    Channel.Hardware.dsmb.dwMixBinCount = 4;
+    Channel.Hardware.dsmb.lpMixBinVolumePairs = Channel.Hardware.dsmbvp;
 
     // Our default mapping is to send to every speaker at minimum
     // volume.  This way, any time we switch sounds, we'll be 
@@ -239,10 +239,10 @@ static LPDIRECTSOUNDBUFFER8 CreateBuffer( channel& Channel )
     HRESULT hr = s_lpDs8->CreateSoundBuffer( &dsbd, &pdsb, NULL );
     ASSERT(!hr );
 
-	pdsb->SetMixBins( &Channel.Hardware.dsmb );
+    pdsb->SetMixBins( &Channel.Hardware.dsmb );
 
-	// Nuke the headroom, its built into the audio levels.
-	pdsb->SetHeadroom( 0 );
+    // Nuke the headroom, its built into the audio levels.
+    pdsb->SetHeadroom( 0 );
 
     return pdsb;
 }
@@ -308,14 +308,14 @@ void audio_hardware::Init( s32 MemSize )
     s_AramAllocator.Init( s_pOs, MAX_AUDIO_RAM );
     #endif
 /*
-	// Headroom stuff
+    // Headroom stuff
     u32 SpeakerConfig = XGetAudioFlags();
     if ( 1 ) //|| XC_AUDIO_FLAGS_ENCODED( SpeakerConfig ) & XC_AUDIO_FLAGS_ENABLE_AC3 )
     {
-	    s_lpDs8->SetMixBinHeadroom( DSMIXBIN_3D_BACK_LEFT, 7 );
-	    s_lpDs8->SetMixBinHeadroom( DSMIXBIN_3D_BACK_RIGHT, 7 );
-	    s_lpDs8->SetMixBinHeadroom( DSMIXBIN_3D_FRONT_LEFT, 7 );
-	    s_lpDs8->SetMixBinHeadroom( DSMIXBIN_3D_FRONT_RIGHT, 7 );
+        s_lpDs8->SetMixBinHeadroom( DSMIXBIN_3D_BACK_LEFT, 7 );
+        s_lpDs8->SetMixBinHeadroom( DSMIXBIN_3D_BACK_RIGHT, 7 );
+        s_lpDs8->SetMixBinHeadroom( DSMIXBIN_3D_FRONT_LEFT, 7 );
+        s_lpDs8->SetMixBinHeadroom( DSMIXBIN_3D_FRONT_RIGHT, 7 );
     }
 */
 }
@@ -409,7 +409,7 @@ void audio_hardware::ReleaseChannel( channel* pChannel )
         }
     }
 
-	if( pChannel->Hardware.InUse )
+    if( pChannel->Hardware.InUse )
     {
         // Stop it.
         LPDIRECTSOUNDBUFFER8 pdsb = pChannel->Hardware.pdsBuffer;
@@ -527,7 +527,7 @@ void audio_hardware::InitChannel( channel* pChannel )
     pChannel->Hardware.CurrentPosition = 0;
     pChannel->CurrBufferPosition       = 0;
     pChannel->PrevBufferPosition       = 0;
-	pChannel->Hardware.BasePosition    = 0;
+    pChannel->Hardware.BasePosition    = 0;
     pChannel->Hardware.IsStarted       = FALSE;
 
     // Init.
@@ -564,11 +564,11 @@ void audio_hardware::InitChannel( channel* pChannel )
         pdsb->SetLoopRegion( LoopStart, LoopLength  );
     }
 
-	// Max volume!
-	pdsb->SetVolume( DSBVOLUME_MAX );
+    // Max volume!
+    pdsb->SetVolume( DSBVOLUME_MAX );
 
-	// Set the mix bins.
-	pdsb->SetMixBins( &pChannel->Hardware.dsmb );
+    // Set the mix bins.
+    pdsb->SetMixBins( &pChannel->Hardware.dsmb );
 }
 
 //------------------------------------------------------------------------------
@@ -583,8 +583,8 @@ void audio_hardware::InitChannelStreamed( channel* pChannel )
 
     // Set the current position
     pChannel->CurrBufferPosition = 0;
-	pChannel->PrevBufferPosition = 0;
-	pChannel->StreamData.PreviousPosition = 0;
+    pChannel->PrevBufferPosition = 0;
+    pChannel->StreamData.PreviousPosition = 0;
     pChannel->Hardware.IsStarted = FALSE;
 
     // setup the buffer pointer
@@ -605,7 +605,7 @@ void audio_hardware::InitChannelStreamed( channel* pChannel )
     pChannel->PlayPosition    =
     pChannel->ReleasePosition = 0;
 
-	LPDIRECTSOUNDBUFFER8 pdsb = pChannel->Hardware.pdsBuffer;
+    LPDIRECTSOUNDBUFFER8 pdsb = pChannel->Hardware.pdsBuffer;
     
     // Will sample fit in one buffer?
     if( nSampleBytes < nBufferBytes )
@@ -640,11 +640,11 @@ void audio_hardware::InitChannelStreamed( channel* pChannel )
         pdsb->SetLoopRegion( LoopStart, LoopLength  );
     }
 
-	// Max volume!
-	pdsb->SetVolume( DSBVOLUME_MAX );
+    // Max volume!
+    pdsb->SetVolume( DSBVOLUME_MAX );
 
-	// Set the mix bins.
-	pdsb->SetMixBins( &pChannel->Hardware.dsmb );
+    // Set the mix bins.
+    pdsb->SetMixBins( &pChannel->Hardware.dsmb );
 }
 
 //------------------------------------------------------------------------------
@@ -672,8 +672,8 @@ u32 audio_hardware::GetSamplesPlayed( channel* pChannel )
     {
         // ADPCM?
         case ADPCM:
-			pChannel->nSamplesAdjust = ADPCM_BYTES_TO_SAMPLES( pChannel->CurrBufferPosition );
-			break;
+            pChannel->nSamplesAdjust = ADPCM_BYTES_TO_SAMPLES( pChannel->CurrBufferPosition );
+            break;
 
         default:
             ASSERT( 0 );
@@ -744,7 +744,7 @@ void audio_hardware::Update( void )
     channel* pChannel;
     channel* pHead;
     xbool    bCanStart;
-	xbool    bQueueStart     = FALSE;
+    xbool    bQueueStart     = FALSE;
     xbool    bCalculatePitch = FALSE;
     xbool    bIsDolbyDigital = g_AudioMgr.GetSpeakerConfig() == SPEAKERS_DOLBY_DIGITAI_5_1;
 
@@ -780,15 +780,15 @@ void audio_hardware::Update( void )
 
         if( Dirty )
         {
-			LONG NewVolume[4] = {DSBVOLUME_MIN,DSBVOLUME_MIN,DSBVOLUME_MIN,DSBVOLUME_MIN};
+            LONG NewVolume[4] = {DSBVOLUME_MIN,DSBVOLUME_MIN,DSBVOLUME_MIN,DSBVOLUME_MIN};
 
             //  Volume or Pan dirty?
             if( Dirty & (CHANNEL_DB_VOLUME|CHANNEL_DB_PAN) )
             {
                 if( pChannel->Volume )
                 {
-					f32 Volume;
-					
+                    f32 Volume;
+                    
                     if( bIsDolbyDigital && pChannel->pElement && pChannel->pElement->pStereoElement )
                     {
                         Volume = pChannel->Volume * pChannel->Pan3d.GetX();
@@ -817,59 +817,59 @@ void audio_hardware::Update( void )
                     }
                     else
                     {
-					    Volume = pChannel->Volume * pChannel->Pan3d.GetX();
-					    if( Volume < 0.01f )
-						    NewVolume[0] = DSBVOLUME_MIN;
-					    else
-						    NewVolume[0] = LONG(20.0f * x_log10( Volume ) * 100.0f);
+                        Volume = pChannel->Volume * pChannel->Pan3d.GetX();
+                        if( Volume < 0.01f )
+                            NewVolume[0] = DSBVOLUME_MIN;
+                        else
+                            NewVolume[0] = LONG(20.0f * x_log10( Volume ) * 100.0f);
 
-					    Volume = pChannel->Volume * pChannel->Pan3d.GetY();
-					    if( Volume < 0.01f )
-						    NewVolume[1] = DSBVOLUME_MIN;
-					    else
-						    NewVolume[1] = LONG(20.0f * x_log10( Volume ) * 100.0f);
+                        Volume = pChannel->Volume * pChannel->Pan3d.GetY();
+                        if( Volume < 0.01f )
+                            NewVolume[1] = DSBVOLUME_MIN;
+                        else
+                            NewVolume[1] = LONG(20.0f * x_log10( Volume ) * 100.0f);
 
-					    Volume = pChannel->Volume * pChannel->Pan3d.GetZ();
-					    if( Volume < 0.01f )
-						    NewVolume[2] = DSBVOLUME_MIN;
-					    else
-						    NewVolume[2] = LONG(20.0f * x_log10( Volume ) * 100.0f);
+                        Volume = pChannel->Volume * pChannel->Pan3d.GetZ();
+                        if( Volume < 0.01f )
+                            NewVolume[2] = DSBVOLUME_MIN;
+                        else
+                            NewVolume[2] = LONG(20.0f * x_log10( Volume ) * 100.0f);
 
-					    Volume = pChannel->Volume * pChannel->Pan3d.GetW();
-					    if( Volume < 0.01f )
-						    NewVolume[3] = DSBVOLUME_MIN;
-					    else
-						    NewVolume[3] = LONG(20.0f * x_log10( Volume ) * 100.0f);
+                        Volume = pChannel->Volume * pChannel->Pan3d.GetW();
+                        if( Volume < 0.01f )
+                            NewVolume[3] = DSBVOLUME_MIN;
+                        else
+                            NewVolume[3] = LONG(20.0f * x_log10( Volume ) * 100.0f);
                     }
                 }
 
                 if( NewVolume[0] < DSBVOLUME_MIN )
-					NewVolume[0] = DSBVOLUME_MIN;
-				else if( NewVolume[0] > DSBVOLUME_MAX )
-					NewVolume[0] = DSBVOLUME_MAX;
+                    NewVolume[0] = DSBVOLUME_MIN;
+                else if( NewVolume[0] > DSBVOLUME_MAX )
+                    NewVolume[0] = DSBVOLUME_MAX;
 
-				if( NewVolume[1] < DSBVOLUME_MIN )
-					NewVolume[1] = DSBVOLUME_MIN;
-				else if( NewVolume[1] > DSBVOLUME_MAX )
-					NewVolume[1] = DSBVOLUME_MAX;
+                if( NewVolume[1] < DSBVOLUME_MIN )
+                    NewVolume[1] = DSBVOLUME_MIN;
+                else if( NewVolume[1] > DSBVOLUME_MAX )
+                    NewVolume[1] = DSBVOLUME_MAX;
                 
-				if( NewVolume[2] < DSBVOLUME_MIN )
-					NewVolume[2] = DSBVOLUME_MIN;
-				else if( NewVolume[2] > DSBVOLUME_MAX )
-					NewVolume[2] = DSBVOLUME_MAX;
+                if( NewVolume[2] < DSBVOLUME_MIN )
+                    NewVolume[2] = DSBVOLUME_MIN;
+                else if( NewVolume[2] > DSBVOLUME_MAX )
+                    NewVolume[2] = DSBVOLUME_MAX;
 
-				if( NewVolume[3] < DSBVOLUME_MIN )
-					NewVolume[3] = DSBVOLUME_MIN;
-				else if( NewVolume[3] > DSBVOLUME_MAX )
-					NewVolume[3] = DSBVOLUME_MAX;
-				// Set the volume.
-				pChannel->Hardware.dsmbvp[0].lVolume = NewVolume[0];
-				pChannel->Hardware.dsmbvp[1].lVolume = NewVolume[1];
-				pChannel->Hardware.dsmbvp[2].lVolume = NewVolume[2];
-				pChannel->Hardware.dsmbvp[3].lVolume = NewVolume[3];
+                if( NewVolume[3] < DSBVOLUME_MIN )
+                    NewVolume[3] = DSBVOLUME_MIN;
+                else if( NewVolume[3] > DSBVOLUME_MAX )
+                    NewVolume[3] = DSBVOLUME_MAX;
+                // Set the volume.
+                pChannel->Hardware.dsmbvp[0].lVolume = NewVolume[0];
+                pChannel->Hardware.dsmbvp[1].lVolume = NewVolume[1];
+                pChannel->Hardware.dsmbvp[2].lVolume = NewVolume[2];
+                pChannel->Hardware.dsmbvp[3].lVolume = NewVolume[3];
 
-				// Set all speaker volumes
-				pdsb->SetMixBinVolumes( &pChannel->Hardware.dsmb );
+                // Set all speaker volumes
+                pdsb->SetMixBinVolumes( &pChannel->Hardware.dsmb );
 
                 // Clear dirty bit
                 Dirty &= ~(CHANNEL_DB_VOLUME|CHANNEL_DB_PAN);
@@ -882,7 +882,7 @@ void audio_hardware::Update( void )
                 {
                     f32 PitchFactor        = g_AudioHardware.GetPitchFactor();
                     hot_sample* pHotSample = pChannel->Sample.pHotSample;
-	                s32 Frequency;
+                    s32 Frequency;
                     
                     if( pChannel->pElement && pChannel->pElement->pVoice && pChannel->pElement->pVoice->bPitchLock )
                     {
@@ -903,7 +903,7 @@ void audio_hardware::Update( void )
                     if( pdsb )
                     {
 
-    	                pdsb->SetFrequency(Frequency) ;
+                        pdsb->SetFrequency(Frequency) ;
                     }
                 }
 
@@ -930,7 +930,7 @@ void audio_hardware::Update( void )
                 break;
             
             case STATE_STARTING:
-			{
+            {
                 xbool bStart = bCanStart;
 
                 if( pChannel->pElement && pChannel->pElement->pVoice && (pChannel->pElement->pVoice->StartQ==2) )
@@ -945,7 +945,7 @@ void audio_hardware::Update( void )
                     pChannel->State = STATE_RUNNING;
                 }
                 break;
-			}
+            }
 
             case STATE_RUNNING:
                 DWORD CurrentPosition;
@@ -983,8 +983,8 @@ void audio_hardware::Update( void )
                 }
                 break;
 
-			case STATE_STOPPED:
-			case STATE_PAUSED:
+            case STATE_STOPPED:
+            case STATE_PAUSED:
                 break;
             
             default:
@@ -996,8 +996,8 @@ void audio_hardware::Update( void )
         // Previous channel...
         pChannel = pPrevChannel;
     }
-	
-	// Special stuff when we start a queued sound.
+    
+    // Special stuff when we start a queued sound.
     if( bQueueStart )
     {
         // Loop through active channels (starting with lowest priority).

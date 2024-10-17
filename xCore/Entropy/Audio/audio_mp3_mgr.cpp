@@ -61,21 +61,21 @@ S32 mp3_fetch_data( U32 UserData, void* pBuffer, S32 nBytes, S32 Offset )
         if( Length )
         {
             x_memcpy( pBuffer, (void*)(pStream->MainRAM[0] + Previous), Length );
-			x_memset( (void*)(pStream->MainRAM[0] + Previous), 0, Length );
+            x_memset( (void*)(pStream->MainRAM[0] + Previous), 0, Length );
             pBuffer = (void*)((s32)pBuffer + Length);
         }
 
         // Now wrap it and copy data from start of buffer to cursor.
         Current -= (MP3_BUFFER_SIZE*2);
         x_memcpy( pBuffer, (void*)pStream->MainRAM[0], Current );
-		x_memset( (void*)pStream->MainRAM[0], 0, Current );
+        x_memset( (void*)pStream->MainRAM[0], 0, Current );
     }
     // Did not wrap, so just copy the data.
     else
     {
         // Copy it.
         x_memcpy( pBuffer, (void*)(pStream->MainRAM[0] + Previous), nBytes );
-		x_memset( (void*)(pStream->MainRAM[0] + Previous), 0, nBytes );
+        x_memset( (void*)(pStream->MainRAM[0] + Previous), 0, nBytes );
     }
 
     // Update the mp3 buffer cursor.
@@ -125,7 +125,7 @@ audio_mp3_mgr::~audio_mp3_mgr( void )
 void audio_mp3_mgr::Init( void )
 {
     ASSERT( s_Initialized == FALSE );
-    //ASI_startup();
+    ASI_startup();
     s_Initialized = TRUE;
 }
 
@@ -134,7 +134,7 @@ void audio_mp3_mgr::Init( void )
 void audio_mp3_mgr::Kill( void )
 {
     ASSERT( s_Initialized );
-    //ASI_shutdown();
+    ASI_shutdown();
     s_Initialized = FALSE;
 }
 
@@ -145,8 +145,8 @@ void audio_mp3_mgr::Open( audio_stream* pStream )
     ASSERT( s_Initialized );
     ASSERT( VALID_STREAM(pStream) );
     pStream->CursorMP3 = 0;
-    //pStream->HandleMP3 = (void*)ASI_stream_open( (U32)pStream, mp3_fetch_data, pStream->Samples[0].Sample.WaveformLength );
-	pStream->HandleMP3 = NULL;
+    pStream->HandleMP3 = (void*)ASI_stream_open( (U32)pStream, mp3_fetch_data, pStream->Samples[0].Sample.WaveformLength );
+    pStream->HandleMP3 = NULL;
 }
 
 //------------------------------------------------------------------------------
@@ -156,8 +156,8 @@ void audio_mp3_mgr::Close( audio_stream* pStream )
     ASSERT( s_Initialized );
     ASSERT( VALID_STREAM(pStream) );
 
-    //if( pStream->HandleMP3 )
-    //    ASI_stream_close( (s32)pStream->HandleMP3 );
+    if( pStream->HandleMP3 )
+        ASI_stream_close( (s32)pStream->HandleMP3 );
     pStream->HandleMP3 = NULL;
 }
 

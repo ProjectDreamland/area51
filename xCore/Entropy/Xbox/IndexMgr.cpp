@@ -21,7 +21,7 @@
 //==============================================================================
 
 index_factory::handle index_factory::Create( u32 nBytes, u32 Format, void* pBytes )
-{	//
+{    //
     //  Allocates header
     //
     handle Handle = new buffer;
@@ -61,7 +61,7 @@ void index_factory::buffer::Init( )
 
 void index_factory::buffer::Kill( )
 {
-	BlockUntilNotBusy( );
+    BlockUntilNotBusy( );
     x_free( m_Ptr );
     Init( );
 }

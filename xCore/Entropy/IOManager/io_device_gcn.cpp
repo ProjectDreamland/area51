@@ -155,7 +155,7 @@ s32             g_nSeekTrack        = 0;
 static xbool DeviceCDROMRead( io_device_file* pFile, void* pBuffer, s32 Length, s32 Offset,s32 AddressSpace )
 {
     xbool Success;
-	(void)AddressSpace;
+    (void)AddressSpace;
 
     // Just to make for certain we are NOT trying to transfer directly to vm space.
     ASSERTS( ((u32)pFile->pBuffer >> 24) == 0x80,"Attempt to do a device read direct to virtual memory");
@@ -249,7 +249,7 @@ static void DeviceCDROMClose( io_device_file* pFile )
 static xbool DeviceCDROMRead( io_device_file* pFile, void* pBuffer, s32 Length, s32 Offset, s32 AddressSpace )
 {
     xbool Success;
-	(void)AddressSpace;
+    (void)AddressSpace;
 
     Success = DVDReadAsync( (DVDFileInfo*)pFile->pDeviceInfo, pBuffer, Length, Offset, gcn_DVDCallback );
 

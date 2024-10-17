@@ -181,7 +181,7 @@ xbool io_device_dvd::PhysicalOpen( const char* pFilename, io_device_file* pFile,
 xbool io_device_dvd::PhysicalRead( io_device_file* pFile, void* pBuffer, s32 Length, s32 Offset, s32 AddressSpace )
 {
     s32 ReadLength;
-	(void)AddressSpace;
+    (void)AddressSpace;
 
     // Log the read.
     LogPhysRead( pFile, Length, Offset );    

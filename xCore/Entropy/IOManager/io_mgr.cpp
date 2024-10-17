@@ -219,8 +219,8 @@ s32 io_mgr::QueueRequest( io_request* pRequest )
 
     ASSERT( pRequest->m_Priority >= io_request::HIGH_PRIORITY );
     ASSERT( pRequest->m_Priority <= io_request::LOW_PRIORITY );
-	// BW - A buffer address of 0 is actually valid when the destination
-	// is audio ram for the PS2.
+    // BW - A buffer address of 0 is actually valid when the destination
+    // is audio ram for the PS2.
     ASSERT( pRequest->m_pBuffer || pRequest->m_Destination);
     ASSERT( pRequest->m_Offset >= 0 );
     ASSERT( pRequest->m_Length >= 0 );

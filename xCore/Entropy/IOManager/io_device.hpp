@@ -25,18 +25,18 @@ class io_device;
 
 struct io_device_file
 {
-        	void*           pBuffer;
-        	xbool           IsOpen;
-        	void*           pHeader;
-        	void*           Handle;
-        	s32             Length;
-        	s32             BufferValid;
+            void*           pBuffer;
+            xbool           IsOpen;
+            void*           pHeader;
+            void*           Handle;
+            s32             Length;
+            s32             BufferValid;
             s32             SubFileIndex;
-volatile	s32             ReferenceCount;
-        	io_device*      pDevice;
-        	void*           pHardwareData;
-        	char            Filename[IO_DEVICE_FILENAME_LIMIT];
-        	io_device_file* pNext;
+volatile    s32             ReferenceCount;
+            io_device*      pDevice;
+            void*           pHardwareData;
+            char            Filename[IO_DEVICE_FILENAME_LIMIT];
+            io_device_file* pNext;
 };
 
 //==============================================================================
