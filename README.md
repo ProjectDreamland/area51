@@ -22,32 +22,32 @@ Name           | Compiled
 Art2Code       | Yes
 ArtistViewer   | No
 AnimCompiler   | Yes
-AudioEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
+AudioEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 A51SoundPKG    | Yes
-BinaryString   | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
-BitmapEditor   | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
-DecalEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
+BinaryString   | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
+BitmapEditor   | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
+DecalEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 DecalCompiler  | Yes
 DFSTool        | Yes
 Editor         | Yes
-EDRscDesc      | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
+EDRscDesc      | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 EffectsEditor  | Yes
 ELFTool        | Yes
-EventEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
-FontEditor     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
+EventEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
+FontEditor     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 FontBuilder    | Yes
-FxEditor       | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
+FxEditor       | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 FXCompiler     | Yes
 GameApp        | Yes/Models doesn't boot
 GeomCompiler   | Yes
-LocoEditor     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
-MeshViewer     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
-PropertyEditor | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
+LocoEditor     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
+MeshViewer     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
+PropertyEditor | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 SoundPackager  | Yes
 StringTool     | Yes
 Viewer         | Yes
-WinControls    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
-WorldEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor)
+WinControls    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
+WorldEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 XBMPTool       | Yes
 XBMPViewer     | Yes
 xCL            | Yes
