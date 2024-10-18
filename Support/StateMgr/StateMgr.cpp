@@ -336,7 +336,11 @@ void state_mgr::Init( void )
     m_ActiveControllerID        = -1;
     m_SettingsCardSlot          = -1;
     m_bAutosaveInProgress       = FALSE;
-    m_bDisableMemcardDialogs    = FALSE;
+#ifdef TARGET_PC
+    m_bDisableMemcardDialogs    = TRUE; //Temp solution
+#else
+	m_bDisableMemcardDialogs    = FALSE;
+#endif
     m_bSilentSigninStarted      = FALSE;
 
     // calculate save sizes
@@ -455,9 +459,11 @@ void state_mgr::Init( void )
     #ifdef TARGET_XBOX
         // The ESRB notice is done elsewhere
         SetState( SM_INEVITABLE_INTRO );
-    #else
+    #endif
+	#ifdef TARGET_PC
         // Normal build.
-        SetState( SM_ESRB_NOTICE );
+        //SetState( SM_ESRB_NOTICE );
+		SetState( SM_SPLASH_SCREEN );
     #endif
     }
 #endif
@@ -533,7 +539,9 @@ const char* state_mgr::GetStateName( sm_states State )
     switch( State )
     {
         LABEL_STRING( SM_IDLE );
-
+#ifdef TARGET_PC
+        LABEL_STRING( SM_SPLASH_SCREEN );
+#endif
         LABEL_STRING( SM_ESRB_NOTICE );
         LABEL_STRING( SM_INEVITABLE_INTRO );
 #ifndef TARGET_XBOX
@@ -1327,6 +1335,9 @@ void state_mgr::EnterState( sm_states State )
 {
     switch( State )
     {
+#ifdef TARGET_PC
+        case SM_SPLASH_SCREEN:                  EnterSplashScreen();                break;
+#endif		
         case SM_ESRB_NOTICE:                    EnterESRBNotice();                  break;
         case SM_INEVITABLE_INTRO:               EnterInevitableIntro();             break;
 #ifndef TARGET_XBOX
@@ -1568,6 +1579,9 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
     // Update
     switch( State )
     {
+#ifdef TARGET_PC
+        case SM_SPLASH_SCREEN:                  UpdateSplashScreen();               break;
+#endif
         case SM_ESRB_NOTICE:                    UpdateESRBNotice();                 break;
         case SM_INEVITABLE_INTRO:               UpdateInevitableIntro();            break;
 #ifndef TARGET_XBOX
@@ -2324,10 +2338,34 @@ void state_mgr::ExitESRBNotice( void )
 }
 
 //=========================================================================
+#ifdef TARGET_PC
+void state_mgr::EnterSplashScreen( void )
+{
+/*
+	g_UiMgr->EnableUser( g_UiUserID, TRUE );
+    g_UiMgr->EndDialog( g_UiUserID, TRUE );
+    g_UiMgr->LoadBackground ( "background1", "UI_A51TITLE.xbmp" );
+    g_UiMgr->SetUserBackground( g_UiUserID, "background1" );
+	m_Timeout = 1.0f;
+*/
+}
 
-void state_mgr::EnterInevitableIntro( void )
+//=========================================================================
+
+void state_mgr::UpdateSplashScreen( void )
+{
+	//if( m_Timeout < 0 )
+    //{      
+        SetState( SM_INEVITABLE_INTRO );
+    //}
+}
+
+//=========================================================================
+
+void state_mgr::ExitSplashScreen( void )
 {
 }
+#endif
 
 //=========================================================================
 
@@ -2366,6 +2404,12 @@ xstring SelectBestClip( const char* pName )
 #endif
 
     return pName;
+}
+
+//=========================================================================
+
+void state_mgr::EnterInevitableIntro( void )
+{
 }
 
 //=========================================================================
@@ -4812,9 +4856,9 @@ void state_mgr::EnterOnlineEULA( void )
     irect mainarea(50, DIALOG_TOP, 486, DIALOG_BOTTOM );
     m_CurrentDialog = g_UiMgr->OpenDialog( g_UiUserID, "dnas eula", mainarea, NULL, ui_win::WF_VISIBLE|ui_win::WF_BORDER );
 }
-#endif
+
 //=========================================================================
-#ifdef TARGET_PS2
+
 void state_mgr::UpdateOnlineEULA( void )
 {
     if( m_CurrentDialog != NULL )
@@ -4837,9 +4881,9 @@ void state_mgr::UpdateOnlineEULA( void )
         }
     }
 }
-#endif
+
 //=========================================================================
-#ifdef TARGET_PS2
+
 void state_mgr::ExitOnlineEULA( void )
 {
 }
@@ -11778,10 +11822,9 @@ static void s_BackgroundRenderer( void )
             // we need to do the Render, then the pageflip (maybe in different order for xbox) then we do the updates
             // as this may cause us to have a double update when the thread is first started as well as a render without
             // update when the thread is killed.
-        #ifndef TARGET_PC
             g_StateMgr.Render();
             eng_PageFlip();
-        #endif
+			
             g_NetworkMgr.Update( Delta );
 
             // Update input mgr

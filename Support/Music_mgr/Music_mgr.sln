@@ -7,6 +7,7 @@ Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug Win32 = Debug Win32
 		Debug Xbox = Debug Xbox
+		EDITOR-Debug Win32 = EDITOR-Debug Win32
 		OptDebug Xbox = OptDebug Xbox
 		QA Xbox = QA Xbox
 		Release Win32 = Release Win32
@@ -17,6 +18,8 @@ Global
 		{0DE696A2-85BD-4B78-8DCC-5329B99D5AEB}.Debug Win32.Build.0 = Debug|Win32
 		{0DE696A2-85BD-4B78-8DCC-5329B99D5AEB}.Debug Xbox.ActiveCfg = Debug|Xbox
 		{0DE696A2-85BD-4B78-8DCC-5329B99D5AEB}.Debug Xbox.Build.0 = Debug|Xbox
+		{0DE696A2-85BD-4B78-8DCC-5329B99D5AEB}.EDITOR-Debug Win32.ActiveCfg = EDITOR-Debug|Win32
+		{0DE696A2-85BD-4B78-8DCC-5329B99D5AEB}.EDITOR-Debug Win32.Build.0 = EDITOR-Debug|Win32
 		{0DE696A2-85BD-4B78-8DCC-5329B99D5AEB}.OptDebug Xbox.ActiveCfg = OptDebug|Xbox
 		{0DE696A2-85BD-4B78-8DCC-5329B99D5AEB}.OptDebug Xbox.Build.0 = OptDebug|Xbox
 		{0DE696A2-85BD-4B78-8DCC-5329B99D5AEB}.QA Xbox.ActiveCfg = QA|Xbox
