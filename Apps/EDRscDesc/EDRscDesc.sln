@@ -7,15 +7,15 @@ Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug Win32 = Debug Win32
 		EDITOR-Debug = EDITOR-Debug
-		Retail Win32 = Retail Win32
+		Release Win32 = Release Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Debug Win32.ActiveCfg = Debug|Win32
 		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Debug Win32.Build.0 = Debug|Win32
 		{2679A684-1DCF-4930-ACB7-207D91F1C671}.EDITOR-Debug.ActiveCfg = EDITOR-Debug|Win32
 		{2679A684-1DCF-4930-ACB7-207D91F1C671}.EDITOR-Debug.Build.0 = EDITOR-Debug|Win32
-		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Retail Win32.ActiveCfg = Retail|Win32
-		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Retail Win32.Build.0 = Retail|Win32
+		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Release Win32.ActiveCfg = Release|Win32
+		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Release Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
