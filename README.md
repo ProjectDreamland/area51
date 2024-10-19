@@ -14,7 +14,7 @@ The following prerequisites are required to build the source tree for PC:
 4. You'll need to create an environment variable called **X** and **S** that points to the important library directions of the source tree. For example, if the source tree is located at 'D:\area51-pc' the **X** environment variable should point to 'D:\area51-pc\xCore'. the **S** environment variable should point to 'D:\area51-pc\Support'
 5. Put game assets to 'C:\GameData\A51\Release\PC\DVD'
 
-At the moment, only a few tools are functioning. Game build is half loads. Valid build targets are: Debug Win32/Debug. EDITOR-Debug is for Editor only ! Retail/Relase Win32 is temporary broken.
+At the moment, all tools are fixed. Game build is half loads. Valid build targets are: Debug Win32/Debug. EDITOR-Debug is for Editor only ! Retail/Relase Win32 is temporary broken.
 
 ## List of compiled tools
 Name           | Compiled
@@ -38,14 +38,14 @@ FontEditor     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc
 FontBuilder    | Yes
 FxEditor       | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 FXCompiler     | Yes
-GameApp        | Yes/Models doesn't boot
+GameApp        | Yes/Retail PC models doesn't loads
 GeomCompiler   | Yes
 LocoEditor     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 MeshViewer     | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 PropertyEditor | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 SoundPackager  | Yes
 StringTool     | Yes
-Viewer         | Yes
+Viewer         | No
 WinControls    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 WorldEditor    | Yes/Lib for: [Editor](https://github.com/gabengaGamer/area51-pc/releases/tag/Editor-1.0)
 XBMPTool       | Yes
