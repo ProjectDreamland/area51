@@ -74,8 +74,8 @@ Global
 		{51F65302-640B-49E6-B711-585E20B79433}.Release Win32.Build.0 = Release|Win32
 		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Debug Win32.ActiveCfg = Debug|Win32
 		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Debug Win32.Build.0 = Debug|Win32
-		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Release Win32.ActiveCfg = Debug|Win32
-		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Release Win32.Build.0 = Debug|Win32
+		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Release Win32.ActiveCfg = Release|Win32
+		{2679A684-1DCF-4930-ACB7-207D91F1C671}.Release Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
