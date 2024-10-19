@@ -21,16 +21,17 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)/x_files,$(X)/Entropy"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR"
-				UsePrecompiledHeader="2"
-				BasicRuntimeChecks="0"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				DebugInformationFormat="0"/>
+				UsePrecompiledHeader="2"
+				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(X)/3rdParty/DirectX9"
+				GenerateDebugInformation="TRUE"
 				SubSystem="2"/>
 			<Tool
 				Name="VCMIDLTool"/>
