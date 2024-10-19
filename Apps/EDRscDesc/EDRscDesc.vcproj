@@ -23,6 +23,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)/x_Files,$(X)/Entropy,../Editor,$(X)/MeshUtil,$(X)\Auxiliary\Bitmap,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR"
+				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				DebugInformationFormat="4"/>
@@ -59,6 +60,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)/x_Files,$(X)/Entropy,../Editor,$(X)/MeshUtil,$(X)\Auxiliary\Bitmap,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
+				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				DebugInformationFormat="4"/>
@@ -95,6 +97,7 @@
 				Optimization="3"
 				AdditionalIncludeDirectories="$(X),$(X)/x_Files,$(X)/Entropy,../Editor,$(X)/MeshUtil,$(X)\Auxiliary\Bitmap,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
 				DebugInformationFormat="0"/>

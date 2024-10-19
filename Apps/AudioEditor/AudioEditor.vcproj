@@ -23,6 +23,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR"
+				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				DebugInformationFormat="4"/>
