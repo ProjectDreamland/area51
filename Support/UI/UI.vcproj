@@ -56,10 +56,17 @@
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\..\Support\Objects,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
-				DebugInformationFormat="0"
+				InlineFunctionExpansion="2"
+				OptimizeForProcessor="2"
+				FavorSizeOrSpeed="1"
+				OptimizeForWindowsApplication="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				EnableIntrinsicFunctions="TRUE"
+				StringPooling="TRUE"
+				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
-				Optimization="1"/>
+				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool

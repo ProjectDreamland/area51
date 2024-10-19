@@ -22,9 +22,16 @@
 				Optimization="2"
 				AdditionalIncludeDirectories="$(X)\..,$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\Auxiliary\Bitmap"
 				PreprocessorDefinitions="CONFIG_RETAIL;TARGET_PC"
+				InlineFunctionExpansion="2"
+				OptimizeForProcessor="2"
+				FavorSizeOrSpeed="1"
+				OptimizeForWindowsApplication="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				EnableIntrinsicFunctions="TRUE"
+				StringPooling="TRUE"
+				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
 				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>

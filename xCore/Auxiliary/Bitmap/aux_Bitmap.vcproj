@@ -19,7 +19,18 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X)\x_files,PNG,PNG\ZLib,$(X)\x_files\3rdParty\DXTLibrary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				InlineFunctionExpansion="2"
+				OptimizeForProcessor="2"
+				FavorSizeOrSpeed="1"
+				OptimizeForWindowsApplication="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				EnableIntrinsicFunctions="TRUE"
+				StringPooling="TRUE"
+				UsePrecompiledHeader="2"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="1"
+				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
