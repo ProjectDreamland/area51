@@ -23,7 +23,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files,$(X)\auxiliary,$(X)\parsing"
-				PreprocessorDefinitions="TARGET_PC; CONFIG_DEBUG; "
+				PreprocessorDefinitions="TARGET_PC;CONFIG_DEBUG;"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
@@ -65,10 +65,17 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files,$(X)\auxiliary,$(X)\parsing"
-				PreprocessorDefinitions="TARGET_PC; CONFIG_DEBUG; "
+				PreprocessorDefinitions="TARGET_PC;CONFIG_RETAIL"
+				InlineFunctionExpansion="2"
+				OptimizeForProcessor="2"
+				FavorSizeOrSpeed="1"
+				OptimizeForWindowsApplication="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				EnableIntrinsicFunctions="TRUE"
+				StringPooling="TRUE"
+				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
 				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
