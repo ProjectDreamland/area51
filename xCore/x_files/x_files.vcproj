@@ -550,6 +550,21 @@
 		</Filter>
 		<File
 			RelativePath="x_array.hpp">
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="x_bitmap.hpp">
@@ -562,6 +577,21 @@
 		</File>
 		<File
 			RelativePath="x_color.hpp">
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="x_context.hpp">
@@ -601,6 +631,21 @@
 		</File>
 		<File
 			RelativePath="x_target.hpp">
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="x_threads.hpp">
@@ -610,6 +655,21 @@
 		</File>
 		<File
 			RelativePath="x_types.hpp">
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 	</Files>
 	<Globals>
