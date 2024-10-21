@@ -171,11 +171,11 @@ xbool tga_Load( xbitmap& Bitmap, const char* pFileName )
     x_fseek( pFile, Info.IDLength, X_SEEK_CUR );
 
     // Skip the color map data.
-    if( Info.CMapType )
-    {
+	if( Info.CMapType )
+	{
         s32 CMapSize = ((Info.CMapEntrySize + 7) >> 3) * Info.CMapLength;
         x_fseek( pFile, CMapSize, X_SEEK_CUR );
-    }
+	}
 
     // Fail on unsupported formats.
     if( (Info.ImageType != 2) && (Info.ImageType != 10) )
@@ -381,11 +381,11 @@ xbool tga_Info( const char* pFileName, xbitmap::info& BitmapInfo )
         Format = xbitmap::FMT_16_URGB_1555;
     }
 
-    // Fill in the xbitmap::info struct
-    BitmapInfo.W      = Info.Width;
-    BitmapInfo.H      = Info.Height;
-    BitmapInfo.nMips  = 0;
-    BitmapInfo.Format = Format;
+	// Fill in the xbitmap::info struct
+	BitmapInfo.W      = Info.Width;
+	BitmapInfo.H      = Info.Height;
+	BitmapInfo.nMips  = 0;
+	BitmapInfo.Format = Format;
 
     // Success!
     return( TRUE );

@@ -645,8 +645,8 @@ xbool bmp_Load( xbitmap& Bitmap, const char* pFileName )
 
 xbool bmp_Info( const char* pFileName, xbitmap::info& Info )
 {
-    xbool        Success    = FALSE;
-    X_FILE*     pFile    = NULL;
+	xbool		Success	= FALSE;
+    X_FILE*     pFile	= NULL;
     bmp_header  Header;
 
     // Check parameters.
@@ -655,35 +655,35 @@ xbool bmp_Info( const char* pFileName, xbitmap::info& Info )
     // Open file and read header info.
     pFile = x_fopen( pFileName, "rb" );
     if( pFile )
-    {
-        // Read the header data into the buffer.
-        if( ReadHeader( pFile, &Header ) )
-        {
-            Info.W     = Header.Width;
-            Info.H     = Header.Height;
-            Info.nMips = 0;
-            switch( Header.BitCount )
-            {
-                #ifdef LITTLE_ENDIAN
-                    case  4:    Info.Format = xbitmap::FMT_P4_URGB_8888; break;
-                    case  8:    Info.Format = xbitmap::FMT_P8_URGB_8888; break;
-                    case 24:    Info.Format = xbitmap::FMT_24_BGR_888;   break;
-                    case 32:    Info.Format = xbitmap::FMT_32_URGB_8888; break;
-                #else // BIG_ENDIAN
-                    case  4:    Info.Format = xbitmap::FMT_P4_BGRU_8888; break;      // UNTESTED
-                    case  8:    Info.Format = xbitmap::FMT_P8_BGRU_8888; break;
-                    case 24:    Info.Format = xbitmap::FMT_24_BGR_888;   break;      // UNTESTED
-                    case 32:    Info.Format = xbitmap::FMT_32_BGRU_8888; break;      // UNTESTED
-                #endif
-            }
-        }
+	{
+		// Read the header data into the buffer.
+		if( ReadHeader( pFile, &Header ) )
+		{
+			Info.W     = Header.Width;
+			Info.H     = Header.Height;
+			Info.nMips = 0;
+			switch( Header.BitCount )
+			{
+				#ifdef LITTLE_ENDIAN
+					case  4:    Info.Format = xbitmap::FMT_P4_URGB_8888; break;
+					case  8:    Info.Format = xbitmap::FMT_P8_URGB_8888; break;
+					case 24:    Info.Format = xbitmap::FMT_24_BGR_888;   break;
+					case 32:    Info.Format = xbitmap::FMT_32_URGB_8888; break;
+				#else // BIG_ENDIAN
+					case  4:    Info.Format = xbitmap::FMT_P4_BGRU_8888; break;      // UNTESTED
+					case  8:    Info.Format = xbitmap::FMT_P8_BGRU_8888; break;
+					case 24:    Info.Format = xbitmap::FMT_24_BGR_888;   break;      // UNTESTED
+					case 32:    Info.Format = xbitmap::FMT_32_BGRU_8888; break;      // UNTESTED
+				#endif
+			}
+		}
 
-        // Close the file
-        x_fclose( pFile );
-    }
+		// Close the file
+		x_fclose( pFile );
+	}
 
-    // Return success code
-    return Success;
+	// Return success code
+	return Success;
 }
 
 //==============================================================================
