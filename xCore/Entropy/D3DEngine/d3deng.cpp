@@ -401,7 +401,7 @@ void InitializeD3D( HWND hWnd, s32 XRes, s32 YRes )
     Error = s.pD3D->CreateDevice(   
         D3DADAPTER_DEFAULT,    
         //(s.Mode & ENG_ACT_SOFTWARE) ? D3DDEVTYPE_REF :
-        //D3DDEVTYPE_REF, 
+		//D3DDEVTYPE_REF, 
         D3DDEVTYPE_HAL, 
         hWnd,
         //((s.Mode & ENG_ACT_SHADERS_IN_SOFTWARE) || (s.Mode & ENG_ACT_SOFTWARE) ) ?
@@ -421,11 +421,11 @@ void InitializeD3D( HWND hWnd, s32 XRes, s32 YRes )
     //
 
     // If there was an error should we bail?
-    if(Error != 0)
-    {
-        MessageBox(d3deng_GetWindowHandle(), xfs("Error creating device: %d", Error), "Device Error", MB_OK);
+	if(Error != 0)
+	{
+		MessageBox(d3deng_GetWindowHandle(), xfs("Error creating device: %d", Error), "Device Error", MB_OK);
         g_pd3dDevice = NULL;
-    }
+	}
     //ASSERT( Error == 0 );
 
     if( g_pd3dDevice )
@@ -659,7 +659,7 @@ void text_BeginRender( void )
 
 void text_RenderStr( char* pStr, s32 NChars, xcolor Color, s32 PixelX, s32 PixelY )
 {
-    dxerr                   Error;
+	dxerr                   Error;
     RECT                    Rect;
 
     if( !g_pd3dDevice || !s.pFont )
@@ -670,9 +670,9 @@ void text_RenderStr( char* pStr, s32 NChars, xcolor Color, s32 PixelX, s32 Pixel
     Rect.bottom = PixelY + ENG_FONT_SIZEY;
     Rect.right  = Rect.left + (NChars*ENG_FONT_SIZEX);
                     
-    //rstct+=NChars;
-    Error = s.pFont->DrawText( NULL, pStr, NChars, &Rect, DT_NOCLIP, Color );//s.TextColor );
-    if(Error != D3D_OK) rstct = Error;
+	//rstct+=NChars;
+	Error = s.pFont->DrawText( NULL, pStr, NChars, &Rect, DT_NOCLIP, Color );//s.TextColor );
+	if(Error != D3D_OK) rstct = Error;
 }
 
 #endif // X_RETAIL
@@ -889,8 +889,8 @@ void eng_Init( void )
 {
     if( s.MaxXRes == 0 )
     {
-        s.MaxXRes = 640;
-        s.MaxYRes = 480;
+        s.MaxXRes = 1024; //512;
+        s.MaxYRes = 768; //512;
     }
 
     //
@@ -1118,8 +1118,8 @@ void eng_PageFlip()
     }
 
 
-    xtimer ARHTimer;
-    ARHTimer.Reset();
+	xtimer ARHTimer;
+	ARHTimer.Reset();
     s.CPUTIMER.Stop();
     s.CPUMS = s.CPUTIMER.ReadMs();
     xtimer InternalTime;
@@ -1141,13 +1141,13 @@ void eng_PageFlip()
     //
     // Handle all the buffered text
     //
-    rstct=0;
-    ARHTimer.Start();
+	rstct=0;
+	ARHTimer.Start();
     text_Render();
-    ARHTimer.Stop();
-    text_ClearBuffers();
-    //x_printfxy(0, 43, "A1: %7.3f", ARHTimer.ReadMs());
-    //x_printfxy(0, 44, "rst: %7.3f %d", rst.ReadMs(),rstct);
+	ARHTimer.Stop();
+	text_ClearBuffers();
+	//x_printfxy(0, 43, "A1: %7.3f", ARHTimer.ReadMs());
+	//x_printfxy(0, 44, "rst: %7.3f %d", rst.ReadMs(),rstct);
     //
     // Handle the FPS
     //
@@ -1315,7 +1315,7 @@ void DebugMessage( const char* FormatStr, ... )
 
 void eng_SetViewport( const view& View )
 {
-    if( !g_pd3dDevice || g_bDeviceLost )
+	if( !g_pd3dDevice || g_bDeviceLost )
         return;
 
     dxerr           Error;
@@ -1334,8 +1334,8 @@ void eng_SetViewport( const view& View )
     vp.Width  = MIN( (u32)s.MaxXRes, vp.Width );
     vp.Height = MIN( (u32)s.MaxYRes, vp.Height );
 
-    Error = g_pd3dDevice->SetViewport( &vp );
-    ASSERT( Error == 0 );
+	Error = g_pd3dDevice->SetViewport( &vp );
+	ASSERT( Error == 0 );
 }
 
 
@@ -1370,7 +1370,7 @@ void d3deng_ComputeMousePos( void )
             return;
     }
 
-    
+	
     WasActive = TRUE;
 
 
@@ -1382,23 +1382,23 @@ void d3deng_ComputeMousePos( void )
     s32 CenterX = (Rect.right + Rect.left) >> 1;
     s32 CenterY = (Rect.bottom + Rect.top) >> 1;
 
-    if(s.MouseMode != MOUSE_MODE_ABSOLUTE)
-    {
-        SetCursorPos( CenterX, CenterY );
-    }
+	if(s.MouseMode != MOUSE_MODE_ABSOLUTE)
+	{
+		SetCursorPos( CenterX, CenterY );
+	}
 
     if( LastTimeActive == FALSE )        
         return;
-    if(s.MouseMode != MOUSE_MODE_ABSOLUTE)
-    {
-        s.MouseX = (f32)(MousePos.x - CenterX);
-        s.MouseY = (f32)(MousePos.y - CenterY);
-    }
-    else
-    {
-        s.MouseX = (f32)(MousePos.x - Rect.left);
-        s.MouseY = (f32)(MousePos.y - Rect.top);
-    }
+	if(s.MouseMode != MOUSE_MODE_ABSOLUTE)
+	{
+		s.MouseX = (f32)(MousePos.x - CenterX);
+		s.MouseY = (f32)(MousePos.y - CenterY);
+	}
+	else
+	{
+		s.MouseX = (f32)(MousePos.x - Rect.left);
+		s.MouseY = (f32)(MousePos.y - Rect.top);
+	}
 }
 
 //=========================================================================

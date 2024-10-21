@@ -11,9 +11,9 @@
 //==============================================================================
 // MESSAGE QUEUE
 //==============================================================================
-#define MQ_NOBLOCK              X_TH_NOBLOCK    // Operation will not block if needed, just returns false instead
-#define MQ_BLOCK                X_TH_BLOCK        // Operation will block if resource is not available
-#define MQ_JAM                  X_TH_JAM        // Callee will have higher priority to acquire resource than others
+#define MQ_NOBLOCK              X_TH_NOBLOCK	// Operation will not block if needed, just returns false instead
+#define MQ_BLOCK                X_TH_BLOCK		// Operation will block if resource is not available
+#define MQ_JAM                  X_TH_JAM	    // Callee will have higher priority to acquire resource than others
 #define X_MAX_MESSAGE_QUEUES    32
 #define MAX_DEFAULT_MESSAGES    16           // Number of messages held internally within the structure. 
 
@@ -47,8 +47,8 @@ protected:
             s16         m_ValidEntries;
             s16         m_MaxEntries;
             s32*        m_pQueue;
-            xthreadlist    m_WaitingForRecv;
-            xthreadlist m_WaitingForSend;
+			xthreadlist	m_WaitingForRecv;
+			xthreadlist m_WaitingForSend;
             s32         m_QueueBuffer[MAX_DEFAULT_MESSAGES];
 private:
                         xmesgq      ( void );

@@ -20,7 +20,7 @@
 
 //=========================================================================
 
-const char *    rawmaterial::m_CachedFile = 0;
+const char *	rawmaterial::m_CachedFile = 0;
 s32 rawmaterial::m_nMaterials = 0;
 s32 rawmaterial::m_nSubMeshs = 0;
 s32 rawmaterial::m_nTextures = 0;
@@ -48,20 +48,20 @@ rawmaterial::~rawmaterial( void )
 
 void rawmaterial::Kill( void )
 {
-    // is cache invalid
-    if (!m_CachedFile)
-    {
-        if(m_pTexture)  delete[]m_pTexture;
-        if(m_pMaterial) delete[]m_pMaterial;
-        if(m_pSubMesh)  delete[]m_pSubMesh;
-        x_memset( this, 0, sizeof(*this) );
-        m_pTexture = 0;
-        m_pMaterial = 0;
-        m_pSubMesh = 0;
-        m_nTextures = 0;
-        m_nMaterials = 0;
-        m_nSubMeshs = 0;
-    }
+	// is cache invalid
+	if (!m_CachedFile)
+	{
+		if(m_pTexture)  delete[]m_pTexture;
+		if(m_pMaterial) delete[]m_pMaterial;
+	    if(m_pSubMesh)  delete[]m_pSubMesh;
+	    x_memset( this, 0, sizeof(*this) );
+		m_pTexture = 0;
+		m_pMaterial = 0;
+		m_pSubMesh = 0;
+		m_nTextures = 0;
+		m_nMaterials = 0;
+		m_nSubMeshs = 0;
+	}
 }
 
 //=========================================================================
@@ -70,26 +70,26 @@ xbool rawmaterial::Load( const char* pFileName )
 {
     s32 i,j;
 
-    // Is cache valid
-    if (m_CachedFile)
-    {
-        // Is file currently cached?
-        if (!x_strcmp(this->m_CachedFile, pFileName))
-            return TRUE;
+	// Is cache valid
+	if (m_CachedFile)
+	{
+		// Is file currently cached?
+		if (!x_strcmp(this->m_CachedFile, pFileName))
+			return TRUE;
 
 
-        if(m_pTexture)  delete[]m_pTexture;
-        if(m_pMaterial) delete[]m_pMaterial;
-        if(m_pSubMesh)  delete[]m_pSubMesh;
-        m_pTexture = 0;
-        m_pMaterial = 0;
-        m_pSubMesh = 0;
-        m_nTextures = 0;
-        m_nMaterials = 0;
-        m_nSubMeshs = 0;
-        x_free((void *)m_CachedFile);
-        m_CachedFile = 0;
-    }
+		if(m_pTexture)  delete[]m_pTexture;
+		if(m_pMaterial) delete[]m_pMaterial;
+	    if(m_pSubMesh)  delete[]m_pSubMesh;
+		m_pTexture = 0;
+		m_pMaterial = 0;
+		m_pSubMesh = 0;
+		m_nTextures = 0;
+		m_nMaterials = 0;
+		m_nSubMeshs = 0;
+		x_free((void *)m_CachedFile);
+		m_CachedFile = 0;
+	}
 
     text_in File;
     byte* pMatUsed = (byte*)x_malloc(sizeof(byte)*4096*256);
@@ -421,7 +421,7 @@ xbool rawmaterial::Load( const char* pFileName )
     }
 
     x_free(pMatUsed);
-    m_CachedFile = x_strdup(pFileName);
+	m_CachedFile = x_strdup(pFileName);
     return TRUE;
 }
 

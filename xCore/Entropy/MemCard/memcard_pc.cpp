@@ -60,9 +60,9 @@ struct error_map
 struct pc_save_file
 {
     s32     Checksum;
-    char    Comment[128];
+	char	Comment[128];
     char    Preferences[128];
-    u8        Icon[2048];
+	u8		Icon[2048];
 };
 
 static pc_save_file* s_pFile = NULL; 
@@ -498,7 +498,7 @@ void memcard_hardware::ProcessMount( void )
 
 void memcard_hardware::ProcessUnmount( void )
 {
-    SendMessage( MSG_COMPLETE );
+	SendMessage( MSG_COMPLETE );
 }
 
 //------------------------------------------------------------------------------
@@ -678,7 +678,7 @@ s32 memcard_hardware::GetMaxCards( void )
 
 xbool memcard_hardware::IsCardConnected( s32 CardID )
 {
-    return TRUE;
+	return TRUE;
 }
 
 //------------------------------------------------------------------------------

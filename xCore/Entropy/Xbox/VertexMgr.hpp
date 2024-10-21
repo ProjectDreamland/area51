@@ -55,10 +55,10 @@
         void    Init                 ( void       );
         void    Kill                 ( void       );
 
-        const heap::basic& GetGeneralPool( void )const
-        {
-            return m_Allocator;
-        }
+		const heap::basic& GetGeneralPool( void )const
+		{
+			return m_Allocator;
+		}
 
         vert_factory ( void ){ }
     ~   vert_factory ( void ){ }

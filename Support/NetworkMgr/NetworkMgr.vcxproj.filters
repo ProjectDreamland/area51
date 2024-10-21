@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Connection">
+      <UniqueIdentifier>{ab5deacd-2cf4-4867-929f-c102b0dd1a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ClientServer">
+      <UniqueIdentifier>{b3531068-ce8e-4db1-8ba7-f7b8ec5f3d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMgr">
+      <UniqueIdentifier>{61b8713f-38ed-4970-ba04-11d15c8d0b1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetObjects">
+      <UniqueIdentifier>{81ce8c14-8f07-463a-88f9-27abf523d017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetObjects\Defunct">
+      <UniqueIdentifier>{7ebe3aba-c605-45df-8449-af20a478e638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MoveMgr">
+      <UniqueIdentifier>{0518381f-89d8-4bac-8107-9c380c8b0b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UpdateMgr">
+      <UniqueIdentifier>{99805972-efff-4c4b-8fb5-76b895a2eaf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VoiceMgr">
+      <UniqueIdentifier>{3b94b212-fd24-4607-8807-750116d2f5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VoiceMgr\Logitech">
+      <UniqueIdentifier>{eab78a2f-a466-4898-b67a-46f1f7c1e2ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VoiceMgr\Codecs">
+      <UniqueIdentifier>{92bf63a6-e3f4-4468-8d59-09268a4c7bd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VoiceMgr\Codecs\Speex">
+      <UniqueIdentifier>{c97b5b16-de42-4a89-b6d0-0cdb0cb73c0e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Blowfish.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnMgr.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugTicker.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="Dh.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="integer.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchMgr.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientProxy.cpp">
+      <Filter>ClientServer</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientProxyStates.cpp">
+      <Filter>ClientServer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClient.cpp">
+      <Filter>ClientServer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClientStates.cpp">
+      <Filter>ClientServer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServer.cpp">
+      <Filter>ClientServer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServerStates.cpp">
+      <Filter>ClientServer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>ClientServer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMgr.cpp">
+      <Filter>GameMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="GMMgr.cpp">
+      <Filter>GameMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="logic_Base.cpp">
+      <Filter>GameMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="logic_Campaign.cpp">
+      <Filter>GameMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="logic_DM.cpp">
+      <Filter>GameMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MsgMgr.cpp">
+      <Filter>GameMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Objects\GhostNet.cpp">
+      <Filter>NetObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="NetObj.cpp">
+      <Filter>NetObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="NetObjMgr.cpp">
+      <Filter>NetObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Objects\PlayerNet.cpp">
+      <Filter>NetObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="NetPickup.cpp">
+      <Filter>NetObjects\Defunct</Filter>
+    </ClCompile>
+    <ClCompile Include="NetPlayer.cpp">
+      <Filter>NetObjects\Defunct</Filter>
+    </ClCompile>
+    <ClCompile Include="NetRocket.cpp">
+      <Filter>NetObjects\Defunct</Filter>
+    </ClCompile>
+    <ClCompile Include="Move.cpp">
+      <Filter>MoveMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveMgr.cpp">
+      <Filter>MoveMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateMgr.cpp">
+      <Filter>UpdateMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Headset_PS2.cpp">
+      <Filter>VoiceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Headset_Stub.cpp">
+      <Filter>VoiceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Headset_XBOX.cpp">
+      <Filter>VoiceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\VoiceMgr.cpp">
+      <Filter>VoiceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\VoiceProxy.cpp">
+      <Filter>VoiceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\lpc10.cpp">
+      <Filter>VoiceMgr\Codecs</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\speex.cpp">
+      <Filter>VoiceMgr\Codecs</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\bits.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\cb_search.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\exc_10_16_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\exc_10_32_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\exc_20_32_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\exc_5_256_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\exc_5_64_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\exc_8_128_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\filters.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\gain_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\gain_table_lbr.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\hexc_10_32_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\hexc_table.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\high_lsp_tables.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\jitter.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\lbr_48k_tables.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\lpc.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\lsp.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\lsp_tables_nb.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\ltp.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\math_approx.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\mdf.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\misc.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\modes.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\nb_celp.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\preprocess.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\quant_lsp.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\sb_celp.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\smallft.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\speex_callbacks.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\speex_header.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\stereo.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\vbr.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice\Speex\vq.c">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkMgr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Blowfish.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnMgr.hpp">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugTicker.hpp">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="Dh.hpp">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="int.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="integer.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchMgr.hpp">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientProxy.hpp">
+      <Filter>ClientServer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClient.hpp">
+      <Filter>ClientServer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServer.hpp">
+      <Filter>ClientServer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.hpp">
+      <Filter>ClientServer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMgr.hpp">
+      <Filter>GameMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="GMMgr.hpp">
+      <Filter>GameMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="logic_Base.hpp">
+      <Filter>GameMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="logic_Campaign.hpp">
+      <Filter>GameMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="logic_DM.hpp">
+      <Filter>GameMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MsgMgr.hpp">
+      <Filter>GameMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Blender.hpp">
+      <Filter>NetObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.hpp">
+      <Filter>MoveMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveMgr.hpp">
+      <Filter>MoveMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateMgr.hpp">
+      <Filter>UpdateMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Headset.hpp">
+      <Filter>VoiceMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\VoiceMgr.hpp">
+      <Filter>VoiceMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\VoiceProxy.hpp">
+      <Filter>VoiceMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\lpc10.hpp">
+      <Filter>VoiceMgr\Codecs</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\speex.hpp">
+      <Filter>VoiceMgr\Codecs</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\arch.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\cb_search.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\cb_search_sse.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\filters.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\filters_sse.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\fixed_arm.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\fixed_debug.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\fixed_generic.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\lpc.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\lsp.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\ltp.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\ltp_sse.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\math_approx.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\misc.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\modes.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\nb_celp.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\quant_lsp.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\sb_celp.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\smallft.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\speex.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\speex_bits.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\speex_callbacks.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\speex_echo.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\speex_header.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\speex_jitter.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\speex_preprocess.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\speex_stereo.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\stack_alloc.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\vbr.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice\Speex\vq.h">
+      <Filter>VoiceMgr\Codecs\Speex</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkMgr.hpp" />
+    <ClInclude Include="ServerVersion.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="NetObj.hpp">
+      <Filter>NetObjects</Filter>
+    </CustomBuild>
+    <CustomBuild Include="NetObjMgr.hpp">
+      <Filter>NetObjects</Filter>
+    </CustomBuild>
+    <CustomBuild Include="NetPickup.hpp">
+      <Filter>NetObjects\Defunct</Filter>
+    </CustomBuild>
+    <CustomBuild Include="NetPlayer.hpp">
+      <Filter>NetObjects\Defunct</Filter>
+    </CustomBuild>
+    <CustomBuild Include="NetRocket.hpp">
+      <Filter>NetObjects\Defunct</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Voice\Logitech\Include\liblgaud.h">
+      <Filter>VoiceMgr\Logitech</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Voice\Logitech\Lib\liblgaud.lib">
+      <Filter>VoiceMgr\Logitech</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Voice\Logitech\Include\liblgcodec.h">
+      <Filter>VoiceMgr\Logitech</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

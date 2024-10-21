@@ -20,26 +20,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommandLine", "..\..\..\xCo
 EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
-		Debug Win32 = Debug Win32
-		Release Win32 = Release Win32
+		WIN32-Debug = WIN32-Debug
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.Debug Win32.ActiveCfg = Debug|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.Debug Win32.Build.0 = Debug|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.Release Win32.ActiveCfg = Release|Win32
-		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.Release Win32.Build.0 = Release|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.Debug Win32.ActiveCfg = Debug|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.Debug Win32.Build.0 = Debug|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.Release Win32.ActiveCfg = Release|Win32
-		{51F65302-640B-49E6-B711-585E20B79433}.Release Win32.Build.0 = Release|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.Debug Win32.ActiveCfg = Debug|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.Debug Win32.Build.0 = Debug|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.Release Win32.ActiveCfg = Release|Win32
-		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.Release Win32.Build.0 = Release|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.Debug Win32.ActiveCfg = Debug|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.Debug Win32.Build.0 = Debug|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.Release Win32.ActiveCfg = Release|Win32
-		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.Release Win32.Build.0 = Release|Win32
+		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{5502DA59-8000-42C4-887A-1A64B7DC2E0A}.WIN32-Debug.Build.0 = Debug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.WIN32-Debug.Build.0 = Debug|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{DD8AB240-8FA8-4E65-83EF-CB73E24E505E}.WIN32-Debug.Build.0 = Debug|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-Debug.ActiveCfg = Debug|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.WIN32-Debug.Build.0 = Debug|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

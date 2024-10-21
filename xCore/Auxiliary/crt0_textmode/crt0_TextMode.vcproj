@@ -20,12 +20,12 @@
 			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files,c:\program files\microsoft visual studio\vc98\crt\src"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
+				DebugInformationFormat="4"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				DebugInformationFormat="4"/>
+				Optimization="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -56,20 +56,8 @@
 			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="1"
 				AdditionalIncludeDirectories="$(X)\x_files,c:\program files\microsoft visual studio\vc98\crt\src"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
-				InlineFunctionExpansion="2"
-				OptimizeForProcessor="2"
-				FavorSizeOrSpeed="1"
-				OptimizeForWindowsApplication="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				EnableIntrinsicFunctions="TRUE"
-				StringPooling="TRUE"
-				UsePrecompiledHeader="2"
-				BasicRuntimeChecks="0"
-				RuntimeLibrary="1"
-				DebugInformationFormat="0"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -99,9 +87,35 @@
 	<Files>
 		<File
 			RelativePath=".\CRT0-net.C">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"
+					AdditionalIncludeDirectories="$(VCInstallDir)crt\src"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="crt0.c">
+			<FileConfiguration
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"
+					Optimization="0"
+					AdditionalIncludeDirectories="$(VCInstallDir)crt\src"
+					PreprocessorDefinitions=""
+					BasicRuntimeChecks="3"
+					CompileAs="0"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"
+					Optimization="2"
+					AdditionalIncludeDirectories=""
+					PreprocessorDefinitions=""/>
+			</FileConfiguration>
 		</File>
 	</Files>
 	<Globals>

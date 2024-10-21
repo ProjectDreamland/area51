@@ -62,9 +62,9 @@ struct error_map
 struct xbox_save_file
 {
     s32     Checksum;
-    char    Comment[128];
+	char	Comment[128];
     char    Preferences[128];
-    u8        Icon[2048];
+	u8		Icon[2048];
 };
 
 static xbox_save_file* s_pFile = NULL; 
@@ -541,7 +541,7 @@ void memcard_hardware::ProcessCreateDir( void )
 //  LOG_MESSAGE( "memcard_hardware::ProcessCreateDir", "Create directory:%s, result:%d", m_pRequestedDirName, ErrCode );
     u32 Result;
     if( s_ErrCode == ERROR_SUCCESS )
-        Result = MSG_COMPLETE;
+    	Result = MSG_COMPLETE;
     else
         Result = MSG_ERROR;
     SendMessage( Result );
@@ -563,7 +563,7 @@ void memcard_hardware::ProcessSetDir( void )
     u32 Result;
 //  LOG_MESSAGE( "memcard_hardware::ProcessSetDir", "Set Directory:%s, result:%d", m_pRequestedDirName, ErrCode );
     if( s_ErrCode == ERROR_SUCCESS )
-        Result = MSG_COMPLETE;
+    	Result = MSG_COMPLETE;
     else
         Result = MSG_ERROR;
     SendMessage( Result );
@@ -580,7 +580,7 @@ void memcard_hardware::ProcessDeleteDir( void )
 
     u32 Result;
     if( s_ErrCode == ERROR_SUCCESS )
-        Result = MSG_COMPLETE;
+    	Result = MSG_COMPLETE;
     else
         Result = MSG_ERROR;
     SendMessage( Result );
@@ -597,7 +597,7 @@ void memcard_hardware::ProcessMount( void )
 
 void memcard_hardware::ProcessUnmount( void )
 {
-    SendMessage( MSG_COMPLETE );
+	SendMessage( MSG_COMPLETE );
 }
 
 //------------------------------------------------------------------------------
@@ -796,7 +796,7 @@ s32 memcard_hardware::GetMaxCards( void )
 
 xbool memcard_hardware::IsCardConnected( s32 CardID )
 {
-    return TRUE;
+	return TRUE;
 }
 
 //------------------------------------------------------------------------------

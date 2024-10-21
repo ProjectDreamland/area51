@@ -50,47 +50,47 @@ void vert_factory::Kill()
 
 vert_factory::handle vert_factory::Create( u32 nBytes,void*pRaw )
 {
-    CONTEXT( "vert_factory::Create" );
-    //
+	CONTEXT( "vert_factory::Create" );
+	//
     //  Allocates header
     //
     handle Handle = new buffer;
     ASSERT( Handle );
 
     XGSetVertexBufferHeader( 0,0,0,0,Handle,0 );
-    ASSERT(( Handle->Common & D3DCOMMON_INTREFCOUNT_MASK ) != D3DCOMMON_INTREFCOUNT_MASK );
+	ASSERT(( Handle->Common & D3DCOMMON_INTREFCOUNT_MASK ) != D3DCOMMON_INTREFCOUNT_MASK );
     //
     //  Allocate vertex buffer
     //
-    u8* pVerts;
-    {
-        CONTEXT( "vert_factory::Create -- m_Heap.Alloc" );
+	u8* pVerts;
+	{
+		CONTEXT( "vert_factory::Create -- m_Heap.Alloc" );
 
-        pVerts = (u8*)m_Heap.Alloc( nBytes );
-    #ifdef bhapgood
-        if( !pVerts )
-        {
-            x_DebugMsg( "\nOut of Vertex RAM: %d bytes requested\n", nBytes );
-        BREAK
-        }
-    #else
-        ASSERT( pVerts );
-    #endif
-    }
+		pVerts = (u8*)m_Heap.Alloc( nBytes );
+	#ifdef bhapgood
+		if( !pVerts )
+		{
+			x_DebugMsg( "\nOut of Vertex RAM: %d bytes requested\n", nBytes );
+		BREAK
+		}
+	#else
+		ASSERT( pVerts );
+	#endif
+	}
     //
     //  Register and return
     //
-    {    CONTEXT( "Register RAM with D3D" );
-    //  Handle->Data = DWORD( pVerts ) & 0xfffffff;
-        Handle->Register( pVerts );
-        Handle->m_Ptr = pVerts;
-        Handle->m_Len = nBytes;
-    }
+	{	CONTEXT( "Register RAM with D3D" );
+	//  Handle->Data = DWORD( pVerts ) & 0xfffffff;
+		Handle->Register( pVerts );
+		Handle->m_Ptr = pVerts;
+		Handle->m_Len = nBytes;
+	}
     if( pRaw )
     {
-        CONTEXT( "Copying raw verts to new vertex buffer" );
+		CONTEXT( "Copying raw verts to new vertex buffer" );
 
-        Handle->Lock( );
+		Handle->Lock( );
         x_memcpy( pVerts,pRaw,nBytes );
         Handle->Unlock( );
     }
@@ -113,13 +113,13 @@ void vert_factory::buffer::Init( void )
 
 void vert_factory::buffer::Kill( void )
 {
-    BlockUntilNotBusy( );
+	BlockUntilNotBusy( );
 
-    g_VertFactory.m_Heap.Free( m_Ptr );
+	g_VertFactory.m_Heap.Free( m_Ptr );
 
-    IDirect3DResource8::Common = 0;
-    IDirect3DResource8::Lock = 0;
-    IDirect3DResource8::Data = 0;
+	IDirect3DResource8::Common = 0;
+	IDirect3DResource8::Lock = 0;
+	IDirect3DResource8::Data = 0;
 }
 
 //=========================================================================

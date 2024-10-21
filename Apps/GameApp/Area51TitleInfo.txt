@@ -1,0 +1,14 @@
+[default]
+TitleName=Area 51
+
+[ES]
+TitleName=Area 51 Spanish
+
+[FR]
+TitleName=Area 51 French
+
+[DE]
+TitleName=Area 51 German
+
+[IT]
+TitleName=Area 51 Italian

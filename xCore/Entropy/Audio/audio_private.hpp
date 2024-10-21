@@ -265,7 +265,7 @@ struct hardware_data
 #endif
 
 #ifdef TARGET_PS2
-    s32                    ChannelId;    // Channel ID
+	s32					ChannelId;	// Channel ID
     u32                 RelativeBufferPosition;
 #endif
 

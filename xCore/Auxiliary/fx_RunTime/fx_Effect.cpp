@@ -56,8 +56,8 @@ void fx_effect_base::Render( void )
         if( m_ColorDirty )
             pElement->BaseColor( m_Color );
 
-        if( m_Flags & FX_SINGLETON )
-            pElement->BaseL2W();
+		if( m_Flags & FX_SINGLETON )
+			pElement->BaseL2W();
 
         if( (GetAge() >= pElementDef->TimeStart) && 
             (!pElement->IsFinished( this )) )

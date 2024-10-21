@@ -137,15 +137,15 @@ ENDIF
 
                 IFDEF AMD
 
-          NAME MATHAMD
+		  NAME MATHAMD
 
-          PUBLIC AMD_poly_filter
+		  PUBLIC AMD_poly_filter
                   PUBLIC AMD_dewindow_and_write
                   PUBLIC AMD_IMDCT_3x12
                   PUBLIC AMD_IMDCT_1x36
                 ELSE
 
-          NAME MATHX86
+		  NAME MATHX86
 
                   PUBLIC x86_poly_filter
                   PUBLIC x86_dewindow_and_write
@@ -2222,12 +2222,12 @@ IFDEF AMD
 
 EXTRN x86_data_start:BYTE,x86_data_end:BYTE,x86_code_start:BYTE,x86_code_end:BYTE
 
-;        IFDEF DPMI
+;		IFDEF DPMI
 
 AIL_vmm_lock_range PROTO C,P1:NEAR PTR,P2:NEAR PTR
 
 MATHA_VMM_lock  PROC C \
-        USES ebx esi edi ds es
+		USES ebx esi edi ds es
 
                 invoke AIL_vmm_lock_range,OFFSET amd_data_start,OFFSET amd_data_end
                 invoke AIL_vmm_lock_range,OFFSET amd_code_start,OFFSET amd_code_end

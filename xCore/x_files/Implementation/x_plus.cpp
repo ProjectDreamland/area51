@@ -877,16 +877,16 @@ char* x_strcpy( char* pDest, const char* pSrc )
 
 char* x_strdup( const char* pStr )
 {
-    ASSERT( pStr );
+	ASSERT( pStr );
 
-    char* pStrResult = (char *)x_malloc( sizeof(char) * x_strlen(pStr) + 1);
-    char* p = pStrResult;
-    ASSERT( pStrResult );
+	char* pStrResult = (char *)x_malloc( sizeof(char) * x_strlen(pStr) + 1);
+	char* p = pStrResult;
+	ASSERT( pStrResult );
 
-    while( (*p++ = *pStr++) )
-        ;
+	while( (*p++ = *pStr++) )
+		;
 
-    return( pStrResult );
+	return( pStrResult );
 }
 
 //==============================================================================
@@ -1230,15 +1230,15 @@ xwchar* x_wstrcpy( xwchar* pDest, const xwchar* pSrc )
 
 xwchar* x_strdup( const xwchar* pWideStr )
 {
-    ASSERT( pWideStr );
+	ASSERT( pWideStr );
 
-    xwchar* pWideStrResult = (xwchar *)x_malloc( sizeof(xwchar) * x_wstrlen(pWideStr) );
-    ASSERT( pWideStrResult );
+	xwchar* pWideStrResult = (xwchar *)x_malloc( sizeof(xwchar) * x_wstrlen(pWideStr) );
+	ASSERT( pWideStrResult );
 
-    while( (*pWideStrResult++ = *pWideStr++) )
-        ;
+	while( (*pWideStrResult++ = *pWideStr++) )
+		;
 
-    return( pWideStrResult );
+	return( pWideStrResult );
 }
 
 //==============================================================================
@@ -1458,54 +1458,54 @@ void* x_memcpy( void* pDest, const void* pSrc, s32 Count )
 
 void* x_memmove( void* pDest, const void* pSrc, s32 Count )
 {
-    byte* pFrom;
-    byte* pTo;
-    s32   t;
+	byte* pFrom;
+	byte* pTo;
+	s32   t;
 
     ASSERT( pDest );
     ASSERT( pSrc  );
     ASSERT( Count >= 0 );
 
     // See if we have anything to do.
-    if( (Count == 0) || (pSrc == pDest) )
+	if( (Count == 0) || (pSrc == pDest) )
         return( pDest );
 
     pFrom = (byte*)pSrc;
     pTo   = (byte*)pDest;
 
-    if( pTo < pFrom )
+	if( pTo < pFrom )
     {
         //
         // Copy forward.
         //
 
-        t = (s32)pFrom;
+		t = (s32)pFrom;
 
-        if( (t | (s32)pTo) & 3 )
+		if( (t | (s32)pTo) & 3 )
         {
             // Try to align operands.  This cannot be done unless the low 
             // bits match.
 
-            if( ((t ^ (s32)pTo) & 3) || (Count < 4) )
+			if( ((t ^ (s32)pTo) & 3) || (Count < 4) )
             {
                 t = Count;
             }
-            else
+			else
             {
                 t = 4 - ( t & 3 );
             }
 
-            Count -= t;
+			Count -= t;
 
             do
             {
                 *pTo++ = *pFrom++;
             } while( --t );
-        }
+		}
 
         // Try to copy 32 bits at a time.
 
-        t = Count >> 2;
+		t = Count >> 2;
 
         if( t )
         {
@@ -1519,7 +1519,7 @@ void* x_memmove( void* pDest, const void* pSrc, s32 Count )
 
         // Copy any left over bytes.
 
-        t = Count & 3;
+		t = Count & 3;
 
         if( t )
         {
@@ -1528,40 +1528,40 @@ void* x_memmove( void* pDest, const void* pSrc, s32 Count )
                 *pTo++ = *pFrom++;
             } while( --t );
         }
-    }
+	}
     else
     {
-        //
-        // Copy backwards.
-        //
+		//
+		// Copy backwards.
+		//
 
-        pFrom += Count;
-        pTo   += Count;
+		pFrom += Count;
+		pTo   += Count;
 
-        t = (s32)pFrom;
+		t = (s32)pFrom;
 
-        if( (t | (s32)pTo) & 3 )
+		if( (t | (s32)pTo) & 3 )
         {
-            if( ((t ^ (s32)pTo) & 3) || (Count <= 4) )
+			if( ((t ^ (s32)pTo) & 3) || (Count <= 4) )
             {
-                t = Count;
+				t = Count;
             }
-            else
+			else
             {
-                t &= 3;
+				t &= 3;
             }
 
-            Count -= t;
+			Count -= t;
 
             do
             {
                 *--pTo = *--pFrom;
             } while( --t );
-        }
+		}
 
         // Try to copy 32 bits at a time.
 
-        t = Count >> 2;
+		t = Count >> 2;
 
         if( t )
         {
@@ -1576,7 +1576,7 @@ void* x_memmove( void* pDest, const void* pSrc, s32 Count )
 
         // Copy any left over bytes.
 
-        t = Count & 3;
+		t = Count & 3;
 
         if( t )
         {
@@ -1585,9 +1585,9 @@ void* x_memmove( void* pDest, const void* pSrc, s32 Count )
                 *--pTo = *--pFrom;
             } while( --t );
         }
-    }
+	}
 
-    return( pDest );
+	return( pDest );
 }
 
 //==============================================================================

@@ -806,8 +806,8 @@ static void pc_UpdateStreamPCM( channel* pChannel )
     }
 
     if( pChannel->StreamData.pStream && pChannel->StreamData.pStream->StreamDone )
-    {
-        // Calculate absolute position
+	{
+		// Calculate absolute position
         pChannel->Hardware.CurrentPosition = pChannel->Hardware.BasePosition + pChannel->CurrBufferPosition;
 
         // Need to release it?
@@ -816,87 +816,87 @@ static void pc_UpdateStreamPCM( channel* pChannel )
             // Nuke it.
             g_AudioHardware.ReleaseChannel( pChannel );
         }
-    }
+	}
 }
 
 //------------------------------------------------------------------------------
 
 static void pc_UpdateStreamMP3( channel* pChannel )
 {
-    hot_sample* pSample = pChannel->Sample.pHotSample;
+	hot_sample* pSample = pChannel->Sample.pHotSample;
 
-    // Did a wrap occur?
-    if( (pChannel->StreamData.PreviousPosition >= pChannel->MidPoint) && 
-        (pChannel->CurrBufferPosition < pChannel->MidPoint) )
-    {
-        LOG_MESSAGE( "pc_UpdateStreamMP3", "Played a BUFFER!" );
-        pChannel->Hardware.BasePosition += STREAM_BUFFER_SIZE;
-    }
+	// Did a wrap occur?
+	if( (pChannel->StreamData.PreviousPosition >= pChannel->MidPoint) && 
+		(pChannel->CurrBufferPosition < pChannel->MidPoint) )
+	{
+		LOG_MESSAGE( "pc_UpdateStreamMP3", "Played a BUFFER!" );
+		pChannel->Hardware.BasePosition += STREAM_BUFFER_SIZE;
+	}
 
-    // Update previous.
-    pChannel->StreamData.PreviousPosition = pChannel->CurrBufferPosition;
+	// Update previous.
+	pChannel->StreamData.PreviousPosition = pChannel->CurrBufferPosition;
 
-    if( pChannel->StreamData.StreamControl )
-    {
-        // Get the current position within the sound, position is in WORDS.
-        u32 CurrentPosition = pChannel->CurrBufferPosition*2;
+	if( pChannel->StreamData.StreamControl )
+	{
+		// Get the current position within the sound, position is in WORDS.
+		u32 CurrentPosition = pChannel->CurrBufferPosition*2;
 loop:
-        u32 Cursor = pChannel->StreamData.WriteCursor;
-        
-        if( CurrentPosition > Cursor )
-        {
-            while( (((STREAM_BUFFER_SIZE*2) - CurrentPosition) + Cursor) < (STREAM_BUFFER_SIZE) )
-            {
-                g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-                goto loop;
-            }
-        }
-        else
-        {
-            while( (Cursor-CurrentPosition) < (STREAM_BUFFER_SIZE) )
-            {
-                g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-                goto loop;
-            }
-        }
+		u32 Cursor = pChannel->StreamData.WriteCursor;
+		
+		if( CurrentPosition > Cursor )
+		{
+			while( (((STREAM_BUFFER_SIZE*2) - CurrentPosition) + Cursor) < (STREAM_BUFFER_SIZE) )
+			{
+				g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+				goto loop;
+			}
+		}
+		else
+		{
+			while( (Cursor-CurrentPosition) < (STREAM_BUFFER_SIZE) )
+			{
+				g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+				goto loop;
+			}
+		}
 /*
-        if( bDoUpdate )
-        {
-            g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-            g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-            g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-            g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-            g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-            g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-            g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
-        }
+		if( bDoUpdate )
+		{
+			g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+			g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+			g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+			g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+			g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+			g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+			g_AudioHardware.UpdateMP3( pChannel->StreamData.pStream );
+		}
 */
-    }
+	}
 
-    // Calculate absolute position
-    pChannel->Hardware.CurrentPosition = pChannel->Hardware.BasePosition + pChannel->CurrBufferPosition;
+	// Calculate absolute position
+	pChannel->Hardware.CurrentPosition = pChannel->Hardware.BasePosition + pChannel->CurrBufferPosition;
 
-    // Need to release it?
-    if( pChannel->Hardware.CurrentPosition >= pSample->nSamples )
-    {
-        // Nuke it.
-        g_AudioHardware.ReleaseChannel( pChannel );
-    }
+	// Need to release it?
+	if( pChannel->Hardware.CurrentPosition >= pSample->nSamples )
+	{
+		// Nuke it.
+		g_AudioHardware.ReleaseChannel( pChannel );
+	}
 
 /*
-    // Less than one buffers worth of samples to play?
-    if( (pSample->nSamples-(pChannel->StreamData.nSamplesPlayed+pChannel->CurrBufferPosition)) < STREAM_BUFFER_SIZE )
-    {
-        if( pChannel->StreamData.bStopLoop )
-        {
-            u32 nSamplesRem = pSample->nSamples % STREAM_BUFFER_SIZE;
+	// Less than one buffers worth of samples to play?
+	if( (pSample->nSamples-(pChannel->StreamData.nSamplesPlayed+pChannel->CurrBufferPosition)) < STREAM_BUFFER_SIZE )
+	{
+		if( pChannel->StreamData.bStopLoop )
+		{
+			u32 nSamplesRem = pSample->nSamples % STREAM_BUFFER_SIZE;
 
-            // Stop it from looping!
-            IAL_stop_loop( pChannel->Hardware.hChannel, nSamplesRem );
+			// Stop it from looping!
+			IAL_stop_loop( pChannel->Hardware.hChannel, nSamplesRem );
 
-            pChannel->StreamData.bStopLoop = FALSE;
-        }
-    }
+			pChannel->StreamData.bStopLoop = FALSE;
+		}
+	}
 */
 }
 
@@ -928,9 +928,9 @@ void audio_hardware::UpdateStream( channel* pChannel )
                 pc_UpdateStreamPCM( pChannel );
                 break;
 
-            case MP3:
-                pc_UpdateStreamMP3( pChannel );
-                break;
+			case MP3:
+				pc_UpdateStreamMP3( pChannel );
+				break;
 
             default:
                 ASSERT( 0 );
@@ -993,8 +993,8 @@ void audio_hardware::Init( s32 MemSize )
         Channel.Hardware.InUse           = FALSE;
     }
 
-    // Start up the mp3 decoder
-    g_AudioMP3Mgr.Init();
+	// Start up the mp3 decoder
+	g_AudioMP3Mgr.Init();
 
     // ok its done.
     s_IsInitialized = TRUE;
@@ -1076,7 +1076,7 @@ void audio_hardware::ReleaseChannel( channel* pChannel )
 
     // If the hardware channel is active, stop it!
     //if( pChannel->Hardware.hChannel )
-    if( pChannel->Hardware.InUse )
+	if( pChannel->Hardware.InUse )
     {
         IAL_end_channel( pChannel->Hardware.hChannel );
 
@@ -1219,12 +1219,12 @@ void audio_hardware::InitChannelStreamed( channel* pChannel )
 
     // Set the current position
     pChannel->CurrBufferPosition = 0;
-    pChannel->PrevBufferPosition = 0;
-    pChannel->StreamData.PreviousPosition = 0;
-    pChannel->StreamData.WriteCursor      = 0;
+	pChannel->PrevBufferPosition = 0;
+	pChannel->StreamData.PreviousPosition = 0;
+	pChannel->StreamData.WriteCursor      = 0;
 
-    // Nuke the number of samples played.
-    pChannel->StreamData.nSamplesPlayed = 0;
+	// Nuke the number of samples played.
+	pChannel->StreamData.nSamplesPlayed = 0;
 
     // setup the buffer pointer
     hot_sample* pSample  = pChannel->Sample.pHotSample;
@@ -1303,9 +1303,9 @@ u32 audio_hardware::GetSamplesPlayed( channel* pChannel )
                 pChannel->nSamplesAdjust = pChannel->CurrBufferPosition;
                 break;
 
-            case MP3:
-                pChannel->nSamplesAdjust = pChannel->CurrBufferPosition;
-                break;
+			case MP3:
+				pChannel->nSamplesAdjust = pChannel->CurrBufferPosition;
+				break;
 
             default:
                 ASSERT( 0 );
@@ -1339,12 +1339,12 @@ static xbool UpdatePosition( channel* pChannel )
                     pChannel->nSamplesBase += STREAM_BUFFER_SIZE;
                     break;
 
-                    // MP3?
-                case MP3:
-                    // Update the number of samples played (PCM is word 
-                    // based so DONT multiply STREAM_BUFFER_SIZE by 2).
-                    pChannel->nSamplesBase += STREAM_BUFFER_SIZE;
-                    break;
+					// MP3?
+				case MP3:
+					// Update the number of samples played (PCM is word 
+					// based so DONT multiply STREAM_BUFFER_SIZE by 2).
+					pChannel->nSamplesBase += STREAM_BUFFER_SIZE;
+					break;
 
                 default:
                     ASSERT( 0 );
@@ -1387,59 +1387,59 @@ FILE* fR = NULL;
 
 void audio_hardware::UpdateMP3( audio_stream* pStream )
 {
-    u32 ARAM;
-    u32 Cursor;
+	u32 ARAM;
+	u32 Cursor;
 /*
-    if( fL == NULL )
-    {
-        fL = fopen( "left.raw", "w+b" );
-        ASSERT( fL );
-        fR = fopen( "right.raw", "w+b" );
-        ASSERT( fR );
-    }
+	if( fL == NULL )
+	{
+		fL = fopen( "left.raw", "w+b" );
+		ASSERT( fL );
+		fR = fopen( "right.raw", "w+b" );
+		ASSERT( fR );
+	}
 */
-    // Decode 512 Samples
-    g_AudioMP3Mgr.Decode( pStream, s_LeftBuffer[ s_WhichBuffer ], s_RightBuffer[ s_WhichBuffer ], 512 );
+	// Decode 512 Samples
+	g_AudioMP3Mgr.Decode( pStream, s_LeftBuffer[ s_WhichBuffer ], s_RightBuffer[ s_WhichBuffer ], 512 );
 /*
-    s32 nBytes;
+	s32 nBytes;
 
-    nBytes = fwrite( s_LeftBuffer[ s_WhichBuffer ], sizeof(s16), 512, fL );
-    ASSERT( nBytes == 512 );
-    nBytes = fwrite( s_RightBuffer[ s_WhichBuffer ], sizeof(s16), 512, fR );
-    ASSERT( nBytes == 512 );
+	nBytes = fwrite( s_LeftBuffer[ s_WhichBuffer ], sizeof(s16), 512, fL );
+	ASSERT( nBytes == 512 );
+	nBytes = fwrite( s_RightBuffer[ s_WhichBuffer ], sizeof(s16), 512, fR );
+	ASSERT( nBytes == 512 );
 */
 
 /*
-    LOG_MESSAGE( "audio_hardware::UpdateMP3", 
-                 "Write: %d, Playback: %d",
-                 pStream->pChannel[1]->StreamData.WriteCursor,
-                 pStream->pChannel[1]->CurrBufferPosition*2 );
+	LOG_MESSAGE( "audio_hardware::UpdateMP3", 
+		         "Write: %d, Playback: %d",
+				 pStream->pChannel[1]->StreamData.WriteCursor,
+				 pStream->pChannel[1]->CurrBufferPosition*2 );
 */
-    // Copy the left channel
-    Cursor = pStream->pChannel[0]->StreamData.WriteCursor;
-    ARAM   = pStream->Samples[0].Sample.AudioRam + Cursor;
-    x_memcpy( (void*)ARAM, &s_LeftBuffer[ s_WhichBuffer ], 512 * sizeof(s16) );
-    Cursor += 512*sizeof(s16);
-    if( Cursor >= STREAM_BUFFER_SIZE*2 )
-        Cursor = 0;
-    pStream->pChannel[0]->StreamData.WriteCursor = Cursor;
+	// Copy the left channel
+	Cursor = pStream->pChannel[0]->StreamData.WriteCursor;
+	ARAM   = pStream->Samples[0].Sample.AudioRam + Cursor;
+	x_memcpy( (void*)ARAM, &s_LeftBuffer[ s_WhichBuffer ], 512 * sizeof(s16) );
+	Cursor += 512*sizeof(s16);
+	if( Cursor >= STREAM_BUFFER_SIZE*2 )
+		Cursor = 0;
+	pStream->pChannel[0]->StreamData.WriteCursor = Cursor;
 
-    // Stereo?
-    if( pStream->Type == STEREO_STREAM )
-    {
-        // Copy the right channel
-        Cursor = pStream->pChannel[1]->StreamData.WriteCursor;
-        ARAM   = pStream->Samples[1].Sample.AudioRam + Cursor;
-        x_memcpy( (void*)ARAM, &s_RightBuffer[ s_WhichBuffer ], 512 * sizeof(s16) );
-        Cursor += 512*sizeof(s16);
-        if( Cursor >= STREAM_BUFFER_SIZE*2 )
-            Cursor = 0;
-        pStream->pChannel[1]->StreamData.WriteCursor = Cursor;
-    }
+	// Stereo?
+	if( pStream->Type == STEREO_STREAM )
+	{
+		// Copy the right channel
+		Cursor = pStream->pChannel[1]->StreamData.WriteCursor;
+		ARAM   = pStream->Samples[1].Sample.AudioRam + Cursor;
+		x_memcpy( (void*)ARAM, &s_RightBuffer[ s_WhichBuffer ], 512 * sizeof(s16) );
+		Cursor += 512*sizeof(s16);
+		if( Cursor >= STREAM_BUFFER_SIZE*2 )
+			Cursor = 0;
+		pStream->pChannel[1]->StreamData.WriteCursor = Cursor;
+	}
 
-    // Switch buffers.
-    if( ++s_WhichBuffer >= MAX_AUDIO_STREAMS )
-        s_WhichBuffer = 0;
+	// Switch buffers.
+	if( ++s_WhichBuffer >= MAX_AUDIO_STREAMS )
+		s_WhichBuffer = 0;
 }
 
 //==============================================================================

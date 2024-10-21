@@ -140,7 +140,7 @@ xbool command_line::ReadResponseFile( xstring& PathName, xarray<xstring>& Args )
     xstring a;
     s32     iStart;
     s32     iEnd;
-    s32        iNext;
+	s32		iNext;
 
     // Load file into string
     Success = r.LoadFile( PathName );
@@ -159,31 +159,31 @@ xbool command_line::ReadResponseFile( xstring& PathName, xarray<xstring>& Args )
                 iStart++;
             }
 
-            // At end of string?
-            if( iStart<Length )
-            {
-                // Find limits of string
-                iEnd = iStart+1;
-                if( r[iStart] == '"' )
-                {
-                    iStart++;
-                    while( (iEnd<Length) && (r[iEnd] != '"') )
-                        iEnd++;
-                    iNext = iEnd+1;
-                }
-                else
-                {
-                    while( (iEnd<Length) && !x_isspace(r[iEnd]) )
-                        iEnd++;
-                    iNext = iEnd;
-                }
+			// At end of string?
+			if( iStart<Length )
+			{
+				// Find limits of string
+				iEnd = iStart+1;
+				if( r[iStart] == '"' )
+				{
+					iStart++;
+					while( (iEnd<Length) && (r[iEnd] != '"') )
+						iEnd++;
+					iNext = iEnd+1;
+				}
+				else
+				{
+					while( (iEnd<Length) && !x_isspace(r[iEnd]) )
+						iEnd++;
+					iNext = iEnd;
+				}
 
-                // Add to argument array
-                Args.Append() = r.Mid( iStart, iEnd-iStart );
+				// Add to argument array
+				Args.Append() = r.Mid( iStart, iEnd-iStart );
 
-                // Set start past end of string
-                iStart = iNext;
-            }
+				// Set start past end of string
+				iStart = iNext;
+			}
         }
     }
 
@@ -235,12 +235,12 @@ xbool command_line::Parse( int argc, char** argv )
                 // Check for response file
                 else if( a[0] == '@' )
                 {
-                    // Read and insert the response file
-                    xarray<xstring> Response;
-                    if( ReadResponseFile( a.Right(a.GetLength()-1), Response ) )
-                        Args.Insert( i, Response );
-                    else
-                        NeedHelp = TRUE;
+					// Read and insert the response file
+					xarray<xstring> Response;
+					if( ReadResponseFile( a.Right(a.GetLength()-1), Response ) )
+						Args.Insert( i, Response );
+					else
+						NeedHelp = TRUE;
                 }
                 // Check for an option
                 else if( a[0] == '-' )
@@ -362,7 +362,7 @@ s32 command_line::Glob( const xstring& Pattern, xarray<xstring>& Results, xbool 
 {
     xstring         Path;
     xstring         File;
-    _finddata_t        Data;
+	_finddata_t	    Data;
     xarray<xstring> Folders;
 
     // Set basic capacity so Folders array will not need to grow much
@@ -371,28 +371,28 @@ s32 command_line::Glob( const xstring& Pattern, xarray<xstring>& Results, xbool 
     // Split Pattern into Path and File
     SplitPath( Pattern, Path, File );
 
-    // Begin find
-    s32 handle = _findfirst( Pattern, &Data );
-    if( handle != -1 )
-    {
-        // Loop through all files
+	// Begin find
+	s32 handle = _findfirst( Pattern, &Data );
+	if( handle != -1 )
+	{
+		// Loop through all files
         do
         {
             // Make sure it's not a folder
-            if( !(Data.attrib & _A_SUBDIR) )
+		    if( !(Data.attrib & _A_SUBDIR) )
             {
                 // Grow Results Array
                 if( Results.GetCapacity() == Results.GetCount() )
                     Results.SetCapacity( Results.GetCapacity() * 2 );
 
                 // Add to array
-                Results.Append() = JoinPath( Path, xstring(Data.name) );
+			    Results.Append() = JoinPath( Path, xstring(Data.name) );
             }
         } while( _findnext( handle, &Data ) == 0 );
 
         // Close the find
         _findclose( handle );
-    }
+	}
 
     // Recurse through folders if requested
     if( Recursive )
@@ -430,8 +430,8 @@ s32 command_line::Glob( const xstring& Pattern, xarray<xstring>& Results, xbool 
         }
     }
 
-    // Return number of files found
-    return Results.GetCount();
+	// Return number of files found
+	return Results.GetCount();
 }
 
 //==============================================================================

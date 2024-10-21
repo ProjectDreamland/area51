@@ -27,7 +27,7 @@
 
 
 /* Print some performance stats. */
-/* #define INSTRUMENT_IT    */
+/* #define INSTRUMENT_IT	*/
 /* Track minimum and maximum in inv_cmap_2. */
 #define MINMAX_TRACK
 
@@ -73,38 +73,38 @@ s32 greenloop( s32 restart );
  *
  * Compute an inverse colormap efficiently.
  * Inputs:
- *     colors:        Number of colors in the forward colormap.
- *     colormap:    The forward colormap.
- *     bits:        Number of quantization bits.  The inverse
- *             colormap will have (2^bits)^3 entries.
- *     dist_buf:    An array of (2^bits)^3 long integers to be
- *             used as scratch space.
+ * 	colors:		Number of colors in the forward colormap.
+ * 	colormap:	The forward colormap.
+ * 	bits:		Number of quantization bits.  The inverse
+ * 			colormap will have (2^bits)^3 entries.
+ * 	dist_buf:	An array of (2^bits)^3 long integers to be
+ * 			used as scratch space.
  * Outputs:
- *     rgbmap:        The output inverse colormap.  The entry
- *             rgbmap[(r<<(2*bits)) + (g<<bits) + b]
- *             is the colormap entry that is closest to the
- *             (quantized) color (r,g,b).
+ * 	rgbmap:		The output inverse colormap.  The entry
+ * 			rgbmap[(r<<(2*bits)) + (g<<bits) + b]
+ * 			is the colormap entry that is closest to the
+ * 			(quantized) color (r,g,b).
  * Assumptions:
- *     Quantization is performed by right shift (low order bits are
- *     truncated).  Thus, the distance to a quantized color is
- *     actually measured to the color at the center of the cell
- *     (i.e., to r+.5, g+.5, b+.5, if (r,g,b) is a quantized color).
+ * 	Quantization is performed by right shift (low order bits are
+ * 	truncated).  Thus, the distance to a quantized color is
+ * 	actually measured to the color at the center of the cell
+ * 	(i.e., to r+.5, g+.5, b+.5, if (r,g,b) is a quantized color).
  * Algorithm:
- *     Uses a "distance buffer" algorithm:
- *     The distance from each representative in the forward color map
- *     to each point in the rgb space is computed.  If it is less
- *     than the distance currently stored in dist_buf, then the
- *     corresponding entry in rgbmap is replaced with the current
- *     representative (and the dist_buf entry is replaced with the
- *     new distance).
+ * 	Uses a "distance buffer" algorithm:
+ * 	The distance from each representative in the forward color map
+ * 	to each point in the rgb space is computed.  If it is less
+ * 	than the distance currently stored in dist_buf, then the
+ * 	corresponding entry in rgbmap is replaced with the current
+ * 	representative (and the dist_buf entry is replaced with the
+ * 	new distance).
  *
- *     The distance computation uses an efficient incremental formulation.
+ * 	The distance computation uses an efficient incremental formulation.
  *
- *     Distances are computed "outward" from each color.  If the
- *     colors are evenly distributed in color space, the expected
- *     number of cells visited for color I is N^3/I.
- *     Thus, the complexity of the algorithm is O(log(K) N^3),
- *     where K = colors, and N = 2^bits.
+ * 	Distances are computed "outward" from each color.  If the
+ * 	colors are evenly distributed in color space, the expected
+ * 	number of cells visited for color I is N^3/I.
+ * 	Thus, the complexity of the algorithm is O(log(K) N^3),
+ * 	where K = colors, and N = 2^bits.
  */
 
 /*
@@ -112,19 +112,19 @@ s32 greenloop( s32 restart );
  * until we hit the "edge" of the cell -- that is, the point
  * at which some other color is closer -- and stop.  In 1-D,
  * this is simple:
- *     for i := here to max do
- *         if closer then buffer[i] = this color
- *         else break
- *     repeat above loop with i := here-1 to min by -1
+ * 	for i := here to max do
+ * 		if closer then buffer[i] = this color
+ * 		else break
+ * 	repeat above loop with i := here-1 to min by -1
  *
  * In 2-D, it's trickier, because along a "scan-line", the
  * region might start "after" the "center" point.  A picture
  * might clarify:
- *         |    ...
- *               | ...    .
- *              ...        .
+ *		 |    ...
+ *               | ...	.
+ *              ...    	.
  *           ... |      .
- *          .    +         .
+ *          .    +     	.
  *           .          .
  *            .         .
  *             .........
@@ -133,16 +133,16 @@ s32 greenloop( s32 restart );
  * lines, the region "begins" to the right of the "center".
  *
  * Thus, we need a loop like this:
- *     detect := false
- *     for i := here to max do
- *         if closer then
- *             buffer[..., i] := this color
- *             if !detect then
- *                 here = i
- *                 detect = true
- *         else
- *             if detect then
- *                 break
+ * 	detect := false
+ * 	for i := here to max do
+ * 		if closer then
+ * 			buffer[..., i] := this color
+ * 			if !detect then
+ * 				here = i
+ * 				detect = true
+ * 		else
+ * 			if detect then
+ * 				break
  *
  * Repeat the above loop with i := here-1 to min by -1.  Note that
  * the "detect" value should not be reinitialized.  If it was
@@ -168,49 +168,49 @@ s32 greenloop( s32 restart );
  * that finds the first color value on the scan line that is
  * in this cell, and a second that fills the cell until
  * another one is closer:
- *      if !detect then        {needed for "down" loop}
- *         for i := here to max do
- *         if closer then
- *             buffer[..., i] := this color
- *             detect := true
- *             break
- *    for i := i+1 to max do
- *        if closer then
- *             buffer[..., i] := this color
- *         else
- *             break
+ *  	if !detect then	    {needed for "down" loop}
+ * 	    for i := here to max do
+ * 		if closer then
+ * 			buffer[..., i] := this color
+ * 			detect := true
+ * 			break
+ *	for i := i+1 to max do
+ *		if closer then
+ * 			buffer[..., i] := this color
+ * 		else
+ * 			break
  *
  * In this implementation, each level will require the
  * following variables.  Variables labelled (l) are local to each
  * procedure.  The ? should be replaced with r, g, or b:
- *      cdist:            The distance at the starting point.
- *     ?center:    The value of this component of the color
- *      c?inc:            The initial increment at the ?center position.
- *     ?stride:    The amount to add to the buffer
- *             pointers (dp and rgbp) to get to the
- *             "next row".
- *     min(l):        The "low edge" of the cell, init to 0
- *     max(l):        The "high edge" of the cell, init to
- *             colormax-1
- *     detect(l):        True if this row has changed some
- *                     buffer entries.
- *      i(l):             The index for this row.
- *      ?xx:            The accumulated increment value.
+ *  	cdist:	    	The distance at the starting point.
+ * 	?center:	The value of this component of the color
+ *  	c?inc:	    	The initial increment at the ?center position.
+ * 	?stride:	The amount to add to the buffer
+ * 			pointers (dp and rgbp) to get to the
+ * 			"next row".
+ * 	min(l):		The "low edge" of the cell, init to 0
+ * 	max(l):		The "high edge" of the cell, init to
+ * 			colormax-1
+ * 	detect(l):    	True if this row has changed some
+ * 	    	    	buffer entries.
+ *  	i(l): 	    	The index for this row.
+ *  	?xx:	    	The accumulated increment value.
  *
- *      here(l):        The starting index for this color.  The
- *                      following variables are associated with here,
- *                      in the sense that they must be updated if here
- *                      is changed.
- *      ?dist:            The current distance for this level.  The
- *                      value of dist from the previous level (g or r,
- *                      for level b or g) initializes dist on this
- *                      level.  Thus gdist is associated with here(b)).
- *      ?inc:            The initial increment for the row.
+ *  	here(l):    	The starting index for this color.  The
+ *  	    	    	following variables are associated with here,
+ *  	    	    	in the sense that they must be updated if here
+ *  	    	    	is changed.
+ *  	?dist:	    	The current distance for this level.  The
+ *  	    	    	value of dist from the previous level (g or r,
+ *  	    	    	for level b or g) initializes dist on this
+ *  	    	    	level.  Thus gdist is associated with here(b)).
+ *  	?inc:	    	The initial increment for the row.
 
- *      ?dp:            Pointer into the distance buffer.  The value
- *                      from the previous level initializes this level.
- *      ?rgbp:            Pointer into the rgb buffer.  The value
- *                      from the previous level initializes this level.
+ *  	?dp:	    	Pointer into the distance buffer.  The value
+ *  	    	    	from the previous level initializes this level.
+ *  	?rgbp:	    	Pointer into the rgb buffer.  The value
+ *  	    	    	from the previous level initializes this level.
  *
  * The blue and green levels modify 'here-associated' variables (dp,
  * rgbp, dist) on the green and red levels, respectively, when here is
@@ -231,49 +231,49 @@ compute_cmap2( void )
     rstride = colormax * colormax;
 
 #ifdef INSTRUMENT_IT
-    outercount = 0;
-    innercount = 0;
+	outercount = 0;
+	innercount = 0;
 #endif
     maxfill( s_Dist, colormax );
 
     for ( cindex = 0; cindex < s_NColors; cindex++ )
     {
-    /*
-     * Distance formula is
-     * (red - map[0])^2 + (green - map[1])^2 + (blue - map[2])^2
-     *
-     * Because of quantization, we will measure from the center of
-     * each quantized "cube", so blue distance is
-     *     (blue + x/2 - map[2])^2,
-     * where x = 2^(8 - bits).
-     * The step size is x, so the blue increment is
-     *     2*x*blue - 2*x*map[2] + 2*x^2
-     *
-     * Now, b in the code below is actually blue/x, so our
-     * increment will be 2*(b*x^2 + x^2 - x*map[2]).  For
-     * efficiency, we will maintain this quantity in a separate variable
-     * that will be updated incrementally by adding 2*x^2 each time.
-     */
-    /* The initial position is the cell containing the colormap
-     * entry.  We get this by quantizing the colormap values.
-     */
+	/*
+	 * Distance formula is
+	 * (red - map[0])^2 + (green - map[1])^2 + (blue - map[2])^2
+	 *
+	 * Because of quantization, we will measure from the center of
+	 * each quantized "cube", so blue distance is
+	 * 	(blue + x/2 - map[2])^2,
+	 * where x = 2^(8 - bits).
+	 * The step size is x, so the blue increment is
+	 * 	2*x*blue - 2*x*map[2] + 2*x^2
+	 *
+	 * Now, b in the code below is actually blue/x, so our
+	 * increment will be 2*(b*x^2 + x^2 - x*map[2]).  For
+	 * efficiency, we will maintain this quantity in a separate variable
+	 * that will be updated incrementally by adding 2*x^2 each time.
+	 */
+	/* The initial position is the cell containing the colormap
+	 * entry.  We get this by quantizing the colormap values.
+	 */
 
-    /* RG: Special case added when bits = 5. This code seems to achieve a
+	/* RG: Special case added when bits = 5. This code seems to achieve a
    * more visually pleasing mapping than Spencer's original code.  Don't
-     * ask for a mathematical basis for the following, as these
-     * modifications where stumbled upon experimentally.
-     */
+	 * ask for a mathematical basis for the following, as these
+	 * modifications where stumbled upon experimentally.
+	 */
 
-    if (nbits == 3)
-    {
-      int r, g, b;
+	if (nbits == 3)
+	{
+  	int r, g, b;
 
     x = 2;
     xsqr = 4;
 
-      r = rcenter = s_Color[cindex].R;
-    g = gcenter = s_Color[cindex].G;
-      b = bcenter = s_Color[cindex].B;
+  	r = rcenter = s_Color[cindex].R;
+	g = gcenter = s_Color[cindex].G;
+  	b = bcenter = s_Color[cindex].B;
 
     r >>= 2;        /* 6-bits of precision for original entry */
     g >>= 2;
@@ -290,32 +290,32 @@ compute_cmap2( void )
     crinc = 4 - (4 * r) + (8 * rcenter);
     cginc = 4 - (4 * g) + (8 * gcenter);
     cbinc = 4 - (4 * b) + (8 * bcenter);
-    }
-    else
-    {
-      rcenter = s_Color[cindex].R >> nbits;
-    gcenter = s_Color[cindex].G >> nbits;
-      bcenter = s_Color[cindex].B >> nbits;
+	}
+	else
+	{
+  	rcenter = s_Color[cindex].R >> nbits;
+	gcenter = s_Color[cindex].G >> nbits;
+  	bcenter = s_Color[cindex].B >> nbits;
 
-    rdist = s_Color[cindex].R - (rcenter * x + x/2);
-      gdist = s_Color[cindex].G - (gcenter * x + x/2);
-    cdist = s_Color[cindex].B - (bcenter * x + x/2);
-      cdist = rdist*rdist + gdist*gdist + cdist*cdist;
+	rdist = s_Color[cindex].R - (rcenter * x + x/2);
+  	gdist = s_Color[cindex].G - (gcenter * x + x/2);
+	cdist = s_Color[cindex].B - (bcenter * x + x/2);
+  	cdist = rdist*rdist + gdist*gdist + cdist*cdist;
 
-    crinc = 2 * ((rcenter + 1) * xsqr - (s_Color[cindex].R * x));
-      cginc = 2 * ((gcenter + 1) * xsqr - (s_Color[cindex].G * x));
-    cbinc = 2 * ((bcenter + 1) * xsqr - (s_Color[cindex].B * x));
+	crinc = 2 * ((rcenter + 1) * xsqr - (s_Color[cindex].R * x));
+  	cginc = 2 * ((gcenter + 1) * xsqr - (s_Color[cindex].G * x));
+	cbinc = 2 * ((bcenter + 1) * xsqr - (s_Color[cindex].B * x));
   }
 
-    /* Array starting points. */
-    cdp = s_Dist + rcenter * rstride + gcenter * gstride + bcenter;
-    crgbp = s_Index + rcenter * rstride + gcenter * gstride + bcenter;
+	/* Array starting points. */
+	cdp = s_Dist + rcenter * rstride + gcenter * gstride + bcenter;
+	crgbp = s_Index + rcenter * rstride + gcenter * gstride + bcenter;
 
-    (void)redloop();
+	(void)redloop();
     }
 #ifdef INSTRUMENT_IT
     fprintf( stderr, "K = %d, N = %d, outer count = %ld, inner count = %ld\n",
-         colors, colormax, outercount, innercount );
+	     colors, colormax, outercount, innercount );
 #endif
 }
 
@@ -334,28 +334,28 @@ redloop()
 
     /* Basic loop up. */
     for ( r = rcenter, rdist = cdist, rxx = crinc,
-      rdp = cdp, rrgbp = crgbp, first = 1;
-      r < colormax;
-      r++, rdp += rstride, rrgbp += rstride,
-      rdist += rxx, rxx += txsqr, first = 0 )
+	  rdp = cdp, rrgbp = crgbp, first = 1;
+	  r < colormax;
+	  r++, rdp += rstride, rrgbp += rstride,
+	  rdist += rxx, rxx += txsqr, first = 0 )
     {
-    if ( greenloop( first ) )
-        detect = 1;
-    else if ( detect )
-        break;
+	if ( greenloop( first ) )
+	    detect = 1;
+	else if ( detect )
+	    break;
     }
 
     /* Basic loop down. */
     for ( r = rcenter - 1, rxx = crinc - txsqr, rdist = cdist - rxx,
-      rdp = cdp - rstride, rrgbp = crgbp - rstride, first = 1;
-      r >= 0;
-      r--, rdp -= rstride, rrgbp -= rstride,
-      rxx -= txsqr, rdist -= rxx, first = 0 )
+	  rdp = cdp - rstride, rrgbp = crgbp - rstride, first = 1;
+	  r >= 0;
+	  r--, rdp -= rstride, rrgbp -= rstride,
+	  rxx -= txsqr, rdist -= rxx, first = 0 )
     {
-    if ( greenloop( first ) )
-        detect = 1;
-    else if ( detect )
-        break;
+	if ( greenloop( first ) )
+	    detect = 1;
+	else if ( detect )
+	    break;
     }
 
     return detect;
@@ -373,20 +373,20 @@ s32 greenloop( s32 restart )
     static int prevmax, prevmin;
     int thismax, thismin;
 #endif
-    static long ginc, gxx, gcdist;    /* "gc" variables maintain correct */
-    static u32 *gcdp;        /*  values for bcenter position, */
-    static byte *gcrgbp;    /*  despite modifications by blueloop */
-                    /*  to gdist, gdp, grgbp. */
+    static long ginc, gxx, gcdist;	/* "gc" variables maintain correct */
+    static u32 *gcdp;		/*  values for bcenter position, */
+    static byte *gcrgbp;	/*  despite modifications by blueloop */
+					/*  to gdist, gdp, grgbp. */
 
     if ( restart )
     {
-    here = gcenter;
-    min = 0;
-    max = colormax - 1;
-    ginc = cginc;
+	here = gcenter;
+	min = 0;
+	max = colormax - 1;
+	ginc = cginc;
 #ifdef MINMAX_TRACK
-    prevmax = 0;
-    prevmin = colormax;
+	prevmax = 0;
+	prevmin = colormax;
 #endif
     }
 
@@ -398,70 +398,70 @@ s32 greenloop( s32 restart )
 
     /* Basic loop up. */
     for ( g = here, gcdist = gdist = rdist, gxx = ginc,
-      gcdp = gdp = rdp, gcrgbp = grgbp = rrgbp, first = 1;
-      g <= max;
-      g++, gdp += gstride, gcdp += gstride, grgbp += gstride, gcrgbp += gstride,
-      gdist += gxx, gcdist += gxx, gxx += txsqr, first = 0 )
+	  gcdp = gdp = rdp, gcrgbp = grgbp = rrgbp, first = 1;
+	  g <= max;
+	  g++, gdp += gstride, gcdp += gstride, grgbp += gstride, gcrgbp += gstride,
+	  gdist += gxx, gcdist += gxx, gxx += txsqr, first = 0 )
     {
-    if ( blueloop( first ) )
-    {
-        if ( !detect )
-        {
-        /* Remember here and associated data! */
-        if ( g > here )
-        {
-            here = g;
-            rdp = gcdp;
-            rrgbp = gcrgbp;
-            rdist = gcdist;
-            ginc = gxx;
+	if ( blueloop( first ) )
+	{
+	    if ( !detect )
+	    {
+		/* Remember here and associated data! */
+		if ( g > here )
+		{
+		    here = g;
+		    rdp = gcdp;
+		    rrgbp = gcrgbp;
+		    rdist = gcdist;
+		    ginc = gxx;
 #ifdef MINMAX_TRACK
-            thismin = here;
+		    thismin = here;
 #endif
-        }
-        detect = 1;
-        }
-    }
-    else if ( detect )
-    {
+		}
+		detect = 1;
+	    }
+	}
+	else if ( detect )
+	{
 #ifdef MINMAX_TRACK
-        thismax = g - 1;
+	    thismax = g - 1;
 #endif
-        break;
-    }
+	    break;
+	}
     }
 
     /* Basic loop down. */
     for ( g = here - 1, gxx = ginc - txsqr, gcdist = gdist = rdist - gxx,
-      gcdp = gdp = rdp - gstride, gcrgbp = grgbp = rrgbp - gstride,
-      first = 1;
-      g >= min;
-      g--, gdp -= gstride, gcdp -= gstride, grgbp -= gstride, gcrgbp -= gstride,
-      gxx -= txsqr, gdist -= gxx, gcdist -= gxx, first = 0 )
+	  gcdp = gdp = rdp - gstride, gcrgbp = grgbp = rrgbp - gstride,
+	  first = 1;
+	  g >= min;
+	  g--, gdp -= gstride, gcdp -= gstride, grgbp -= gstride, gcrgbp -= gstride,
+	  gxx -= txsqr, gdist -= gxx, gcdist -= gxx, first = 0 )
     {
-    if ( blueloop( first ) )
-    {
-        if ( !detect )
-        {
-        /* Remember here! */
-        here = g;
-        rdp = gcdp;
-        rrgbp = gcrgbp;
-        rdist = gcdist;
-        ginc = gxx;
+	if ( blueloop( first ) )
+	{
+	    if ( !detect )
+	    {
+		/* Remember here! */
+		here = g;
+		rdp = gcdp;
+		rrgbp = gcrgbp;
+		rdist = gcdist;
+		ginc = gxx;
 #ifdef MINMAX_TRACK
-        thismax = here;
+		thismax = here;
 #endif
-        detect = 1;
-        }
-    }
-    else if ( detect )
-    {
+		detect = 1;
+	    }
+	}
+	else if ( detect )
+	{
 #ifdef MINMAX_TRACK
-        thismin = g + 1;
+	    thismin = g + 1;
 #endif
-        break;
-    }
+	    break;
+	}
     }
 
 #ifdef MINMAX_TRACK
@@ -471,15 +471,15 @@ s32 greenloop( s32 restart )
      */
     if ( detect )
     {
-    if ( thismax < prevmax )
-        max = thismax;
+	if ( thismax < prevmax )
+	    max = thismax;
 
-    prevmax = thismax;
+	prevmax = thismax;
 
-    if ( thismin > prevmin )
-        min = thismin;
+	if ( thismin > prevmin )
+	    min = thismin;
 
-    prevmin = thismin;
+	prevmin = thismin;
     }
 #endif
 
@@ -505,13 +505,13 @@ s32 blueloop( s32 restart )
 
     if ( restart )
     {
-    here = bcenter;
-    min = 0;
-    max = colormax - 1;
-    binc = cbinc;
+	here = bcenter;
+	min = 0;
+	max = colormax - 1;
+	binc = cbinc;
 #ifdef MINMAX_TRACK
-    prevmin = colormax;
-    prevmax = 0;
+	prevmin = colormax;
+	prevmax = 0;
 #endif /* MINMAX_TRACK */
     }
 
@@ -524,58 +524,58 @@ s32 blueloop( s32 restart )
     /* Basic loop up. */
     /* First loop just finds first applicable cell. */
     for ( b = here, bdist = gdist, bxx = binc, dp = gdp, rgbp = grgbp, lim = max;
-      b <= lim;
-      b++, dp++, rgbp++,
-      bdist += bxx, bxx += txsqr )
+	  b <= lim;
+	  b++, dp++, rgbp++,
+	  bdist += bxx, bxx += txsqr )
     {
 #ifdef INSTRUMENT_IT
-    outercount++;
+	outercount++;
 #endif
-    if ( *dp > (u32)bdist )
-    {
-        /* Remember new 'here' and associated data! */
-        if ( b > here )
-        {
-        here = b;
-        gdp = dp;
-        grgbp = rgbp;
-        gdist = bdist;
-        binc = bxx;
+	if ( *dp > (u32)bdist )
+	{
+	    /* Remember new 'here' and associated data! */
+	    if ( b > here )
+	    {
+		here = b;
+		gdp = dp;
+		grgbp = rgbp;
+		gdist = bdist;
+		binc = bxx;
 #ifdef MINMAX_TRACK
-        thismin = here;
+		thismin = here;
 #endif
-        }
-        detect = 1;
+	    }
+	    detect = 1;
 #ifdef INSTRUMENT_IT
-        outercount--;
+	    outercount--;
 #endif
-        break;
-    }
+	    break;
+	}
     }
     /* Second loop fills in a run of closer cells. */
     for ( ;
-      b <= lim;
-      b++, dp++, rgbp++,
-      bdist += bxx, bxx += txsqr )
+	  b <= lim;
+	  b++, dp++, rgbp++,
+	  bdist += bxx, bxx += txsqr )
     {
 #ifdef INSTRUMENT_IT
-    outercount++;
+	outercount++;
 #endif
-    if ( *dp > (u32)bdist )
-    {
+	if ( *dp > (u32)bdist )
+	{
 #ifdef INSTRUMENT_IT
-        innercount++;
+	    innercount++;
 #endif
-        *dp = bdist;
-        *rgbp = i;
-    }
-    else
-    {
+	    *dp = bdist;
+	    *rgbp = i;
+	}
+	else
+	{
 #ifdef MINMAX_TRACK
-        thismax = b - 1;
+	    thismax = b - 1;
 #endif
-        break;
-    }
+	    break;
+	}
     }
 
     /* Basic loop down. */
@@ -592,78 +592,78 @@ s32 blueloop( s32 restart )
      * something.
      */
     if ( !detect )
-    for ( ;
-          b >= lim;
-          b--, dp--, rgbp--,
-          bxx -= txsqr, bdist -= bxx )
-    {
+	for ( ;
+	      b >= lim;
+	      b--, dp--, rgbp--,
+	      bxx -= txsqr, bdist -= bxx )
+	{
 #ifdef INSTRUMENT_IT
-        outercount++;
+	    outercount++;
 #endif
-        if ( *dp > (u32)bdist )
-        {
-        /* Remember here! */
-        /* No test for b against here necessary because b <
-         * here by definition.
-         */
-        here = b;
-        gdp = dp;
-        grgbp = rgbp;
-        gdist = bdist;
-        binc = bxx;
+	    if ( *dp > (u32)bdist )
+	    {
+		/* Remember here! */
+		/* No test for b against here necessary because b <
+		 * here by definition.
+		 */
+		here = b;
+		gdp = dp;
+		grgbp = rgbp;
+		gdist = bdist;
+		binc = bxx;
 #ifdef MINMAX_TRACK
-        thismax = here;
+		thismax = here;
 #endif
-        detect = 1;
+		detect = 1;
 #ifdef INSTRUMENT_IT
-        outercount--;
+		outercount--;
 #endif
-        break;
-        }
-    }
+		break;
+	    }
+	}
     /* The 'update' loop. */
     for ( ;
-      b >= lim;
-      b--, dp--, rgbp--,
-      bxx -= txsqr, bdist -= bxx )
+	  b >= lim;
+	  b--, dp--, rgbp--,
+	  bxx -= txsqr, bdist -= bxx )
     {
 #ifdef INSTRUMENT_IT
-    outercount++;
+	outercount++;
 #endif
-    if ( *dp > (u32)bdist )
-    {
+	if ( *dp > (u32)bdist )
+	{
 #ifdef INSTRUMENT_IT
-        innercount++;
+	    innercount++;
 #endif
-        *dp = bdist;
-        *rgbp = i;
-    }
-    else
-    {
+	    *dp = bdist;
+	    *rgbp = i;
+	}
+	else
+	{
 #ifdef MINMAX_TRACK
-        thismin = b + 1;
+	    thismin = b + 1;
 #endif
-        break;
-    }
+	    break;
+	}
     }
 
 
-    /* If we saw something, update the edge trackers. */
+	/* If we saw something, update the edge trackers. */
 #ifdef MINMAX_TRACK
     if ( detect )
     {
-    /* Only tracks edges that are "shrinking" (min increasing, max
-     * decreasing.
-     */
-    if ( thismax < prevmax )
-        max = thismax;
+	/* Only tracks edges that are "shrinking" (min increasing, max
+	 * decreasing.
+	 */
+	if ( thismax < prevmax )
+	    max = thismax;
 
-    if ( thismin > prevmin )
-        min = thismin;
+	if ( thismin > prevmin )
+	    min = thismin;
 
-    /* Remember the min and max values. */
-    prevmax = thismax;
-    prevmin = thismin;
+	/* Remember the min and max values. */
+	prevmax = thismax;
+	prevmin = thismin;
     }
 #endif /* MINMAX_TRACK */
 
@@ -678,9 +678,9 @@ void maxfill( u32* buffer, s32 side )
     register u32 *bp;
 
     for ( i = colormax * colormax * colormax, bp = buffer;
-      i > 0;
-      i--, bp++ )
-    *bp = maxv;
+	  i > 0;
+	  i--, bp++ )
+	*bp = maxv;
 }
 
 //==============================================================================
@@ -691,36 +691,36 @@ void maxfill( u32* buffer, s32 side )
  * Compute an inverse colormap efficiently.
  * Inputs:
 
- *     colors:        Number of colors in the forward colormap.
- *     colormap:    The forward colormap.
- *     bits:        Number of quantization bits.  The inverse
- *             colormap will have (2^bits)^3 entries.
- *     dist_buf:    An array of (2^bits)^3 long integers to be
- *             used as scratch space.
+ * 	colors:		Number of colors in the forward colormap.
+ * 	colormap:	The forward colormap.
+ * 	bits:		Number of quantization bits.  The inverse
+ * 			colormap will have (2^bits)^3 entries.
+ * 	dist_buf:	An array of (2^bits)^3 long integers to be
+ * 			used as scratch space.
  * Outputs:
- *     rgbmap:        The output inverse colormap.  The entry
- *             rgbmap[(r<<(2*bits)) + (g<<bits) + b]
- *             is the colormap entry that is closest to the
- *             (quantized) color (r,g,b).
+ * 	rgbmap:		The output inverse colormap.  The entry
+ * 			rgbmap[(r<<(2*bits)) + (g<<bits) + b]
+ * 			is the colormap entry that is closest to the
+ * 			(quantized) color (r,g,b).
  * Assumptions:
- *     Quantization is performed by right shift (low order bits are
- *     truncated).  Thus, the distance to a quantized color is
- *     actually measured to the color at the center of the cell
- *     (i.e., to r+.5, g+.5, b+.5, if (r,g,b) is a quantized color).
+ * 	Quantization is performed by right shift (low order bits are
+ * 	truncated).  Thus, the distance to a quantized color is
+ * 	actually measured to the color at the center of the cell
+ * 	(i.e., to r+.5, g+.5, b+.5, if (r,g,b) is a quantized color).
  * Algorithm:
- *     Uses a "distance buffer" algorithm:
- *     The distance from each representative in the forward color map
- *     to each point in the rgb space is computed.  If it is less
- *     than the distance currently stored in dist_buf, then the
- *     corresponding entry in rgbmap is replaced with the current
- *     representative (and the dist_buf entry is replaced with the
- *     new distance).
+ * 	Uses a "distance buffer" algorithm:
+ * 	The distance from each representative in the forward color map
+ * 	to each point in the rgb space is computed.  If it is less
+ * 	than the distance currently stored in dist_buf, then the
+ * 	corresponding entry in rgbmap is replaced with the current
+ * 	representative (and the dist_buf entry is replaced with the
+ * 	new distance).
  *
- *     The distance computation uses an efficient incremental formulation.
+ * 	The distance computation uses an efficient incremental formulation.
  *
- *     Right now, distances are computed for all entries in the rgb
- *     space.  Thus, the complexity of the algorithm is O(K N^3),
- *     where K = colors, and N = 2^bits.
+ * 	Right now, distances are computed for all entries in the rgb
+ * 	space.  Thus, the complexity of the algorithm is O(K N^3),
+ * 	where K = colors, and N = 2^bits.
  */
 void compute_cmap( void )
 {
@@ -737,59 +737,59 @@ void compute_cmap( void )
 
     for ( i = 0; i < s_NColors; i++ )
     {
-    /*
-     * Distance formula is
-     * (red - map[0])^2 + (green - map[1])^2 + (blue - map[2])^2
-     *
-     * Because of quantization, we will measure from the center of
-     * each quantized "cube", so blue distance is
-     *     (blue + x/2 - map[2])^2,
-     * where x = 2^(8 - bits).
-     * The step size is x, so the blue increment is
-     *     2*x*blue - 2*x*map[2] + 2*x^2
-     *
-     * Now, b in the code below is actually blue/x, so our
-     * increment will be 2*x*x*b + (2*x^2 - 2*x*map[2]).  For
-     * efficiency, we will maintain this quantity in a separate variable
-     * that will be updated incrementally by adding 2*x^2 each time.
-     */
-    rdist = s_Color[i].R - x/2;
-    gdist = s_Color[i].G - x/2;
-    bdist = s_Color[i].B - x/2;
-    rdist = rdist*rdist + gdist*gdist + bdist*bdist;
+	/*
+	 * Distance formula is
+	 * (red - map[0])^2 + (green - map[1])^2 + (blue - map[2])^2
+	 *
+	 * Because of quantization, we will measure from the center of
+	 * each quantized "cube", so blue distance is
+	 * 	(blue + x/2 - map[2])^2,
+	 * where x = 2^(8 - bits).
+	 * The step size is x, so the blue increment is
+	 * 	2*x*blue - 2*x*map[2] + 2*x^2
+	 *
+	 * Now, b in the code below is actually blue/x, so our
+	 * increment will be 2*x*x*b + (2*x^2 - 2*x*map[2]).  For
+	 * efficiency, we will maintain this quantity in a separate variable
+	 * that will be updated incrementally by adding 2*x^2 each time.
+	 */
+	rdist = s_Color[i].R - x/2;
+	gdist = s_Color[i].G - x/2;
+	bdist = s_Color[i].B - x/2;
+	rdist = rdist*rdist + gdist*gdist + bdist*bdist;
 
-    rinc = 2 * (xsqr - (s_Color[i].R << nbits));
-    ginc = 2 * (xsqr - (s_Color[i].G << nbits));
-    binc = 2 * (xsqr - (s_Color[i].B << nbits));
-    dp = s_Dist;
-    rgbp = s_Index;
-    for ( r = 0, rxx = rinc;
-          r < colormax;
-          rdist += rxx, r++, rxx += xsqr + xsqr )
-        for ( g = 0, gdist = rdist, gxx = ginc;
-          g < colormax;
-          gdist += gxx, g++, gxx += xsqr + xsqr )
-        for ( b = 0, bdist = gdist, bxx = binc;
-              b < colormax;
-              bdist += bxx, b++, dp++, rgbp++,
-              bxx += xsqr + xsqr )
-        {
+	rinc = 2 * (xsqr - (s_Color[i].R << nbits));
+	ginc = 2 * (xsqr - (s_Color[i].G << nbits));
+	binc = 2 * (xsqr - (s_Color[i].B << nbits));
+	dp = s_Dist;
+	rgbp = s_Index;
+	for ( r = 0, rxx = rinc;
+	      r < colormax;
+	      rdist += rxx, r++, rxx += xsqr + xsqr )
+	    for ( g = 0, gdist = rdist, gxx = ginc;
+		  g < colormax;
+		  gdist += gxx, g++, gxx += xsqr + xsqr )
+		for ( b = 0, bdist = gdist, bxx = binc;
+		      b < colormax;
+		      bdist += bxx, b++, dp++, rgbp++,
+		      bxx += xsqr + xsqr )
+		{
 #ifdef INSTRUMENT_IT
-            outercount++;
+		    outercount++;
 #endif
-            if ( i == 0 || *dp > (u32)bdist )
-            {
+		    if ( i == 0 || *dp > (u32)bdist )
+		    {
 #ifdef INSTRUMENT_IT
-            innercount++;
+			innercount++;
 #endif
-            *dp = bdist;
-            *rgbp = i;
-            }
-        }
+			*dp = bdist;
+			*rgbp = i;
+		    }
+		}
     }
 #ifdef INSTRUMENT_IT
     x_DebugMsg( "K = %d, N = %d, outer count = %ld, inner count = %ld\n",
-         s_NColors, colormax, outercount, innercount );
+	     s_NColors, colormax, outercount, innercount );
 #endif
 }
 

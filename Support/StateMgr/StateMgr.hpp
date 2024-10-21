@@ -47,9 +47,7 @@
 enum sm_states
 {
     SM_IDLE = 0,
-#ifdef TARGET_PC
-    SM_SPLASH_SCREEN,
-#endif
+
     SM_ESRB_NOTICE,
     SM_INEVITABLE_INTRO,
 #ifndef TARGET_XBOX
@@ -555,11 +553,6 @@ private:
     void                    EnterESRBNotice                 ( void );
     void                    UpdateESRBNotice                ( void );
     void                    ExitESRBNotice                  ( void );
-#ifdef TARGET_PC
-    void                    EnterSplashScreen               ( void );
-    void                    UpdateSplashScreen              ( void );
-    void                    ExitSplashScreen                ( void );
-#endif	
 
     void                    EnterInevitableIntro            ( void );
     void                    UpdateInevitableIntro           ( void );

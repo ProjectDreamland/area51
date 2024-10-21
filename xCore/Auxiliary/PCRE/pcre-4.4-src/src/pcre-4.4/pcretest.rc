@@ -6,7 +6,7 @@
 #define VER_FILEVERSION_STR "4.4.1335.30352"
 #define VER_FILELTVERSION_STR ""
 #define VER_LEGALCOPYRIGHT_STR "© 2003 University of Cambridge"
-//#define VER_COMMENT_STR  ""     
+//#define VER_COMMENT_STR  ""	 
 
 #define VER_FILEDESCRIPTION_STR "PcreTest: test Perl-compatible regular-expressions"
 #define VER_INTERNALNAME_STR "pcretest"
@@ -23,9 +23,9 @@
 #undef OFFICIAL
 #define FINAL            1
 
-#define GNUWIN32_SPECIALBUILD_STR    "GNU for Win32 <gnuwin32.sourceforge.net>"
+#define GNUWIN32_SPECIALBUILD_STR	"GNU for Win32 <gnuwin32.sourceforge.net>"
 
-#define VER_FILETYPE            VFT_APP
+#define VER_FILETYPE			VFT_APP
 #ifndef VER_FILETYPE
 #define VER_FILETYPE                VFT_APP
 #endif
@@ -47,7 +47,7 @@
 #ifndef OFFICIAL
 #define VER_SPECIALBUILD            VS_FF_SPECIALBUILD
 #ifndef VER_SPECIALBUILD_STR
-#define VER_SPECIALBUILD_STR        GNUWIN32_SPECIALBUILD_STR
+#define VER_SPECIALBUILD_STR		GNUWIN32_SPECIALBUILD_STR
 #endif
 #else /* OFFICIAL */
 #define VER_SPECIALBUILD            0
@@ -56,7 +56,7 @@
 #ifndef FINAL
 #define VER_PRIVATEBUILD            VS_FF_PRIVATEBUILD
 #ifndef VER_PRIVATEBUILD_STR
-#define VER_PRIVATEBUILD_STR        "Pre-release"
+#define VER_PRIVATEBUILD_STR		"Pre-release"
 #endif /* VER_PRIVATEBUILD_STR */
 #define VER_PRERELEASE              VS_FF_PRERELEASE
 #else /* FINAL */
@@ -72,52 +72,52 @@
 #ifdef RC_INVOKED
 
 VS_VERSION_INFO         VERSIONINFO
-FILEVERSION         VER_FILEVERSION
-PRODUCTVERSION      VER_PRODUCTVERSION
-FILEFLAGSMASK       VER_FILEFLAGSMASK
-FILEFLAGS           VER_FILEFLAGS
-FILEOS              VER_FILEOS
-FILETYPE            VER_FILETYPE
-FILESUBTYPE         VER_FILESUBTYPE
+FILEVERSION     	VER_FILEVERSION
+PRODUCTVERSION  	VER_PRODUCTVERSION
+FILEFLAGSMASK   	VER_FILEFLAGSMASK
+FILEFLAGS       	VER_FILEFLAGS
+FILEOS          	VER_FILEOS
+FILETYPE        	VER_FILETYPE
+FILESUBTYPE     	VER_FILESUBTYPE
 
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-    BLOCK "040904E4"
+	BLOCK "040904E4"
     /* language ID = U.S. English, char set = Windows, Multilingual */
-    BEGIN
+	BEGIN
 #ifdef VER_COMMENT_STR
-        VALUE "Comments",          VER_COMMENT_STR
+	    VALUE "Comments",          VER_COMMENT_STR
 #endif
-        VALUE "CompanyName",      VER_COMPANYNAME_STR
-        VALUE "License",          VER_LICENSE_STR
-        VALUE "FileDescription",  VER_FILEDESCRIPTION_STR
-        VALUE "FileVersion",      VER_FILEVERSION_STR
+	    VALUE "CompanyName",      VER_COMPANYNAME_STR
+	    VALUE "License",		  VER_LICENSE_STR
+	    VALUE "FileDescription",  VER_FILEDESCRIPTION_STR
+	    VALUE "FileVersion",      VER_FILEVERSION_STR
 #if !(VER_FILETYPE-VFT_DLL)
-        VALUE "LibToolFileVersion",VER_FILELTVERSION_STR
+	    VALUE "LibToolFileVersion",VER_FILELTVERSION_STR
 #endif
-        VALUE "InternalName",     VER_INTERNALNAME_STR
-        VALUE "LegalCopyright",   VER_LEGALCOPYRIGHT_STR
+		VALUE "InternalName",     VER_INTERNALNAME_STR
+	    VALUE "LegalCopyright",   VER_LEGALCOPYRIGHT_STR
 #ifdef VER_LEGALTRADEMARKS_STR
-        VALUE "LegalTrademarks",  VER_LEGALTRADEMARKS_STR
+	    VALUE "LegalTrademarks",  VER_LEGALTRADEMARKS_STR
 #endif
-        VALUE "OriginalFilename", VER_ORIGINALFILENAME_STR
-        VALUE "ProductName",      VER_PRODUCTNAME_STR
-        VALUE "ProductVersion",   VER_PRODUCTVERSION_STR
+	    VALUE "OriginalFilename", VER_ORIGINALFILENAME_STR
+	    VALUE "ProductName",      VER_PRODUCTNAME_STR
+	    VALUE "ProductVersion",   VER_PRODUCTVERSION_STR
 #ifdef VER_PATCHLEVEL_STR
-        VALUE "Patch level",  VER_PATCHLEVEL_STR
+	    VALUE "Patch level",  VER_PATCHLEVEL_STR
 #endif
 #ifdef VER_PRIVATEBUILD_STR
-        VALUE "PrivateBuild",  VER_PRIVATEBUILD_STR
+	    VALUE "PrivateBuild",  VER_PRIVATEBUILD_STR
 #endif
 #ifdef VER_SPECIALBUILD_STR
-        VALUE "SpecialBuild",  VER_SPECIALBUILD_STR
+	    VALUE "SpecialBuild",  VER_SPECIALBUILD_STR
 #endif
 END
     END
     BLOCK "VarFileInfo"
     BEGIN
-    VALUE "Translation", 0x409, 1252
+	VALUE "Translation", 0x409, 1252
     END
 END
 

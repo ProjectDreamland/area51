@@ -132,10 +132,10 @@ static      s32                 s_iErrorLast   = 0;
 
 #ifdef TARGET_PS2
 #include <stdio.h>      // printf()
-    #ifdef VENDOR_SN
-        #define NO_PRINTF_EMU        //define this to prevent printf replacement!
-        #include "sntty.h"
-    #endif
+	#ifdef VENDOR_SN
+		#define NO_PRINTF_EMU		//define this to prevent printf replacement!
+		#include "sntty.h"
+	#endif
 #endif
 
 #ifdef TARGET_GCN
@@ -1110,15 +1110,15 @@ const char* x_DebugGetCallStackString( void )
     c.ContextFlags = CONTEXT_FULL;
     VERIFY( GetThreadContext( hThread, &c ) );
     
-    // Build STACKFRAME
+	// Build STACKFRAME
     STACKFRAME s;
     x_memset( (void*)&s, 0, sizeof(s) );
-    s.AddrPC.Offset     = c.Eip;
-    s.AddrStack.Offset  = c.Esp;
-    s.AddrFrame.Offset  = c.Ebp;
-    s.AddrPC.Mode       = AddrModeFlat;
-    s.AddrStack.Mode    = AddrModeFlat;
-    s.AddrFrame.Mode    = AddrModeFlat;
+	s.AddrPC.Offset     = c.Eip;
+	s.AddrStack.Offset  = c.Esp;
+	s.AddrFrame.Offset  = c.Ebp;
+	s.AddrPC.Mode       = AddrModeFlat;
+	s.AddrStack.Mode    = AddrModeFlat;
+	s.AddrFrame.Mode    = AddrModeFlat;
 
     // Clear CallStack string
     s_pCallStackString[0] = 0;

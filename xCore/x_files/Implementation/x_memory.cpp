@@ -1556,13 +1556,13 @@ s32 x_MemGetPtrSize( void* pMemory )
     }
 
     void* sys_mem_realloc( void* pBlock, u32 nBytes )
-    {
+	{
         void *pNew = dlrealloc(0,pBlock,nBytes);
-        return pNew;
-    }
+		return pNew;
+	}
 
     void* sys_mem_malloc( u32 nBytes )
-    {
+	{
 #if defined(X_DEBUG)
         static xbool s_ForceMemDump = FALSE;
         if (s_ForceMemDump)
@@ -1588,12 +1588,12 @@ s32 x_MemGetPtrSize( void* pMemory )
         #endif
 
         return pBlock;
-    }
+	}
 
     void sys_mem_free( void* pBlock )
-    {
-        dlfree(0,pBlock);
-    }
+	{
+		dlfree(0,pBlock);
+	}
 
     void x_MemGetFree( s32& Free, s32& Largest, s32& Fragments)
     {

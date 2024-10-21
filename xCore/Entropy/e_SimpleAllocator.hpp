@@ -12,7 +12,7 @@ public:
     void*       Alloc   (s32 size);
     s32         Free    (void* base);
     void        Validate(void);
-    xbool        IsValid    (void* base);
+	xbool		IsValid	(void* base);
     void        Init    (void* base, s32 size);
     void        Kill    (void);
     void        DumpList(void);
@@ -45,11 +45,11 @@ private:
     s32         m_AllocCount;
     s32         m_FreeCount;
     alloc_node  m_RootBlock;
-    alloc_node* m_pMemoryBlock;
+	alloc_node* m_pMemoryBlock;
     s32         m_nMemoryBlocks;
     s32         m_nMemoryBlocksAllocated;
     s32         m_LastBlockUsed;
-    xbool        m_Initialized;
+	xbool		m_Initialized;
 };
 
 

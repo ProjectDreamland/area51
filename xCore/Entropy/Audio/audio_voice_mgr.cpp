@@ -2111,10 +2111,10 @@ inline void audio_voice_mgr::UpdateStartPending( voice* pVoice )
             {
 /*
                 // TODO: Put in check to nuke elements that are NEVER ready...
-                if (pElement->State == ELEMENT_LOADING)
-                {
-                    BREAK;
-                }
+				if (pElement->State == ELEMENT_LOADING)
+				{
+					BREAK;
+				}
 */
             }
 

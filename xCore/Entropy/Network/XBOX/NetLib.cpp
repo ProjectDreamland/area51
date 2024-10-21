@@ -366,22 +366,22 @@ void net_EndConfig(void)
 //-----------------------------------------------------------------------------
 xbool net_socket::CanReceive( void )
 {
-    fd_set          fd;
-    struct timeval  timeout;
-    int             rcode;
+	fd_set          fd;
+	struct timeval  timeout;
+	int             rcode;
 
-    // setup the fd set
-    FD_ZERO(&fd);
-    FD_SET(m_Socket, &fd);
+	// setup the fd set
+	FD_ZERO(&fd);
+	FD_SET(m_Socket, &fd);
 
-    // setup the timeout
-    timeout.tv_sec = 0;
-    timeout.tv_usec = 0;
+	// setup the timeout
+	timeout.tv_sec = 0;
+	timeout.tv_usec = 0;
 
-    // do the actual select
-    rcode = select(FD_SETSIZE, &fd, NULL, NULL, &timeout);
-    if((rcode == SOCKET_ERROR) || (rcode == 0))
-        return FALSE;
+	// do the actual select
+	rcode = select(FD_SETSIZE, &fd, NULL, NULL, &timeout);
+	if((rcode == SOCKET_ERROR) || (rcode == 0))
+		return FALSE;
 
     return TRUE;
 }
@@ -389,22 +389,22 @@ xbool net_socket::CanReceive( void )
 //-----------------------------------------------------------------------------
 xbool net_socket::CanSend( void )
 {
-    fd_set          fd;
-    struct timeval  timeout;
-    int             rcode;
+	fd_set          fd;
+	struct timeval  timeout;
+	int             rcode;
 
-    // setup the fd set
-    FD_ZERO(&fd);
-    FD_SET(m_Socket, &fd);
+	// setup the fd set
+	FD_ZERO(&fd);
+	FD_SET(m_Socket, &fd);
 
-    // setup the timeout
-    timeout.tv_sec = 0;
-    timeout.tv_usec = 0;
+	// setup the timeout
+	timeout.tv_sec = 0;
+	timeout.tv_usec = 0;
 
-    // do the actual select
-    rcode = select(FD_SETSIZE, NULL, &fd, NULL, &timeout);
-    if((rcode == SOCKET_ERROR) || (rcode == 0))
-        return FALSE;
+	// do the actual select
+	rcode = select(FD_SETSIZE, NULL, &fd, NULL, &timeout);
+	if((rcode == SOCKET_ERROR) || (rcode == 0))
+		return FALSE;
 
     return TRUE;
 }

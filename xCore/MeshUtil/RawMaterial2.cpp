@@ -96,7 +96,7 @@ void rawmaterial2::GetMangledName( rgba_source_type     iSource,            // M
         break;
     }
 
-    x_sprintf( Temp, "%s%s%s%s.xbmp", pDrive, pDir, pFName, pNameSuffix );    
+    x_sprintf( Temp, "%s%s%s%s.xbmp", pDrive, pDir, pFName, pNameSuffix );	
 
     x_strncpy( pDestBuffer, Temp, nMaxChars );
 

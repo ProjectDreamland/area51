@@ -71,7 +71,7 @@ ial_state       IAL_channel_status      ( ial_hchannel hChannel );
 s32             IAL_channel_position    ( ial_hchannel hChannel );
 void            IAL_set_channel_volume  ( ial_hchannel hChannel, f32 VolumeL, f32 VolumeR );
 void            IAL_set_channel_pitch   ( ial_hchannel hChannel, f32 Pitch );
-void            IAL_set_channel_looped    ( ial_hchannel hChannel, bool Looped );
+void			IAL_set_channel_looped	( ial_hchannel hChannel, bool Looped );
 s32             IAL_get_output_amplitude( s32 Channel );
 void            IAL_stop_loop           ( ial_hchannel hChannel, s32 nSamples );
 

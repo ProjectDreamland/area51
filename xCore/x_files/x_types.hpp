@@ -172,7 +172,7 @@
     typedef unsigned short      u16;
     typedef unsigned int        u32;
     typedef unsigned long       u64;
-    typedef unsigned int        u128 __attribute__ (( mode(TI) )) __attribute__ ((aligned(16)));
+    typedef unsigned int		u128 __attribute__ (( mode(TI) )) __attribute__ ((aligned(16)));
     typedef   signed char       s8;
     typedef   signed short      s16;
     typedef   signed int        s32;

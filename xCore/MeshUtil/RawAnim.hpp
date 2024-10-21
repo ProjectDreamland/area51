@@ -58,26 +58,26 @@ struct rawanim
         vector3     Translation;
     };
 
-    struct event
-    {
-        char        Name[64];
-        char        ParentName[64];
-        s32            Type;
-        f32            Radius;
-        s32            Frame0;
-        s32            Frame1;
-        vector3        Position;
-    };
+	struct event
+	{
+		char		Name[64];
+		char		ParentName[64];
+		s32			Type;
+		f32			Radius;
+		s32			Frame0;
+		s32			Frame1;
+		vector3		Position;
+	};
 
     struct super_event
-    {
+	{
         char        Name[64];
         char        ParentName[64];
 
         s32         Type;
         s32         StartFrame;
         s32         EndFrame;
-        vector3     Position;
+	    vector3     Position;
         quaternion  Rotation;
         f32         Radius;
 
@@ -97,7 +97,7 @@ struct rawanim
         xbool       Bools[NUM_EVENT_BOOLS];
 
         xcolor      Colors[NUM_EVENT_COLORS];
-    };
+	};
     struct prop_frame
     {
         vector3     Scale;
@@ -108,9 +108,9 @@ struct rawanim
 
     struct prop
     {
-        char        Name[64];
-        char        ParentName[64];
-        char        Type[33];
+		char		Name[64];
+		char		ParentName[64];
+		char		Type[33];
     };
 
 //=========================================================================
@@ -175,11 +175,11 @@ struct rawanim
     frame*          m_pFrame;
     s32             m_nFrames;
 
-    event*            m_pEvent;
-    s32                m_nEvents;
+	event*			m_pEvent;
+	s32				m_nEvents;
 
-    super_event*    m_pSuperEvent;
-    s32             m_nSuperEvents;
+	super_event*    m_pSuperEvent;
+	s32             m_nSuperEvents;
     prop*           m_pProp;
     s32             m_nProps;
 

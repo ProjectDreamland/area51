@@ -45,7 +45,7 @@ enum {
         NETCMD_GET_GETCONFIG_STATUS,
         NETCMD_GET_SETCONFIG_STATUS,
         NETCMD_GET_ACTIVATE_CONFIG_STATUS,
-        NETCMD_GET_SYSID,
+	    NETCMD_GET_SYSID,
 
 };
 
@@ -80,7 +80,7 @@ struct net_connect_status
     s32     Timeout;
     s32     Status;
     s32     ConnectSpeed;
-    char    ErrorText[128];
+	char	ErrorText[128];
 };
 
 

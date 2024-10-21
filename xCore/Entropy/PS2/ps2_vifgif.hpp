@@ -112,30 +112,30 @@ void    VIF_Mask    ( u32* pVifData,
 struct giftag
 {
     // SONY FORMAT
-    u32 NLOOP:15;
-    u32 EOP:1;
-    u32 PAD16:16;
-    u32 ID:14;
-    u32 PRE:1;
-    u32 PRIM:11;
-    u32 MODE:2;
-    u32 NREG:4;
-    u32 R00:4;
-    u32 R01:4;
-    u32 R02:4;
-    u32 R03:4;
-    u32 R04:4;
-    u32 R05:4;
-    u32 R06:4;
-    u32 R07:4;
-    u32 R08:4;
-    u32 R09:4;
-    u32 R10:4;
-    u32 R11:4;
-    u32 R12:4;
-    u32 R13:4;
-    u32 R14:4;
-    u32 R15:4;
+	u32 NLOOP:15;
+	u32 EOP:1;
+	u32 PAD16:16;
+	u32 ID:14;
+	u32 PRE:1;
+	u32 PRIM:11;
+	u32 MODE:2;
+	u32 NREG:4;
+	u32 R00:4;
+	u32 R01:4;
+	u32 R02:4;
+	u32 R03:4;
+	u32 R04:4;
+	u32 R05:4;
+	u32 R06:4;
+	u32 R07:4;
+	u32 R08:4;
+	u32 R09:4;
+	u32 R10:4;
+	u32 R11:4;
+	u32 R12:4;
+	u32 R13:4;
+	u32 R14:4;
+	u32 R15:4;
 
     giftag      ( void );
     ~giftag     ( void );

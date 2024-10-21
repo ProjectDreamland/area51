@@ -71,11 +71,11 @@ public:
     const xstring&  GetOptionString     ( s32 Index ) const;
     const xstring&  GetArgument         ( s32 Index ) const;
 
-    // Command Line assist functions
-    static void        SplitPath            ( const xstring& PathName, xstring& Path, xstring& File );
+	// Command Line assist functions
+	static void		SplitPath			( const xstring& PathName, xstring& Path, xstring& File );
     static xstring  JoinPath            ( const xstring& Path, const xstring& File );
     static xstring  ChangeExtension     ( const xstring& PathName, const xstring& Extension );
-    static s32        Glob                ( const xstring& Pattern, xarray<xstring>& Results, xbool Recursive = FALSE );
+	static s32		Glob				( const xstring& Pattern, xarray<xstring>& Results, xbool Recursive = FALSE );
     static xbool    FileExists          ( const char* pPathName );
 };
 

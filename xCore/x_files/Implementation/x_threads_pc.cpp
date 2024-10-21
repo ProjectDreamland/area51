@@ -61,7 +61,7 @@ xthread_private sys_thread_Create(x_thread_boot_fn* pEntry, void* pParam, void* 
     (void)InitialPriority ;
 
     xthread_private Private;
-    DWORD tid;
+	DWORD tid;
 
     Private.SuspendSemaphore = CreateSemaphore(NULL,0,128,NULL);
     ASSERT(Private.SuspendSemaphore);
@@ -75,7 +75,7 @@ xthread_private sys_thread_Create(x_thread_boot_fn* pEntry, void* pParam, void* 
                             pParam                         ,
                             CREATE_SUSPENDED               ,
                             &tid);
-        Private.ThreadId = tid;
+	    Private.ThreadId = tid;
     }
     else
     {
@@ -83,7 +83,7 @@ xthread_private sys_thread_Create(x_thread_boot_fn* pEntry, void* pParam, void* 
         Private.ThreadId = GetCurrentThreadId();
     }
     ASSERT(Private.ThreadId);
-    ASSERT(Private.Handle);
+	ASSERT(Private.Handle);
     return Private;
 }
 

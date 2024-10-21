@@ -121,12 +121,12 @@ dct36t26        : .float -1.306562965;
 
 #define RTOC 
 // This has to be here otherwise the linker fucks up the symbol table somehow.
-    .section    .line
-    .4byte    0
-    .4byte    0
-    .previous
+	.section	.line
+	.4byte	0
+	.4byte	0
+	.previous
 
-    .file __FILE__
+	.file __FILE__
 
         .text
 //#############################################################################

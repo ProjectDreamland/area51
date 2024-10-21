@@ -6,14 +6,11 @@ EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
-		EDITOR-Debug = EDITOR-Debug
 		Release = Release
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{C0C57981-F395-490D-8ED0-D33997E98792}.Debug.ActiveCfg = Debug|Win32
 		{C0C57981-F395-490D-8ED0-D33997E98792}.Debug.Build.0 = Debug|Win32
-		{C0C57981-F395-490D-8ED0-D33997E98792}.EDITOR-Debug.ActiveCfg = EDITOR-Debug|Win32
-		{C0C57981-F395-490D-8ED0-D33997E98792}.EDITOR-Debug.Build.0 = EDITOR-Debug|Win32
 		{C0C57981-F395-490D-8ED0-D33997E98792}.Release.ActiveCfg = Release|Win32
 		{C0C57981-F395-490D-8ED0-D33997E98792}.Release.Build.0 = Release|Win32
 	EndGlobalSection

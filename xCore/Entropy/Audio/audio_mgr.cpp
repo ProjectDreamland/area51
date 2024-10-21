@@ -574,7 +574,7 @@ void audio_mgr::Init( s32 MemSize )
     ASSERT( s_PeriodicUpdateThread == NULL );
     ASSERT( s_HardwareUpdateThread == NULL );
     s_PeriodicUpdateThread = new xthread( AudioMgrPeriodicUpdate, (const char*)"AudioMgr PeriodicUpdate", 8192, 1 );
-    s_HardwareUpdateThread = new xthread( AudioMgrHardwareUpdate, (const char*)"AudioMgr HardwareUpdate", 8192, 4 );
+	s_HardwareUpdateThread = new xthread( AudioMgrHardwareUpdate, (const char*)"AudioMgr HardwareUpdate", 8192, 4 );
 
     // Set flag.
     s_Initialized = TRUE;
@@ -2059,8 +2059,8 @@ void audio_mgr::Calculate3dVolumeAndPan( f32            NearClipOrig,
 
     while( pEar )
     {
-        f32 NearClip = NearClipOrig;
-        f32 FarClip  = FarClipOrig; 
+		f32 NearClip = NearClipOrig;
+		f32 FarClip  = FarClipOrig; 
         f32 EarVolume;
 
         // Put sound in ear-space.
@@ -2215,8 +2215,8 @@ void audio_mgr::Calculate3dVolumeAndPan( f32            NearClipOrig,
                 // Normalize it to maintain constant power.
                 Pan.Normalize(); 
 */
-                // Hack to test!
-                Pan = m_Pan[i]; 
+				// Hack to test!
+				Pan = m_Pan[i]; 
             }
         }
     }
@@ -2397,12 +2397,12 @@ voice_id audio_mgr::PlayInternal( const char*    pIdentifier,
             pVoice->EarID = 0;
 
             // Positional sound?
-            if( IsPositional )
-            {
+			if( IsPositional )
+			{
                 // Set the voices position.
-                pVoice->Position = Position;
+				pVoice->Position = Position;
                 pVoice->ZoneID   = ZoneID;
-            }
+			}
             else
             {
                 // Not positional so use the 2d pan.

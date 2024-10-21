@@ -99,9 +99,9 @@ void IAL_MixChannel( ial_channel* pChannel, s32* pL, s32* pR, s32 nDstSamples )
     s32 dVolL   = (NewVolL - VolL) / nDstSamples;
     s32 dVolR   = (NewVolR - VolR) / nDstSamples;
 
-    //s32 nSrcSamples =
+	//s32 nSrcSamples =
     
-    // Mix the samples
+	// Mix the samples
     s32 iDst = 0;
     while( (nDstSamples > 0) && (pChannel->State == IAL_PLAY) )
     {
@@ -112,23 +112,23 @@ void IAL_MixChannel( ial_channel* pChannel, s32* pL, s32* pR, s32 nDstSamples )
         if( pChannel->Looped )
         {
 /*
-            if( pChannel->Cursor > pChannel->LoopEnd )
-            {
-                SrcStop   = pChannel->nSamples;
-                SrcLoopTo = 0;
-            }
-            else if( (pChannel->Cursor + nDstSamples) > pChannel->LoopEnd )
-            {
-                SrcStop   = pChannel->LoopEnd;
-                SrcLoopTo = pChannel->LoopEnd-1;
-                pChannel->Looped = FALSE;
-            }
-            else
+			if( pChannel->Cursor > pChannel->LoopEnd )
+			{
+				SrcStop   = pChannel->nSamples;
+				SrcLoopTo = 0;
+			}
+			else if( (pChannel->Cursor + nDstSamples) > pChannel->LoopEnd )
+			{
+				SrcStop   = pChannel->LoopEnd;
+				SrcLoopTo = pChannel->LoopEnd-1;
+				pChannel->Looped = FALSE;
+			}
+			else
 */
-            {
-                SrcStop   = pChannel->LoopEnd;
-                SrcLoopTo = pChannel->LoopStart;
-            }
+			{
+				SrcStop   = pChannel->LoopEnd;
+				SrcLoopTo = pChannel->LoopStart;
+			}
         }
         else
         {
@@ -224,11 +224,11 @@ http://www.smartelectronix.com/musicdsp/text/filters005.txt
 /* this would be biquad.h */
 
 #ifndef M_LN2
-#define M_LN2       0.69314718055994530942f
+#define M_LN2	   0.69314718055994530942f
 #endif
 
 #ifndef M_PI
-#define M_PI        3.14159265358979323846f
+#define M_PI		3.14159265358979323846f
 #endif
 
 /* whatever sample type you want */
@@ -487,7 +487,7 @@ void IAL_MixFrame( void )
             s_lpsb8->Restore();
             hr = s_lpsb8->Lock( WriteCursor, WriteBytes, (LPVOID*)&p1, &c1, (LPVOID*)&p2, &c2, 0 );
             CLOG_MESSAGE( LOGGING_ENABLED, "MixFrame", "Restore Buffer" );
-            ASSERT(0);
+			ASSERT(0);
         }
         if( SUCCEEDED(hr) )
         {
@@ -542,12 +542,12 @@ void IAL_MixFrame( void )
                     IAL_OutputAmplitude[1] = max( IAL_OutputAmplitude[1], s );
                 }
 
-    #ifdef WRITE_DEBUG_FILE
-                if( !s_pDebugFile )
-                {
-                    s_pDebugFile = x_fopen( "out.raw", "wb" );
-                }
-    #endif
+	#ifdef WRITE_DEBUG_FILE
+				if( !s_pDebugFile )
+				{
+					s_pDebugFile = x_fopen( "out.raw", "wb" );
+				}
+	#endif
                 // Copy the samples into the buffer
                 if( c1 )
                 {
@@ -1025,19 +1025,19 @@ void IAL_set_channel_pitch( ial_hchannel hChannel, f32 Pitch )
 
 void IAL_set_channel_looped( ial_hchannel hChannel, bool Looped )
 {
-    s32 Index = IAL_hChannelToIndex( hChannel );
-    if( Index >= IAL_MAX_CHANNELS )
-        return;
+	s32 Index = IAL_hChannelToIndex( hChannel );
+	if( Index >= IAL_MAX_CHANNELS )
+		return;
 
-    CLOG_MESSAGE( LOGGING_ENABLED, "IAL", "IAL_set_channel_looped( %s )", Looped ? "TRUE" : "FALSE" );
+	CLOG_MESSAGE( LOGGING_ENABLED, "IAL", "IAL_set_channel_looped( %s )", Looped ? "TRUE" : "FALSE" );
 
-    ial_channel& Channel = IAL_Channels[Index];
+	ial_channel& Channel = IAL_Channels[Index];
 
-    IAL_GetMutex();
+	IAL_GetMutex();
 
-    Channel.Looped = Looped;
+	Channel.Looped = Looped;
 
-    IAL_ReleaseMutex();
+	IAL_ReleaseMutex();
 }
 
 //==============================================================================
@@ -1054,21 +1054,21 @@ s32 IAL_get_output_amplitude( s32 Channel )
 
 void IAL_stop_loop( ial_hchannel hChannel, s32 nSamples )
 {
-    s32 Index = IAL_hChannelToIndex( hChannel );
-    if( Index >= IAL_MAX_CHANNELS )
-        return;
+	s32 Index = IAL_hChannelToIndex( hChannel );
+	if( Index >= IAL_MAX_CHANNELS )
+		return;
 
-    CLOG_MESSAGE( LOGGING_ENABLED, "IAL", "IAL_stop_loop" );
+	CLOG_MESSAGE( LOGGING_ENABLED, "IAL", "IAL_stop_loop" );
 
-    ial_channel& Channel = IAL_Channels[Index];
+	ial_channel& Channel = IAL_Channels[Index];
 
-    IAL_GetMutex();
+	IAL_GetMutex();
 
-    if( Channel.Looped )
-    {
-        Channel.LoopEnd = nSamples;
-    }
+	if( Channel.Looped )
+	{
+		Channel.LoopEnd = nSamples;
+	}
 
-    IAL_ReleaseMutex();
+	IAL_ReleaseMutex();
 }
 

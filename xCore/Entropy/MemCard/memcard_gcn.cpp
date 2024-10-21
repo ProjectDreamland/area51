@@ -58,9 +58,9 @@ struct error_map
 struct gcn_save_file
 {
     s32     Checksum;
-    char    Comment[128];
+	char	Comment[128];
     char    Preferences[128];
-    u8        Icon[2048];
+	u8		Icon[2048];
 };
 
 static gcn_save_file* s_pFile = NULL; 
@@ -974,7 +974,7 @@ void memcard_hardware::ProcessReadFile( void )
     {
         case STATE_READFILE_START:
             // Open the file.
-            Result = CARDOpen( m_MountedCard, (char*)m_pRequestedFileName, &s_CardFileInfo );
+	        Result = CARDOpen( m_MountedCard, (char*)m_pRequestedFileName, &s_CardFileInfo );
 
             // Error check and process.
             CheckError( Result, TRUE );
@@ -1036,7 +1036,7 @@ void memcard_hardware::ProcessWriteFile( void )
 {
     s32      Result;
     s32      AlignedLength;
-    s32      TotalSize;
+	s32      TotalSize;
     CARDStat Stat;
 
     // Card has to be mounted!
@@ -1081,16 +1081,16 @@ void memcard_hardware::ProcessWriteFile( void )
             InvalidateFileList();
 
             // Clear the status.
-               x_memset( &Stat, 0, sizeof(Stat) );
+           	x_memset( &Stat, 0, sizeof(Stat) );
 
             // Set the card stat.
-            CARDSetCommentAddress( &Stat, (s32)&s_pFile->Comment - (s32)s_pFile );
-            CARDSetIconAddress   ( &Stat, (s32)&s_pFile->Icon - (s32)s_pFile );
-            CARDSetBannerFormat  ( &Stat, CARD_STAT_BANNER_NONE );
-            CARDSetIconAnim      ( &Stat, CARD_STAT_ANIM_LOOP );
-            CARDSetIconFormat    ( &Stat, 0, CARD_STAT_ICON_RGB5A3 );
-            CARDSetIconSpeed     ( &Stat, 0, CARD_STAT_SPEED_SLOW );
-            CARDSetIconSpeed     ( &Stat, 1, CARD_STAT_SPEED_END ); // <<== Terminate the icon
+	        CARDSetCommentAddress( &Stat, (s32)&s_pFile->Comment - (s32)s_pFile );
+	        CARDSetIconAddress   ( &Stat, (s32)&s_pFile->Icon - (s32)s_pFile );
+	        CARDSetBannerFormat  ( &Stat, CARD_STAT_BANNER_NONE );
+	        CARDSetIconAnim      ( &Stat, CARD_STAT_ANIM_LOOP );
+	        CARDSetIconFormat    ( &Stat, 0, CARD_STAT_ICON_RGB5A3 );
+	        CARDSetIconSpeed     ( &Stat, 0, CARD_STAT_SPEED_SLOW );
+	        CARDSetIconSpeed     ( &Stat, 1, CARD_STAT_SPEED_END ); // <<== Terminate the icon
             
             // Write it to the memcard.
             Result = CARDSetStatusAsync( m_MountedCard, s_CardFileInfo.fileNo, &Stat, gcn_DefaultCallback );
@@ -1426,7 +1426,7 @@ void memcard_hardware::ProcessGetFileLength( void )
             SetFileLength( -1 );
 
             // Open the file.
-            Result = CARDOpen( m_MountedCard, (char*)m_pRequestedFileName, &s_CardFileInfo );
+	        Result = CARDOpen( m_MountedCard, (char*)m_pRequestedFileName, &s_CardFileInfo );
             if( CheckError( Result ) )
                 return;
 
@@ -1583,7 +1583,7 @@ void memcard_hardware::ProcessRead( void )
             s_BufferOffset = 0;
 
             // Open the file.
-            Result = CARDOpen( m_MountedCard, (char*)m_pRequestedFileName, &s_CardFileInfo );
+	        Result = CARDOpen( m_MountedCard, (char*)m_pRequestedFileName, &s_CardFileInfo );
 
             // Error check and process.
             CheckError( Result, TRUE );
@@ -1712,7 +1712,7 @@ void memcard_hardware::ProcessWrite( void )
             s_BufferOffset = 0;
 
             // Open the file.
-            Result = CARDOpen( m_MountedCard, (char*)m_pRequestedFileName, &s_CardFileInfo );
+	        Result = CARDOpen( m_MountedCard, (char*)m_pRequestedFileName, &s_CardFileInfo );
 
             // Error check and process.
             CheckError( Result, TRUE );
@@ -1811,7 +1811,7 @@ void memcard_hardware::ProcessCreateFile( void )
 {
     s32      Result;
     s32      AlignedLength;
-    s32      TotalSize;
+	s32      TotalSize;
     CARDStat Stat;
 
     // Card has to be mounted!
@@ -1856,16 +1856,16 @@ void memcard_hardware::ProcessCreateFile( void )
             InvalidateFileList();
 
             // Clear the status.
-               x_memset( &Stat, 0, sizeof(Stat) );
+           	x_memset( &Stat, 0, sizeof(Stat) );
 
             // Set the card stat.
-            CARDSetCommentAddress( &Stat, (s32)&s_pFile->Comment - (s32)s_pFile );
-            CARDSetIconAddress   ( &Stat, (s32)&s_pFile->Icon - (s32)s_pFile );
-            CARDSetBannerFormat  ( &Stat, CARD_STAT_BANNER_NONE );
-            CARDSetIconAnim      ( &Stat, CARD_STAT_ANIM_LOOP );
-            CARDSetIconFormat    ( &Stat, 0, CARD_STAT_ICON_RGB5A3 );
-            CARDSetIconSpeed     ( &Stat, 0, CARD_STAT_SPEED_SLOW );
-            CARDSetIconSpeed     ( &Stat, 1, CARD_STAT_SPEED_END ); // <<== Terminate the icon
+	        CARDSetCommentAddress( &Stat, (s32)&s_pFile->Comment - (s32)s_pFile );
+	        CARDSetIconAddress   ( &Stat, (s32)&s_pFile->Icon - (s32)s_pFile );
+	        CARDSetBannerFormat  ( &Stat, CARD_STAT_BANNER_NONE );
+	        CARDSetIconAnim      ( &Stat, CARD_STAT_ANIM_LOOP );
+	        CARDSetIconFormat    ( &Stat, 0, CARD_STAT_ICON_RGB5A3 );
+	        CARDSetIconSpeed     ( &Stat, 0, CARD_STAT_SPEED_SLOW );
+	        CARDSetIconSpeed     ( &Stat, 1, CARD_STAT_SPEED_END ); // <<== Terminate the icon
             
             // Write it to the memcard.
             Result = CARDSetStatusAsync( m_MountedCard, s_CardFileInfo.fileNo, &Stat, gcn_DefaultCallback );

@@ -40,9 +40,9 @@ iop_net_vars g_NetIopMgr ;
 void netiop_Init(s32 IopBufferSize,s32 MaxRequestsPending /*= MAX_PENDING_IOP_REQUESTS*/)
 {
     s32 result;
-    s32 i;
+	s32 i;
 
-    (void)MaxRequestsPending;
+	(void)MaxRequestsPending;
 
 
     //g_IopMgr.m_IdleThreadId = eng_CreateThread(iop_IdleThread,"Idle",4096,-THREAD_BASE_PRIORITY+1);
@@ -69,10 +69,10 @@ void netiop_Init(s32 IopBufferSize,s32 MaxRequestsPending /*= MAX_PENDING_IOP_RE
 
     while (1) 
     {
-        result = sceSifBindRpc (&g_NetIopMgr.m_ClientData, INEV_NET_DEVICE, 0);
+	    result = sceSifBindRpc (&g_NetIopMgr.m_ClientData, INEV_NET_DEVICE, 0);
         ASSERTS(result>=0,"error: sceSifBindRpc failed");
 
-        if (g_NetIopMgr.m_ClientData.serve != 0) break;
+	    if (g_NetIopMgr.m_ClientData.serve != 0) break;
     }
 
     g_NetIopMgr.m_pIopInBuffer = (byte *)x_malloc(IopBufferSize);

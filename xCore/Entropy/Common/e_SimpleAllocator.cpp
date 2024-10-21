@@ -17,7 +17,7 @@ simple_allocator::simple_allocator(void)
 //==============================================================================
 simple_allocator::~simple_allocator(void)
 {
-    ASSERT(!m_Initialized);
+	ASSERT(!m_Initialized);
 }
 
 //==============================================================================
@@ -34,7 +34,7 @@ void simple_allocator::Init(void* base,s32 size)
     m_MemUsed               = 0;
     m_AllocCount            = 0;
 
-    m_Initialized           = TRUE;
+	m_Initialized           = TRUE;
 
     m_FreeCount             = 1;
     m_RootBlock.m_Status    = AF_AVAILABLE;
@@ -47,8 +47,8 @@ void simple_allocator::Init(void* base,s32 size)
 //==============================================================================
 void simple_allocator::Kill(void)
 {
-    ASSERT(m_Initialized);
-    m_Initialized = FALSE;
+	ASSERT(m_Initialized);
+	m_Initialized = FALSE;
     x_free(m_pMemoryBlock);
     m_pMemoryBlock = NULL;
     m_nMemoryBlocks = 0;
@@ -203,19 +203,19 @@ xbool simple_allocator::IsValid(void* base)
         pHeader = pHeader->m_pNext;
     }
 
-    return ( pHeader && 
-            (pHeader->m_Status == AF_ALLOCATED) );
+	return ( pHeader && 
+		    (pHeader->m_Status == AF_ALLOCATED) );
 }
 
 //==============================================================================
 void simple_allocator::Validate(void)
 {
-    // In debug mode, this function will walk the memory allocation list and make
-    // sure that it's state is consistent. Things that will be checked:
-    // 1. No memory block overruns (only if memory is physical and accessable)
-    // 2. Memory blocks have been coalesced where they could
-    // 3. There are no holes
-    // 4. All memory headers point to valid locations of "memory"
+	// In debug mode, this function will walk the memory allocation list and make
+	// sure that it's state is consistent. Things that will be checked:
+	// 1. No memory block overruns (only if memory is physical and accessable)
+	// 2. Memory blocks have been coalesced where they could
+	// 3. There are no holes
+	// 4. All memory headers point to valid locations of "memory"
 }
 
 //==============================================================================
@@ -234,7 +234,7 @@ s32 simple_allocator::Free(void* base)
     alloc_node* pNext;
     s32         Length;
 
-    ASSERT(m_Initialized);
+	ASSERT(m_Initialized);
     // First, find the block that this memory is in
     pPrev = NULL;
 

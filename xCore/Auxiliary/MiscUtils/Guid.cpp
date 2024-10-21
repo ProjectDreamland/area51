@@ -809,11 +809,11 @@ void guid_lookup::SanityCheck( void )
 
 xstring guid_ToString( guid GUID )
 {
-    xstring Result;
-    Result.Format("%08X:%08X",
+	xstring Result;
+	Result.Format("%08X:%08X",
                     (u32)((GUID>>32)&0xFFFFFFFF),
                     (u32)((GUID>>0)&0xFFFFFFFF));
-    return Result;
+	return Result;
 }
 
 //==============================================================================

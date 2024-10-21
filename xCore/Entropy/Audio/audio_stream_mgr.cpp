@@ -573,7 +573,7 @@ void audio_stream_mgr::Update( void )
                 case MONO_STREAM: 
                     // Mark left channel as loaded.
                     ASSERT( pStream->pChannel[LEFT_CHANNEL] );
-                    ASSERT( pStream->pChannel[LEFT_CHANNEL]->pElement);
+			        ASSERT( pStream->pChannel[LEFT_CHANNEL]->pElement);
 
                     if( pStream->pChannel[LEFT_CHANNEL] )
                     {

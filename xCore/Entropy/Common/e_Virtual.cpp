@@ -14,7 +14,7 @@
 //-----------------------------------------------------------------------------
 void vm_Init(s32 VirtualSize, s32 PoolSize)
 {
-    (void)PoolSize;
+	(void)PoolSize;
     (void)VirtualSize;
 }
 
@@ -26,13 +26,13 @@ void vm_Kill(void)
 //-----------------------------------------------------------------------------
 void* vm_Alloc(s32 nBytes)
 {
-    return x_malloc(nBytes);
+	return x_malloc(nBytes);
 }
 
 //-----------------------------------------------------------------------------
 void vm_Free(void* pAddress)
 {
-    x_free(pAddress);
+	x_free(pAddress);
 }
 
 //-----------------------------------------------------------------------------

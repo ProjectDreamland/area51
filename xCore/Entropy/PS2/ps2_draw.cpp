@@ -458,8 +458,8 @@ void draw_TransformVerts( vert* pBuffer, matrix4& M, s32 NVerts )
                     vmaddaz.xyzw    ACC, vf6,vf8
                     vmaddx.xyzw     vf12,vf4,vf8
                     vdiv            Q,vf0w,vf12w
-                    vwaitq
-                    vmulq.xyz       vf12,vf12,Q
+	                vwaitq
+	                vmulq.xyz       vf12,vf12,Q
                     vftoi4.xyz      vf12,vf12
                     sqc2            vf12,0(%1)
                     ": : "r" (&pV[0].Pos), "r" (&SP));
@@ -490,8 +490,8 @@ void draw_TransformVerts( vert* pBuffer, matrix4& M, s32 NVerts )
                     vmaddaz.xyzw    ACC, vf6,vf8
                     vmaddx.xyzw     vf12,vf4,vf8
                     vdiv            Q,vf0w,vf12w
-                    vwaitq
-                    vmulq.xyz       vf12,vf12,Q
+	                vwaitq
+	                vmulq.xyz       vf12,vf12,Q
                     vmulq.w         vf12,vf0,Q
                     vftoi4.xyz      vf12,vf12
                     sqc2            vf12,0(%1)

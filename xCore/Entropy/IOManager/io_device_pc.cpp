@@ -48,7 +48,7 @@ static void DeviceCDROMClose( io_device_file* pFile )
 
 static xbool DeviceCDROMRead( io_device_file* pFile, void* pBuffer, s32 Length, s32 Offset, s32 AddressSpace )
 {
-    (void)AddressSpace;
+	(void)AddressSpace;
     return FALSE;
 }
 

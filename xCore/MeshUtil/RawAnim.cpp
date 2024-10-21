@@ -46,7 +46,7 @@ s32 rawanim::CompareBoneNames( s32 iBoneA, s32 iBoneB )
 {
     // Lookup bones
     rawanim::bone& BoneA = m_pBone[iBoneA] ;
-    rawanim::bone& BoneB = m_pBone[iBoneB] ;
+	rawanim::bone& BoneB = m_pBone[iBoneB] ;
     
     // Hack for now to put the "hand_weapon_attach" bone as low as possible
     // in the bone list since it's always active for all lods!
@@ -81,7 +81,7 @@ s32 rawanim::CompareBoneDepths( s32 iBoneA, s32 iBoneB )
 {
     // Lookup bones
     rawanim::bone& BoneA = m_pBone[iBoneA] ;
-    rawanim::bone& BoneB = m_pBone[iBoneB] ;
+	rawanim::bone& BoneB = m_pBone[iBoneB] ;
 
     // Sort by depth
     if (BoneA.Depth < BoneB.Depth)
@@ -440,47 +440,47 @@ xbool rawanim::Load( const char* pFileName )
             }
         }
         else
-        if( x_stricmp( File.GetHeaderName(), "Events" ) == 0 )
-        {
-            m_nEvents = File.GetHeaderCount();
-            m_pEvent = new event[ m_nEvents ];
-            ASSERT( m_pEvent );
+		if( x_stricmp( File.GetHeaderName(), "Events" ) == 0 )
+		{
+			m_nEvents = File.GetHeaderCount();
+			m_pEvent = new event[ m_nEvents ];
+			ASSERT( m_pEvent );
 
-            for( s32 i=0; i<m_nEvents; i++ )
-            {
-                event& E = m_pEvent[i];
+			for( s32 i=0; i<m_nEvents; i++ )
+			{
+				event& E = m_pEvent[i];
 
-                File.ReadFields();
+				File.ReadFields();
 
                 File.GetString  ("Name",E.Name);
                 File.GetS32     ("Type",E.Type);
-                File.GetF32        ("Radius",E.Radius);
-                File.GetS32        ("Start",E.Frame0);
-                File.GetS32        ("End",E.Frame1);
-                File.GetString    ("ParentName",E.ParentName);
-                File.GetVector3    ("Pos",E.Position);
-            }
-        }
+				File.GetF32		("Radius",E.Radius);
+				File.GetS32		("Start",E.Frame0);
+				File.GetS32		("End",E.Frame1);
+				File.GetString	("ParentName",E.ParentName);
+				File.GetVector3	("Pos",E.Position);
+			}
+		}
         else
-        if( x_stricmp( File.GetHeaderName(), "SuperEvents" ) == 0 )
-        {
-            m_nSuperEvents = File.GetHeaderCount();
-            m_pSuperEvent = new super_event[ m_nSuperEvents ];
-            ASSERT( m_pSuperEvent );
+		if( x_stricmp( File.GetHeaderName(), "SuperEvents" ) == 0 )
+		{
+			m_nSuperEvents = File.GetHeaderCount();
+			m_pSuperEvent = new super_event[ m_nSuperEvents ];
+			ASSERT( m_pSuperEvent );
 
-            for( s32 i=0; i<m_nSuperEvents; i++ )
-            {
-                super_event& E = m_pSuperEvent[i];
+			for( s32 i=0; i<m_nSuperEvents; i++ )
+			{
+				super_event& E = m_pSuperEvent[i];
 
-                File.ReadFields();
+				File.ReadFields();
 
                 File.GetString  ("Name",E.Name);
                 File.GetS32     ("Type",E.Type);
-                File.GetF32        ("Radius",E.Radius);
-                File.GetS32        ("Start",E.StartFrame);
-                File.GetS32        ("End",E.EndFrame);
-                File.GetString    ("ParentName",E.ParentName);
-                File.GetVector3    ("Pos",E.Position);
+				File.GetF32		("Radius",E.Radius);
+				File.GetS32		("Start",E.StartFrame);
+				File.GetS32		("End",E.EndFrame);
+				File.GetString	("ParentName",E.ParentName);
+				File.GetVector3	("Pos",E.Position);
 
                 //File.GetRadian3 ("RotationPitchYawRoll", E.Rotation);
                 E.Rotation.Identity();
@@ -523,29 +523,29 @@ xbool rawanim::Load( const char* pFileName )
                         File.GetColor( Title, E.Colors[i] );
                     }
                 }
-            }
-        }
+			}
+		}
         else
-        if( x_stricmp( File.GetHeaderName(), "Props" ) == 0 )
-        {
-            m_nProps = File.GetHeaderCount();
-            m_pProp = new prop[ m_nProps ];
-            ASSERT( m_pProp );
+		if( x_stricmp( File.GetHeaderName(), "Props" ) == 0 )
+		{
+			m_nProps = File.GetHeaderCount();
+			m_pProp = new prop[ m_nProps ];
+			ASSERT( m_pProp );
 
-            for( s32 i=0; i<m_nProps; i++ )
-            {
-                prop& E = m_pProp[i];
+			for( s32 i=0; i<m_nProps; i++ )
+			{
+				prop& E = m_pProp[i];
 
-                File.ReadFields();
+				File.ReadFields();
 
                 File.GetString  ("Name",E.Name);
                 if(!File.GetString  ("Type",E.Type))
                 {
                     x_strcpy(E.Type , "Weapon");
                 }
-                File.GetString    ("Parent",E.ParentName);
-            }
-        }
+				File.GetString	("Parent",E.ParentName);
+			}
+		}
         else
         if( x_stricmp( File.GetHeaderName(), "PropFrames" ) == 0 )
         {
@@ -584,9 +584,9 @@ xbool rawanim::Load( const char* pFileName )
                 m_pPropFrame[i].Rotation = Rot;
                 m_pPropFrame[i].Translation = Pos;
                 m_pPropFrame[i].bVisible = bVis;
-            }
-        }
-        else
+			}
+		}
+		else
         {
             File.SkipToNextHeader();
         }
@@ -1255,27 +1255,27 @@ xbool rawanim::ApplyNewSkeleton( const rawanim& BindAnim )
     //
     // Remove all bones not in BindAnim
     //
-    i = 0;
-    while( i < m_nBones )
-    {
-        for( j=0; j<BindAnim.m_nBones; j++ )
-        if( x_stricmp( m_pBone[i].Name, BindAnim.m_pBone[j].Name ) == 0 )
-            break;
+	i = 0;
+	while( i < m_nBones )
+	{
+		for( j=0; j<BindAnim.m_nBones; j++ )
+		if( x_stricmp( m_pBone[i].Name, BindAnim.m_pBone[j].Name ) == 0 )
+			break;
 
-        if( j==BindAnim.m_nBones )
-        {
-            if( m_nBones==1 )
-            {
+		if( j==BindAnim.m_nBones )
+		{
+			if( m_nBones==1 )
+			{
                 x_throw( xfs("[%s] has no bones from the bind [%s]... Compile will fail\n", 
                              m_SourceFile, BindAnim.m_SourceFile) );
-            }
+			}
 
-            DeleteBone( i );
-            i=-1;
-        }
+			DeleteBone( i );
+			i=-1;
+		}
 
-        i++;
-    }
+		i++;
+	}
 
 
     //

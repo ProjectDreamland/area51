@@ -47,7 +47,7 @@ s32     net_SetConfiguration(const char *pPath,s32 configindex);
 s32     net_GetAttachStatus (s32 &InterfaceId);
 void    net_Encrypt         (byte *pBuffer,s32 &Length,s32 Seed);
 xbool   net_Decrypt         (byte *pBuffer,s32 &Length,s32 Seed);
-s32        net_GetSystemId        (void);
+s32		net_GetSystemId		(void);
 s32     net_GetVersionKey   (void);
 void    net_SetVersionKey   (s32 Version);
 

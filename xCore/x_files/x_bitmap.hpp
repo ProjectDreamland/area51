@@ -153,14 +153,14 @@ public:
         u32             UMask;          // Mask for Unused
     };
 
-    // Bitmap info structure as returned for xbitmap::Info()
-    struct info
-    {
-        s32        W;
-        s32        H;
-        s32        nMips;
-        format    Format;
-    };
+	// Bitmap info structure as returned for xbitmap::Info()
+	struct info
+	{
+		s32		W;
+		s32		H;
+		s32		nMips;
+		format	Format;
+	};
 
 /*
 ** This is not currently in use due to a bug in the PS2 compiler.
@@ -219,7 +219,7 @@ const   xbitmap&    operator =      ( const xbitmap& Bitmap );
         //
         // File I/O.  File extension for xbitmap is ".xbmp".
         //
-static    xbool        Info            ( const char* pFileName, info& BitmapInfo );
+static	xbool		Info			( const char* pFileName, info& BitmapInfo );
         xbool       Load            ( X_FILE*     pFile     );
         xbool       Save            ( X_FILE*     pFile     ) const;
         xbool       Load            ( const char* pFileName );

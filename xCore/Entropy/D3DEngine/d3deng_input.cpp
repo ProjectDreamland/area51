@@ -561,9 +561,9 @@ BOOL CALLBACK EnumAxesCallback( const DIDEVICEOBJECTINSTANCE* pdidoi,
     diprg.lMin              = -1000; 
     diprg.lMax              = +1000; 
     
-    // Set the range for the axis
-    if( FAILED( pDevice->SetProperty( DIPROP_RANGE, &diprg.diph ) ) )
-        return DIENUM_STOP;
+	// Set the range for the axis
+	if( FAILED( pDevice->SetProperty( DIPROP_RANGE, &diprg.diph ) ) )
+		return DIENUM_STOP;
 
 /*
     //
@@ -577,9 +577,9 @@ BOOL CALLBACK EnumAxesCallback( const DIDEVICEOBJECTINSTANCE* pdidoi,
     diprg.lMin              = -1000; 
     diprg.lMax              = +1000; 
     
-    // Set the range for the axis
-    if( FAILED( pDevice->SetProperty( DIPROP_DEADZONE, &diprg.diph ) ) )
-        return DIENUM_STOP;
+	// Set the range for the axis
+	if( FAILED( pDevice->SetProperty( DIPROP_DEADZONE, &diprg.diph ) ) )
+		return DIENUM_STOP;
 */
 
     return DIENUM_CONTINUE;
@@ -699,7 +699,7 @@ dxerr CreateJoystick( device& Device, const DIDEVICEINSTANCE* pInstance, s32 Sam
              (x_strcmp( "PSX/USB Pad Adaptor (4-axis, 12-button, POV,effects)", pInstance->tszProductName ) == 0) )
     {
         Device.Flags |= DEVICE_FLG_PS2_PAD;
-        Device.Flags |= DEVICE_FLG_SOYO_PS2_PAD;
+		Device.Flags |= DEVICE_FLG_SOYO_PS2_PAD;
 
         s_Input.PS2PadDevice[ s_Input.nPS2Pads ] = s_Input.nJoysticks;
         s_Input.nPS2Pads++;
@@ -708,7 +708,7 @@ dxerr CreateJoystick( device& Device, const DIDEVICEINSTANCE* pInstance, s32 Sam
              (x_strcmp( "Logitech RumblePad 2 USB", pInstance->tszProductName ) == 0) )
     {
         Device.Flags |= DEVICE_FLG_PS2_PAD;
-        Device.Flags |= DEVICE_FLG_DUALSHOCK_CONVERTER_PS2_PAD;
+		Device.Flags |= DEVICE_FLG_DUALSHOCK_CONVERTER_PS2_PAD;
 
         s_Input.PS2PadDevice[ s_Input.nPS2Pads ] = s_Input.nJoysticks;
         s_Input.nPS2Pads++;
@@ -735,7 +735,7 @@ dxerr CreateJoystick( device& Device, const DIDEVICEINSTANCE* pInstance, s32 Sam
         s_Input.PCPadDevice[ s_Input.nPCPads ] = s_Input.nJoysticks;
         s_Input.nPCPads++;
     
-    }  
+	}  
 
 
 
@@ -1227,34 +1227,34 @@ dxerr ReadJoystickBufferedData( device& Device, s32 ID )
                 INPUT_PS2_BTN_L_LEFT    - INPUT_PS2_BTN_L2,   // 15               
             };  
 
-            if( (Device.Flags & DEVICE_FLG_SOYO_PS2_PAD) ||
+			if( (Device.Flags & DEVICE_FLG_SOYO_PS2_PAD) ||
                 (Device.Flags & DEVICE_FLG_DUALSHOCK_CONVERTER_PS2_PAD) ) // SOYO Uses POV Hat switch, so we must interpret results for buttons 12-15
-            {
-                if( didod[ i ].dwOfs >= DIJOFS_POV(0) && didod[ i ].dwOfs <= DIJOFS_POV(3) )             
-                {
-                    if( didod[ i ].dwData == 0xFFFFFFFF ) // POV Hat Switch released
-                    {
-                        if( State.PS2Pad[ID].Anolog[ 12 ] > 0.01f ) 
+			{
+				if( didod[ i ].dwOfs >= DIJOFS_POV(0) && didod[ i ].dwOfs <= DIJOFS_POV(3) ) 			
+				{
+					if( didod[ i ].dwData == 0xFFFFFFFF ) // POV Hat Switch released
+					{
+						if( State.PS2Pad[ID].Anolog[ 12 ] > 0.01f ) 
                             State.PS2Pad[ID].Anolog[ 12 ] = State.PS2Pad[ID].Anolog[ 12 ] - 1;
-                        if( State.PS2Pad[ID].Anolog[ 13 ] > 0.01f ) 
+						if( State.PS2Pad[ID].Anolog[ 13 ] > 0.01f ) 
                             State.PS2Pad[ID].Anolog[ 13 ] = State.PS2Pad[ID].Anolog[ 13 ] - 1;
-                        if( State.PS2Pad[ID].Anolog[ 14 ] > 0.01f ) 
+						if( State.PS2Pad[ID].Anolog[ 14 ] > 0.01f ) 
                             State.PS2Pad[ID].Anolog[ 14 ] = State.PS2Pad[ID].Anolog[ 14 ] - 1;
-                        if( State.PS2Pad[ID].Anolog[ 15 ] > 0.01f ) 
+						if( State.PS2Pad[ID].Anolog[ 15 ] > 0.01f ) 
                             State.PS2Pad[ID].Anolog[ 15 ] = State.PS2Pad[ID].Anolog[ 15 ] - 1;
-                    }
-                    else // Hat Switch Pressed.
-                    {
-                        // SOYO USB Converter gives the following values in dwData 
-                        // INPUT_PS2_BTN_L_UP        = 0
-                        // INPUT_PS2_BTN_L_RIGHT    = 9000,
-                        // INPUT_PS2_BTN_L_DOWN        = 18000
-                        // INPUT_PS2_BTN_L_LEFT     = 27000
+					}
+					else // Hat Switch Pressed.
+					{
+						// SOYO USB Converter gives the following values in dwData 
+						// INPUT_PS2_BTN_L_UP		= 0
+						// INPUT_PS2_BTN_L_RIGHT	= 9000,
+						// INPUT_PS2_BTN_L_DOWN		= 18000
+						// INPUT_PS2_BTN_L_LEFT 	= 27000
 
-                        s32 Index = didod[ i ].dwData/9000 + 12; // Mapped to buttons 12-15 
+						s32 Index = didod[ i ].dwData/9000 + 12; // Mapped to buttons 12-15 
                         State.PS2Pad[ID].Anolog[ Index ] = 1.0001f;
-                    }
-                }
+					}
+				}
 
                 if( Device.Flags & DEVICE_FLG_DUALSHOCK_CONVERTER_PS2_PAD )
                 {
@@ -1264,12 +1264,12 @@ dxerr ReadJoystickBufferedData( device& Device, s32 ID )
                     State.PS2Pad[ID].Anolog[18] = State.PS2Pad[ID].Anolog[19];
                     State.PS2Pad[ID].Anolog[19] = Temp;
                 }
-            }
+			}
 
-            // OLD
+			// OLD
             //if( didod[ i ].dwOfs >= DIJOFS_BUTTON0 && didod[ i ].dwOfs <= DIJOFS_BUTTON31 ) 
 
-            if( didod[ i ].dwOfs >= DIJOFS_BUTTON0 && didod[ i ].dwOfs <= DIJOFS_BUTTON31 )             
+			if( didod[ i ].dwOfs >= DIJOFS_BUTTON0 && didod[ i ].dwOfs <= DIJOFS_BUTTON31 ) 			
             {
                 s32 Index = didod[ i ].dwOfs - DIJOFS_BUTTON0;
 

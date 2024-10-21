@@ -555,9 +555,9 @@ void bitstream::TruncateRangedF32( f32& Value, s32 NBits, f32 Min, f32 Max )
 
 void bitstream::TruncateRangedVector( vector3& N, s32 NBits, f32 Min, f32 Max )
 {
-    TruncateRangedF32(N.GetX(), NBits, Min, Max) ;
-    TruncateRangedF32(N.GetY(), NBits, Min, Max) ;
-    TruncateRangedF32(N.GetZ(), NBits, Min, Max) ;
+	TruncateRangedF32(N.GetX(), NBits, Min, Max) ;
+	TruncateRangedF32(N.GetY(), NBits, Min, Max) ;
+	TruncateRangedF32(N.GetZ(), NBits, Min, Max) ;
 }
 
 //=========================================================================

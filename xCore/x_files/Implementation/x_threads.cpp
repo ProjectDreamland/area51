@@ -32,13 +32,13 @@
 #include <sifdev.h>
 #include <libsn.h>
 #include "../entropy/ps2/iopmanager.hpp"
-#define PROFILE_BUFFER_LENGTH    X_KILOBYTE(16)            // 16K profile buffer
-#define PROFILE_FILENAME        "profile.dat"
-#define PROFILE_INTERVAL        2*16                // 16 ticks per ms
-#define PROFILE_PC_ADDRESS        0x80078230
+#define PROFILE_BUFFER_LENGTH	X_KILOBYTE(16)			// 16K profile buffer
+#define PROFILE_FILENAME		"profile.dat"
+#define PROFILE_INTERVAL		2*16				// 16 ticks per ms
+#define PROFILE_PC_ADDRESS		0x80078230
 struct profile_sample
 {
-    u32    ProgramCounter;
+	u32	ProgramCounter;
 };
 
 
@@ -68,12 +68,12 @@ xarray<xthread*>    xthread::m_MasterThreadList( s_ThreadBuffer,0,X_MAX_THREADS 
 
 struct thread_vars
 {
-    xthreadlist            m_RunList;
-    s32                    m_ThreadTicks;
-    xmutex                m_Lock;
-    s32                    m_TopThreadId;
+    xthreadlist			m_RunList;
+    s32					m_ThreadTicks;
+    xmutex				m_Lock;
+    s32					m_TopThreadId;
     s32                 m_InterruptCount;
-    xthread*            m_pAppMain;
+    xthread*			m_pAppMain;
     s64                 m_IdleTicks;
     volatile xthread*           m_pActiveThread;
     volatile xthread_private    m_ActiveThreadId;
@@ -88,15 +88,15 @@ struct thread_vars
     xthread*            m_ThreadList[MAX_TRACKED_THREADS];
 
 #ifdef DEBUG_THREADS
-    xthread*            m_pWatchdogThread;
+	xthread*			m_pWatchdogThread;
 #endif
 #ifdef ENABLE_PROFILE
-    xthread*            m_pProfileThread;
-    profile_sample*        m_pProfileBuffer;
-    s32                    m_ProfileLength;
-    s32                    m_ProfileFileHandle;
-    xbool                m_ProfileEnabled;
-    s32                    m_ProfileInterval;
+	xthread*			m_pProfileThread;
+	profile_sample*		m_pProfileBuffer;
+	s32					m_ProfileLength;
+	s32					m_ProfileFileHandle;
+	xbool				m_ProfileEnabled;
+	s32					m_ProfileInterval;
 #endif
 };
 
@@ -150,23 +150,23 @@ void x_InitThreads(s32 argc, char** argv)
     CreateIdleThread();
 
 #ifdef ENABLE_PROFILE
-    s_pThreadVars->m_ProfileLength  = PROFILE_BUFFER_LENGTH;
-    s_pThreadVars->m_pProfileBuffer = (profile_sample*)x_malloc(PROFILE_BUFFER_LENGTH);
-    ASSERT(s_pThreadVars->m_pProfileBuffer);
+	s_pThreadVars->m_ProfileLength  = PROFILE_BUFFER_LENGTH;
+	s_pThreadVars->m_pProfileBuffer = (profile_sample*)x_malloc(PROFILE_BUFFER_LENGTH);
+	ASSERT(s_pThreadVars->m_pProfileBuffer);
 #ifdef USE_SN_PROFILER
-    g_IopManager.LoadModule("snprofil.irx");
-    snProfInit(_4KHZ,s_pThreadVars->m_pProfileBuffer,s_pThreadVars->m_ProfileLength);
-    //xprof_Disable();
+	g_IopManager.LoadModule("snprofil.irx");
+	snProfInit(_4KHZ,s_pThreadVars->m_pProfileBuffer,s_pThreadVars->m_ProfileLength);
+	//xprof_Disable();
 #else
-    s_pThreadVars->m_ProfileFileHandle = sceOpen("host0:"PROFILE_FILENAME,SCE_WRONLY|SCE_CREAT|SCE_TRUNC);
-    ASSERT(s_pThreadVars->m_ProfileFileHandle >=0);
-    s_pThreadVars->m_pProfileThread = new xthread(s_ProfileThread,"Profiler Thread",8192,1);
-    ASSERT(s_pThreadVars->m_pProfileThread);
+	s_pThreadVars->m_ProfileFileHandle = sceOpen("host0:"PROFILE_FILENAME,SCE_WRONLY|SCE_CREAT|SCE_TRUNC);
+	ASSERT(s_pThreadVars->m_ProfileFileHandle >=0);
+	s_pThreadVars->m_pProfileThread = new xthread(s_ProfileThread,"Profiler Thread",8192,1);
+	ASSERT(s_pThreadVars->m_pProfileThread);
 #endif
 #endif
 
 #ifdef DEBUG_THREADS
-    s_pThreadVars->m_pWatchdogThread = new xthread(s_WatchdogThread,"Watchdog timer",8192,5);
+	s_pThreadVars->m_pWatchdogThread = new xthread(s_WatchdogThread,"Watchdog timer",8192,5);
 #endif
 }
 
@@ -920,35 +920,35 @@ void x_WatchdogReset(void)
 
 void xthread::DumpThreads(void)
 {
-    xthread* pThread;
-    s32         count,i;
-    struct ThreadParam threadparam;
+	xthread* pThread;
+	s32		 count,i;
+	struct ThreadParam threadparam;
 
-    count = xthread::m_MasterThreadList.GetCount();
-    for (i=0;i<count;i++)
-    {
-        pThread = xthread::m_MasterThreadList[i];
-        ReferThreadStatus(pThread->GetSystemId(),&threadparam);
-        x_DebugMsg("Thread %d (%s), pc=0x%08x\n",i,pThread->m_pName,threadparam.entry);
-    }
+	count = xthread::m_MasterThreadList.GetCount();
+	for (i=0;i<count;i++)
+	{
+		pThread = xthread::m_MasterThreadList[i];
+		ReferThreadStatus(pThread->GetSystemId(),&threadparam);
+		x_DebugMsg("Thread %d (%s), pc=0x%08x\n",i,pThread->m_pName,threadparam.entry);
+	}
 }
 
 
-static void    s_WatchdogThread(void)
+static void	s_WatchdogThread(void)
 {
-    while(1)
-    {
-        x_DelayThread(100);
+	while(1)
+	{
+		x_DelayThread(100);
 
-        s_pThreadVars->m_ThreadTicks--;
-        if ( s_pThreadVars->m_ThreadTicks < 0)
-        {
-            x_DebugMsg("--------------- THREAD STALL -------------------\n");
-            xthread::DumpThreads();
-            s_pThreadVars->m_ThreadTicks = 40;
+		s_pThreadVars->m_ThreadTicks--;
+		if ( s_pThreadVars->m_ThreadTicks < 0)
+		{
+			x_DebugMsg("--------------- THREAD STALL -------------------\n");
+			xthread::DumpThreads();
+			s_pThreadVars->m_ThreadTicks = 40;
             BREAK;
-        }
-    }
+		}
+	}
 }
 #else
 
@@ -1019,65 +1019,65 @@ void    s_ProfileDelayCallback(s32 id, u16 count,void *arg)
 //-----------------------------------------------------------------------------
 static void s_ProfileThread(void)
 {
-    profile_sample*    pBuffer;
-    s32                Count;
-    s32                status;
-    ThreadParam        info;
-    s32                lastpc;
+	profile_sample*	pBuffer;
+	s32				Count;
+	s32				status;
+	ThreadParam		info;
+	s32				lastpc;
 
 
-    s_pThreadVars->m_ProfileInterval = PROFILE_INTERVAL;                // 10ms profile interval
-    s_pThreadVars->m_ProfileEnabled  = TRUE;
+	s_pThreadVars->m_ProfileInterval = PROFILE_INTERVAL;				// 10ms profile interval
+	s_pThreadVars->m_ProfileEnabled  = TRUE;
 
-    while(1)
-    {
-        pBuffer = s_pThreadVars->m_pProfileBuffer;
-        Count = s_pThreadVars->m_ProfileLength / sizeof(profile_sample);
-        ASSERT(Count);
-        ASSERT(pBuffer);
-        ASSERT(s_pThreadVars->m_ProfileInterval);
+	while(1)
+	{
+		pBuffer = s_pThreadVars->m_pProfileBuffer;
+		Count = s_pThreadVars->m_ProfileLength / sizeof(profile_sample);
+		ASSERT(Count);
+		ASSERT(pBuffer);
+		ASSERT(s_pThreadVars->m_ProfileInterval);
 
-        while (Count)
-        {
-            SetAlarm(s_pThreadVars->m_ProfileInterval,s_ProfileDelayCallback,(void *)GetThreadId());
-            SleepThread();
+		while (Count)
+		{
+		    SetAlarm(s_pThreadVars->m_ProfileInterval,s_ProfileDelayCallback,(void *)GetThreadId());
+		    SleepThread();
 
-            if (s_pThreadVars->m_ProfileEnabled)
-            {
-                status = ReferThreadStatus(s_pThreadVars->m_pAppMain->GetSystemId(),&info);
-                lastpc = (s32)info.entry;
-                pBuffer->ProgramCounter = ENDIAN_SWAP_32(lastpc);
-                pBuffer++;
-                Count--;
-            }
-        }
-        sceWrite(s_pThreadVars->m_ProfileFileHandle,s_pThreadVars->m_pProfileBuffer,s_pThreadVars->m_ProfileLength);
-    }
+			if (s_pThreadVars->m_ProfileEnabled)
+			{
+				status = ReferThreadStatus(s_pThreadVars->m_pAppMain->GetSystemId(),&info);
+				lastpc = (s32)info.entry;
+				pBuffer->ProgramCounter = ENDIAN_SWAP_32(lastpc);
+				pBuffer++;
+				Count--;
+			}
+		}
+		sceWrite(s_pThreadVars->m_ProfileFileHandle,s_pThreadVars->m_pProfileBuffer,s_pThreadVars->m_ProfileLength);
+	}
 
 }
 #endif
 
 void xprof_Enable(void)
 {
-    s_pThreadVars->m_ProfileEnabled = TRUE;
+	s_pThreadVars->m_ProfileEnabled = TRUE;
 #ifdef USE_SN_PROFILER
-    snProfEnableInt();
+	snProfEnableInt();
 #endif
 }
 
 void xprof_Disable(void)
 {
-    s_pThreadVars->m_ProfileEnabled = FALSE;
+	s_pThreadVars->m_ProfileEnabled = FALSE;
 #ifdef USE_SN_PROFILER
-    snProfDisableInt();
+	snProfDisableInt();
 #endif
 }
 
 void xprof_SetSampleRate(s32 ms)
 {
-    s_pThreadVars->m_ProfileInterval = ms;
+	s_pThreadVars->m_ProfileInterval = ms;
 #ifdef USE_SN_PROFILER
-//    snProfSetInterval(ms);
+//	snProfSetInterval(ms);
 #endif
 }
 

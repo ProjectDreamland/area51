@@ -7,7 +7,6 @@ Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug Win32 = Debug Win32
 		Debug Xbox = Debug Xbox
-		EDITOR-Debug Win32 = EDITOR-Debug Win32
 		OptDebug Xbox = OptDebug Xbox
 		QA Xbox = QA Xbox
 		Release Win32 = Release Win32
@@ -18,16 +17,14 @@ Global
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Debug Win32.Build.0 = Debug|Win32
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Debug Xbox.ActiveCfg = Debug|Xbox
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Debug Xbox.Build.0 = Debug|Xbox
-		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.EDITOR-Debug Win32.ActiveCfg = EDITOR-Debug|Win32
-		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.EDITOR-Debug Win32.Build.0 = EDITOR-Debug|Win32
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.OptDebug Xbox.ActiveCfg = OptDebug|Xbox
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.OptDebug Xbox.Build.0 = OptDebug|Xbox
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.QA Xbox.ActiveCfg = QA|Xbox
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.QA Xbox.Build.0 = QA|Xbox
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Release Win32.ActiveCfg = Release|Win32
 		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Release Win32.Build.0 = Release|Win32
-		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Retail Xbox.ActiveCfg = Retail|Xbox
-		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Retail Xbox.Build.0 = Retail|Xbox
+		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Retail Xbox.ActiveCfg = Retail|Win32
+		{4283CEE3-79DE-4B21-97C3-D54749EF3907}.Retail Xbox.Build.0 = Retail|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

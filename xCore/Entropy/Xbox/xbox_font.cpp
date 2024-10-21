@@ -87,7 +87,7 @@ void text_RenderStr( char* Str, s32 NChars, xcolor Color, s32 PixelX, s32 PixelY
     // Set the starting screen position
     f32     sx        = (f32)PixelX;
     f32     sy        = (f32)PixelY;
-    u32     C         = Color.GetRGBA();  
+	u32     C         = Color.GetRGBA();  
     f32     TexWidth  = (f32)s_Bitmap.GetWidth();
     f32     TexHeight = (f32)s_Bitmap.GetHeight();
     s32     CellX,CellY;

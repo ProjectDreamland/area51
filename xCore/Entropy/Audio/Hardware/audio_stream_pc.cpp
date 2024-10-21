@@ -19,47 +19,47 @@ void audio_stream_read_callback( io_request* pRequest, audio_stream* pStream, s3
     {
         case MONO_STREAM: 
         {
-            switch( pStream->CompressionType )
-            {
-                case ADPCM:
-                    x_memcpy( (void*)pStream->ARAM[LEFT_CHANNEL][pStream->ARAMWriteBuffer], 
-                            (void*)g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex],
-                            STREAM_BUFFER_SIZE );
-                    break;
+			switch( pStream->CompressionType )
+			{
+				case ADPCM:
+					x_memcpy( (void*)pStream->ARAM[LEFT_CHANNEL][pStream->ARAMWriteBuffer], 
+							(void*)g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex],
+							STREAM_BUFFER_SIZE );
+					break;
 
-                case MP3:
-                    ASSERT( pRequest->GetLength() == MP3_BUFFER_SIZE );
+				case MP3:
+					ASSERT( pRequest->GetLength() == MP3_BUFFER_SIZE );
 
-                    x_memcpy( (void*)pStream->MainRAM[pStream->ARAMWriteBuffer],
-                              (void*)g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex],
-                              MP3_BUFFER_SIZE );
-                    break;
-            }
+					x_memcpy( (void*)pStream->MainRAM[pStream->ARAMWriteBuffer],
+						      (void*)g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex],
+							  MP3_BUFFER_SIZE );
+					break;
+			}
             break;
         }
 
         case STEREO_STREAM:
         {
-            switch( pStream->CompressionType )
-            {
-                case ADPCM:
-                    x_memcpy( (void*)pStream->ARAM[LEFT_CHANNEL][pStream->ARAMWriteBuffer], 
-                            (void*)g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex],
-                            STREAM_BUFFER_SIZE );
+			switch( pStream->CompressionType )
+			{
+				case ADPCM:
+					x_memcpy( (void*)pStream->ARAM[LEFT_CHANNEL][pStream->ARAMWriteBuffer], 
+							(void*)g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex],
+							STREAM_BUFFER_SIZE );
 
-                    x_memcpy( (void*)pStream->ARAM[RIGHT_CHANNEL][pStream->ARAMWriteBuffer], 
-                            (void*)(g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex]+STREAM_BUFFER_SIZE),
-                            STREAM_BUFFER_SIZE );
-                    break;
+					x_memcpy( (void*)pStream->ARAM[RIGHT_CHANNEL][pStream->ARAMWriteBuffer], 
+							(void*)(g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex]+STREAM_BUFFER_SIZE),
+							STREAM_BUFFER_SIZE );
+					break;
 
-                case MP3:
-                    ASSERT( pRequest->GetLength() == MP3_BUFFER_SIZE );
+				case MP3:
+					ASSERT( pRequest->GetLength() == MP3_BUFFER_SIZE );
 
-                    x_memcpy( (void*)pStream->MainRAM[pStream->ARAMWriteBuffer],
-                              (void*)g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex],
-                              MP3_BUFFER_SIZE );
-                    break;
-            }                
+					x_memcpy( (void*)pStream->MainRAM[pStream->ARAMWriteBuffer],
+						      (void*)g_AudioStreamMgr.m_ReadBuffers[ReadBufferIndex],
+							  MP3_BUFFER_SIZE );
+					break;
+			}				
             break;
         }
 
@@ -95,27 +95,27 @@ void audio_stream_mgr::Init( void )
         m_AudioStreams[i].Index = i;
     }
 
-    // Allocate the main ram buffers for mp3 de-compression
-    nBytes = MAX_AUDIO_STREAMS * MP3_BUFFER_SIZE * 2;
-    m_MainRam = (u32)x_malloc( nBytes );
+	// Allocate the main ram buffers for mp3 de-compression
+	nBytes = MAX_AUDIO_STREAMS * MP3_BUFFER_SIZE * 2;
+	m_MainRam = (u32)x_malloc( nBytes );
 
-    // Assign mp3 buffers to the stream
-    BaseRam = m_MainRam;
-    for( i=0 ; i<MAX_AUDIO_STREAMS ; i++ )
-    {
-        m_AudioStreams[i].MainRAM[0] = BaseRam;
-        BaseRam += MP3_BUFFER_SIZE;
-        m_AudioStreams[i].MainRAM[1] = BaseRam;
-        BaseRam += MP3_BUFFER_SIZE;
-    }
+	// Assign mp3 buffers to the stream
+	BaseRam = m_MainRam;
+	for( i=0 ; i<MAX_AUDIO_STREAMS ; i++ )
+	{
+		m_AudioStreams[i].MainRAM[0] = BaseRam;
+		BaseRam += MP3_BUFFER_SIZE;
+		m_AudioStreams[i].MainRAM[1] = BaseRam;
+		BaseRam += MP3_BUFFER_SIZE;
+	}
 
     // Allocate the aram
     nBytes = MAX_AUDIO_STREAMS * MAX_STREAM_CHANNELS * STREAM_BUFFER_SIZE * 2; 
     m_ARAM = (u32)g_AudioHardware.AllocAudioRam( nBytes );
     
-    // MP3 streaming only!
+	// MP3 streaming only!
     nBytes = MP3_BUFFER_SIZE;
-    // nBytes = MAX_STREAM_CHANNELS * STREAM_BUFFER_SIZE; // for pcm streaming
+	// nBytes = MAX_STREAM_CHANNELS * STREAM_BUFFER_SIZE; // for pcm streaming
 
     // Allocate the read buffers
     m_ReadBuffers[0] = (u32)x_malloc( nBytes );
@@ -154,8 +154,8 @@ void audio_stream_mgr::Kill( void )
     // Free up the aram buffers.
     g_AudioHardware.FreeAudioRam( (void*)m_ARAM );
 
-    // Free up the mp3 decompression buffers
-    x_free( (void*)m_MainRam );
+	// Free up the mp3 decompression buffers
+	x_free( (void*)m_MainRam );
 
     // Free the read buffers.
     x_free( (void*)m_ReadBuffers[0] );

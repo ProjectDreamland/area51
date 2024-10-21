@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{9e411b00-8144-4132-aa8e-ec9c42ac345f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configuration\PS2">
+      <UniqueIdentifier>{0e7d8ab0-7a5d-442a-a12f-688580d9e971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configuration\XBOX">
+      <UniqueIdentifier>{a3f7b0da-e8df-464d-80fb-590958175420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configuration\PC">
+      <UniqueIdentifier>{04e5fd15-7a2f-4ed9-9219-50cffbcd38ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Media">
+      <UniqueIdentifier>{ca1da9cb-77b6-4f88-9a2d-42d52b4fface}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Config.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="IniFile.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="rtf_handler.cpp" />
+    <ClCompile Include="Version.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Config.hpp">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="IniFile.hpp">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="main.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\GameData\A51\Release\Ps2\Config.ini">
+      <Filter>Configuration\PS2</Filter>
+    </None>
+    <None Include="..\..\..\..\GameData\A51\Release\Xbox\Config.ini">
+      <Filter>Configuration\XBOX</Filter>
+    </None>
+    <None Include="..\..\..\..\GameData\A51\Release\Pc\Config.ini">
+      <Filter>Configuration\PC</Filter>
+    </None>
+    <None Include="media\saves.rdf">
+      <Filter>Media</Filter>
+    </None>
+    <None Include="media\title.rdf">
+      <Filter>Media</Filter>
+    </None>
+    <None Include="main_pc.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\GameData\A51\Release\Ps2\eng_DiskMaps.txt">
+      <Filter>Configuration\PS2</Filter>
+    </Text>
+    <Text Include="..\..\..\..\GameData\A51\Release\Ps2\FRE_DiskMaps.txt">
+      <Filter>Configuration\PS2</Filter>
+    </Text>
+    <Text Include="..\..\..\..\GameData\A51\Release\Xbox\eng_DiskMaps.txt">
+      <Filter>Configuration\XBOX</Filter>
+    </Text>
+    <Text Include="..\..\..\..\GameData\A51\Release\Xbox\FRE_DiskMaps.txt">
+      <Filter>Configuration\XBOX</Filter>
+    </Text>
+    <Text Include="..\..\..\..\GameData\A51\Release\Pc\eng_DiskMaps.txt">
+      <Filter>Configuration\PC</Filter>
+    </Text>
+    <Text Include="..\..\..\..\GameData\A51\Release\Pc\FRE_DiskMaps.txt">
+      <Filter>Configuration\PC</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="main_ps2.inl" />
+    <CustomBuild Include="main_xbox.inl" />
+  </ItemGroup>
+</Project>

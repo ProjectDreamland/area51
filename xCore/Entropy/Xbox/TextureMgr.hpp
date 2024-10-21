@@ -205,10 +205,10 @@
         // index 0: = normal texture memory
         // index 1: = tiled memory
 
-        const heap::basic& GetGeneralPool( void )const
-        {
-            return m_Allocator[kPOOL_GENERAL];
-        }
+	    const heap::basic& GetGeneralPool( void )const
+	    {
+		    return m_Allocator[kPOOL_GENERAL];
+	    }
 
         const heap::basic& GetTiledPool( void )const
         {
@@ -258,7 +258,7 @@
             and take advantage of SwitchTexture().
             */
 
-        IDirect3DBaseTexture8* m_Stage[ D3DTSS_MAXSTAGES ];
+    	IDirect3DBaseTexture8* m_Stage[ D3DTSS_MAXSTAGES ];
     }
     g_Texture;
 

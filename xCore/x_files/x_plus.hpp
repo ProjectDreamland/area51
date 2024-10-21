@@ -358,7 +358,7 @@ private:
 
 s32     x_strlen    ( const char* pStr );
 char*   x_strcpy    (       char* pDest,    const char* pSrc );
-char*    x_strdup    ( const char* pStr );
+char*	x_strdup	( const char* pStr );
 char*   x_strcat    (       char* pFront,   const char* pBack );
 s32     x_strcmp    ( const char* pStr1,    const char* pStr2 );
 char*   x_strncpy   (       char* pDest,    const char* pSrc,   s32 Count );
@@ -376,7 +376,7 @@ char*   x_strtolower( char* pStr );
 
 s32     x_wstrlen   ( const xwchar* pWideStr );
 xwchar* x_wstrcpy   (       xwchar* pWideDest,    const xwchar* pWideSrc );
-xwchar*    x_strdup    ( const xwchar* pWideStr );
+xwchar*	x_strdup	( const xwchar* pWideStr );
 xwchar* x_wstrcat   (       xwchar* pWideFront,   const xwchar* pWideBack );
 s32     x_wstrcmp   ( const xwchar* pWideStr1,    const xwchar* pWideStr2 );
 s32     x_wstricmp  ( const xwchar* pWideStr1,    const xwchar* pWideStr2 );

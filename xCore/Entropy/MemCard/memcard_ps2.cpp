@@ -37,9 +37,9 @@ static char* s_IconName     = "gray.icn";
 
 // define directory name
 //#ifdef X_PAL
-//#define DIR_NAME                "/BESLES-00000AREA51"
+//#define DIR_NAME	            "/BESLES-00000AREA51"
 //#else
-//#define DIR_NAME                "/BASLUS-00000AREA51"
+//#define DIR_NAME	            "/BASLUS-00000AREA51"
 //#endif
 
 
@@ -562,21 +562,21 @@ memcard_hardware::~memcard_hardware( void )
 
 void memcard_hardware::Init( void )
 {
-    sceVu0IVECTOR s_bgcolor[4] = {    // 0xff Ç™ç≈ëÂãPìx 
-        { 0x80,    0,    0, 0 },        // îwåiêF(ç∂è„) 
-        {    0, 0x80,    0, 0 },        // îwåiêF(âEè„) 
-        {    0,    0, 0x80, 0 },        // îwåiêF(ç∂â∫) 
-        { 0x80, 0x80, 0x80, 0 },        // îwåiêF(âEè„) 
+    sceVu0IVECTOR s_bgcolor[4] = {	// 0xff Ç™ç≈ëÂãPìx 
+	    { 0x80,    0,    0, 0 },		// îwåiêF(ç∂è„) 
+	    {    0, 0x80,    0, 0 },		// îwåiêF(âEè„) 
+	    {    0,    0, 0x80, 0 },		// îwåiêF(ç∂â∫) 
+	    { 0x80, 0x80, 0x80, 0 },		// îwåiêF(âEè„) 
     };
     sceVu0FVECTOR s_lightdir[3] = {
-        { 0.5, 0.5, 0.5, 0.0 },
-        { 0.0,-0.4,-0.1, 0.0 },
-        {-0.5,-0.5, 0.5, 0.0 },
+	    { 0.5, 0.5, 0.5, 0.0 },
+	    { 0.0,-0.4,-0.1, 0.0 },
+	    {-0.5,-0.5, 0.5, 0.0 },
     };
     sceVu0FVECTOR s_lightcol[3] = {
-        { 0.48, 0.48, 0.03, 0.00 },
-        { 0.50, 0.33, 0.20, 0.00 },
-        { 0.14, 0.14, 0.38, 0.00 },
+	    { 0.48, 0.48, 0.03, 0.00 },
+	    { 0.50, 0.33, 0.20, 0.00 },
+	    { 0.14, 0.14, 0.38, 0.00 },
     };
     sceVu0FVECTOR s_ambient = { 0.50, 0.50, 0.50, 0.00 };
 
@@ -653,7 +653,7 @@ void memcard_hardware::Init( void )
     
     // setup icon data
     x_memset(&s_Icon, 0, sizeof(s_Icon));
-    x_strcpy((char *)s_Icon.Head, "PS2D");
+	x_strcpy((char *)s_Icon.Head, "PS2D");
     AsciiToSJIS(s_IconTitle, SJISBuffer);
     x_memcpy(s_Icon.TitleName, SJISBuffer, 34*sizeof(s16));
 
@@ -674,14 +674,14 @@ void memcard_hardware::Init( void )
     // force the CR for A51
     i = 7;
 #endif
-    s_Icon.OffsLF = i*2;
-    s_Icon.TransRate = 0x60;
-    x_memcpy(s_Icon.BgColor, s_bgcolor, sizeof(s_bgcolor));
-    x_memcpy(s_Icon.LightDir, s_lightdir, sizeof(s_lightdir));
-    x_memcpy(s_Icon.LightColor, s_lightcol, sizeof(s_lightcol));
-    x_memcpy(s_Icon.Ambient, s_ambient, sizeof(s_ambient));
+	s_Icon.OffsLF = i*2;
+	s_Icon.TransRate = 0x60;
+	x_memcpy(s_Icon.BgColor, s_bgcolor, sizeof(s_bgcolor));
+	x_memcpy(s_Icon.LightDir, s_lightdir, sizeof(s_lightdir));
+	x_memcpy(s_Icon.LightColor, s_lightcol, sizeof(s_lightcol));
+	x_memcpy(s_Icon.Ambient, s_ambient, sizeof(s_ambient));
 
-    x_strcpy((char *)s_Icon.FnameView, s_IconName);
+	x_strcpy((char *)s_Icon.FnameView, s_IconName);
     x_strcpy((char *)s_Icon.FnameCopy, s_IconName);
     x_strcpy((char *)s_Icon.FnameDel,  s_IconName);
         
@@ -731,8 +731,8 @@ s32 g_MemCardSleepMS = 1;
 
 void memcard_hardware::ProcessHardwareCallback( void )
 {
-    // Sleep for a bit and give PS2 memcard some time.
-    x_DelayThread(g_MemCardSleepMS);
+	// Sleep for a bit and give PS2 memcard some time.
+	x_DelayThread(g_MemCardSleepMS);
 
     // check results of async calls to mem card routines
     s32 result;
