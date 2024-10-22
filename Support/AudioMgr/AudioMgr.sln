@@ -7,24 +7,33 @@ Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug Win32 = Debug Win32
 		Debug Xbox = Debug Xbox
+		EDITOR-Debug Win32 = EDITOR-Debug Win32
+		OptDebug Win32 = OptDebug Win32
 		OptDebug Xbox = OptDebug Xbox
+		QA Win32 = QA Win32
 		QA Xbox = QA Xbox
 		Release Win32 = Release Win32
-		Retail Xbox = Retail Xbox
+		Release Xbox = Release Xbox
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{55221814-70E0-430B-8947-881F19D9EE9F}.Debug Win32.ActiveCfg = Debug|Win32
 		{55221814-70E0-430B-8947-881F19D9EE9F}.Debug Win32.Build.0 = Debug|Win32
 		{55221814-70E0-430B-8947-881F19D9EE9F}.Debug Xbox.ActiveCfg = Debug|Xbox
 		{55221814-70E0-430B-8947-881F19D9EE9F}.Debug Xbox.Build.0 = Debug|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.EDITOR-Debug Win32.ActiveCfg = EDITOR-Debug|Win32
+		{55221814-70E0-430B-8947-881F19D9EE9F}.EDITOR-Debug Win32.Build.0 = EDITOR-Debug|Win32
+		{55221814-70E0-430B-8947-881F19D9EE9F}.OptDebug Win32.ActiveCfg = OptDebug|Win32
+		{55221814-70E0-430B-8947-881F19D9EE9F}.OptDebug Win32.Build.0 = OptDebug|Win32
 		{55221814-70E0-430B-8947-881F19D9EE9F}.OptDebug Xbox.ActiveCfg = OptDebug|Xbox
 		{55221814-70E0-430B-8947-881F19D9EE9F}.OptDebug Xbox.Build.0 = OptDebug|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.QA Win32.ActiveCfg = QA|Win32
+		{55221814-70E0-430B-8947-881F19D9EE9F}.QA Win32.Build.0 = QA|Win32
 		{55221814-70E0-430B-8947-881F19D9EE9F}.QA Xbox.ActiveCfg = QA|Xbox
 		{55221814-70E0-430B-8947-881F19D9EE9F}.QA Xbox.Build.0 = QA|Xbox
 		{55221814-70E0-430B-8947-881F19D9EE9F}.Release Win32.ActiveCfg = Release|Win32
 		{55221814-70E0-430B-8947-881F19D9EE9F}.Release Win32.Build.0 = Release|Win32
-		{55221814-70E0-430B-8947-881F19D9EE9F}.Retail Xbox.ActiveCfg = Retail|Xbox
-		{55221814-70E0-430B-8947-881F19D9EE9F}.Retail Xbox.Build.0 = Retail|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Release Xbox.ActiveCfg = Release|Xbox
+		{55221814-70E0-430B-8947-881F19D9EE9F}.Release Xbox.Build.0 = Release|Xbox
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

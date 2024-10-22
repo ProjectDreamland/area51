@@ -7,20 +7,21 @@ Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug Win32 = Debug Win32
 		Debug Xbox = Debug Xbox
+		EDITOR-Debug Win32 = EDITOR-Debug Win32
 		OptDebug Win32 = OptDebug Win32
 		OptDebug Xbox = OptDebug Xbox
 		QA Win32 = QA Win32
 		QA Xbox = QA Xbox
 		Release Win32 = Release Win32
 		Release Xbox = Release Xbox
-		Retail Win32 = Retail Win32
-		Retail Xbox = Retail Xbox
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Debug Win32.ActiveCfg = Debug|Win32
-		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Debug Win32.Build.0 = Debug|Win32
+		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Debug Win32.ActiveCfg = Release|Win32
+		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Debug Win32.Build.0 = Release|Win32
 		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Debug Xbox.ActiveCfg = Debug|Xbox
 		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Debug Xbox.Build.0 = Debug|Xbox
+		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.EDITOR-Debug Win32.ActiveCfg = EDITOR-Debug|Win32
+		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.EDITOR-Debug Win32.Build.0 = EDITOR-Debug|Win32
 		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.OptDebug Win32.ActiveCfg = OptDebug|Win32
 		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.OptDebug Win32.Build.0 = OptDebug|Win32
 		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.OptDebug Xbox.ActiveCfg = OptDebug|Xbox
@@ -33,10 +34,6 @@ Global
 		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Release Win32.Build.0 = Release|Win32
 		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Release Xbox.ActiveCfg = Release|Xbox
 		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Release Xbox.Build.0 = Release|Xbox
-		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Retail Win32.ActiveCfg = Retail|Win32
-		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Retail Win32.Build.0 = Retail|Win32
-		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Retail Xbox.ActiveCfg = Retail|Xbox
-		{7085C1E2-423D-4D4E-BC7D-1BA4B23F37C6}.Retail Xbox.Build.0 = Retail|Xbox
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

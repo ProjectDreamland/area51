@@ -5,14 +5,23 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fx_Core", "fx_Core.vcproj",
 EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
-		Debug = Debug
-		Retail = Retail
+		Debug Win32 = Debug Win32
+		EDITOR-Debug Win32 = EDITOR-Debug Win32
+		OptDebug Win32 = OptDebug Win32
+		QA Win32 = QA Win32
+		Release Win32 = Release Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.Debug.ActiveCfg = Debug|Win32
-		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.Debug.Build.0 = Debug|Win32
-		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.Retail.ActiveCfg = Retail|Win32
-		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.Retail.Build.0 = Retail|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.Debug Win32.ActiveCfg = Debug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.Debug Win32.Build.0 = Debug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.EDITOR-Debug Win32.ActiveCfg = EDITOR-Debug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.EDITOR-Debug Win32.Build.0 = EDITOR-Debug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.OptDebug Win32.ActiveCfg = OptDebug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.OptDebug Win32.Build.0 = OptDebug|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.QA Win32.ActiveCfg = QA|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.QA Win32.Build.0 = QA|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.Release Win32.ActiveCfg = Release|Win32
+		{E0CDD70E-23F8-432A-B3D3-5DF7E1CE15B4}.Release Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

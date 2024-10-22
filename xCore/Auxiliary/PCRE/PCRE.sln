@@ -5,11 +5,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PCRE", "PCRE.vcproj", "{0DD
 EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
-		Debug = Debug
+		Debug Win32 = Debug Win32
+		EDITOR-Debug Win32 = EDITOR-Debug Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{0DD5FD4D-6244-4FF2-9630-F2A0595A05E1}.Debug.ActiveCfg = Debug|Win32
-		{0DD5FD4D-6244-4FF2-9630-F2A0595A05E1}.Debug.Build.0 = Debug|Win32
+		{0DD5FD4D-6244-4FF2-9630-F2A0595A05E1}.Debug Win32.ActiveCfg = Debug|Win32
+		{0DD5FD4D-6244-4FF2-9630-F2A0595A05E1}.Debug Win32.Build.0 = Debug|Win32
+		{0DD5FD4D-6244-4FF2-9630-F2A0595A05E1}.EDITOR-Debug Win32.ActiveCfg = EDITOR-Debug|Win32
+		{0DD5FD4D-6244-4FF2-9630-F2A0595A05E1}.EDITOR-Debug Win32.Build.0 = EDITOR-Debug|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

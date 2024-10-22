@@ -21,12 +21,12 @@
 			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
+				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files,\.,$(X)/Entropy,$(X)\..\Support"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR"
-				DebugInformationFormat="4"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				Optimization="0"/>
+				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool

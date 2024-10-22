@@ -1272,7 +1272,9 @@ void match_mgr::SetState( match_mgr_state NewState )
             }
 
             Result = ServerBrowserUpdate(m_pBrowser, SBTrue, SBFalse, basicFields, numFields, Filter );
+			#ifdef X_LOGGING
             LOG_MESSAGE("match_mgr::SetState","ServerBrowserUpdate() returned %d(%s)", Result, ServerBrowserError( Result ) );
+			#endif
             SetConnectStatus( MATCH_CONN_ACQUIRING_SERVERS );
 
         }
@@ -1312,7 +1314,9 @@ void match_mgr::SetState( match_mgr_state NewState )
                     SBTrue,                      // async
                     SBFalse                      // fullUpdate 
                     );
+				#ifdef X_LOGGING	
                 LOG_MESSAGE("match_mgr::SetState","ServerBrowserAuxUpdateIP(%s) returned %d(%s)", Remote.GetStrAddress(), Result, ServerBrowserError( Result ) );
+				#endif
                 SetConnectStatus( MATCH_CONN_ACQUIRING_SERVERS );
             }
             UnlockBrowser();
@@ -1342,7 +1346,9 @@ void match_mgr::SetState( match_mgr_state NewState )
 
                 Result = ServerBrowserUpdate(m_pBrowser, SBTrue, SBFalse, NULL, 0, m_BuddyList);
                 SetConnectStatus( MATCH_CONN_ACQUIRING_BUDDIES );
+				#ifdef X_LOGGING
                 LOG_MESSAGE("match_mgr::SetState","ServerBrowserUpdate(Buddies) returned %d(%s)", Result, ServerBrowserError( Result ) );
+				#endif
 
             }
             else
@@ -1379,8 +1385,10 @@ void match_mgr::SetState( match_mgr_state NewState )
             qr2_register_key( AVGPING_KEY, "avgping" );
 
             Result = ServerBrowserLANUpdate( m_pBrowser, SBTrue, m_pSocket->GetPort(), m_pSocket->GetPort()+16 );
+			#ifdef X_LOGGING
             LOG_MESSAGE("match_mgr::SetState","ServerBrowserLANUpdate() returned %d(%s)", Result, ServerBrowserError( Result ) );
             SetConnectStatus( MATCH_CONN_ACQUIRING_SERVERS );
+			#endif
         }
         else
         {
@@ -1423,7 +1431,9 @@ void match_mgr::SetState( match_mgr_state NewState )
                 SBTrue,                             // async
                 SBFalse                             // fullUpdate 
                 );
+			#ifdef X_LOGGING	
             LOG_MESSAGE("match_mgr::SetState","ServerBrowserAuxUpdateIP(%s) returned %d(%s)", Config.Remote.GetStrAddress(), Result, ServerBrowserError( Result ) );
+			#endif
             SetConnectStatus( MATCH_CONN_ACQUIRING_SERVERS );
 
         }

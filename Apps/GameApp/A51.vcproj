@@ -593,7 +593,7 @@
 				SaveGameImage="$(SolutionDir)\media\saveimage.xbx"/>
 		</Configuration>
 		<Configuration
-			Name="Retail|Win32"
+			Name="Release|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			ConfigurationType="1"
@@ -651,7 +651,7 @@
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
-			Name="Retail|Xbox"
+			Name="Release|Xbox"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			ConfigurationType="1"
@@ -793,126 +793,6 @@
 				TitleImage="$(SolutionDir)\media\titleimage.xbx"
 				SaveGameImage="$(SolutionDir)\media\saveimage.xbx"/>
 		</Configuration>
-		<Configuration
-			Name="PS2-Debug|Xbox"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-OptDebug|Xbox"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Viewer|Xbox"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Retail|Xbox"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-QA|Xbox"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Profile|Xbox"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"/>
-		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -987,7 +867,7 @@
 						Outputs="$(SolutionDir)\media\saveimage.xbx"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Retail|Xbox">
+					Name="Release|Xbox">
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Bundling saved games image"
@@ -1008,7 +888,7 @@
 						Outputs="$(SolutionDir)\media\titleimage.xbx"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Retail|Xbox">
+					Name="Release|Xbox">
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Bundling title image"
@@ -1048,7 +928,7 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Win32"
+				Name="Release|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -1075,7 +955,7 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Win32"
+				Name="Release|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"/>
