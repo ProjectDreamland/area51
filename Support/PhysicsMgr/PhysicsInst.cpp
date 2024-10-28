@@ -13,7 +13,7 @@
 #include "Entropy.hpp"
 #include "Loco\LocoCharAnimPlayer.hpp"
 #include "Objects\BaseProjectile.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 
 #ifdef TARGET_PS2
 #include "Entropy/PS2/ps2_spad.hpp"

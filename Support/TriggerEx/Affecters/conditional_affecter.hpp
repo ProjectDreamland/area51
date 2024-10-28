@@ -11,7 +11,7 @@
 // INCLUDES
 //=========================================================================
 
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "..\Support\TriggerEx\TriggerEx_Conditionals.hpp"
 
 //=========================================================================

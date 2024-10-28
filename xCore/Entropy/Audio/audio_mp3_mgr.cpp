@@ -6,6 +6,8 @@
 #include "x_bytestream.hpp"
 #include "x_log.hpp"
 
+// #TODO: Rebuild Miles MP3 coder or replace with liblame
+
 //------------------------------------------------------------------------------
 
 #define VALID_STREAM( pStream ) ((pStream >= &g_AudioStreamMgr.m_AudioStreams[0]) && (pStream <= &g_AudioStreamMgr.m_AudioStreams[MAX_AUDIO_STREAMS-1]))
@@ -146,7 +148,7 @@ void audio_mp3_mgr::Open( audio_stream* pStream )
     ASSERT( VALID_STREAM(pStream) );
     pStream->CursorMP3 = 0;
     //pStream->HandleMP3 = (void*)ASI_stream_open( (U32)pStream, mp3_fetch_data, pStream->Samples[0].Sample.WaveformLength );
-	pStream->HandleMP3 = NULL;
+	  pStream->HandleMP3 = NULL;
 }
 
 //------------------------------------------------------------------------------
@@ -210,7 +212,7 @@ void audio_mp3_mgr::Decode( audio_stream* pStream, s16* pBufferL, s16* pBufferR,
         }
 
         // Decode it.
-        ASI_stream_process( (s32)pStream->HandleMP3, pDest, nBytes );
+       // ASI_stream_process( (s32)pStream->HandleMP3, pDest, nBytes );
 
         // Need to "un-interleave"?
         if( bIsStereo )

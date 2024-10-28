@@ -439,6 +439,8 @@ FodyWeavers.xsd
 _Win32Debug/
 _ps2-debug/
 _ps2-optdebug/
+_xboxdebug/
+_xboxqa/
 
 Debug/
 Release/
@@ -456,11 +458,12 @@ PS2-DevKit-Debug/
 PS2-DevKit-Release/
 PS2-IOP-Debug/
 PS2-IOP-Release/
-
 _XboxDebug/
 _XboxOptDebug/
 _XboxQA/
 _XboxRetail/
+Xbox-Debug/
+Xbox-Release/
 
 !**/COPYING.LIB
 !**/ENCVAG.DLL
@@ -523,3 +526,4 @@ _XboxRetail/
 !xCore/Tools/stringTool.exe
 !xCore/Tools/xCL.exe
 !xCore/Tools/xbmpTool.exe
+/build

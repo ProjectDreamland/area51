@@ -3,7 +3,7 @@
 //=========================================================================
 #include "Coupler.hpp"
 #include "Render\editor_icons.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "e_ScratchMem.hpp"
 #include "Dictionary\Global_Dictionary.hpp"
 #include "e_Draw.hpp"

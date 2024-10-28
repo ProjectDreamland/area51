@@ -9,6 +9,8 @@
 //
 //==============================================================================
 
+#if 0
+
 #include "x_files.hpp"
 #include "x_threads.hpp"
 #include "e_Network.hpp"
@@ -5072,3 +5074,5 @@ void match_mgr::ClearAllKeys( xbool IncludeConfigs )
         g_PendingConfig.GetConfig().KeyIsRegistered=FALSE;
     }
 }
+
+#endif

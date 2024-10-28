@@ -16,7 +16,7 @@
 #include "Entropy.hpp"
 #include "CollisionMgr\CollisionMgr.hpp"
 #include "Render\editor_icons.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 
 #include "Objects\Player.hpp"
 #include "characters\character.hpp"

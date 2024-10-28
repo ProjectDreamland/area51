@@ -16,7 +16,7 @@
 #include "GameLib\RenderContext.hpp"
 #include "Render\Render.hpp"
 #include "Objects\player.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 
 //=========================================================================
 // GLOBALS

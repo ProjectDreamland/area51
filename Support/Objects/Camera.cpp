@@ -3,7 +3,7 @@
 //=========================================================================
 #include "Camera.hpp"
 #include "Render\editor_icons.hpp"
-#include "..\MiscUtils\SimpleUtils.hpp"
+#include "MiscUtils\SimpleUtils.hpp"
 #include "Path.hpp"
 #include "Characters\Character.hpp"
 #include "Objects\Player.hpp"

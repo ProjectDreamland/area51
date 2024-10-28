@@ -521,6 +521,9 @@ voice_id audio_manager::Play( const char* pIdentifier, sound_type SoundType, con
     voice_id    VoiceID   = 0;
     vector3     FinalPos  = Position;
 
+    // #TODO:   Research the Zone argument in the PlayVolumeClipped and Play methods of audio_mgr class.
+    //          For now ZONELESS
+
     if( VolumeClipped )
         VoiceID = g_AudioMgr.PlayVolumeClipped( pIdentifier, FinalPos, ZoneID, AutoStart );
     else

@@ -6,7 +6,7 @@
 //=========================================================================
 #include "Entropy.hpp"
 #include "auxiliary\miscutils\Guid.hpp"
-#include "..\..\MiscUtils\PriorityQueue.hpp"
+#include "MiscUtils\PriorityQueue.hpp"
 #include "x_bitstream.hpp"
 
 //=========================================================================
