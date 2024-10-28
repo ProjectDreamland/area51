@@ -359,7 +359,7 @@ void InitializeD3D( HWND hWnd, s32 XRes, s32 YRes )
         g_d3dpp.SwapEffect                = D3DSWAPEFFECT_COPY; //DISCARD;
         g_d3dpp.BackBufferFormat          = d3ddm.Format;
         g_d3dpp.BackBufferCount           = 1;
-//        g_d3dpp.PresentationInterval      = D3DPRESENT_INTERVAL_IMMEDIATE;
+        g_d3dpp.PresentationInterval      = D3DPRESENT_INTERVAL_DEFAULT;
 
         // Set the maximun allow size for a d3d window
         g_d3dpp.BackBufferWidth           = s.MaxXRes;
@@ -374,10 +374,7 @@ void InitializeD3D( HWND hWnd, s32 XRes, s32 YRes )
         g_d3dpp.SwapEffect                = D3DSWAPEFFECT_COPY;
     }
 
-    if( s.Mode & ENG_ACT_BACKBUFFER_LOCK )
-    {
-        g_d3dpp.Flags = D3DPRESENTFLAG_LOCKABLE_BACKBUFFER;
-    }
+    g_d3dpp.Flags = D3DPRESENTFLAG_LOCKABLE_BACKBUFFER;
 
     // Lookup device caps
     D3DCAPS9 Caps ;
@@ -426,7 +423,7 @@ void InitializeD3D( HWND hWnd, s32 XRes, s32 YRes )
     // If there was an error should we bail?
 	if(Error != 0)
 	{
-		//MessageBox(d3deng_GetWindowHandle(), xfs("Error creating device: %d", Error), "Device Error", MB_OK);
+		MessageBox(d3deng_GetWindowHandle(), xfs("Error creating device: %d", Error), "Device Error", MB_OK);
         g_pd3dDevice = NULL;
 	}
     //ASSERT( Error == 0 );
@@ -631,7 +628,7 @@ HWND CreateWin( s32 Width, s32 Height )
 
     // Create our main window
     return CreateWindow( TEXT("Render Window"),
-                         TEXT("Inevitable PC Engine"),
+                         TEXT("Area 51"),
                          WS_OVERLAPPEDWINDOW, CW_USEDEFAULT,
                          CW_USEDEFAULT, Width, Height, 0L, 0L, s.hInst, 0L );
 }

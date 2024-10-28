@@ -89,7 +89,7 @@ private:
         s32                 m_Retries;
         f32                 m_StateTime;
 
-	    s32					m_ClientIndex;
+        s32                    m_ClientIndex;
                         
         xwchar              m_ServerTitle[32];
 

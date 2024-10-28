@@ -123,7 +123,9 @@ xbool font::Load( const char* pPathName )
                 x2++;
 
             // Skip out if nothing on the row
+#if !defined(X_EDITOR)
             ASSERT( x2 < m_BmWidth );
+#endif
 #endif
 
             // Add character

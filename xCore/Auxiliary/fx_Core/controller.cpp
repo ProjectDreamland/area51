@@ -114,7 +114,7 @@ key* key::CopyOf( void )
 {
     key* pNew = new key(m_nVals);
 
-    x_memcpy( pNew->m_pData, m_pData, m_nVals * sizeof(f32) );
+    x_memmove( pNew->m_pData, m_pData, m_nVals * sizeof(f32) );
     pNew->m_Time = m_Time;
 
     // return the new key
@@ -475,7 +475,7 @@ xbool ctrl_linear::GetValue( f32 T, f32* pVals ) const
             {
                 case controller::CLAMP:
                 {
-                    x_memcpy( pVals, m_Keys[0]->GetKeyValue(), m_nFloats * sizeof(f32) );
+                    x_memmove( pVals, m_Keys[0]->GetKeyValue(), m_nFloats * sizeof(f32) );
                     return TRUE;
                 }
 
@@ -515,7 +515,7 @@ xbool ctrl_linear::GetValue( f32 T, f32* pVals ) const
             {
                 case controller::CLAMP:
                 {
-                    x_memcpy( pVals, m_Keys[j-1]->GetKeyValue(), m_nFloats * sizeof(f32) );
+                    x_memmove( pVals, m_Keys[j-1]->GetKeyValue(), m_nFloats * sizeof(f32) );
                     return TRUE;
                 }
 
@@ -561,7 +561,7 @@ xbool ctrl_linear::GetValue( f32 T, f32* pVals ) const
         if ( m_Keys[i]->GetKeyTime() == T )
         {
             // return the straight value, no need to interpolate
-            x_memcpy( pVals, m_Keys[i]->GetKeyValue(), m_nFloats * sizeof(f32) );
+            x_memmove( pVals, m_Keys[i]->GetKeyValue(), m_nFloats * sizeof(f32) );
             return TRUE;
         }
         else

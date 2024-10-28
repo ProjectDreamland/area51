@@ -4,10 +4,6 @@
 	Version="7.10"
 	Name="UserInterface"
 	ProjectGUID="{EBC1773D-9BCC-4125-8069-F3EC6637B4BB}"
-	SccProjectName="Perforce Project"
-	SccAuxPath=""
-	SccLocalPath="..\.."
-	SccProvider="MSSCCI:Perforce SCM"
 	Keyword="XboxProj">
 	<Platforms>
 		<Platform
@@ -17,13 +13,42 @@
 	</Platforms>
 	<Configurations>
 		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			CharacterSet="0"
-			WholeProgramOptimization="FALSE">
+			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
@@ -31,16 +56,11 @@
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/LTCG"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -67,17 +87,8 @@
 			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_XBOX,CONFIG_DEBUG"
-				MinimalRebuild="FALSE"
-				ExceptionHandling="FALSE"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="FALSE"
-				ForceConformanceInForLoopScope="TRUE"
-				DebugInformationFormat="3"/>
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary,$(X)\..\xCore\3rdParty\BinkXbox\Include"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_DEBUG"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -90,40 +101,18 @@
 				Name="VCPreLinkEventTool"/>
 		</Configuration>
 		<Configuration
-			Name="OptDebug|Win32"
+			Name="EDITOR-Debug|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			CharacterSet="0"
-			WholeProgramOptimization="FALSE">
+			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="3"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
-				StringPooling="TRUE"
-				MinimalRebuild="TRUE"
-				ExceptionHandling="TRUE"
-				RuntimeLibrary="0"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				WarnAsError="FALSE"
-				DebugInformationFormat="3"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,X_EDITOR"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/LTCG"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -144,30 +133,52 @@
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
+			Name="OptDebug|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
 			Name="OptDebug|Xbox"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_XBOX,CONFIG_OPTDEBUG"
-				StringPooling="TRUE"
-				ExceptionHandling="FALSE"
-				RuntimeLibrary="1"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				ForceConformanceInForLoopScope="TRUE"
-				WarningLevel="3"
-				WarnAsError="FALSE"
-				DebugInformationFormat="3"/>
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary,$(X)\..\xCore\3rdParty\BinkXbox\Include"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_OPTDEBUG"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -183,36 +194,19 @@
 			Name="QA|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			WholeProgramOptimization="TRUE">
+			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
+				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_QA"
-				StringPooling="TRUE"
-				MinimalRebuild="TRUE"
-				BasicRuntimeChecks="0"
-				RuntimeLibrary="0"
-				BufferSecurityCheck="FALSE"
-				EnableEnhancedInstructionSet="1"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				WarnAsError="FALSE"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/LTCG"/>
+				Name="VCLinkerTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -227,6 +221,8 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
@@ -236,28 +232,11 @@
 			Name="QA|Xbox"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			WholeProgramOptimization="TRUE">
+			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_XBOX,CONFIG_QA"
-				StringPooling="TRUE"
-				ExceptionHandling="FALSE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				ForceConformanceInForLoopScope="TRUE"
-				WarningLevel="3"
-				WarnAsError="FALSE"
-				DebugInformationFormat="3"/>
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary,$(X)\..\xCore\3rdParty\BinkXbox\Include"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_QA"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -270,600 +249,19 @@
 				Name="VCPreLinkEventTool"/>
 		</Configuration>
 		<Configuration
-			Name="Retail|Win32"
+			Name="Release|Xbox"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			WholeProgramOptimization="TRUE">
+			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
-				StringPooling="TRUE"
-				MinimalRebuild="FALSE"
-				ExceptionHandling="TRUE"
-				BasicRuntimeChecks="0"
-				RuntimeLibrary="0"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				WarnAsError="FALSE"
-				DebugInformationFormat="3"
-				CompileAs="0"/>
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary,$(X)\..\xCore\3rdParty\BinkXbox\Include"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
 				AdditionalOptions="/LTCG"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Retail|Xbox"
-			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			WholeProgramOptimization="TRUE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="0"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="2"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL"
-				StringPooling="TRUE"
-				ExceptionHandling="FALSE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				ForceConformanceInForLoopScope="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/LTCG"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Debug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_DEBUG"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Debug|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-OptDebug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_OPTDEBUG"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-OptDebug|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Viewer|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_VIEWER"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Viewer|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Retail|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_RETAIL"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Retail|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-QA|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_QA"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-QA|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-		</Configuration>
-		<Configuration
-			Name="EDITOR-OptDebug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4"
-			UseOfMFC="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG,APP_EDITOR"
-				StringPooling="TRUE"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="EDITOR-OptDebug|Xbox"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"/>
-		</Configuration>
-		<Configuration
-			Name="EDITOR-Debug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4"
-			UseOfMFC="2">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR"
-				BasicRuntimeChecks="1"
-				RuntimeLibrary="3"
-				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="FALSE"
-				WarningLevel="3"
-				DebugInformationFormat="4"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="EDITOR-Debug|Xbox"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Profile|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4"
-			CharacterSet="0"
-			WholeProgramOptimization="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_PROFILE"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				WarnAsError="FALSE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Profile|Xbox"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\UserInterface,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_XBOX,CONFIG_OPTDEBUG"
-				StringPooling="TRUE"
-				ExceptionHandling="FALSE"
-				RuntimeLibrary="1"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				WarningLevel="3"
-				WarnAsError="FALSE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
@@ -1029,6 +427,18 @@
 			<File
 				RelativePath=".\Xbox\dlg_MemcardSelectXBOX.cpp">
 				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
@@ -1036,6 +446,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1060,114 +476,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1176,6 +484,18 @@
 			<File
 				RelativePath=".\Xbox\dlg_MemcardSelectXBOX.hpp">
 				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
@@ -1183,6 +503,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -1197,7 +523,7 @@
 					Name="OptDebug|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
@@ -1209,121 +535,25 @@
 					Name="QA|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Xbox\dlg_MultiPlayerXBOX.cpp">
 				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1336,60 +566,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1398,7 +574,19 @@
 			<File
 				RelativePath=".\Xbox\dlg_MultiPlayerXBOX.hpp">
 				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -1411,60 +599,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -1473,82 +607,52 @@
 			<File
 				RelativePath=".\Xbox\dlg_OnlineConnectXBOX.cpp">
 				<FileConfiguration
-					Name="PS2-Debug|Win32"
+					Name="Release|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCLCompilerTool"/>
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Debug|Xbox"
+					Name="Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCLCompilerTool"/>
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCLCompilerTool"/>
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
+					Name="OptDebug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCLCompilerTool"/>
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Viewer|Win32"
+					Name="QA|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Xbox\dlg_OnlineMainXBOX.cpp">
 				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1561,60 +665,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1623,7 +673,19 @@
 			<File
 				RelativePath=".\Xbox\dlg_OnlineMainXBOX.hpp">
 				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -1636,60 +698,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -1698,7 +706,19 @@
 			<File
 				RelativePath=".\Xbox\dlg_QuickMatch.cpp">
 				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1711,60 +731,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1773,7 +739,19 @@
 			<File
 				RelativePath=".\Xbox\dlg_QuickMatch.hpp">
 				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -1786,60 +764,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -1852,209 +776,103 @@
 			<File
 				RelativePath=".\dlg_COPA.cpp">
 				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="OptDebug|Xbox"
+					Name="Release|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\dlg_COPA.hpp">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="OptDebug|Win32">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="OptDebug|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\dlg_COPA.hpp">
 				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
+					Name="Release|Win32">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Profile|Win32">
+					Name="Release|Xbox"
+					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Profile|Xbox"
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Xbox"
 					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Win32">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
@@ -2062,425 +880,17 @@
 			<File
 				RelativePath=".\dlg_MemcardSelect.cpp">
 				<FileConfiguration
-					Name="Debug|Xbox"
+					Name="Release|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="OptDebug|Xbox"
+					Name="Release|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\dlg_MemcardSelect.hpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\dlg_MultiPlayer.cpp">
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\dlg_MultiPlayer.hpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\dlg_OnlineConnect.cpp">
 				<FileConfiguration
 					Name="Debug|Win32"
 					ExcludedFromBuild="TRUE">
@@ -2518,44 +928,72 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Retail|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\dlg_OnlineMain.cpp">
+				RelativePath=".\dlg_MemcardSelect.hpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\dlg_MultiPlayer.cpp">
+				<FileConfiguration
+					Name="Release|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug|Xbox"
 					ExcludedFromBuild="TRUE">
@@ -2574,63 +1012,20 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Profile|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\dlg_OnlineMain.hpp">
+				RelativePath=".\dlg_MultiPlayer.hpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
@@ -2639,6 +1034,11 @@
 				<FileConfiguration
 					Name="Debug|Xbox"
 					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="EDITOR-Debug|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
@@ -2651,7 +1051,7 @@
 					Name="OptDebug|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32">
@@ -2662,84 +1062,116 @@
 					Name="QA|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\dlg_OnlineConnect.cpp">
 				<FileConfiguration
-					Name="Retail|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Retail|Xbox"
+					Name="Release|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Debug|Xbox"
+					Name="Release|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-OptDebug|Xbox"
+					Name="Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Viewer|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Viewer|Xbox"
+					Name="Debug|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Retail|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-Retail|Xbox"
+					Name="EDITOR-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-QA|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="PS2-QA|Xbox"
+					Name="OptDebug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="EDITOR-OptDebug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="EDITOR-OptDebug|Xbox"
+					Name="OptDebug|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\dlg_OnlineMain.cpp">
+				<FileConfiguration
+					Name="Release|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\dlg_OnlineMain.hpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
 						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
@@ -2747,21 +1179,26 @@
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="EDITOR-Debug|Xbox"
-					ExcludedFromBuild="TRUE">
+					Name="OptDebug|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Profile|Win32">
+					Name="OptDebug|Xbox"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="QA|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="PS2-Profile|Xbox"
+					Name="QA|Xbox"
 					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"/>
+						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 			</File>
 		</Filter>
@@ -2777,6 +1214,11 @@
 		<File
 			RelativePath=".\dlg_AvatarSelect.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -2788,51 +1230,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -2849,6 +1246,11 @@
 		<File
 			RelativePath=".\dlg_BigLeaderboard.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -2860,51 +1262,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -2915,6 +1272,11 @@
 		<File
 			RelativePath=".\dlg_CampaignMenu.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -2926,51 +1288,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -2981,6 +1298,11 @@
 		<File
 			RelativePath=".\dlg_ChangeMap.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -2992,51 +1314,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -3053,6 +1330,11 @@
 		<File
 			RelativePath=".\dlg_DemoMainMenu.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3064,119 +1346,62 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Download.cpp">
+			<FileConfiguration
+				Name="Release|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Download.hpp">
 			<FileConfiguration
-				Name="Debug|Xbox">
+				Name="Release|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="OptDebug|Xbox">
+				Name="Debug|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="QA|Xbox">
+				Name="OptDebug|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
+				Name="QA|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -3185,6 +1410,11 @@
 		<File
 			RelativePath=".\dlg_EndPause.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3196,51 +1426,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -3259,12 +1444,102 @@
 		</File>
 		<File
 			RelativePath=".\dlg_Feedback.cpp">
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Feedback.hpp">
 		</File>
 		<File
 			RelativePath=".\dlg_Friends.cpp">
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Friends.hpp">
@@ -3287,6 +1562,11 @@
 		<File
 			RelativePath=".\dlg_KickPlayer.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3298,51 +1578,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -3353,6 +1588,11 @@
 		<File
 			RelativePath=".\dlg_Leaderboard.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3364,51 +1604,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -3425,6 +1620,11 @@
 		<File
 			RelativePath=".\dlg_LevelSelect.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3436,51 +1636,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -3503,6 +1658,11 @@
 		<File
 			RelativePath=".\dlg_MainMenu.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3514,51 +1674,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -3569,6 +1684,11 @@
 		<File
 			RelativePath=".\dlg_MCMessage.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3580,51 +1700,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -3641,6 +1716,11 @@
 		<File
 			RelativePath=".\dlg_MultiOptions.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3652,51 +1732,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -3704,68 +1739,44 @@
 		<File
 			RelativePath=".\dlg_OnlineConnect.hpp">
 			<FileConfiguration
-				Name="Debug|Xbox">
+				Name="Release|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="OptDebug|Xbox">
+				Name="Debug|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="QA|Xbox">
+				Name="OptDebug|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
+				Name="QA|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_OnlineEULA.cpp">
+			<FileConfiguration
+				Name="Release|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 			<FileConfiguration
 				Name="Debug|Win32"
 				ExcludedFromBuild="TRUE">
@@ -3774,6 +1785,12 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Debug|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCLCompilerTool"/>
@@ -3798,78 +1815,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCLCompilerTool"/>
@@ -3878,6 +1823,18 @@
 		<File
 			RelativePath=".\dlg_OnlineEULA.hpp">
 			<FileConfiguration
+				Name="Release|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
@@ -3885,6 +1842,12 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Debug|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -3899,7 +1862,7 @@
 				Name="OptDebug|Xbox"
 				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Win32"
@@ -3911,79 +1874,7 @@
 				Name="QA|Xbox"
 				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -3992,7 +1883,27 @@
 		<File
 			RelativePath=".\dlg_OnlineHost.hpp">
 			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4002,52 +1913,17 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="QA|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="QA|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
+				Name="EDITOR-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4058,7 +1934,27 @@
 		<File
 			RelativePath=".\dlg_OnlineHostOptions.hpp">
 			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4068,63 +1964,48 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="QA|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="QA|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
+				Name="EDITOR-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath=".\dlg_OnlineJoin.cpp">
+			RelativePath=".\dlg_OnlineJoin.cpp">	
 		</File>
 		<File
 			RelativePath=".\dlg_OnlineJoin.hpp">
 			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4134,52 +2015,17 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="QA|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="QA|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
+				Name="EDITOR-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4190,7 +2036,27 @@
 		<File
 			RelativePath=".\dlg_OnlineLevelSelect.hpp">
 			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4200,52 +2066,17 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="QA|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="QA|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
+				Name="EDITOR-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4256,7 +2087,27 @@
 		<File
 			RelativePath=".\dlg_OnlineLogin.hpp">
 			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4266,52 +2117,17 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="QA|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="QA|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
+				Name="EDITOR-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4322,6 +2138,11 @@
 		<File
 			RelativePath=".\dlg_OnlinePlayers.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -4333,51 +2154,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4388,6 +2164,11 @@
 		<File
 			RelativePath=".\dlg_PauseMain.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -4399,51 +2180,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4454,6 +2190,11 @@
 		<File
 			RelativePath=".\dlg_PauseMP.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -4465,60 +2206,26 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_PauseOnline.cpp">
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_PauseOnline.hpp">
+			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
 			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
@@ -4531,51 +2238,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4592,6 +2254,11 @@
 		<File
 			RelativePath=".\dlg_PopUp.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -4603,51 +2270,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4658,6 +2280,11 @@
 		<File
 			RelativePath=".\dlg_PressStart.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -4669,51 +2296,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4724,6 +2306,11 @@
 		<File
 			RelativePath=".\dlg_ProfileAV.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -4735,51 +2322,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4790,6 +2332,11 @@
 		<File
 			RelativePath=".\dlg_ProfileControls.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -4801,51 +2348,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4858,68 +2360,56 @@
 		</File>
 		<File
 			RelativePath=".\dlg_ProfileName.cpp">
+			<FileConfiguration
+				Name="Release|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Xbox"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_ProfileName.hpp">
 			<FileConfiguration
-				Name="Debug|Xbox">
+				Name="Release|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="OptDebug|Xbox">
+				Name="Debug|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="QA|Xbox">
+				Name="OptDebug|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
+				Name="QA|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -4928,6 +2418,11 @@
 		<File
 			RelativePath=".\dlg_ProfileOptions.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -4939,51 +2434,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -4994,6 +2444,11 @@
 		<File
 			RelativePath=".\dlg_ProfileSelect.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -5005,51 +2460,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -5060,6 +2470,11 @@
 		<File
 			RelativePath=".\dlg_ReportError.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -5071,51 +2486,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -5138,6 +2508,11 @@
 		<File
 			RelativePath=".\dlg_ServerConfig.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -5149,51 +2524,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -5204,6 +2534,11 @@
 		<File
 			RelativePath=".\dlg_StartGame.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -5218,54 +2553,39 @@
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Stats.cpp">
+			<FileConfiguration
+				Name="Release|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="OptDebug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="QA|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="EDITOR-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Stats.hpp">
@@ -5288,6 +2608,11 @@
 		<File
 			RelativePath=".\dlg_TeamLeaderboard.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -5299,51 +2624,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -5351,64 +2631,28 @@
 		<File
 			RelativePath=".\dlg_Template.hpp">
 			<FileConfiguration
-				Name="Debug|Xbox">
+				Name="Release|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="OptDebug|Xbox">
+				Name="Debug|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="QA|Xbox">
+				Name="OptDebug|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Xbox">
+				Name="QA|Xbox"
+				ExcludedFromBuild="TRUE">
 				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
+					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -5417,6 +2661,11 @@
 		<File
 			RelativePath=".\dlg_VoteKick.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -5428,51 +2677,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -5483,6 +2687,11 @@
 		<File
 			RelativePath=".\dlg_VoteMap.hpp">
 			<FileConfiguration
+				Name="Release|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="Debug|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -5494,51 +2703,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Viewer|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Retail|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="PS2-Profile|Xbox">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>

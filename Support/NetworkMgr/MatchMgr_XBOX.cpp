@@ -172,8 +172,8 @@ void match_mgr::Init(void)
     m_pVoiceMessageSend         = NULL;
     m_pVoiceMessageRec          = NULL;
     m_hMessage                  = NULL;
-    m_ReadStatsHandle        	= NULL;
-    m_WriteStatsHandle       	= NULL;
+    m_ReadStatsHandle            = NULL;
+    m_WriteStatsHandle           = NULL;
     m_FeedbackHandle            = NULL;
     m_IsVoiceCapable            = FALSE;
     m_State                     = MATCH_IDLE;
@@ -4986,7 +4986,7 @@ void match_mgr::SendFeedback( u64 Identifier, const char* pName, player_feedback
     case FB_SCREAMING:          FeedbackType = XONLINE_FEEDBACK_NEG_SCREAMING;              break;
     case FB_CHEATING:           FeedbackType = XONLINE_FEEDBACK_NEG_GAMEPLAY;               break;
     case FB_THREATS:            FeedbackType = XONLINE_FEEDBACK_NEG_HARASSMENT;             break;
-    case FB_OFFENSIVE_MESSAGE:  FeedbackType = XONLINE_FEEDBACK_NEG_MESSAGE_INAPPROPRIATE;  break;
+    case FB_OFFENSIVE_MESSAGE:  FeedbackType = XONLINE_FEEDBACK_NEG_HARASSMENT;                break;
     default:
         ASSERT( FALSE );
         return;

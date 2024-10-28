@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinControls", "WinControls.vcproj", "{6B9B3CFC-15F0-4017-81B9-470F629BF6DC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		EDITOR-Debug = EDITOR-Debug
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6B9B3CFC-15F0-4017-81B9-470F629BF6DC}.EDITOR-Debug.ActiveCfg = EDITOR-Debug|Win32
+		{6B9B3CFC-15F0-4017-81B9-470F629BF6DC}.EDITOR-Debug.Build.0 = EDITOR-Debug|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

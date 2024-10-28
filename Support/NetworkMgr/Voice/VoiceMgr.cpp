@@ -45,6 +45,11 @@ voice_mgr::~voice_mgr( void )
 //==============================================================================
 
 void voice_mgr::Init( xbool LocalIsServer, xbool EnableHeadset )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     ASSERT(!m_Initialized);
     m_LocalIsServer         = LocalIsServer;
@@ -83,9 +88,14 @@ void voice_mgr::Init( xbool LocalIsServer, xbool EnableHeadset )
         GameMgr.SetSpeaking( i, FALSE );
     }
 }
-
+#endif
 //==============================================================================
 void voice_mgr::Kill( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     ASSERT(m_Initialized);
 
@@ -95,9 +105,14 @@ void voice_mgr::Kill( void )
     m_HeadsetEnabled    = FALSE;
     m_Initialized       = FALSE;
 }
-
+#endif
 //==============================================================================
 void voice_mgr::Update( f32 DeltaTime )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     if( m_HeadsetEnabled )
     {
@@ -109,7 +124,7 @@ void voice_mgr::Update( f32 DeltaTime )
         DoArbitration( DeltaTime );
     }
 }
-
+#endif
 //==============================================================================
 s32 voice_mgr::GetLocalVoiceOwner( void )
 {
@@ -862,6 +877,11 @@ void PrintProgress( xbool IsMic, f32 T )
 //=============================================================================
 
 void VoiceTestCode( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     g_NetworkMgr.SetOnline( TRUE );
     g_VoiceMgr.Init( TRUE, TRUE );
@@ -962,7 +982,7 @@ void VoiceTestCode( void )
 
     g_VoiceMgr.Kill();
 }
-
+#endif
 //=============================================================================
 #endif
 //=============================================================================

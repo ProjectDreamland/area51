@@ -17,140 +17,15 @@
 			Name="Debug|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
-				BasicRuntimeChecks="1"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Debug/CommandLine.pch"
-				AssemblerListingLocation=".\Debug/"
-				ObjectFile=".\Debug/"
-				ProgramDataBaseFileName=".\Debug/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="4"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\Debug\CommandLine.lib"
-				SuppressStartupBanner="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="OptDebug|Win32"
-			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="0">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X)\x_files"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
-				StringPooling="TRUE"
-				MinimalRebuild="FALSE"
-				ExceptionHandling="FALSE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Release/CommandLine.pch"
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile=".\Release\CommandLine.lib"
-				SuppressStartupBanner="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="QA|Win32"
-			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			CharacterSet="0">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X)\x_files"
-				PreprocessorDefinitions="X_TARGET_QA"
-				StringPooling="TRUE"
-				ExceptionHandling="FALSE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				WarningLevel="3"/>
+				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -175,38 +50,94 @@
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
-			Name="Retail|Win32"
+			Name="QA|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4"
-			CharacterSet="0"
-			WholeProgramOptimization="TRUE">
+			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
+				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
-				StringPooling="TRUE"
-				ExceptionHandling="FALSE"
-				RuntimeLibrary="0"
-				BufferSecurityCheck="FALSE"
-				EnableFunctionLevelLinking="TRUE"
-				EnableEnhancedInstructionSet="1"
-				WarningLevel="3"
-				DebugInformationFormat="3"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_QA"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/LTCG"/>
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="OptDebug|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X)\x_files"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X)\x_files"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -232,23 +163,6 @@
 	<Files>
 		<File
 			RelativePath="CommandLine.cpp">
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="0"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""
-					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="CommandLine.hpp">

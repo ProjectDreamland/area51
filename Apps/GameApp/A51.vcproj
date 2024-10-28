@@ -5,10 +5,6 @@
 	Name="A51"
 	ProjectGUID="{E8B6020E-7351-47c5-BAB8-765DA5E8B9B5}"
 	RootNamespace="A51"
-	SccProjectName="Perforce Project"
-	SccAuxPath=""
-	SccLocalPath="."
-	SccProvider="MSSCCI:Perforce SCM"
 	Keyword="XboxProj">
 	<Platforms>
 		<Platform
@@ -44,7 +40,8 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9"
+				AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win"
 				IgnoreDefaultLibraryNames="libci.lib"
 				GenerateDebugInformation="TRUE"/>
 			<Tool
@@ -92,7 +89,8 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xapilibd.lib d3d8d.lib d3dx8d.lib xgraphicsd.lib dsoundd.lib dmusicd.lib xactengd.lib xsndtrkd.lib xvoiced.lib xonline.lib xboxkrnl.lib"/>
+				AdditionalDependencies="xapilibd.lib d3d8d.lib d3dx8d.lib xgraphicsd.lib dsoundd.lib dmusicd.lib xactengd.lib xsndtrkd.lib xvoiced.lib xonline.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib"
+				AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib"/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
@@ -288,7 +286,8 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xapilibd.lib d3d8d.lib d3dx8d.lib xgraphicsd.lib dsoundd.lib dmusicd.lib xactengd.lib xsndtrkd.lib xvoiced.lib xonline.lib xboxkrnl.lib"/>
+				AdditionalDependencies="xapilibd.lib d3d8d.lib d3dx8d.lib xgraphicsd.lib dsoundd.lib dmusicd.lib xactengd.lib xsndtrkd.lib xvoiced.lib xonline.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib"
+				AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib"/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
@@ -479,7 +478,8 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xapilib.lib d3d8i.lib d3dx8.lib xgraphicsltcg.lib dsound.lib dmusic.lib xacteng.lib xsndtrk.lib xvoice.lib xonline.lib xboxkrnl.lib XbDm.lib"
+				AdditionalDependencies="xapilib.lib d3d8i.lib d3dx8.lib xgraphicsltcg.lib dsound.lib dmusic.lib xacteng.lib xsndtrk.lib xvoice.lib xonline.lib xboxkrnl.lib XbDm.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib"
+				AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"/>
 			<Tool
@@ -593,7 +593,7 @@
 				SaveGameImage="$(SolutionDir)\media\saveimage.xbx"/>
 		</Configuration>
 		<Configuration
-			Name="Retail|Win32"
+			Name="Release|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			ConfigurationType="1"
@@ -651,7 +651,7 @@
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
-			Name="Retail|Xbox"
+			Name="Release|Xbox"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			ConfigurationType="1"
@@ -680,7 +680,8 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xapilib.lib d3d8ltcg.lib d3dx8.lib xgraphicsltcg.lib dsound.lib dmusic.lib xacteng.lib xsndtrk.lib xvoice.lib XOnlines.lib xboxkrnl.lib"
+				AdditionalDependencies="xapilib.lib d3d8ltcg.lib d3dx8.lib xgraphicsltcg.lib dsound.lib dmusic.lib xacteng.lib xsndtrk.lib xvoice.lib XOnlines.lib xboxkrnl.lib AudioMgr.lib ConversationMgr.lib Gamelib.lib Music_mgr.lib Render.lib StringMgr.lib Entropy.lib Parsing.lib x_files.lib aux_Bitmap.lib EventMgr.lib fx_RunTime.lib NetworkMgr.lib UserInterface.lib binkxbox.lib"
+				AdditionalLibraryDirectories="$(X)\..\Support\AudioMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\ConversationMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Gamelib\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Music_mgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Render\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\StringMgr\_$(PlatformName)$(ConfigurationName);$(X)\Entropy\_$(PlatformName)$(ConfigurationName);$(X)\Parsing\_$(PlatformName)$(ConfigurationName);$(X)\x_files\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\Bitmap\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\EventMgr\_$(PlatformName)$(ConfigurationName);$(X)\Auxiliary\fx_RunTime\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\NetworkMgr\_$(PlatformName)$(ConfigurationName);$(X)\..\Support\Dialogs\_$(PlatformName)$(ConfigurationName);$(X)\..\xCore\3rdParty\BinkXbox\Lib"
 				GenerateDebugInformation="TRUE"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"/>
@@ -792,515 +793,6 @@
 				TitleImage="$(SolutionDir)\media\titleimage.xbx"
 				SaveGameImage="$(SolutionDir)\media\saveimage.xbx"/>
 		</Configuration>
-		<Configuration
-			Name="PS2-Debug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_DEBUG"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="5"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				WarnAsError="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"
-				AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)"
-				OutputFile="$(OutDir)/$(ProjectName).elf"
-				LinkIncremental="2"
-				IgnoreAllDefaultLibraries="FALSE"
-				GenerateDebugInformation="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Debug|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				WarningLevel="3"
-				WarnAsError="TRUE"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"
-				AdditionalOptions="/INSERTFILE:$(SolutionDir)\dsstdfx.bin,dsp_program,RN
-/INSERTFILE:$(SolutionDir)\media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\ESRB_640x480.xbmp,ESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\BadDisc_640x480.xbmp,BadDisc_640x480,RN"
-				StackSize="131072"
-				TitleID="0x4D570005"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-OptDebug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_OPTDEBUG"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="5"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				WarnAsError="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"
-				AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)"
-				OutputFile="$(OutDir)/$(ProjectName).elf"
-				LinkIncremental="2"
-				IgnoreAllDefaultLibraries="FALSE"
-				GenerateDebugInformation="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-OptDebug|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				WarningLevel="3"
-				WarnAsError="TRUE"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"
-				AdditionalOptions="/INSERTFILE:$(SolutionDir)\dsstdfx.bin,dsp_program,RN
-/INSERTFILE:$(SolutionDir)\media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\ESRB_640x480.xbmp,ESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\BadDisc_640x480.xbmp,BadDisc_640x480,RN"
-				StackSize="131072"
-				TitleID="0x4D570005"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Viewer|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_VIEWER"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="5"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				WarnAsError="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"
-				AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)"
-				OutputFile="$(OutDir)/$(ProjectName).elf"
-				LinkIncremental="2"
-				IgnoreAllDefaultLibraries="FALSE"
-				GenerateDebugInformation="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Viewer|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				WarningLevel="3"
-				WarnAsError="TRUE"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"
-				AdditionalOptions="/INSERTFILE:$(SolutionDir)\dsstdfx.bin,dsp_program,RN
-/INSERTFILE:$(SolutionDir)\media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\ESRB_640x480.xbmp,ESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\BadDisc_640x480.xbmp,BadDisc_640x480,RN"
-				StackSize="131072"
-				TitleID="0x4D570005"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Retail|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_RETAIL"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="5"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				WarnAsError="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"
-				AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)"
-				OutputFile="$(OutDir)/$(ProjectName).elf"
-				LinkIncremental="2"
-				IgnoreAllDefaultLibraries="FALSE"
-				GenerateDebugInformation="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Retail|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				WarningLevel="3"
-				WarnAsError="TRUE"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"
-				AdditionalOptions="/INSERTFILE:$(SolutionDir)\dsstdfx.bin,dsp_program,RN
-/INSERTFILE:$(SolutionDir)\media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\ESRB_640x480.xbmp,ESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\BadDisc_640x480.xbmp,BadDisc_640x480,RN"
-				StackSize="131072"
-				TitleID="0x4D570005"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-QA|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_QA"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="5"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				WarnAsError="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"
-				AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)"
-				OutputFile="$(OutDir)/$(ProjectName).elf"
-				LinkIncremental="2"
-				IgnoreAllDefaultLibraries="FALSE"
-				GenerateDebugInformation="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-QA|Xbox"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				WarningLevel="3"
-				WarnAsError="TRUE"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"
-				AdditionalOptions="/INSERTFILE:$(SolutionDir)\dsstdfx.bin,dsp_program,RN
-/INSERTFILE:$(SolutionDir)\media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\ESRB_640x480.xbmp,ESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\BadDisc_640x480.xbmp,BadDisc_640x480,RN"
-				StackSize="131072"
-				TitleID="0x4D570005"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Profile|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				GlobalOptimizations="FALSE"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				PreprocessorDefinitions="TARGET_PS2,CONFIG_PROFILE"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				WarnAsError="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions="/D:TARGET_PS2_DEV /D:"
-				AdditionalDependencies="$(X)\3rdParty\PS2\SN\EE\Lib\sntty.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libmc2.lib $(X)\3rdParty\PS2\Sony\EE\Lib\libdbc.lib $(X)\3rdParty\PS2\Sony\EE\Lib\netcnfif.lib $(X)\3rdparty\ps2\sony\ee\lib\netifmc2.lib $(X)\3rdparty\ps2\sony\ee\lib\libscf.lib $(X)\3rdparty\ps2\sony\ee\lib\libscedemo.lib $(NOINHERIT)"
-				OutputFile="$(OutDir)/$(ProjectName).elf"
-				LinkIncremental="2"
-				IgnoreAllDefaultLibraries="FALSE"
-				GenerateDebugInformation="TRUE"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="PS2-Profile|Xbox"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="1">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),.\,$(X)\..\Support,$(X)\Auxiliary,$(X)\x_files,$(X)\Entropy"
-				WarningLevel="3"
-				WarnAsError="TRUE"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="XboxDeploymentTool"/>
-			<Tool
-				Name="XboxImageTool"
-				AdditionalOptions="/INSERTFILE:$(SolutionDir)\dsstdfx.bin,dsp_program,RN
-/INSERTFILE:$(SolutionDir)\media\NTSC_Legal_640x480.xbmp,NTSC_Legal_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_E_640x480.xbmp,PAL_Legal_E_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_F_640x480.xbmp,PAL_Legal_F_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_G_640x480.xbmp,PAL_Legal_G_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_I_640x480.xbmp,PAL_Legal_I_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_Legal_S_640x480.xbmp,PAL_Legal_S_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\PAL_NonESRB_640x480.xbmp,PAL_NonESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\ESRB_640x480.xbmp,ESRB_640x480,RN
-/INSERTFILE:$(SolutionDir)\media\BadDisc_640x480.xbmp,BadDisc_640x480,RN"
-				StackSize="131072"
-				TitleID="0x4D570005"/>
-		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -1370,16 +862,16 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Bundling saved games image"
-						CommandLine="bundler $(InputPath) -o $(SolutionDir)\media\saveimage.xbx"
+						CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\saveimage.xbx&quot;"
 						AdditionalDependencies="$(SolutionDir)\media\saveimage.tga"
 						Outputs="$(SolutionDir)\media\saveimage.xbx"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Retail|Xbox">
+					Name="Release|Xbox">
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Bundling saved games image"
-						CommandLine="bundler $(InputPath) -o $(SolutionDir)\media\saveimage.xbx"
+						CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\saveimage.xbx&quot;"
 						AdditionalDependencies="$(SolutionDir)\media\saveimage.tga"
 						Outputs="$(SolutionDir)\media\saveimage.xbx"/>
 				</FileConfiguration>
@@ -1391,16 +883,16 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Bundling title image"
-						CommandLine="bundler $(InputPath) -o $(SolutionDir)\media\titleimage.xbx"
+						CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\titleimage.xbx&quot;"
 						AdditionalDependencies="$(SolutionDir)\media\titleimage.tga"
 						Outputs="$(SolutionDir)\media\titleimage.xbx"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Retail|Xbox">
+					Name="Release|Xbox">
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Bundling title image"
-						CommandLine="bundler $(InputPath) -o $(SolutionDir)\media\titleimage.xbx"
+						CommandLine="bundler &quot;$(InputPath)&quot; -o &quot;$(SolutionDir)\media\titleimage.xbx&quot;"
 						AdditionalDependencies="$(SolutionDir)\media\titleimage.tga"
 						Outputs="$(SolutionDir)\media\titleimage.xbx"/>
 				</FileConfiguration>
@@ -1436,7 +928,7 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Win32"
+				Name="Release|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -1463,7 +955,7 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Retail|Win32"
+				Name="Release|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"/>

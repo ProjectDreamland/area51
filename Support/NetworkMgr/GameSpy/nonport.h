@@ -24,104 +24,104 @@ devsupport@gamespy.com
 #ifndef GSI_MEM_ONLY
 
 #if defined(applec) || defined(THINK_C) || defined(__MWERKS__) && !defined(__mips64) && !defined(_WIN32)
-	#define _MACOS
+    #define _MACOS
 #endif
 
 #ifdef __mips64
-	#if !defined(SN_SYSTEMS) && !defined(EENET) && !defined(ENTROPY_NETWORK)
-		#define EENET
-	#endif
-	#define _PS2
+    #if !defined(SN_SYSTEMS) && !defined(EENET) && !defined(ENTROPY_NETWORK)
+        #define EENET
+    #endif
+    #define _PS2
 #endif
 
 #include <string.h>
 #include <stdlib.h>
 
 #ifdef _WIN32
-	#define WIN32_LEAN_AND_MEAN
-	#include <windows.h>
-	// Added by Saad Nader on 08-02-2004
-	// support for winsock
-	#ifdef __WINSOCK_2_0__
-		#include <WINSOCK2.H>
-	#else
-		#include <winsock.h>
-	#endif
-	// end added
+    #define WIN32_LEAN_AND_MEAN
+    #include <windows.h>
+    // Added by Saad Nader on 08-02-2004
+    // support for winsock
+    #ifdef __WINSOCK_2_0__
+        #include <WINSOCK2.H>
+    #else
+        #include <winsock.h>
+    #endif
+    // end added
 #else
 #ifdef _MACOS
-	#include <events.h>
-	#include "mwinsock.h"
-	#define GS_BIG_ENDIAN
+    #include <events.h>
+    #include "mwinsock.h"
+    #define GS_BIG_ENDIAN
 #else
 #ifdef _PS2
-	#define GS_BIG_ENDIAN
+    #define GS_BIG_ENDIAN
 
 #if defined(ENTROPY_NETWORK)
 #else
-	#ifdef EENET
-		#include <libeenet.h>
-		#include <eenetctl.h>
-		#include <ifaddrs.h>
-		#include <sys/socket.h>
-		#include <sys/errno.h>
-		#include <netinet/in.h>
-		#include <arpa/inet.h>
-		#include <net/if.h>
-		#include <sys/select.h>
-		#include <malloc.h>
-	#endif
-	#include <eekernel.h>
-	#include <stdio.h>
-	#include <malloc.h>
-	#include <sifdev.h>
-	#include <sifrpc.h>
-	#include <sifcmd.h>
-	#include <ilink.h>
-	#include <ilsock.h>
-	#include <ilsocksf.h>
-	#ifdef SN_SYSTEMS
-		// undefine socket defines from sys/types.h
-		// This is to workaround sony now automatically including sys/types.h
-		// and SNSystems having not produce a patch yet (they'll likely do the same since
-		// the SNSystems fd_set is a slightly different size than the sys/types.h.
-		#undef FD_CLR	
-		#undef FD_ZERO
-		#undef FD_SET	
-		#undef FD_ISSET
-		#undef FD_SETSIZE
-		#undef fd_set
-		#include "snskdefs.h"
-		#include "sntypes.h"
-		#include "snsocket.h"
-		#include "sneeutil.h"
-		#include "sntcutil.h"
-	#endif // SN_SYSTEMS
-	#ifdef INSOCK
-		#include "libinsck.h"
-		#include "libnet.h"
-		#include "sys/errno.h"
-		//#include "libmrpc.h"
-	#endif // INSOCK
+    #ifdef EENET
+        #include <libeenet.h>
+        #include <eenetctl.h>
+        #include <ifaddrs.h>
+        #include <sys/socket.h>
+        #include <sys/errno.h>
+        #include <netinet/in.h>
+        #include <arpa/inet.h>
+        #include <net/if.h>
+        #include <sys/select.h>
+        #include <malloc.h>
+    #endif
+    #include <eekernel.h>
+    #include <stdio.h>
+    #include <malloc.h>
+    #include <sifdev.h>
+    #include <sifrpc.h>
+    #include <sifcmd.h>
+    #include <ilink.h>
+    #include <ilsock.h>
+    #include <ilsocksf.h>
+    #ifdef SN_SYSTEMS
+        // undefine socket defines from sys/types.h
+        // This is to workaround sony now automatically including sys/types.h
+        // and SNSystems having not produce a patch yet (they'll likely do the same since
+        // the SNSystems fd_set is a slightly different size than the sys/types.h.
+        #undef FD_CLR    
+        #undef FD_ZERO
+        #undef FD_SET    
+        #undef FD_ISSET
+        #undef FD_SETSIZE
+        #undef fd_set
+        #include "snskdefs.h"
+        #include "sntypes.h"
+        #include "snsocket.h"
+        #include "sneeutil.h"
+        #include "sntcutil.h"
+    #endif // SN_SYSTEMS
+    #ifdef INSOCK
+        #include "libinsck.h"
+        #include "libnet.h"
+        #include "sys/errno.h"
+        //#include "libmrpc.h"
+    #endif // INSOCK
 #endif
 #else //UNIX
-	#define UNDER_UNIX
-	#include <unistd.h>
-	#include <sys/types.h>
-	#include <sys/socket.h>
-	#include <stdio.h>
-	#include <sys/types.h>
-	#include <sys/socket.h>
-	#include <sys/ioctl.h>
-	#include <netinet/in.h>
-	#include <netdb.h>
-	#include <arpa/inet.h>
-	#include <ctype.h>
-	#include <errno.h>
-	#include <sys/time.h>
-	#include <limits.h>
-	//#include <sys/syslimits.h>
-	#include <netinet/tcp.h>
+    #define UNDER_UNIX
+    #include <unistd.h>
+    #include <sys/types.h>
+    #include <sys/socket.h>
+    #include <stdio.h>
+    #include <sys/types.h>
+    #include <sys/socket.h>
+    #include <sys/ioctl.h>
+    #include <netinet/in.h>
+    #include <netdb.h>
+    #include <arpa/inet.h>
+    #include <ctype.h>
+    #include <errno.h>
+    #include <sys/time.h>
+    #include <limits.h>
+    //#include <sys/syslimits.h>
+    #include <netinet/tcp.h>
 #endif
 #endif
 #endif
@@ -155,7 +155,7 @@ extern "C" {
         #define gsimalloc malloc
         #define gsifree free
         #define gsirealloc realloc
-		#define gsimemalign memalign
+        #define gsimemalign memalign
     #endif
 #else
     void * gsimalloctrack(size_t size);
@@ -167,22 +167,22 @@ extern "C" {
 #endif
 
 #ifndef GSI_MEM_ONLY
-	
+    
 // Get rid of compiler warnings when parameters are never used
 #if defined(__MWERKS__) || defined(WIN32)
-	#define GSI_UNUSED(x) x
+    #define GSI_UNUSED(x) x
 #else
 #if defined(ENTROPY_NETWORK)
     #define GSI_UNUSED(x) (void)x
 #else
-	#define GSI_UNUSED(x)
+    #define GSI_UNUSED(x)
 #endif
 #endif
 
 #if defined(_INTEGRAL_MAX_BITS)
-	#define GSI_MAX_INTEGRAL_BITS   _INTEGRAL_MAX_BITS
+    #define GSI_MAX_INTEGRAL_BITS   _INTEGRAL_MAX_BITS
 #else
-	#define GSI_MAX_INTEGRAL_BITS   32
+    #define GSI_MAX_INTEGRAL_BITS   32
 #endif
 
 
@@ -198,26 +198,26 @@ typedef gsi_u32           goa_uint32; //  these types will be removed once all S
 
 // Platform dependent types
 #ifdef _PS2
-	typedef signed long           gsi_i64;
-	typedef unsigned long         gsi_u64;
-	typedef unsigned int          gsi_time; // must be int (32bits), not long (64bits)
+    typedef signed long           gsi_i64;
+    typedef unsigned long         gsi_u64;
+    typedef unsigned int          gsi_time; // must be int (32bits), not long (64bits)
 #elif defined(UNDER_UNIX)
-	typedef long long             gsi_i64;
-	typedef unsigned long long    gsi_u64;
-	typedef unsigned int          gsi_time; // must be int (32bits), not long (64bits)
+    typedef long long             gsi_i64;
+    typedef unsigned long long    gsi_u64;
+    typedef unsigned int          gsi_time; // must be int (32bits), not long (64bits)
 #else
-	#if (!defined(_M_IX86) || (defined(_INTEGRAL_MAX_BITS) && _INTEGRAL_MAX_BITS >= 64))
-	typedef __int64               gsi_i64;
-	typedef unsigned __int64      gsi_u64;
-	#endif
-	typedef unsigned long         gsi_time;
+    #if (!defined(_M_IX86) || (defined(_INTEGRAL_MAX_BITS) && _INTEGRAL_MAX_BITS >= 64))
+    typedef __int64               gsi_i64;
+    typedef unsigned __int64      gsi_u64;
+    #endif
+    typedef unsigned long         gsi_time;
 #endif // 64 bit types
 
 
 #ifndef GSI_UNICODE
-	#define gsi_char  char
+    #define gsi_char  char
 #else
-	#define gsi_char  unsigned short
+    #define gsi_char  unsigned short
 #endif // goa_char
 
 // expected ranges for integer types
@@ -257,7 +257,7 @@ void SocketStartUp();
 void SocketShutDown();
 
 #ifndef SOCKET_ERROR 
-	#define SOCKET_ERROR (-1)
+    #define SOCKET_ERROR (-1)
 #endif
 
 #ifndef INADDR_NONE
@@ -265,15 +265,15 @@ void SocketShutDown();
 #endif
 
 #ifndef INVALID_SOCKET 
-	#define INVALID_SOCKET (-1)
+    #define INVALID_SOCKET (-1)
 #endif
 
 #if defined(_WIN32) && !defined(UNDER_CE)
-	#define strcasecmp _stricmp
-	#define strncasecmp _strnicmp
-#else	
-	char *_strlwr(char *string);
-	char *_strupr(char *string);
+    #define strcasecmp _stricmp
+    #define strncasecmp _strnicmp
+#else    
+    char *_strlwr(char *string);
+    char *_strupr(char *string);
 #endif
 
 #undef strdup
@@ -283,91 +283,91 @@ void SocketShutDown();
 char * goastrdup(const char *src);
 
 #if defined(_MACOS) || defined(UNDER_CE)
-	int strcasecmp(const char *string1, const char *string2);
-	int strncasecmp(const char *string1, const char *string2, size_t count);
+    int strcasecmp(const char *string1, const char *string2);
+    int strncasecmp(const char *string1, const char *string2, size_t count);
 #endif
 
 #ifdef SN_SYSTEMS
-	#define IPPROTO_TCP PF_INET
-	#define IPPROTO_UDP PF_INET
-	#define FD_SETSIZE SN_MAX_SOCKETS
+    #define IPPROTO_TCP PF_INET
+    #define IPPROTO_UDP PF_INET
+    #define FD_SETSIZE SN_MAX_SOCKETS
 #endif
 
 #if !defined(_MACOS) && !defined(_WIN32)
-	#define SOCKET int
-	
-	#ifdef SN_SYSTEMS
-		int GOAGetLastError(SOCKET s);
-	#endif
+    #define SOCKET int
+    
+    #ifdef SN_SYSTEMS
+        int GOAGetLastError(SOCKET s);
+    #endif
 
-	#ifdef EENET
-		#define GOAGetLastError(s) sceEENetErrno
-		#define closesocket        sceEENetClose
-	#endif
+    #ifdef EENET
+        #define GOAGetLastError(s) sceEENetErrno
+        #define closesocket        sceEENetClose
+    #endif
 
-	#ifdef INSOCK
-		//#define NETBUFSIZE (sceLIBNET_BUFFERSIZE)
-		#define NETBUFSIZE (32768)
+    #ifdef INSOCK
+        //#define NETBUFSIZE (sceLIBNET_BUFFERSIZE)
+        #define NETBUFSIZE (32768)
 
-		#define GOAGetLastError(s) sceInsockErrno  // not implemented
-		#define closesocket(s)	   sceInsockShutdown(s,SCE_INSOCK_SHUT_RDWR)
-	#endif
+        #define GOAGetLastError(s) sceInsockErrno  // not implemented
+        #define closesocket(s)       sceInsockShutdown(s,SCE_INSOCK_SHUT_RDWR)
+    #endif
 
-	#ifdef UNDER_UNIX
-		#define GOAGetLastError(s) errno
-		#define closesocket        close //on unix
-	#endif
+    #ifdef UNDER_UNIX
+        #define GOAGetLastError(s) errno
+        #define closesocket        close //on unix
+    #endif
 
-	#define ioctlsocket ioctl
+    #define ioctlsocket ioctl
 
-	#define WSAEWOULDBLOCK EWOULDBLOCK             
-	#define WSAEINPROGRESS EINPROGRESS             
-	#define WSAEALREADY EALREADY                
-	#define WSAENOTSOCK ENOTSOCK                
-	#define WSAEDESTADDRREQ EDESTADDRREQ            
-	#define WSAEMSGSIZE EMSGSIZE                
-	#define WSAEPROTOTYPE EPROTOTYPE              
-	#define WSAENOPROTOOPT ENOPROTOOPT             
-	#define WSAEPROTONOSUPPORT EPROTONOSUPPORT         
-	#define WSAESOCKTNOSUPPORT ESOCKTNOSUPPORT         
-	#define WSAEOPNOTSUPP EOPNOTSUPP              
-	#define WSAEPFNOSUPPORT EPFNOSUPPORT            
-	#define WSAEAFNOSUPPORT EAFNOSUPPORT            
-	#define WSAEADDRINUSE EADDRINUSE              
-	#define WSAEADDRNOTAVAIL EADDRNOTAVAIL           
-	#define WSAENETDOWN ENETDOWN                
-	#define WSAENETUNREACH ENETUNREACH             
-	#define WSAENETRESET ENETRESET               
-	#define WSAECONNABORTED ECONNABORTED            
-	#define WSAECONNRESET ECONNRESET              
-	#define WSAENOBUFS ENOBUFS                 
-	#define WSAEISCONN EISCONN                 
-	#define WSAENOTCONN ENOTCONN                
-	#define WSAESHUTDOWN ESHUTDOWN               
-	#define WSAETOOMANYREFS ETOOMANYREFS            
-	#define WSAETIMEDOUT ETIMEDOUT               
-	#define WSAECONNREFUSED ECONNREFUSED            
-	#define WSAELOOP ELOOP                   
-	#define WSAENAMETOOLONG ENAMETOOLONG            
-	#define WSAEHOSTDOWN EHOSTDOWN               
-	#define WSAEHOSTUNREACH EHOSTUNREACH            
-	#define WSAENOTEMPTY ENOTEMPTY               
-	#define WSAEPROCLIM EPROCLIM                
-	#define WSAEUSERS EUSERS                  
-	#define WSAEDQUOT EDQUOT                  
-	#define WSAESTALE ESTALE                  
-	#define WSAEREMOTE EREMOTE
-	#define WSAEINVAL EINVAL
+    #define WSAEWOULDBLOCK EWOULDBLOCK             
+    #define WSAEINPROGRESS EINPROGRESS             
+    #define WSAEALREADY EALREADY                
+    #define WSAENOTSOCK ENOTSOCK                
+    #define WSAEDESTADDRREQ EDESTADDRREQ            
+    #define WSAEMSGSIZE EMSGSIZE                
+    #define WSAEPROTOTYPE EPROTOTYPE              
+    #define WSAENOPROTOOPT ENOPROTOOPT             
+    #define WSAEPROTONOSUPPORT EPROTONOSUPPORT         
+    #define WSAESOCKTNOSUPPORT ESOCKTNOSUPPORT         
+    #define WSAEOPNOTSUPP EOPNOTSUPP              
+    #define WSAEPFNOSUPPORT EPFNOSUPPORT            
+    #define WSAEAFNOSUPPORT EAFNOSUPPORT            
+    #define WSAEADDRINUSE EADDRINUSE              
+    #define WSAEADDRNOTAVAIL EADDRNOTAVAIL           
+    #define WSAENETDOWN ENETDOWN                
+    #define WSAENETUNREACH ENETUNREACH             
+    #define WSAENETRESET ENETRESET               
+    #define WSAECONNABORTED ECONNABORTED            
+    #define WSAECONNRESET ECONNRESET              
+    #define WSAENOBUFS ENOBUFS                 
+    #define WSAEISCONN EISCONN                 
+    #define WSAENOTCONN ENOTCONN                
+    #define WSAESHUTDOWN ESHUTDOWN               
+    #define WSAETOOMANYREFS ETOOMANYREFS            
+    #define WSAETIMEDOUT ETIMEDOUT               
+    #define WSAECONNREFUSED ECONNREFUSED            
+    #define WSAELOOP ELOOP                   
+    #define WSAENAMETOOLONG ENAMETOOLONG            
+    #define WSAEHOSTDOWN EHOSTDOWN               
+    #define WSAEHOSTUNREACH EHOSTUNREACH            
+    #define WSAENOTEMPTY ENOTEMPTY               
+    #define WSAEPROCLIM EPROCLIM                
+    #define WSAEUSERS EUSERS                  
+    #define WSAEDQUOT EDQUOT                  
+    #define WSAESTALE ESTALE                  
+    #define WSAEREMOTE EREMOTE
+    #define WSAEINVAL EINVAL
 #else // !defined(_MACOS) && !defined(_WIN32)
-	#define GOAGetLastError(s) WSAGetLastError()
+    #define GOAGetLastError(s) WSAGetLastError()
 #endif
 
 #ifndef _WIN32
-	typedef struct sockaddr SOCKADDR;
-	typedef struct sockaddr_in SOCKADDR_IN;
-	typedef struct in_addr IN_ADDR;
-	typedef struct hostent HOSTENT;
-	typedef struct timeval TIMEVAL;
+    typedef struct sockaddr SOCKADDR;
+    typedef struct sockaddr_in SOCKADDR_IN;
+    typedef struct in_addr IN_ADDR;
+    typedef struct hostent HOSTENT;
+    typedef struct timeval TIMEVAL;
 #endif
 
 #ifndef max
@@ -376,12 +376,12 @@ char * goastrdup(const char *src);
 #endif
 
 #ifdef _WIN32
-	#define PATHCHAR '\\'
+    #define PATHCHAR '\\'
 #else
 #ifdef MACOS
-	#define PATHCHAR ':'
+    #define PATHCHAR ':'
 #else
-	#define PATHCHAR '/'
+    #define PATHCHAR '/'
 #endif
 #endif
 
@@ -401,7 +401,7 @@ int IsPrivateIP(IN_ADDR * addr);
 
 // SN Systems doesn't support gethostbyaddr
 #if defined(SN_SYSTEMS)
-	#define gethostbyaddr(a,b,c)   NULL
+    #define gethostbyaddr(a,b,c)   NULL
 #endif
 
 // async way to resolve a hostname to an IP
@@ -420,26 +420,26 @@ void GSICancelResolvingHostname(GSIResolveHostnameHandle handle);
 unsigned int GSIGetResolvedIP(GSIResolveHostnameHandle handle);
 #if defined(UNDER_CE)
 //CE does not have the stdlib time() call
-	time_t time(time_t *timer);
+    time_t time(time_t *timer);
 #else
-	#include <time.h>
+    #include <time.h>
 #endif
 
 #ifndef UNDER_CE
-	#include <ctype.h>
+    #include <ctype.h>
 #else
-	int isdigit(int c);
-	int isxdigit(int c);
-	int isalnum(int c);
-	int isspace(int c);
+    int isdigit(int c);
+    int isxdigit(int c);
+    int isalnum(int c);
+    int isspace(int c);
 #endif
 
 #if defined(UNDER_CE) || defined(_PS2)
-	#define NOFILE
+    #define NOFILE
 #endif
 
 #ifndef SOMAXCONN
-	#define SOMAXCONN 5
+    #define SOMAXCONN 5
 #endif
 
 typedef const char * (* GetUniqueIDFunction)();

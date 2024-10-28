@@ -37,7 +37,7 @@ class logic_base
    
 public:
 
-				logic_base          ( void );
+                logic_base          ( void );
 virtual        ~logic_base          ( void );
 
 virtual void    Activate            ( void );

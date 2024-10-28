@@ -120,6 +120,7 @@ xbool LoadBitmap( xbitmap& Bitmap, const char* pFileName )
     // Shrink if requested
     if( g_ShrinkTextures )
     {
+	/*	
         //x_printf("SHRINKING (%s)\n",pFileName);
         s32 W,H;
         W = Bitmap.GetWidth();
@@ -128,8 +129,10 @@ xbool LoadBitmap( xbitmap& Bitmap, const char* pFileName )
         {
             W /= 2;
             H /= 2;
-            Bitmap.Resize(W,H,TRUE);
+            Bitmap.Resize(W,H);
         }
+	*/
+	
     }
 
     return TRUE;

@@ -28,10 +28,10 @@ Please see the GameSpy Presence SDK documentation for more information
 ////////////
 typedef struct
 {
-	char * buffer;
-	int size;
-	int len;
-	int pos;
+    char * buffer;
+    int size;
+    int len;
+    int pos;
 } GPIBuffer;
 
 typedef struct GPIPeer_s * GPIPeer_st;

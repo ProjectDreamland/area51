@@ -47,32 +47,32 @@
 #define INITPACKET_ADDRESS_OFFSET 15
 typedef struct _InitPacket
 {
-	unsigned char magic[NATNEG_MAGIC_LEN];
-	unsigned char version;
-	unsigned char packettype;
-	int cookie;	
-	unsigned char porttype;
-	unsigned char clientindex;
-	unsigned char usegameport;
-	unsigned int localip;
-	unsigned short localport;
+    unsigned char magic[NATNEG_MAGIC_LEN];
+    unsigned char version;
+    unsigned char packettype;
+    int cookie;    
+    unsigned char porttype;
+    unsigned char clientindex;
+    unsigned char usegameport;
+    unsigned int localip;
+    unsigned short localport;
 } InitPacket;
 
 #define CONNECTPACKET_SIZE 20
 typedef struct _ConnectPacket
 {
-	unsigned char magic[NATNEG_MAGIC_LEN];
-	unsigned char version;
-	unsigned char packettype;
-	int cookie;	
-	unsigned int remoteIP;
-	unsigned short remotePort;
-	unsigned char gotyourdata;
-	unsigned char finished;
+    unsigned char magic[NATNEG_MAGIC_LEN];
+    unsigned char version;
+    unsigned char packettype;
+    int cookie;    
+    unsigned int remoteIP;
+    unsigned short remotePort;
+    unsigned char gotyourdata;
+    unsigned char finished;
 } ConnectPacket;
 
 
-#ifndef _PS2	// PS2 preprocessor will TRUNCATE file if it sees this
+#ifndef _PS2    // PS2 preprocessor will TRUNCATE file if it sees this
 #pragma pack()
 #endif
 

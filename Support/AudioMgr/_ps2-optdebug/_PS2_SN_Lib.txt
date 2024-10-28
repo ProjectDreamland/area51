@@ -1,4 +1,0 @@
-create c:/Projects/A51/Support/AudioMgr/_PS2-OptDebug/AudioMgr.lib
-addmod ./_ps2-optdebug/AudioMgr.obj
-save
-end 

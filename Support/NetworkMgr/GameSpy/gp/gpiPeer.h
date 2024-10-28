@@ -46,25 +46,25 @@ typedef struct GPITransferID_s * GPITransferID_st;
 //////////////////
 typedef struct GPIMessage
 {
-	GPIBuffer buffer;
-	int type;
-	int start;
+    GPIBuffer buffer;
+    int type;
+    int start;
 } GPIMessage;
 
 // A peer connection.
 /////////////////////
 typedef struct GPIPeer_s
 {
-	int state;
-	GPIBool initiated;
-	SOCKET sock;
-	GPProfile profile;
-	time_t timeout;
-	int nackCount;
-	GPIBuffer inputBuffer;
-	GPIBuffer outputBuffer;
-	DArray messages;
-	struct GPIPeer_s * pnext;
+    int state;
+    GPIBool initiated;
+    SOCKET sock;
+    GPProfile profile;
+    time_t timeout;
+    int nackCount;
+    GPIBuffer inputBuffer;
+    GPIBuffer outputBuffer;
+    DArray messages;
+    struct GPIPeer_s * pnext;
 } GPIPeer;
 
 //FUNCTIONS

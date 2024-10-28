@@ -37,22 +37,22 @@ Please see the GameSpy Presence SDK documentation for more information
 /////////////////////////////////
 typedef struct
 {
-	int type;
-	SOCKET sock;
-	GPIBuffer inputBuffer;
-	GPIBuffer outputBuffer;
-	char nick[GP_NICK_LEN];
-	char uniquenick[GP_UNIQUENICK_LEN];
-	char email[GP_EMAIL_LEN];
-	char firstname[GP_FIRSTNAME_LEN];
-	char lastname[GP_LASTNAME_LEN];
-	char password[GP_PASSWORD_LEN];
-	char cdkey[GP_CDKEY_LEN];
-	int icquin;
-	int skip;
-	int productID;
-	GPIBool processing;
-	GPIBool remove;
+    int type;
+    SOCKET sock;
+    GPIBuffer inputBuffer;
+    GPIBuffer outputBuffer;
+    char nick[GP_NICK_LEN];
+    char uniquenick[GP_UNIQUENICK_LEN];
+    char email[GP_EMAIL_LEN];
+    char firstname[GP_FIRSTNAME_LEN];
+    char lastname[GP_LASTNAME_LEN];
+    char password[GP_PASSWORD_LEN];
+    char cdkey[GP_CDKEY_LEN];
+    int icquin;
+    int skip;
+    int productID;
+    GPIBool processing;
+    GPIBool remove;
 } GPISearchData;
 
 //FUNCTIONS

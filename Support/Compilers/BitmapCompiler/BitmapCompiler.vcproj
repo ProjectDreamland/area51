@@ -13,113 +13,28 @@
 	</Platforms>
 	<Configurations>
 		<Configuration
-			Name="OptDebug|Win32"
-			OutputDirectory="C:\GameData\A51\Apps\Compilers_Dev\"
-			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,.\,$(X)\Auxiliary\CommandLine,$(X)\..\Support"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG,_CONSOLE"
-				StringPooling="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Release/BitmapCompiler.pch"
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="xgraphics.lib"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/BitmapCompiler.exe"
-				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				ProgramDatabaseFile=".\Release/BitmapCompiler.pdb"
-				SubSystem="1"
-				TargetMachine="1"/>
-			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName=".\Release/BitmapCompiler.tlb"
-				HeaderFileName=""/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="C:\GameData\A51\Apps\Compilers_Dev\"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="0">
+			ConfigurationType="1">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,.\,$(X)\Auxiliary\CommandLine,$(X)\..\Support"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG;_CONSOLE;"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile=".\Debug/BitmapCompiler.pch"
-				AssemblerListingLocation=".\Debug/"
-				ObjectFile=".\Debug/"
-				ProgramDataBaseFileName=".\Debug/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="4"
-				CompileAs="0"/>
+				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xgraphics.lib"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/BitmapCompiler.exe"
-				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
+				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile=".\Debug/BitmapCompiler.pdb"
-				SubSystem="1"
-				TargetMachine="1"/>
+				SubSystem="1"/>
 			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName=".\Debug/BitmapCompiler.tlb"
-				HeaderFileName=""/>
+				Name="VCMIDLTool"/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
@@ -127,9 +42,7 @@
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
+				Name="VCResourceCompilerTool"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
@@ -142,53 +55,34 @@
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
-			Name="Retail|Win32"
-			OutputDirectory="C:\GameData\A51\Apps\Compilers_Dev\"
+			Name="Release|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="0"
-			WholeProgramOptimization="TRUE">
+			ConfigurationType="1">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
+				Optimization="0"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,.\,$(X)\Auxiliary\CommandLine,$(X)\..\Support"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL,_CONSOLE"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				InlineFunctionExpansion="2"
+				OptimizeForProcessor="2"
+				FavorSizeOrSpeed="1"
+				OptimizeForWindowsApplication="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				EnableIntrinsicFunctions="TRUE"
 				StringPooling="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile=""
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				CompileAs="0"/>
+				UsePrecompiledHeader="2"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="1"
+				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xgraphics.lib"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/BitmapCompiler.exe"
-				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				ProgramDatabaseFile=".\Release/BitmapCompiler.pdb"
-				SubSystem="1"
-				TargetMachine="1"/>
+				LinkIncremental="2"
+				SubSystem="1"/>
 			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName=".\Release/BitmapCompiler.tlb"
-				HeaderFileName=""/>
+				Name="VCMIDLTool"/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
@@ -196,78 +90,7 @@
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="QA|Win32"
-			OutputDirectory="C:\GameData\A51\Apps\Compilers_Dev\"
-			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="0"
-			WholeProgramOptimization="FALSE">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				OptimizeForProcessor="2"
-				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories="$(X),$(X)\x_files,.\,$(X)\Auxiliary\CommandLine,$(X)\..\Support"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL,_CONSOLE"
-				StringPooling="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile=""
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				CompileAs="0"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="xgraphics.lib"
-				OutputFile="C:\GameData\A51\Apps\Compilers_Dev/BitmapCompiler.exe"
-				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				ProgramDatabaseFile=".\Release/BitmapCompiler.pdb"
-				SubSystem="1"
-				TargetMachine="1"/>
-			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName=".\Release/BitmapCompiler.tlb"
-				HeaderFileName=""/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"/>
+				Name="VCResourceCompilerTool"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
@@ -285,39 +108,6 @@
 	<Files>
 		<File
 			RelativePath="main.cpp">
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="0"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""
-					BasicRuntimeChecks="3"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Retail|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions=""/>
-			</FileConfiguration>
 		</File>
 	</Files>
 	<Globals>

@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aux_Bitmap", "aux_Bitmap.vcproj", "{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug Win32 = Debug Win32
+		Debug Xbox = Debug Xbox
+		EDITOR-Debug Win32 = EDITOR-Debug Win32
+		OptDebug Win32 = OptDebug Win32
+		OptDebug Xbox = OptDebug Xbox
+		QA Win32 = QA Win32
+		QA Xbox = QA Xbox
+		Release Win32 = Release Win32
+		Release Xbox = Release Xbox
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Debug Win32.ActiveCfg = Debug|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Debug Win32.Build.0 = Debug|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Debug Xbox.ActiveCfg = Debug|Xbox
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Debug Xbox.Build.0 = Debug|Xbox
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.EDITOR-Debug Win32.ActiveCfg = EDITOR-Debug|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.EDITOR-Debug Win32.Build.0 = EDITOR-Debug|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.OptDebug Win32.ActiveCfg = OptDebug|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.OptDebug Win32.Build.0 = OptDebug|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.OptDebug Xbox.ActiveCfg = OptDebug|Xbox
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.OptDebug Xbox.Build.0 = OptDebug|Xbox
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.QA Win32.ActiveCfg = QA|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.QA Win32.Build.0 = QA|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.QA Xbox.ActiveCfg = QA|Xbox
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.QA Xbox.Build.0 = QA|Xbox
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Release Win32.ActiveCfg = Release|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Release Win32.Build.0 = Release|Win32
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Release Xbox.ActiveCfg = Release|Xbox
+		{9CA26E69-C9C6-433E-80D7-D28AC74C5D85}.Release Xbox.Build.0 = Release|Xbox
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

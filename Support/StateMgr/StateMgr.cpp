@@ -247,16 +247,16 @@ void state_mgr::Init( void )
 #ifdef TARGET_PS2
     dlg_online_eula_register        ( g_UiMgr );
 #endif
-    dlg_online_connect_register     ( g_UiMgr );
+    //dlg_online_connect_register     ( g_UiMgr );
     dlg_online_main_register        ( g_UiMgr );
     dlg_online_host_register        ( g_UiMgr );
     dlg_online_host_options_register( g_UiMgr );
-    dlg_online_join_register        ( g_UiMgr );
+    //dlg_online_join_register        ( g_UiMgr );
     dlg_join_filter_register        ( g_UiMgr );
     dlg_online_level_select_register( g_UiMgr );
-    dlg_online_players_register     ( g_UiMgr );
-    dlg_friends_register            ( g_UiMgr );
-    dlg_players_register            ( g_UiMgr );
+    //dlg_online_players_register     ( g_UiMgr );
+    //dlg_friends_register            ( g_UiMgr );
+    //dlg_players_register            ( g_UiMgr );
     dlg_start_game_register         ( g_UiMgr );
     dlg_load_game_register          ( g_UiMgr );
     dlg_level_desc_register         ( g_UiMgr );
@@ -280,7 +280,7 @@ void state_mgr::Init( void )
     dlg_campaign_menu_register      ( g_UiMgr );
     dlg_lore_menu_register          ( g_UiMgr );
 #ifndef TARGET_XBOX
-    dlg_memcard_select_register     ( g_UiMgr );
+    //dlg_memcard_select_register     ( g_UiMgr );
 #endif
     dlg_vote_map_register           ( g_UiMgr );
     dlg_vote_kick_register          ( g_UiMgr );
@@ -288,11 +288,11 @@ void state_mgr::Init( void )
     dlg_change_map_register         ( g_UiMgr );
     dlg_kick_player_register        ( g_UiMgr );
     dlg_team_change_register        ( g_UiMgr );
-    dlg_online_login_register       ( g_UiMgr );
+    //dlg_online_login_register       ( g_UiMgr );
     dlg_submenu_register            ( g_UiMgr );
-    dlg_feedback_register           ( g_UiMgr );
+    //dlg_feedback_register           ( g_UiMgr );
     dlg_secrets_menu_register       ( g_UiMgr );
-    dlg_stats_register              ( g_UiMgr );
+    //dlg_stats_register              ( g_UiMgr );
     dlg_autosave_register           ( g_UiMgr );
     dlg_credits_register            ( g_UiMgr );
     dlg_extras_register             ( g_UiMgr );
@@ -546,7 +546,9 @@ const char* state_mgr::GetStateName( sm_states State )
 
         LABEL_STRING( SM_MAIN_MENU );
         LABEL_STRING( SM_SETTINGS_MENU );
+#ifdef TARGET_XBOX		
         LABEL_STRING( SM_SETTINGS_HEADSET );
+#endif		
         LABEL_STRING( SM_SETTINGS_MEMCARD_SELECT );
         LABEL_STRING( SM_MANAGE_PROFILES );
         LABEL_STRING( SM_MANAGE_PROFILE_OPTIONS );
@@ -941,9 +943,11 @@ void state_mgr::CheckControllers( void )
 #if !defined(X_EDITOR)
 
 #ifdef TARGET_PC
-    (void) input_gadget ControllerQuery;
-    (void) input_gadget AnalogQuery;
-    return;
+       input_gadget ControllerQuery = INPUT_XBOX_QRY_PAD_PRESENT;
+       input_gadget AnalogQuery     = INPUT_XBOX_QRY_ANALOG_MODE;   
+	//(void) input_gadget ControllerQuery;
+    //(void) input_gadget AnalogQuery;
+    //return;
 #endif
 
     if( !g_bControllerCheck )
@@ -1333,7 +1337,9 @@ void state_mgr::EnterState( sm_states State )
         case SM_PRESS_START_SCREEN:             EnterPressStart();                  break;
         case SM_MAIN_MENU:                      EnterMainMenu();                    break;
         case SM_SETTINGS_MENU:                  EnterSettingsMenu();                break;
+#ifdef TARGET_XBOX
         case SM_SETTINGS_HEADSET:               EnterSettingsHeadset();             break;
+#endif
         case SM_SETTINGS_MEMCARD_SELECT:        EnterSettingsMemcardSelect();       break;
         case SM_MANAGE_PROFILES:                EnterManageProfiles();              break;
         case SM_MANAGE_PROFILE_OPTIONS:         EnterManageProfileOptions();        break;
@@ -1572,7 +1578,9 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_PRESS_START_SCREEN:             UpdatePressStart();                 break;
         case SM_MAIN_MENU:                      UpdateMainMenu();                   break;
         case SM_SETTINGS_MENU:                  UpdateSettingsMenu();               break;
+#ifdef TARGET_XBOX		
         case SM_SETTINGS_HEADSET:               UpdateSettingsHeadset();            break;
+#endif
         case SM_SETTINGS_MEMCARD_SELECT:        UpdateSettingsMemcardSelect();      break;
 
         case SM_MANAGE_PROFILES:                UpdateManageProfiles();             break;
@@ -2339,6 +2347,10 @@ xstring SelectBestClip( const char* pName )
     }
 #endif
 
+#ifdef TARGET_PC
+        return (const char*)xfs( "%s_640x480_%d",pName,30 );
+#endif
+
 #ifdef TARGET_PS2
     xbool bIsPal;
     eng_GetPALMode( bIsPal );
@@ -2778,7 +2790,7 @@ void state_mgr::UpdateMainMenu( void )
                         }
                     }
                     break;
-
+#ifdef TARGET_XBOX	
                     case IDC_MAIN_MENU_MULTI:
                     {
                         // clear the profiles and controller requests
@@ -2792,7 +2804,7 @@ void state_mgr::UpdateMainMenu( void )
                         SetState( SM_MULTI_PLAYER_MENU );
                     }
                     break;
-
+#endif    
                     case IDC_MAIN_MENU_ONLINE:
                     {
 #ifdef TARGET_PS2
@@ -2862,12 +2874,13 @@ void state_mgr::UpdateSettingsMenu( void )
                 SetState( SM_MAIN_MENU );
             }
             break;
-
+#ifdef TARGET_XBOX
             case DIALOG_STATE_SELECT:
             {
                 SetState( SM_SETTINGS_HEADSET );
             }
             break;
+#endif			
 
             case DIALOG_STATE_MEMCARD_ERROR:
             {
@@ -2885,7 +2898,7 @@ void state_mgr::ExitSettingsMenu( void )
 }
 
 //=========================================================================
-
+#ifdef TARGET_XBOX
 void state_mgr::EnterSettingsHeadset( void )
 {
     //  create options main menu
@@ -2921,7 +2934,7 @@ void state_mgr::UpdateSettingsHeadset( void )
 void state_mgr::ExitSettingsHeadset( void )
 {
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::EnterSettingsMemcardSelect( void )
@@ -6148,6 +6161,11 @@ void state_mgr::ExitServerPlayers( void )
 //=========================================================================
 
 void state_mgr::EnterOnlinePlayers( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     // Create players menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -6159,6 +6177,7 @@ void state_mgr::EnterOnlinePlayers( void )
     g_UiMgr->SetUserBackground( g_UiUserID, "background1" );
 #endif
 }
+#endif
 
 //=========================================================================
 
@@ -6238,6 +6257,11 @@ void state_mgr::ExitOnlineFeedback( void )
 //=========================================================================
 
 void state_mgr::EnterOnlineFeedbackFriend( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     // Create feedback menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -6257,7 +6281,7 @@ void state_mgr::EnterOnlineFeedbackFriend( void )
         }
     }
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::UpdateOnlineFeedbackFriend( void )
@@ -8193,6 +8217,11 @@ void state_mgr::ExitPauseOnlineFriends( void )
 //=========================================================================
 
 void state_mgr::EnterPauseOnlinePlayers( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     // Create players menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -8205,7 +8234,7 @@ void state_mgr::EnterPauseOnlinePlayers( void )
     ((dlg_players*)m_CurrentDialog)->EnableBlackout();
     ((dlg_players*)m_CurrentDialog)->Configure( PLAYER_MODE_INGAME );
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::UpdatePauseOnlinePlayers( void )
@@ -8276,6 +8305,11 @@ void state_mgr::ExitPauseOnlineFeedback( void )
 //=========================================================================
 
 void state_mgr::EnterPauseOnlineFeedbackFriend( void )
+#if defined ( TARGET_PC )
+{
+}
+#endif
+#if defined ( TARGET_XBOX )
 {
     // Create feedback menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -8296,7 +8330,7 @@ void state_mgr::EnterPauseOnlineFeedbackFriend( void )
     }
     ((dlg_feedback*)m_CurrentDialog)->EnableBlackout();
 }
-
+#endif
 //=========================================================================
 
 void state_mgr::UpdatePauseOnlineFeedbackFriend( void )
@@ -10197,11 +10231,11 @@ void state_mgr::EnterMultiPlayerLoadMission( void )
         g_MatchMgr.SetState( MATCH_UPDATE_SERVER );
     }
 }
-
 //=========================================================================
 
 void state_mgr::UpdateMultiPlayerLoadMission( void )
 {
+	
     if( m_bShowingScores==FALSE )
     {
         ASSERT( m_CurrentDialog != NULL );
@@ -10261,7 +10295,6 @@ void state_mgr::UpdateMultiPlayerLoadMission( void )
         }
     }
 }
-
 //=========================================================================
 
 void state_mgr::ExitMultiPlayerLoadMission( void )
@@ -10416,7 +10449,6 @@ void state_mgr::ExitClientCooldown( void )
 //=========================================================================
 void state_mgr::EnterServerDisconnect( void )
 {
-
     game_server& Server = g_NetworkMgr.GetServerObject();
     Server.SetState( STATE_SERVER_SHUTDOWN );
     if( g_NetworkMgr.IsOnline() )
@@ -10428,7 +10460,6 @@ void state_mgr::EnterServerDisconnect( void )
         g_MatchMgr.SetState( MATCH_IDLE );
     }
 }
-
 //=========================================================================
 void state_mgr::UpdateServerDisconnect( void )
 {
@@ -10474,24 +10505,20 @@ void state_mgr::ExitClientDisconnect( void )
 
 void state_mgr::EnableBackgroundMovie( void )
 {
-#if !defined( X_EDITOR ) && !defined( TARGET_PC ) && (!CONFIG_IS_DEMO)
     s32 XRes, YRes;
     eng_GetRes( XRes, YRes );
     m_MovieSize.Set( (f32)XRes, (f32)YRes );
 
     m_MoviePosition.Set( 0.0f, 0.0f );
     m_bPlayMovie = Movie.Open( SelectBestClip("MenuBackground"),TRUE,TRUE );
-#endif
 }
 
 //=========================================================================
 
 void state_mgr::DisableBackgoundMovie( void )
 {
-#if !defined( X_EDITOR ) && !defined( TARGET_PC ) 
     Movie.Close();
     m_bPlayMovie = FALSE;
-#endif
     // kill background music
     KillFrontEndMusic();
 }
@@ -10500,7 +10527,6 @@ void state_mgr::DisableBackgoundMovie( void )
 
 void state_mgr::PlayMovie( const char* pFilename, xbool bResident, xbool bLooped )
 {
-#if !defined( TARGET_PC )
     if( !m_bPlayMovie )
     {
         // startup movie player
@@ -10512,14 +10538,12 @@ void state_mgr::PlayMovie( const char* pFilename, xbool bResident, xbool bLooped
         Movie.Close();
     }
     m_bPlayMovie = Movie.Open( SelectBestClip(pFilename), bResident, bLooped );
-#endif
 }
 
 //=========================================================================
 
 void state_mgr::CloseMovie( void )
 {
-#if !defined( TARGET_PC )
     if( m_bPlayMovie )
     {
         // close movie and shutdown player
@@ -10527,7 +10551,6 @@ void state_mgr::CloseMovie( void )
         Movie.Close();
         Movie.Kill();
     }
-#endif
 }
 
 //=========================================================================
@@ -12331,7 +12354,7 @@ void state_mgr::ExitPauseOnlineMemcardSelect( void )
 void state_mgr::SetActiveControllerID( s32 ID )
 {
     m_ActiveControllerID = ID;
-    g_VoiceMgr.GetHeadset().SetActiveHeadset( ID );
+    //g_VoiceMgr.GetHeadset().SetActiveHeadset( ID );
 }
 
 //=========================================================================

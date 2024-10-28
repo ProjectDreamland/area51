@@ -24,42 +24,42 @@ extern "C" {
 
 void ghiDoHostLookup
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 void ghiDoConnecting
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 void ghiDoSendingRequest
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 void ghiDoPosting
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 void ghiDoWaiting
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 void ghiDoReceivingStatus
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 void ghiDoReceivingHeaders
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 void ghiDoReceivingFile
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 #ifdef __cplusplus

@@ -18,7 +18,7 @@ NOTES:
 //==============================================================================
 
 //==============================================================================
-//	INCLUDES
+//    INCLUDES
 //==============================================================================
 
 #include "logic_CTF.hpp"
@@ -51,7 +51,7 @@ enum
 };
 
 //==============================================================================
-//	FUNCTIONS
+//    FUNCTIONS
 //==============================================================================
 
 logic_ctf::logic_ctf( void )
@@ -110,7 +110,7 @@ void logic_ctf::RequestSpawn( s32 PlayerIndex, xbool Immediate )
 
     u32 TeamBits = GetTeamBits( PlayerIndex );
 
-	if( !m_Alive[PlayerIndex] && 
+    if( !m_Alive[PlayerIndex] && 
         ( (m_RespawnDelay[PlayerIndex] == 0.0f) || Immediate ) )
     {
         actor* pActor = (actor*)NetObjMgr.GetObjFromSlot( PlayerIndex );
@@ -144,7 +144,7 @@ void logic_ctf::PlayerDied( s32 Victim, s32 Killer, s32 PainType )
 {
     ASSERT( g_NetworkMgr.IsServer() );
 
-	(void)PainType;
+    (void)PainType;
 
     // TO DO - Check the logic in here.  Twice death?  Client?
     // TO DO - Check it in the other game types, too.

@@ -552,7 +552,7 @@ void dlg_download::EnterState( dlg_download_state State )
             s32 Length;
             g_MatchMgr.GetDownloadData( Length );
             g_DownloadCardSlot = -1;
-            m_pCardDialog->Configure( SM_CARDMODE_CONTENT, Length );
+            //m_pCardDialog->Configure( SM_CARDMODE_CONTENT, Length );
             m_pNavText->SetFlag( ui_win::WF_VISIBLE, FALSE );
 
             // hide the main dialog

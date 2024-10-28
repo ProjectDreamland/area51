@@ -361,6 +361,10 @@ enum login_source
 #define SM_MAX_PLAYERS          2
 #endif
 
+#ifdef TARGET_PC
+#define USE_MOVIES              1
+#endif
+
 #ifdef TARGET_PS2
 #define USE_MOVIES              1
 #endif
@@ -476,7 +480,11 @@ public:
     void                    SetProfileNotSaved              ( s32 playerID, xbool bNotSaved );
     xbool                   GetProfileNotSaved              ( s32 playerID )                        { ASSERT( playerID >= 0 ); ASSERT( playerID < SM_PROFILE_COUNT ); return m_ProfileNotSaved[playerID]; }
 
-    player_profile&         GetActiveProfile                ( u32 playerID )                        { ASSERT( playerID < SM_PROFILE_COUNT ); return m_Profiles[playerID]; }
+#ifdef TARGET_XBOX
+    player_profile&         GetActiveProfile                ( u32 playerID ) { ASSERT(playerID < SM_PROFILE_COUNT); return m_Profiles[playerID]; }
+#else
+    player_profile&         GetActiveProfile                ( u32 playerID ) { return m_Profiles[playerID]; } //Save hack.
+#endif
     
     void                    ResetProfile                    ( s32 index );
     const char*             GetProfileName                  ( s32 index )                           { ASSERT( index >= 0 ); ASSERT( index < SM_PROFILE_COUNT ); return m_Profiles[index].GetProfileName(); }
@@ -574,11 +582,11 @@ private:
     void                    EnterSettingsMenu               ( void );
     void                    UpdateSettingsMenu              ( void );
     void                    ExitSettingsMenu                ( void );
-
+#ifndef TARGET_XBOX
     void                    EnterSettingsHeadset            ( void );
     void                    UpdateSettingsHeadset           ( void );
     void                    ExitSettingsHeadset             ( void );
-
+#endif
     void                    EnterSettingsMemcardSelect      ( void );
     void                    UpdateSettingsMemcardSelect     ( void );
     void                    ExitSettingsMemcardSelect       ( void );

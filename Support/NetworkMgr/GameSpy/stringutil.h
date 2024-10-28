@@ -12,7 +12,7 @@ extern "C" {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 #ifdef _PS2
-#define ALIGNED	__attribute__ ((aligned(16)))
+#define ALIGNED    __attribute__ ((aligned(16)))
 #else
 #define ALIGNED
 #endif
@@ -25,25 +25,25 @@ extern "C" {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 #define UTF8_FOLLOW_BYTE_TAG     0x80    //:1000 0000    // Identifies 2nd or 3rd byte of UTF8String
-#define UTF8_TWO_BYTE_TAG        0xC0	//:1100 0000    // Identifies start of Two-byte UTF8String
-#define UTF8_THREE_BYTE_TAG      0xE0	//:1110 0000    // Identifies start of Three-byte UTF8String
-#define UTF8_FOUR_BYTE_TAG       0xF0	//:1111 0000    // Unsupported tag, need USC4 to store this
+#define UTF8_TWO_BYTE_TAG        0xC0    //:1100 0000    // Identifies start of Two-byte UTF8String
+#define UTF8_THREE_BYTE_TAG      0xE0    //:1110 0000    // Identifies start of Three-byte UTF8String
+#define UTF8_FOUR_BYTE_TAG       0xF0    //:1111 0000    // Unsupported tag, need USC4 to store this
 
 #define UTF8_FOLLOW_BYTE_MASK    0x3F    //:0011 1111    // The value bits in a follow byte
 #define UTF8_TWO_BYTE_MASK       0x1F    //:0001 1111    // The value bits in a two byte tag
 #define UTF8_THREE_BYTE_MASK     0x0F    //:0000 1111    // The value bits in a three byte tag
 
-#define UTF8_IS_THREE_BYTE(a)    (((UTF8ByteType)a & UTF8_FOUR_BYTE_TAG)==UTF8_THREE_BYTE_TAG)	
-#define UTF8_IS_TWO_BYTE(a)	     (((UTF8ByteType)a & UTF8_THREE_BYTE_TAG)==UTF8_TWO_BYTE_TAG)
+#define UTF8_IS_THREE_BYTE(a)    (((UTF8ByteType)a & UTF8_FOUR_BYTE_TAG)==UTF8_THREE_BYTE_TAG)    
+#define UTF8_IS_TWO_BYTE(a)         (((UTF8ByteType)a & UTF8_THREE_BYTE_TAG)==UTF8_TWO_BYTE_TAG)
 #define UTF8_IS_FOLLOW_BYTE(a)   (((UTF8ByteType)a & UTF8_TWO_BYTE_TAG)==UTF8_FOLLOW_BYTE_TAG)
-#define UTF8_IS_SINGLE_BYTE(a)   ((UTF8ByteType)a <= 0x7F)	// 0-127
+#define UTF8_IS_SINGLE_BYTE(a)   ((UTF8ByteType)a <= 0x7F)    // 0-127
 
-#define	REPLACE_INVALID_CHAR     '?'; 	// Replace invalid UTF8 chars with this
+#define    REPLACE_INVALID_CHAR     '?';     // Replace invalid UTF8 chars with this
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 // Prototypes
-//		'_' denotes internal use functions
+//        '_' denotes internal use functions
 int _ReadUCS2CharFromUTF8String (const UTF8String  theUTF8String, UCS2Char* theUnicodeChar);
 int _UCS2CharToUTF8String       (UCS2Char          theUCS2Char,   UTF8String theUTF8String);
 int _UCS2ToUTF8ConversionLengthOnly (const UCS2String theUCS2String);

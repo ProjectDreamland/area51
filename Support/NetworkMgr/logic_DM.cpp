@@ -5,7 +5,7 @@
 //==============================================================================
 
 //==============================================================================
-//	INCLUDES
+//    INCLUDES
 //==============================================================================
 
 #include "logic_DM.hpp"
@@ -29,7 +29,7 @@ enum
 };
 
 //==============================================================================
-//	FUNCTIONS
+//    FUNCTIONS
 //==============================================================================
 
 logic_dm::logic_dm( void )
@@ -88,7 +88,7 @@ void logic_dm::RequestSpawn( s32 PlayerIndex, xbool Immediate )
 
     u32 TeamBits = GetTeamBits( PlayerIndex );
 
-	if( !m_Alive[PlayerIndex] && 
+    if( !m_Alive[PlayerIndex] && 
         ( (m_RespawnDelay[PlayerIndex] == 0.0f) || Immediate ) )
     {
         actor* pActor = (actor*)NetObjMgr.GetObjFromSlot( PlayerIndex );

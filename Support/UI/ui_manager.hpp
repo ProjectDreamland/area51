@@ -22,7 +22,7 @@
 //  Controller button mapping
 //==============================================================================
 
-#if defined( TARGET_PC) || defined( TARGET_PS2)
+#ifdef TARGET_PS2
 #define INPUT_BUTTON_UP         INPUT_PS2_BTN_L_UP      
 #define INPUT_BUTTON_DOWN       INPUT_PS2_BTN_L_DOWN
 #define INPUT_BUTTON_LEFT       INPUT_PS2_BTN_L_LEFT
@@ -58,7 +58,7 @@
 #define INPUT_MAX_CONTROLLER_COUNT 2
 #endif
 
-#ifdef TARGET_XBOX
+#if defined( TARGET_XBOX) || defined( TARGET_PC)
 #define INPUT_BUTTON_UP         INPUT_XBOX_BTN_UP      
 #define INPUT_BUTTON_DOWN       INPUT_XBOX_BTN_DOWN
 #define INPUT_BUTTON_LEFT       INPUT_XBOX_BTN_LEFT
@@ -97,7 +97,7 @@ extern xbool bInProcessInput;
 //==============================================================================
 #define BUTTON_SPRITE_WIDTH     18
 
-#ifdef TARGET_XBOX
+#if defined( TARGET_XBOX) || defined( TARGET_PC)
 enum
 {
     XBOX_BUTTON_A, 
@@ -499,13 +499,7 @@ public:
 
     void            CheckForEndDialog       ( s32 UserID );
 
-#if defined(X_RETAIL)
     u32             GetActiveController     ( void )                { return m_ActiveController; }
-#else
-    u32             GetActiveController     ( void )                { ASSERTS(bInProcessInput, 
-                                                                      "Cannot use GetActiveController in this context.");
-                                                                      return m_ActiveController; }
-#endif
 
     f32             GetAlphaTime            ( void )                { return m_AlphaTime; }
 

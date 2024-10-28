@@ -215,7 +215,7 @@ void headset::PeriodicUpdate( f32 DeltaTime )
             Status = lgAudOpen( 0, &OpenParam, &m_DeviceHandle );
             if( Status == LGAUD_SUCCESS )
             {
-		        lgAudSetPlaybackVolume( m_DeviceHandle, LGAUD_CH_BOTH, 75 );
+                lgAudSetPlaybackVolume( m_DeviceHandle, LGAUD_CH_BOTH, 75 );
                 lgAudStartPlayback( m_DeviceHandle );
 
                 lgAudSetRecordingVolume( m_DeviceHandle, LGAUD_CH_BOTH, 75 );

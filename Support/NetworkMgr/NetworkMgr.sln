@@ -1,0 +1,39 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetworkMgr", "NetworkMgr.vcproj", "{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug Win32 = Debug Win32
+		Debug Xbox = Debug Xbox
+		OptDebug Win32 = OptDebug Win32
+		OptDebug Xbox = OptDebug Xbox
+		QA Win32 = QA Win32
+		QA Xbox = QA Xbox
+		Release Win32 = Release Win32
+		Release Xbox = Release Xbox
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.Debug Win32.ActiveCfg = Debug|Win32
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.Debug Win32.Build.0 = Debug|Win32
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.Debug Xbox.ActiveCfg = Debug|Xbox
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.Debug Xbox.Build.0 = Debug|Xbox
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.OptDebug Win32.ActiveCfg = OptDebug|Win32
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.OptDebug Win32.Build.0 = OptDebug|Win32
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.OptDebug Xbox.ActiveCfg = QA|Xbox
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.OptDebug Xbox.Build.0 = QA|Xbox
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.QA Win32.ActiveCfg = QA|Win32
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.QA Win32.Build.0 = QA|Win32
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.QA Xbox.ActiveCfg = QA|Xbox
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.QA Xbox.Build.0 = QA|Xbox
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.Release Win32.ActiveCfg = Release|Win32
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.Release Win32.Build.0 = Release|Win32
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.Release Xbox.ActiveCfg = Release|Xbox
+		{8946D9DC-520E-4B19-BD73-1B0ED91C66BA}.Release Xbox.Build.0 = Release|Xbox
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

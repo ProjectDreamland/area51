@@ -17,7 +17,7 @@
 #include "Objects\HudObject.hpp"
 
 #include "GameTextMgr\GameTextMgr.hpp"
-#include "StringMgr\StringMgr.hpp"
+#include "StringMgr\StringMgr.hpp"
 
 #ifndef X_EDITOR
 #include "GameLib\RenderContext.hpp"

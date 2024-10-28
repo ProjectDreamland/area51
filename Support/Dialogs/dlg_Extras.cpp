@@ -351,7 +351,7 @@ void dlg_extras::OnPadSelect( ui_win* pWin )
 
     // shut down background movie
     g_StateMgr.DisableBackgoundMovie();
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
     // play the selected movie
     PlaySimpleMovie(  SelectBestClip(s_MovieNames[ m_pExtrasList->GetSelectedItemData(0)]) );
 #endif

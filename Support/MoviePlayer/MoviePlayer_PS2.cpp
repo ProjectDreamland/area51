@@ -232,7 +232,7 @@ xbool movie_private::Open( const char *pFilename, xbool PlayResident, xbool IsLo
         for( i=0; i<m_nBitmaps; i++ )
         {
             m_pBitmaps[j][i].Setup(xbitmap::FMT_32_ABGR_8888,16,512/*1024*/,FALSE,pBuffer);
-		    vram_Register(m_pBitmaps[j][i]);
+            vram_Register(m_pBitmaps[j][i]);
             pBuffer += (16*sizeof(u32)*m_Height);
         }
 
@@ -498,7 +498,7 @@ void movie_private::Close( void )
     {
         for( i=0; i<m_nBitmaps; i++ )
         {
-		    vram_Unregister(m_pBitmaps[j][i]);
+            vram_Unregister(m_pBitmaps[j][i]);
         }
         delete []m_pBitmaps[j];
     }
@@ -725,7 +725,7 @@ void movie_private::PeriodicUpdate(void)
     }
     m_FileIndex += length;
 
-	FlushCache(0);
+    FlushCache(0);
     s32 DecodeLength;
     DecodeLength = sceMpegDemuxPss(&m_mpeg,m_pFileBuffer,length);
     // Because the stupid Sony PSS file format does not contain a number of streams within the file, 

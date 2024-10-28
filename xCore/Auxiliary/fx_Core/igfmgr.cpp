@@ -133,7 +133,7 @@ igfmgr::data_entry* igfmgr::AddDataEntry( const void* pData, u32 Length )
 
     // add the new entry
     pEntry->m_pData = new u8[Length];
-    x_memcpy( pEntry->m_pData, pData, Length );
+    x_memmove( pEntry->m_pData, pData, Length );
     pEntry->m_pNext = NULL;
     pEntry->m_Length = Length;
 
@@ -181,7 +181,7 @@ void igfmgr::SetHeaderInfo(  const char*    pDocName,
         }
         else
         {
-            x_memcpy( m_Header.m_DocName, pDocName, 31 );
+            x_memmove( m_Header.m_DocName, pDocName, 31 );
             m_Header.m_DocName[31] = '\0';
         }
     }
@@ -195,7 +195,7 @@ void igfmgr::SetHeaderInfo(  const char*    pDocName,
         }
         else
         {
-            x_memcpy( m_Header.m_Creator, pAuthor, 31 );
+            x_memmove( m_Header.m_Creator, pAuthor, 31 );
             m_Header.m_Creator[31] = '\0';
         }
     }
