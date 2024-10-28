@@ -56,9 +56,6 @@ XBMPViewer     | Yes
 xCL            | Yes
 xTool          | Yes
 =======
-# Area 51 (2005) Source Code Release
-
-Welcome to the unofficial release of the Area 51 (2005) video game source code! This project aims to resurrect and preserve a piece of early 2000s video game history for enthusiasts, historians, and developers alike. Below is a brief overview of the source code details, its origin, and guidance on how the community can help bring this game into the modern era.
 
 ## Historical Overview of Area 51
 
@@ -79,39 +76,3 @@ The main goal is to get the source code into a buildable state on modern systems
 1. **Building the Project**: Assistance is needed to compile and run the game on contemporary hardware. If you have experience with game development, legacy systems, or cross-platform development, your expertise is invaluable.
 2. **Documentation and Research**: Insights into the original development environment, including compilers, libraries, and tools, would greatly assist the restoration effort.
 3. **Debugging and Porting**: Once buildable, the project will require debugging and potentially porting to newer platforms to reach a wider audience.
-
-## Getting Started
-
-To contribute, please fork the repository, make your changes, and submit a pull request with your updates. For discussion, collaboration, and support, join our community on platforms like Discord or participate in GitHub Discussions for this project.
-
-
-## How to Build
-Currently, the only compiler supported is Visual Studio and Win32 configuration. 
-Build system is based on CMake, so version of Visual Studio is doesn't mean, it's should be higher or equal to Visual Studio 2013.
-
-For build project run from command-line:
-
-Visual Studio 2019+:
-```
-cmake -B build -A Win32
-```
-
-Visual Studio 2013-2017:
-```
-cmake -B build
-```
-
-After you should run:
-```
-cmake --build build --config Release
-```
-
-Release or Debug binaries are located in bin folder.
-
-## Releases
-
-[Here](https://github.com/ProjectDreamland/area51/releases/)
-
-## Discord
-
-Join the community Discord [here](https://discord.gg/7gGhFSjxsq)
