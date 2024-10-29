@@ -35,9 +35,9 @@
 #ifdef TARGET_PC
 #   if _MSC_VER >= 1300
 #       include <windows.h>
-//#       include <D3d8.h>
-//#       include <XGraphics.h>
-//#       pragma comment( lib, "xgraphics.lib" )
+#       include <D3d8.h>
+#       include <XGraphics.h>
+#       pragma comment( lib, "xgraphics.lib" )
 #   endif
 #endif
 
@@ -372,7 +372,7 @@ void xbitmap::XboxSwizzleData( void )
             xbitmap Temp( *this );
             for( s32 i=0;i<GetNMips( );i++ )
             {
-               /* XGSwizzleRect(
+                XGSwizzleRect(
                     (LPVOID)GetPixelData(i),
                     0,
                     NULL,
@@ -380,7 +380,7 @@ void xbitmap::XboxSwizzleData( void )
                     GetWidth (i),
                     GetHeight(i),
                     NULL,
-                    GetFormatInfo().BPP>>3 );*/
+                    GetFormatInfo().BPP>>3 );
             }
             m_Flags |= FLAG_XBOX_DATA_SWIZZLED;
             *this = Temp;

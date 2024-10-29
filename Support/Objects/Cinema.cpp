@@ -14,7 +14,7 @@
 #include "ConversationMgr\ConversationMgr.hpp"
 #include "Loco\LocoUtil.hpp"
 #include "Characters\Character.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Animation\AnimPlayer.hpp"
 
 //=========================================================================

@@ -257,7 +257,7 @@ xbool dlg_memcard_select::Create( s32                        UserID,
 
 //=========================================================================
 
-void dlg_memcard_select::Configure( card_data_mode mode, s32 size/* = 0*/ )
+void dlg_memcard_select::Configure( card_data_mode mode, s32 size = 0 )
 { 
     m_Mode = mode; 
     m_Size = size; 

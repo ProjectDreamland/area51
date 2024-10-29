@@ -11,7 +11,7 @@
 #include "action_change_perception.hpp"
 
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "PerceptionMgr\PerceptionMgr.hpp"
 
 //=========================================================================

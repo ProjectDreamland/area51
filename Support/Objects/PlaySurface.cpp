@@ -7,7 +7,7 @@
 #include "GameLib\RigidGeomCollision.hpp"
 #include "Render\Render.hpp"
 #include "Debris\Debris_mgr.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 
 xbool ShowCollision = FALSE;
 

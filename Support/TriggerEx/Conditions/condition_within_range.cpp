@@ -10,7 +10,7 @@
 
 #include "condition_within_range.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Entropy.hpp"
 
 //=========================================================================

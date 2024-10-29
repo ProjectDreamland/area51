@@ -1,4 +1,3 @@
-#ifndef DISABLE_LEGACY_CODE
 #include "DeadBody.hpp"
 #include "e_ScratchMem.hpp"
 
@@ -1001,4 +1000,4 @@ xbool dead_body::OnProperty( prop_query&   I )
 }
 
 //===============================================================================
-#endif
+

@@ -104,7 +104,7 @@ void seeker_projectile::Initialize( const vector3&        InitPos,
                                         f32             Speed,
                                         guid            OwnerGuid,
                                         pain_handle     PainHandle,
-                                        xbool           bHitLiving /*= TRUE*/ )
+                                        xbool           bHitLiving = TRUE )
 {
     // Call base class
     base_projectile::Initialize(InitPos, InitRot, InheritedVelocity, Speed, OwnerGuid , PainHandle, bHitLiving ) ;
@@ -288,7 +288,7 @@ void seeker_projectile::OnExplode( void )
     //g_AudioManager.Play( "Grenade_Explosion", GetPosition() );
 
     g_AudioManager.Play( "GravCharge_Explosion", audio_manager::EXPLOSION, GetPosition(), 
-        GetZone1(), GetGuid(), FALSE, FALSE );
+        GetZone1(), GetGuid() );
 
     // create a decal
     decal_package* pPackage = m_hDecalPackage.GetPointer();

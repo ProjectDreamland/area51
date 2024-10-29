@@ -16,7 +16,7 @@
 #include "MusicStateMgr\MusicStateMgr.hpp"
 #include "Entropy.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 
 //=========================================================================
 // MUSIC_INTENSITY

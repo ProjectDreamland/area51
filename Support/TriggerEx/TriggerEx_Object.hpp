@@ -15,7 +15,7 @@
 #include "Obj_mgr\obj_mgr.hpp"
 #include "..\Support\TriggerEx\TriggerEx_Conditionals.hpp"
 #include "..\Support\TriggerEx\TriggerEx_Actions.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Affecters\conditional_affecter.hpp"
 #include "..\Support\Objects\focusobject.hpp"
 

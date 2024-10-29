@@ -749,8 +749,7 @@ void ragdoll::ApplyCharacterConstraints( void )
 */
 
     // Find all dead bodies
-   // g_ObjMgr.SelectBBox(object::ATTR_COLLIDABLE, WorldBBox, object::TYPE_DEAD_BODY) ;
-   g_ObjMgr.SelectBBox(object::ATTR_COLLIDABLE, WorldBBox, object::TYPE_NULL) ; // #TODO: !!!
+    g_ObjMgr.SelectBBox(object::ATTR_COLLIDABLE, WorldBBox, object::TYPE_DEAD_BODY) ;
     slot_id SlotID = g_ObjMgr.StartLoop();
     while(SlotID != SLOT_NULL)
     {
@@ -2089,8 +2088,7 @@ void ragdoll::RenderCollision( void )
 
 void ragdoll::Advance( f32 DeltaTime )
 {
-    // #TODO: !!!
-   // LOG_STAT(k_stats_Ragdoll);
+    LOG_STAT(k_stats_Ragdoll);
 
     CONTEXT("ragdoll::Advance") ;
 

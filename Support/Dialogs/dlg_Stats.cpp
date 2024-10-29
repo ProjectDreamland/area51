@@ -303,7 +303,6 @@ xbool dlg_stats::Create( s32                        UserID,
     m_pNavText->SetLabelFlags( ui_font::h_center|ui_font::v_top|ui_font::is_help_text );
     m_pNavText->UseSmallText(TRUE);
 
-#if 0
     // Get stats data for player here!
     player_stats MyStats = g_MatchMgr.GetAllCareerStats();
     s32 Hours   = ( MyStats.PlayTime / 60 );
@@ -319,7 +318,6 @@ xbool dlg_stats::Create( s32                        UserID,
 #ifndef TARGET_XBOX
     m_pTextKicks    ->SetLabel( xwstring( xfs( "%d", MyStats.Kicks        ) ) );
     m_pTextVotes    ->SetLabel( xwstring( xfs( "%d", MyStats.VotesStarted ) ) );
-#endif
 #endif
 
     // Disable highlight

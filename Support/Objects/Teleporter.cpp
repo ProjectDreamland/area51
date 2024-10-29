@@ -12,7 +12,7 @@
 #include "Objects\Player.hpp"
 #include "Dictionary\global_dictionary.hpp"
 #include "AudioMgr\AudioMgr.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 
 //==============================================================================
 //  OBJECT DESCRIPTION

@@ -945,7 +945,7 @@ void state_mgr::CheckControllers( void )
 #ifdef TARGET_PC
        input_gadget ControllerQuery = INPUT_XBOX_QRY_PAD_PRESENT;
        input_gadget AnalogQuery     = INPUT_XBOX_QRY_ANALOG_MODE;   
-	  //(void) input_gadget ControllerQuery;
+	//(void) input_gadget ControllerQuery;
     //(void) input_gadget AnalogQuery;
     //return;
 #endif

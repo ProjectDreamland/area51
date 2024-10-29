@@ -21,7 +21,7 @@ Circuit CTF\04\Value    = enum of 4 choices         no      yes     no
 //  INCLUDES
 //==============================================================================
 
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "MP_Settings.hpp"
 
 //==============================================================================

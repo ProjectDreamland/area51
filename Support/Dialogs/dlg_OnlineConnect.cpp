@@ -296,7 +296,7 @@ void dlg_online_connect::Render( s32 ox, s32 oy )
 
     xbool PalMode;
     irect textPos;
-    //eng_GetPALMode( PalMode ); // #TODO: !!!
+    eng_GetPALMode( PalMode );
     if( PalMode )
     {
         textPos.Set( tempW-150, 370, tempW+150, 50 );
@@ -832,8 +832,8 @@ void dlg_online_connect::OnUpdate ( ui_win* pWin, f32 DeltaTime )
                         if( Error==ATTACH_STATUS_ERROR )
                         {
                             connect_status ConnStatus;
-                            // #TODO: !!!
-                          //  net_GetConnectStatus( ConnStatus );
+
+                            net_GetConnectStatus( ConnStatus );
                             // Literal error text from the connection
                             if( ConnStatus.ErrorText[0] )
                             {

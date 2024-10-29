@@ -22,9 +22,9 @@
 #   if _MSC_VER >= 1300
 #       define WIN32_LEAN_AND_MEAN
 #       ifdef TARGET_PC
-//#           include <windows.h>
-//#           include <D3d8.h>
-//#           include <XGraphics.h>
+#           include <windows.h>
+#           include <D3d8.h>
+#           include <XGraphics.h>
 #       endif
 #   endif
 #else
@@ -118,7 +118,6 @@ static AlphaType GetAlphaUsage( xbitmap& Source )
 
 static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTCMethod Method )
 {
-#if 0
 #ifndef TARGET_PC
     (void)bForceMips;
     (void)Method;
@@ -416,7 +415,6 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
         H      >>= 1;
     }
 
-#endif
 #endif
 }
 

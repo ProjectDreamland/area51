@@ -15,7 +15,7 @@
 #include "x_types.hpp"
 #include "Obj_Mgr\Obj_Mgr.hpp"
 #include "..\Support\Globals\Global_Variables_Manager.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Auxiliary\MiscUtils\PropertyEnum.hpp"
 
 class trigger_object;

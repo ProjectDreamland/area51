@@ -1,3 +1,0 @@
-add_subdirectory(Bitmap)
-add_subdirectory(fx_RunTime)
-add_subdirectory(MiscUtils)

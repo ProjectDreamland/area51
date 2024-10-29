@@ -10,7 +10,7 @@
 #include "ResourceMgr\ResourceMgr.hpp"
 #include "Objects\Render\SkinInst.hpp"
 #include "Animation\AnimPlayer.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Characters\FloorProperties.hpp"
 
 //=========================================================================

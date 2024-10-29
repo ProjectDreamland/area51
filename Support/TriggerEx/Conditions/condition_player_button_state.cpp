@@ -10,7 +10,7 @@
 
 #include "condition_player_button_state.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "..\Support\Objects\Player.hpp"
 #include "..\triggerex_object.hpp"
 

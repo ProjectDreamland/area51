@@ -10,7 +10,7 @@
 
 #include "condition_player_has_item.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "..\Support\Objects\Player.hpp"
 #include "Dictionary\global_dictionary.hpp"
 #include "Inventory/Inventory2.hpp"

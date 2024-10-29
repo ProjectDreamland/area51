@@ -11,7 +11,7 @@
 #include "action_checkpoint.hpp"
 
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Objects\HudObject.hpp"
 #include "Dictionary\Global_Dictionary.hpp"
 #include "GameTextMgr\GameTextMgr.hpp"
