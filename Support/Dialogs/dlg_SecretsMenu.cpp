@@ -407,7 +407,7 @@ void dlg_secrets_menu::Render( s32 ox, s32 oy )
             switch( m_CurrentType )
             {
                 case SECRET_TYPE_VIDEO:
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
                     //if( Movie.IsPlaying() )
                     //{               
                     //    Movie.Render( vector3( 129.0f, 59.0f, 0.0f ), vector2( 256.0f, 192.0f ), TRUE );
@@ -587,7 +587,7 @@ void dlg_secrets_menu::OnPadSelect( ui_win* pWin )
             {
                 // shut down background movie
                 g_StateMgr.DisableBackgoundMovie();
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
             // play the selected movie
             PlaySimpleMovie( SelectBestClip(m_FileName) );
 #endif
@@ -797,7 +797,7 @@ void dlg_secrets_menu::InitIconScaling ( xbool ScaleDown )
         m_TimeOut = 0.0f;
 
         // restart background movie
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
         Movie.Close();
 #endif
         g_StateMgr.EnableBackgroundMovie();

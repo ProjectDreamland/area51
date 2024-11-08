@@ -51,6 +51,11 @@ enum auth_status
     AUTH_STAT_NO_USERS,
     AUTH_STAT_ALREADY_LOGGED_ON,
     AUTH_STAT_SERVER_BUSY,
+    // PC test
+    AUTH_STAT_IDLE,
+    AUTH_STAT_BUSY,
+    AUTH_STAT_OK,
+    AUTH_STAT_FAILED,
 };
 
 //------------------------------------------------------------------------------
@@ -69,6 +74,9 @@ enum match_conn_status
     MATCH_CONN_REGISTER_FAILED,
     MATCH_CONN_CONNECTING,
     MATCH_CONN_SESSION_ENDED,
+    // PC test
+    MATCH_CONN_INVALID_ACCOUNT,
+    MATCH_CONN_SECURITY_FAILED,
 };
 
 #if defined(ENABLE_XBOX_LIVE)
@@ -522,6 +530,12 @@ enum match_mgr_state
     MATCH_ACQUIRE_SERVERS,
     MATCH_ACQUIRE_LAN_SERVERS,
     MATCH_ACQUIRE_EXTENDED_INFO,
+    // PC test
+    MATCH_ACQUIRE_BUDDIES,
+    MATCH_ACQUIRE_LOBBIES,
+    MATCH_ACQUIRE_REGIONS,
+    MATCH_ACQUIRE_EXTENDED_SERVER_INFO,
+    MATCH_INDIRECT_CONNECT,
     // Start being a server
     MATCH_BECOME_SERVER,
     MATCH_VALIDATE_SERVER_NAME,
@@ -615,6 +629,11 @@ public:
         xbool               IsVisible                   ( void )                    { return m_IsVisible;               }
         void                NotifyKick                  ( const char* UniqueId );
         void                ShowOnlineStatus            ( xbool IsEnabled );
+        
+#ifdef TARGET_PC
+        void                SetBuddies                  (const char* buddies);
+        void                ReleasePatch                ( void );
+#endif        
 
         xbool               ValidateServerInfo          ( const server_info &info );
         xbool               ValidateLobbyInfo           ( const lobby_info &info );
@@ -635,7 +654,11 @@ public:
         xbool               IsAcquireComplete           ( void );
         void                StartIndirectLookup         ( void );
         void                StartLogin                  ( void );
+#ifdef TARGET_PC
+        void                BecomeClient                ( const server_info& Config );
+#else
         void                BecomeClient                ( void );
+#endif        
         u64                 GetPlayerIdentifier         ( s32 Index )               { return m_PlayerIdentifier[Index]; }
         const char*         GetNickname                 ( void )                    { return m_Nickname;                }
         void                SetNickname                 ( const char* pName )       { x_strcpy( m_Nickname, pName );    }
@@ -898,6 +921,9 @@ private:
         xarray<server_info> m_PendingResponseList;
         xarray<lobby_info>  m_LobbyList;
         xarray<online_user> m_UserAccounts;
+#ifdef TARGET_PC
+        xarray<server_info> m_ServerList;
+#endif
         s32                 m_ActiveAccount;
         online_user         m_ActiveUserAccount;
         char                m_Nickname[32];
@@ -981,6 +1007,12 @@ private:
         s32                 m_UpdateInterval;
         xarray<buddy_info>  m_RecentPlayers;
         xbool               m_IsVoiceCapable;
+        
+#ifdef TARGET_PC
+        char*               m_pMessageOfTheDay;
+        char*               m_pMessageOfTheDayBuffer;
+        char                m_BuddyList[100];
+#endif        
 
 #if defined(ENABLE_GAMESPY)
         xbool               m_MessageOfTheDayReceived;

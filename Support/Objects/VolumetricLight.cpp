@@ -10,7 +10,7 @@
 //==============================================================================
 
 #include "VolumetricLight.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Entropy.hpp"
 #include "E_Draw.hpp"
 #include "Render\Render.hpp"

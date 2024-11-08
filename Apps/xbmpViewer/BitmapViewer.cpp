@@ -17,11 +17,11 @@ static char THIS_FILE[] = __FILE__;
 
 CBitmapViewer::CBitmapViewer()
 {
-    m_pBitmap		= NULL;
-    m_Mip			= 0;
-    m_hBitmap		= NULL;
-    m_Alpha			= FALSE;
-	m_TrackingMouse = FALSE;
+    m_pBitmap        = NULL;
+    m_Mip            = 0;
+    m_hBitmap        = NULL;
+    m_Alpha            = FALSE;
+    m_TrackingMouse = FALSE;
 }
 
 CBitmapViewer::~CBitmapViewer()
@@ -72,12 +72,12 @@ s32 CBitmapViewer::GetBitmapHeight( void )
 }
 
 BEGIN_MESSAGE_MAP(CBitmapViewer, CWnd)
-	//{{AFX_MSG_MAP(CBitmapViewer)
-	ON_WM_PAINT()
-	ON_WM_ERASEBKGND()
-	ON_WM_MOUSEMOVE()
+    //{{AFX_MSG_MAP(CBitmapViewer)
+    ON_WM_PAINT()
+    ON_WM_ERASEBKGND()
+    ON_WM_MOUSEMOVE()
     ON_MESSAGE(WM_MOUSELEAVE, OnMouseLeave)
-	//}}AFX_MSG_MAP
+    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
@@ -86,7 +86,7 @@ END_MESSAGE_MAP()
 
 void CBitmapViewer::OnPaint() 
 {
-	CPaintDC dc(this); // device context for painting
+    CPaintDC dc(this); // device context for painting
     CPaintDC* pDC = &dc;
     
     // Do we have a bitmap?
@@ -203,47 +203,47 @@ BOOL CBitmapViewer::OnEraseBkgnd(CDC* pDC)
 {
     // Don't erase the background
     return 1;
-//	return CWnd::OnEraseBkgnd(pDC);
+//    return CWnd::OnEraseBkgnd(pDC);
 }
 
 void CBitmapViewer::OnMouseMove(UINT nFlags, CPoint point) 
 {
-	// Track mouse to get the leave event
-	if( !m_TrackingMouse )
-	{
-		TRACKMOUSEEVENT ev;
-		ev.cbSize = sizeof(TRACKMOUSEEVENT);
-		ev.dwFlags = TME_LEAVE;
-		ev.hwndTrack = GetSafeHwnd();
-		ev.dwHoverTime = HOVER_DEFAULT;
-		m_TrackingMouse = _TrackMouseEvent( &ev );
-	}
+    // Track mouse to get the leave event
+    if( !m_TrackingMouse )
+    {
+        TRACKMOUSEEVENT ev;
+        ev.cbSize = sizeof(TRACKMOUSEEVENT);
+        ev.dwFlags = TME_LEAVE;
+        ev.hwndTrack = GetSafeHwnd();
+        ev.dwHoverTime = HOVER_DEFAULT;
+        m_TrackingMouse = _TrackMouseEvent( &ev );
+    }
 
-	// Generate string and set into status bar
-	if( m_pBitmap )
-	{
-		CRect cr;
-		GetClientRect( &cr );
+    // Generate string and set into status bar
+    if( m_pBitmap )
+    {
+        CRect cr;
+        GetClientRect( &cr );
 
-		CString s;
-		int x = point.x;
-		int y = point.y;
+        CString s;
+        int x = point.x;
+        int y = point.y;
 
-		x = x * m_pBitmap->GetWidth( m_Mip )  / cr.Width();
-		y = y * m_pBitmap->GetHeight( m_Mip ) / cr.Height();
-		xcolor Color = m_pBitmap->GetPixelColor( x, y, m_Mip );
+        x = x * m_pBitmap->GetWidth( m_Mip )  / cr.Width();
+        y = y * m_pBitmap->GetHeight( m_Mip ) / cr.Height();
+        xcolor Color = m_pBitmap->GetPixelColor( x, y, m_Mip );
 
-		s.Format( "XY (%d,%d) RGBA (%d,%d,%d,%d)", x, y, Color.R, Color.G, Color.B, Color.A );
-		g_pMainFrame->SetStatusPane( INDICATOR_COLOR, s );
-	}
+        s.Format( "XY (%d,%d) RGBA (%d,%d,%d,%d)", x, y, Color.R, Color.G, Color.B, Color.A );
+        g_pMainFrame->SetStatusPane( INDICATOR_COLOR, s );
+    }
 
-	CWnd::OnMouseMove(nFlags, point);
+    CWnd::OnMouseMove(nFlags, point);
 }
 
 LRESULT CBitmapViewer::OnMouseLeave(WPARAM w, LPARAM l)
 {
-	m_TrackingMouse = FALSE;
-	g_pMainFrame->SetStatusPane( INDICATOR_COLOR, "" );
+    m_TrackingMouse = FALSE;
+    g_pMainFrame->SetStatusPane( INDICATOR_COLOR, "" );
 
     return 0;
 }

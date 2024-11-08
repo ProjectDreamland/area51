@@ -14,22 +14,22 @@ class CProgress : public CDialog
 {
 // Construction
 public:
-	CProgress(CWnd* pParent = NULL);   // standard constructor
+    CProgress(CWnd* pParent = NULL);   // standard constructor
 
 // Dialog Data
-	//{{AFX_DATA(CProgress)
-	enum { IDD = IDD_PROGRESS };
-	CStatic	m_CtrlText;
-	CProgressCtrl	m_CtrlProgress;
-	//}}AFX_DATA
+    //{{AFX_DATA(CProgress)
+    enum { IDD = IDD_PROGRESS };
+    CStatic    m_CtrlText;
+    CProgressCtrl    m_CtrlProgress;
+    //}}AFX_DATA
 
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CProgress)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CProgress)
+    protected:
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+    //}}AFX_VIRTUAL
 
 
 // Implementation
@@ -39,11 +39,11 @@ public:
 
 protected:
 
-	// Generated message map functions
-	//{{AFX_MSG(CProgress)
-	virtual BOOL OnInitDialog();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+    // Generated message map functions
+    //{{AFX_MSG(CProgress)
+    virtual BOOL OnInitDialog();
+    //}}AFX_MSG
+    DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

@@ -19,7 +19,11 @@ class proxy_playsurface;
 class playsurface_mgr
 {
 public:
+    #ifdef TARGET_XBOX
     enum { VERSION = 5 };
+    #else
+    enum { VERSION = 10 };
+    #endif
 
     struct surface
     {

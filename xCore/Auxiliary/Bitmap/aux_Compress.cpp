@@ -22,9 +22,9 @@
 #   if _MSC_VER >= 1300
 #       define WIN32_LEAN_AND_MEAN
 #       ifdef TARGET_PC
-//#           include <windows.h>
-//#           include <D3d8.h>
-//#           include <XGraphics.h>
+#           include <windows.h>
+#           include <D3d8.h>
+#           include <XGraphics.h>
 #       endif
 #   endif
 #else
@@ -118,7 +118,6 @@ static AlphaType GetAlphaUsage( xbitmap& Source )
 
 static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTCMethod Method )
 {
-#if 0
 #ifndef TARGET_PC
     (void)bForceMips;
     (void)Method;
@@ -186,7 +185,7 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
         //
         Dest.Setup( Format,W,H,TRUE,NULL,FALSE,NULL,W,NMips );
         u32 Size = Dest.GetDataSize();
-        x_memcpy(
+        x_memmove(
             (void*)Dest.GetPixelData(),
             Dxtc.GetBlocks( ),
             Size );
@@ -207,7 +206,7 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
         u32 W = Temp.GetWidth (i);
         u32 H = Temp.GetHeight(i);
         DxtImage.SetSize( W,H );
-        x_memcpy(
+        x_memmove(
             DxtImage.GetPixels     ( ),
             Temp    .GetPixelData  (i),
             Temp    .GetMipDataSize(i));
@@ -239,7 +238,7 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
         //  Load dest
         //
         u32 Size = Dest.GetMipDataSize(i);
-        x_memcpy(
+        x_memmove(
             (void*)Dest.GetPixelData(i),
             Dxtc.GetBlocks( ),
             Size );
@@ -417,7 +416,6 @@ static void PackImage( xbitmap& Dest,const xbitmap& Source,xbool bForceMips,DXTC
     }
 
 #endif
-#endif
 }
 
 //=============================================================================
@@ -506,7 +504,7 @@ static void DecompressDXTC( xbitmap& Dest, const xbitmap& Source, DXTCMethod Met
     {
         dxtc.SetMethod( Method );
         dxtc.SetSize( W,H );
-        x_memcpy(
+        x_memmove(
             dxtc  .GetBlocks   ( ),
             Source.GetPixelData( ),
             Source.GetDataSize ( ));
@@ -517,7 +515,7 @@ static void DecompressDXTC( xbitmap& Dest, const xbitmap& Source, DXTCMethod Met
             H,
             TRUE,
             NULL );
-        x_memcpy(
+        x_memmove(
             (void*)Dest.GetPixelData( ),
             Temp.GetPixels( ),
             W*H*4 );
@@ -529,12 +527,12 @@ static void DecompressDXTC( xbitmap& Dest, const xbitmap& Source, DXTCMethod Met
         {
             dxtc.SetMethod( Method );
             dxtc.SetSize( W,H );
-            x_memcpy(
+            x_memmove(
                 dxtc  .GetBlocks     ( ),
                 Source.GetPixelData  (i),
                 Source.GetMipDataSize(i));
             dxtc.ToImage32( &Temp );
-            x_memcpy(
+            x_memmove(
                 (void*)Dest.GetPixelData(i),
                 Temp.GetPixels( ),
                 W*H*4 );

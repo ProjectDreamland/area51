@@ -14,7 +14,7 @@ class CBitmapViewer : public CWnd
 {
 // Construction
 public:
-	CBitmapViewer();
+    CBitmapViewer();
 
 // Attributes
 public:
@@ -22,7 +22,7 @@ public:
     s32         m_Mip;
     HBITMAP     m_hBitmap;
     xbool       m_Alpha;
-	xbool		m_TrackingMouse;
+    xbool        m_TrackingMouse;
 
 // Operations
 public:
@@ -32,24 +32,24 @@ public:
     s32     GetBitmapHeight ( void );
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CBitmapViewer)
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CBitmapViewer)
+    //}}AFX_VIRTUAL
 
 // Implementation
 public:
-	virtual ~CBitmapViewer();
+    virtual ~CBitmapViewer();
 
-	// Generated message map functions
+    // Generated message map functions
 protected:
-	//{{AFX_MSG(CBitmapViewer)
-	afx_msg void OnPaint();
-	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
-	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+    //{{AFX_MSG(CBitmapViewer)
+    afx_msg void OnPaint();
+    afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+    afx_msg void OnMouseMove(UINT nFlags, CPoint point);
     afx_msg LRESULT OnMouseLeave(WPARAM w, LPARAM l);
-	//}}AFX_MSG
+    //}}AFX_MSG
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

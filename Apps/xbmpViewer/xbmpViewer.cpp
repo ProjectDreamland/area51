@@ -19,11 +19,11 @@ CString g_CmdLineFile;
 // CXbmpViewerApp
 
 BEGIN_MESSAGE_MAP(CXbmpViewerApp, CWinApp)
-	//{{AFX_MSG_MAP(CXbmpViewerApp)
-	ON_COMMAND(ID_APP_ABOUT, OnAppAbout)
-		// NOTE - the ClassWizard will add and remove mapping macros here.
-		//    DO NOT EDIT what you see in these blocks of generated code!
-	//}}AFX_MSG_MAP
+    //{{AFX_MSG_MAP(CXbmpViewerApp)
+    ON_COMMAND(ID_APP_ABOUT, OnAppAbout)
+        // NOTE - the ClassWizard will add and remove mapping macros here.
+        //    DO NOT EDIT what you see in these blocks of generated code!
+    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -31,8 +31,8 @@ END_MESSAGE_MAP()
 
 CXbmpViewerApp::CXbmpViewerApp()
 {
-	// TODO: add construction code here,
-	// Place all significant initialization in InitInstance
+    // TODO: add construction code here,
+    // Place all significant initialization in InitInstance
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -45,12 +45,12 @@ CXbmpViewerApp theApp;
 
 BOOL CXbmpViewerApp::InitInstance()
 {
-	AfxEnableControlContainer();
+    AfxEnableControlContainer();
 
-	// Standard initialization
-	// If you are not using these features and wish to reduce the size
-	//  of your final executable, you should remove from the following
-	//  the specific initialization routines you do not need.
+    // Standard initialization
+    // If you are not using these features and wish to reduce the size
+    //  of your final executable, you should remove from the following
+    //  the specific initialization routines you do not need.
 
 //    INITCOMMONCONTROLSEX    iccex;
 //    iccex.dwSize = sizeof(iccex);
@@ -59,19 +59,19 @@ BOOL CXbmpViewerApp::InitInstance()
 
 #if _MSC_VER <= 1200 // MFC 6.0 or earlier
 #ifdef _AFXDLL
-	Enable3dControls();			// Call this when using MFC in a shared DLL
+    Enable3dControls();            // Call this when using MFC in a shared DLL
 #else
-	Enable3dControlsStatic();	// Call this when linking to MFC statically
+    Enable3dControlsStatic();    // Call this when linking to MFC statically
 #endif
 #endif // MFC 6.0 or earlier
 
-	// Change the registry key under which our settings are stored.
-	// TODO: You should modify this string to be something appropriate
-	// such as the name of your company or organization.
-	SetRegistryKey(_T("Inevitable"));
+    // Change the registry key under which our settings are stored.
+    // TODO: You should modify this string to be something appropriate
+    // such as the name of your company or organization.
+    SetRegistryKey(_T("Inevitable"));
 
-	// To create the main window, this code creates a new frame window
-	// object and then sets it as the application's main window object.
+    // To create the main window, this code creates a new frame window
+    // object and then sets it as the application's main window object.
 
     // Process command line arguments
     CString CmdLine = m_lpCmdLine;
@@ -110,19 +110,19 @@ BOOL CXbmpViewerApp::InitInstance()
         }
     }
 
-	// create and load the frame with its resources
-	CMainFrame* pMainFrame = new CMainFrame;
-	m_pMainWnd = pMainFrame;
+    // create and load the frame with its resources
+    CMainFrame* pMainFrame = new CMainFrame;
+    m_pMainWnd = pMainFrame;
 
-	pMainFrame->LoadFrame(IDR_MAINFRAME,
-		WS_OVERLAPPEDWINDOW | FWS_ADDTOTITLE, NULL,
-		NULL);
+    pMainFrame->LoadFrame(IDR_MAINFRAME,
+        WS_OVERLAPPEDWINDOW | FWS_ADDTOTITLE, NULL,
+        NULL);
 
-	// The one and only window has been initialized, so show and update it.
-	pMainFrame->ShowWindowEx(m_nCmdShow);
-	pMainFrame->UpdateWindow();
+    // The one and only window has been initialized, so show and update it.
+    pMainFrame->ShowWindowEx(m_nCmdShow);
+    pMainFrame->UpdateWindow();
 
-	return TRUE;
+    return TRUE;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -138,51 +138,51 @@ BOOL CXbmpViewerApp::InitInstance()
 class CAboutDlg : public CDialog
 {
 public:
-	CAboutDlg();
+    CAboutDlg();
 
 // Dialog Data
-	//{{AFX_DATA(CAboutDlg)
-	enum { IDD = IDD_ABOUTBOX };
-	//}}AFX_DATA
+    //{{AFX_DATA(CAboutDlg)
+    enum { IDD = IDD_ABOUTBOX };
+    //}}AFX_DATA
 
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CAboutDlg)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CAboutDlg)
+    protected:
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+    //}}AFX_VIRTUAL
 
 // Implementation
 protected:
-	//{{AFX_MSG(CAboutDlg)
-		// No message handlers
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+    //{{AFX_MSG(CAboutDlg)
+        // No message handlers
+    //}}AFX_MSG
+    DECLARE_MESSAGE_MAP()
 };
 
 CAboutDlg::CAboutDlg() : CDialog(CAboutDlg::IDD)
 {
-	//{{AFX_DATA_INIT(CAboutDlg)
-	//}}AFX_DATA_INIT
+    //{{AFX_DATA_INIT(CAboutDlg)
+    //}}AFX_DATA_INIT
 }
 
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CAboutDlg)
-	//}}AFX_DATA_MAP
+    CDialog::DoDataExchange(pDX);
+    //{{AFX_DATA_MAP(CAboutDlg)
+    //}}AFX_DATA_MAP
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
-	//{{AFX_MSG_MAP(CAboutDlg)
-		// No message handlers
-	//}}AFX_MSG_MAP
+    //{{AFX_MSG_MAP(CAboutDlg)
+        // No message handlers
+    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 // App command to run the dialog
 void CXbmpViewerApp::OnAppAbout()
 {
-	CAboutDlg aboutDlg;
-	aboutDlg.DoModal();
+    CAboutDlg aboutDlg;
+    aboutDlg.DoModal();
 }
 
 /////////////////////////////////////////////////////////////////////////////

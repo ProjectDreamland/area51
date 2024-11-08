@@ -11,7 +11,7 @@
 #include "Objects\ParticleEmiter.hpp"
 #include "AudioMgr\AudioMgr.hpp"
 #include "..\Support\Tracers\TracerMgr.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Objects\ClothObject.hpp"
 #include "Objects\Flag.hpp"
 #include "Objects\Actor\Actor.hpp"

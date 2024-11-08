@@ -105,9 +105,9 @@ public:
                       
     key*                CopyOf      ( void              );          // duplicate a key
                                                                    
-    void                SetKey      ( s32 T, f32* pVals )           { m_Time = T; x_memcpy( m_pData, pVals, m_nVals * sizeof(f32) ); }
+    void                SetKey      ( s32 T, f32* pVals )           { m_Time = T; x_memmove( m_pData, pVals, m_nVals * sizeof(f32) ); }
     void                SetKeyTime  ( s32 T             )           { m_Time = T; }
-    void                SetKeyData  ( s32* pVals        )           { x_memcpy( m_pData, pVals, m_nVals * sizeof(f32) ); }                                                                    
+    void                SetKeyData  ( s32* pVals        )           { x_memmove( m_pData, pVals, m_nVals * sizeof(f32) ); }                                                                    
     s32                 GetKeyTime  ( void )                        { return m_Time;    }  //const;
     f32*                GetKeyValue ( void )                        { return m_pData;   }  //const;
 

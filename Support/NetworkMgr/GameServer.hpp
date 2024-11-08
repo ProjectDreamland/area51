@@ -76,7 +76,7 @@ public:
         void                ShowLifeDelay       ( void );
         f32                 GetAveragePing      ( void );
         f32                 GetClientPing       ( s32 ClientIndex );
-        s32                 GetClientCount	    ( void );
+        s32                 GetClientCount        ( void );
         s32                 GetMaxClients       ( void )                            { return m_MaxClients;  }
         s32                 GetClientIndex      ( s32 PlayerIndex );
 

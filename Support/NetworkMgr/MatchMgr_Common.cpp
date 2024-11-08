@@ -194,7 +194,7 @@ const char* GetStateName(match_mgr_state Mode)
     {
     case MATCH_IDLE:                       return "MATCH_IDLE";
     case MATCH_AUTHENTICATE_MACHINE:       return "MATCH_AUTHENTICATE_MACHINE";
-    case MATCH_SILENT_LOGON:			   return "MATCH_SILENT_LOGON";
+    case MATCH_SILENT_LOGON:               return "MATCH_SILENT_LOGON";
     case MATCH_CONNECT_MATCHMAKER:         return "MATCH_CONNECT_MATCHMAKER";
     case MATCH_SECURITY_CHECK:             return "MATCH_SECURITY_CHECK";
     case MATCH_AUTH_DONE:                  return "MATCH_AUTH_DONE";

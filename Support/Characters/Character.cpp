@@ -17,7 +17,7 @@
 #include "Character.hpp"
 #include "Navigation\CoverNode.hpp"
 #include "Navigation\AlarmNode.hpp"
-#include "MiscUtils\TrajectoryGenerator.hpp"
+#include "..\MiscUtils\TrajectoryGenerator.hpp"
 #include "objects\GrenadeProjectile.hpp"
 #include "objects\GravChargeProjectile.hpp"
 #include "Objects\Player.hpp"

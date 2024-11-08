@@ -16,71 +16,21 @@
 	<Configurations>
 		<Configuration
 			Name="EDITOR-Debug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4"
-			UseOfMFC="1"
-			CharacterSet="0">
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files,\.,$(X)/Entropy,$(X)\..\Support"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR"
-				BasicRuntimeChecks="1"
+				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				BufferSecurityCheck="TRUE"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName).lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="EDITOR-OptDebug|Win32"
-			OutputDirectory="$(ProjectDir)_$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(ConfigurationName)"
-			ConfigurationType="4"
-			UseOfMFC="1"
-			CharacterSet="0">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X)\x_files,\.,$(X)/Entropy,$(X)\..\Support"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG,APP_EDITOR"
-				StringPooling="TRUE"
-				MinimalRebuild="TRUE"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName).lib"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -139,23 +89,11 @@
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\stdafx.cpp">
 			<FileConfiguration
 				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-OptDebug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"
 					UsePrecompiledHeader="1"/>

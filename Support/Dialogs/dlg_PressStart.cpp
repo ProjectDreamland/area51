@@ -484,7 +484,7 @@ void dlg_press_start::OnUpdate ( ui_win* pWin, f32 DeltaTime )
     }
 #endif
 
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
     if( m_bPlayDemo )
     {
         if( !Movie.IsPlaying() )

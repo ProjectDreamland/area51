@@ -322,7 +322,7 @@ void ui_font::TextSize( irect& Rect, const xwchar* pString, s32 Count ) const
 
                 if( buttonCode != -1 )
                 {
-#if 1//def TARGET_PS2 
+#ifdef TARGET_PS2 
                     if( buttonCode == PS2_BUTTON_START )
                     {
                         Width += BUTTON_START_SPRITE_WIDTH; 
@@ -427,7 +427,7 @@ s32 ui_font::TextWidth( const xwchar* pString, s32 Count ) const
 
                 if( ButtonCode != -1 )
                 {
-#if 1//def TARGET_PS2 
+#ifdef TARGET_PS2 
                     // for the start button, double it... 
                     if( ButtonCode == PS2_BUTTON_START )
                     {
@@ -763,7 +763,7 @@ void ui_font::TextWrap( const xwchar* pString, const irect& Rect, xwstring& Wrap
 
                 if( ButtonCode != -1 )
                 {
-#if 1//def TARGET_PS2 
+#ifdef TARGET_PS2 
                     // for the start button, double it... 
                     if( ButtonCode == PS2_BUTTON_START )
                     {
@@ -967,7 +967,7 @@ void ui_font::RenderHelpText( const irect&  Rect,
                     Width   += HELP_TEXT_SPACING;
                 }
 
-#if 1//def TARGET_PS2
+#ifdef TARGET_PS2
                 if( buttonCode == PS2_BUTTON_START )
                 {
                     Width   += BUTTON_START_SPRITE_WIDTH;
@@ -1150,8 +1150,7 @@ void ui_font::RenderHelpText( const irect&  Rect,
                     sx += BUTTON_SPRITE_WIDTH;
                 }
 #else
-                //if( buttonCode == XBOX_BUTTON_START )
-                if( buttonCode == PS2_BUTTON_START)
+                if( buttonCode == XBOX_BUTTON_START )
                 {
                     draw_Sprite( vector3((f32)sx+1, (f32)sy+1, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(0,0,0,255) );
                     draw_Sprite( vector3((f32)sx, (f32)sy, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(255,255,255) );
@@ -1490,7 +1489,7 @@ void ui_font::RenderText( const irect&  Rect,
 
                     //draw_Sprite( vector3((f32)tx+1, (f32)ty+1, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(0,0,0,255) );
 	        	    //draw_Sprite( vector3((f32)tx, (f32)ty, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(255,255,255) );
-#if 1//def TARGET_PS2
+#ifdef TARGET_PS2
                     if( buttonCode == PS2_BUTTON_START )
                     {
                         tx += BUTTON_SPRITE_WIDTH;

@@ -91,7 +91,11 @@ public:
         void            LoadMissionComplete ( void );
         voice_proxy&    GetVoiceProxy       ( s32 ClientIndex );
         game_server&    GetServerObject     ( void )                            { ASSERT( m_pServer ); return *m_pServer;}
-        game_client&    GetClientObject     ( void )                            { ASSERT( m_pClient ); return *m_pClient;}
+#ifdef TARGET_XBOX
+        game_client&    GetClientObject     ( void )                            { ASSERT(m_pClient); return *m_pClient; }
+#else
+        game_client&    GetClientObject     ( void )                            { return *m_pClient; }
+#endif
         xbool           IsServerABuddy      ( const char* pSearch );
         xbool           HasPlayerBuddy      ( const char* pSearch );
 

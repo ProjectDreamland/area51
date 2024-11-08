@@ -78,8 +78,8 @@
 //  STORAGE
 //==============================================================================
 
-logic_base    	s_LogicBase;
-logic_campaign	s_LogicCampaign;
+logic_base        s_LogicBase;
+logic_campaign    s_LogicCampaign;
 logic_dm        s_LogicDM;
 logic_tdm       s_LogicTDM;
 logic_ctf       s_LogicCTF;
@@ -290,7 +290,7 @@ void game_mgr::SetGameType( game_type GameType )
 
     switch( GameType )
     {
-		default:            // fall through   
+        default:            // fall through   
         case GAME_MP:       pGameLogic = &s_LogicBase;      break;
         case GAME_CAMPAIGN: pGameLogic = &s_LogicCampaign;  break;
         case GAME_DM:       pGameLogic = &s_LogicDM;        break;
@@ -1183,10 +1183,15 @@ void game_mgr::Connect(       s32&    PlayerIndex,
     // Muting.
     {
         // On XBox this will lookup the mutelist from the XBox Live service
+        #if defined ( TARGET_PC )
+        {
+        }
+        #endif
+        #if defined ( TARGET_XBOX )
         xbool IsMuted = g_MatchMgr.IsPlayerMuted( Identifier );
 
         g_VoiceMgr.SetLocallyMuted( PlayerIndex, IsMuted );
-
+        #endif
         /*
         if( IsMuted == TRUE )
             LOG_MESSAGE( "game_mgr::Connect", "Locally muting player %d", PlayerIndex );
@@ -2178,10 +2183,15 @@ void game_mgr::AcceptUpdate( const bitstream& BS )
                     if( (OldConnected == FALSE) && (Player.IsConnected == TRUE) )
                     {
                         // On XBox this will lookup the mutelist from the XBox Live service
+                        #if defined ( TARGET_PC )
+                        {
+                        }
+                        #endif
+                        #if defined ( TARGET_XBOX )
                         xbool IsMuted = g_MatchMgr.IsPlayerMuted( Player.Identifier );
 
                         g_VoiceMgr.SetLocallyMuted( i, IsMuted );
-
+                        #endif
                         /*
                         if( IsMuted == TRUE )
                             LOG_MESSAGE( "game_mgr::AcceptUpdate", "Locally muting player %d", i );

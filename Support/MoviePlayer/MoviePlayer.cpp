@@ -27,14 +27,9 @@ void movie_player::Init(void)
 {
     // TODO: CTetrick - I'll clean this up... 
     // in a hurry now - I think PS2 needs the lang set prior to init.
-    // will verify and clean up ASAP.
-#ifdef TARGET_PS2
-    SetLanguage( x_GetLocale() );
-#endif
+    // will verify and clean up ASAP.    
     m_Private.Init();
-#ifdef TARGET_XBOX
     SetLanguage( x_GetLocale() );
-#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -54,20 +49,17 @@ IsResident = false;
     }
 
     m_IsLooped  = IsLooped;
-
     m_Shutdown  = FALSE;
-	m_Finished  = FALSE;
+    m_Finished  = FALSE;
     m_pBitmaps  = NULL;
 
     // If we're using a modal version of the movie playback, we make the priority of the main thread
     // higher than the decoder so that it gets a chance to render the resulting bitmap within sufficient time
     // without being locked out due to the decode thread using all CPU time.
-#if defined(TARGET_GCN)
-    Priority = -1;
-#else
+
     Priority = 0;
-#endif
-	return TRUE;
+    
+    return TRUE;
 }
 
 //-----------------------------------------------------------------------------
@@ -78,7 +70,7 @@ void movie_player::Close(void)
         return;
     }
     
-	ASSERT(!m_Shutdown);
+    ASSERT(!m_Shutdown);
 
     if (m_pBitmaps)
     {
@@ -107,117 +99,37 @@ void movie_player::Kill(void)
 //
 void movie_player::Render(const vector2& Pos, const vector2& Size, xbool InRenderLoop)
 {
-    #ifdef TARGET_XBOX
+#ifdef TARGET_XBOX
+    if (!InRenderLoop)
     {
-        if( !InRenderLoop )
+        if (eng_Begin("Movie"))
         {
-            if( eng_Begin( "Movie" ) )
-            {
-                m_Private.SetPos( (vector3&)Pos );
-                m_Private.Decode();
-                eng_End();
-            }
-        }
-        else
-        {
-            m_Private.SetPos( (vector3&)Pos );
+            m_Private.SetPos((vector3&)Pos);
             m_Private.Decode();
+            eng_End();
         }
     }
-    #elif !defined TARGET_PC
+    else
     {
-        vram_Flush();
-
-        //////////////////////////////////////////////////////////////////////
-
-        s32         nBitmaps;
-        vector2     BitmapPos;
-        vector2     BitmapSize;
-        vector2     BitmapLowerRight;
-        vector2     BitmapTopLeft;
-        s32         i;
-
-        if (m_pBitmaps)
-        {
-            m_Private.ReleaseBitmap(m_pBitmaps);
-        }
-
-        m_pBitmaps = m_Private.Decode();
-
-        // RMB - more hack!!!
-        if( !m_pBitmaps )
-            return;
-        ASSERT(m_pBitmaps);
-        nBitmaps = m_Private.GetBitmapCount();
-
-        // PS2 and GameCube have parametric uv's
-        f32 V0 = 0.0f ;
-        f32 V1 = (f32)m_Private.GetHeight() / (f32)m_pBitmaps->GetHeight();
-
-        f32 U0 = 0.0f ;
-        f32 U1 = 1.0f;
-
-        #if defined(TARGET_GCN)
-        BitmapSize       = vector2((Size.X / nBitmaps) + 1,(f32)Size.Y+1);
-        #else
-        BitmapSize       = vector2((Size.X / nBitmaps), (f32)Size.Y);
-        #endif
-
-        BitmapTopLeft    = vector2(U0,V0);
-        BitmapLowerRight = vector2(U1,V1);
-
-        //////////////////////////////////////////////////////////////////////
-
-        xbool RenderMovie = TRUE;
-        if( !InRenderLoop )
-        {
-            if( !eng_Begin( "movie_player" ) )
-                RenderMovie = FALSE;
-        }
-
-        if( RenderMovie )
-        {
-            BitmapPos = Pos;
-
-            for (i=0;i<nBitmaps;i++)
-            {
-                draw_Begin(DRAW_SPRITES,DRAW_TEXTURED|DRAW_2D|DRAW_NO_ZBUFFER);
-                vram_Flush();
-                draw_SetTexture(m_pBitmaps[i]);
-                draw_DisableBilinear();
-                //x_DebugMsg("%d: Bitmap at (%2.2f,%2.2f), size (%2.2f,%2.2f)\n",i,BitmapPos.X,BitmapPos.Y,BitmapSize.X,BitmapSize.Y);
-
-#ifdef TARGET_PS2
-                draw_SpriteImmediate( BitmapPos,
-                                      BitmapSize,
-                                      BitmapTopLeft,
-                                      BitmapLowerRight,
-                                      XCOLOR_WHITE );
-#else
-                draw_SpriteUV(  vector3( BitmapPos.X, BitmapPos.Y, 0.0f ),
-                                BitmapSize,
-                                BitmapTopLeft,
-                                BitmapLowerRight,
-                                XCOLOR_WHITE);
+        m_Private.SetPos((vector3&)Pos);
+        m_Private.Decode();
+    }
 #endif
-                #if defined(TARGET_GCN)
-                BitmapPos.X += BitmapSize.X - 1;
-                #else
-                BitmapPos.X += BitmapSize.X;
-                #endif
-                draw_End();
-            }
-         
-            if( !InRenderLoop )
-            {
-                eng_End();
-            }
-            draw_EnableBilinear();
+#ifdef TARGET_PC
+    if (!InRenderLoop)
+    {
+        if (eng_Begin("Movie"))
+        {
+            m_Private.Decode();
+            eng_End();
         }
     }
-    #endif
+    else
+    {
+        m_Private.Decode();
+    }
+#endif
 }
-
 //------------------------------------------------------------------------------
 void movie_player::SetLanguage(const s32 Language)
 {
@@ -226,16 +138,15 @@ void movie_player::SetLanguage(const s32 Language)
 
 
 //=========================================================================
-s32 PlaySimpleMovie( const char* movieName )
+s32 PlaySimpleMovie(const char* movieName)
 {
-#ifndef X_EDITOR
-    view    View;
+    //view    View;
     s32     width;
     s32     height;
     vector2 Pos;
     vector2 Size;
     xbool   ret     = FALSE;
-	
+    
     Movie.Init();
     global_settings& Settings = g_StateMgr.GetActiveSettings();
     Movie.SetVolume( Settings.GetVolume( VOLUME_SPEECH ) / 100.0f );
@@ -244,12 +155,12 @@ s32 PlaySimpleMovie( const char* movieName )
 
     if( ret )
     {
-        View.SetXFOV( R_60 );
-        View.SetPosition( vector3(0,0,200) );
-        View.LookAtPoint( vector3(  0,  0,  0) );
-        View.SetZLimits ( 0.1f, 1000.0f );
-        eng_MaximizeViewport( View );
-        eng_SetView         ( View ) ;
+        //View.SetXFOV( R_60 );
+        //View.SetPosition( vector3(0,0,200) );
+        //View.LookAtPoint( vector3(  0,  0,  0) );
+        //View.SetZLimits ( 0.1f, 1000.0f );
+        //eng_MaximizeViewport( View );
+        //eng_SetView         ( View ) ;
         eng_GetRes(width,height);
 #ifdef TARGET_PS2
         Size.X = (f32)width;
@@ -284,19 +195,15 @@ s32 PlaySimpleMovie( const char* movieName )
 #else
                 if( input_WasPressed( INPUT_PS2_BTN_CROSS, 0 ) || input_WasPressed( INPUT_PS2_BTN_CROSS, 1 ) ) 
 #endif
-                    done = TRUE;
+                done = TRUE;
 
             }
         }
         eng_PageFlip();
         Movie.Close();
     }
-	Movie.Kill();
+    Movie.Kill();
     return( ret );
-
-#else
-    return( FALSE );//-- Nothing to see.
-#endif
 }
 
 

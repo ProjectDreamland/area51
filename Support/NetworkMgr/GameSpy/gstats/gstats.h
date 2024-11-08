@@ -36,7 +36,7 @@ extern "C" {
 #endif
 
 #if defined(_WIN32)
-	// Warnings are generated because we store function ptrs into a void* array
+    // Warnings are generated because we store function ptrs into a void* array
 #pragma warning(disable: 4152)  // function to data ptr
 #pragma warning(disable: 4055)  // data to function ptr
 #endif
@@ -72,25 +72,25 @@ extern void * bopfuncs[][3];
 DEFINES
 ********/
 /* Error codes */
-#define GE_NOERROR		0
-#define GE_NOSOCKET		1 /* Unable to create a socket */
-#define GE_NODNS		2 /* Unable to resolve a DNS name */
-#define GE_NOCONNECT	3 /* Unable to connect to stats server, or connection lost */
-#define GE_BUSY			4 /* Not used */
-#define GE_DATAERROR	5 /* Bad data from the stats server */
+#define GE_NOERROR        0
+#define GE_NOSOCKET        1 /* Unable to create a socket */
+#define GE_NODNS        2 /* Unable to resolve a DNS name */
+#define GE_NOCONNECT    3 /* Unable to connect to stats server, or connection lost */
+#define GE_BUSY            4 /* Not used */
+#define GE_DATAERROR    5 /* Bad data from the stats server */
 #define GE_CONNECTING   6 /* Connect did no immediately complete.  Call InitStatsThink() */
 #define GE_TIMEDOUT     7 /* Connect attempt timed out */
 
 /* Types of snapshots, update (any snapshot that is not final) or final */
-#define SNAP_UPDATE	0
-#define SNAP_FINAL	1
+#define SNAP_UPDATE    0
+#define SNAP_FINAL    1
 
 /* If you want to allow disk logging in case the stats server isn't available.
 This has SERIOUS security repercussions, so please read the docs before turning this on */
 #define ALLOW_DISK
 
 #if defined(NOFILE)
-	#undef ALLOW_DISK
+    #undef ALLOW_DISK
 #endif /* make sure it's never defined on platforms with no disk! */
 
 /********
@@ -112,15 +112,15 @@ extern char StatsServerHostname[64];
 PROTOTYPES
 ********/
 #ifndef GSI_UNICODE
-#define GenerateAuth		GenerateAuthA
-#define SendGameSnapShot	SendGameSnapShotA
-#define NewPlayer			NewPlayerA
-#define NewTeam				NewTeamA
+#define GenerateAuth        GenerateAuthA
+#define SendGameSnapShot    SendGameSnapShotA
+#define NewPlayer            NewPlayerA
+#define NewTeam                NewTeamA
 #else
-#define GenerateAuth		GenerateAuthW
-#define SendGameSnapShot	SendGameSnapShotW
-#define NewPlayer			NewPlayerW
-#define NewTeam				NewTeamW
+#define GenerateAuth        GenerateAuthW
+#define SendGameSnapShot    SendGameSnapShotW
+#define NewPlayer            NewPlayerW
+#define NewTeam                NewTeamW
 #endif
 
 /********
@@ -134,9 +134,9 @@ gameplay starts or in another thread.
 
 PARAMETERS
 gameport: integer port associated with your server (may be the same as
-	your developer spec query port). Used only to help players differentiate
-	between servers on the same machine (no queries are done on it). If not
-	appropriate for your game, pass in 0.
+    your developer spec query port). Used only to help players differentiate
+    between servers on the same machine (no queries are done on it). If not
+    appropriate for your game, pass in 0.
 
 RETURNS
 GE_NODNS: Unable to resolve stats server DNS
@@ -186,7 +186,7 @@ generated during the call to NewGame.
 
 PARAMETERS
 game: Game to return the challenge string for. If game is NULL, the last
-	game created with NewGame will be used.
+    game created with NewGame will be used.
 
 RETURNS
 A string to send to clients so they can authorize. If you game is NULL and
@@ -203,7 +203,7 @@ Should be used on the CLIENT SIDE to generate an authentication reply
 
 PARAMETERS
 challenge: The challenge string sent by the server. On the server this
-	should be generated with GetChallenge
+    should be generated with GetChallenge
 password: The CD Key (un-hashed) or profile password
 response: The output authentication string
 
@@ -221,7 +221,7 @@ Creates all the game structures, including buckets if needed.
 
 PARAMETERS
 usebuckets: Set to 1 for bucket based logging, 0 if you are going to create
-	the snapshots yourself. See the SDK for more info.
+    the snapshots yourself. See the SDK for more info.
 
 RETURNS
 A pointer to the new game. If you are not connected, and disk logging is
@@ -243,7 +243,7 @@ before freeing the game.
 
 PARAMETERS
 game: The game you want to free. If set to NULL, it will free the last
-	game created with NewGame.
+    game created with NewGame.
 *********/
 void FreeGame(statsgame_t game);
 
@@ -257,15 +257,15 @@ you should provide it in "snapshot".
 
 PARAMETERS
 game: The game to send a snapshot for. If set to NULL, the last game
-	created with NewGame will be used.
+    created with NewGame will be used.
 snapshot: The snapshot to send. If you are using buckets, this will not be
-	used, so you can pass in NULL
+    used, so you can pass in NULL
 final: If this is SNAP_UPDATE, the game is marked as in progress, if it
-	is SNAP_FINAL, the game is marked as complete.
+    is SNAP_FINAL, the game is marked as complete.
 
 RETURNS
 GE_DATAERROR: If game is NULL and the last game created by NewGame failed
-	(because the connection was lost and disk logging is disabled)
+    (because the connection was lost and disk logging is disabled)
 GE_NOCONNECT: If the connection is lost and disk logging is disabled
 GE_NOERROR: The update was sent, or disk logging is enabled and the game was logged
 *********/
@@ -291,19 +291,19 @@ add a float with BucketFloatOp).
 
 PARAMETERS
 game: The game to send containing the bucket you want to operate on. 
-	If set to NULL, the last game created with NewGame will be used.
+    If set to NULL, the last game created with NewGame will be used.
 name: The name of the bucket to update. Note that for player or team buckets, this name
-	does NOT include the "_" or "_t" (e.g. "score" for player score, not "score_N"). The underscore
-	and number will be added automatically.
+    does NOT include the "_" or "_t" (e.g. "score" for player score, not "score_N"). The underscore
+    and number will be added automatically.
 operation: One of the bucketop_t enums defined above
 value: Argument for the operation (bucket OP= value, e.g. bucket += value, bucket *= value)
 bucketlevel: One of the bucketlevel_t enums defined above. Determines whether you are
-	referring to a server, player, or team bucket. Note that you can have seperate buckets of
-	each type with the same name (e.g. "score" player bucket for each player and "score" team
-	bucket for each team)
+    referring to a server, player, or team bucket. Note that you can have seperate buckets of
+    each type with the same name (e.g. "score" player bucket for each player and "score" team
+    bucket for each team)
 index: For player or team buckets, the game index of the player or team (as passed to NewPlayer or
-	NewTeam). This will be translated to the actual index internally. 
-	Not used for server buckets (bl_server).
+    NewTeam). This will be translated to the actual index internally. 
+    Not used for server buckets (bl_server).
 *********/
 #define BucketIntOp(game, name, operation, value, bucketlevel, index) (((SetIntFunc)bopfuncs[bucketlevel][bt_int])(game,name,bucketfuncs[operation],value,index) )
 #define BucketFloatOp(game, name, operation, value, bucketlevel, index) (((SetFloatFunc)bopfuncs[bucketlevel][bt_float])(game,name,bucketfuncs[operation],value,index) )
@@ -318,12 +318,12 @@ their connect time to the number of seconds since NewGame was called.
 
 PARAMETERS
 game: The game to add the player to. If set to NULL, the last game created
-	with NewGame will be used. 
+    with NewGame will be used. 
 pnum: Your internal reference for this player, use this value in any calls
-	to the Bucket___Op functions.
+    to the Bucket___Op functions.
 name: The name for this player. If you don't have one yet, set it to empty ("")
-	then call: BucketStringOp(game,"player",bo_set,realplayername, bl_player, pnum)
-	when you get a realplayername.
+    then call: BucketStringOp(game,"player",bo_set,realplayername, bl_player, pnum)
+    when you get a realplayername.
 **********/
 void NewPlayer(statsgame_t game,int pnum, gsi_char *name);
 
@@ -336,9 +336,9 @@ number of seconds since NewGame was called.
 
 PARAMETERS
 game: The game to remove the player from. If set to NULL, the last game created
-	with NewGame will be used. 
+    with NewGame will be used. 
 pnum: Your internal reference for this player, use this value in any calls
-	to the Bucket___Op functions.
+    to the Bucket___Op functions.
 **********/
 void RemovePlayer(statsgame_t game,int pnum);
 
@@ -367,7 +367,7 @@ you need to use the translated values.
 
 PARAMETERS
 game: The game to retrieve the translated value for. If set to NULL,the last game created
-	with NewGame will be used.
+    with NewGame will be used.
 pnum/tnum: Your internal player or team number (as sent to NewTeam/NewPlayer)
 **********/
 int GetPlayerIndex(statsgame_t game, int pnum);

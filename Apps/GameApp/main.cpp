@@ -2457,7 +2457,7 @@ void AppMain( s32 argc, char* argv[] )
                 g_CheckPointMgr.Restore( FALSE );
             }
         }
-
+/*
 #if defined( ENABLE_DEBUG_MENU ) && !defined( X_RETAIL ) && !defined( TARGET_XBOX )
         if( g_bMemReports )
         {
@@ -2487,7 +2487,7 @@ void AppMain( s32 argc, char* argv[] )
             }
         }
 #endif
-
+*/
         LOG_MEMMARK( "RunGame" );
         if( g_ActiveConfig.GetExitReason() == GAME_EXIT_CONTINUE )
         {

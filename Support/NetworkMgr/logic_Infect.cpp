@@ -20,7 +20,7 @@
 //==============================================================================
 
 //==============================================================================
-//	INCLUDES
+//    INCLUDES
 //==============================================================================
 
 #include "logic_Infect.hpp"
@@ -48,7 +48,7 @@ enum
 };
 
 //==============================================================================
-//	FUNCTIONS
+//    FUNCTIONS
 //==============================================================================
 
 logic_infect::logic_infect( void )
@@ -104,7 +104,7 @@ void logic_infect::RequestSpawn( s32 PlayerIndex, xbool Immediate )
     if( g_NetworkMgr.IsClient() )
         return;
   
-	if( !m_Alive[PlayerIndex] && 
+    if( !m_Alive[PlayerIndex] && 
         ( (m_RespawnDelay[PlayerIndex] == 0.0f) || Immediate ) )
     {
         actor* pActor = (actor*)NetObjMgr.GetObjFromSlot( PlayerIndex );

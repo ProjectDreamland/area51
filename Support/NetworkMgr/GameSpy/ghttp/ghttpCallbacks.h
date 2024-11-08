@@ -26,23 +26,23 @@ extern "C" {
 ///////////////////////////////////////////////////
 void ghiCallCompletedCallback
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 // Call the progress callback for this connection.
 //////////////////////////////////////////////////
 void ghiCallProgressCallback
 (
-	GHIConnection * connection,
-	const char * buffer,
-	GHTTPByteCount bufferLen
+    GHIConnection * connection,
+    const char * buffer,
+    GHTTPByteCount bufferLen
 );
 
 // Call the post callback for this connection.
 //////////////////////////////////////////////
 void ghiCallPostCallback
 (
-	GHIConnection * connection
+    GHIConnection * connection
 );
 
 #ifdef __cplusplus

@@ -36,11 +36,11 @@ CString CExplorerBar::GetPath( void )
 }
 
 BEGIN_MESSAGE_MAP(CExplorerBar, CXTDockWindow)
-	//{{AFX_MSG_MAP(CExplorerBar)
-	ON_WM_CREATE()
-	ON_WM_WINDOWPOSCHANGED()
+    //{{AFX_MSG_MAP(CExplorerBar)
+    ON_WM_CREATE()
+    ON_WM_WINDOWPOSCHANGED()
     ON_MESSAGE( XTWM_SHELL_NOTIFY, OnUpdateShell )
-	//}}AFX_MSG_MAP
+    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
@@ -49,33 +49,33 @@ END_MESSAGE_MAP()
 
 int CExplorerBar::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (CXTDockWindow::OnCreate(lpCreateStruct) == -1)
-		return -1;
+    if (CXTDockWindow::OnCreate(lpCreateStruct) == -1)
+        return -1;
 
     m_Tree.EnableAutoInit( TRUE );
     m_Tree.SetEnumFlags( SHCONTF_FOLDERS );
     m_Tree.AssociateList( this );
 
-	// Create the shell control
-	VERIFY( m_Tree.Create( WS_VISIBLE, CRect(0,0,0,0), this, AFX_IDW_PANE_FIRST ) );
+    // Create the shell control
+    VERIFY( m_Tree.Create( WS_VISIBLE, CRect(0,0,0,0), this, AFX_IDW_PANE_FIRST ) );
 
-	return 0;
+    return 0;
 }
 
 void CExplorerBar::OnWindowPosChanged(WINDOWPOS FAR* lpwndpos)
 {
-	CXTDockWindow::OnWindowPosChanged(lpwndpos);
+    CXTDockWindow::OnWindowPosChanged(lpwndpos);
 
-	CRect rc;
-	GetInsideRect( rc );
-	rc.DeflateRect( 1, 1 );
+    CRect rc;
+    GetInsideRect( rc );
+    rc.DeflateRect( 1, 1 );
 
-	// Resize controls
-	if( m_Tree.GetSafeHwnd() )
+    // Resize controls
+    if( m_Tree.GetSafeHwnd() )
     {
-		m_Tree.MoveWindow( &rc ); // rc.left, rc.top, rc.Width(), rc.Height() );
+        m_Tree.MoveWindow( &rc ); // rc.left, rc.top, rc.Width(), rc.Height() );
         m_Tree.RedrawWindow();
-	}
+    }
 
 }
 

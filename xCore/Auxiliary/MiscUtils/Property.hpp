@@ -789,7 +789,7 @@ inline void prop_enum::_PropEnumEnum    ( const char* pName, const char* pEnum, 
     while( (pEnum[Len] != 0) || (pEnum[Len+1] != 0) )
         Len++;
     Node.m_String.SetLength( Len+1 );
-    x_memcpy( &Node.m_String[0], pEnum, Len+2 );
+    x_memmove( &Node.m_String[0], pEnum, Len+2 );
 }
 
 #ifdef USE_PROPERTY_HELP_STRINGS
@@ -831,7 +831,7 @@ inline void prop_enum::_PropEnumExternal( const char* pName, const char* TypeInf
     while( (TypeInfo[Len] != 0) || (TypeInfo[Len+1] != 0) )
         Len++;
     Node.m_String.SetLength( Len+1 );
-    x_memcpy( &Node.m_String[0], TypeInfo, Len+2 );
+    x_memmove( &Node.m_String[0], TypeInfo, Len+2 );
 }
 
 //=========================================================================
@@ -979,17 +979,17 @@ void prop_container::SetGeneric( const void* pData )
 {
     switch( m_Type & PROP_TYPE_BASIC_MASK )
     {
-    case PROP_TYPE_FLOAT:       x_memcpy( m_Data, pData, sizeof(f32) );         break;
-    case PROP_TYPE_VECTOR2:     x_memcpy( m_Data, pData, sizeof(vector2) );     break;
-    case PROP_TYPE_VECTOR3:     x_memcpy( m_Data, pData, sizeof(vector3) );     break;
-    case PROP_TYPE_INT:         x_memcpy( m_Data, pData, sizeof(s32) );         break;
-    case PROP_TYPE_BOOL:        x_memcpy( m_Data, pData, sizeof(xbool) );       break;
-    case PROP_TYPE_ROTATION:    x_memcpy( m_Data, pData, sizeof(radian3) );     break;
-    case PROP_TYPE_ANGLE:       x_memcpy( m_Data, pData, sizeof(radian) );      break;
-    case PROP_TYPE_BBOX:        x_memcpy( m_Data, pData, sizeof(bbox) );        break;
-    case PROP_TYPE_GUID:        x_memcpy( m_Data, pData, sizeof(guid) );        break;
-//    case PROP_TYPE_TRANSFORM:   x_memcpy( m_Data, pData, sizeof(matrix4) );     break;
-    case PROP_TYPE_COLOR:       x_memcpy( m_Data, pData, sizeof(xcolor) );      break;
+    case PROP_TYPE_FLOAT:       x_memmove( m_Data, pData, sizeof(f32) );         break;
+    case PROP_TYPE_VECTOR2:     x_memmove( m_Data, pData, sizeof(vector2) );     break;
+    case PROP_TYPE_VECTOR3:     x_memmove( m_Data, pData, sizeof(vector3) );     break;
+    case PROP_TYPE_INT:         x_memmove( m_Data, pData, sizeof(s32) );         break;
+    case PROP_TYPE_BOOL:        x_memmove( m_Data, pData, sizeof(xbool) );       break;
+    case PROP_TYPE_ROTATION:    x_memmove( m_Data, pData, sizeof(radian3) );     break;
+    case PROP_TYPE_ANGLE:       x_memmove( m_Data, pData, sizeof(radian) );      break;
+    case PROP_TYPE_BBOX:        x_memmove( m_Data, pData, sizeof(bbox) );        break;
+    case PROP_TYPE_GUID:        x_memmove( m_Data, pData, sizeof(guid) );        break;
+//    case PROP_TYPE_TRANSFORM:   x_memmove( m_Data, pData, sizeof(matrix4) );     break;
+    case PROP_TYPE_COLOR:       x_memmove( m_Data, pData, sizeof(xcolor) );      break;
     case PROP_TYPE_FILENAME:    x_strcpy( m_Data, (const char*)pData );         break;
     case PROP_TYPE_STRING:      x_strcpy( m_Data, (const char*)pData );         break;
     case PROP_TYPE_ENUM:        x_strcpy( m_Data, (const char*)pData );         break;
@@ -1006,17 +1006,17 @@ void prop_container::GetGeneric( void* pData ) const
 {
     switch( m_Type & PROP_TYPE_BASIC_MASK )
     {
-    case PROP_TYPE_FLOAT:       x_memcpy( pData, m_Data, sizeof(f32) );         break;
-    case PROP_TYPE_VECTOR2:     x_memcpy( pData, m_Data, sizeof(vector2) );     break;
-    case PROP_TYPE_VECTOR3:     x_memcpy( pData, m_Data, sizeof(vector3) );     break;
-    case PROP_TYPE_INT:         x_memcpy( pData, m_Data, sizeof(s32) );         break;
-    case PROP_TYPE_BOOL:        x_memcpy( pData, m_Data, sizeof(xbool) );       break;
-    case PROP_TYPE_ROTATION:    x_memcpy( pData, m_Data, sizeof(radian3) );     break;
-    case PROP_TYPE_ANGLE:       x_memcpy( pData, m_Data, sizeof(radian) );      break;
-    case PROP_TYPE_BBOX:        x_memcpy( pData, m_Data, sizeof(bbox) );        break;
-    case PROP_TYPE_GUID:        x_memcpy( pData, m_Data, sizeof(guid) );        break;
-//    case PROP_TYPE_TRANSFORM:   x_memcpy( pData, m_Data, sizeof(matrix4) );     break;
-    case PROP_TYPE_COLOR:       x_memcpy( pData, m_Data, sizeof(xcolor) );      break;
+    case PROP_TYPE_FLOAT:       x_memmove( pData, m_Data, sizeof(f32) );         break;
+    case PROP_TYPE_VECTOR2:     x_memmove( pData, m_Data, sizeof(vector2) );     break;
+    case PROP_TYPE_VECTOR3:     x_memmove( pData, m_Data, sizeof(vector3) );     break;
+    case PROP_TYPE_INT:         x_memmove( pData, m_Data, sizeof(s32) );         break;
+    case PROP_TYPE_BOOL:        x_memmove( pData, m_Data, sizeof(xbool) );       break;
+    case PROP_TYPE_ROTATION:    x_memmove( pData, m_Data, sizeof(radian3) );     break;
+    case PROP_TYPE_ANGLE:       x_memmove( pData, m_Data, sizeof(radian) );      break;
+    case PROP_TYPE_BBOX:        x_memmove( pData, m_Data, sizeof(bbox) );        break;
+    case PROP_TYPE_GUID:        x_memmove( pData, m_Data, sizeof(guid) );        break;
+//    case PROP_TYPE_TRANSFORM:   x_memmove( pData, m_Data, sizeof(matrix4) );     break;
+    case PROP_TYPE_COLOR:       x_memmove( pData, m_Data, sizeof(xcolor) );      break;
     case PROP_TYPE_FILENAME:    x_strcpy( (char*)pData, m_Data ) ;              break;
     case PROP_TYPE_STRING:      x_strcpy( (char*)pData, m_Data ) ;              break;
     case PROP_TYPE_ENUM:        x_strcpy( (char*)pData, m_Data ) ;              break;

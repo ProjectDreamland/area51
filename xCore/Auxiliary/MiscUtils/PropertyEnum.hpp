@@ -289,7 +289,7 @@ void enum_list<T>::BuildString( char* pString ) const
         node& Node = m_lEnum[i];
         
         s32 Len = x_strlen( Node.pString ) + 1;
-        x_memcpy( pString,  Node.pString, Len );
+        x_memmove( pString,  Node.pString, Len );
         pString += Len;
     }
     

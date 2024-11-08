@@ -12,7 +12,7 @@
 #include "CollisionMgr\CollisionMgr.hpp"
 #include "Entropy.hpp"
 #include "Render\editor_icons.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Characters\Character.hpp"
 
 #define MAX_TASK_STRING_LEN     255

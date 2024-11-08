@@ -13,7 +13,7 @@
 
 #include "../ZoneMgr/ZoneMgr.hpp"
 #include "CollisionMgr\CollisionMgr.hpp"
-#include "MiscUtils/SimpleUtils.hpp"
+#include "../../MiscUtils/SimpleUtils.hpp"
 #include "..\objects\object.hpp"
 #include "../objects/Portal.hpp"
 

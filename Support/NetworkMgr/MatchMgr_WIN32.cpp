@@ -9,8 +9,6 @@
 //
 //==============================================================================
 
-#if 0
-
 #if !defined(TARGET_PC)
 #error This should only be included for PC gamespy support.
 #endif
@@ -28,10 +26,7 @@
 
 const s32 A51_MIDWAY_FPS_CATEGORY = 1010000032;
 
-#include "NetworkMgr/GameSpy/serverbrowsing/sb_serverbrowsing.h"
-#include "NetworkMgr/GameSpy/available.h"
-#include "NetworkMgr/GameSpy/qr2/qr2regkeys.h"
-#include "NetworkMgr/GameSpy/qr2/qr2.h"
+
 #include "ResourceMgr/ResourceMgr.hpp"
 
 //=========================================================================
@@ -258,7 +253,7 @@ void  match_mgr::Update( f32 DeltaTime )
         m_PendingAcquisitionMode = ACQUIRE_INVALID;
         switch( m_AcquisitionMode )
         {
-        case ACQUIRE_SERVERS:
+        case MATCH_ACQUIRE_SERVERS:
 #if defined( ENABLE_LAN_LOOKUP )
             SetState( MATCH_ACQUIRE_LAN_SERVERS );
 #else
@@ -268,13 +263,13 @@ void  match_mgr::Update( f32 DeltaTime )
         case ACQUIRE_EXTENDED_SERVER_INFO:
             SetState( MATCH_ACQUIRE_EXTENDED_SERVER_INFO );
             break;
-        case ACQUIRE_BUDDIES:
+        case MATCH_ACQUIRE_BUDDIES:
             SetState( MATCH_ACQUIRE_BUDDIES );
             break;
-        case ACQUIRE_REGIONS:
+        case MATCH_ACQUIRE_REGIONS:
             ASSERT( FALSE );
             break;
-        case ACQUIRE_LOBBIES:
+        case MATCH_ACQUIRE_LOBBIES:
             ASSERT( FALSE );
             break;
         default:
@@ -649,13 +644,13 @@ void match_mgr::UpdateState( f32 DeltaTime)
         else if( m_ConnectStatus == MATCH_CONN_IDLE )
         {
             SetState( MATCH_IDLE );
-            StartAcquisition( ACQUIRE_BUDDIES );
+            StartAcquisition(static_cast<match_acquire>(MATCH_ACQUIRE_BUDDIES));
         }
         else if( m_StateTimeout <= 0.0f )
         {
             LOG_WARNING("match_mgr::UpdateState","Server browser did not go idle and timed out.");
             SetState( MATCH_IDLE );
-            StartAcquisition( ACQUIRE_BUDDIES );
+            StartAcquisition(static_cast<match_acquire>(MATCH_ACQUIRE_BUDDIES));
         }
         else if( m_ConnectStatus != MATCH_CONN_ACQUIRING_SERVERS )
         {
@@ -1070,14 +1065,14 @@ void match_mgr::StartAcquisition( match_acquire AcquisitionMode )
     LockLists();
     switch( AcquisitionMode )
     {
-    case ACQUIRE_SERVERS:
+    case MATCH_ACQUIRE_SERVERS:
         ResetServerList();
         break;
-    case ACQUIRE_BUDDIES:
+    case MATCH_ACQUIRE_BUDDIES:
         break;
-    case ACQUIRE_REGIONS:
+    case MATCH_ACQUIRE_REGIONS:
         break;
-    case ACQUIRE_LOBBIES:
+    case MATCH_ACQUIRE_LOBBIES:
         m_LobbyList.Clear();
         break;
 
@@ -1095,16 +1090,16 @@ xbool match_mgr::IsAcquireComplete( void )
 {
     switch( m_AcquisitionMode )
     {
-    case ACQUIRE_SERVERS:
+    case MATCH_ACQUIRE_SERVERS:
         return (m_State==MATCH_ACQUIRE_IDLE);
         break;
-    case ACQUIRE_BUDDIES:
+    case MATCH_ACQUIRE_BUDDIES:
         return (m_State==MATCH_IDLE);
         break;
-    case ACQUIRE_REGIONS:
+    case MATCH_ACQUIRE_REGIONS:
         ASSERT( FALSE );
         break;
-    case ACQUIRE_LOBBIES:
+    case MATCH_ACQUIRE_LOBBIES:
         ASSERT( FALSE );
         break;
     default:
@@ -1277,7 +1272,9 @@ void match_mgr::SetState( match_mgr_state NewState )
             }
 
             Result = ServerBrowserUpdate(m_pBrowser, SBTrue, SBFalse, basicFields, numFields, Filter );
+			#ifdef X_LOGGING
             LOG_MESSAGE("match_mgr::SetState","ServerBrowserUpdate() returned %d(%s)", Result, ServerBrowserError( Result ) );
+			#endif
             SetConnectStatus( MATCH_CONN_ACQUIRING_SERVERS );
 
         }
@@ -1317,7 +1314,9 @@ void match_mgr::SetState( match_mgr_state NewState )
                     SBTrue,                      // async
                     SBFalse                      // fullUpdate 
                     );
+				#ifdef X_LOGGING	
                 LOG_MESSAGE("match_mgr::SetState","ServerBrowserAuxUpdateIP(%s) returned %d(%s)", Remote.GetStrAddress(), Result, ServerBrowserError( Result ) );
+				#endif
                 SetConnectStatus( MATCH_CONN_ACQUIRING_SERVERS );
             }
             UnlockBrowser();
@@ -1347,7 +1346,9 @@ void match_mgr::SetState( match_mgr_state NewState )
 
                 Result = ServerBrowserUpdate(m_pBrowser, SBTrue, SBFalse, NULL, 0, m_BuddyList);
                 SetConnectStatus( MATCH_CONN_ACQUIRING_BUDDIES );
+				#ifdef X_LOGGING
                 LOG_MESSAGE("match_mgr::SetState","ServerBrowserUpdate(Buddies) returned %d(%s)", Result, ServerBrowserError( Result ) );
+				#endif
 
             }
             else
@@ -1384,8 +1385,10 @@ void match_mgr::SetState( match_mgr_state NewState )
             qr2_register_key( AVGPING_KEY, "avgping" );
 
             Result = ServerBrowserLANUpdate( m_pBrowser, SBTrue, m_pSocket->GetPort(), m_pSocket->GetPort()+16 );
+			#ifdef X_LOGGING
             LOG_MESSAGE("match_mgr::SetState","ServerBrowserLANUpdate() returned %d(%s)", Result, ServerBrowserError( Result ) );
             SetConnectStatus( MATCH_CONN_ACQUIRING_SERVERS );
+			#endif
         }
         else
         {
@@ -1428,7 +1431,9 @@ void match_mgr::SetState( match_mgr_state NewState )
                 SBTrue,                             // async
                 SBFalse                             // fullUpdate 
                 );
+			#ifdef X_LOGGING	
             LOG_MESSAGE("match_mgr::SetState","ServerBrowserAuxUpdateIP(%s) returned %d(%s)", Config.Remote.GetStrAddress(), Result, ServerBrowserError( Result ) );
+			#endif
             SetConnectStatus( MATCH_CONN_ACQUIRING_SERVERS );
 
         }
@@ -1571,13 +1576,11 @@ void match_mgr::AppendServer( const server_info& Response )
 
     if( Index >=0 )
     {
-        s32 Flags;
-
         server_info* pServerInfo = GetServerInfo( Index );
 
-        Flags = pServerInfo.Flags;
+        s32 Flags = pServerInfo->Flags;
 
-        &pServerInfo = Response;
+        *pServerInfo = Response;
         pServerInfo->Flags = Flags;
     }
     else
@@ -2184,4 +2187,10 @@ void match_mgr::SendFeedback( u64 Identifier, const char* pName, player_feedback
     ASSERTS( FALSE, "Not implemented yet" );
 }
 
-#endif
+//==============================================================================
+void match_mgr::ReleasePatch() {
+    if (m_pMessageOfTheDayBuffer != NULL) {
+        delete[] m_pMessageOfTheDayBuffer;
+        m_pMessageOfTheDayBuffer = NULL;
+    }
+}

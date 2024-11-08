@@ -92,17 +92,17 @@ void msg_client::AcceptMsg( msg& Msg )
 {
     ASSERT( MsgTable[ Msg.m_MsgID ].m_Active );
 
-	if( MsgTable[ Msg.m_MsgID ].m_Active )
-	{
-    	if( (Msg.m_MsgSeq > m_LastAcked) || Msg.m_bIsLocal )
-    	{
-        	if( (Msg.m_MsgSeq > m_LastAcked) && !Msg.m_bIsLocal )
-        	{
-            	m_LastAcked = Msg.m_MsgSeq;
-        	}
+    if( MsgTable[ Msg.m_MsgID ].m_Active )
+    {
+        if( (Msg.m_MsgSeq > m_LastAcked) || Msg.m_bIsLocal )
+        {
+            if( (Msg.m_MsgSeq > m_LastAcked) && !Msg.m_bIsLocal )
+            {
+                m_LastAcked = Msg.m_MsgSeq;
+            }
 
-        	DisplayMsg( Msg );
-		}
+            DisplayMsg( Msg );
+        }
     }
 }
 

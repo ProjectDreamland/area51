@@ -28,15 +28,15 @@ CPreviewBar::~CPreviewBar()
 }
 
 BEGIN_MESSAGE_MAP(CPreviewBar, CXTDockWindow)
-	//{{AFX_MSG_MAP(CPreviewBar)
-	ON_WM_CREATE()
-	ON_WM_WINDOWPOSCHANGED()
-	ON_WM_SIZE()
-	ON_WM_HSCROLL()
+    //{{AFX_MSG_MAP(CPreviewBar)
+    ON_WM_CREATE()
+    ON_WM_WINDOWPOSCHANGED()
+    ON_WM_SIZE()
+    ON_WM_HSCROLL()
     ON_MESSAGE( NM_NEWBITMAP, OnNewBitmap )
     ON_MESSAGE( NM_NEWMIPLEVEL, OnNewMipLevel )
-	ON_WM_VSCROLL()
-	//}}AFX_MSG_MAP
+    ON_WM_VSCROLL()
+    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
@@ -45,10 +45,10 @@ END_MESSAGE_MAP()
 
 int CPreviewBar::OnCreate(LPCREATESTRUCT lpCreateStruct) 
 {
-	if (CXTDockWindow::OnCreate(lpCreateStruct) == -1)
-		return -1;
-	
-	// TODO: Add your specialized creation code here
+    if (CXTDockWindow::OnCreate(lpCreateStruct) == -1)
+        return -1;
+    
+    // TODO: Add your specialized creation code here
     m_wndBitmap1.CreateEx( WS_EX_CLIENTEDGE, NULL, NULL, WS_VISIBLE|WS_CHILD, CRect(0,0,0,0), this, AFX_IDW_PANE_FIRST );
     m_wndBitmap2.CreateEx( WS_EX_CLIENTEDGE, NULL, NULL, WS_VISIBLE|WS_CHILD, CRect(0,0,0,0), this, AFX_IDW_PANE_FIRST+1 );
     m_wndBitmap2.SetAlpha();
@@ -57,16 +57,16 @@ int CPreviewBar::OnCreate(LPCREATESTRUCT lpCreateStruct)
     m_wndMip.SetRange( 0, 4 );
 //    m_wndMip.
 
-	return 0;
+    return 0;
 }
 
 void CPreviewBar::OnWindowPosChanged(WINDOWPOS FAR* lpwndpos) 
 {
-	CXTDockWindow::OnWindowPosChanged(lpwndpos);
-	
-	CRect rc;
-	GetInsideRect( rc );
-	rc.DeflateRect( 1, 1 );
+    CXTDockWindow::OnWindowPosChanged(lpwndpos);
+    
+    CRect rc;
+    GetInsideRect( rc );
+    rc.DeflateRect( 1, 1 );
 }
 
 LRESULT CPreviewBar::OnNewBitmap( WPARAM wParam, LPARAM lParam )
@@ -223,30 +223,30 @@ void CPreviewBar::RepositionWindows( void )
 
 void CPreviewBar::OnSize(UINT nType, int cx, int cy) 
 {
-	CXTDockWindow::OnSize(nType, cx, cy);
-	
-	// TODO: Add your message handler code here
-	RepositionWindows( );
+    CXTDockWindow::OnSize(nType, cx, cy);
+    
+    // TODO: Add your message handler code here
+    RepositionWindows( );
 }
 
 void CPreviewBar::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
 {
-	CSliderCtrl* pSlider = (CSliderCtrl*)pScrollBar;
+    CSliderCtrl* pSlider = (CSliderCtrl*)pScrollBar;
     if( pSlider == &m_wndMip )
     {
         OnNewMipLevel( pSlider->GetPos(), 0 );
     }
 
-	CXTDockWindow::OnHScroll(nSBCode, nPos, pScrollBar);
+    CXTDockWindow::OnHScroll(nSBCode, nPos, pScrollBar);
 }
 
 void CPreviewBar::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
 {
-	CSliderCtrl* pSlider = (CSliderCtrl*)pScrollBar;
+    CSliderCtrl* pSlider = (CSliderCtrl*)pScrollBar;
     if( pSlider == &m_wndMip )
     {
         OnNewMipLevel( pSlider->GetPos(), 0 );
     }
-	
-	CXTDockWindow::OnVScroll(nSBCode, nPos, pScrollBar);
+    
+    CXTDockWindow::OnVScroll(nSBCode, nPos, pScrollBar);
 }

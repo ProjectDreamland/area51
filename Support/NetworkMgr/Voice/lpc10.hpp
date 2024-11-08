@@ -42,11 +42,11 @@ struct LPC10_ENCODER_STATE
     s32 osbuf[10];  /* no initial value necessary */
     s32 osptr;     /* initial value 1 */
     s32 obound[3];
-    s32 vwin[6]	/* was [2][3] */;   /* initial value vwin[4] = 307; vwin[5] = 462; */
-    s32 awin[6]	/* was [2][3] */;   /* initial value awin[4] = 307; awin[5] = 462; */
-    s32 voibuf[8]	/* was [2][4] */;
+    s32 vwin[6]    /* was [2][3] */;   /* initial value vwin[4] = 307; vwin[5] = 462; */
+    s32 awin[6]    /* was [2][3] */;   /* initial value awin[4] = 307; awin[5] = 462; */
+    s32 voibuf[8]    /* was [2][4] */;
     f32 rmsbuf[3];
-    f32 rcbuf[30]	/* was [10][3] */;
+    f32 rcbuf[30]    /* was [10][3] */;
     f32 zpre;
 
     /* State used by function onset */
@@ -64,14 +64,14 @@ struct LPC10_ENCODER_STATE
     f32 dither;   /* initial value 20.f */
     f32 snr;
     f32 maxmin;
-    f32 voice[6]	/* was [2][3] */;   /* initial value is probably unnecessary */
+    f32 voice[6]    /* was [2][3] */;   /* initial value is probably unnecessary */
     s32 lbve, lbue, fbve, fbue;
     s32 ofbue, sfbue;
     s32 olbue, slbue;
 
     /* State used by function dyptrk */
     f32 s[60];
-    s32 p[120]	/* was [60][2] */;
+    s32 p[120]    /* was [60][2] */;
     s32 ipoint;
     f32 alphax;
 
@@ -94,7 +94,7 @@ struct LPC10_DECODER_STATE
     s32 iovoic;
     s32 iavgp;   /* initial value 60 */
     s32 erate;
-    s32 drc[30]	/* was [3][10] */;
+    s32 drc[30]    /* was [3][10] */;
     s32 dpit[3];
     s32 drms[3];
 

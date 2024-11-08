@@ -23,19 +23,19 @@ Please see the GameSpy Presence SDK documentation for more information
 #include <stdio.h>
 //#include <time.h>
 #if defined(applec) || defined(THINK_C) || defined(__MWERKS__) && !defined(__mips64) && !defined(_WIN32)
-	#include "::nonport.h"
-	#include "::hashtable.h"
-	#include "::darray.h"
-	#include "::md5.h"
-	#include "::stringutil.h"
-	#include "::available.h"
+    #include "::nonport.h"
+    #include "::hashtable.h"
+    #include "::darray.h"
+    #include "::md5.h"
+    #include "::stringutil.h"
+    #include "::available.h"
 #else
-	#include "../nonport.h"
-	#include "../hashtable.h"
-	#include "../darray.h"
-	#include "../md5.h"
-	#include "../stringutil.h"
-	#include "../available.h"
+    #include "../nonport.h"
+    #include "../hashtable.h"
+    #include "../darray.h"
+    #include "../md5.h"
+    #include "../stringutil.h"
+    #include "../available.h"
 #endif
 #include "gp.h"
 
@@ -51,8 +51,8 @@ Please see the GameSpy Presence SDK documentation for more information
 ///////////
 typedef enum _GPIBool
 {
-	GPIFalse,
-	GPITrue
+    GPIFalse,
+    GPITrue
 } GPIBool;
 
 #include "gpiUtility.h"

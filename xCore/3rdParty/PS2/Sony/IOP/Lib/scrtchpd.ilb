@@ -1,6 +1,0 @@
-#IOP-ILB# [PsIIscrtpad 3000]
-L scrtpad
-V 0x0101
-F 0x0000
-E 004 AllocScratchPad
-E 005 FreeScratchPad

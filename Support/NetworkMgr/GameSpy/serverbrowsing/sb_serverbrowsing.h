@@ -23,10 +23,10 @@ devsupport@gamespy.com
 #ifdef __cplusplus
 extern "C" {
 #endif
-	
+    
 #include "../nonport.h"
 
-	
+    
 
 /*******************
 ServerBrowser Typedefs
@@ -37,41 +37,41 @@ typedef struct _ServerBrowser *ServerBrowser;
 //SBServer is an abstract data type representing a single server.
 #ifndef SBServer 
 typedef struct _SBServer *SBServer;
-#endif	
+#endif    
 //Simple boolean type used for some functions
 typedef enum {SBFalse, SBTrue} SBBool;
 
 //Error codes that can be returned from functions
 typedef enum 
 {
-	sbe_noerror,  //no error has occured
-	sbe_socketerror, //a socket function has returned an unexpected error
-	sbe_dnserror,  //DNS lookup of master address failed
-	sbe_connecterror,  //connection to master server failed
-	sbe_dataerror, //invalid data was returned from master server
-	sbe_allocerror, //memory allocation failed
-	sbe_paramerror //an invalid parameter was passed to a function
-} SBError;	
+    sbe_noerror,  //no error has occured
+    sbe_socketerror, //a socket function has returned an unexpected error
+    sbe_dnserror,  //DNS lookup of master address failed
+    sbe_connecterror,  //connection to master server failed
+    sbe_dataerror, //invalid data was returned from master server
+    sbe_allocerror, //memory allocation failed
+    sbe_paramerror //an invalid parameter was passed to a function
+} SBError;    
 
 //States the ServerBrowser object can be in
 typedef enum 
 {
-	sb_disconnected, //idle and not connected to the master server
-	sb_listxfer,	//downloading list of servers from the master server
-	sb_querying,	//querying servers
-	sb_connected	//idle but still connected to the master server
+    sb_disconnected, //idle and not connected to the master server
+    sb_listxfer,    //downloading list of servers from the master server
+    sb_querying,    //querying servers
+    sb_connected    //idle but still connected to the master server
 } SBState;
 
 //Callbacks that can occur during server browsing operations
 typedef enum 
 {
-	sbc_serveradded, //a server was added to the list, may just have an IP & port at this point
-	sbc_serverupdated, //server information has been updated - either basic or full information is now available about this server
-	sbc_serverupdatefailed, //an attempt to retrieve information about this server, either directly or from the master, failed
-	sbc_serverdeleted, //a server was removed from the list
-	sbc_updatecomplete, //the server query engine is now idle
-	sbc_queryerror		//the master returned an error string for the provided query
-} SBCallbackReason;	
+    sbc_serveradded, //a server was added to the list, may just have an IP & port at this point
+    sbc_serverupdated, //server information has been updated - either basic or full information is now available about this server
+    sbc_serverupdatefailed, //an attempt to retrieve information about this server, either directly or from the master, failed
+    sbc_serverdeleted, //a server was removed from the list
+    sbc_updatecomplete, //the server query engine is now idle
+    sbc_queryerror        //the master returned an error string for the provided query
+} SBCallbackReason;    
 
 
 //Prototype for the callback function you need to provide
@@ -89,49 +89,49 @@ ServerBrowser Object Functions
 ********************/
 
 #ifndef GSI_UNICODE
-#define ServerBrowserNew			ServerBrowserNewA
-#define ServerBrowserUpdate			ServerBrowserUpdateA
-#define ServerBrowserLimitUpdate	ServerBrowserLimitUpdateA
-#define ServerBrowserAuxUpdateIP	ServerBrowserAuxUpdateIPA
-#define ServerBrowserRemoveIP		ServerBrowserRemoveIPA
-#define ServerBrowserSendNatNegotiateCookieToServer	ServerBrowserSendNatNegotiateCookieToServerA
-#define ServerBrowserSendMessageToServer	ServerBrowserSendMessageToServerA
-#define ServerBrowserSort			ServerBrowserSortA
-#define SBServerGetStringValue		SBServerGetStringValueA
-#define SBServerGetIntValue			SBServerGetIntValueA
-#define SBServerGetFloatValue		SBServerGetFloatValueA
-#define SBServerGetBoolValue		SBServerGetBoolValueA
-#define SBServerGetPlayerStringValue	SBServerGetPlayerStringValueA
-#define SBServerGetPlayerIntValue	SBServerGetPlayerIntValueA
-#define SBServerGetPlayerFloatValue	SBServerGetPlayerFloatValueA
-#define SBServerGetTeamStringValue	SBServerGetTeamStringValueA
-#define SBServerGetTeamIntValue		SBServerGetTeamIntValueA
-#define SBServerGetTeamFloatValue	SBServerGetTeamFloatValueA
-#define ServerBrowserListQueryError	ServerBrowserListQueryErrorA
-#define ServerBrowserErrorDesc		ServerBrowserErrorDescA
-#define ServerBrowserGetServerByIP	ServerBrowserGetServerByIPA
+#define ServerBrowserNew            ServerBrowserNewA
+#define ServerBrowserUpdate            ServerBrowserUpdateA
+#define ServerBrowserLimitUpdate    ServerBrowserLimitUpdateA
+#define ServerBrowserAuxUpdateIP    ServerBrowserAuxUpdateIPA
+#define ServerBrowserRemoveIP        ServerBrowserRemoveIPA
+#define ServerBrowserSendNatNegotiateCookieToServer    ServerBrowserSendNatNegotiateCookieToServerA
+#define ServerBrowserSendMessageToServer    ServerBrowserSendMessageToServerA
+#define ServerBrowserSort            ServerBrowserSortA
+#define SBServerGetStringValue        SBServerGetStringValueA
+#define SBServerGetIntValue            SBServerGetIntValueA
+#define SBServerGetFloatValue        SBServerGetFloatValueA
+#define SBServerGetBoolValue        SBServerGetBoolValueA
+#define SBServerGetPlayerStringValue    SBServerGetPlayerStringValueA
+#define SBServerGetPlayerIntValue    SBServerGetPlayerIntValueA
+#define SBServerGetPlayerFloatValue    SBServerGetPlayerFloatValueA
+#define SBServerGetTeamStringValue    SBServerGetTeamStringValueA
+#define SBServerGetTeamIntValue        SBServerGetTeamIntValueA
+#define SBServerGetTeamFloatValue    SBServerGetTeamFloatValueA
+#define ServerBrowserListQueryError    ServerBrowserListQueryErrorA
+#define ServerBrowserErrorDesc        ServerBrowserErrorDescA
+#define ServerBrowserGetServerByIP    ServerBrowserGetServerByIPA
 #else
-#define ServerBrowserNew			ServerBrowserNewW
-#define ServerBrowserUpdate			ServerBrowserUpdateW
-#define ServerBrowserLimitUpdate	ServerBrowserLimitUpdateW
-#define ServerBrowserAuxUpdateIP	ServerBrowserAuxUpdateIPW
-#define ServerBrowserRemoveIP		ServerBrowserRemoveIPW
-#define ServerBrowserSendNatNegotiateCookieToServer	ServerBrowserSendNatNegotiateCookieToServerW
-#define ServerBrowserSendMessageToServer	ServerBrowserSendMessageToServerW
-#define ServerBrowserSort			ServerBrowserSortW
-#define SBServerGetStringValue		SBServerGetStringValueW
-#define SBServerGetIntValue			SBServerGetIntValueW
-#define SBServerGetFloatValue		SBServerGetFloatValueW
-#define SBServerGetBoolValue		SBServerGetBoolValueW
-#define SBServerGetPlayerStringValue	SBServerGetPlayerStringValueW
-#define SBServerGetPlayerIntValue	SBServerGetPlayerIntValueW
-#define SBServerGetPlayerFloatValue	SBServerGetPlayerFloatValueW
-#define SBServerGetTeamStringValue	SBServerGetTeamStringValueW
-#define SBServerGetTeamIntValue		SBServerGetTeamIntValueW
-#define SBServerGetTeamFloatValue	SBServerGetTeamFloatValueW
-#define ServerBrowserListQueryError	ServerBrowserListQueryErrorW
-#define ServerBrowserErrorDesc		ServerBrowserErrorDescW
-#define ServerBrowserGetServerByIP	ServerBrowserGetServerByIPW
+#define ServerBrowserNew            ServerBrowserNewW
+#define ServerBrowserUpdate            ServerBrowserUpdateW
+#define ServerBrowserLimitUpdate    ServerBrowserLimitUpdateW
+#define ServerBrowserAuxUpdateIP    ServerBrowserAuxUpdateIPW
+#define ServerBrowserRemoveIP        ServerBrowserRemoveIPW
+#define ServerBrowserSendNatNegotiateCookieToServer    ServerBrowserSendNatNegotiateCookieToServerW
+#define ServerBrowserSendMessageToServer    ServerBrowserSendMessageToServerW
+#define ServerBrowserSort            ServerBrowserSortW
+#define SBServerGetStringValue        SBServerGetStringValueW
+#define SBServerGetIntValue            SBServerGetIntValueW
+#define SBServerGetFloatValue        SBServerGetFloatValueW
+#define SBServerGetBoolValue        SBServerGetBoolValueW
+#define SBServerGetPlayerStringValue    SBServerGetPlayerStringValueW
+#define SBServerGetPlayerIntValue    SBServerGetPlayerIntValueW
+#define SBServerGetPlayerFloatValue    SBServerGetPlayerFloatValueW
+#define SBServerGetTeamStringValue    SBServerGetTeamStringValueW
+#define SBServerGetTeamIntValue        SBServerGetTeamIntValueW
+#define SBServerGetTeamFloatValue    SBServerGetTeamFloatValueW
+#define ServerBrowserListQueryError    ServerBrowserListQueryErrorW
+#define ServerBrowserErrorDesc        ServerBrowserErrorDescW
+#define ServerBrowserGetServerByIP    ServerBrowserGetServerByIPW
 #endif
 /* 
 ServerBrowserNew
@@ -162,16 +162,16 @@ Starts an update by downloading a list of servers from the master server, then q
 
 sb - The server browser object to update
 async - If SBTrue, the update will be initiated, and ServerListThink must be called for processing and querying to occur
-		If SBFalse, the function will not return until the initial list of servers has been completely updated
+        If SBFalse, the function will not return until the initial list of servers has been completely updated
 disconnectOnComplete - If SBTrue, the connection to the master server will be disconnected immediately after the list is downloaded.
-					   If SBFalse, the connection will be left open for additional data queries, and can be closed via ServerBrowserDisconnect
+                       If SBFalse, the connection will be left open for additional data queries, and can be closed via ServerBrowserDisconnect
 basicFields - This array of registered QR2 keys is used to determine the fields requested from servers during the initial "basic" update.
-				Only server keys listed in this array will be returned for servers.
+                Only server keys listed in this array will be returned for servers.
 numBasicFields - The number of fields in the basicFields array
 serverFilter - SQL Filter string that will be applied on the master server to limit the list of servers returned.
-				All server keys are available for filtering on the master server, as well as the master-defined "country" and "region" keys. 
-				Standard SQL syntax should be used. 
-				
+                All server keys are available for filtering on the master server, as well as the master-defined "country" and "region" keys. 
+                Standard SQL syntax should be used. 
+                
 ServerBrowserLimitUpdate
 ------------------------
 Identical to ServerBrowserUpdate, except that the number of servers returned can be limited
@@ -196,7 +196,7 @@ to 100 ports or less in most cases to limit flooding of the LAN with broadcast p
 
 sb - The server browser object to update
 async - If SBTrue, the update will be initiated, and ServerListThink must be called for processing and querying to occur
-		If SBFalse, the function will not return until the initial list of servers has been completely updated
+        If SBFalse, the function will not return until the initial list of servers has been completely updated
 startSearchPort - The initial port to begin searching for servers on
 endSearchPort - The final port to search. All ports between start and end will be queried. */
 SBError ServerBrowserLANUpdate(ServerBrowser sb, SBBool async, unsigned short startSearchPort, unsigned short endSearchPort);
@@ -210,12 +210,12 @@ sb - The server browser object to add the server to
 ip - The dotted IP address of the server e.g. "1.2.3.4"
 port - The query port of the server
 viaMaster - If SBTrue, information about the server will be retrieved from the master server instead of attempting to query the server directly.
-				If a connection to the master server does not exist, it will be made to kept open afterwards.
-			If SBFalse, the server will be contacted directly for information.
+                If a connection to the master server does not exist, it will be made to kept open afterwards.
+            If SBFalse, the server will be contacted directly for information.
 async - If SBTrue, the update will be initiated, and ServerListThink must be called for processing and querying to occur
-		If SBFalse, the function will not return until the server has been successfully or unsuccessfully updated
+        If SBFalse, the function will not return until the server has been successfully or unsuccessfully updated
 fullUpdate - If SBTrue, all server keys/rules/player/team information will be retrieved
-			 If SBFalse, only the keys specified in the basicFields array of the ServerBrowserUpdate function will be retrieved */
+             If SBFalse, only the keys specified in the basicFields array of the ServerBrowserUpdate function will be retrieved */
 SBError ServerBrowserAuxUpdateIP(ServerBrowser sb, const gsi_char *ip, unsigned short port, SBBool viaMaster, SBBool async, SBBool fullUpdate);
 
 /* ServerBrowserAuxUpdateServer
@@ -228,9 +228,9 @@ When called asynchronously, multiple server update requests can be queued and wi
 sb - The server browser object to add the server to
 server - Server object to update
 async - If SBTrue, the update will be initiated, and ServerListThink must be called for processing and querying to occur
-		If SBFalse, the function will not return until the server has been successfully or unsuccessfully updated
+        If SBFalse, the function will not return until the server has been successfully or unsuccessfully updated
 fullUpdate - If SBTrue, all server keys/rules/player/team information will be retrieved
-			 If SBFalse, only the keys specified in the basicFields array of the ServerBrowserUpdate function will be retrieved */
+             If SBFalse, only the keys specified in the basicFields array of the ServerBrowserUpdate function will be retrieved */
 SBError ServerBrowserAuxUpdateServer(ServerBrowser sb, SBServer server, SBBool async, SBBool fullUpdate);
 
 

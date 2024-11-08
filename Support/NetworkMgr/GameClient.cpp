@@ -71,7 +71,7 @@ void game_client::Init  ( net_socket&           Local,
 {
     m_pLocal            = &Local;
     m_RemoteServer      = Remote;
-	m_ClientIndex       = -10;
+    m_ClientIndex       = -10;
     m_State             = STATE_CLIENT_IDLE;
     m_PacketSendDelay   = 0.0f;
     m_LocalPlayerCount  = LocalPlayerCount;

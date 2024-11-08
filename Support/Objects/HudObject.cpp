@@ -15,7 +15,7 @@
 #include "e_View.hpp"
 #include "Entropy.hpp"
 #include "x_math.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Objects\WeaponSniper.hpp"
 #include "GameTextMgr\GameTextMgr.hpp"
 #include "NetworkMgr\NetworkMgr.hpp"

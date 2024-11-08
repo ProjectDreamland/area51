@@ -16,7 +16,7 @@
 //==============================================================================
 
 //==============================================================================
-//	INCLUDES
+//    INCLUDES
 //==============================================================================
 
 #include "logic_Tag.hpp"
@@ -40,7 +40,7 @@ enum
 };
 
 //==============================================================================
-//	FUNCTIONS
+//    FUNCTIONS
 //==============================================================================
 
 logic_tag::logic_tag( void )
@@ -105,7 +105,7 @@ void logic_tag::RequestSpawn( s32 PlayerIndex, xbool Immediate )
     if( g_NetworkMgr.IsClient() )
         return;
   
-	if( !m_Alive[PlayerIndex] && 
+    if( !m_Alive[PlayerIndex] && 
         ( (m_RespawnDelay[PlayerIndex] == 0.0f) || Immediate ) )
     {
         actor* pActor = (actor*)NetObjMgr.GetObjFromSlot( PlayerIndex );

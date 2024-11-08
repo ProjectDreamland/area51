@@ -10,7 +10,7 @@
 
 #include "condition_check_property.hpp"
 #include "..\xcore\auxiliary\MiscUtils\Property.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 #include "Obj_mgr\obj_mgr.hpp"
 #include "Dictionary\global_dictionary.hpp"
 

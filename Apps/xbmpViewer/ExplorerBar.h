@@ -16,7 +16,7 @@ class CExplorerBar : public CXTDockWindow
 {
 // Construction
 public:
-	CExplorerBar();
+    CExplorerBar();
 
 // Attributes
 public:
@@ -29,23 +29,23 @@ public:
     CString GetPath     ( void );
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CExplorerBar)
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CExplorerBar)
+    //}}AFX_VIRTUAL
 
 // Implementation
 public:
-	virtual ~CExplorerBar();
+    virtual ~CExplorerBar();
 
-	// Generated message map functions
+    // Generated message map functions
 protected:
-	//{{AFX_MSG(CExplorerBar)
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnWindowPosChanged(WINDOWPOS FAR* lpwndpos);
-	//}}AFX_MSG
-	afx_msg LRESULT OnUpdateShell(WPARAM wParam, LPARAM lParam);
+    //{{AFX_MSG(CExplorerBar)
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnWindowPosChanged(WINDOWPOS FAR* lpwndpos);
+    //}}AFX_MSG
+    afx_msg LRESULT OnUpdateShell(WPARAM wParam, LPARAM lParam);
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

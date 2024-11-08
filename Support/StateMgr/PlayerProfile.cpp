@@ -46,7 +46,7 @@ void player_profile::Reset( void )
     m_bCrouchOn             = FALSE;
     m_bLookspringOn         = FALSE;
     m_bIsVisibleOnline      = TRUE;
-    m_bAutosaveOn           = TRUE;
+    m_bAutosaveOn           = FALSE;
     m_bAlienAvatarsOn       = FALSE;
     m_UniqueIdLength        = 0;
     m_CinemaMutatedMsgCount = 3;

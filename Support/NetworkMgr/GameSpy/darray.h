@@ -230,7 +230,7 @@ void ArrayReplaceAt(DArray array, const void *newElem, int n);
 void ArraySort(DArray array, ArrayCompareFn comparator);
 
 
-#define NOT_FOUND -1	// returned when a search fails to find the key
+#define NOT_FOUND -1    // returned when a search fails to find the key
 
 /* ArraySearch
  * -----------

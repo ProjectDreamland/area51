@@ -136,13 +136,36 @@ void CListCtrlEx::OnLButtonDown(UINT nFlags, CPoint point)
 void CListCtrlEx::OnLButtonUp(UINT nFlags, CPoint point) 
 {
   CListBase::OnLButtonUp();
-	CListCtrl::OnLButtonUp(nFlags, point);
+    CListCtrl::OnLButtonUp(nFlags, point);
+}
+
+/*** The user double-clicks the right mouse button ****************************/
+void CListCtrlEx::OnRButtonDblClk(UINT nFlags, CPoint point) 
+{
+  if (!CListBase::OnRButtonDblClk(point))
+    CListCtrl::OnRButtonDblClk(nFlags, point);
+}
+
+/*** The user presses the right mouse button **********************************/
+void CListCtrlEx::OnRButtonDown(UINT nFlags, CPoint point)
+{
+  if (!CListBase::OnRButtonDown(point))
+    GetParent()->SendMessage(WM_RBUTTONDOWN, (WPARAM)nFlags, MAKELPARAM(point.x, point.y)); //Блять, я хз как ещё реализовывать эту поеботу.
+    CListCtrl::OnRButtonDown(nFlags, point); //Оно не работает :(
+  CListBase::OnMouseMove(point);
+}
+
+/*** The user releases the right mouse button *********************************/
+void CListCtrlEx::OnRButtonUp(UINT nFlags, CPoint point) 
+{
+  CListBase::OnRButtonUp();
+    CListCtrl::OnRButtonUp(nFlags, point);
 }
 
 /*** The mouse has been moved ************************************************/
 void CListCtrlEx::OnMouseMove(UINT nFlags, CPoint point) 
 {
-	CListCtrl::OnMouseMove(nFlags, point);
+    CListCtrl::OnMouseMove(nFlags, point);
   CListBase::OnMouseMove(point);
 }
 
@@ -198,25 +221,28 @@ void CListCtrlEx::OnSysColorChange()
 
 /*** Table of message handlers ***********************************************/
 BEGIN_MESSAGE_MAP(CListCtrlEx, CListCtrl)
-	//{{AFX_MSG_MAP(CListCtrlEx)
-	ON_WM_SYSCOLORCHANGE()
-	ON_WM_ERASEBKGND()
-	ON_WM_HSCROLL()
-	ON_WM_KILLFOCUS()
-	ON_WM_SETFOCUS()
-	ON_WM_LBUTTONDOWN()
-	ON_WM_LBUTTONDBLCLK()
-	ON_WM_KEYDOWN()
-	ON_WM_KEYUP()
-	ON_WM_MOUSEMOVE()
-	ON_WM_LBUTTONUP()
-	//}}AFX_MSG_MAP
+    //{{AFX_MSG_MAP(CListCtrlEx)
+    ON_WM_SYSCOLORCHANGE()
+    ON_WM_ERASEBKGND()
+    ON_WM_HSCROLL()
+    ON_WM_KILLFOCUS()
+    ON_WM_SETFOCUS()
+    ON_WM_LBUTTONDOWN()
+    ON_WM_LBUTTONUP()
+    ON_WM_LBUTTONDBLCLK()
+    ON_WM_RBUTTONDOWN()
+    ON_WM_RBUTTONUP()
+    ON_WM_RBUTTONDBLCLK()
+    ON_WM_KEYDOWN()
+    ON_WM_KEYUP()
+    ON_WM_MOUSEMOVE()
+    //}}AFX_MSG_MAP
   ON_MESSAGE(LVM_GETEXTENDEDLISTVIEWSTYLE , OnGetExtendedStyle)
   ON_MESSAGE(LVM_HITTEST, OnHitTest)
   ON_MESSAGE(LVM_INSERTCOLUMN, OnInsertColumn)
   ON_MESSAGE(LVM_SETEXTENDEDLISTVIEWSTYLE , OnSetExtendedStyle)
   ON_MESSAGE(LVM_SETIMAGELIST, OnSetImageList)
-	ON_NOTIFY_REFLECT_EX(LVN_COLUMNCLICK, OnColumnclick)
+    ON_NOTIFY_REFLECT_EX(LVN_COLUMNCLICK, OnColumnclick)
   ON_NOTIFY_REFLECT(NM_CUSTOMDRAW, OnCustomDraw)
 END_MESSAGE_MAP()
 
@@ -320,13 +346,36 @@ void CListViewEx::OnLButtonDown(UINT nFlags, CPoint point)
 void CListViewEx::OnLButtonUp(UINT nFlags, CPoint point) 
 {
   CListBase::OnLButtonUp();
-	CListView::OnLButtonUp(nFlags, point);
+    CListView::OnLButtonUp(nFlags, point);
+}
+
+/*** The user double-clicks the right mouse button ****************************/
+void CListViewEx::OnRButtonDblClk(UINT nFlags, CPoint point) 
+{
+  if (!CListBase::OnRButtonDblClk(point))
+    CListView::OnRButtonDblClk(nFlags, point);
+}
+
+/*** The user presses the right mouse button **********************************/
+void CListViewEx::OnRButtonDown(UINT nFlags, CPoint point) 
+{
+  if (!CListBase::OnRButtonDown(point))
+    CListView::OnRButtonDown(nFlags, point);
+  CListBase::OnMouseMove(point);
+}
+
+
+/*** The user releases the right mouse button *********************************/
+void CListViewEx::OnRButtonUp(UINT nFlags, CPoint point) 
+{
+  CListBase::OnRButtonUp();
+    CListView::OnRButtonUp(nFlags, point);
 }
 
 /*** The mouse has been moved ************************************************/
 void CListViewEx::OnMouseMove(UINT nFlags, CPoint point) 
 {
-	CListView::OnMouseMove(nFlags, point);
+    CListView::OnMouseMove(nFlags, point);
   CListBase::OnMouseMove(point);
 }
 
@@ -382,25 +431,28 @@ void CListViewEx::OnSysColorChange()
 
 /*** Table of message handlers ***********************************************/
 BEGIN_MESSAGE_MAP(CListViewEx, CListView)
-	//{{AFX_MSG_MAP(CListViewEx)
-	ON_WM_SYSCOLORCHANGE()
-	ON_WM_ERASEBKGND()
-	ON_WM_HSCROLL()
-	ON_WM_KILLFOCUS()
-	ON_WM_SETFOCUS()
-	ON_WM_LBUTTONDOWN()
-	ON_WM_LBUTTONDBLCLK()
-	ON_WM_KEYDOWN()
-	ON_WM_KEYUP()
-	ON_WM_MOUSEMOVE()
-	ON_WM_LBUTTONUP()
-	//}}AFX_MSG_MAP
+    //{{AFX_MSG_MAP(CListViewEx)
+    ON_WM_SYSCOLORCHANGE()
+    ON_WM_ERASEBKGND()
+    ON_WM_HSCROLL()
+    ON_WM_KILLFOCUS()
+    ON_WM_SETFOCUS()
+    ON_WM_LBUTTONDOWN()
+    ON_WM_LBUTTONUP()
+    ON_WM_LBUTTONDBLCLK()
+    ON_WM_RBUTTONDOWN()
+    ON_WM_RBUTTONUP()
+    ON_WM_RBUTTONDBLCLK()
+    ON_WM_KEYDOWN()
+    ON_WM_KEYUP()
+    ON_WM_MOUSEMOVE()
+    //}}AFX_MSG_MAP
   ON_MESSAGE(LVM_GETEXTENDEDLISTVIEWSTYLE , OnGetExtendedStyle)
   ON_MESSAGE(LVM_HITTEST, OnHitTest)
   ON_MESSAGE(LVM_INSERTCOLUMN, OnInsertColumn)
   ON_MESSAGE(LVM_SETEXTENDEDLISTVIEWSTYLE , OnSetExtendedStyle)
   ON_MESSAGE(LVM_SETIMAGELIST, OnSetImageList)
-	ON_NOTIFY_REFLECT_EX(LVN_COLUMNCLICK, OnColumnclick)
+    ON_NOTIFY_REFLECT_EX(LVN_COLUMNCLICK, OnColumnclick)
   ON_NOTIFY_REFLECT(NM_CUSTOMDRAW, OnCustomDraw)
 END_MESSAGE_MAP()
 
@@ -630,8 +682,8 @@ void CListBase::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
                           (m_pListCtrl->GetStyle() & LVS_SHOWSELALWAYS) != 0;
   bool bLVHasFocus      = m_pListCtrl->GetFocus() == m_pListCtrl;
   bool bItemHasFocus    = pItem->state & LVIS_FOCUSED  && bLVHasFocus;
-	bool bSelected        = (pItem->state & LVIS_SELECTED) != 0;
-	bool bReallySelected  = bSelected && bLVHasFocus;
+  bool bSelected        = (pItem->state & LVIS_SELECTED) != 0;
+  bool bReallySelected  = bSelected && bLVHasFocus;
   bool bFullRowSelected = (m_dwExtendedStyle & LVS_EX_FULLROWSELECT) != 0;
 
   CRect rcItem;                   // rectangle bounding complete item
@@ -643,10 +695,10 @@ void CListBase::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
   CRect rcLabel;                  // rectangle bounding item label
   GetRealSubItemRect(pItem->iItem, 0, LVIR_LABEL, rcLabel);
 
-	CRect rcSelection;              // rectangle bounding selection
+    CRect rcSelection;              // rectangle bounding selection
   if (bFullRowSelected)
   {
-	  rcSelection = rcItem;
+      rcSelection = rcItem;
     if (IndexToOrder(0) == 0 || m_bKeepLabelLeft)
     {
       rcSelection.left = rcLabel.left;
@@ -655,18 +707,18 @@ void CListBase::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
     }
   }
 
-	CDC*   pDC          = CDC::FromHandle(lpDrawItemStruct->hDC);
+    CDC*   pDC          = CDC::FromHandle(lpDrawItemStruct->hDC);
   CBrush brushHiLite;
   DWORD  dwNormalText = GetSysColor(COLOR_WINDOWTEXT);
   DWORD  dwHiLiteBk   = 0;
 
-	if (bReallySelected)
-	{
+    if (bReallySelected)
+    {
     dwHiLiteBk =
-      pItem->iItem == m_nHotItem ? m_dwHotLite : GetSysColor(COLOR_HIGHLIGHT);
+    pItem->iItem == m_nHotItem ? m_dwHotLite : GetSysColor(COLOR_HIGHLIGHT);
     brushHiLite.CreateSolidBrush(dwHiLiteBk);
-	}
-	else if (bAlwaysSelected)
+    }
+    else if (bAlwaysSelected)
   {
     dwHiLiteBk = GetSysColor(COLOR_3DFACE);
     brushHiLite.CreateSolidBrush(dwHiLiteBk);
@@ -695,20 +747,20 @@ void CListBase::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
   }
 
   LVCOLUMN lvc;
-	lvc.mask = LVCF_FMT | LVCF_WIDTH;
+    lvc.mask = LVCF_FMT | LVCF_WIDTH;
 
   // display all subitems
   int nIndex;
-	for (int nColumn = 0;
+    for (int nColumn = 0;
        m_pListCtrl->GetColumn(nIndex = OrderToIndex(nColumn), &lvc);
        nColumn++)
   {
     LVITEM* pSubItem  = nIndex > 0 ? GetLVITEM(pItem->iItem, nIndex) : pItem;
     CRect   rcSubItem;                  // rectangle bounding subitem
-	  CRect   rcText;                     // output rectangle
+    CRect   rcText;                     // output rectangle
     DWORD   dwBkColor =                 // background color of curremt column
-      m_bColorSortColumn && nIndex+1 == abs(m_nSortColumn) ?
-      m_dwColSortColor : m_pListCtrl->GetBkColor();
+    m_bColorSortColumn && nIndex+1 == abs(m_nSortColumn) ?
+    m_dwColSortColor : m_pListCtrl->GetBkColor();
     CBrush  brushBk(dwBkColor);
 
     // consider column margins
@@ -871,7 +923,7 @@ void CListBase::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
   delete pItem;
 
   // If item has focus draw focus rectangle
-	if (bItemHasFocus)
+    if (bItemHasFocus)
   {
     pDC->SetTextColor (dwNormalText);
     pDC->DrawFocusRect(rcSelection);
@@ -1170,7 +1222,7 @@ void CListBase::JustifyFirstColumn(int nFormat)
 /*** A column header has been clicked ****************************************/
 BOOL CListBase::OnColumnclick(NMHDR* pNMHDR, LRESULT* pResult) 
 {
-	NM_LISTVIEW* pNMListView = reinterpret_cast<NM_LISTVIEW*>(pNMHDR);
+    NM_LISTVIEW* pNMListView = reinterpret_cast<NM_LISTVIEW*>(pNMHDR);
 
     int          nSortColumn = pNMListView->iSubItem + 1;
 
@@ -1185,7 +1237,7 @@ BOOL CListBase::OnColumnclick(NMHDR* pNMHDR, LRESULT* pResult)
   
     SetSortIcon();
 
-	*pResult = 0;
+    *pResult = 0;
     return FALSE;
 }
 
@@ -1464,10 +1516,10 @@ bool CListBase::OnKeyDown(UINT nChar)
       if (m_bControl && m_bKeepLabelLeft && IndexToOrder(0) > 0)
       {
         LVCOLUMN lvc;
-	      lvc.mask = LVCF_FMT;
+          lvc.mask = LVCF_FMT;
 
         int nIndex;
-      	for (int nColumn = 0;
+          for (int nColumn = 0;
              m_pListCtrl->GetColumn(nIndex = OrderToIndex(nColumn), &lvc);
              nColumn++)
         {
@@ -1525,13 +1577,13 @@ bool CListBase::OnKeyDown(UINT nChar)
       break;
   }
 
-	return false;
+    return false;
 }
 
 /*** A key has been released *************************************************/
 void CListBase::OnKeyUp(UINT nChar) 
 {
-	if (nChar == VK_CONTROL) m_bControl = false;
+    if (nChar == VK_CONTROL) m_bControl = false;
 }
 
 /*** List control loses input focus ******************************************/
@@ -1539,7 +1591,7 @@ void CListBase::OnKillFocus()
 {
   ASSERT(m_pListCtrl);
 
-	// manually remove focus state so that custom drawing will function properly
+    // manually remove focus state so that custom drawing will function properly
   int nItem = m_pListCtrl->GetNextItem(-1, LVNI_SELECTED);
   if (nItem >= 0) m_pListCtrl->SetItemState(nItem, 0, LVIS_FOCUSED);
 }
@@ -1600,6 +1652,49 @@ void CListBase::OnLButtonUp()
 
   if (m_pListCtrl->GetStyle() & LVS_OWNERDRAWFIXED)
     if (m_hcursorCustom) SetCursor(m_hcursorCustom);
+}
+
+/*** The user double-clicks the right mouse button ****************************/
+bool CListBase::OnRButtonDblClk(CPoint point)
+{
+    return true;
+}
+
+/*** The user presses the right mouse button **********************************/
+bool CListBase::OnRButtonDown(CPoint point)
+{
+    ASSERT(m_pListCtrl);
+
+    if (m_pListCtrl->GetStyle() & LVS_OWNERDRAWFIXED)
+    {
+        if (m_hcursorCustom)
+            SetCursor(m_hcursorCustom);
+
+        UINT flags;
+        int nItem = m_pListCtrl->HitTest(point, &flags);
+
+        if (nItem            >= 0                 &&
+            m_dwExtendedStyle & LVS_EX_CHECKBOXES &&
+            flags            == LVHT_ONITEMSTATEICON)
+        {
+            m_pListCtrl->SetCheck(nItem, !m_pListCtrl->GetCheck(nItem));
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/*** The user releases the right mouse button *********************************/
+void CListBase::OnRButtonUp()
+{
+
 }
 
 /*** The mouse has been moved ************************************************/
@@ -1755,7 +1850,7 @@ void CListBase::OnSetFocus()
 {
   ASSERT(m_pListCtrl);
 
-	// manually set focus state so that custom drawing will function properly
+    // manually set focus state so that custom drawing will function properly
   int nItem = m_pListCtrl->GetNextItem(-1, LVNI_SELECTED);
   if (nItem >= 0) m_pListCtrl->SetItemState(nItem, LVIS_FOCUSED, LVIS_FOCUSED);
 }

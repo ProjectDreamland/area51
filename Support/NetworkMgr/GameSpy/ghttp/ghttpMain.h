@@ -22,10 +22,10 @@ extern "C" {
 #include <stdio.h>
 #include "ghttp.h"
 #if defined(applec) || defined(THINK_C) || defined(__MWERKS__) && !defined(__mips64) && !defined(_WIN32)
-	#include "::nonport.h"
+    #include "::nonport.h"
 #else
-	#include "../nonport.h"
-	#include "../stringutil.h"
+    #include "../nonport.h"
+    #include "../stringutil.h"
 #endif
 
 #ifdef __cplusplus

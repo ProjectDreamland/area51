@@ -39,7 +39,11 @@ class CFileList : public CWnd
 {
 // Construction
 public:
-	CFileList();
+    CFileList();
+    
+public:    
+    void OnContextConvertTga();
+    void OnContextConvertXbmp();
 
 // Attributes
 public:
@@ -53,32 +57,33 @@ public:
     xstring             GetPath             ( void );
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CFileList)
-	protected:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CFileList)
+    protected:
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+    //}}AFX_VIRTUAL
 
 // Implementation
 public:
-	virtual ~CFileList();
+    virtual ~CFileList();
 
-	// Generated message map functions
+    // Generated message map functions
 protected:
-	//{{AFX_MSG(CFileList)
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnDestroy();
-	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
-	//}}AFX_MSG
+    //{{AFX_MSG(CFileList)
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnSize(UINT nType, int cx, int cy);
+    afx_msg void OnDestroy();
+    afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
+    //}}AFX_MSG
     afx_msg void OnItemChanged( NMHDR* pHeader, LRESULT* pResult );
     afx_msg void OnColumnClick( NMHDR* pHeader, LRESULT* pResult );
     afx_msg void OnDeleteAllItems( NMHDR* pHeader, LRESULT* pResult );
+    afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
     afx_msg LRESULT OnDirChanged(WPARAM, LPARAM);
     afx_msg LRESULT OnPopulateList(WPARAM, LPARAM);
     afx_msg LRESULT OnRefreshList(WPARAM, LPARAM);
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

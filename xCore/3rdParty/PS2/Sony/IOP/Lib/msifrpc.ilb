@@ -1,7 +1,0 @@
-#IOP-ILB# [PsIImsifrpc 3000]
-L msifrpc
-V 0x0102
-F 0x0000
-E 004 sceSifMInitRpc
-E 016 sceSifMTermRpc
-E 017 sceSifMEntryLoop

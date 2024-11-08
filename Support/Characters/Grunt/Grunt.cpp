@@ -12,8 +12,8 @@
 
 #include "objects\GrenadeProjectile.hpp"
 #include "objects\NewWeapon.hpp"
-#include "MiscUtils\SimpleUtils.hpp"
-#include "MiscUtils\TrajectoryGenerator.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\TrajectoryGenerator.hpp"
 #include "Debris\debris_mgr.hpp"
 #include "Debris\debris_rigid.hpp"
 #include "gamelib\StatsMgr.hpp"

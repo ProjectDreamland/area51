@@ -97,6 +97,21 @@ BEGIN
     BUTTON      ID_APP_ABOUT
 END
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// Right menu
+//
+
+
+IDR_CONTEXT_MENU MENU
+BEGIN
+    POPUP "Context Menu"
+    BEGIN
+        MENUITEM "Convert to TGA",  ID_CONTEXT_CONVERT_TGA
+        MENUITEM "Convert to XBMP", ID_CONTEXT_CONVERT_XBMP
+    END
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -107,6 +122,9 @@ IDR_MAINFRAME MENU PRELOAD DISCARDABLE
 BEGIN
     POPUP "&File"
     BEGIN
+        MENUITEM "Convert XBMP To TGA",         ID_CONVERT_TGA
+        MENUITEM "Convert TGA To XBMP",         ID_CONVERT_XBMP
+        MENUITEM SEPARATOR
         MENUITEM "E&xit",                       ID_APP_EXIT
     END
     POPUP "&Edit"
@@ -116,10 +134,6 @@ BEGIN
         MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
         MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
         MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
-    END
-    POPUP "&Convert"
-    BEGIN
-        MENUITEM "Convert selection to &TGA's...", ID_CONVERT_TGA
     END
     POPUP "&View"
     BEGIN
@@ -131,10 +145,10 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "&About xbmpViewer...",        ID_APP_ABOUT
+        MENUITEM "&About XbmpViewer...",        ID_APP_ABOUT
     END
+	//MENUITEM     "Refresh",                     ID_FILE_REFRESH
 END
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -163,13 +177,13 @@ END
 
 IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About xbmpViewer"
+CAPTION "About XbmpViewer"
 FONT 8, "MS Sans Serif"
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
-    LTEXT           "xbmpViewer Version 1.0",IDC_STATIC,40,10,119,8,
+    LTEXT           "XbmpViewer Version 1.1",IDC_STATIC,40,10,119,8,
                     SS_NOPREFIX
-    LTEXT           "Copyright © 2002",IDC_STATIC,40,25,119,8
+    LTEXT           "Builded and fixed by GameSpy | 2024",IDC_STATIC,40,25,119,8
     DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
 END
 
@@ -183,6 +197,23 @@ BEGIN
     CTEXT           "Static",IDC_TEXT,7,7,286,14,SS_CENTERIMAGE
 END
 
+IDD_CONVERT_XBMP_DIALOG DIALOGEX 0, 0, 250, 120
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Conversion settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Platform:", -1, 10, 10, 100, 10
+    COMBOBOX        IDC_PLATFORM_COMBO, 120, 10, 100, 50, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    LTEXT           "Format:", -1, 10, 40, 100, 10
+    COMBOBOX        IDC_FORMAT_COMBO, 120, 40, 100, 50, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    LTEXT           "Mip Levels (0-16):", -1, 10, 70, 100, 10
+    EDITTEXT        IDC_MIP_EDIT, 120, 70, 100, 14, ES_NUMBER | ES_AUTOHSCROLL
+
+    PUSHBUTTON      "OK", IDOK, 50, 97, 50, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 150, 97, 50, 14
+END
 
 #ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
@@ -207,14 +238,14 @@ BEGIN
     BEGIN
         BLOCK "040904B0"
         BEGIN
-            VALUE "CompanyName", "\0"
-            VALUE "FileDescription", "xbmpViewer MFC Application\0"
+            VALUE "CompanyName", "Inevitable\0"
+            VALUE "FileDescription", "XbmpViewer\0"
             VALUE "FileVersion", "1, 0, 0, 1\0"
-            VALUE "InternalName", "xbmpViewer\0"
+            VALUE "InternalName", "XbmpViewer\0"
             VALUE "LegalCopyright", "Copyright © 2002\0"
             VALUE "LegalTrademarks", "\0"
-            VALUE "OriginalFilename", "xbmpViewer.EXE\0"
-            VALUE "ProductName", "xbmpViewer Application\0"
+            VALUE "OriginalFilename", "XbmpViewer.EXE\0"
+            VALUE "ProductName", "XbmpViewer\0"
             VALUE "ProductVersion", "1, 0, 0, 1\0"
         END
     END
@@ -261,12 +292,12 @@ END
 
 STRINGTABLE PRELOAD DISCARDABLE 
 BEGIN
-    IDR_MAINFRAME           "xbmpViewer"
+    IDR_MAINFRAME           "XbmpViewer"
 END
 
 STRINGTABLE PRELOAD DISCARDABLE 
 BEGIN
-    AFX_IDS_APP_TITLE       "xbmpViewer"
+    AFX_IDS_APP_TITLE       "XbmpViewer"
     AFX_IDS_IDLEMESSAGE     "Ready"
 END
 

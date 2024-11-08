@@ -14,7 +14,7 @@
 #include "Parsing\TextIn.hpp"
 #include "Parsing\TextOut.hpp"
 
-#include "MiscUtils\SimpleUtils.hpp"
+#include "..\MiscUtils\SimpleUtils.hpp"
 
 #ifdef X_EDITOR
 #include <windows.h>

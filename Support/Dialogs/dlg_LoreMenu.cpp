@@ -495,7 +495,7 @@ void dlg_lore_menu::Render( s32 ox, s32 oy )
             {
                 case LORE_TYPE_VIDEO:
                 case LORE_TYPE_AUDIO:
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
                     if( Movie.IsPlaying() )
                     {               
                         Movie.Render( vector2( 129.0f, 59.0f ), vector2( 256.0f, 192.0f ), TRUE );
@@ -941,7 +941,7 @@ void dlg_lore_menu::InitIconScaling ( xbool ScaleDown )
         m_TimeOut = 0.0f;
 
         // restart background movie
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
         Movie.Close();
 #endif
         g_StateMgr.EnableBackgroundMovie();
@@ -1172,7 +1172,7 @@ xbool dlg_lore_menu::UpdateIconScaling( f32 DeltaTime )
                 // shut down background movie
                 g_StateMgr.DisableBackgoundMovie();
                 // open lore movie (or sound file, or text)
-#if !defined( TARGET_PC )
+#if defined( TARGET_PC )
                 Movie.Open(m_FileName, FALSE, TRUE);
 #endif
                 // reset timeout
