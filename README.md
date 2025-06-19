@@ -1,5 +1,3 @@
-## This is the LEGACY branch, the last version before the migration to VS 2022. All tools and all code are fully functional here.
-
 # Area 51 (2005) Source Code
 
 Welcome to the unofficial release of the Area 51 (2005) video game source code! This project aims to resurrect and preserve a piece of early 2000s video game history for enthusiasts, historians, and developers alike. Below is a brief overview of the source code details, its origin, and guidance on how the community can help bring this game into the modern era.
