@@ -358,6 +358,12 @@ void CMainFrame::OnConvertTga()
                             // Get the root path and list of files selected
                             xstring             Path  = m_wndFileList.GetPath();
                             xarray<file_rec*>   Array = m_wndFileList.GetSelected();
+                            
+                            if (Array.GetCount() == 0)
+                            {
+                                AfxMessageBox(_T("Warning: Image was not selected."));
+                                return;
+                            }
 
                             CProgress Progress;
 
@@ -433,18 +439,19 @@ void CMainFrame::OnUpdateConvertXbmp(CCmdUI* pCmdUI)
 
 void CMainFrame::OnConvertXbmp() 
 {
-    //Get settings window
+    // Get settings window
     CConvertSettingsDialog dlg;
 
-    //OK = Cheezy man
+    // OK = Cheezy man
     if (dlg.DoModal() == IDOK)
     {
-        //Get settings
-        CString platform = dlg.m_SelectedPlatform;
-        CString format = dlg.m_SelectedFormat;
-        int mipLevels = dlg.m_MipLevels;
+        // Get settings
+        CString Platform = dlg.m_SelectedPlatform;
+        CString Format = dlg.m_SelectedFormat;
+        int MipLevels = dlg.m_MipLevels;
+        int GenericCompression = dlg.m_GenericCompression;
 
-        //Get the export folder
+        // Get the export folder
         IShellFolder* pShellFolder;
         if (SHGetDesktopFolder(&pShellFolder) == NOERROR)
         {
@@ -479,16 +486,23 @@ void CMainFrame::OnConvertXbmp()
                             {
                                 OutPath += "\\";
 
-                                //Get the root path and list of files selected
+                                // Get the root path and list of files selected
                                 xstring Path = m_wndFileList.GetPath();
                                 xarray<file_rec*> Array = m_wndFileList.GetSelected();
+                                    
+                                if (Array.GetCount() == 0)
+                                {
+                                    AfxMessageBox(_T("Warning: Image was not selected."));
+                                    return;
+                                }    
 
                                 CProgress Progress;
+                                
                                 Progress.Create(IDD_PROGRESS, this);
                                 Progress.SetWindowText("Converting TGA to XBMP...");
                                 Progress.ShowWindow(SW_SHOW);
 
-                                //Go through each file
+                                // Go through each file
                                 for (s32 i = 0; i < Array.GetCount(); i++)
                                 {
                                     file_rec* pFile = Array[i];
@@ -504,170 +518,193 @@ void CMainFrame::OnConvertXbmp()
 
                                         Progress.SetText(xfs("%d of %d - %s", i + 1, Array.GetCount(), pFile->Name));
 
-                                        //Load the TGA file
+                                        // Load the TGA file
                                         xbitmap b;
-                                        if (!auxbmp_Load(b, InFile))                
-                                    
-                                        //IT IS VERY IMPORTANT TO FOLLOW CONSISTENCY!!!!
-                                        //COMPRESSION TYPE
-                                        //PLATFORM DEFINICATIONS
-                                        //MIPS
-                                        
-/////////////////////////////////////////////////////////////////////////////
-//// YANDERE DEV CODE
-/////////////////////////////////////////////////////////////////////////////                                        
-
-                                        if (format == _T("32_RGBA_8888"))
+                                        if (!auxbmp_Load(b, InFile))
                                         {
-                                            b.ConvertFormat(xbitmap::FMT_32_RGBA_8888);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 32_RGBA_8888 !!!"));
-                                            #endif
+                                            AfxMessageBox(_T("Error loading file!"));
+                                            continue;
                                         }
-                                        else if (format == _T("32_RGBU_8888"))
+										
+										// Apply platform-specific transformations
+                                        if (Platform == _T("PC") || Platform == _T("Xbox"))
                                         {
-                                            b.ConvertFormat(xbitmap::FMT_32_RGBU_8888);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 32_RGBU_8888 !!!"));
-                                            #endif
+                                            auxbmp_ConvertToD3D(b); // D3D conversion
                                         }
-                                        else if (format == _T("32_ARGB_8888"))
+                                        else if (Platform == _T("PS2"))
                                         {
-                                            b.ConvertFormat(xbitmap::FMT_32_ARGB_8888);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 32_ARGB_8888 !!!"));
-                                            #endif
+                                            auxbmp_ConvertToPS2(b);  // PS2 conversion
                                         }
-                                        else if (format == _T("32_URGB_8888"))
+                                        else if (Platform == _T("GameCube"))
                                         {
-                                            b.ConvertFormat(xbitmap::FMT_32_URGB_8888);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 32_URGB_8888 !!!"));
-                                            #endif
+                                            auxbmp_ConvertToGCN(b);  // GameCube conversion
                                         }
-                                        else if (format == _T("24_RGB_888"))
+                                        else if (Platform == _T("Native"))
                                         {
-                                            b.ConvertFormat(xbitmap::FMT_24_RGB_888);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 24_RGB_888 !!!"));
-                                            #endif
+                                            auxbmp_ConvertToNative(b);  // Native conversion
                                         }
-                                        else if (format == _T("16_RGBA_4444"))
+                                        else
                                         {
-                                            b.ConvertFormat(xbitmap::FMT_16_RGBA_4444);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 16_RGBA_4444 !!!"));
-                                            #endif
-                                        }
-                                        else if (format == __T("16_ARGB_4444"))
-                                        {
-                                            b.ConvertFormat(xbitmap::FMT_16_ARGB_4444);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 16_ARGB_4444 !!!"));
-                                            #endif
-                                        }
-                                        else if (format == _T("16_RGBA_5551"))
-                                        {
-                                            b.ConvertFormat(xbitmap::FMT_16_RGBA_5551);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 16_RGBA_5551 !!!"));
-                                            #endif
-                                        }
-                                        else if (format == _T("16_RGBU_5551"))
-                                        {
-                                            b.ConvertFormat(xbitmap::FMT_16_RGBU_5551);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 16_RGBU_5551 !!!"));
-                                            #endif
-                                        }
-                                        else if (format == _T("16_ARGB_1555"))
-                                        {
-                                            b.ConvertFormat(xbitmap::FMT_16_ARGB_1555);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 16_ARGB_1555 !!!"));
-                                            #endif
-                                        }
-                                        else if (format == _T("16_URGB_1555"))
-                                        {
-                                            b.ConvertFormat(xbitmap::FMT_16_URGB_1555);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 16_URGB_1555 !!!"));
-                                            #endif
-                                        }
-                                        else if (format == _T("16_RGB_565"))
-                                        {
-                                            b.ConvertFormat(xbitmap::FMT_16_RGB_565);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression 16_RGB_565 !!!"));
-                                            #endif
-                                        }
-                                        else if (format == _T("P4_RGB_565"))
-                                        {
-                                            b.ConvertFormat(xbitmap::FMT_P4_RGB_565);
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected compression P4_RGB_565 !!!"));
-                                            #endif
-                                        }
-                                        else if (format == _T("NoComp"))
-                                        {
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected NoComp !!!"));
-                                            #endif
+                                            AfxMessageBox(_T("Warning: Platform selection error"));
+                                            continue;
                                         }
                                         
-/////////////////////////////////////////////////////////////////////////////
-//// YANDERE DEV CODE - END
-/////////////////////////////////////////////////////////////////////////////
-
-                                        if (platform == _T("PC") || platform == _T("Xbox"))
+                                        // Convert to the selected format
+                                        xbitmap::format TargetFormat = xbitmap::FMT_NULL;
+                        
+                                        // RGB formats.
+                                        if (Format == _T("32_RGBA_8888"))
+                                            TargetFormat = xbitmap::FMT_32_RGBA_8888;
+                                        else if (Format == _T("32_RGBU_8888"))
+                                            TargetFormat = xbitmap::FMT_32_RGBU_8888;
+                                        else if (Format == _T("32_ARGB_8888"))
+                                            TargetFormat = xbitmap::FMT_32_ARGB_8888;
+                                        else if (Format == _T("32_URGB_8888"))
+                                            TargetFormat = xbitmap::FMT_32_URGB_8888;
+                                        else if (Format == _T("24_RGB_888"))
+                                            TargetFormat = xbitmap::FMT_24_RGB_888;
+                                        else if (Format == _T("16_RGBA_4444"))
+                                            TargetFormat = xbitmap::FMT_16_RGBA_4444;
+                                        else if (Format == _T("16_ARGB_4444"))
+                                            TargetFormat = xbitmap::FMT_16_ARGB_4444;
+                                        else if (Format == _T("16_RGBA_5551"))
+                                            TargetFormat = xbitmap::FMT_16_RGBA_5551;
+                                        else if (Format == _T("16_RGBU_5551"))
+                                            TargetFormat = xbitmap::FMT_16_RGBU_5551;
+                                        else if (Format == _T("16_ARGB_1555"))
+                                            TargetFormat = xbitmap::FMT_16_ARGB_1555;
+                                        else if (Format == _T("16_URGB_1555"))
+                                            TargetFormat = xbitmap::FMT_16_URGB_1555;
+                                        else if (Format == _T("16_RGB_565"))
+                                            TargetFormat = xbitmap::FMT_16_RGB_565;
+                        
+                                        // BGR formats.
+                                        else if (Format == _T("32_BGRA_8888"))
+                                            TargetFormat = xbitmap::FMT_32_BGRA_8888;
+                                        else if (Format == _T("32_BGRU_8888"))
+                                            TargetFormat = xbitmap::FMT_32_BGRU_8888;
+                                        else if (Format == _T("32_ABGR_8888"))
+                                            TargetFormat = xbitmap::FMT_32_ABGR_8888;
+                                        else if (Format == _T("32_UBGR_8888"))
+                                            TargetFormat = xbitmap::FMT_32_UBGR_8888;
+                                        else if (Format == _T("24_BGR_888"))
+                                            TargetFormat = xbitmap::FMT_24_BGR_888;
+                                        else if (Format == _T("16_BGRA_4444"))
+                                            TargetFormat = xbitmap::FMT_16_BGRA_4444;
+                                        else if (Format == _T("16_ABGR_4444"))
+                                            TargetFormat = xbitmap::FMT_16_ABGR_4444;
+                                        else if (Format == _T("16_BGRA_5551"))
+                                            TargetFormat = xbitmap::FMT_16_BGRA_5551;
+                                        else if (Format == _T("16_BGRU_5551"))
+                                            TargetFormat = xbitmap::FMT_16_BGRU_5551;
+                                        else if (Format == _T("16_ABGR_1555"))
+                                            TargetFormat = xbitmap::FMT_16_ABGR_1555;
+                                        else if (Format == _T("16_UBGR_1555"))
+                                            TargetFormat = xbitmap::FMT_16_UBGR_1555;
+                                        else if (Format == _T("16_BGR_565"))
+                                            TargetFormat = xbitmap::FMT_16_BGR_565;
+                                        
+                                        // 8-bit CLUT formats.
+                                        else if (Format == _T("P8_RGBA_8888"))
+                                            TargetFormat = xbitmap::FMT_P8_RGBA_8888;
+                                        else if (Format == _T("P8_RGBU_8888"))
+                                            TargetFormat = xbitmap::FMT_P8_RGBU_8888;
+                                        else if (Format == _T("P8_ARGB_8888"))
+                                            TargetFormat = xbitmap::FMT_P8_ARGB_8888;
+                                        else if (Format == _T("P8_URGB_8888"))
+                                            TargetFormat = xbitmap::FMT_P8_URGB_8888;
+                                        else if (Format == _T("P8_RGB_888"))
+                                            TargetFormat = xbitmap::FMT_P8_RGB_888;
+                                        else if (Format == _T("P8_RGBA_4444"))
+                                            TargetFormat = xbitmap::FMT_P8_RGBA_4444;
+                                        else if (Format == _T("P8_ARGB_4444"))
+                                            TargetFormat = xbitmap::FMT_P8_ARGB_4444;
+                                        else if (Format == _T("P8_RGBA_5551"))
+                                            TargetFormat = xbitmap::FMT_P8_RGBA_5551;
+                                        else if (Format == _T("P8_RGBU_5551"))
+                                            TargetFormat = xbitmap::FMT_P8_RGBU_5551;
+                                        else if (Format == _T("P8_ARGB_1555"))
+                                            TargetFormat = xbitmap::FMT_P8_ARGB_1555;
+                                        else if (Format == _T("P8_URGB_1555"))
+                                            TargetFormat = xbitmap::FMT_P8_URGB_1555;
+                                        else if (Format == _T("P8_RGB_565"))
+                                            TargetFormat = xbitmap::FMT_P8_RGB_565;
+                                        
+                                        // 4-bit CLUT formats.
+                                        else if (Format == _T("P4_RGBA_8888"))
+                                            TargetFormat = xbitmap::FMT_P4_RGBA_8888;
+                                        else if (Format == _T("P4_RGBU_8888"))
+                                            TargetFormat = xbitmap::FMT_P4_RGBU_8888;
+                                        else if (Format == _T("P4_ARGB_8888"))
+                                            TargetFormat = xbitmap::FMT_P4_ARGB_8888;
+                                        else if (Format == _T("P4_URGB_8888"))
+                                            TargetFormat = xbitmap::FMT_P4_URGB_8888;
+                                        else if (Format == _T("P4_RGB_888"))
+                                            TargetFormat = xbitmap::FMT_P4_RGB_888;
+                                        else if (Format == _T("P4_RGBA_4444"))
+                                            TargetFormat = xbitmap::FMT_P4_RGBA_4444;
+                                        else if (Format == _T("P4_ARGB_4444"))
+                                            TargetFormat = xbitmap::FMT_P4_ARGB_4444;
+                                        else if (Format == _T("P4_RGBA_5551"))
+                                            TargetFormat = xbitmap::FMT_P4_RGBA_5551;
+                                        else if (Format == _T("P4_RGBU_5551"))
+                                            TargetFormat = xbitmap::FMT_P4_RGBU_5551;
+                                        else if (Format == _T("P4_ARGB_1555"))
+                                            TargetFormat = xbitmap::FMT_P4_ARGB_1555;
+                                        else if (Format == _T("P4_URGB_1555"))
+                                            TargetFormat = xbitmap::FMT_P4_URGB_1555;
+                                        else if (Format == _T("P4_RGB_565"))
+                                            TargetFormat = xbitmap::FMT_P4_RGB_565;
+                                        
+                                        // Generic formats.
+                                        else if (Format == _T("DXT1"))
+                                            TargetFormat = xbitmap::FMT_DXT1;
+                                        else if (Format == _T("DXT2"))
+                                            TargetFormat = xbitmap::FMT_DXT2;
+                                        else if (Format == _T("DXT3"))
+                                            TargetFormat = xbitmap::FMT_DXT3;
+                                        else if (Format == _T("DXT4"))
+                                            TargetFormat = xbitmap::FMT_DXT4;
+                                        else if (Format == _T("DXT5"))
+                                            TargetFormat = xbitmap::FMT_DXT5;
+                                        else if (Format == _T("A8"))
+                                            TargetFormat = xbitmap::FMT_A8;
+                                        
+                                        // Make sure a valid format was selected
+                                        if (TargetFormat == xbitmap::FMT_NULL)
                                         {
-                                            auxbmp_ConvertToD3D(b); // PC oder Xducks conversion.
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected PC or XBOX VERSION !!!"));
-                                            #endif
+                                            AfxMessageBox(_T("Warning: Invalid format selection!"));
+                                            continue;
                                         }
-                                        else if (platform == _T("PS2"))
-                                        {
-                                            auxbmp_ConvertToPS2(b);  // PS2 conversion.
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected PS2 VERSION !!!"));
-                                            #endif
-                                        }
-                                        else if (platform == _T("GameCube"))
-                                        {
-                                            auxbmp_ConvertToGCN(b);  // GameCube conversion.
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected GameCum VERSION !!!"));
-                                            #endif
-                                        }
-                                        else if (platform == _T("Native"))
-                                        {
-                                            auxbmp_ConvertToNative(b);  // Native conversion.
-                                            #ifdef HappyDebuger
-                                            AfxMessageBox(_T("Selected Native VERSION !!!"));
-                                            #endif
-                                        }                                                                                  
 
-                                        //MIPS only support images with a power of two.
-                                        int width = b.GetWidth();
-                                        int height = b.GetHeight();
-
-                                        if (mipLevels > 0 && mipLevels <= 16)
+                                        // Convert the bitmap format
+                                        b.ConvertFormat(TargetFormat);                                      
+                                        
+                                        // Generate mip levels if requested
+                                        if (MipLevels > 0 && MipLevels <= 16)
                                         {
-                                            if (IsPowerOfTwo(width) && IsPowerOfTwo(height))
+                                            int Width = b.GetWidth();
+                                            int Height = b.GetHeight();
+
+                                            // Check power of two dimensions
+                                            if (IsPowerOfTwo(Width) && IsPowerOfTwo(Height))
                                             {
-                                                b.BuildMips(mipLevels);
+                                                b.BuildMips(MipLevels);
                                             }
                                             else
                                             {
-                                                AfxMessageBox(_T("Warning: Generation of MIP maps possible only for images with a power of two!"));
+                                                AfxMessageBox(_T("Warning: Generation of MIP maps is only possible for images with dimensions that are powers of two!"));
                                             }
                                         }
 
-                                        //Save the file as XBMP
+                                        // Save the file as XBMP
                                         if (b.Save(OutFile))
                                         {
                                             Progress.SetProgress((i + 1) * 100 / Array.GetCount());
+                                        }
+                                        else
+                                        {
+                                            AfxMessageBox(_T("Warning: Error saving XBMP file!"));
                                         }
                                     }
                                 }

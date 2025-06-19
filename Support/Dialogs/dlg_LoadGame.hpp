@@ -99,6 +99,12 @@ protected:
                                                       vector2&          UV1 );
             #endif
 
+            #ifdef TARGET_PC
+            void        pc_ClipSprite               ( vector3&          UL,
+                                                      vector2&          Size,
+                                                      vector2&          UV0,
+                                                      vector2&          UV1 );
+            #endif
 
             #ifdef TARGET_PS2
             void        ps2_CopyRG2BA               ( s32               XRes,
@@ -160,6 +166,8 @@ protected:
         u64     Tex0;
         #elif defined(TARGET_XBOX)
         xbitmap BMP;
+        #elif defined(TARGET_PC)
+        xbitmap BMP;
         #endif
     };
 
@@ -195,6 +203,14 @@ protected:
     u32             m_ColorWriteMask;
     s32             m_BufferW;
     s32             m_BufferH;
+    #endif
+    
+    #ifdef TARGET_PC
+    IDirect3DSurface9*   m_pBackBuffer;
+    IDirect3DTexture9*   m_Buffers[4];
+    u32                  m_ColorWriteMask;
+    s32                  m_BufferW;
+    s32                  m_BufferH;
     #endif
 };
 

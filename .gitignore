@@ -23,7 +23,6 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
@@ -523,3 +522,5 @@ _XboxRetail/
 !xCore/Tools/stringTool.exe
 !xCore/Tools/xCL.exe
 !xCore/Tools/xbmpTool.exe
+Apps/EDRscDesc/_Win32Release/EDRscDesc.lib
+*.lib

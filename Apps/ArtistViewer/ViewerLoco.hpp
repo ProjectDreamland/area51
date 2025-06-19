@@ -76,7 +76,7 @@ public:
             // Initialize
     virtual void        OnInit( const geom*         pGeom, 
                                 const char*         pAnimFileName, 
-                                config::object&     Object ) ;
+                                config_options::object&     Object ) ;
 
             // Move style functions
             xbool       IsValidIdleStyle   ( move_style Style ) ;
@@ -100,7 +100,7 @@ public:
 // Private data
 protected:
 
-    config::object*                     m_pConfigObject ;
+    config_options::object*                     m_pConfigObject ;
     viewer_loco_play_anim               m_PlayAnim;
     viewer_loco_idle                    m_Idle;
     viewer_loco_move                    m_Move;

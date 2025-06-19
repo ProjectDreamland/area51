@@ -24,6 +24,11 @@ movie_player Movie;
 movie_private::movie_private(void)
 {
     m_pqFrameAvail = NULL;
+#ifdef TARGET_PC
+    m_Surface = NULL;
+    m_RenderSize.Set(640.0f, 480.0f); //Default render state.
+    m_bForceStretch = TRUE; //Scaling video by screen size.
+#endif
 }
 
 //------------------------------------------------------------------------------
@@ -34,6 +39,7 @@ void* RADLINK s_malloc(U32 bytes)
     return x_malloc(bytes);
 }
 
+//------------------------------------------------------------------------------
 void RADLINK s_free(void* ptr)
 {
     x_free(ptr);
@@ -48,19 +54,22 @@ void movie_private::Init(void)
     m_nMaxBitmaps = MOVIE_FIXED_WIDTH / MOVIE_STRIP_WIDTH;
 
     m_Language = XL_LANG_ENGLISH;
-    m_Volume = 1.0f;
+    m_Volume = 1.0f;  
+#ifdef TARGET_PC
+    BinkSoundUseDirectSound(NULL);
+#endif
 }
 
 //------------------------------------------------------------------------------
 xbool movie_private::Open(const char* pFilename, xbool PlayResident, xbool IsLooped)
 {
     m_IsLooped = IsLooped;
-
 #ifdef TARGET_PC
     BinkSetSoundTrack(1, (unsigned long*)&m_Language);
     
     u32 Flags = BINKNOSKIP | BINKSNDTRACK;
-    if (PlayResident) {
+    if (PlayResident) 
+    {
         Flags |= BINKPRELOADALL;
     }
     m_Handle = BinkOpen(xfs("C:\\GameData\\A51\\Release\\PC\\%s.bik",pFilename), Flags);
@@ -69,7 +78,8 @@ xbool movie_private::Open(const char* pFilename, xbool PlayResident, xbool IsLoo
     BinkSetSoundTrack(1, (unsigned long*)&m_Language);
 
     u32 Flags = BINKNOSKIP | BINKSNDTRACK;
-    if (PlayResident) {
+    if (PlayResident) 
+    {
         Flags |= BINKPRELOADALL;
     }
     m_Handle = BinkOpen(xfs("D:\\movies\\%s.bik", pFilename), Flags);
@@ -82,7 +92,8 @@ xbool movie_private::Open(const char* pFilename, xbool PlayResident, xbool IsLoo
     
     BinkSetMixBins( m_Handle, m_Language, bins, 2 );
 #endif
-    if (!m_Handle) {
+    if (!m_Handle) 
+    {
         m_IsFinished = TRUE;
         return FALSE;
     }
@@ -94,7 +105,23 @@ xbool movie_private::Open(const char* pFilename, xbool PlayResident, xbool IsLoo
     m_nBitmaps = 1;
 
     ASSERTS(m_nBitmaps <= m_nMaxBitmaps,"Movie size is larger than decode buffer size");
-
+#ifdef TARGET_PC
+    if (g_pd3dDevice && !m_Surface) 
+    {
+        HRESULT hr = g_pd3dDevice->CreateOffscreenPlainSurface(
+            m_Width, m_Height,
+            D3DFMT_A8R8G8B8,
+            D3DPOOL_DEFAULT,
+            &m_Surface,
+            NULL);
+            
+        if (FAILED(hr)) 
+        {
+            m_IsFinished = TRUE;
+            return FALSE;
+        }
+    }
+#endif
     m_IsFinished = FALSE;
     m_IsRunning = TRUE;
     
@@ -112,9 +139,19 @@ void movie_private::SetVolume(f32 Volume)
 void movie_private::Close(void)
 {
     if (!m_Handle)
-        return;
+        return;       
+#ifdef TARGET_PC
+    BinkSetSoundOnOff(m_Handle, 0);
+#endif
     BinkClose(m_Handle);
-    m_Handle = NULL;  
+    m_Handle = NULL;      
+#ifdef TARGET_PC
+    if (m_Surface) 
+    {
+        m_Surface->Release();
+        m_Surface = NULL;
+    }
+#endif    
     Kill();
 }
 
@@ -142,7 +179,13 @@ void movie_private::Kill(void)
     ASSERT(!m_Handle);    
     delete m_pqFrameAvail;
     m_pqFrameAvail = NULL;
-
+#ifdef TARGET_PC
+    if (m_Surface) 
+    {
+        m_Surface->Release();
+        m_Surface = NULL;
+    }
+#endif
 #ifdef TARGET_XBOX   
     ASSERT(m_pBitmaps);
     s32 i;
@@ -184,45 +227,78 @@ xbitmap* movie_private::Decode(void)
 {
     ASSERT(!m_IsFinished);
     
-    while (BinkWait(m_Handle)) {
+    while (BinkWait(m_Handle)) 
+    {
         x_DelayThread(1);
     }
     
     BinkDoFrame(m_Handle);
-    BinkNextFrame(m_Handle);
-
 #ifdef TARGET_PC  
-    g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET, 0, 0, 0);
-    
-    IDirect3DSurface9* pBackBuffer;
-    VERIFY(!g_pd3dDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &pBackBuffer));
-
-    D3DSURFACE_DESC desc;
-    VERIFY(!pBackBuffer->GetDesc(&desc));
-
-    D3DLOCKED_RECT LockedRect;
-    VERIFY(!pBackBuffer->LockRect(&LockedRect, NULL, 0));
-    
     s32 WindowWidth, WindowHeight;
     eng_GetRes(WindowWidth, WindowHeight);
-    //x_printf("Window Width: %d, Window Height: %d\n", WindowWidth, WindowHeight);
-
-    u8* pBuffer = (u8*)LockedRect.pBits;
-    BinkCopyToBuffer
-    (
-        m_Handle, 
-        pBuffer + (((WindowHeight - m_Height) / 2) * LockedRect.Pitch),
-        LockedRect.Pitch,
-        m_Height,
-        U32((f32(WindowWidth) - f32(m_Width)) / 2.0f),
-        0,
-        BINK_BITMAP_FORMAT | BINKCOPYALL
-    );
-
-    VERIFY(!pBackBuffer->UnlockRect());
-    pBackBuffer->Release();
     
-    //g_pd3dDevice->Present(NULL, NULL, NULL, NULL); //Какого хуя эта хуйня не рендерится бля
+    if (m_Surface) 
+    {
+        D3DLOCKED_RECT lockRect;
+        if (SUCCEEDED(m_Surface->LockRect(&lockRect, NULL, 0))) 
+        {
+            BinkCopyToBuffer(
+                m_Handle,
+                lockRect.pBits,
+                lockRect.Pitch,
+                m_Height,
+                0, 0,
+                BINK_BITMAP_FORMAT | BINKCOPYALL
+            );
+            
+            m_Surface->UnlockRect();
+        }
+        
+        IDirect3DSurface9* pBackBuffer = NULL;
+        g_pd3dDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &pBackBuffer);
+        
+        if (pBackBuffer) 
+        {
+            RECT destRect;
+            
+            if (m_bForceStretch) 
+            {
+                destRect.left = 0;
+                destRect.top = 0;
+                destRect.right = WindowWidth;
+                destRect.bottom = WindowHeight;
+            } 
+            else 
+            {
+                float aspectRatio = (float)m_Width / (float)m_Height;
+                float screenRatio = (float)WindowWidth / (float)WindowHeight;
+                
+                if (screenRatio > aspectRatio) 
+                {
+                    int targetWidth = (int)(WindowHeight * aspectRatio);
+                    destRect.left = (WindowWidth - targetWidth) / 2;
+                    destRect.top = 0;
+                    destRect.right = destRect.left + targetWidth;
+                    destRect.bottom = WindowHeight;
+                } 
+                else 
+                {
+                    int targetHeight = (int)(WindowWidth / aspectRatio);
+                    destRect.left = 0;
+                    destRect.top = (WindowHeight - targetHeight) / 2;
+                    destRect.right = WindowWidth;
+                    destRect.bottom = destRect.top + targetHeight;
+                }
+            }
+            
+            g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET, 0, 0, 0);
+            
+            RECT srcRect = {0, 0, m_Width, m_Height};
+            g_pd3dDevice->StretchRect(m_Surface, &srcRect, pBackBuffer, &destRect, D3DTEXF_LINEAR);
+            
+            pBackBuffer->Release();
+        }
+    }
 #endif
 #ifdef TARGET_XBOX    
     xbitmap* pBitmap;
@@ -255,6 +331,8 @@ xbitmap* movie_private::Decode(void)
     VERIFY(!pBackBuffer->UnlockRect());
     pBackBuffer->Release();
 #endif
+    BinkNextFrame(m_Handle);
+    
     if ( m_Handle->FrameNum >= ( m_Handle->Frames - 1 ) )
     {
         if( m_IsLooped )

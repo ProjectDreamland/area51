@@ -251,6 +251,7 @@ xbool ReadCompressedAudioFileHeader( const char* Filename, xbool ReverseEndian,
 }
 
 //------------------------------------------------------------------------------
+
 u32 CompressAudioFile( X_FILE* in, X_FILE* out, s32 Temperature, s32* NumChannels, s32* LipSyncSize, s32 Target )
 {
     WriteVersionIdentifier( out, Target );
@@ -334,7 +335,6 @@ u32 CompressAudioFile( X_FILE* in, X_FILE* out, s32 Temperature, s32* NumChannel
 
     return Result;
 }
-
 
 //------------------------------------------------------------------------------
 

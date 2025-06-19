@@ -1,7 +1,7 @@
 #include "AlarmNode.hpp"
 #include "entropy\e_draw.hpp"
 #include "..\MiscUtils\SimpleUtils.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "ng_node2.hpp"
 #include "Loco\LocoUtil.hpp"
 

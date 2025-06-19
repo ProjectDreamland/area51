@@ -257,7 +257,7 @@ struct server_info
     xbool           KeyIsRegistered;
 #endif
 
-#if defined(TARGET_PC)
+#if defined(ENABLE_GAMESPY)
     s32             SessionID;
 #endif
 };
@@ -846,7 +846,7 @@ private:
 
 #endif
 
-#if defined(TARGET_PS2)
+#if defined(TARGET_PS2) || defined(TARGET_PC)
 
 enum 
 {
@@ -873,7 +873,7 @@ enum
         void                StatsUpdateConnect          ( void );
         void                StatsUpdateRead             ( void );
         void                StatsUpdateWrite            ( void );
-#endif // defined(TARGET_PS2)
+#endif // defined(TARGET_PS2) || defined(TARGET_PC)
 
 private:
 #if !defined(TARGET_XBOX)

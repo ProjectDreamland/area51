@@ -108,9 +108,9 @@ public:
 
     // Type
     char                    m_CompiledGeom[X_MAX_PATH] ;// Name of compiled geometry
-    config::object*         m_pConfigObject;            // Owner config object
+    config_options::object*         m_pConfigObject;            // Owner config object
     render_type             m_RenderType ;              // Render type - skin or rigid
-    config::type            m_Type ;                    // Type of object
+    config_options::type            m_Type ;                    // Type of object
                                                         
     // Resources                                        
     rhandle<skin_geom>      m_hSkinGeom ;               // Compiled skinned geometry
@@ -164,11 +164,11 @@ private:
     xbool   IsMeshInLOD ( s32 iLOD, const char* pMesh );
 
     // Builds lods automatically or from config object
-    void    BuildLODs   ( config::object& Object ) ;
+    void    BuildLODs   ( config_options::object& Object ) ;
 
 public:
     // Initialize
-    xbool Init          ( config::object& Object ) ;
+    xbool Init          ( config_options::object& Object ) ;
 
     // Destroy
     void Kill           ( void ) ;

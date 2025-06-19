@@ -761,8 +761,9 @@ void    gamespy_nat_progress ( NegotiateState state, void *userdata )
 {
     (void)state;
     (void)userdata;
-
+#if defined(X_LOGGING)
     LOG_MESSAGE( "gamespy_nat_progress","Negotiation state: %s", GetName(state) );
+#endif
 }
 
 //==============================================================================
@@ -774,8 +775,9 @@ void    gamespy_nat_complete ( NegotiateResult result, SOCKET gamesocket, struct
     if( result == nr_success )
     {
         net_address Remote( ntohl(remoteaddr->sin_addr.s_addr), ntohs(remoteaddr->sin_port) );
+#if defined(X_LOGGING)		
         LOG_MESSAGE("gamespy_nat_complete","Result: %s, Local game socket:%s, Remote Socket:%s", GetName(result), pLocalSocket->GetStrAddress(), Remote.GetStrAddress() );
-
+#endif
         if( MatchMgr.m_LocalIsServer == FALSE )
         {
             ASSERT( MatchMgr.GetState() == MATCH_NAT_NEGOTIATE );
@@ -786,7 +788,9 @@ void    gamespy_nat_complete ( NegotiateResult result, SOCKET gamesocket, struct
     }
     else
     {
+#if defined(X_LOGGING)		
         LOG_WARNING("gamespy_nat_complete","Result: %s", GetName(result) );
+#endif		
         if( MatchMgr.m_LocalIsServer == FALSE )
         {
             ASSERT( MatchMgr.GetState() == MATCH_NAT_NEGOTIATE );

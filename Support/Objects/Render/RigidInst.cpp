@@ -144,8 +144,12 @@ const void* rigid_inst::GetColorTable( platform PlatformType ) const
     {
         if( PlatformType == PLATFORM_XBOX )
             return(( u32* )m_pRigidColor )+m_iColor;
-        else
+        else if ( PlatformType == PLATFORM_PS2 )
             return(( u16* )m_pRigidColor )+m_iColor;
+		else if ( PlatformType == PLATFORM_PC )
+            return(( u32* )m_pRigidColor )+m_iColor;
+		else
+            return(0);
     }
     return NULL;
 }
@@ -156,10 +160,12 @@ const void* rigid_inst::GetColorTable( void ) const
 {
     if( !m_pRigidColor )
         return NULL;
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
     u32* pCol=( u32* )m_pRigidColor;
-#else
+#elif defined(TARGET_PS2)
     u16* pCol=( u16* )m_pRigidColor;
+#elif defined(TARGET_PC)
+    u32* pCol=( u32* )m_pRigidColor;
 #endif
     return( pCol+m_iColor );
 }

@@ -142,24 +142,6 @@ void MemCardMgr::MC_CHECK_CARD_HOLD( void )
 {
     // reset timer
     m_CardWait = 0;
-#if defined(TARGET_PS2)
-    //  "Checking memory card (8MB) (for"
-    //  "PlayStation¢2) in MEMORY CARD slot 1."
-    //  "Do not remove memory card"
-    //  "(8MB) (for PlayStation¢2), reset,"
-    //  "or switch off the console."
-
-    const xwchar* pText;
-    if( ! m_iCard )
-        pText = g_StringTableMgr( "ui", "MC_CARD_CHECK_SLOT1" );
-    else
-        pText = g_StringTableMgr( "ui", "MC_CARD_CHECK_SLOT2" );
-    WarningBox(
-        g_StringTableMgr( "ui", "IDS_MEMCARD_HEADER"   ),  
-        pText,
-        FALSE
-    );
-#endif
     ChangeState( __id MC_CHECK_CARD_WAIT );
 }
 
@@ -426,7 +408,7 @@ void MemCardMgr::MC_STATE_UNMOUNT_WAIT( void )
 void MemCardMgr::MC_STATE_BOOT_ACTION_DONE( void )
 {
     condition& Condition0 = GetPendingCondition(0); // (we've already flipped conditions)
-#ifdef TARGET_XBOX
+#if defined( TARGET_PC ) || defined( TARGET_XBOX )
     condition& Condition1 = Condition0;
 #else
     condition& Condition1 = GetPendingCondition(1);
@@ -467,11 +449,11 @@ void MemCardMgr::MC_STATE_BOOT_ACTION_DONE( void )
             Condition1.bInsufficientSpace = ( spaceRequired > Condition1.BytesFree );
     }
 
-    // On Xbox we cannot put up any error messages until after the
+    // On Xbox and probably PC??? we cannot put up any error messages until after the
     // Press START screen. Do we keep the info around so we can
     // display the appropriate prompt at MainMenu?
 
-#ifndef TARGET_XBOX
+#if defined( TARGET_PC )
     // Both cards have error
     if( Condition0.ErrorCode && Condition1.ErrorCode )
     {
@@ -719,15 +701,6 @@ void MemCardMgr::MC_ACTION_BOOT_CHECK( void )
     PushState( __id MC_STATE_UNMOUNT          );
 
     // push states for card two ***********************************************
-#if defined(TARGET_PS2)
-    PushState( __id MC_STATE_NEXT_CARD        );
-    PushState( __id MC_STATE_MOUNT            );
-    PushState( __id MC_CHECK_CARD_HOLD        );
-    PushState( __id MC_STATE_BOOT_CHECK       );
-    PushState( __id MC_STATE_LOAD_SETTINGS    );
-    PushState( __id MC_CHECK_CARD_HOLD_WAIT   );
-    PushState( __id MC_STATE_UNMOUNT          );
-#endif
     PushState( __id MC_STATE_BOOT_ACTION_DONE );
     PushState( __id MC_STATE_FINISH           );
 }
@@ -744,11 +717,6 @@ void MemCardMgr::MC_ACTION_REBOOT_CHECK( void )
     PushState( __id MC_STATE_UNMOUNT          );
 
     // push states for card two ***********************************************
-#if defined(TARGET_PS2)
-    PushState( __id MC_STATE_NEXT_CARD        );
-    PushState( __id MC_STATE_REMOUNT          );
-    PushState( __id MC_STATE_UNMOUNT          );
-#endif
     PushState( __id MC_STATE_FINISH           );
 }
 

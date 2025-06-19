@@ -190,6 +190,11 @@ AsyncDeleteFile:
 #define MEMCARD_FILENAME_LENGTH (32)
 #endif
 
+#ifdef TARGET_PC
+// Root directory for the memory card
+#define PC_MEMCARD_ROOT_DIR "C:\\GameData\\A51\\Release\\PC\\SAVES\\"
+#endif
+
 typedef void card_status_update_fn( s32 CardID );
 
 struct mc_file_info
@@ -350,7 +355,7 @@ void                    SetRootDir              ( void ){ m_pRequestedDirName[0]
 #endif
 
 #ifdef TARGET_PC
-void                    SetRootDir              ( void ){ x_strcpy( m_pRequestedDirName,"C:\\GameData\\A51\\Release\\PC\\MemCard" ); }
+void                    SetRootDir              ( void ){ x_strcpy(m_pRequestedDirName, PC_MEMCARD_ROOT_DIR); }
 #undef GetFreeSpace // thank you .NET for making a macro named GetFreeSpace.
 #endif              // I mean, it's not like I'd ever want one of my own.
 

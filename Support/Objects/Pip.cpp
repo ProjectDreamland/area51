@@ -4,7 +4,7 @@
 #include "Entropy.hpp"
 #include "Pip.hpp"
 #include "Camera.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "..\MiscUtils\SimpleUtils.hpp"
 #include "EventMgr\EventMgr.hpp"
 #include "Render\LightMgr.hpp"

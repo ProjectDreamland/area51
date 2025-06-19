@@ -24,13 +24,13 @@
 // DATA
 //==============================================================================
 
-config g_Config;
+config_options  g_Config;
 
 //==============================================================================
 // GEOM CLASS FUNCTIONS
 //==============================================================================
 
-config::object::geom::geom()
+config_options::object::geom::geom()
 {
     m_Type[0]         = 0;
     m_Matx[0]         = 0;
@@ -42,7 +42,7 @@ config::object::geom::geom()
 // ANIM CLASS FUNCTIONS
 //==============================================================================
 
-config::object::anim::anim()
+config_options::object::anim::anim()
 {
     m_Name[0] = 0;
     m_Matx[0] = 0;
@@ -69,7 +69,7 @@ config::object::anim::anim()
 //==============================================================================
 
 // Returns anim info to be used for compiling
-void config::object::anim::AutoSetupFromName( void )
+void config_options::object::anim::AutoSetupFromName( void )
 {
     // Classify the type of animation and set the flags appropriately
     if ( (x_stristr(m_Name, "idle")) && (x_stristr(m_Name, "turn")) )
@@ -126,7 +126,7 @@ void config::object::anim::AutoSetupFromName( void )
 // SOUND CLASS FUNCTIONS
 //==============================================================================
 
-config::object::sound::sound()
+config_options::object::sound::sound()
 {
     m_Type[0]   = 0;
     m_Source[0] = 0;
@@ -136,7 +136,7 @@ config::object::sound::sound()
 // FX CLASS FUNCTIONS
 //==============================================================================
 
-config::fx::fx()
+config_options::fx::fx()
 {
     m_Source[0] = 0;
 };
@@ -147,7 +147,7 @@ config::fx::fx()
 //==============================================================================
 
 // Functions
-config::object::object()
+config_options::object::object()
 {
     // Clear
     m_Type         [0] = 0;
@@ -173,24 +173,24 @@ config::object::object()
 //==============================================================================
 
 // Returns type
-config::type config::object::GetType( void ) const
+config_options::type config_options::object::GetType( void ) const
 {
     // Loco?
     if( x_stristr( m_Type, "LOCO" ) )
-        return config::TYPE_LOCO;
+        return config_options::TYPE_LOCO;
     
     // Lip sync?
     if( x_stristr( m_Type, "LIP" ) )
-        return config::TYPE_LIP_SYNC;
+        return config_options::TYPE_LIP_SYNC;
 
     // Normal object
-    return config::TYPE_OBJECT;
+    return config_options::TYPE_OBJECT;
 }
 
 //==============================================================================
 
 // Returns TRUE if object is soft skinned
-xbool config::object::IsSoftSkinned( void ) const
+xbool config_options::object::IsSoftSkinned( void ) const
 {
     // Compiled skinned resource?
     if (x_stristr(m_CompiledGeom, "skin"))
@@ -213,7 +213,7 @@ xbool config::object::IsSoftSkinned( void ) const
 //==============================================================================
 
 // Functions
-config::file::file()
+config_options::file::file()
 {
     m_Name[0] = 0;
 }
@@ -224,7 +224,7 @@ config::file::file()
 //==============================================================================
 
 // Constructor
-config::light::light()
+config_options::light::light()
 {
     m_Color.Set(255,255,255,255);
     m_Ambient.Set(76,76,76,255);
@@ -237,22 +237,22 @@ config::light::light()
 //==============================================================================
     
 // Operators
-xbool config::light::operator == (const config::light& L ) const
+xbool config_options::light::operator == (const config_options::light& L ) const
 {
-    return (x_memcmp(this, &L, sizeof(config::light)) == 0);
+    return (x_memcmp(this, &L, sizeof(config_options::light)) == 0);
 }
 
 //==============================================================================
 
-xbool config::light::operator != (const config::light& L ) const
+xbool config_options::light::operator != (const config_options::light& L ) const
 {
-    return (x_memcmp(this, &L, sizeof(config::light)) != 0);
+    return (x_memcmp(this, &L, sizeof(config_options::light)) != 0);
 }
 
 //==============================================================================
 
 // Returns state description
-const char* config::light::GetStateString( void ) const
+const char* config_options::light::GetStateString( void ) const
 {
     switch(m_State)
     {
@@ -270,14 +270,14 @@ const char* config::light::GetStateString( void ) const
 //==============================================================================
 
 // Constructor/destructor
-config::config()
+config_options::config_options()
 {
     Init();
 }
 
 //==============================================================================
 
-config::~config()
+config_options::~config_options()
 {
     Kill();
 }
@@ -285,9 +285,9 @@ config::~config()
 //==============================================================================
 
 // Sets up defaults
-void config::Init( void )
+void config_options::Init( void )
 {
-    x_DebugMsg("config::Init\n");
+    x_DebugMsg("config_options::Init\n");
 
     // General
     m_ShowHelp  = 0;
@@ -348,7 +348,7 @@ void config::Init( void )
 //==============================================================================
 
 // Kills all data
-void config::Kill( void )
+void config_options::Kill( void )
 {
     // Delete objects
     m_Objects.Clear();
@@ -357,9 +357,9 @@ void config::Kill( void )
 //==============================================================================
 
 // Loads common config file
-xbool config::LoadCommon( const char* FileName )
+xbool config_options::LoadCommon( const char* FileName )
 {
-    x_DebugMsg("config::LoadCommon\n");
+    x_DebugMsg("config_options::LoadCommon\n");
 
     // Try open
     config_file CfgFile;
@@ -460,9 +460,9 @@ xbool config::LoadCommon( const char* FileName )
 //==============================================================================
 
 // Loads objects config file
-xbool config::LoadObjectsFromConfig( const char* FileName, xbool bFxFullPath )
+xbool config_options::LoadObjectsFromConfig( const char* FileName, xbool bFxFullPath )
 {
-    x_DebugMsg("config::LoadObjectsFromConfig\n");
+    x_DebugMsg("config_options::LoadObjectsFromConfig\n");
 
     // Try open
     config_file CfgFile;
@@ -686,9 +686,9 @@ xbool config::LoadObjectsFromConfig( const char* FileName, xbool bFxFullPath )
 //==============================================================================
 
 // Loads objects directory file
-xbool config::LoadObjectsFromDirectory( const char* FileName )
+xbool config_options::LoadObjectsFromDirectory( const char* FileName )
 {
-    x_DebugMsg("config::LoadObjectsFromDirectory\n");
+    x_DebugMsg("config_options::LoadObjectsFromDirectory\n");
 
     // Try open over a second (file may not have been finished written yet)
     config_file CfgFile;
@@ -780,7 +780,7 @@ xbool config::LoadObjectsFromDirectory( const char* FileName )
         // Is this a valid .fxo resource?
         if( x_stricmp( Ext, ".fxo") == 0 )
         {
-            config::fx& Fx = m_Fxs.Append();
+            config_options::fx& Fx = m_Fxs.Append();
             x_makepath( Fx.m_Source, NULL, NULL, FName, Ext );
             
             // Show info
@@ -846,7 +846,7 @@ xbool config::LoadObjectsFromDirectory( const char* FileName )
 //==============================================================================
 
 // Returns native viewer data path
-const char* config::GetViewerDataPath( void ) const
+const char* config_options::GetViewerDataPath( void ) const
 {
 #ifdef TARGET_PC
     return m_ViewerDataPaths[SYSTEM_PC].m_Name;
@@ -868,7 +868,7 @@ const char* config::GetViewerDataPath( void ) const
 //==============================================================================
 
 // Returns native game data path
-const char* config::GetGameDataPath  ( void ) const
+const char* config_options::GetGameDataPath  ( void ) const
 {
 #ifdef TARGET_PC
     return m_GameDataPaths[SYSTEM_PC].m_Name;
@@ -890,7 +890,7 @@ const char* config::GetGameDataPath  ( void ) const
 //==============================================================================
 
 // Adds fx if not already present
-void config::AddFx( const char* pFx, xbool bFullPath )
+void config_options::AddFx( const char* pFx, xbool bFullPath )
 {
     char Name[ X_MAX_PATH ];
     

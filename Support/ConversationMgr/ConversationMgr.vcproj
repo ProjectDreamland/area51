@@ -19,7 +19,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\conversationmgr,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				RuntimeLibrary="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -44,6 +45,26 @@
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
+			Name="Release|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+		</Configuration>
+		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
@@ -54,7 +75,8 @@
 				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\conversationmgr,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -110,12 +132,12 @@
 				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\conversationmgr,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLinkerTool"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -130,8 +152,6 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
@@ -168,12 +188,12 @@
 				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\conversationmgr,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_QA"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLinkerTool"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -189,8 +209,6 @@
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
 			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
@@ -204,26 +222,6 @@
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_XBOX,CONFIG_QA"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-		</Configuration>
-		<Configuration
-			Name="Release|Xbox"
-			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			ConfigurationType="4">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -270,6 +268,84 @@
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="EDITOR-Debug|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
+			Name="VIEWER-Debug|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X),$(X)\entropy,$(X)\x_files,$(X)\..\support\conversationmgr,$(X)\..\Support,$(X)\Auxiliary"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,CONFIG_VIEWER"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="VIEWER-Debug|Xbox"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
 		</Configuration>
 	</Configurations>
 	<References>

@@ -11,7 +11,7 @@
 #include "TriggerEx_Object.hpp"
 #include "..\Support\TriggerEx\TriggerEx_Manager.hpp"
 #include "Entropy.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "..\Support\Globals\Global_Variables_Manager.hpp"
 
 #include "Meta\trigger_meta_label.hpp"

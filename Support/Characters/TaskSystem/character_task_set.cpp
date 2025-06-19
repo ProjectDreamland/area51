@@ -11,7 +11,7 @@
 #include "character_task_set.hpp"
 #include "CollisionMgr\CollisionMgr.hpp"
 #include "Entropy.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "..\MiscUtils\SimpleUtils.hpp"
 #include "Characters\Character.hpp"
 

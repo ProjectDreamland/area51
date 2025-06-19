@@ -58,13 +58,6 @@ void MemCardMgr::MC_ACTION_POLL_CONTENT( void )
     PushState( __id MC_STATE_MOUNT          );
     PushState( __id MC_STATE_LOAD_MANIFEST  );
     PushState( __id MC_STATE_UNMOUNT        );
-#if defined(TARGET_PS2)
-    PushState( __id MC_STATE_NEXT_CARD      );
-
-    PushState( __id MC_STATE_MOUNT          );
-    PushState( __id MC_STATE_LOAD_MANIFEST  );
-    PushState( __id MC_STATE_UNMOUNT        );
-#endif
     PushState( __id MC_STATE_FINISH         );
 }
 

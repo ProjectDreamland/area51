@@ -547,14 +547,15 @@ void dlg_download::EnterState( dlg_download_state State )
     case DOWNLOAD_MEMCARD_SELECT:
         // Open the memcard select dialog
         {
+#if !defined (TARGET_PC)
             irect mainarea( 46, 24, 466, 448-72 );
             m_pCardDialog = (dlg_memcard_select*)g_UiMgr->OpenDialog( g_UiUserID, "memcard select", mainarea, NULL, ui_win::WF_VISIBLE|ui_win::WF_BORDER );
             s32 Length;
             g_MatchMgr.GetDownloadData( Length );
             g_DownloadCardSlot = -1;
-            //m_pCardDialog->Configure( SM_CARDMODE_CONTENT, Length );
+            m_pCardDialog->Configure( SM_CARDMODE_CONTENT, Length );
             m_pNavText->SetFlag( ui_win::WF_VISIBLE, FALSE );
-
+#endif
             // hide the main dialog
             SetFlag( WF_VISIBLE, FALSE );
         }

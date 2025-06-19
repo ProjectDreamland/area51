@@ -54,8 +54,6 @@
 #include "Menu\DebugMenu2.hpp"
 #endif
 
-extern xbool g_MirrorWeapon;
-
 f32 g_CrouchUpVelocity    = 80.0f;
 
 static f32 MIN_TIME_BETWEEN_MUTATION_CHANGES = 0.5f;
@@ -224,83 +222,43 @@ void player::ScaleYawAndPitchValues( void )
         m_fPitchValue   = m_fPitchValue + (m_fPitchValue * Scalar_V);
     }
 #endif
-
-    //    DrawLabelInFront( xfs( "YawValue: %f\nRawYaw%f\nPitchValue: %f\nRawPitch: %f\nSlopeYaw: %f\nSlopePitch: %f\n", m_fYawValue, m_fRawControllerYaw, m_fPitchValue, m_fRawControllerPitch, fCurrentSlopeYaw, fCurrentSlopePitch ) );
-
+    //DrawLabelInFront( xfs( "YawValue: %f\nRawYaw%f\nPitchValue: %f\nRawPitch: %f\nSlopeYaw: %f\nSlopePitch: %f\n", m_fYawValue, m_fRawControllerYaw, m_fPitchValue, m_fRawControllerPitch, fCurrentSlopeYaw, fCurrentSlopePitch ) );
 }
 
 //==============================================================================
 
-#if defined(TARGET_PC)
-extern xbool g_right_stick_swap_xy;
-#endif
-
-void player::UpdateStickInput( void )
+void player::UpdateStickInput(void)
 {
     ASSERT( m_ActivePlayerPad != -1 );
 
     m_fPreviousYawValue = m_fYawValue;
     m_fPreviousPitchValue = m_fPitchValue;
 
-#ifdef TARGET_PC
-    if (!g_right_stick_swap_xy)
-    {  
-        m_fRawControllerYaw     = -g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LOOK_HORIZONTAL ).IsValue;
-        m_fRawControllerPitch   = -g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LOOK_VERTICAL   ).IsValue;
-    }
-    else
+#if defined(TARGET_PC) //GS: Experimental PC mouse controls.
+    const f32 BaseMouseSensitivity = 64.0f;
+    f32 Rot = R_10 * m_DeltaTime;
+    
+    m_fRawControllerYaw = -g_IngamePad[m_ActivePlayerPad].GetLogical(ingame_pad::LOOK_HORIZONTAL).IsValue * Rot;
+    m_fRawControllerPitch = g_IngamePad[m_ActivePlayerPad].GetLogical(ingame_pad::LOOK_VERTICAL).IsValue * Rot;
+    
+    #if !defined(X_EDITOR)    
+    player_profile& p = g_StateMgr.GetActiveProfile(g_StateMgr.GetProfileListIndex(m_LocalSlot));
+	
+    //MAB: removed invert Y global var - only check profile now
+    if( p.m_bInvertY )
     {
-        m_fRawControllerYaw     = -g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LOOK_VERTICAL     ).IsValue;
-        m_fRawControllerPitch   = -g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LOOK_HORIZONTAL   ).IsValue;
+        m_fRawControllerPitch = -m_fRawControllerPitch;
     }
-
-#if !defined(X_EDITOR)
-    {
-        static xtimer Timer;
-
-        if( Timer.IsRunning() )
-        {
-            f32 DeltaTime = Timer.TripMs();
-            DeltaTime /= 1.0f;
-            m_fRawControllerYaw   -= input_GetValue( INPUT_MOUSE_X_REL ) / DeltaTime;
-            m_fRawControllerPitch -= input_GetValue( INPUT_MOUSE_Y_REL ) / DeltaTime;
-        }
-        else
-        {
-            Timer.Reset();
-            Timer.Start();
-        }
-    }
-#endif
-
-#else
-    m_fRawControllerYaw     = -g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LOOK_HORIZONTAL ).IsValue;
-    m_fRawControllerPitch   =  g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LOOK_VERTICAL   ).IsValue;
-#endif
-
-#ifndef X_EDITOR
-
-    // invert Y
-    {
-        player_profile& p = g_StateMgr.GetActiveProfile(g_StateMgr.GetProfileListIndex(m_LocalSlot));
-
-        // MAB: removed invert Y global var - only check profile now
-        if( p.m_bInvertY )
-        {
-            m_fRawControllerPitch   = -m_fRawControllerPitch;
-        }
-    }
-
-#else
-
+    #else
     // invert Y
     extern xbool g_EditorInvertY;
     if( g_EditorInvertY )
     {
         m_fRawControllerPitch   = -m_fRawControllerPitch;
     }
-
+    
     // Mirror weapon?
+    extern xbool g_MirrorWeapon;
     if( g_MirrorWeapon )        
     {
         // Turn on mirror for hands
@@ -321,7 +279,35 @@ void player::UpdateStickInput( void )
         if( pWeapon )
             pWeapon->GetCurrentAnimPlayer().SetMirrorBone( -1 );
     }
+    #endif
+    
+    m_fYawValue = m_fRawControllerYaw * BaseMouseSensitivity;
+    m_fPitchValue = m_fRawControllerPitch * BaseMouseSensitivity;
+    
+    #if !defined(X_EDITOR)    
+    u32 sensitivity_H = p.GetSensitivity(SM_X_SENSITIVITY);
+    u32 sensitivity_V = p.GetSensitivity(SM_Y_SENSITIVITY);
+    #else
+    u32 sensitivity_H = 32; //HACK HACK HACK!!!
+    u32 sensitivity_V = 32; //HACK HACK HACK!!!
+    #endif
+    
+    f32 scaleH = 0.5f + (sensitivity_H / 100.0f);
+    f32 scaleV = 0.5f + (sensitivity_V / 100.0f);
+    
+    m_fYawValue   *= scaleH; //R_0
+    m_fPitchValue *= scaleV; //R_0
+#else
+    m_fRawControllerYaw = -g_IngamePad[m_ActivePlayerPad].GetLogical(ingame_pad::LOOK_HORIZONTAL).IsValue;
+    m_fRawControllerPitch = g_IngamePad[m_ActivePlayerPad].GetLogical(ingame_pad::LOOK_VERTICAL).IsValue;
 
+    player_profile& p = g_StateMgr.GetActiveProfile(g_StateMgr.GetProfileListIndex(m_LocalSlot));
+	
+    //MAB: removed invert Y global var - only check profile now
+    if( p.m_bInvertY )
+    {
+        m_fRawControllerPitch = -m_fRawControllerPitch;
+    }
 #endif
 
     if ( !m_bInTurret )
@@ -331,22 +317,31 @@ void player::UpdateStickInput( void )
 
 #if defined(TARGET_PC) && !defined(X_EDITOR)
         {
-            static f32 MoveValue   = 0.0f;
-            static f32 StrafeValue = 0.0f;
+            xbool MoveForwardKeyIsPressed  = (xbool)g_IngamePad[m_ActivePlayerPad].GetLogical(ingame_pad::MOVE_FORWARD).WasValue;
+            xbool MoveBackwardKeyIsPressed = (xbool)g_IngamePad[m_ActivePlayerPad].GetLogical(ingame_pad::MOVE_BACKWARD).WasValue;
+            xbool StrafeLeftKeyIsPressed   = (xbool)g_IngamePad[m_ActivePlayerPad].GetLogical(ingame_pad::STRAFE_LEFT).WasValue;
+            xbool StrafeRightKeyIsPressed  = (xbool)g_IngamePad[m_ActivePlayerPad].GetLogical(ingame_pad::STRAFE_RIGHT).WasValue;
 
-            if( input_IsPressed( INPUT_KBD_E ) )
-                MoveValue =  1.0f;
-            else if( input_IsPressed( INPUT_KBD_D ) )
+            f32 MoveValue   = 0.0f;
+            f32 StrafeValue = 0.0f;
+
+            if (MoveForwardKeyIsPressed) 
+            {
+                MoveValue = 1.0f;
+            } 
+            else if (MoveBackwardKeyIsPressed) 
+            {
                 MoveValue = -1.0f;
-            else
-                MoveValue = 0.0f;
-
-            if( input_IsPressed( INPUT_KBD_F ) )
+            }
+            
+            if (StrafeLeftKeyIsPressed) 
+            {
+                StrafeValue = 1.0f;
+            } 
+            else if (StrafeRightKeyIsPressed) 
+            {
                 StrafeValue = -1.0f;
-            else if( input_IsPressed( INPUT_KBD_S ) )
-                StrafeValue =  1.0f;
-            else
-                StrafeValue = 0.0f;
+            }
 
             m_fMoveValue   += MoveValue;
             m_fStrafeValue += StrafeValue;
@@ -355,17 +350,16 @@ void player::UpdateStickInput( void )
     }
     else
     {
-        m_fMoveValue = 0.0f;
+        m_fMoveValue   = 0.0f;
         m_fStrafeValue = 0.0f;
-    }
-
-    //    DrawLabelInFront( xfs( "RawYaw: %f\nRawPitch: %f\nRawMove: %f\nRawStrafe: %f\n", m_fRawControllerYaw, m_fRawControllerPitch, m_fMoveValue, m_fStrafeValue ) );
-
-    ScaleYawAndPitchValues();
+    }   
+    //DrawLabelInFront( xfs( "RawYaw: %f\nRawPitch: %f\nRawMove: %f\nRawStrafe: %f\n", m_fRawControllerYaw, m_fRawControllerPitch, m_fMoveValue, m_fStrafeValue ) );
+#ifndef TARGET_PC
+    ScaleYawAndPitchValues();    
+#endif 
 }
 
 //===========================================================================
-
 
 void player::OnButtonInput( void )
 {
@@ -378,9 +372,6 @@ void player::OnButtonInput( void )
     // voting or respawning, respectively.
     {   
         xbool PrimaryDown = (xbool)g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_PRIMARY ).IsValue;
-#if defined(TARGET_PC) && !defined(X_EDITOR)
-        PrimaryDown |= input_IsPressed( INPUT_MOUSE_BTN_L );
-#endif
         if( !PrimaryDown )
         {
             m_bRespawnButtonPressed = FALSE;
@@ -514,7 +505,8 @@ void player::OnButtonInput( void )
     player_profile& p = g_StateMgr.GetActiveProfile(g_StateMgr.GetProfileListIndex(m_LocalSlot));
     if( p.m_bCrouchOn )
     {
-        if( g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_CROUCH ).WasValue )
+        xbool CrouchKeyPressed = (xbool)g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_CROUCH ).WasValue;
+        if( CrouchKeyPressed )
         {
             // crouch is a toggle and we're crouching so turn it off
             if( IsCrouching() )
@@ -533,24 +525,27 @@ void player::OnButtonInput( void )
     }
     else
 #endif
-    if( g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_CROUCH ).IsValue )
     {
-        // only do this if we weren't crouching previously
-        if( !IsCrouching() && !m_bInTurret )
+        xbool CrouchKeyIsPressed = (xbool)g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_CROUCH ).IsValue;
+        if( CrouchKeyIsPressed )
         {
-            // move the arms a little
-            m_ArmsVelocity += vector3( 0.0f, -g_CrouchUpVelocity, 0.0f );
+            // only do this if we weren't crouching previously
+            if( !IsCrouching() && !m_bInTurret )
+            {
+                // move the arms a little
+                m_ArmsVelocity += vector3( 0.0f, -g_CrouchUpVelocity, 0.0f );
 
-            // Start crouching
-            SetIsCrouching( TRUE );
+                // Start crouching
+                SetIsCrouching( TRUE );
+            }
         }
-    }
-    else
-    {
-        // Only do this if we are already crouching
-        if( IsCrouching() )
+        else
         {
-            bStopCrouching = TRUE;
+            // Only do this if we are already crouching
+            if( IsCrouching() )
+            {
+                bStopCrouching = TRUE;
+            }
         }
     }
 
@@ -566,9 +561,6 @@ void player::OnButtonInput( void )
 
     // Jump button
     xbool JumpPressed = (xbool)g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_JUMP ).WasValue;
-#if defined(TARGET_PC) && !defined(X_EDITOR)
-    JumpPressed |= input_WasPressed( INPUT_KBD_SPACE );
-#endif
     if( !m_bInTurret && JumpPressed && m_bCanJump )
     {
         Jump();
@@ -608,10 +600,9 @@ void player::OnButtonInput( void )
     const f32 ActionMutation   = IsLeaning ? Logical.IsValue   : Logical.WasValue;
     const f32 ActionMPMutation = IsLeaning ? MPLogical.IsValue : MPLogical.WasValue;
 
-    const xbool MutationPressed
-        = Multiplayer
-        ? (ActionMutation > 0.0f)
-        : (ActionMPMutation > 0.0f);
+    xbool MutationPressed = Multiplayer
+                          ? (ActionMutation > 0.0f)
+                          : (ActionMPMutation > 0.0f);
 
     static f32 MinTimeSinceUseToThrowGrenade = 1.0f;
     static f32 MinTimeSinceUseToMutate = 1.0f;
@@ -671,10 +662,9 @@ void player::OnButtonInput( void )
     //
     // NOTE: TWEEK THIS, WE MIGHT WANT TO MAKE THE RAMP DOWN FIRST BEFORE DOING MELEE.
     //
-    const xbool MeleePressed
-        = m_bIsMutated
-        ? g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_MUTANT_MELEE ).IsValue > 0.0f
-        : g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_MELEE_ATTACK ).IsValue > 0.0f;
+    xbool MeleePressed = m_bIsMutated
+                        ? g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_MUTANT_MELEE ).IsValue > 0.0f
+                        : g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_MELEE_ATTACK ).IsValue > 0.0f;
     if( !m_bInTurret && MeleePressed )
     {
         animation_state MeleeState = ANIM_STATE_MELEE;
@@ -750,11 +740,14 @@ void player::OnButtonInput( void )
 
     // don't throw a grenade if we're just exiting fly mode
 #if defined( ENABLE_DEBUG_MENU )
-    if( g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_THROW_GRENADE ).IsValue && 
-        !(g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_TALK_MODE_TOGGLE ).IsValue) )
+    xbool GrenadePressed = g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_THROW_GRENADE ).IsValue && 
+                          !(g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_TALK_MODE_TOGGLE ).IsValue);
 #else
-    if( g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_THROW_GRENADE ).IsValue )
+    xbool GrenadePressed = g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_THROW_GRENADE ).IsValue;
 #endif
+
+
+    if( GrenadePressed )
     {
         if (   (m_Inventory2.GetAmount( m_CurrentGrenadeType2 ) > 0)
             && ( !IsMutated() )
@@ -784,10 +777,9 @@ void player::OnButtonInput( void )
     }
 
     // flashlight button
-    const xbool FlashlightPressed 
-        = Multiplayer
-        ? (g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_MP_FLASHLIGHT ).IsValue > 0.0f)
-        : (g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_FLASHLIGHT ).WasValue > 0.0f);
+    xbool FlashlightPressed = Multiplayer
+                             ? (g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_MP_FLASHLIGHT ).IsValue > 0.0f)
+                             : (g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_FLASHLIGHT ).WasValue > 0.0f);
 
     if ( FlashlightPressed && !IsMutated() )
     {
@@ -805,8 +797,9 @@ void player::OnButtonInput( void )
     }
 
     // Use on a mutagen reservoir
-    if ( g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_USE ).IsValue
-        && NearMutagenReservoir() )
+    xbool UseKeyPressed = g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::ACTION_USE ).IsValue;
+    
+    if ( UseKeyPressed && NearMutagenReservoir() )
     {
         static const f32 ChangeRate = 10.0f;
         AddMutagen( ChangeRate * m_DeltaTime );
@@ -827,11 +820,14 @@ void player::OnButtonInput( void )
         }
     }
 
-    if ( !m_bInTurret && g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LEAN_LEFT ).IsValue && !m_bVoteButtonPressed )
+    xbool LeanLeftPressed = g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LEAN_LEFT ).IsValue && !m_bVoteButtonPressed;
+    xbool LeanRightPressed = g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LEAN_RIGHT ).IsValue && !m_bVoteButtonPressed;
+
+    if ( !m_bInTurret && LeanLeftPressed )
     {
         UpdateLean( 1.0f );
     }
-    else if ( !m_bInTurret && g_IngamePad[m_ActivePlayerPad].GetLogical( ingame_pad::LEAN_RIGHT ).IsValue && !m_bVoteButtonPressed )
+    else if ( !m_bInTurret && LeanRightPressed )
     {
         UpdateLean( -1.0f );
     }

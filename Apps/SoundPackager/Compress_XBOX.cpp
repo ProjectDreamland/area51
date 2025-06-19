@@ -9,17 +9,17 @@ extern u32 g_SampleRate;
 //------------------------------------------------------------------------------
 u32 CompressAudioFileXBOX_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* LipSyncSize )
 {
-    aiff_file   Aiff;
+    audio_file* AudioFile = audio_file::Create(in);
     s32         TotalCompressedSize = 0;
 
-    if( Aiff.Open( in ) )
+    if( AudioFile->Open( in ) )
     {
-        xarray<aiff_file::breakpoint> BreakPoints;
-        s32  SampleRate         = Aiff.GetSampleRate();
-        s32  nChannels          = Aiff.GetNumChannels();
-        s32  nSamples           = Aiff.GetNumSamples();
-        s32  LoopStart          = Aiff.GetLoopStart();
-        s32  LoopEnd            = Aiff.GetLoopEnd();
+        xarray<audio_file::breakpoint> BreakPoints;
+        s32  SampleRate         = AudioFile->GetSampleRate();
+        s32  nChannels          = AudioFile->GetNumChannels();
+        s32  nSamples           = AudioFile->GetNumSamples();
+        s32  LoopStart          = AudioFile->GetLoopStart();
+        s32  LoopEnd            = AudioFile->GetLoopEnd();
         s16* pSampleBuffer      = (s16*)x_malloc( sizeof(s16) * nSamples );
         s32  HeaderSize         = 4 * sizeof(s32);
         s32  CompressionMethod;
@@ -31,7 +31,7 @@ u32 CompressAudioFileXBOX_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* L
         xarray<void*> pCompressedBuffer;
 
         // Get the breakpoints.
-        Aiff.GetBreakpoints( BreakPoints );
+        AudioFile->GetBreakpoints( BreakPoints );
 
         // Currently only support mono and stereo.
         ASSERT( (nChannels == 1) || (nChannels == 2) );
@@ -97,7 +97,7 @@ u32 CompressAudioFileXBOX_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* L
             pCompressedBuffer.Append() = x_malloc( CompressedSize );
 
             // Read the the uncompressed waveform data.
-            Aiff.GetChannelData( pSampleBuffer, i );
+            AudioFile->GetChannelData( pSampleBuffer, i );
 
             // Copy the sample, no compression necessary
             x_memcpy( pCompressedBuffer[i], pSampleBuffer, nSamples * sizeof(s16) );
@@ -130,7 +130,7 @@ u32 CompressAudioFileXBOX_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* L
         }
 
         // Write out the lip sync data.
-        WriteLipSyncData( &Aiff, out );
+        WriteLipSyncData( AudioFile, out );
 
         // Write out the break points.
         WriteBreakPoints( BreakPoints, out, FALSE );
@@ -143,17 +143,17 @@ u32 CompressAudioFileXBOX_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* L
 
 u32 CompressAudioFileXBOX_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32* LipSyncSize )
 {
-    aiff_file   Aiff;
+    audio_file* AudioFile = audio_file::Create(in);
     s32         TotalCompressedSize = 0;
 
-    if( Aiff.Open( in ) )
+    if( AudioFile->Open( in ) )
     {
-        xarray<aiff_file::breakpoint> BreakPoints;
-        s32  SampleRate         = Aiff.GetSampleRate();
-        s32  nChannels          = Aiff.GetNumChannels();
-        s32  nSamples           = Aiff.GetNumSamples();
-        s32  LoopStart          = Aiff.GetLoopStart();
-        s32  LoopEnd            = Aiff.GetLoopEnd();
+        xarray<audio_file::breakpoint> BreakPoints;
+        s32  SampleRate         = AudioFile->GetSampleRate();
+        s32  nChannels          = AudioFile->GetNumChannels();
+        s32  nSamples           = AudioFile->GetNumSamples();
+        s32  LoopStart          = AudioFile->GetLoopStart();
+        s32  LoopEnd            = AudioFile->GetLoopEnd();
         s16* pSampleBuffer      = NULL;
         s32  HeaderSize         = 4 * sizeof(s32);
         s32  CompressionMethod;
@@ -168,7 +168,7 @@ u32 CompressAudioFileXBOX_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32
         ASSERT( (nChannels == 1) || (nChannels == 2) );
 
         // Get the breakpoints.
-        Aiff.GetBreakpoints( BreakPoints );
+        AudioFile->GetBreakpoints( BreakPoints );
 
         // Set the number of channels.
         *NumChannels = nChannels;
@@ -239,7 +239,7 @@ u32 CompressAudioFileXBOX_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32
             pCompressedBuffer.Append() = x_malloc( CompressedSize );
 
             // Read the uncompressed waveform data.
-            Aiff.GetChannelData( pSampleBuffer, i );
+            AudioFile->GetChannelData( pSampleBuffer, i );
 
             // Nuke the compressed buffer
             x_memset( pCompressedBuffer[i], 0, CompressedSize );
@@ -250,7 +250,7 @@ u32 CompressAudioFileXBOX_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32
 //            Codec.Initialize( &wfxEncode, CODEC_MODE_ENCODE_OPTIMIZE_EACH_BLOCK );
             Codec.Convert( pSampleBuffer, pCompressedBuffer[i], nDestBlocks );
 
-            if( Aiff.IsLooped() )
+            if( AudioFile->IsLooped() )
             {
                 if( LoopEnd > 1 )
                     LoopEnd--;
@@ -284,7 +284,7 @@ u32 CompressAudioFileXBOX_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32
         }
 
         // Write out the lip sync data.
-        WriteLipSyncData( &Aiff, out );
+        WriteLipSyncData( AudioFile, out );
 
         // Write out the break points.
         WriteBreakPoints( BreakPoints, out, FALSE );

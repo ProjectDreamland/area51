@@ -147,7 +147,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X)\x_files"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,X_EDITOR"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,X_EDITOR"
+				RuntimeLibrary="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -177,90 +178,15 @@
 	<Files>
 		<File
 			RelativePath="xsc_vm_core.cpp">
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="xsc_vm_core.hpp">
 		</File>
 		<File
 			RelativePath="xsc_vm_disasm.cpp">
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="xsc_vm_exec.cpp">
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="xsc_vm_fileformat.hpp">
@@ -270,62 +196,12 @@
 		</File>
 		<File
 			RelativePath="xsc_vm_module.cpp">
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="xsc_vm_module.hpp">
 		</File>
 		<File
 			RelativePath="xsc_vm_system.cpp">
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
 		</File>
 	</Files>
 	<Globals>

@@ -23,7 +23,7 @@
 #include "x_string.hpp"
 #include "SpatialDBase\SpatialDBase.hpp"
 #include "CollisionMgr\CollisionMgr.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 
 //==============================================================================
 //  FLAGS

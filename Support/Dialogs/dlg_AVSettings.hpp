@@ -77,10 +77,7 @@ protected:
     ui_text*            m_pToggleSpeakerSetupText;
 #endif
 
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)
     ui_button*          m_pHeadsetTest;
-#endif
-
     ui_button*          m_pButtonAccept;
 
     ui_text*            m_pNavText;

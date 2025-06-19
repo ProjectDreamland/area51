@@ -2,7 +2,7 @@
 // INCLUDES
 //=========================================================================
 #include "Controller.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "..\MiscUtils\SimpleUtils.hpp"
 #include "Path.hpp"
 

@@ -130,7 +130,7 @@ extern s32                     g_Mode ;                         // Edit mode
 extern xbool                   g_bPause ;                       // Pause flag
 extern s32                     g_ShowHelp ;                     // Shows help
 extern stats_mode              g_StatsMode ;                    // Shows stats
-extern config::light           g_Light ;                        // Current light
+extern config_options::light           g_Light ;                        // Current light
 extern s32                     g_PicMode ;                      // Pic display mode
 
 

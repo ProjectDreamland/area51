@@ -380,7 +380,7 @@ xbool rawanim::Load( const char* pFileName )
             // Copy old data?
             if (m_pFrame)
             {
-                x_memmove(pNewFrame, m_pFrame, sizeof(frame)*OldNFrames*m_nBones) ;
+                x_memcpy(pNewFrame, m_pFrame, sizeof(frame)*OldNFrames*m_nBones) ;
                 delete [] m_pFrame ;
             }
 
@@ -1288,7 +1288,7 @@ xbool rawanim::ApplyNewSkeleton( const rawanim& BindAnim )
     //
     // Copy over bind skeleton
     //
-    x_memmove( pNewBone, BindAnim.m_pBone, sizeof(bone)*BindAnim.m_nBones );
+    x_memcpy( pNewBone, BindAnim.m_pBone, sizeof(bone)*BindAnim.m_nBones );
 
     //
     // Construct frames

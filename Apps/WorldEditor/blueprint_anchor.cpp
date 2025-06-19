@@ -15,7 +15,7 @@
 #include "Parsing\TextIn.hpp"
 #include "x_color.hpp"
 #include "Entropy.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 
 const f32 c_Sphere_Radius = 50.0f;
 

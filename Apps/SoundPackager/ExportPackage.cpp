@@ -41,7 +41,7 @@ s32 s_CompressionHeaderSizes[EXPORT_NUM_TARGETS][NUM_COMPRESSION_TYPES] ={
 package_info    s_Package;
 //------------------------------------------------------------------------------
 
-s32 GetBreakPointSize( xarray<aiff_file::breakpoint>& BreakPoints, s32& nBreakPoints )
+s32 GetBreakPointSize( xarray<audio_file::breakpoint>& BreakPoints, s32& nBreakPoints )
 {
     s32 Result = 0;
 
@@ -70,7 +70,7 @@ s32 GetBreakPointSize( xarray<aiff_file::breakpoint>& BreakPoints, s32& nBreakPo
 
 //------------------------------------------------------------------------------
 
-void WriteBreakPoints( xarray<aiff_file::breakpoint>& BreakPoints, X_FILE*out, xbool bReverseEndian )
+void WriteBreakPoints( xarray<audio_file::breakpoint>& BreakPoints, X_FILE*out, xbool bReverseEndian )
 {
     s32 nBreakPoints;
 
@@ -121,7 +121,7 @@ u32 GetLipSyncSize( s32 nSamples, s32 SampleRate )
 
 //------------------------------------------------------------------------------
 
-void WriteLipSyncData( aiff_file* Aiff, X_FILE* out )
+void WriteLipSyncData( audio_file* Aiff, X_FILE* out )
 {
     s32  i;
     s32  SampleRate    = Aiff->GetSampleRate();

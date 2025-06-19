@@ -283,14 +283,8 @@ enum mouse_mode
 
 void  d3deng_SetMouseMode    ( mouse_mode Mode );
 void  d3deng_ComputeMousePos ( void );
-f32   d3deng_GetMouseY       ( void );
-f32   d3deng_GetMouseX       ( void );
-f32   d3deng_GetABSMouseX    ( void );
-f32   d3deng_GetABSMouseY    ( void );
-f32   d3deng_GetMouseWheel   ( void );
-xbool d3deng_MouseGetLButton ( void );
-xbool d3deng_MouseGetRButton ( void );
-xbool d3deng_MouseGetMButton ( void );
+f32   d3deng_GetABSMouseX    ( void ); //Legacy code, used ONLY on ArtistViewer.
+f32   d3deng_GetABSMouseY    ( void ); //Legacy code, used ONLY on ArtistViewer.
 
 ///////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES

@@ -79,6 +79,7 @@ protected:
     afx_msg void OnColumnClick( NMHDR* pHeader, LRESULT* pResult );
     afx_msg void OnDeleteAllItems( NMHDR* pHeader, LRESULT* pResult );
     afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+    afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
     afx_msg LRESULT OnDirChanged(WPARAM, LPARAM);
     afx_msg LRESULT OnPopulateList(WPARAM, LPARAM);
     afx_msg LRESULT OnRefreshList(WPARAM, LPARAM);

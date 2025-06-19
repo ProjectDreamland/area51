@@ -257,6 +257,8 @@ public:
         TYPE_ALIEN_PLATFORM,
         TYPE_ALIEN_PLATFORM_DOCK,
 
+        TYPE_VIDEO_WALL,
+
         // BEGIN - Multiplayer specific objects.
      // TYPE_SPAWN_REGION,
         TYPE_GAME_PROP,

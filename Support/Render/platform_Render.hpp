@@ -220,7 +220,7 @@ static void     platform_EndPostEffects             ( void )                    
 //=============================================================================
 // compilation/export functions
 //=============================================================================
-#ifdef X_EDITOR
+#if defined(X_EDITOR) || defined(CONFIG_VIEWER)
 static void*    platform_LockRigidDListVertex       ( render::hgeom_inst hInst,
                                                       s32                iSubMesh     );
 static void     platform_UnlockRigidDListVertex     ( render::hgeom_inst hInst,

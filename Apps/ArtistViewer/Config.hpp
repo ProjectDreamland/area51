@@ -24,7 +24,7 @@
 //==============================================================================
 
 // Contains config info
-class config
+class config_options
 {
 //==========================================================================
 // DEFINES
@@ -166,9 +166,9 @@ public:
         char                m_CompiledAnim  [X_MAX_PATH];       // Name of anim package to compile
         char                m_CompiledAudio [X_MAX_PATH];       // Name of audio package to compile
         
-        xarray<config::object::geom>        m_Geoms;                            // List of mesh .matx files
-        xarray<config::object::anim>        m_Anims;                            // List of animation .matx files
-        xarray<config::object::sound>       m_Sounds;                           // List of sound .wav files
+        xarray<config_options::object::geom>        m_Geoms;                            // List of mesh .matx files
+        xarray<config_options::object::anim>        m_Anims;                            // List of animation .matx files
+        xarray<config_options::object::sound>       m_Sounds;                           // List of sound .wav files
 
         xarray<lod>         m_LODs;                             // List of lods
         xbool               m_bUseAimer;        // Should aimer/eye tracking etc be turned on
@@ -257,6 +257,18 @@ public:
 //==========================================================================
 
 public:
+    //HACK HACK HACK HACK
+    xbool       DemoBuild;
+    xbool       AutoCampaign;
+    xbool       AutoSplitScreen;
+    xbool       AutoServer;
+    xbool       AutoClient;
+    s32         AutoLevel;              // If AutoCampaign or AutoServer.
+    s32         AutoServerType;         // Only used if AutoServer.  GameMgr.hpp.
+    s32         AutoMutateMode;         // Only used if AutoServer.  GameMgr.hpp.
+    s32         AutoMonkeyMode;         // Used for specifying monkey settings on startup
+    char        AutoServerName[32];     // Only used if AutoServer/Client.
+
     // General
     s32                 m_ShowHelp;                    // Help
     s32                 m_ShowStats;                   // Frame rate etc
@@ -294,8 +306,8 @@ public:
 
 public:
     // Constructor/destructor
-    config();
-    ~config();
+    config_options();
+    ~config_options();
 
     // Sets up defaults
     void    Init    ( void );
@@ -326,7 +338,17 @@ public:
 // DATA
 //==============================================================================
 
-extern config g_Config;
+extern config_options g_Config;
+
+//==============================================================================
+// HACKOTRON
+//==============================================================================
+
+#define CONFIG_IS_DEMO              0
+#define CONFIG_IS_AUTOCAMPAIGN      0
+#define CONFIG_IS_AUTOSPLITSCREEN   0
+#define CONFIG_IS_AUTOSERVER        0
+#define CONFIG_IS_AUTOCLIENT        0
 
 //==============================================================================
 

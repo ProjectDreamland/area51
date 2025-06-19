@@ -12,7 +12,7 @@
 #include "Trigger\Trigger_Manager.hpp"
 #include "Entropy.hpp"
 
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "Objects\BaseProjectile.hpp"
 #include "Objects\Player.hpp"
 #include "characters\character.hpp"

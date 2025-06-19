@@ -23,10 +23,12 @@
 #ifdef TARGET_PC
     #define INPUT_PLATFORM_PS2  0
     #define INPUT_PLATFORM_XBOX 1
-    #define MAX_INPUT_PLATFORMS 2
+    #define INPUT_PLATFORM_PC   2
+    #define MAX_INPUT_PLATFORMS 3
 #else
     #define INPUT_PLATFORM_PS2  0
     #define INPUT_PLATFORM_XBOX 0
+    #define INPUT_PLATFORM_PC   0
     #define MAX_INPUT_PLATFORMS 1
 #endif
 
@@ -78,13 +80,13 @@ public:
                                           map*      Map,
                                           s32       nMaps );
 
-            logical&    GetLogical      ( s32 I ) { ASSERT( I>=0 && I<MAX_LOGICAL); return m_Logical[I]; }
+    logical&            GetLogical      ( s32 I ) { ASSERT( I>=0 && I<MAX_LOGICAL); return m_Logical[I]; }
 
     void                SetLogical      ( s32 ID, const char* pName );
     void                SetLogical      ( s32 iPlatform, input_gadget GadgetID );
     void                AddMapping      ( s32 iPlatform, s32 ID, input_gadget GadgetID, xbool IsButton, f32 Scale = 1 );
     void                GetMapping      ( s32 iPlatform, s32 ID, input_gadget& GadgetID, xbool& IsButton, f32& Scale );
-	void				DelMapping		( s32 iPlatform, s32 iMapping );
+    void                DelMapping        ( s32 iPlatform, s32 iMapping );
     
     void                EnableContext   ( u32 Context );
     void                DisableContext  ( u32 Context );
@@ -102,7 +104,7 @@ protected:
 
     enum
     {
-        MAX_LOGICAL  = 48,
+        MAX_LOGICAL  = 52,
         MAX_MAPPINGS = 64,
     };
 

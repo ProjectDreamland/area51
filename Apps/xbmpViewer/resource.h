@@ -25,6 +25,7 @@
 #define IDC_PLATFORM_COMBO              1489
 #define IDC_FORMAT_COMBO                1490
 #define IDC_MIP_EDIT                    1491
+#define IDC_GENERIC_COMPRESSION         1492
 
 // XBMP settings values
 // 

@@ -2163,7 +2163,7 @@ xbool rawmesh::IsolateSubmesh( s32 iSubMesh, rawmesh& NewMesh,
         NewMesh.m_pBone = new rawmesh::bone[ m_nBones ];
         ASSERT(NewMesh.m_pBone);
         NewMesh.m_nBones = m_nBones;
-        x_memmove( NewMesh.m_pBone, m_pBone, sizeof(rawmesh::bone)*NewMesh.m_nBones );
+        x_memcpy( NewMesh.m_pBone, m_pBone, sizeof(rawmesh::bone)*NewMesh.m_nBones );
     }
     else
     {
@@ -2179,7 +2179,7 @@ xbool rawmesh::IsolateSubmesh( s32 iSubMesh, rawmesh& NewMesh,
         NewMesh.m_pUVWAnimFrame = new rawmesh::uvanim_frame[ m_nUVWAnimFrames ];
         ASSERT(NewMesh.m_pUVWAnimFrame);
         NewMesh.m_nUVWAnimFrames = m_nUVWAnimFrames;
-        x_memmove( NewMesh.m_pUVWAnimFrame, m_pUVWAnimFrame, sizeof(rawmesh::uvanim_frame)*NewMesh.m_nTextures );
+        x_memcpy( NewMesh.m_pUVWAnimFrame, m_pUVWAnimFrame, sizeof(rawmesh::uvanim_frame)*NewMesh.m_nTextures );
     }
     else
     {
@@ -2195,7 +2195,7 @@ xbool rawmesh::IsolateSubmesh( s32 iSubMesh, rawmesh& NewMesh,
     NewMesh.m_pSubMesh = new rawmesh::sub_mesh[ 1 ];
     ASSERT(NewMesh.m_pSubMesh);
     NewMesh.m_nSubMeshs = 1;
-    x_memmove( NewMesh.m_pSubMesh, &(m_pSubMesh[iSubMesh]), sizeof(rawmesh::sub_mesh) );
+    x_memcpy( NewMesh.m_pSubMesh, &(m_pSubMesh[iSubMesh]), sizeof(rawmesh::sub_mesh) );
     
     
     //
@@ -2206,7 +2206,7 @@ xbool rawmesh::IsolateSubmesh( s32 iSubMesh, rawmesh& NewMesh,
         NewMesh.m_pMaterial = new rawmesh::material[ m_nMaterials ];
         ASSERT(NewMesh.m_pMaterial);
         NewMesh.m_nMaterials = m_nMaterials;
-        x_memmove( NewMesh.m_pMaterial, m_pMaterial, sizeof(rawmesh::material)*NewMesh.m_nMaterials);
+        x_memcpy( NewMesh.m_pMaterial, m_pMaterial, sizeof(rawmesh::material)*NewMesh.m_nMaterials);
     }
     else
     {
@@ -2228,7 +2228,7 @@ xbool rawmesh::IsolateSubmesh( s32 iSubMesh, rawmesh& NewMesh,
         ASSERT(NewMesh.m_pTexture);
         
         if (m_nTextures > 0)
-            x_memmove( NewMesh.m_pTexture, m_pTexture, sizeof(rawmesh::texture)*m_nTextures );        
+            x_memcpy( NewMesh.m_pTexture, m_pTexture, sizeof(rawmesh::texture)*m_nTextures );        
     }
     else
     {

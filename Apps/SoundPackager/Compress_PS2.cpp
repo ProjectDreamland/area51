@@ -12,15 +12,15 @@ const s32 BYTES_PER_ADPCM_BLOCK=16;
 
 u32 CompressAudioFilePS2_ADPCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* LipSyncSize )
 {
-    aiff_file   Aiff;
+    audio_file* AudioFile = audio_file::Create(in);
     s32         TotalCompressedSize = 0;
 
-    if( Aiff.Open( in ) )
+    if( AudioFile->Open( in ) )
     {
-        xarray<aiff_file::breakpoint> BreakPoints;
-        s32  SampleRate         = Aiff.GetSampleRate();
-        s32  nChannels          = Aiff.GetNumChannels();
-        s32  nSamples           = Aiff.GetNumSamples();
+        xarray<audio_file::breakpoint> BreakPoints;
+        s32  SampleRate         = AudioFile->GetSampleRate();
+        s32  nChannels          = AudioFile->GetNumChannels();
+        s32  nSamples           = AudioFile->GetNumSamples();
         // TODO: Put in looping stuff
         s32  LoopStart;
         s32  LoopEnd;
@@ -39,7 +39,7 @@ u32 CompressAudioFilePS2_ADPCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
         g_SampleRate = SampleRate;
 
         // Get the breakpoints.
-        Aiff.GetBreakpoints( BreakPoints );
+        AudioFile->GetBreakpoints( BreakPoints );
 
         // Set the number of channels.
         *NumChannels = nChannels;
@@ -71,11 +71,11 @@ u32 CompressAudioFilePS2_ADPCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
         // Write out compression method.
         x_fwrite( &CompressionMethod, sizeof(s32), 1, out );
 
-		// Pad out compressed data so it is 2K block aligned
-		CompressedSize = ( (nSamples + BLKSIZ-1) / BLKSIZ) * 16;
-		CompressedSize = (CompressedSize + 16 + 2047) &~2047;
-		
-		ASSERT( (CompressedSize % 16)==0);
+        // Pad out compressed data so it is 2K block aligned
+        CompressedSize = ( (nSamples + BLKSIZ-1) / BLKSIZ) * 16;
+        CompressedSize = (CompressedSize + 16 + 2047) &~2047;
+        
+        ASSERT( (CompressedSize % 16)==0);
         x_fwrite( &CompressedSize, sizeof(s32), 1, out );
 
         // Write out the lip sync size in bytes
@@ -89,16 +89,16 @@ u32 CompressAudioFilePS2_ADPCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
         // Write out header size in bytes.
         x_fwrite( &HeaderSize, sizeof(s32), 1, out );
 
-		s16* pCompBuffer;
-		s16* pSampBuffer;
-		s32 Remain;
-		s32 Length;
+        s16* pCompBuffer;
+        s16* pSampBuffer;
+        s32 Remain;
+        s32 Length;
 
         // TODO: Put in looping stuff... 
-        if( Aiff.IsLooped() )
+        if( AudioFile->IsLooped() )
         {
-            LoopStart   = Aiff.GetLoopStart();
-            LoopEnd     = Aiff.GetLoopEnd();
+            LoopStart   = AudioFile->GetLoopStart();
+            LoopEnd     = AudioFile->GetLoopEnd();
         }
         else
         {
@@ -108,36 +108,35 @@ u32 CompressAudioFilePS2_ADPCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
         // Compress each channel...
         for( i=0 ; i<nChannels ; i++ )
         {
-
-			EncVagInit(ENC_VAG_MODE_NORMAL);
+            EncVagInit(ENC_VAG_MODE_NORMAL);
             // Allocate space for the compressed data.
             pCompressedBuffer.Append() = x_malloc( CompressedSize );
 
             // Read the the uncompressed waveform data.
-            Aiff.GetChannelData( pSampleBuffer, i );
-			pCompBuffer = (s16*)pCompressedBuffer[i];
-			pSampBuffer = (s16*)pSampleBuffer;
-			Remain      = nSamples;
-			Length		= 0;
+            AudioFile->GetChannelData( pSampleBuffer, i );
+            pCompBuffer = (s16*)pCompressedBuffer[i];
+            pSampBuffer = (s16*)pSampleBuffer;
+            Remain      = nSamples;
+            Length      = 0;
 
             x_memset( pCompressedBuffer[i], 0, CompressedSize );
-			// The first 16 bytes on a sample have to be zero to initialize the BRR
-			// hardware
-			pCompBuffer+=16/sizeof(s16);
-			Length+=16;
+            // The first 16 bytes on a sample have to be zero to initialize the BRR
+            // hardware
+            pCompBuffer+=16/sizeof(s16);
+            Length+=16;
 
             s16 BlankBuffer[BLKSIZ];
-			while (Remain>0)
-			{
+            while (Remain>0)
+            {
                 if (Remain < BLKSIZ)
                 {
                     x_memset(BlankBuffer,0,sizeof(BlankBuffer));
                     x_memcpy(BlankBuffer,pSampBuffer,Remain*sizeof(s16));
                     pSampBuffer = BlankBuffer;
                 }
-				Length += 16;
-				// We need to make sure at the end of every 2K block, we set the
-				// LOOP_END flag so it'll properly jump to the next block.
+                Length += 16;
+                // We need to make sure at the end of every 2K block, we set the
+                // LOOP_END flag so it'll properly jump to the next block.
                 if (Remain <= BLKSIZ)
                 {
                     if (LoopStart != LoopEnd)
@@ -187,12 +186,12 @@ u32 CompressAudioFilePS2_ADPCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
 			}
 
             //
-            if( Aiff.IsLooped() )
+            if( AudioFile->IsLooped() )
             {
                 // We add 16 bytes to the loop start and end position to take 
                 // in to account the 16 bytes of zero data at the start. 
-                LoopStart   = Aiff.GetLoopStart() + SAMPLES_PER_ADPCM_BLOCK;
-                LoopEnd     = Aiff.GetLoopEnd()   + SAMPLES_PER_ADPCM_BLOCK;
+                LoopStart   = AudioFile->GetLoopStart() + SAMPLES_PER_ADPCM_BLOCK;
+                LoopEnd     = AudioFile->GetLoopEnd()   + SAMPLES_PER_ADPCM_BLOCK;
 
                 // We round down the loop start position and round up the loop end 
                 // to the ADPCM block boundaries so we have an accurate position with
@@ -244,7 +243,7 @@ u32 CompressAudioFilePS2_ADPCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
         }
 
         // Write out the lipsync data.
-        WriteLipSyncData( &Aiff, out );
+        WriteLipSyncData( AudioFile, out );
 
         // Write out the break points.
         WriteBreakPoints( BreakPoints, out, FALSE );

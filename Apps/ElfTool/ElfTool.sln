@@ -2,26 +2,49 @@ Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElfTool", "ElfTool.vcproj", "{358564BD-D24D-4F31-A1E3-1FFF510D4220}"
 	ProjectSection(ProjectDependencies) = postProject
 		{51F65302-640B-49E6-B711-585E20B79433} = {51F65302-640B-49E6-B711-585E20B79433}
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D} = {7B3440E7-4B4E-4400-9CC7-03A109DEB88D}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "x_files", "..\..\xCore\x_files\x_files.vcproj", "{51F65302-640B-49E6-B711-585E20B79433}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommandLine", "..\..\xCore\Auxiliary\CommandLine\CommandLine.vcproj", "{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug Win32 = Debug Win32
+		OptDebug Win32 = OptDebug Win32
+		QA Win32 = QA Win32
 		Release Win32 = Release Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{358564BD-D24D-4F31-A1E3-1FFF510D4220}.Debug Win32.ActiveCfg = Debug|Win32
 		{358564BD-D24D-4F31-A1E3-1FFF510D4220}.Debug Win32.Build.0 = Debug|Win32
+		{358564BD-D24D-4F31-A1E3-1FFF510D4220}.OptDebug Win32.ActiveCfg = OptDebug|Win32
+		{358564BD-D24D-4F31-A1E3-1FFF510D4220}.OptDebug Win32.Build.0 = OptDebug|Win32
+		{358564BD-D24D-4F31-A1E3-1FFF510D4220}.QA Win32.ActiveCfg = QA|Win32
+		{358564BD-D24D-4F31-A1E3-1FFF510D4220}.QA Win32.Build.0 = QA|Win32
 		{358564BD-D24D-4F31-A1E3-1FFF510D4220}.Release Win32.ActiveCfg = Release|Win32
 		{358564BD-D24D-4F31-A1E3-1FFF510D4220}.Release Win32.Build.0 = Release|Win32
 		{51F65302-640B-49E6-B711-585E20B79433}.Debug Win32.ActiveCfg = Debug|Win32
 		{51F65302-640B-49E6-B711-585E20B79433}.Debug Win32.Build.0 = Debug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.OptDebug Win32.ActiveCfg = OptDebug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.OptDebug Win32.Build.0 = OptDebug|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.QA Win32.ActiveCfg = QA|Win32
+		{51F65302-640B-49E6-B711-585E20B79433}.QA Win32.Build.0 = QA|Win32
 		{51F65302-640B-49E6-B711-585E20B79433}.Release Win32.ActiveCfg = Release|Win32
 		{51F65302-640B-49E6-B711-585E20B79433}.Release Win32.Build.0 = Release|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.Debug Win32.ActiveCfg = Debug|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.Debug Win32.Build.0 = Debug|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.OptDebug Win32.ActiveCfg = OptDebug|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.OptDebug Win32.Build.0 = OptDebug|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.QA Win32.ActiveCfg = QA|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.QA Win32.Build.0 = QA|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.Release Win32.ActiveCfg = Release|Win32
+		{7B3440E7-4B4E-4400-9CC7-03A109DEB88D}.Release Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

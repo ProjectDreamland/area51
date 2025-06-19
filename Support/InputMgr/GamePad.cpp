@@ -121,6 +121,39 @@ void ingame_pad::OnInitialize( void )
     AddMapping( INPUT_PLATFORM_XBOX, ACTION_TALK_MODE_TOGGLE, INPUT_XBOX_BTN_BLACK, TRUE );
 #endif
 
+#ifdef TARGET_PC
+    //Set the default PC controls.
+    //Mouse
+    AddMapping( INPUT_PLATFORM_PC, ACTION_PRIMARY,       INPUT_MOUSE_BTN_L,      TRUE );
+    AddMapping( INPUT_PLATFORM_PC, ACTION_SECONDARY,     INPUT_MOUSE_BTN_R,      TRUE );
+    AddMapping( INPUT_PLATFORM_PC, LOOK_HORIZONTAL,      INPUT_MOUSE_X_REL,      FALSE );
+    AddMapping( INPUT_PLATFORM_PC, LOOK_VERTICAL,        INPUT_MOUSE_Y_REL,      FALSE );
+    
+    //Movement
+    AddMapping( INPUT_PLATFORM_PC, MOVE_FORWARD,         INPUT_KBD_W,            FALSE );
+    AddMapping( INPUT_PLATFORM_PC, MOVE_BACKWARD,        INPUT_KBD_S,            FALSE );
+    AddMapping( INPUT_PLATFORM_PC, STRAFE_LEFT,          INPUT_KBD_A,            FALSE );
+    AddMapping( INPUT_PLATFORM_PC, STRAFE_RIGHT,         INPUT_KBD_D,            FALSE );
+                                                                                 
+    AddMapping( INPUT_PLATFORM_PC, ACTION_JUMP,          INPUT_KBD_SPACE,        TRUE );
+    AddMapping( INPUT_PLATFORM_PC, ACTION_CROUCH,        INPUT_KBD_LCONTROL,     TRUE );
+                                                                                 
+    AddMapping( INPUT_PLATFORM_PC, LEAN_LEFT,            INPUT_KBD_Q,            TRUE );
+    AddMapping( INPUT_PLATFORM_PC, LEAN_RIGHT,           INPUT_KBD_E,            TRUE );
+                                                                                 
+    //Buttons                                                                    
+    AddMapping( INPUT_PLATFORM_PC, ACTION_RELOAD,        INPUT_KBD_R,            TRUE );
+    AddMapping( INPUT_PLATFORM_PC, ACTION_THROW_GRENADE, INPUT_KBD_G,            TRUE );
+    AddMapping( INPUT_PLATFORM_PC, ACTION_USE,           INPUT_KBD_TAB,          TRUE );
+    AddMapping( INPUT_PLATFORM_PC, ACTION_MUTATION,      INPUT_KBD_X,            TRUE );
+    AddMapping( INPUT_PLATFORM_PC, ACTION_MELEE_ATTACK,  INPUT_KBD_V,            TRUE );
+    AddMapping( INPUT_PLATFORM_PC, ACTION_FLASHLIGHT,    INPUT_KBD_F,            TRUE );
+                                                                                 
+    //UI                                                                         
+    AddMapping( INPUT_PLATFORM_PC, ACTION_HUD_CONTEXT,   INPUT_KBD_F1,           TRUE );
+    AddMapping( INPUT_PLATFORM_PC, ACTION_PAUSE_CONTEXT, INPUT_KBD_ESCAPE,       TRUE );
+#endif
+
 #ifdef TARGET_PS2
     // Set the default controler
     // Left Analog
@@ -167,16 +200,17 @@ void ingame_pad::OnInitialize( void )
 
 void ingame_pad::OnUpdate( f32 DeltaTime )
 {
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
     s32 iPlatform = INPUT_PLATFORM_XBOX;
-#else
+#elif defined(TARGET_PS2)
     s32 iPlatform = INPUT_PLATFORM_PS2;
+#elif defined(TARGET_PC)
+    s32 iPlatform = INPUT_PLATFORM_PC;
 #endif
     //
     // First lets read all the input what we need
     //
     input_pad::OnUpdate( iPlatform, DeltaTime );
-
     // Nothing to do for now
     //OnDebugRender();
 }
@@ -192,8 +226,12 @@ const char* ingame_pad::GetLogicalIDName( s32 Index )
             ASSERTS(0, "Add your new state to this list or properties will not work!");
 
 
-        case MOVE_STRAFE:               return "Strafe";
-        case MOVE_FOWARD_BACKWARDS:     return "Move";
+        case MOVE_STRAFE:               return "Strafe";  //Deprecated
+        case MOVE_FOWARD_BACKWARDS:     return "Move";    //Deprecated
+        case MOVE_FORWARD:              return "Move";
+        case MOVE_BACKWARD:             return "Move";
+        case STRAFE_LEFT:               return "Strafe";
+        case STRAFE_RIGHT:              return "Strafe";
         case LOOK_HORIZONTAL:           return "Look Horiz";
         case LOOK_VERTICAL:             return "Look Vert";
         case LEAN_LEFT:                 return "Lean Left";

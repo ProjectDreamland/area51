@@ -3,6 +3,7 @@
 
 #include "x_files.hpp"
 #include "PackageTypes.hpp"
+#include "audio_file.hpp"
 
 u32     CompressAudioFilePC_PCM     ( X_FILE* in, X_FILE* out, s32* NumChannels, s32* LipSyncSize );
 u32     CompressAudioFilePC_ADPCM   ( X_FILE* in, X_FILE* out, s32* NumChannels, s32* LipSyncSize );

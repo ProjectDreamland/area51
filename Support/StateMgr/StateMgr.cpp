@@ -71,7 +71,7 @@
 #endif
 #include "dialogs/dlg_MCMessage.hpp"
 #include "dialogs/dlg_CampaignMenu.hpp"
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
 #include "dialogs/dlg_MemcardSelect.hpp"
 #endif
 #include "dialogs/dlg_VoteMap.hpp"
@@ -126,7 +126,11 @@
 #include "PS2/ps2_dlist.hpp"
 #endif
 
-#include "../../Apps/GameApp/Config.hpp"
+#ifdef CONFIG_VIEWER
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
+#include "../../Apps/GameApp/Config.hpp"	
+#endif
 
 #if defined(CONFIG_IS_DEMO)
 extern xtimer g_DemoIdleTimer;
@@ -226,7 +230,7 @@ void state_mgr::Init( void )
     ASSERT( !m_bInited );
 
     // Register dialogs
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
     dlg_copa_register               ( g_UiMgr );
 #endif
     dlg_esrb_register               ( g_UiMgr );
@@ -244,19 +248,19 @@ void state_mgr::Init( void )
 #ifndef CONFIG_RETAIL
     dlg_level_select_register       ( g_UiMgr );
 #endif
-#ifdef TARGET_PS2
+#if defined(TARGET_PS2)
     dlg_online_eula_register        ( g_UiMgr );
 #endif
-    //dlg_online_connect_register     ( g_UiMgr );
+    dlg_online_connect_register     ( g_UiMgr );
     dlg_online_main_register        ( g_UiMgr );
     dlg_online_host_register        ( g_UiMgr );
     dlg_online_host_options_register( g_UiMgr );
-    //dlg_online_join_register        ( g_UiMgr );
+    dlg_online_join_register        ( g_UiMgr );
     dlg_join_filter_register        ( g_UiMgr );
     dlg_online_level_select_register( g_UiMgr );
-    //dlg_online_players_register     ( g_UiMgr );
-    //dlg_friends_register            ( g_UiMgr );
-    //dlg_players_register            ( g_UiMgr );
+    dlg_online_players_register     ( g_UiMgr );
+    dlg_friends_register            ( g_UiMgr );
+    dlg_players_register            ( g_UiMgr );
     dlg_start_game_register         ( g_UiMgr );
     dlg_load_game_register          ( g_UiMgr );
     dlg_level_desc_register         ( g_UiMgr );
@@ -279,8 +283,8 @@ void state_mgr::Init( void )
     dlg_mcmessage_register          ( g_UiMgr );
     dlg_campaign_menu_register      ( g_UiMgr );
     dlg_lore_menu_register          ( g_UiMgr );
-#ifndef TARGET_XBOX
-    //dlg_memcard_select_register     ( g_UiMgr );
+#if defined(TARGET_PS2)
+    dlg_memcard_select_register     ( g_UiMgr );
 #endif
     dlg_vote_map_register           ( g_UiMgr );
     dlg_vote_kick_register          ( g_UiMgr );
@@ -288,11 +292,11 @@ void state_mgr::Init( void )
     dlg_change_map_register         ( g_UiMgr );
     dlg_kick_player_register        ( g_UiMgr );
     dlg_team_change_register        ( g_UiMgr );
-    //dlg_online_login_register       ( g_UiMgr );
+    dlg_online_login_register       ( g_UiMgr );
     dlg_submenu_register            ( g_UiMgr );
-    //dlg_feedback_register           ( g_UiMgr );
+    dlg_feedback_register           ( g_UiMgr );
     dlg_secrets_menu_register       ( g_UiMgr );
-    //dlg_stats_register              ( g_UiMgr );
+    dlg_stats_register              ( g_UiMgr );
     dlg_autosave_register           ( g_UiMgr );
     dlg_credits_register            ( g_UiMgr );
     dlg_extras_register             ( g_UiMgr );
@@ -536,7 +540,7 @@ const char* state_mgr::GetStateName( sm_states State )
 
         LABEL_STRING( SM_ESRB_NOTICE );
         LABEL_STRING( SM_INEVITABLE_INTRO );
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_CONTROLLER_CHECK );
         LABEL_STRING( SM_AUTOSAVE_DIALOG );
 #endif
@@ -546,29 +550,27 @@ const char* state_mgr::GetStateName( sm_states State )
 
         LABEL_STRING( SM_MAIN_MENU );
         LABEL_STRING( SM_SETTINGS_MENU );
-#ifdef TARGET_XBOX		
         LABEL_STRING( SM_SETTINGS_HEADSET );
-#endif		
         LABEL_STRING( SM_SETTINGS_MEMCARD_SELECT );
         LABEL_STRING( SM_MANAGE_PROFILES );
         LABEL_STRING( SM_MANAGE_PROFILE_OPTIONS );
         LABEL_STRING( SM_MANAGE_PROFILE_CONTROLS );
         LABEL_STRING( SM_MANAGE_PROFILE_AVATAR );
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_MANAGE_MEMCARD_SELECT );
 #endif
         LABEL_STRING( SM_MANAGE_PROFILE_SAVE_SELECT );
         LABEL_STRING( SM_MANAGE_PROFILE_MEMCARD_RESELECT );
 
         LABEL_STRING( SM_DEMO_EXIT );
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_MEMCARD_SELECT );
 #endif
         LABEL_STRING( SM_CAMPAIGN_MENU );
         LABEL_STRING( SM_CAMPAIGN_PROFILE_OPTIONS );
         LABEL_STRING( SM_CAMPAIGN_PROFILE_CONTROLS );
         LABEL_STRING( SM_CAMPAIGN_PROFILE_AVATAR );
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_CAMPAIGN_MEMCARD_SELECT );
 #endif
         LABEL_STRING( SM_CAMPAIGN_PROFILE_SAVE_SELECT );
@@ -588,7 +590,7 @@ const char* state_mgr::GetStateName( sm_states State )
         LABEL_STRING( SM_MP_SAVE_SETTINGS );
         LABEL_STRING( SM_PROFILE_CONTROLS_MP );
         LABEL_STRING( SM_PROFILE_AVATAR_MP );
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_MEMCARD_SELECT_MP );
 #endif
         LABEL_STRING( SM_PROFILE_SAVE_SELECT_MP );
@@ -599,7 +601,7 @@ const char* state_mgr::GetStateName( sm_states State )
         LABEL_STRING( SM_PROFILE_CONTROLS );
         LABEL_STRING( SM_PROFILE_AVATAR );
 
-#ifdef TARGET_PS2
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_ONLINE_EULA );
 #endif
         LABEL_STRING( SM_ONLINE_CONNECT );
@@ -613,7 +615,7 @@ const char* state_mgr::GetStateName( sm_states State )
         LABEL_STRING( SM_ONLINE_PROFILE_OPTIONS );
         LABEL_STRING( SM_ONLINE_PROFILE_CONTROLS );
         LABEL_STRING( SM_ONLINE_PROFILE_AVATAR );
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_ONLINE_MEMCARD_SELECT );
 #endif
         LABEL_STRING( SM_ONLINE_PROFILE_SAVE_SELECT );
@@ -670,7 +672,7 @@ const char* state_mgr::GetStateName( sm_states State )
 #ifdef TARGET_XBOX
         LABEL_STRING( SM_PAUSE_FRIENDS );
 #endif
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_PAUSE_MEMCARD_SELECT );
 #endif
         LABEL_STRING( SM_PAUSE_PROFILE_SAVE_SELECT );
@@ -686,7 +688,7 @@ const char* state_mgr::GetStateName( sm_states State )
 #ifdef TARGET_XBOX
         LABEL_STRING( SM_PAUSE_MP_FRIENDS );
 #endif
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_PAUSE_MP_MEMCARD_SELECT );
 #endif
         LABEL_STRING( SM_PAUSE_MP_PROFILE_SAVE_SELECT );
@@ -704,7 +706,7 @@ const char* state_mgr::GetStateName( sm_states State )
         LABEL_STRING( SM_PAUSE_ONLINE_CONTROLS );
         LABEL_STRING( SM_PAUSE_ONLINE_SETTINGS );
         LABEL_STRING( SM_PAUSE_ONLINE_HEADSET );
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_PAUSE_ONLINE_MEMCARD_SELECT );
 #endif
         LABEL_STRING( SM_PAUSE_ONLINE_SAVE_SELECT );
@@ -724,7 +726,7 @@ const char* state_mgr::GetStateName( sm_states State )
 
         LABEL_STRING( SM_AUTOSAVE_MENU );
         LABEL_STRING( SM_AUTOSAVE_PROFILE_RESELECT );
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         LABEL_STRING( SM_AUTOSAVE_MEMCARD_SELECT );
 #endif
         LABEL_STRING( SM_END_AUTOSAVE );
@@ -943,11 +945,9 @@ void state_mgr::CheckControllers( void )
 #if !defined(X_EDITOR)
 
 #ifdef TARGET_PC
-       input_gadget ControllerQuery = INPUT_XBOX_QRY_PAD_PRESENT;
-       input_gadget AnalogQuery     = INPUT_XBOX_QRY_ANALOG_MODE;   
-	//(void) input_gadget ControllerQuery;
-    //(void) input_gadget AnalogQuery;
-    //return;
+    input_gadget ControllerQuery;
+    input_gadget AnalogQuery;
+    return;
 #endif
 
     if( !g_bControllerCheck )
@@ -995,7 +995,7 @@ void state_mgr::CheckControllers( void )
                 }
             }
             break;
-#if !defined(TARGET_XBOX) 
+#ifdef TARGET_PS2
         case SM_CONTROLLER_CHECK:
             // check for all controllers removed
             ControllerID = -1;
@@ -1303,7 +1303,7 @@ void state_mgr::DummyScreen( const char* message, xbool canSkip, s32 waitTime )
 #ifdef TARGET_PC
                 if( input_IsPressed( INPUT_MSG_EXIT ) )
                     bSkip = TRUE;
-                if ( input_WasPressed( INPUT_KBD_RETURN, 0) || input_WasPressed( INPUT_KBD_SPACE, 0) || input_IsPressed( INPUT_PS2_BTN_CROSS, 0 ) )
+                if( input_WasPressed( INPUT_KBD_RETURN, 0 ) || input_WasPressed( INPUT_KBD_ESCAPE, 0 ) || input_WasPressed( INPUT_KBD_SPACE, 0 ) ) 
                     bSkip = TRUE;
 #endif
 
@@ -1329,7 +1329,7 @@ void state_mgr::EnterState( sm_states State )
     {
         case SM_ESRB_NOTICE:                    EnterESRBNotice();                  break;
         case SM_INEVITABLE_INTRO:               EnterInevitableIntro();             break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_AUTOSAVE_DIALOG:                EnterAutoSaveDialog();              break;
         case SM_CONTROLLER_CHECK:               EnterControllerCheck();             break;
 #endif
@@ -1337,15 +1337,13 @@ void state_mgr::EnterState( sm_states State )
         case SM_PRESS_START_SCREEN:             EnterPressStart();                  break;
         case SM_MAIN_MENU:                      EnterMainMenu();                    break;
         case SM_SETTINGS_MENU:                  EnterSettingsMenu();                break;
-#ifdef TARGET_XBOX
         case SM_SETTINGS_HEADSET:               EnterSettingsHeadset();             break;
-#endif
         case SM_SETTINGS_MEMCARD_SELECT:        EnterSettingsMemcardSelect();       break;
         case SM_MANAGE_PROFILES:                EnterManageProfiles();              break;
         case SM_MANAGE_PROFILE_OPTIONS:         EnterManageProfileOptions();        break;
         case SM_MANAGE_PROFILE_CONTROLS:        EnterManageProfileControls();       break;
         case SM_MANAGE_PROFILE_AVATAR:          EnterManageProfileAvatar();         break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_MANAGE_MEMCARD_SELECT:          EnterManageMemcardSelect();         break;
 #endif
         case SM_MANAGE_PROFILE_SAVE_SELECT:     EnterManageProfileSaveSelect();     break;
@@ -1354,12 +1352,12 @@ void state_mgr::EnterState( sm_states State )
         case SM_CAMPAIGN_PROFILE_OPTIONS:       EnterCampaignProfileOptions();      break;
         case SM_CAMPAIGN_PROFILE_CONTROLS:      EnterCampaignProfileControls();     break;
         case SM_CAMPAIGN_PROFILE_AVATAR:        EnterCampaignProfileAvatar();       break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_CAMPAIGN_MEMCARD_SELECT:        EnterCampaignMemcardSelect();       break;
 #endif
         case SM_CAMPAIGN_PROFILE_SAVE_SELECT:   EnterCampaignProfileSaveSelect();   break;
         case SM_CAMPAIGN_MEMCARD_RESELECT:      EnterCampaignMemcardReselect();     break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_MEMCARD_SELECT:                 EnterMemcardSelect();               break;
 #endif
         case SM_LOAD_CAMPAIGN:                  EnterLoadCampaign();                break;
@@ -1373,7 +1371,7 @@ void state_mgr::EnterState( sm_states State )
         case SM_PROFILE_CONTROLS:               EnterProfileControls();             break;
         case SM_PROFILE_AVATAR:                 EnterProfileAvatar();               break;
         case SM_PROFILE_AVATAR_MP:              EnterProfileAvatarMP();             break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_MEMCARD_SELECT_MP:              EnterMemcardSelectMP();             break;
 #endif
         case SM_PROFILE_SAVE_SELECT_MP:         EnterProfileSaveSelectMP();         break;
@@ -1399,7 +1397,7 @@ void state_mgr::EnterState( sm_states State )
         case SM_ONLINE_PROFILE_OPTIONS:         EnterOnlineProfileOptions();        break;
         case SM_ONLINE_PROFILE_CONTROLS:        EnterOnlineProfileControls();       break;
         case SM_ONLINE_PROFILE_AVATAR:          EnterOnlineProfileAvatar();         break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_ONLINE_MEMCARD_SELECT:          EnterOnlineMemcardSelect();         break;
 #endif
         case SM_ONLINE_PROFILE_SAVE_SELECT:     EnterOnlineProfileSaveSelect();     break;
@@ -1446,7 +1444,7 @@ void state_mgr::EnterState( sm_states State )
 #ifdef TARGET_XBOX
         case SM_PAUSE_FRIENDS:                  EnterPauseFriends();                break;
 #endif
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_PAUSE_MEMCARD_SELECT:           EnterPauseMemcardSelect();          break;
 #endif
         case SM_PAUSE_PROFILE_SAVE_SELECT:      EnterPauseMemcardSaveSelect();      break;
@@ -1460,7 +1458,7 @@ void state_mgr::EnterState( sm_states State )
 #ifdef TARGET_XBOX
         case SM_PAUSE_MP_FRIENDS:               EnterPauseMPFriends();              break;
 #endif
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_PAUSE_MP_MEMCARD_SELECT:        EnterPauseMPMemcardSelect();        break;
 #endif
         case SM_PAUSE_MP_PROFILE_SAVE_SELECT:   EnterPauseMPMemcardSaveSelect();    break;
@@ -1477,7 +1475,7 @@ void state_mgr::EnterState( sm_states State )
         case SM_PAUSE_ONLINE_CONTROLS:          EnterPauseOnlineControls();         break;
         case SM_PAUSE_ONLINE_SETTINGS:          EnterPauseOnlineSettings();         break;
         case SM_PAUSE_ONLINE_HEADSET:           EnterPauseOnlineHeadset();          break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_PAUSE_ONLINE_MEMCARD_SELECT:    EnterPauseOnlineMemcardSelect();    break;
 #endif
         case SM_PAUSE_ONLINE_SAVE_SELECT:       EnterPauseOnlineSaveSelect();       break;
@@ -1493,7 +1491,7 @@ void state_mgr::EnterState( sm_states State )
         case SM_END_PAUSE:                      EnterEndPause();                    break;
         case SM_AUTOSAVE_MENU:                  EnterAutosaveMenu();                break;
         case SM_AUTOSAVE_PROFILE_RESELECT:      EnterAutosaveProfileReselect();     break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_AUTOSAVE_MEMCARD_SELECT:        EnterAutosaveMemcardSelect();       break;
 #endif
         case SM_END_AUTOSAVE:                   EnterEndAutosave();                 break;
@@ -1570,7 +1568,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
     {
         case SM_ESRB_NOTICE:                    UpdateESRBNotice();                 break;
         case SM_INEVITABLE_INTRO:               UpdateInevitableIntro();            break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_CONTROLLER_CHECK:               UpdateControllerCheck();            break;
         case SM_AUTOSAVE_DIALOG:                UpdateAutoSaveDialog();             break;
 #endif
@@ -1578,16 +1576,14 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_PRESS_START_SCREEN:             UpdatePressStart();                 break;
         case SM_MAIN_MENU:                      UpdateMainMenu();                   break;
         case SM_SETTINGS_MENU:                  UpdateSettingsMenu();               break;
-#ifdef TARGET_XBOX		
         case SM_SETTINGS_HEADSET:               UpdateSettingsHeadset();            break;
-#endif
         case SM_SETTINGS_MEMCARD_SELECT:        UpdateSettingsMemcardSelect();      break;
 
         case SM_MANAGE_PROFILES:                UpdateManageProfiles();             break;
         case SM_MANAGE_PROFILE_OPTIONS:         UpdateManageProfileOptions();       break;
         case SM_MANAGE_PROFILE_CONTROLS:        UpdateManageProfileControls();      break;
         case SM_MANAGE_PROFILE_AVATAR:          UpdateManageProfileAvatar();        break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_MANAGE_MEMCARD_SELECT:          UpdateManageMemcardSelect();        break;
 #endif
         case SM_MANAGE_PROFILE_SAVE_SELECT:     UpdateManageProfileSaveSelect();    break;
@@ -1597,7 +1593,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_CAMPAIGN_PROFILE_OPTIONS:       UpdateCampaignProfileOptions();     break;
         case SM_CAMPAIGN_PROFILE_CONTROLS:      UpdateCampaignProfileControls();    break;
         case SM_CAMPAIGN_PROFILE_AVATAR:        UpdateCampaignProfileAvatar();      break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_CAMPAIGN_MEMCARD_SELECT:        UpdateCampaignMemcardSelect();      break;
 #endif
         case SM_CAMPAIGN_PROFILE_SAVE_SELECT:   UpdateCampaignProfileSaveSelect();  break;
@@ -1608,7 +1604,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_SECRETS_MENU:                   UpdateSecretsMenu();                break;
         case SM_EXTRAS_MENU:                    UpdateExtrasMenu();                 break;
         case SM_CREDITS_SCREEN:                 UpdateCreditsScreen();              break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_MEMCARD_SELECT:                 UpdateMemcardSelect();              break;
 #endif
         case SM_PROFILE_SELECT:                 UpdateProfileSelect();              break;
@@ -1622,7 +1618,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_MP_SAVE_SETTINGS:               UpdateMPSaveSettings();             break;
         case SM_PROFILE_CONTROLS_MP:            UpdateProfileControlsMP();          break;
         case SM_PROFILE_AVATAR_MP:              UpdateProfileAvatarMP();            break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_MEMCARD_SELECT_MP:              UpdateMemcardSelectMP();            break;
 #endif
         case SM_PROFILE_SAVE_SELECT_MP:         UpdateProfileSaveSelectMP();        break;
@@ -1641,7 +1637,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_ONLINE_PROFILE_OPTIONS:         UpdateOnlineProfileOptions();       break;
         case SM_ONLINE_PROFILE_CONTROLS:        UpdateOnlineProfileControls();      break;
         case SM_ONLINE_PROFILE_AVATAR:          UpdateOnlineProfileAvatar();        break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_ONLINE_MEMCARD_SELECT:          UpdateOnlineMemcardSelect();        break;
 #endif
         case SM_ONLINE_PROFILE_SAVE_SELECT:     UpdateOnlineProfileSaveSelect();    break;
@@ -1696,7 +1692,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
 #ifdef TARGET_XBOX
         case SM_PAUSE_FRIENDS:                  UpdatePauseFriends();               break;
 #endif
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_PAUSE_MEMCARD_SELECT:           UpdatePauseMemcardSelect();         break;
 #endif
         case SM_PAUSE_PROFILE_SAVE_SELECT:      UpdatePauseMemcardSaveSelect();     break;
@@ -1710,7 +1706,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
 #ifdef TARGET_XBOX
         case SM_PAUSE_MP_FRIENDS:               UpdatePauseMPFriends();             break;
 #endif
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_PAUSE_MP_MEMCARD_SELECT:        UpdatePauseMPMemcardSelect();       break;
 #endif
         case SM_PAUSE_MP_PROFILE_SAVE_SELECT:   UpdatePauseMPMemcardSaveSelect();   break;
@@ -1728,7 +1724,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_PAUSE_ONLINE_CONTROLS:          UpdatePauseOnlineControls();        break;
         case SM_PAUSE_ONLINE_SETTINGS:          UpdatePauseOnlineSettings();        break;
         case SM_PAUSE_ONLINE_HEADSET:           UpdatePauseOnlineHeadset();         break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_PAUSE_ONLINE_MEMCARD_SELECT:    UpdatePauseOnlineMemcardSelect();   break;
 #endif
         case SM_PAUSE_ONLINE_SAVE_SELECT:       UpdatePauseOnlineSaveSelect();      break;
@@ -1744,7 +1740,7 @@ void state_mgr::UpdateState( sm_states State, f32 DeltaTime )
         case SM_END_PAUSE:                      UpdateEndPause();                   break;
         case SM_AUTOSAVE_MENU:                  UpdateAutosaveMenu();               break;
         case SM_AUTOSAVE_PROFILE_RESELECT:      UpdateAutosaveProfileReselect();    break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
         case SM_AUTOSAVE_MEMCARD_SELECT:        UpdateAutosaveMemcardSelect();      break;
 #endif
         case SM_END_AUTOSAVE:                   UpdateEndAutosave();                break;
@@ -2409,7 +2405,7 @@ void state_mgr::ExitInevitableIntro( void )
 {
 }
 
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
 //=========================================================================
 void state_mgr::EnterControllerCheck( void )
 {
@@ -2500,7 +2496,7 @@ void state_mgr::ExitAutoSaveDialog( void )
 
 }
 
-#endif // ndef TARGET_XBOX
+#endif // ndef TARGET_XBOX || TARGET_PC
 
 //=========================================================================
 
@@ -2790,7 +2786,7 @@ void state_mgr::UpdateMainMenu( void )
                         }
                     }
                     break;
-#ifdef TARGET_XBOX	
+
                     case IDC_MAIN_MENU_MULTI:
                     {
                         // clear the profiles and controller requests
@@ -2804,7 +2800,7 @@ void state_mgr::UpdateMainMenu( void )
                         SetState( SM_MULTI_PLAYER_MENU );
                     }
                     break;
-#endif    
+
                     case IDC_MAIN_MENU_ONLINE:
                     {
 #ifdef TARGET_PS2
@@ -2874,13 +2870,12 @@ void state_mgr::UpdateSettingsMenu( void )
                 SetState( SM_MAIN_MENU );
             }
             break;
-#ifdef TARGET_XBOX
+
             case DIALOG_STATE_SELECT:
             {
                 SetState( SM_SETTINGS_HEADSET );
             }
             break;
-#endif			
 
             case DIALOG_STATE_MEMCARD_ERROR:
             {
@@ -2898,7 +2893,7 @@ void state_mgr::ExitSettingsMenu( void )
 }
 
 //=========================================================================
-#ifdef TARGET_XBOX
+
 void state_mgr::EnterSettingsHeadset( void )
 {
     //  create options main menu
@@ -2934,7 +2929,7 @@ void state_mgr::UpdateSettingsHeadset( void )
 void state_mgr::ExitSettingsHeadset( void )
 {
 }
-#endif
+
 //=========================================================================
 
 void state_mgr::EnterSettingsMemcardSelect( void )
@@ -3090,14 +3085,7 @@ void state_mgr::UpdateManageProfileOptions( void )
 
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
-#ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // advance to campaign menu
-                        SetState( SM_MAIN_MENU );
-#elif (defined TARGET_XBOX)
+#if defined(TARGET_PC) || defined(TARGET_XBOX)
                         SetState( SM_MAIN_MENU );
 #else
                         // need to save new profile
@@ -3217,7 +3205,7 @@ void state_mgr::ExitManageProfileAvatar( void )
 }
 
 //=========================================================================
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
 
 void state_mgr::EnterManageMemcardSelect( void )
 {
@@ -3856,14 +3844,7 @@ void state_mgr::UpdateCampaignProfileOptions( void )
 
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
-                    #ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // advance to campaign menu
-                        SetState( SM_CAMPAIGN_MENU );
-                    #elif (defined TARGET_XBOX)
+                    #if defined(TARGET_PC) || defined(TARGET_XBOX)
                         SetState( SM_CAMPAIGN_MENU );
                     #else
                         // save to memcard and return to menu
@@ -4177,14 +4158,7 @@ void state_mgr::UpdateProfileOptions( void )
 
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
-                    #ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // advance to campaign menu
-                        SetState( SM_CAMPAIGN_MENU );
-                    #elif (defined TARGET_XBOX)
+                    #if defined(TARGET_PC) || defined(TARGET_XBOX)
                         SetState( SM_CAMPAIGN_MENU );
                     #else
                         // need to save new profile
@@ -4459,14 +4433,7 @@ void state_mgr::UpdateMultiPlayerEdit( void )
 
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
-                    #ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // return to MP main menu
-                        SetState( SM_MULTI_PLAYER_MENU );
-                    #elif (defined TARGET_XBOX)
+                    #if defined(TARGET_PC) || defined(TARGET_XBOX)
                         SetState( SM_MULTI_PLAYER_MENU );
                     #else
                         SetState( SM_MEMCARD_SELECT_MP ); 
@@ -4540,19 +4507,8 @@ void state_mgr::UpdateMPLevelSelect( void )
 
         case DIALOG_STATE_SELECT:
             {
-#ifdef TARGET_PC
-                // continue without saving for now
-                g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                // update the changes in the profile
-                g_StateMgr.ActivatePendingProfile();
-
-                // advance to game
-                g_NetworkMgr.BecomeServer();
-                SetState( SM_START_GAME );
-#else
                 // save to memcard and return to menu
                 SetState( SM_MP_SAVE_SETTINGS );
-#endif
             }
             break;
 
@@ -5058,11 +5014,6 @@ void state_mgr::UpdateOnlineProfileOptions( void )
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
                     #ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // advance to online main menu
                         SetState( SM_ONLINE_MAIN_MENU );
                     #elif (defined TARGET_XBOX)
                         SetState( SM_ONLINE_AUTHENTICATE );
@@ -6161,11 +6112,6 @@ void state_mgr::ExitServerPlayers( void )
 //=========================================================================
 
 void state_mgr::EnterOnlinePlayers( void )
-#if defined ( TARGET_PC )
-{
-}
-#endif
-#if defined ( TARGET_XBOX )
 {
     // Create players menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -6177,7 +6123,6 @@ void state_mgr::EnterOnlinePlayers( void )
     g_UiMgr->SetUserBackground( g_UiUserID, "background1" );
 #endif
 }
-#endif
 
 //=========================================================================
 
@@ -6257,11 +6202,6 @@ void state_mgr::ExitOnlineFeedback( void )
 //=========================================================================
 
 void state_mgr::EnterOnlineFeedbackFriend( void )
-#if defined ( TARGET_PC )
-{
-}
-#endif
-#if defined ( TARGET_XBOX )
 {
     // Create feedback menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -6281,7 +6221,7 @@ void state_mgr::EnterOnlineFeedbackFriend( void )
         }
     }
 }
-#endif
+
 //=========================================================================
 
 void state_mgr::UpdateOnlineFeedbackFriend( void )
@@ -6455,14 +6395,7 @@ void state_mgr::UpdateOnlineEditProfile( void )
 
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
-                    #ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // advance to online main menu
-                        SetState( SM_ONLINE_MAIN_MENU );
-                    #elif (defined TARGET_XBOX)
+                    #if defined(TARGET_PC) || defined(TARGET_XBOX)
                         SetState( SM_ONLINE_MAIN_MENU );
                     #else
                         // go to memcard select to save the profile
@@ -6624,11 +6557,6 @@ void state_mgr::UpdateHostLevelSelect( void )
             case DIALOG_STATE_MEMCARD_ERROR:
             {
 #ifdef TARGET_PC
-                // continue without saving for now
-                g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                // update the changes in the profile
-                g_StateMgr.ActivatePendingProfile();
-
                 // advance to game
                 g_NetworkMgr.BecomeServer();
                 SetState( SM_START_GAME );
@@ -7132,14 +7060,7 @@ void state_mgr::UpdatePauseOptions( void )
 
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
-                    #ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // return to pause main menu
-                        SetState( SM_PAUSE_MAIN_MENU );
-                    #elif (defined TARGET_XBOX)
+                    #if defined(TARGET_PC) || defined(TARGET_XBOX)
                         SetState( SM_PAUSE_MAIN_MENU );
                     #else
                         // need to save new profile
@@ -7764,14 +7685,7 @@ void state_mgr::UpdatePauseMPOptions( void )
 
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
-#ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // return to pause main menu
-                        SetState( SM_PAUSE_MP );
-#elif (defined TARGET_XBOX)
+#if defined(TARGET_PC) || defined(TARGET_XBOX)
                         SetState( SM_PAUSE_MP );
 #else
                         // need to save new profile
@@ -7852,7 +7766,7 @@ void state_mgr::ExitPauseMPControls( void )
 }
 
 //=========================================================================
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
 void state_mgr::EnterPauseMPMemcardSelect( void )
 {
     //  Create memcard select screen 
@@ -8217,11 +8131,6 @@ void state_mgr::ExitPauseOnlineFriends( void )
 //=========================================================================
 
 void state_mgr::EnterPauseOnlinePlayers( void )
-#if defined ( TARGET_PC )
-{
-}
-#endif
-#if defined ( TARGET_XBOX )
 {
     // Create players menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -8234,7 +8143,7 @@ void state_mgr::EnterPauseOnlinePlayers( void )
     ((dlg_players*)m_CurrentDialog)->EnableBlackout();
     ((dlg_players*)m_CurrentDialog)->Configure( PLAYER_MODE_INGAME );
 }
-#endif
+
 //=========================================================================
 
 void state_mgr::UpdatePauseOnlinePlayers( void )
@@ -8305,11 +8214,6 @@ void state_mgr::ExitPauseOnlineFeedback( void )
 //=========================================================================
 
 void state_mgr::EnterPauseOnlineFeedbackFriend( void )
-#if defined ( TARGET_PC )
-{
-}
-#endif
-#if defined ( TARGET_XBOX )
 {
     // Create feedback menu
     g_UiMgr->EndDialog( g_UiUserID, TRUE );
@@ -8330,7 +8234,7 @@ void state_mgr::EnterPauseOnlineFeedbackFriend( void )
     }
     ((dlg_feedback*)m_CurrentDialog)->EnableBlackout();
 }
-#endif
+
 //=========================================================================
 
 void state_mgr::UpdatePauseOnlineFeedbackFriend( void )
@@ -8395,14 +8299,7 @@ void state_mgr::UpdatePauseOnlineOptions( void )
 
                     case IDC_PROFILE_OPTIONS_ACCEPT:
                     {
-                    #ifdef TARGET_PC
-                        // continue without saving for now
-                        g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                        // update the changes in the profile
-                        g_StateMgr.ActivatePendingProfile();
-                        // return to pause main menu
-                        SetState( SM_PAUSE_MAIN_MENU );
-                    #elif (defined TARGET_XBOX)
+                    #if defined(TARGET_PC) || defined(TARGET_XBOX)
                         SetState( SM_PAUSE_MAIN_MENU );
                     #else
                         // need to save new profile
@@ -8994,16 +8891,8 @@ void state_mgr::UpdatePauseOnlineReconfigMap( void )
 #if 0 
             case DIALOG_STATE_MEMCARD_ERROR:
             {
-#ifdef TARGET_PC
-                // continue without saving for now
-                g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), TRUE );
-                // update the changes in the profile
-                g_StateMgr.ActivatePendingProfile();
-                // TODO: restart the game with the new settings
-#else
                 // save to memcard and return to menu
                 SetState( SM_PAUSE_ONLINE_SAVE_SETTINGS );
-#endif
             }
             break;
 #endif
@@ -9621,11 +9510,11 @@ void state_mgr::UpdateAutosaveProfileReselect( void )
 
             case DIALOG_STATE_CREATE:
             {
-#ifdef TARGET_XBOX
-                // create a new profile
-#else
-                // Select a card to save the profile to
+#ifdef TARGET_PS2
+			    // Select a card to save the profile to
                 SetState( SM_AUTOSAVE_MEMCARD_SELECT );
+#else
+                // create a new profile
 #endif
             }
             break;
@@ -9639,7 +9528,7 @@ void state_mgr::ExitAutosaveProfileReselect( void )
 {
 }
 
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
 //=========================================================================
 
 void state_mgr::EnterAutosaveMemcardSelect( void )
@@ -10231,11 +10120,11 @@ void state_mgr::EnterMultiPlayerLoadMission( void )
         g_MatchMgr.SetState( MATCH_UPDATE_SERVER );
     }
 }
+
 //=========================================================================
 
 void state_mgr::UpdateMultiPlayerLoadMission( void )
 {
-	
     if( m_bShowingScores==FALSE )
     {
         ASSERT( m_CurrentDialog != NULL );
@@ -10295,6 +10184,7 @@ void state_mgr::UpdateMultiPlayerLoadMission( void )
         }
     }
 }
+
 //=========================================================================
 
 void state_mgr::ExitMultiPlayerLoadMission( void )
@@ -10449,6 +10339,7 @@ void state_mgr::ExitClientCooldown( void )
 //=========================================================================
 void state_mgr::EnterServerDisconnect( void )
 {
+
     game_server& Server = g_NetworkMgr.GetServerObject();
     Server.SetState( STATE_SERVER_SHUTDOWN );
     if( g_NetworkMgr.IsOnline() )
@@ -10460,6 +10351,7 @@ void state_mgr::EnterServerDisconnect( void )
         g_MatchMgr.SetState( MATCH_IDLE );
     }
 }
+
 //=========================================================================
 void state_mgr::UpdateServerDisconnect( void )
 {
@@ -10505,20 +10397,24 @@ void state_mgr::ExitClientDisconnect( void )
 
 void state_mgr::EnableBackgroundMovie( void )
 {
+#if !defined( X_EDITOR ) && (!CONFIG_IS_DEMO)
     s32 XRes, YRes;
     eng_GetRes( XRes, YRes );
     m_MovieSize.Set( (f32)XRes, (f32)YRes );
 
     m_MoviePosition.Set( 0.0f, 0.0f );
     m_bPlayMovie = Movie.Open( SelectBestClip("MenuBackground"),TRUE,TRUE );
+#endif
 }
 
 //=========================================================================
 
 void state_mgr::DisableBackgoundMovie( void )
 {
+#if !defined( X_EDITOR ) && (!CONFIG_IS_DEMO)
     Movie.Close();
     m_bPlayMovie = FALSE;
+#endif
     // kill background music
     KillFrontEndMusic();
 }
@@ -12088,12 +11984,12 @@ void state_mgr::Reboot( reboot_reason Reason )
 
 ///////////////////////////////////////////////////////////////////////////
 //
-//  Xbox exclusions
+//  PC/Xbox exclusions
 //
 ///////////////////////////////////////////////////////////////////////////
 
 
-#ifndef TARGET_XBOX
+#if defined(TARGET_PS2)
 
 //=========================================================================
 
@@ -12354,7 +12250,9 @@ void state_mgr::ExitPauseOnlineMemcardSelect( void )
 void state_mgr::SetActiveControllerID( s32 ID )
 {
     m_ActiveControllerID = ID;
-    //g_VoiceMgr.GetHeadset().SetActiveHeadset( ID );
+#if !defined(TARGET_PC)
+    g_VoiceMgr.GetHeadset().SetActiveHeadset( ID );
+#endif
 }
 
 //=========================================================================

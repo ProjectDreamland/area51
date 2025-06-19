@@ -76,12 +76,7 @@ void MemCardMgr::Init( void )
 
     x_strcpy( m_OptionsPostfix, "SETTINGS" );
     x_strcpy( m_ContentPostfix, "CONTENT" );
-
-#if defined(TARGET_PS2)
-    x_strcpy( m_SavePrefix, xfs("%s-%05d", eng_GetProductKey(), eng_GetProductCode()) );
-#else
     x_strcpy( m_SavePrefix, "AREA-51-" );
-#endif
 
     EnableProgress( FALSE );
 
@@ -297,13 +292,6 @@ void MemCardMgr::GetProfileNames( xarray< profile_info* >& Result )
         for( s32 i=0;i<n;i++ )
         {
             profile_info& Info = InfoList[i];
-
-#ifdef TARGET_PS2
-            // do we want exclude damaged profiles from the list?
-            if( Info.bDamaged )
-                continue;
-#endif
-
             Result.Append( &Info );
         }
     }

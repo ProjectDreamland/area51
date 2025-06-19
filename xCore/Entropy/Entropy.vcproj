@@ -2,7 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="Entropy">
+	Name="Entropy"
+	RootNamespace="Entropy">
 	<Platforms>
 		<Platform
 			Name="Win32"/>
@@ -18,7 +19,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X)\..\support,$(X)\x_files,$(X)\Entropy,$(X)\Entropy\Audio,$(X)\3rdParty,$(X)\3rdParty\DirectX9"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				RuntimeLibrary="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -73,7 +75,8 @@
 				AdditionalIncludeDirectories="$(X)\..\support,$(X)\x_files,$(X)\Entropy,$(X)\Entropy\Audio,$(X)\3rdParty,$(X)\3rdParty\DirectX9"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -129,12 +132,12 @@
 				AdditionalIncludeDirectories="$(X)\..\support,$(X)\x_files,$(X)\Entropy,$(X)\Entropy\Audio,$(X)\3rdParty,$(X)\3rdParty\DirectX9"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLinkerTool"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -149,8 +152,6 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
@@ -187,12 +188,12 @@
 				AdditionalIncludeDirectories="$(X)\..\support,$(X)\x_files,$(X)\Entropy,$(X)\Entropy\Audio,$(X)\3rdParty,$(X)\3rdParty\DirectX9"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_QA"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLinkerTool"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -207,8 +208,6 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
@@ -270,12 +269,91 @@
 			<Tool
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
+		<Configuration
+			Name="EDITOR-Debug|Xbox"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
+			Name="VIEWER-Debug|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X)\..\support,$(X)\x_files,$(X)\Entropy,$(X)\Entropy\Audio,$(X)\3rdParty,$(X)\3rdParty\DirectX9"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,CONFIG_VIEWER"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="VIEWER-Debug|Xbox"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
 	</Configurations>
 	<References>
 	</References>
 	<Files>
 		<Filter
-			Name="Implementation - Common"
+			Name="Common"
 			Filter="">
 			<File
 				RelativePath="Common\e_Draw.cpp">
@@ -375,10 +453,16 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
-			Name="Implementation - PC"
+			Name="PC"
 			Filter="">
 			<File
 				RelativePath="D3DEngine\d3deng.cpp">
@@ -517,6 +601,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="D3DEngine\d3deng_vram.cpp">
@@ -604,6 +694,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\3rdParty\DirectX8\d3dx8.lib">
@@ -657,6 +753,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -718,6 +820,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\3rdParty\DirectX8\dsound.lib">
@@ -771,6 +879,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -832,6 +946,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\3rdParty\Miles6\lib\win\Mss32.lib">
@@ -889,11 +1009,17 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
-			Name="Implementation - PS2"
+			Name="PS2"
 			Filter="">
 			<File
 				RelativePath="PS2\ps2_crt0.s">
@@ -947,6 +1073,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1008,6 +1140,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_dlist.hpp">
@@ -1061,6 +1199,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1122,6 +1266,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_dma.hpp">
@@ -1175,6 +1325,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1236,6 +1392,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_dmaman.hpp">
@@ -1289,6 +1451,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1350,6 +1518,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_engine.cpp">
@@ -1403,6 +1577,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1464,6 +1644,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_except.hpp">
@@ -1517,6 +1703,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1578,6 +1770,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_font.cpp">
@@ -1631,6 +1829,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1692,6 +1896,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_framebuf.cpp">
@@ -1745,6 +1955,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1806,6 +2022,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_gsreg.cpp">
@@ -1859,6 +2081,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1920,6 +2148,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_misc.hpp">
@@ -1973,6 +2207,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -2034,6 +2274,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_pad.hpp">
@@ -2087,6 +2333,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -2148,6 +2400,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_vifgif.hpp">
@@ -2201,6 +2459,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -2262,6 +2526,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_vram.cpp">
@@ -2319,6 +2589,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="PS2\ps2_vram.hpp">
@@ -2372,6 +2648,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -2436,6 +2718,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="PS2\fileio.hpp">
@@ -2489,6 +2777,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -2550,6 +2844,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="PS2\iopmanager.hpp">
@@ -2603,6 +2903,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -2669,6 +2975,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\PS2-DevKit-Debug\_SN_in_VC.h">
@@ -2722,6 +3034,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -2783,6 +3101,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\gcc\ee\include\sys\config.h">
@@ -2836,6 +3160,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -2897,6 +3227,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\DirectX8\d3d8caps.h">
@@ -2950,6 +3286,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3011,6 +3353,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\DirectX8\d3dx8.h">
@@ -3064,6 +3412,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3125,6 +3479,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\DirectX8\d3dx8effect.h">
@@ -3178,6 +3538,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3239,6 +3605,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\DirectX8\d3dx8math.inl">
@@ -3292,6 +3664,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3353,6 +3731,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\DirectX8\d3dx8shape.h">
@@ -3406,6 +3790,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3467,6 +3857,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\devfont.h">
@@ -3520,6 +3916,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3581,6 +3983,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\devvif0.h">
@@ -3634,6 +4042,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3695,6 +4109,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\devvu0.h">
@@ -3748,6 +4168,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3809,6 +4235,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\DirectX8\dpaddr.h">
@@ -3862,6 +4294,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -3923,6 +4361,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\DirectX8\dxfile.h">
@@ -3976,6 +4420,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4037,6 +4487,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\eekernel.h">
@@ -4090,6 +4546,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4151,6 +4613,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\eestruct.h">
@@ -4204,6 +4672,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4265,6 +4739,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\common\include\libcdvd.h">
@@ -4318,6 +4798,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4379,6 +4865,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\libdma.h">
@@ -4432,6 +4924,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4493,6 +4991,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\libgifpk.h">
@@ -4546,6 +5050,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4607,6 +5117,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\libpad.h">
@@ -4660,6 +5176,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4721,6 +5243,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\libvifpk.h">
@@ -4774,6 +5302,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4835,6 +5369,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\3rdParty\PS2\Sony\sce\ee\include\sifdev.h">
@@ -4888,6 +5428,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -4949,6 +5495,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_array.hpp">
@@ -5002,6 +5554,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5063,6 +5621,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_bitmap.hpp">
@@ -5116,6 +5680,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5177,6 +5747,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_color.hpp">
@@ -5230,6 +5806,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5291,6 +5873,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_debug.hpp">
@@ -5344,6 +5932,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5405,6 +5999,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_math.hpp">
@@ -5458,6 +6058,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5519,6 +6125,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\Implementation\x_math_inline.hpp">
@@ -5572,6 +6184,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5633,6 +6251,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\Implementation\x_math_p_inline.hpp">
@@ -5686,6 +6310,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5747,6 +6377,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\Implementation\x_math_r3_inline.hpp">
@@ -5800,6 +6436,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5861,6 +6503,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\Implementation\x_math_v3_inline.hpp">
@@ -5914,6 +6562,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -5975,6 +6629,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_memory.hpp">
@@ -6028,6 +6688,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -6089,6 +6755,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_plus.hpp">
@@ -6142,6 +6814,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -6203,6 +6881,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_string.hpp">
@@ -6256,6 +6940,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -6317,6 +7007,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_target.hpp">
@@ -6370,6 +7066,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -6431,6 +7133,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\x_files\x_types.hpp">
@@ -6484,6 +7192,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -6577,6 +7291,11 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Audio\audio_hardware.hpp">
@@ -6634,6 +7353,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Audio\audio_inline.hpp">
@@ -6687,6 +7412,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -6767,6 +7498,11 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
@@ -6852,6 +7588,11 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Audio\audio_package.cpp">
@@ -6915,6 +7656,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Audio\audio_private_pkg.hpp">
@@ -6968,6 +7715,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -7051,6 +7804,11 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Audio\audio_stream_controller.cpp">
@@ -7076,8 +7834,7 @@
 				<File
 					RelativePath="Audio\Codecs\DATATBL.H">
 					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7088,8 +7845,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7100,8 +7856,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="OptDebug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="OptDebug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7112,8 +7867,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="QA|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="QA|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7124,10 +7878,26 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="EDITOR-Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="EDITOR-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
 					</FileConfiguration>
 				</File>
 				<File
@@ -7186,80 +7956,29 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="Audio\Codecs\mp3_gcn_asm.s">
 					<FileConfiguration
-						Name="Release|Win32"
+						Name="EDITOR-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Release|Xbox"
+						Name="VIEWER-Debug|Xbox"
 						ExcludedFromBuild="TRUE">
 						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="EDITOR-Debug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
+							Name="VCCustomBuildTool"/>
 					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Audio\Codecs\mp3api.cpp">
 					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="Release|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -7271,19 +7990,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="OptDebug|Win32"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="OptDebug|Xbox"
-						ExcludedFromBuild="TRUE">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="QA|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -7295,7 +8002,13 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="EDITOR-Debug|Win32"
+						Name="EDITOR-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Xbox"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -7304,8 +8017,7 @@
 				<File
 					RelativePath="Audio\Codecs\mp3api.hpp">
 					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7316,8 +8028,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7328,8 +8039,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="OptDebug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="OptDebug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7340,8 +8050,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="QA|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="QA|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7352,17 +8061,32 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="EDITOR-Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="EDITOR-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
 					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Audio\Codecs\MP3DEC.CPP">
 					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7373,8 +8097,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7385,8 +8108,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="OptDebug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="OptDebug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7397,8 +8119,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="QA|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="QA|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7409,7 +8130,23 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="EDITOR-Debug|Win32"
+						Name="EDITOR-Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="EDITOR-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Xbox"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -7418,8 +8155,7 @@
 				<File
 					RelativePath="Audio\Codecs\MP3DEC.H">
 					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7430,8 +8166,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7442,8 +8177,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="OptDebug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="OptDebug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7454,8 +8188,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="QA|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="QA|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7466,17 +8199,32 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="EDITOR-Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="EDITOR-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
 					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Audio\Codecs\MSS.H">
 					<FileConfiguration
-						Name="Release|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7487,8 +8235,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7499,8 +8246,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="OptDebug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="OptDebug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7511,8 +8257,7 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="QA|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="QA|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
@@ -7523,10 +8268,26 @@
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="EDITOR-Debug|Win32"
-						ExcludedFromBuild="TRUE">
+						Name="EDITOR-Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="EDITOR-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
 					</FileConfiguration>
 				</File>
 				<File
@@ -7581,6 +8342,63 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="EDITOR-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Xbox"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\Audio\Codecs\Rib.h">
+					<FileConfiguration
+						Name="Release|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="OptDebug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="QA|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -7646,6 +8464,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Audio\Debug\NotLoaded_gcn.hpp">
@@ -7699,6 +8523,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -7760,6 +8590,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -7848,6 +8684,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Audio\Hardware\audio_hardware_ps2_private.hpp">
@@ -7905,6 +8747,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Audio\Hardware\audio_hardware_xbox.cpp">
@@ -7934,6 +8782,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -7991,6 +8845,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -8079,6 +8939,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Audio\Hardware\audio_stream_xbox.cpp">
@@ -8108,6 +8974,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -8195,6 +9067,11 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 			</Filter>
 		</Filter>
@@ -8241,6 +9118,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -8305,6 +9188,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="IOManager\io_device_netfs.hpp">
@@ -8358,6 +9247,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -8427,6 +9322,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -8505,6 +9406,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -8593,6 +9500,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="IOManager\Device_DVD\io_device_dvd_xbox.cpp">
@@ -8622,6 +9535,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCLCompilerTool"/>
@@ -8703,6 +9622,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Network\netsocket.cpp">
@@ -8775,6 +9700,12 @@
 						<Tool
 							Name="VCCustomBuildTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Network\PS2\netdefs.hpp">
@@ -8828,6 +9759,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCustomBuildTool"/>
@@ -8889,6 +9826,12 @@
 						<Tool
 							Name="VCCustomBuildTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="Network\PS2\netiop.hpp">
@@ -8942,6 +9885,12 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="EDITOR-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
 						ExcludedFromBuild="TRUE">
 						<Tool
 							Name="VCCustomBuildTool"/>
@@ -9022,6 +9971,12 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 			</Filter>
 			<Filter
@@ -9059,11 +10014,17 @@
 						<Tool
 							Name="VCCLCompilerTool"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="VIEWER-Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 			</Filter>
 		</Filter>
 		<Filter
-			Name="Implementation - XBOX"
+			Name="XBOX"
 			Filter="">
 			<File
 				RelativePath="Xbox\PushMgr.cpp">
@@ -9093,6 +10054,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9150,6 +10117,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Xbox\QuikHeap.cpp">
@@ -9179,6 +10152,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9236,6 +10215,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Xbox\TextureMgr.cpp">
@@ -9265,6 +10250,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9322,6 +10313,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Xbox\VertexMgr.cpp">
@@ -9351,6 +10348,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9408,6 +10411,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Xbox\Xbox.cpp">
@@ -9437,6 +10446,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9474,6 +10489,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Xbox\xbox_font.cpp">
@@ -9503,6 +10524,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9540,6 +10567,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Xbox\Xbox_vram.cpp">
@@ -9569,6 +10602,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9633,6 +10672,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9721,6 +10766,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="MemCard\memcard_xbox.cpp">
@@ -9750,6 +10801,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -9808,6 +10865,12 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="EDITOR-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCLCompilerTool"/>
@@ -9872,6 +10935,12 @@
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="e_Input_Gadget_Defines.hpp">
@@ -9925,6 +10994,12 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="EDITOR-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCLCompilerTool"/>
@@ -9986,12 +11061,17 @@
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="e_Network.hpp">
 			<FileConfiguration
-				Name="Release|Win32"
-				ExcludedFromBuild="TRUE">
+				Name="Release|Win32">
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
@@ -10002,8 +11082,7 @@
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Debug|Win32"
-				ExcludedFromBuild="TRUE">
+				Name="Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
@@ -10014,8 +11093,7 @@
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="OptDebug|Win32"
-				ExcludedFromBuild="TRUE">
+				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
@@ -10026,8 +11104,7 @@
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="QA|Win32"
-				ExcludedFromBuild="TRUE">
+				Name="QA|Win32">
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
@@ -10038,8 +11115,12 @@
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="EDITOR-Debug|Win32"
-				ExcludedFromBuild="TRUE">
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32">
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
@@ -10127,6 +11208,12 @@
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="e_ScratchMem.hpp">
@@ -10202,6 +11289,12 @@
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="Entropy.hpp">
@@ -10255,6 +11348,12 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="EDITOR-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
 				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCLCompilerTool"/>

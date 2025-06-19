@@ -39,8 +39,15 @@ void MemCardMgr::MC_STATE_CREATE_PROFILE( void )
 {
     condition& Pending = GetPendingCondition(m_PreservedProfile[m_iPlayer].CardID);
 
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
     // make sure that we have enough space on the xbox
+    if( Pending.BytesFree < g_StateMgr.GetProfileSaveSize() )
+    {
+        ChangeState( __id MC_STATE_CREATE_PROFILE_FAILED );
+        return;
+    }
+#elif defined(TARGET_PC)
+    // make sure that we have enough space on the PC
     if( Pending.BytesFree < g_StateMgr.GetProfileSaveSize() )
     {
         ChangeState( __id MC_STATE_CREATE_PROFILE_FAILED );
@@ -83,11 +90,11 @@ void MemCardMgr::MC_STATE_CREATE_PROFILE( void )
         for( i=0; i<Condition.InfoList.GetCount(); i++ )
         {
             m_PreservedProfile[m_iPlayer].ProfileID = i;
-        #ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
             m_PreservedProfile[m_iPlayer].Dir = xfs( "Profile %s",g_StateMgr.GetPendingProfile().GetProfileName() );
-        #else
+#elif defined(TARGET_PC)
             m_PreservedProfile[m_iPlayer].Dir = xfs("%sA51%05d", m_SavePrefix, m_PreservedProfile[m_iPlayer].ProfileID );
-        #endif
+#endif
             if( Condition.InfoList[i].Dir != m_PreservedProfile[m_iPlayer].Dir )
             {
                 Found = TRUE;
@@ -97,11 +104,11 @@ void MemCardMgr::MC_STATE_CREATE_PROFILE( void )
         if( !Found )
         {
             m_PreservedProfile[m_iPlayer].ProfileID = Condition.InfoList.GetCount();
-        #ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
             m_PreservedProfile[m_iPlayer].Dir = xfs( "Profile %s",g_StateMgr.GetPendingProfile().GetProfileName() );
-        #else
+#elif defined(TARGET_PC)
             m_PreservedProfile[m_iPlayer].Dir = xfs( "%sA51%05d", m_SavePrefix, m_PreservedProfile[m_iPlayer].ProfileID );
-        #endif
+#endif
         }
 
         ChangeState( __id MC_STATE_CREATE_PROFILE_CREATE_DIR_WAIT );
@@ -130,8 +137,11 @@ void MemCardMgr::MC_STATE_CREATE_PROFILE( void )
         );
 
         // Create directory ...................................................
+#ifdef TARGET_XBOX
         g_MemcardMgr.AsyncCreateDirectory( m_PreservedProfile[m_iPlayer].Dir );
-
+#elif defined(TARGET_PC)
+        g_MemcardMgr.AsyncSetDirectory( "" ); //We dont using settings folders on PC.
+#endif
         return;
     }
     PopState();
@@ -151,7 +161,11 @@ void MemCardMgr::MC_STATE_CREATE_PROFILE_CREATE_DIR_WAIT( void )
         case kSUCCESS:
         {
             ChangeState( __id MC_STATE_CREATE_PROFILE_SET_DIR_WAIT );
-            g_MemcardMgr.AsyncSetDirectory( m_PreservedProfile[m_iPlayer].Dir );
+#ifdef TARGET_XBOX
+        g_MemcardMgr.AsyncSetDirectory( m_PreservedProfile[m_iPlayer].Dir );
+#elif defined(TARGET_PC)
+        g_MemcardMgr.AsyncSetDirectory( "" ); //We dont using settings folders on PC.
+#endif
             return;
         }
 
@@ -220,34 +234,18 @@ void MemCardMgr::MC_STATE_CREATE_PROFILE_SET_DIR_WAIT( void )
 
 void MemCardMgr::MC_STATE_CREATE_PROFILE_FAILED( void )
 {
-#ifdef TARGET_PS2
-    const xwchar* pText;
-
-    if( ! m_PreservedProfile[m_iPlayer].CardID )
-        pText = g_StringTableMgr( "ui", "MC_SAVE_FAILED_RETRY_SLOT1" );
-    else
-        pText = g_StringTableMgr( "ui", "MC_SAVE_FAILED_RETRY_SLOT2" );
-
-    WarningBox(
-        g_StringTableMgr( "ui", "IDS_MEMCARD_HEADER"   ),  
-        pText,
-        TRUE
-        );
-
-    FlushStateStack();
-    PushState( __id MC_STATE_DONE           );
-    PushState( __id MC_STATE_UNMOUNT        );
-    PushState( __id MC_STATE_FINISH         );
-#else
     xwstring MessageText;
     xwstring NavText;
-
+    
     condition& Pending = GetPendingCondition(m_PreservedProfile[m_iPlayer].CardID);
+    
+#if defined(TARGET_XBOX)
     m_BlocksRequired = ( (g_StateMgr.GetProfileSaveSize() - Pending.BytesFree) + 16383 ) / 16384;
+        
     MessageText = xwstring( xfs( (const char*)xstring(g_StringTableMgr( "ui", "MC_NOT_ENOUGH_FREE_SPACE_SLOT1_XBOX" )), m_BlocksRequired ) );
     NavText     = g_StringTableMgr( "ui", "IDS_NAV_DONT_FREE_BLOCKS" );
     NavText    += g_StringTableMgr( "ui", "IDS_NAV_FREE_MORE_BLOCKS" );
-
+    
     PopUpBox( 
         g_StringTableMgr( "ui", "IDS_MEMCARD_HEADER" ),
         MessageText, 
@@ -255,13 +253,25 @@ void MemCardMgr::MC_STATE_CREATE_PROFILE_FAILED( void )
         TRUE, 
         TRUE, 
         FALSE );
-
+#elif defined(TARGET_PC)  
+    m_BlocksRequired = ( (g_StateMgr.GetProfileSaveSize() - Pending.BytesFree) + 1023 ) / 1024;
+   
+    MessageText = xwstring(xfs((const char*)xstring(g_StringTableMgr("ui", "MC_NOT_ENOUGH_FREE_SPACE_SLOT1_XBOX")), m_BlocksRequired));
+    NavText = g_StringTableMgr("ui", "IDS_OK");
+    
+    PopUpBox( 
+        g_StringTableMgr("ui", "IDS_DISK_SPACE_HEADER"),
+        MessageText, 
+        NavText, 
+        TRUE, 
+        FALSE, 
+        FALSE);
+#endif
+     
     FlushStateStack();
     PushState( __id MC_STATE_CREATE_PROFILE_FAILED_WAIT );
     PushState( __id MC_STATE_UNMOUNT                    );
     PushState( __id MC_STATE_FINISH                     );
-#endif
-
     return;
 }
 

@@ -18,9 +18,10 @@
 #if defined( ENABLE_DEBUG_MENU )
 
 //==============================================================================
-
+#ifndef CONFIG_VIEWER
 extern f32      g_WorldTimeDilation;
 extern xbool    g_FreeCamPause;
+#endif
 extern xbool    g_GameLogicDebug;
 extern s32      g_Difficulty;
 extern const char* DifficultyText[];
@@ -30,7 +31,7 @@ extern const char* DifficultyText[];
 debug_menu_page_gameplay::debug_menu_page_gameplay( ) : debug_menu_page()
 {
     m_pTitle = "Gameplay";
-
+#ifndef CONFIG_VIEWER
     m_pItemInvulnerability          = AddItemBool     ( "Invulnerability"               , DEBUG_INVULNERABLE );
                                       AddItemBool     ( "Unlimited ammo"                , DEBUG_INFINITE_AMMO   );
                                       AddItemFloat    ( "World Time Dilation", 
@@ -40,6 +41,7 @@ debug_menu_page_gameplay::debug_menu_page_gameplay( ) : debug_menu_page()
                                       AddItemSeperator( );
                                       AddItemBool     ( "Pause in Fly mode"             , g_FreeCamPause );
                                       AddItemSeperator( );
+#endif									  
     m_pItemResetPlayerToStart       = AddItemButton   ( "Reset player to start"                           );
     m_pItemResetPlayerToSafeSpot    = AddItemButton   ( "Reset player to safe spot"                       );
                                       AddItemSeperator( );

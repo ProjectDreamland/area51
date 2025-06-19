@@ -18,8 +18,10 @@
 
 //==============================================================================
 
+#ifndef CONFIG_VIEWER
 extern xbool        g_MagentaColor;
 extern stats        g_Stats;
+#endif
 extern xbool        g_RenderFrameRateInfo;
 extern xbool        g_bShowBackFaces;
 extern xbool        g_RenderBoneBBoxes;
@@ -37,8 +39,10 @@ debug_menu_page_render::debug_menu_page_render( ) : debug_menu_page()
     m_pTitle = "Render";
 
                             AddItemBool     ( "Display frame rate info"    , g_RenderFrameRateInfo );
+#ifndef CONFIG_VIEWER							
                             AddItemSeperator( );
                             AddItemEnum     ( "Background color"           , g_MagentaColor, ColorText, 2 );
+#endif
 
 #if !defined(X_RETAIL) || defined(X_QA)
     m_pItemPolyCache     =  AddItemBool     ( "Display polycache"          , g_PolyCache.m_Debug.RENDER );
@@ -49,7 +53,9 @@ debug_menu_page_render::debug_menu_page_render( ) : debug_menu_page()
                             
                             AddItemBool     ( "Display full screen stats"  , stats_mgr::m_bShowNumbers );
 #endif
+#ifndef CONFIG_VIEWER
                             AddItemBool     ( "Display PS2 render stats"   , g_Stats.RenderStats );
+#endif							
 
 #if defined TARGET_XBOX && (!defined CONFIG_RETAIL)
 

@@ -87,7 +87,6 @@ void movie_player::Kill(void)
     m_Private.Kill();
 }
 
-
 //------------------------------------------------------------------------------
 // Note: This routine is used for PS2 and Bink playback. It assumes the controlling
 // 'private' subsystem creates all bitmaps required. The PS2 requires the bitmaps to
@@ -116,6 +115,9 @@ void movie_player::Render(const vector2& Pos, const vector2& Size, xbool InRende
     }
 #endif
 #ifdef TARGET_PC
+    m_Private.SetRenderSize(Size);
+    m_Private.SetRenderPos(Pos);
+    
     if (!InRenderLoop)
     {
         if (eng_Begin("Movie"))
@@ -135,7 +137,6 @@ void movie_player::SetLanguage(const s32 Language)
 {
     m_Private.SetLanguage(Language);
 }
-
 
 //=========================================================================
 s32 PlaySimpleMovie(const char* movieName)
@@ -162,16 +163,12 @@ s32 PlaySimpleMovie(const char* movieName)
         //eng_MaximizeViewport( View );
         //eng_SetView         ( View ) ;
         eng_GetRes(width,height);
-#ifdef TARGET_PS2
+        
+        // Set size and position for fullscreen
         Size.X = (f32)width;
         Size.Y = (f32)height;
-#else
-        Size.X = 640.0f;
-        Size.Y = 480.0f;
-#endif
-
-        Pos.X = (width-Size.X)/2.0f;
-        Pos.Y = (height-Size.Y)/2.0f;
+        Pos.X = 0.0f;
+        Pos.Y = 0.0f;    
 
         xbool done = FALSE;
 
@@ -183,20 +180,18 @@ s32 PlaySimpleMovie(const char* movieName)
                     break;
                 g_InputMgr.Update  ( 1.0f / 60.0f );
                 g_NetworkMgr.Update( 1.0f / 60.0f );
+                
                 Movie.Render(Pos,Size);
                 eng_PageFlip();
 
-#ifdef TARGET_XBOX
-                //if( (g_ActiveConfig.GetExitReason()!=GAME_EXIT_CONTINUE) && (g_ActiveConfig.GetExitReason()!=GAME_EXIT_GAME_COMPLETE) )
-                //{
-                //  done = TRUE;
-                //}
+#if defined(TARGET_XBOX)
                 if( input_WasPressed( INPUT_XBOX_BTN_START, -1 ) || input_WasPressed( INPUT_XBOX_BTN_A, -1 ) ) 
-#else
+#elif defined(TARGET_PS2)
                 if( input_WasPressed( INPUT_PS2_BTN_CROSS, 0 ) || input_WasPressed( INPUT_PS2_BTN_CROSS, 1 ) ) 
+#elif defined(TARGET_PC)
+                if( input_WasPressed( INPUT_KBD_RETURN, 0 ) || input_WasPressed( INPUT_KBD_ESCAPE, 0 ) || input_WasPressed( INPUT_KBD_SPACE, 0 ) ) 
 #endif
                 done = TRUE;
-
             }
         }
         eng_PageFlip();
@@ -205,5 +200,3 @@ s32 PlaySimpleMovie(const char* movieName)
     Movie.Kill();
     return( ret );
 }
-
-

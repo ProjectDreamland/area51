@@ -10,6 +10,7 @@ Global
 		OptDebug Win32 = OptDebug Win32
 		QA Win32 = QA Win32
 		Release Win32 = Release Win32
+		VIEWER-Debug Win32 = VIEWER-Debug Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Debug Win32.ActiveCfg = Debug|Win32
@@ -22,6 +23,8 @@ Global
 		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.QA Win32.Build.0 = QA|Win32
 		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Release Win32.ActiveCfg = Release|Win32
 		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.Release Win32.Build.0 = Release|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.VIEWER-Debug Win32.ActiveCfg = VIEWER-Debug|Win32
+		{D345C69D-CF83-4F24-98E9-4527D163FBC6}.VIEWER-Debug Win32.Build.0 = VIEWER-Debug|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

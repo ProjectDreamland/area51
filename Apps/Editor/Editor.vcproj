@@ -38,15 +38,13 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Shlwapi.lib nafxcwd.lib libcmtd.lib"
+				AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib Math_a.lib Shlwapi.lib nafxcwd.lib libcmtd.lib XT4100LibStaticd.lib"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="$(X)/3rdParty/DirectX9"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win;$(X)\..\xCore\3rdParty\Miles6\mathspy\win"
 				IgnoreDefaultLibraryNames="libcd.lib"
 				GenerateDebugInformation="TRUE"
-				SubSystem="2"
-				StackReserveSize="8388608"
-				TargetMachine="1"/>
+				SubSystem="2"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool

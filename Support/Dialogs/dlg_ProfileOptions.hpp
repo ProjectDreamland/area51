@@ -90,9 +90,9 @@ public:
 
     void                OnSaveProfileCB     ( void );
 
-    #ifdef TARGET_XBOX
+#if defined(TARGET_PC) || defined(TARGET_XBOX)
     void                OnProfileCreateCB   ( void );
-    #endif
+#endif
 
 protected:
     ui_frame*           m_pFrame1;

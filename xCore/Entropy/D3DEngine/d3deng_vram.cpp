@@ -130,6 +130,17 @@ void vram_Activate( s32 VRAM_ID )
 
 //=============================================================================
 
+s32 vram_Register( IDirect3DTexture9* pTexture )
+{
+	//GS: So, I added this code to fix the shaders working with PIP.
+	//This code was borrowed from the Xbox implementation.
+	//So I’m not sure if it’s even needed here.
+    s32 Index = AddNode( pTexture );
+    return Index;
+}
+
+//=============================================================================
+
 s32 vram_Register( const xbitmap& Bitmap )
 {
     IDirect3DTexture9*  pSurface = NULL;
