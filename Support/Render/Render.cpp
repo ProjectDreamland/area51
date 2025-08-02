@@ -70,7 +70,7 @@ union shad_sortkey
 
 //=============================================================================
 
-#ifdef X_EDITOR
+#ifdef TARGET_PC
     xbool g_bZPriming;
 #endif
 
@@ -198,10 +198,11 @@ static s32 s_nGeomUVKeysLoaded    = 0;
 static s32 s_nGeomVMatsLoaded     = 0;
 #endif
 
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX) || defined(TARGET_PC)
 color_info::usage color_info::m_Usage = color_info::kUse32;
-#else
+#elif defined(TARGET_PS2)
 color_info::usage color_info::m_Usage = color_info::kUse16;
+#else
 #endif
 
 //=============================================================================
@@ -214,7 +215,7 @@ color_info::usage color_info::m_Usage = color_info::kUse16;
 
 static const s32 kHashTableSize          = 769;  // 1543;   // keep this a prime number for best hashing results.
 static const s32 kMaxRegisteredGeoms     = 512;
-#ifdef X_EDITOR
+#if defined(X_EDITOR) || defined(CONFIG_VIEWER)
 static const s32 kMaxRegisteredInstances = 12800;
 #else
 static const s32 kMaxRegisteredInstances = 10000;
@@ -311,24 +312,30 @@ xbool IsAlphaMaterial( material_type Type )
 //=============================================================================
 
 #ifdef TARGET_XBOX
-#   include "Render\LightMgr.hpp"
-#   include "Render\platform_Render.hpp"
+#   include "LightMgr.hpp"
+#   include "platform_Render.hpp"
 #   include "Entropy/XBox/xbox_private.hpp"
 #   include <XGraphics.h>
-#   include "xbox_render.hpp"
-#   include "xbox_post.inl"
-#   include "xbox_platform.inl"
+#   include "XBOX/xbox_render.hpp"
+#   include "XBOX/xbox_post.inl"
+#   include "XBOX/xbox_platform.inl"
 shader_mgr  * g_pShaderMgr = NULL;
 pipeline_mgr* g_pPipeline  = NULL;
 #endif
 
 #ifdef TARGET_PS2
-#include "Render\ps2_post.cpp"
-#include "Render\ps2_Render.cpp"
+#include "PS2/ps2_post.cpp"
+#include "PS2/ps2_Render.cpp"
 #endif
 
 #ifdef TARGET_PC
-#include "Render\pc_Render.cpp"
+#include "LightMgr.hpp"
+#include "platform_Render.hpp"
+#include "PC/pc_render.hpp"
+#include "PC/pc_post.inl"
+#include "PC/pc_platform.inl"
+shader_mgr  * g_pShaderMgr = NULL;
+pipeline_mgr* g_pPipeline  = NULL;
 #endif
 
 //=============================================================================
@@ -378,7 +385,7 @@ color_info::color_info( fileio& File )
 {
     (void)File;
 
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
     m_hColors = g_VertFactory.Create( "Vertex colours",m_nColors*sizeof(u32),m_pVoid );
     m_pColor32 = (u32*)m_hColors->m_Ptr;
 #endif
@@ -402,10 +409,10 @@ static
 render_instance& AddToHashHybrid( u32 SortKey )
 {
     ASSERT( s_LoHashMark < s_HiHashMark );
-    #ifdef X_EDITOR
+    #if defined(X_EDITOR) || defined(CONFIG_VIEWER)
     if ( s_LoHashMark >= s_HiHashMark )
         x_throw( "Too many submeshes rendered." );
-    #endif // X_EDITOR
+    #endif // X_EDITOR || VIEWER
 
     u32 HashIndex = HashFn( SortKey );
     if ( s_HashTable[HashIndex] == -1 )
@@ -1346,7 +1353,7 @@ void render::BeginNormalRender( void )
 
 //=============================================================================
 
-#ifdef X_EDITOR
+#ifdef TARGET_PC
 namespace render
 {
     void PrimeZBuffer( void )
@@ -1816,6 +1823,11 @@ void render::EndNormalRender( void )
 #ifdef X_DEBUG
     // sanity check
     SortSanityCheck();
+#endif
+
+#ifdef TARGET_PC
+    //BeginNormalRender();
+    //render::PrimeZBuffer();
 #endif
 
 #ifdef TARGET_XBOX
@@ -2299,10 +2311,11 @@ void render::AddRigidInstanceSimple( hgeom_inst     hInst,
             ASSERT( (hMat>=0) && (hMat<kMaxRegisteredMaterials) );
 
             // set the color pointer
-            #ifdef TARGET_XBOX
-            const u32* pInstCol=( u32* )pCol;
+			#if defined(TARGET_XBOX) || defined(TARGET_PC)
+                const u32* pInstCol=( u32* )pCol;
+            #elif defined(TARGET_PS2)
+                const u16* pInstCol=( u16* )pCol;
             #else
-            const u16* pInstCol=( u16* )pCol;
             #endif
 
             #ifdef TARGET_XBOX
@@ -2470,10 +2483,11 @@ void render::AddRigidInstance( hgeom_inst     hInst,
             #endif
 
             // set the color pointer
-            #ifdef TARGET_XBOX
-            const u32* pInstCol=( u32* )pCol;
+			#if defined(TARGET_XBOX) || defined(TARGET_PC)
+                const u32* pInstCol=( u32* )pCol;
+            #elif defined(TARGET_PS2)
+                const u16* pInstCol=( u16* )pCol;
             #else
-            const u16* pInstCol=( u16* )pCol;
             #endif
 
             #ifdef TARGET_XBOX
@@ -2685,36 +2699,37 @@ void render::AddRigidInstance( hgeom_inst        hInst,
             ASSERT( (iSubMesh      >=0) && (iSubMesh      <256                    ) );
 
             // figure out the bone we should render with
-#ifdef TARGET_PC
+            #ifdef TARGET_PC
             s32 iBone = pGeom->m_System.pPC  [SubMesh.iDList].iBone;
-#elif defined(TARGET_XBOX)
+            #elif defined(TARGET_XBOX)
             s32 iBone = pGeom->m_System.pXbox[SubMesh.iDList].iBone;
-#elif defined(TARGET_PS2)
+            #elif defined(TARGET_PS2)
             s32 iBone = pGeom->m_System.pPS2 [SubMesh.iDList].iBone;
-#else
+            #else
             s32 iBone = 0;
-#error unknown target
-#endif
+            #error unknown target
+            #endif
 
             // set the color pointer
-#ifdef TARGET_XBOX
+            #if defined(TARGET_XBOX) || defined(TARGET_PC)
             const u32* pInstCol=( u32* )pCol;
-#else
+            #elif defined(TARGET_PS2)
             const u16* pInstCol=( u16* )pCol;
-#endif
+            #else
+            #endif
 
-#ifdef TARGET_XBOX
+            #ifdef TARGET_XBOX
             rigid_geom::dlist_xbox& DList = pGeom->m_System.pXbox[SubMesh.iDList];
             ASSERT( DList.iColor <= pGeom->m_nVertices );
             if( pInstCol )
                 pInstCol += DList.iColor;
-#endif
-
-#ifdef TARGET_PS2
+            #endif
+		    
+            #ifdef TARGET_PS2
             rigid_geom::dlist_ps2& DList = pGeom->m_System.pPS2[SubMesh.iDList];
             if( pInstCol )
                 pInstCol += DList.iColor;
-#endif
+            #endif
 
             // build the sort key
             sortkey SortKey;
@@ -2729,7 +2744,7 @@ void render::AddRigidInstance( hgeom_inst        hInst,
 
             // make a copy of the l2w in smem that we can ref to
             matrix4* pMat = (matrix4*)smem_BufferAlloc(sizeof(matrix4));
-#ifdef TARGET_PS2
+            #ifdef TARGET_PS2
             if ( ((u32)pL2W & 0xf) == 0 )
             {
                 ASSERT( ((u32)pMat & 0xf) == 0 );
@@ -2744,7 +2759,7 @@ void render::AddRigidInstance( hgeom_inst        hInst,
                 pDst[3] = pSrc[3];
             }
             else
-#endif
+            #endif
             {
                 *pMat = *(pL2W + iBone);
                 ASSERT( pMat->IsValid() );
@@ -2775,9 +2790,9 @@ void render::AddRigidInstance( hgeom_inst        hInst,
                 Inst.Flags |= ProjFlags;
             }
 
-#ifdef TARGET_PC
+            #ifdef TARGET_PC
             Inst.hDList = RegisteredInst.RigidDList[(s32)SubMesh.iDList];
-#endif // TARGET_PC
+            #endif // TARGET_PC
 
             // handle fading geometry
             if ( Flags & render::FADING_ALPHA )
@@ -2796,17 +2811,17 @@ void render::AddRigidInstance( hgeom_inst        hInst,
                 ZPrimeInst.VOffset          = Inst.VOffset;
                 ZPrimeInst.Alpha            = 0x80;
                 ZPrimeInst.OverrideMat      = 1;
-#ifdef TARGET_PC
+                #ifdef TARGET_PC
                 ZPrimeInst.hDList           = Inst.hDList;
-#endif
+                #endif
             }
         }
 
         // update the stats
-#if ENABLE_RENDER_STATS
+        #if ENABLE_RENDER_STATS
         s_RenderStats.m_nVerticesRendered += pMesh->nVertices;
         s_RenderStats.m_nTrisRendered     += pMesh->nFaces;
-#endif
+        #endif
 
         // next mesh
         iMesh++;
@@ -2814,9 +2829,9 @@ void render::AddRigidInstance( hgeom_inst        hInst,
         Mask >>= 1;
     }
 
-#if ENABLE_RENDER_XTIMERS
+    #if ENABLE_RENDER_XTIMERS
     s_RenderStats.m_InstanceAddTime += AddTime.Stop();
-#endif
+    #endif
 }
 
 //=============================================================================
@@ -2900,7 +2915,7 @@ void render::AddSkinInstance( hgeom_inst     hInst,
             SortKey.RenderOrder = GetRenderOrder( (material_type)Material.Type );
             if ( (Flags & render::FADING_ALPHA) && (SortKey.RenderOrder < ORDER_FADING_ALPHA) )
                 SortKey.RenderOrder = ORDER_FADING_ALPHA;
-			if ( (Flags & render::GLOWING) && (SortKey.RenderOrder < ORDER_GLOWING) )
+            if ( (Flags & render::GLOWING) && (SortKey.RenderOrder < ORDER_GLOWING) )
                 SortKey.RenderOrder = ORDER_GLOWING;
             if ( (Flags & render::FORCE_LAST) && (SortKey.RenderOrder < ORDER_FORCED_LAST) )
                 SortKey.RenderOrder = ORDER_FORCED_LAST;
@@ -3222,7 +3237,7 @@ void render::EndPostEffects( void )
 
 //=============================================================================
 
-#ifdef X_EDITOR
+#ifdef TARGET_PC
 void* render::LockRigidDListVertex( render::hgeom_inst hInst, s32 iSubMesh )
 {
     return platform_LockRigidDListVertex( hInst, iSubMesh );

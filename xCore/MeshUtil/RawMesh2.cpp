@@ -220,45 +220,45 @@ xbool rawmesh2::LoadMatx2( text_in& File )
                     return FALSE;
                 }
 
-                File.GetField( "Index:d",       &Index               );
-                File.GetField( "Name:s",        RigidBody.Name       );
-                File.GetField( "Type:s",        RigidBody.Type       );
-                File.GetField( "Mass:f",        &RigidBody.Mass      );
-                File.GetField( "iParent:d",     &RigidBody.iParent   );
+                File.GetField( "Index:d",           &Index               );
+                File.GetField( "Name:s",            RigidBody.Name       );
+                File.GetField( "Type:s",            RigidBody.Type       );
+                File.GetField( "Mass:f",            &RigidBody.Mass      );
+                File.GetField( "iParent:d",         &RigidBody.iParent   );
                 File.GetField( "Body_Scale:fff",    &RigidBody.BodyScale.GetX(),     &RigidBody.BodyScale.GetY(),     &RigidBody.BodyScale.GetZ() );
                 File.GetField( "Body_Rotate:ffff",  &RigidBody.BodyRotation.X,       &RigidBody.BodyRotation.Y,       &RigidBody.BodyRotation.Z, &RigidBody.BodyRotation.W );
                 File.GetField( "Body_Pos:fff",      &RigidBody.BodyPosition.GetX(),  &RigidBody.BodyPosition.GetY(),  &RigidBody.BodyPosition.GetZ() );
                 File.GetField( "Pivot_Scale:fff",   &RigidBody.PivotScale.GetX(),    &RigidBody.PivotScale.GetY(),    &RigidBody.PivotScale.GetZ() );
                 File.GetField( "Pivot_Rotate:ffff", &RigidBody.PivotRotation.X,      &RigidBody.PivotRotation.Y,      &RigidBody.PivotRotation.Z, &RigidBody.PivotRotation.W );
                 File.GetField( "Pivot_Pos:fff",     &RigidBody.PivotPosition.GetX(), &RigidBody.PivotPosition.GetY(), &RigidBody.PivotPosition.GetZ() );
-                File.GetField( "Radius:f",      &RigidBody.Radius          );
-                File.GetField( "Width:f",       &RigidBody.Width           );
-                File.GetField( "Height:f",      &RigidBody.Height          );
-                File.GetField( "Length:f",      &RigidBody.Length          );
-                File.GetField( "TX_Act:d",      &RigidBody.DOF[0].bActive  );
-                File.GetField( "TX_Lim:d",      &RigidBody.DOF[0].bLimited );
-                File.GetField( "TX_Min:f",      &RigidBody.DOF[0].Min      );
-                File.GetField( "TX_Max:f",      &RigidBody.DOF[0].Max      );
-                File.GetField( "TY_Act:d",      &RigidBody.DOF[1].bActive  );
-                File.GetField( "TY_Lim:d",      &RigidBody.DOF[1].bLimited );
-                File.GetField( "TY_Min:f",      &RigidBody.DOF[1].Min      );
-                File.GetField( "TY_Max:f",      &RigidBody.DOF[1].Max      );
-                File.GetField( "TZ_Act:d",      &RigidBody.DOF[2].bActive  );
-                File.GetField( "TZ_Lim:d",      &RigidBody.DOF[2].bLimited );
-                File.GetField( "TZ_Min:f",      &RigidBody.DOF[2].Min      );
-                File.GetField( "TZ_Max:f",      &RigidBody.DOF[2].Max      );
-                File.GetField( "RX_Act:d",      &RigidBody.DOF[3].bActive  );
-                File.GetField( "RX_Lim:d",      &RigidBody.DOF[3].bLimited );
-                File.GetField( "RX_Min:f",      &RigidBody.DOF[3].Min      );
-                File.GetField( "RX_Max:f",      &RigidBody.DOF[3].Max      );
-                File.GetField( "RY_Act:d",      &RigidBody.DOF[4].bActive  );
-                File.GetField( "RY_Lim:d",      &RigidBody.DOF[4].bLimited );
-                File.GetField( "RY_Min:f",      &RigidBody.DOF[4].Min      );
-                File.GetField( "RY_Max:f",      &RigidBody.DOF[4].Max      );
-                File.GetField( "RZ_Act:d",      &RigidBody.DOF[5].bActive  );
-                File.GetField( "RZ_Lim:d",      &RigidBody.DOF[5].bLimited );
-                File.GetField( "RZ_Min:f",      &RigidBody.DOF[5].Min      );
-                File.GetField( "RZ_Max:f",      &RigidBody.DOF[5].Max      );
+                File.GetField( "Radius:f",          &RigidBody.Radius          );
+                File.GetField( "Width:f",           &RigidBody.Width           );
+                File.GetField( "Height:f",          &RigidBody.Height          );
+                File.GetField( "Length:f",          &RigidBody.Length          );
+                File.GetField( "TX_Act:d",          &RigidBody.DOF[0].bActive  );
+                File.GetField( "TX_Lim:d",          &RigidBody.DOF[0].bLimited );
+                File.GetField( "TX_Min:f",          &RigidBody.DOF[0].Min      );
+                File.GetField( "TX_Max:f",          &RigidBody.DOF[0].Max      );
+                File.GetField( "TY_Act:d",          &RigidBody.DOF[1].bActive  );
+                File.GetField( "TY_Lim:d",          &RigidBody.DOF[1].bLimited );
+                File.GetField( "TY_Min:f",          &RigidBody.DOF[1].Min      );
+                File.GetField( "TY_Max:f",          &RigidBody.DOF[1].Max      );
+                File.GetField( "TZ_Act:d",          &RigidBody.DOF[2].bActive  );
+                File.GetField( "TZ_Lim:d",          &RigidBody.DOF[2].bLimited );
+                File.GetField( "TZ_Min:f",          &RigidBody.DOF[2].Min      );
+                File.GetField( "TZ_Max:f",          &RigidBody.DOF[2].Max      );
+                File.GetField( "RX_Act:d",          &RigidBody.DOF[3].bActive  );
+                File.GetField( "RX_Lim:d",          &RigidBody.DOF[3].bLimited );
+                File.GetField( "RX_Min:f",          &RigidBody.DOF[3].Min      );
+                File.GetField( "RX_Max:f",          &RigidBody.DOF[3].Max      );
+                File.GetField( "RY_Act:d",          &RigidBody.DOF[4].bActive  );
+                File.GetField( "RY_Lim:d",          &RigidBody.DOF[4].bLimited );
+                File.GetField( "RY_Min:f",          &RigidBody.DOF[4].Min      );
+                File.GetField( "RY_Max:f",          &RigidBody.DOF[4].Max      );
+                File.GetField( "RZ_Act:d",          &RigidBody.DOF[5].bActive  );
+                File.GetField( "RZ_Lim:d",          &RigidBody.DOF[5].bLimited );
+                File.GetField( "RZ_Min:f",          &RigidBody.DOF[5].Min      );
+                File.GetField( "RZ_Max:f",          &RigidBody.DOF[5].Max      );
             }
         }
         else if( x_stricmp( File.GetHeaderName(), "Vertices"     ) == 0 )
@@ -2119,7 +2119,7 @@ xbool rawmesh2::IsolateSubmesh( s32 iSubMesh, rawmesh2& NewMesh,
         NewMesh.m_pBone = new rawmesh2::bone[ m_nBones ];
         ASSERT(NewMesh.m_pBone);
         NewMesh.m_nBones = m_nBones;
-        x_memmove( NewMesh.m_pBone, m_pBone, sizeof(rawmesh2::bone)*NewMesh.m_nBones );
+        x_memcpy( NewMesh.m_pBone, m_pBone, sizeof(rawmesh2::bone)*NewMesh.m_nBones );
     }
     else
     {
@@ -2135,7 +2135,7 @@ xbool rawmesh2::IsolateSubmesh( s32 iSubMesh, rawmesh2& NewMesh,
     NewMesh.m_pSubMesh = new rawmesh2::sub_mesh[ 1 ];
     ASSERT(NewMesh.m_pSubMesh);
     NewMesh.m_nSubMeshs = 1;
-    x_memmove( NewMesh.m_pSubMesh, &(m_pSubMesh[iSubMesh]), sizeof(rawmesh2::sub_mesh) );
+    x_memcpy( NewMesh.m_pSubMesh, &(m_pSubMesh[iSubMesh]), sizeof(rawmesh2::sub_mesh) );
     
     
     //
@@ -2146,7 +2146,7 @@ xbool rawmesh2::IsolateSubmesh( s32 iSubMesh, rawmesh2& NewMesh,
         NewMesh.m_pMaterial = new rawmesh2::material[ m_nMaterials ];
         ASSERT(NewMesh.m_pMaterial);
         NewMesh.m_nMaterials = m_nMaterials;
-        x_memmove( NewMesh.m_pMaterial, m_pMaterial, sizeof(rawmesh2::material)*NewMesh.m_nMaterials);
+        x_memcpy( NewMesh.m_pMaterial, m_pMaterial, sizeof(rawmesh2::material)*NewMesh.m_nMaterials);
     }
     else
     {
@@ -2162,7 +2162,7 @@ xbool rawmesh2::IsolateSubmesh( s32 iSubMesh, rawmesh2& NewMesh,
         NewMesh.m_pParamKey = new f32[ m_nParamKeys ];
         ASSERT(NewMesh.m_pParamKey);
         NewMesh.m_nParamKeys = m_nParamKeys;
-        x_memmove( NewMesh.m_pParamKey, m_pParamKey, sizeof(f32)*NewMesh.m_nParamKeys);
+        x_memcpy( NewMesh.m_pParamKey, m_pParamKey, sizeof(f32)*NewMesh.m_nParamKeys);
     }
     else
     {
@@ -2185,7 +2185,7 @@ xbool rawmesh2::IsolateSubmesh( s32 iSubMesh, rawmesh2& NewMesh,
         ASSERT(NewMesh.m_pTexture);
         
         if (m_nTextures > 0)
-            x_memmove( NewMesh.m_pTexture, m_pTexture, sizeof(rawmesh2::texture)*m_nTextures );        
+            x_memcpy( NewMesh.m_pTexture, m_pTexture, sizeof(rawmesh2::texture)*m_nTextures );        
     }
     else
     {
@@ -3159,7 +3159,7 @@ void rawmesh2::BuildFromRM( rawmesh& RM )
     {
         m_pBone = new bone[ RM.m_nBones ];
         m_nBones = RM.m_nBones;
-        x_memmove( m_pBone, RM.m_pBone, sizeof(bone)*m_nBones );
+        x_memcpy( m_pBone, RM.m_pBone, sizeof(bone)*m_nBones );
     }
     else
         m_pBone = NULL;
@@ -3224,7 +3224,7 @@ void rawmesh2::BuildFromRM( rawmesh& RM )
     if (m_nTextures > 0)
     {
         m_pTexture = new texture[ RM.m_nTextures ];
-        x_memmove( m_pTexture, RM.m_pTexture, sizeof(texture)*m_nTextures );
+        x_memcpy( m_pTexture, RM.m_pTexture, sizeof(texture)*m_nTextures );
         RMESH_SANITY
     }
     else
@@ -3234,7 +3234,7 @@ void rawmesh2::BuildFromRM( rawmesh& RM )
     if (m_nSubMeshs > 0)
     {
         m_pSubMesh = new sub_mesh[ RM.m_nSubMeshs ];
-        x_memmove( m_pSubMesh, RM.m_pSubMesh, sizeof(sub_mesh)*m_nSubMeshs );
+        x_memcpy( m_pSubMesh, RM.m_pSubMesh, sizeof(sub_mesh)*m_nSubMeshs );
         RMESH_SANITY
     }
     else

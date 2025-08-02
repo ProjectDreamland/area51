@@ -25,7 +25,11 @@
 #include "Parsing/textin.hpp"
 #include "Configuration/GameConfig.hpp"
 
-#include "../../Apps/GameApp/Config.hpp"
+#ifdef CONFIG_VIEWER
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
+#include "../../Apps/GameApp/Config.hpp"	
+#endif
 
 //=========================================================================
 //  Main Menu Dialog

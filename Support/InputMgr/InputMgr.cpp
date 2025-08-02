@@ -8,7 +8,11 @@
 
 #include "InputMgr.hpp"
 #include "Monkey.hpp"
-#include "../../Apps/GameApp/Config.hpp"
+#ifdef CONFIG_VIEWER
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
+#include "../../Apps/GameApp/Config.hpp"	
+#endif
 #include "StateMgr\StateMgr.hpp"
 
 //==============================================================================
@@ -154,14 +158,14 @@ void input_pad::GetMapping( s32             iPlatform,
 void input_pad::DelMapping( s32 iPlatform, s32 iMapping )
 {
     ASSERT( iMapping <= MAX_MAPPINGS );
-	ASSERT( iMapping <= m_nMaps[iPlatform] );
+    ASSERT( iMapping <= m_nMaps[iPlatform] );
 
-	for( s32 i=iMapping; i<m_nMaps[iPlatform]; i++ )
-	{
-		m_Map[iPlatform][ i ] = m_Map[iPlatform][ i+1 ];
-	}
+    for( s32 i=iMapping; i<m_nMaps[iPlatform]; i++ )
+    {
+        m_Map[iPlatform][ i ] = m_Map[iPlatform][ i+1 ];
+    }
 
-	m_nMaps[iPlatform]--;
+    m_nMaps[iPlatform]--;
 }
 
 //==============================================================================
@@ -349,17 +353,29 @@ void input_pad::OnEnumProp( prop_enum& List )
             default:
                 ASSERT( FALSE );
                 break;
-#ifndef TARGET_XBOX
-            case INPUT_PLATFORM_PS2:
-                List.PropEnumHeader( "PS2", "", 0 );
-                iHeader = List.PushPath( "PS2\\" );
-                break;
-#endif
-#ifndef TARGET_PS2
+#if defined(TARGET_XBOX)
             case INPUT_PLATFORM_XBOX:
                 List.PropEnumHeader( "XBOX", "", 0 );
                 iHeader = List.PushPath( "XBOX\\" );
                 break;
+#elif defined(TARGET_PS2)
+            case INPUT_PLATFORM_PS2:
+                List.PropEnumHeader( "PS2", "", 0 );
+                iHeader = List.PushPath( "PS2\\" );
+                break;
+#elif defined(TARGET_PC)
+            case INPUT_PLATFORM_XBOX:
+                List.PropEnumHeader( "XBOX", "", 0 );
+                iHeader = List.PushPath( "XBOX\\" );
+                break;
+            case INPUT_PLATFORM_PS2:
+                List.PropEnumHeader( "PS2", "", 0 );
+                iHeader = List.PushPath( "PS2\\" );
+                break;    
+            case INPUT_PLATFORM_PC:
+                List.PropEnumHeader( "", "", 0 );
+                iHeader = List.PushPath( "" );
+                break;    
 #endif
         }
 
@@ -375,15 +391,15 @@ void input_pad::OnEnumProp( prop_enum& List )
 #endif
 
             List.PropEnumString( xfs("InputPad\\LogicalMap[%d]",i), "A logical map is like an specific command for the player such Jump. Where multiple keys could be maped to it in order to activate that command", PROP_TYPE_HEADER );
-		    List.PropEnumButton( xfs("InputPad\\LogicalMap[%d]\\AddMapping",i), "Creates a new mapping", PROP_TYPE_DONT_SAVE | PROP_TYPE_MUST_ENUM );
-		    
+            List.PropEnumButton( xfs("InputPad\\LogicalMap[%d]\\AddMapping",i), "Creates a new mapping", PROP_TYPE_DONT_SAVE | PROP_TYPE_MUST_ENUM );
+            
             for( s32 j=0; j<m_nMaps[iPlatform]; j++ )
             {
                 if( m_Map[iPlatform][j].iLogicalMapping == i )
                 {
                     List.PropEnumString ( xfs("InputPad\\LogicalMap[%d]\\Map[%d]", i,j ), "A map is use to attach a physical device 'key' to a logical action", PROP_TYPE_HEADER );
                     List.PropEnumInt    ( xfs("InputPad\\LogicalMap[%d]\\Map[%d]\\iLogicalMapping",i,j),    "This is use for save and load.", PROP_TYPE_DONT_SHOW );
-				    List.PropEnumButton ( xfs("InputPad\\LogicalMap[%d]\\Map[%d]\\DelMapping",i,j),    "Deletes this mapping", PROP_TYPE_DONT_SAVE | PROP_TYPE_MUST_ENUM );
+                    List.PropEnumButton ( xfs("InputPad\\LogicalMap[%d]\\Map[%d]\\DelMapping",i,j),    "Deletes this mapping", PROP_TYPE_DONT_SAVE | PROP_TYPE_MUST_ENUM );
                     List.PropEnumEnum   ( xfs("InputPad\\LogicalMap[%d]\\Map[%d]\\GadgetID", i,j ), GetGadgetIDNames( iPlatform ),
                                          "This is the physical device which the logical action is map to", 0 );
 
@@ -432,15 +448,23 @@ xbool input_pad::OnProperty( prop_query& I )
             default:
                 ASSERT( FALSE );
                 break;
-#ifndef TARGET_XBOX
+#if defined(TARGET_XBOX)
+            case INPUT_PLATFORM_XBOX:
+                iHeader = I.PushPath( "XBOX\\" );
+                break;
+#elif defined(TARGET_PS2)
             case INPUT_PLATFORM_PS2:
                 iHeader = I.PushPath( "PS2\\" );
                 break;
-#endif
-
-#ifndef TARGET_PS2
+#elif defined(TARGET_PC)
             case INPUT_PLATFORM_XBOX:
                 iHeader = I.PushPath( "XBOX\\" );
+                break;
+            case INPUT_PLATFORM_PS2:
+                iHeader = I.PushPath( "PS2\\" );
+                break;
+            case INPUT_PLATFORM_PC:
+                iHeader = I.PushPath( "" );
                 break;
 #endif
         }
@@ -459,43 +483,44 @@ xbool input_pad::OnProperty( prop_query& I )
 
         if( I.IsVar( "InputPad\\LogicalMap[]\\AddMapping" ) )
         {
-		    if( I.IsRead() )
-		    {
-			    I.SetVarButton( "AddMapping" );
-		    }
-		    else
-		    {
-#ifdef TARGET_PC
-			    if( i == INPUT_PLATFORM_PS2 )
+            if( I.IsRead() )
+            {
+                I.SetVarButton( "AddMapping" );
+            }
+            else
+            {
+#if defined(TARGET_XBOX)
+                AddMapping( i, iIndex0, INPUT_XBOX_STICK_LEFT_X, FALSE );
+#elif defined(TARGET_PS2)
+                AddMapping( i, iIndex0, INPUT_PS2_STICK_LEFT_X, FALSE );
+#elif defined(TARGET_PC)
+                if( i == INPUT_PLATFORM_PS2 )
                 {
                     AddMapping( i, iIndex0, INPUT_PS2_STICK_LEFT_X, FALSE );
                 }
-                else
+                else if( i == INPUT_PLATFORM_XBOX ) 
                 {
                     AddMapping( i, iIndex0, INPUT_XBOX_STICK_LEFT_X, FALSE );
                 }
+                else
+                {
+                }
 #endif
-#ifdef TARGET_PS2
-                AddMapping( i, iIndex0, INPUT_PS2_STICK_LEFT_X, FALSE );
-#endif
-#ifdef TARGET_XBOX
-                AddMapping( i, iIndex0, INPUT_XBOX_STICK_LEFT_X, FALSE );
-#endif
-		    }		
+            }        
 
             return TRUE;
         }
     
         if( I.IsVar( "InputPad\\LogicalMap[]\\Map[]\\DelMapping") )
         {
-		    if( I.IsRead() )
-		    {
-			    I.SetVarButton( "Delete" );
-		    }
-		    else
-		    {
-			    DelMapping( i, iIndex1 );
-		    }
+            if( I.IsRead() )
+            {
+                I.SetVarButton( "Delete" );
+            }
+            else
+            {
+                DelMapping( i, iIndex1 );
+            }
 
             return TRUE;
         }    
@@ -517,24 +542,16 @@ xbool input_pad::OnProperty( prop_query& I )
         {
             if( I.IsRead() )
             {
-                //s32 Index = m_Map[iIndex1].GadgetID - INPUT_PS2_BTN_L2;
                 I.SetVarEnum( GetNameFromGadgetID( i, m_Map[i][iIndex1].GadgetID ) );
             }
             else
             {
-                //for( s32 i=0; pTable[i]; i++ )
                 {
-                    //if( x_stricmp( I.GetVarEnum(), pTable[i] ) == 0 )
                     {
-#ifdef TARGET_XBOX
-                        m_Map[i][iIndex1].GadgetID = GetGadgetIDFromName( 1, I.GetVarEnum() );//(input_gadget)(i + INPUT_PS2_BTN_L2);
-#else
-                        m_Map[i][iIndex1].GadgetID = GetGadgetIDFromName( i, I.GetVarEnum() );//(input_gadget)(i + INPUT_PS2_BTN_L2);
-#endif
+                        m_Map[i][iIndex1].GadgetID = GetGadgetIDFromName( i, I.GetVarEnum() );
                         return TRUE;
                     }
                 }
-                //return FALSE;
             }
 
             return TRUE;
@@ -761,7 +778,7 @@ const char* input_pad::GetGadgetIDNames( s32 iPlatform )
                 "PS2_RIGHT_STICK_X\0"
                 "PS2_RIGHT_STICK_Y\0";
     }
-    else
+    else if (iPlatform == INPUT_PLATFORM_XBOX)
     {
         return  "XBOX_START\0"
                 "XBOX_BACK\0"
@@ -785,6 +802,69 @@ const char* input_pad::GetGadgetIDNames( s32 iPlatform )
                 "XBOX_STICK_RIGHT_Y\0";
 
     }
+    else if (iPlatform == INPUT_PLATFORM_PC)
+    {
+        return  "MOUSE_BTN_L\0"
+                "MOUSE_BTN_C\0"
+                "MOUSE_BTN_R\0"
+                "ESCAPE\0"
+                "MINUS\0"
+                "EQUALS\0"
+                "LBRACKET\0"
+                "RBRACKET\0"
+                "RETURN\0"
+                "LCONTROL\0"
+                "SEMICOLON\0"
+                "APOSTROPHE\0"
+                "GRAVE\0"
+                "BACKSLASH\0"
+                "COMMA\0"
+                "PERIOD\0"
+                "SLASH\0"
+                "RSHIFT\0"
+                "MULTIPLY\0"
+                "SPACE\0"
+                "CAPITAL\0"
+                "NUMLOCK\0"
+                "SCROLL\0"
+                "SUBTRACT\0"
+                "NUMPAD1\0"
+                "DECIMAL\0"
+                "ABNT_C1\0"
+                "CONVERT\0"
+                "NOCONVERT\0"
+                "NUMPADEQUALS\0"
+                "PREVTRACK\0"
+                "COLON\0"
+                "UNDERLINE\0"
+                "UNLABELED\0"
+                "NEXTTRACK\0"
+                "NUMPADENTER\0"
+                "RCONTROL\0"
+                "CALCULATOR\0"
+                "PLAYPAUSE\0"
+                "MEDIASTOP\0"
+                "VOLUMEDOWN\0"
+                "VOLUMEUP\0"
+                "NUMPADCOMMA\0"
+                "DIVIDE\0"
+                "PAUSE\0"
+                "PRIOR\0"
+                "RIGHT\0"
+                "INSERT\0"
+                "DELETE\0"
+                "POWER\0"
+                "WEBSEARCH\0"
+                "WEBFAVORITES\0"
+                "WEBREFRESH\0"
+                "WEBSTOP\0"
+                "WEBFORWARD\0"
+                "WEBBACK\0"
+                "MYCOMPUTER\0"
+                "MEDIASELECT\0";
+    }
+    x_throw ("Alert! Unexpected platfrom!!!" );
+    //return "";
 }
 
 //==============================================================================
@@ -796,9 +876,11 @@ struct gadget_name_map
     const char*  pName;
 };
 
-#define MAX_GADGET_MAPS 20
+static const s32 ACTUAL_GADGET_COUNT[3] = { 20, 20, 64 }; // PS2, XBOX, PC
 
-static gadget_name_map GadgetNameMap[2][MAX_GADGET_MAPS] =
+#define MAX_GADGET_MAPS 64
+
+static gadget_name_map GadgetNameMap[3][MAX_GADGET_MAPS] =
 {
     {
         {  INPUT_PS2_BTN_L2          ,   "PS2_L2"               },        
@@ -843,6 +925,66 @@ static gadget_name_map GadgetNameMap[2][MAX_GADGET_MAPS] =
         {  INPUT_XBOX_STICK_LEFT_Y   ,   "XBOX_STICK_LEFT_Y"    },
         {  INPUT_XBOX_STICK_RIGHT_X  ,   "XBOX_STICK_RIGHT_X"   },
         {  INPUT_XBOX_STICK_RIGHT_Y  ,   "XBOX_STICK_RIGHT_Y"   },
+    },
+    {
+        { INPUT_MOUSE_BTN_L          , "MOUSE_BTN_L"            },
+        { INPUT_MOUSE_BTN_C          , "MOUSE_BTN_C"            },
+        { INPUT_MOUSE_BTN_R          , "MOUSE_BTN_R"            },
+        { INPUT_KBD_ESCAPE           , "ESCAPE"                 },
+        { INPUT_KBD_MINUS            , "MINUS"                  },
+        { INPUT_KBD_EQUALS           , "EQUALS"                 },
+        { INPUT_KBD_LBRACKET         , "LBRACKET"               },
+        { INPUT_KBD_RBRACKET         , "RBRACKET"               },
+        { INPUT_KBD_RETURN           , "RETURN"                 },
+        { INPUT_KBD_LCONTROL         , "LCONTROL"               },
+        { INPUT_KBD_SEMICOLON        , "SEMICOLON"              },
+        { INPUT_KBD_APOSTROPHE       , "APOSTROPHE"             },
+        { INPUT_KBD_GRAVE            , "GRAVE"                  },
+        { INPUT_KBD_BACKSLASH        , "BACKSLASH"              },
+        { INPUT_KBD_COMMA            , "COMMA"                  },
+        { INPUT_KBD_PERIOD           , "PERIOD"                 },
+        { INPUT_KBD_SLASH            , "SLASH"                  },
+        { INPUT_KBD_RSHIFT           , "RSHIFT"                 },
+        { INPUT_KBD_MULTIPLY         , "MULTIPLY"               },
+        { INPUT_KBD_SPACE            , "SPACE"                  },
+        { INPUT_KBD_CAPITAL          , "CAPITAL"                },
+        { INPUT_KBD_NUMLOCK          , "NUMLOCK"                },
+        { INPUT_KBD_SCROLL           , "SCROLL"                 },
+        { INPUT_KBD_SUBTRACT         , "SUBTRACT"               },
+        { INPUT_KBD_NUMPAD1          , "NUMPAD1"                },
+        { INPUT_KBD_DECIMAL          , "DECIMAL"                },
+        { INPUT_KBD_ABNT_C1          , "ABNT_C1"                },
+        { INPUT_KBD_CONVERT          , "CONVERT"                },
+        { INPUT_KBD_NOCONVERT        , "NOCONVERT"              },
+        { INPUT_KBD_NUMPADEQUALS     , "NUMPADEQUALS"           },
+        { INPUT_KBD_PREVTRACK        , "PREVTRACK"              },
+        { INPUT_KBD_COLON            , "COLON"                  },
+        { INPUT_KBD_UNDERLINE        , "UNDERLINE"              },
+        { INPUT_KBD_UNLABELED        , "UNLABELED"              },
+        { INPUT_KBD_NEXTTRACK        , "NEXTTRACK"              },
+        { INPUT_KBD_NUMPADENTER      , "NUMPADENTER"            },
+        { INPUT_KBD_RCONTROL         , "RCONTROL"               },
+        { INPUT_KBD_CALCULATOR       , "CALCULATOR"             },
+        { INPUT_KBD_PLAYPAUSE        , "PLAYPAUSE"              },
+        { INPUT_KBD_MEDIASTOP        , "MEDIASTOP"              },
+        { INPUT_KBD_VOLUMEDOWN       , "VOLUMEDOWN"             },
+        { INPUT_KBD_VOLUMEUP         , "VOLUMEUP"               },
+        { INPUT_KBD_NUMPADCOMMA      , "NUMPADCOMMA"            },
+        { INPUT_KBD_DIVIDE           , "DIVIDE"                 },
+        { INPUT_KBD_PAUSE            , "PAUSE"                  },
+        { INPUT_KBD_PRIOR            , "PRIOR"                  },
+        { INPUT_KBD_RIGHT            , "RIGHT"                  },
+        { INPUT_KBD_INSERT           , "INSERT"                 },
+        { INPUT_KBD_DELETE           , "DELETE"                 },
+        { INPUT_KBD_POWER            , "POWER"                  },
+        { INPUT_KBD_WEBSEARCH        , "WEBSEARCH"              },
+        { INPUT_KBD_WEBFAVORITES     , "WEBFAVORITES"           },
+        { INPUT_KBD_WEBREFRESH       , "WEBREFRESH"             },
+        { INPUT_KBD_WEBSTOP          , "WEBSTOP"                },
+        { INPUT_KBD_WEBFORWARD       , "WEBFORWARD"             },
+        { INPUT_KBD_WEBBACK          , "WEBBACK"                },
+        { INPUT_KBD_MYCOMPUTER       , "MYCOMPUTER"             },
+        { INPUT_KBD_MEDIASELECT      , "MEDIASELECT"            },
     }
 };
 
@@ -850,7 +992,7 @@ static gadget_name_map GadgetNameMap[2][MAX_GADGET_MAPS] =
 
 const char* input_pad::GetNameFromGadgetID( s32 iPlatform, input_gadget GadgetID )
 {    
-    for( s32 i = 0; i < MAX_GADGET_MAPS; i++ )
+    for( s32 i = 0; i < ACTUAL_GADGET_COUNT[iPlatform]; i++ )
     {
         if( GadgetNameMap[iPlatform][i].GadgetID == GadgetID )
             return( GadgetNameMap[iPlatform][i].pName );
@@ -863,7 +1005,7 @@ const char* input_pad::GetNameFromGadgetID( s32 iPlatform, input_gadget GadgetID
 
 input_gadget input_pad::GetGadgetIDFromName( s32 iPlatform, const char* pGadgetName )
 {
-    for( s32 i = 0; i < MAX_GADGET_MAPS; i++ )
+    for( s32 i = 0; i < ACTUAL_GADGET_COUNT[iPlatform]; i++ )
     {
         if( x_strcmp( GadgetNameMap[iPlatform][i].pName, pGadgetName ) == 0 )
             return( GadgetNameMap[iPlatform][i].GadgetID );
@@ -905,10 +1047,12 @@ xbool input_mgr::Update( f32 DeltaTime )
     input_UpdateState();
 #endif
     
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
     s32 iPlatform = INPUT_PLATFORM_XBOX;
-#else
+#elif defined(TARGET_PS2)
     s32 iPlatform = INPUT_PLATFORM_PS2;
+#elif defined(TARGET_PC)
+    s32 iPlatform = INPUT_PLATFORM_PC;
 #endif
 
     //
@@ -953,14 +1097,19 @@ s32 input_mgr::WasPausePressed( void )
             }
 #endif
 
-#if defined(TARGET_PS2) || defined(TARGET_PC)
+
+#if defined(TARGET_XBOX)
+            if( input_WasPressed( INPUT_XBOX_BTN_START, ControllerID ) )
+            {
+                return ControllerID;
+            }
+#elif defined(TARGET_PS2)
             if( input_WasPressed(INPUT_PS2_BTN_START, ControllerID ) )
             {
                 return ControllerID;
             }
-#endif
-#if defined(TARGET_XBOX)
-            if( input_WasPressed( INPUT_XBOX_BTN_START, ControllerID ) )
+#elif defined(TARGET_PC)
+            if( input_WasPressed( INPUT_KBD_ESCAPE, ControllerID ) )
             {
                 return ControllerID;
             }

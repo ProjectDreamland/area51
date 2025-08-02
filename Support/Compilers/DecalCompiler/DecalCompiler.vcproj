@@ -24,7 +24,7 @@
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				UsePrecompiledHeader="2"
 				DebugInformationFormat="4"/>
 			<Tool
@@ -64,18 +64,18 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="2"
+				OptimizeForWindowsApplication="TRUE"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
-				InlineFunctionExpansion="2"
-				OptimizeForProcessor="2"
-				FavorSizeOrSpeed="1"
-				OptimizeForWindowsApplication="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				EnableIntrinsicFunctions="TRUE"
 				StringPooling="TRUE"
-				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="0"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="2"
 				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -83,6 +83,92 @@
 				Name="VCLinkerTool"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="libcd.lib"
+				SubSystem="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="QA|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_QA"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="2"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkIncremental="2"
+				IgnoreDefaultLibraryNames="libcd.lib"
+				GenerateDebugInformation="TRUE"
+				SubSystem="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="OptDebug|Win32"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,.\,$(X)\MeshUtil,$(X)\Auxiliary\CommandLine,$(X)\Parsing,$(X)\..\Support"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="2"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkIncremental="2"
+				IgnoreDefaultLibraryNames="libcd.lib"
+				GenerateDebugInformation="TRUE"
 				SubSystem="1"/>
 			<Tool
 				Name="VCMIDLTool"/>

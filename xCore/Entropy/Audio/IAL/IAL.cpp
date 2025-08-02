@@ -72,8 +72,9 @@ s32         g_CombFactor = 0;
 
 void IAL_GetMutex( void )
 {
-    ASSERT( s_Initialized );
-
+    if (!s_Initialized)
+        return;
+        
     EnterCriticalSection( &IAL_CriticalSection );
 }
 
@@ -81,8 +82,9 @@ void IAL_GetMutex( void )
 
 void IAL_ReleaseMutex( void )
 {
-    ASSERT( s_Initialized );
-
+    if (!s_Initialized)
+        return;
+        
     LeaveCriticalSection( &IAL_CriticalSection );
 }
 
@@ -456,8 +458,8 @@ void IAL_MixFrame( void )
     s32             nSamples;
     HRESULT         hr;
 
-    // Exit if we have no D3D buffer
-    if( s_lpsb8 == NULL )
+    // Exit if we have no D3D buffer or system is not initialized
+    if (!s_Initialized || s_lpsb8 == NULL)
         return;
 
     // Read the play and write cursors
@@ -484,10 +486,17 @@ void IAL_MixFrame( void )
         if( DSERR_BUFFERLOST == hr )
         {
             // Buffer was lost, attempt a restore
-            s_lpsb8->Restore();
-            hr = s_lpsb8->Lock( WriteCursor, WriteBytes, (LPVOID*)&p1, &c1, (LPVOID*)&p2, &c2, 0 );
-            CLOG_MESSAGE( LOGGING_ENABLED, "MixFrame", "Restore Buffer" );
-			ASSERT(0);
+            hr = s_lpsb8->Restore();
+            if( SUCCEEDED(hr) )
+            {
+                hr = s_lpsb8->Lock( WriteCursor, WriteBytes, (LPVOID*)&p1, &c1, (LPVOID*)&p2, &c2, 0 );
+                CLOG_MESSAGE( LOGGING_ENABLED, "MixFrame", "Restore Buffer" );
+            }
+            else
+            {
+                CLOG_MESSAGE( LOGGING_ENABLED, "MixFrame", "Failed to restore buffer" );
+                return;
+            }
         }
         if( SUCCEEDED(hr) )
         {
@@ -517,9 +526,6 @@ void IAL_MixFrame( void )
                         IAL_MixChannel( &IAL_Channels[iChannel], IAL_MixL, IAL_MixR, nSamples );
                 }
 
-                // Comb Filter
-                //CombFilter( &IAL_MixL[0], &IAL_MixR[0], nSamples );
-
                 // Output the mix to 16 bit buffers with clamping
                 IAL_OutputAmplitude[0] = 0;
                 IAL_OutputAmplitude[1] = 0;
@@ -542,31 +548,22 @@ void IAL_MixFrame( void )
                     IAL_OutputAmplitude[1] = max( IAL_OutputAmplitude[1], s );
                 }
 
-	#ifdef WRITE_DEBUG_FILE
-				if( !s_pDebugFile )
-				{
-					s_pDebugFile = x_fopen( "out.raw", "wb" );
-				}
-	#endif
                 // Copy the samples into the buffer
-                if( c1 )
+                if (p1 && c1)
                 {
                     x_memcpy( p1, &IAL_Out[0   ], c1 );
-    #ifdef WRITE_DEBUG_FILE
-                    x_fwrite( p1, 1, c1, s_pDebugFile );
-    #endif
                 }
-                if( c2 )
+                if (p2 && c2)
                 {
                     x_memcpy( p2, &IAL_Out[c1/2], c2 );
-    #ifdef WRITE_DEBUG_FILE
-                    x_fwrite( p2, 1, c2, s_pDebugFile );
-    #endif
                 }
             }
 
             // Unlock the buffer
-            hr = s_lpsb8->Unlock( p1, c1, p2, c2 );
+            if ( s_lpsb8 )
+            {
+                hr = s_lpsb8->Unlock(p1, c1, p2, c2);
+            }
         }
     }
 }
@@ -624,7 +621,10 @@ BOOL IAL_CreateBuffer( LPDIRECTSOUND8 lpDirectSound, LPDIRECTSOUNDBUFFER* lplpDs
 DWORD _stdcall IAL_MixThread( void* )
 {
     HRESULT hr;
-
+    
+    if (!s_Initialized)
+        return 0;
+        
     // Create the DirectSound device
     hr = DirectSoundCreate8( NULL, &s_lpds, NULL );
     if( SUCCEEDED(hr) && s_lpds )
@@ -662,18 +662,21 @@ DWORD _stdcall IAL_MixThread( void* )
     {
         Sleep( IAL_FRAME_TIME_MS );
 
-        IAL_GetMutex();
-        IAL_MixFrame();
-
-        if( s_lpsb )
+        if (s_Initialized)
         {
-            s32 Decibels = -10000;
-            if( s_SystemVolume > 0.00001f )
-                Decibels = (s32)(2000*log10( s_SystemVolume ));
-            s_lpsb->SetVolume( Decibels );
-        }
+            IAL_GetMutex();
+            IAL_MixFrame();
 
-        IAL_ReleaseMutex();
+            if (s_lpsb)
+            {
+                s32 Decibels = -10000;
+                if (s_SystemVolume > 0.00001f)
+                    Decibels = (s32)(2000*log10(s_SystemVolume));
+                s_lpsb->SetVolume(Decibels);
+            }
+
+            IAL_ReleaseMutex();
+        }
     }
 
     if( s_lpsb8 )

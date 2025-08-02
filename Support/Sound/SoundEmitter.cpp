@@ -13,7 +13,7 @@
 #include "CollisionMgr\CollisionPrimatives.hpp"
 #include "AudioMgr\AudioMgr.hpp"
 #include "ConversationMgr\ConversationMgr.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "..\ZoneMgr\ZoneMgr.hpp"
 #include "gamelib\StatsMgr.hpp"
 

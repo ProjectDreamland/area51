@@ -174,7 +174,7 @@ xbool config_file::Read( const char* pVar, char* S, f32& F )
 //==============================================================================
 
 // Path
-xbool config_file::Read( const char* pVar, config::path& P )
+xbool config_file::Read( const char* pVar, config_options::path& P )
 {
     if( ( m_bFound == FALSE ) && ( x_stricmp( String(), pVar ) == 0 ) )
     {

@@ -13,7 +13,7 @@
 #include "transaction_layer_data.hpp"
 #include "transaction_object_data.hpp"
 #include "transaction_entry.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 
 #include "EditorAIView.h"
 #include "EditorFrame.h"

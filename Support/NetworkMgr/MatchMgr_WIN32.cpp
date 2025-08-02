@@ -26,8 +26,14 @@
 
 const s32 A51_MIDWAY_FPS_CATEGORY = 1010000032;
 
-
+#include "NetworkMgr/GameSpy/serverbrowsing/sb_serverbrowsing.h"
+#include "NetworkMgr/GameSpy/available.h"
+#include "NetworkMgr/GameSpy/qr2/qr2regkeys.h"
+#include "NetworkMgr/GameSpy/qr2/qr2.h"
+#include "NetworkMgr/GameSpy/GStats/gstats.h"
+#include "NetworkMgr/GameSpy/GStats/gpersist.h"
 #include "ResourceMgr/ResourceMgr.hpp"
+
 
 //=========================================================================
 //  Defines
@@ -1809,6 +1815,24 @@ s32 match_mgr::GetAuthResult( char* pLabelBuffer )
 
     x_strcpy( pLabelBuffer, m_ConnectErrorMessage );
     return m_ConnectErrorCode;
+}
+
+//==============================================================================
+void match_mgr::StartIndirectLookup( void )
+{
+    m_SessionID = x_rand();
+    game_config::Commit();
+    LockBrowser();
+    SetState( MATCH_INDIRECT_LOOKUP );
+    UnlockBrowser();
+}
+
+//==============================================================================
+void match_mgr::StartLogin( void )
+{
+    LockBrowser();
+    SetState( MATCH_LOGIN );
+    UnlockBrowser();
 }
 
 //==============================================================================

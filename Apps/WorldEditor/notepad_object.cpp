@@ -15,7 +15,7 @@
 #include "CollisionMgr\CollisionMgr.hpp"
 #include "Entropy.hpp"
 #include "Parsing\TextIn.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 
 const f32 c_Sphere_Radius = 25.0f;
 

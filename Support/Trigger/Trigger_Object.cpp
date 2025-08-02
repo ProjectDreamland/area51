@@ -11,7 +11,7 @@
 #include "Trigger_Object.hpp"
 #include "..\Support\Trigger\Trigger_Manager.hpp"
 #include "Entropy.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 
 //=========================================================================
 // GLOBALS

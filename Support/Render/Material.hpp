@@ -21,6 +21,26 @@ struct shader
     u32 Id;
 };
 
+#elif defined(TARGET_PC)
+
+#include "..\3rdParty\DirectX9\d3dx9.h"
+
+struct shader
+{
+    shader( u32 Type, IDirect3DVertexShader9* pVS, IDirect3DVertexDeclaration9* pVertexDecl );
+    shader( u32 Type, IDirect3DPixelShader9* pPS, IDirect3DVertexDeclaration9* pVertexDecl );
+    shader( u32 Type, LPD3DXBUFFER Microcode, const D3DVERTEXELEMENT9* pShaderDesc );
+    shader( void ){}
+    ~shader( void );
+
+    u32 Type;
+    IDirect3DVertexShader9* pVertexShader;
+    IDirect3DPixelShader9* pPixelShader;
+    IDirect3DVertexDeclaration9* pVertexDecl;
+};
+
+#endif
+
 namespace ps
 {
     union desc
@@ -312,8 +332,6 @@ namespace vs
         s32  iLink[9];
     };
 }
-
-#endif
 
 //=============================================================================
 

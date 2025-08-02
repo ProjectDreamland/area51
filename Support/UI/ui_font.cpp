@@ -310,7 +310,7 @@ void ui_font::TextSize( irect& Rect, const xwchar* pString, s32 Count ) const
             }
 
             // Check for Control Code
-            else if( c == 0xAB ) // '«'
+            else if( c == 0xAB ) // '?'
             {
                 c = *pString++;
 
@@ -322,7 +322,16 @@ void ui_font::TextSize( irect& Rect, const xwchar* pString, s32 Count ) const
 
                 if( buttonCode != -1 )
                 {
-#ifdef TARGET_PS2 
+#if defined(TARGET_XBOX)  
+                    if( buttonCode == XBOX_BUTTON_START )
+                    {
+                        Width += BUTTON_START_SPRITE_WIDTH; 
+                    }
+                    else
+                    {
+                        Width += BUTTON_SPRITE_WIDTH; 
+                    } 					
+#elif defined(TARGET_PS2)
                     if( buttonCode == PS2_BUTTON_START )
                     {
                         Width += BUTTON_START_SPRITE_WIDTH; 
@@ -330,19 +339,21 @@ void ui_font::TextSize( irect& Rect, const xwchar* pString, s32 Count ) const
                     else
                     {
                         Width += BUTTON_SPRITE_WIDTH; 
-                    }                    
-#else
-                    if( buttonCode == XBOX_BUTTON_START )
+                    }  
+#elif defined(TARGET_PC)
+                    if( buttonCode == PS2_BUTTON_START )
                     {
                         Width += BUTTON_START_SPRITE_WIDTH; 
                     }
                     else
-                        Width += BUTTON_SPRITE_WIDTH;
+                    {
+                        Width += BUTTON_SPRITE_WIDTH; 
+                    }  
 #endif
                 }
 
                 // Loop past control code.
-                while( c != 0xBB ) // '»'
+                while( c != 0xBB ) // '?'
                 {
                     c = *pString++;
                 }
@@ -416,7 +427,7 @@ s32 ui_font::TextWidth( const xwchar* pString, s32 Count ) const
             }
 
             // Check for Control Code
-            else if( c == 0xAB ) // '«'
+            else if( c == 0xAB ) // '?'
             {
 
                 // If this is a ButtonIcon then Add Sprite Width
@@ -427,8 +438,16 @@ s32 ui_font::TextWidth( const xwchar* pString, s32 Count ) const
 
                 if( ButtonCode != -1 )
                 {
-#ifdef TARGET_PS2 
-                    // for the start button, double it... 
+#if defined(TARGET_XBOX)  
+                    if( ButtonCode == XBOX_BUTTON_START )
+                    {
+                        Width += BUTTON_START_SPRITE_WIDTH; 
+                    }
+                    else
+                    {
+                        Width += BUTTON_SPRITE_WIDTH; 
+                    } 					
+#elif defined(TARGET_PS2)
                     if( ButtonCode == PS2_BUTTON_START )
                     {
                         Width += BUTTON_START_SPRITE_WIDTH; 
@@ -436,19 +455,21 @@ s32 ui_font::TextWidth( const xwchar* pString, s32 Count ) const
                     else
                     {
                         Width += BUTTON_SPRITE_WIDTH; 
-                    }                    
-#else
-                    if( ButtonCode == XBOX_BUTTON_START )
+                    }  
+#elif defined(TARGET_PC)
+                    if( ButtonCode == PS2_BUTTON_START )
                     {
                         Width += BUTTON_START_SPRITE_WIDTH; 
                     }
                     else
-                        Width += BUTTON_SPRITE_WIDTH;
+                    {
+                        Width += BUTTON_SPRITE_WIDTH; 
+                    }  
 #endif
                 }
 
                 // Loop past control code.
-                while( c != 0xBB ) // '»'
+                while( c != 0xBB ) // '?'
                 {
                     c = *pString++;
                 }
@@ -507,14 +528,14 @@ s32 ui_font::TextHeight( const xwchar* pString, s32 Count ) const
                 Count--;
             }
             // Check for Control Code
-            else if( c == 0xAB ) // '«'
+            else if( c == 0xAB ) // '?'
             {
                 // We have found a button code so we need to make the height of this
                 // string the height of the button bmps.
                  LineHasButton = TRUE;
 
                 // Loop past control code.
-                while( c != 0xBB ) // '»'
+                while( c != 0xBB ) // '?'
                 {
                     c = *pString++;
                 }
@@ -753,7 +774,7 @@ void ui_font::TextWrap( const xwchar* pString, const irect& Rect, xwstring& Wrap
                 Width           = 0;
                 Clipping        = FALSE;
             }
-            else if( c == 0xAB ) // '«'
+            else if( c == 0xAB ) // '?'
             {
                 // If this is a ButtonIcon then Add Sprite Width
                 s32 ButtonCode = g_UiMgr->LookUpButtonCode( pString, 0 );
@@ -763,8 +784,16 @@ void ui_font::TextWrap( const xwchar* pString, const irect& Rect, xwstring& Wrap
 
                 if( ButtonCode != -1 )
                 {
-#ifdef TARGET_PS2 
-                    // for the start button, double it... 
+#if defined(TARGET_XBOX)  
+                    if( ButtonCode == XBOX_BUTTON_START )
+                    {
+                        Width += BUTTON_START_SPRITE_WIDTH; 
+                    }
+                    else
+                    {
+                        Width += BUTTON_SPRITE_WIDTH; 
+                    } 					
+#elif defined(TARGET_PS2)
                     if( ButtonCode == PS2_BUTTON_START )
                     {
                         Width += BUTTON_START_SPRITE_WIDTH; 
@@ -772,21 +801,23 @@ void ui_font::TextWrap( const xwchar* pString, const irect& Rect, xwstring& Wrap
                     else
                     {
                         Width += BUTTON_SPRITE_WIDTH; 
-                    }                    
-#else
-                    if( ButtonCode == XBOX_BUTTON_START )
+                    }  
+#elif defined(TARGET_PC)
+                    if( ButtonCode == PS2_BUTTON_START )
                     {
                         Width += BUTTON_START_SPRITE_WIDTH; 
                     }
                     else
-                        Width += BUTTON_SPRITE_WIDTH;
+                    {
+                        Width += BUTTON_SPRITE_WIDTH; 
+                    }  
 #endif
                 }
                 
                 WrappedString += c;
                 
                 // Loop past control code.
-                while( c != 0xBB ) // '»'
+                while( c != 0xBB ) // '?'
                 {                 
                     c = *pString++;
                     WrappedString += c;
@@ -938,12 +969,12 @@ void ui_font::RenderHelpText( const irect&  Rect,
             c = pString[iStart];
 
     
-            if ((c & 0xff) == 0xAB ) // '«'
+            if ((c & 0xff) == 0xAB ) // '?'
             {
                 // get the button code
                 s32 buttonCode = g_UiMgr->LookUpButtonCode( pString, iStart );
 
-                while( (c & 0xff) != 0xBB ) // '»'
+                while( (c & 0xff) != 0xBB ) // '?'
                 {
                     iStart++;
                     c = pString[iStart];
@@ -965,9 +996,17 @@ void ui_font::RenderHelpText( const irect&  Rect,
                 else
                 {
                     Width   += HELP_TEXT_SPACING;
+                }				
+#if defined(TARGET_XBOX)  
+                if( buttonCode == XBOX_BUTTON_START )
+                {
+                    Width   += BUTTON_START_SPRITE_WIDTH; 
                 }
-
-#ifdef TARGET_PS2
+                else
+				{
+                    Width   += BUTTON_SPRITE_WIDTH;
+				}				
+#elif defined(TARGET_PS2)
                 if( buttonCode == PS2_BUTTON_START )
                 {
                     Width   += BUTTON_START_SPRITE_WIDTH;
@@ -975,14 +1014,16 @@ void ui_font::RenderHelpText( const irect&  Rect,
                 else
                 {
                     Width   += BUTTON_SPRITE_WIDTH;
-                }
-#else
-                if( buttonCode == XBOX_BUTTON_START )
+                }  
+#elif defined(TARGET_PC)
+                if( buttonCode == PS2_BUTTON_START )
                 {
-                    Width += BUTTON_START_SPRITE_WIDTH; 
+                    Width   += BUTTON_START_SPRITE_WIDTH;
                 }
                 else
-                    Width       += BUTTON_SPRITE_WIDTH;
+                {
+                    Width   += BUTTON_SPRITE_WIDTH;
+                }  
 #endif
                 CurrWidth    = 0;
                 MaxWidth     = 0;
@@ -1062,7 +1103,7 @@ void ui_font::RenderHelpText( const irect&  Rect,
         //    }
         //    continue;
         //}
-        if( (c & 0xff) == 0xAB ) // '«' 
+        if( (c & 0xff) == 0xAB ) // '?' 
         {
             // Check for Command Codes
             iStart++;
@@ -1076,7 +1117,7 @@ void ui_font::RenderHelpText( const irect&  Rect,
             // If we found a button code then render it.
             if( buttonCode > -1 )
             {
-                while( (c & 0xff) != 0xBB ) // '»'
+                while( (c & 0xff) != 0xBB ) // '?'
                 {
                     iStart++;
                     c = pString[iStart];
@@ -1110,9 +1151,25 @@ void ui_font::RenderHelpText( const irect&  Rect,
                 draw_Begin( DRAW_SPRITES, DRAW_TEXTURED | DRAW_2D | DRAW_USE_ALPHA | DRAW_NO_ZBUFFER );
                 
                 xbitmap* button = g_UiMgr->GetButtonTexture( buttonCode );
-        		draw_SetTexture( *button );
+        		draw_SetTexture( *button );				
+#if defined(TARGET_XBOX)
+                if( buttonCode == XBOX_BUTTON_START )
+                {
+                    draw_Sprite( vector3((f32)sx+1, (f32)sy+1, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(0,0,0,255) );
+                    draw_Sprite( vector3((f32)sx, (f32)sy, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(255,255,255) );
 
-#ifdef TARGET_PS2
+                    // set new block start
+                    sx += BUTTON_START_SPRITE_WIDTH;
+                }
+                else
+                {
+                    draw_Sprite( vector3((f32)sx+1, (f32)sy+1, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(0,0,0,255) );
+                    draw_Sprite( vector3((f32)sx, (f32)sy, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(255,255,255) );
+
+                    // set new block start
+                    sx += BUTTON_SPRITE_WIDTH;
+                }
+#elif defined(TARGET_PS2)
                 if( buttonCode == PS2_BUTTON_START )
                 {
                     draw_SpriteImmediate( vector2((f32)sx+1, (f32)sy+1),
@@ -1149,8 +1206,8 @@ void ui_font::RenderHelpText( const irect&  Rect,
                     // set new block start
                     sx += BUTTON_SPRITE_WIDTH;
                 }
-#else
-                if( buttonCode == XBOX_BUTTON_START )
+#elif defined(TARGET_PC)
+                if( buttonCode == PS2_BUTTON_START )
                 {
                     draw_Sprite( vector3((f32)sx+1, (f32)sy+1, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(0,0,0,255) );
                     draw_Sprite( vector3((f32)sx, (f32)sy, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(255,255,255) );
@@ -1456,7 +1513,7 @@ void ui_font::RenderText( const irect&  Rect,
                 if( buttonCode == CREDIT_TITLE_LINE || buttonCode == NEW_CREDIT_PAGE || buttonCode == CREDIT_END )
                     buttonCode = -1;
 
-                while( c && (c != 0x00BB) ) // '»'
+                while( c && (c != 0x00BB) ) // '?'
                 {
                     iStart++;
                     c = pString[iStart];
@@ -1466,7 +1523,7 @@ void ui_font::RenderText( const irect&  Rect,
                 // If we found a button code then render it.
                 if( buttonCode > -1 )
                 {
-                    while( c && (c != 0x00BB) ) // '»'
+                    while( c && (c != 0x00BB) ) // '?'
                     {
                         iStart++;
                         c = pString[iStart];
@@ -1489,25 +1546,34 @@ void ui_font::RenderText( const irect&  Rect,
 
                     //draw_Sprite( vector3((f32)tx+1, (f32)ty+1, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(0,0,0,255) );
 	        	    //draw_Sprite( vector3((f32)tx, (f32)ty, 0), vector2(BUTTON_SPRITE_WIDTH, BUTTON_SPRITE_WIDTH), xcolor(255,255,255) );
-#ifdef TARGET_PS2
-                    if( buttonCode == PS2_BUTTON_START )
-                    {
-                        tx += BUTTON_SPRITE_WIDTH;
-                    }
-                    else
-                    {
-                        tx += BUTTON_START_SPRITE_WIDTH;
-                    }
-#else
-                    if( buttonCode == XBOX_BUTTON_START )
-                    {
-                        tx += BUTTON_SPRITE_WIDTH;
-                    }
-                    else
-                    {
-                        tx += BUTTON_SPRITE_WIDTH;
-                    }
-#endif                
+#if defined(TARGET_XBOX)  
+                if( buttonCode == XBOX_BUTTON_START )
+                {
+                    tx += BUTTON_SPRITE_WIDTH; 
+                }
+                else
+				{
+                    tx += BUTTON_SPRITE_WIDTH;
+				}				
+#elif defined(TARGET_PS2)
+                if( buttonCode == PS2_BUTTON_START )
+                {
+                    tx += BUTTON_SPRITE_WIDTH;
+                }
+                else
+                {
+                    tx += BUTTON_START_SPRITE_WIDTH;
+                }  
+#elif defined(TARGET_PC)
+                if( buttonCode == PS2_BUTTON_START )
+                {
+                    tx += BUTTON_SPRITE_WIDTH;
+                }
+                else
+                {
+                    tx += BUTTON_START_SPRITE_WIDTH;
+                }  
+#endif               
                     //draw_End();
                     
                     NumButtons++;
@@ -1895,7 +1961,7 @@ void ui_font::RenderStateControlledText( const irect& Rect, u32 Flags, const xco
                 if( buttonCode == CREDIT_TITLE_LINE || buttonCode == NEW_CREDIT_PAGE || buttonCode == CREDIT_END )
                     buttonCode = -1;
 
-                while( c && (c != 0x00BB) ) // '»'
+                while( c && (c != 0x00BB) ) // '?'
                 {
                     iStart++;
                     c = pString[iStart];
@@ -2016,4 +2082,3 @@ void ui_font::RenderStateControlledText( const irect& Rect, u32 Flags, const xco
     ps2_EndCharBatch();
 #endif
 }
-

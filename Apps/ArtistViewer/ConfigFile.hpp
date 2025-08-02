@@ -50,7 +50,7 @@ public:
     xbool Read( const char* pVar, char* S0, char* S1 );
     xbool Read( const char* pVar, char* S0, char* S1, char* S2 );
     xbool Read( const char* pVar, char* S, f32& F );
-    xbool Read( const char* pVar, config::path& P );
+    xbool Read( const char* pVar, config_options::path& P );
     xbool Read( const char* pVar, vector3& V );
 };
 

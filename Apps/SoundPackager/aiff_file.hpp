@@ -12,24 +12,15 @@
 //==============================================================================
 
 #include "x_files.hpp"
+#include "audio_file.hpp"
 
 //==============================================================================
 //  aiff_file
 //==============================================================================
 
-class aiff_file
+class aiff_file : public audio_file
 {
-public:
-
-    class breakpoint
-    {
-    public:
-        f32     Position;
-        xstring Name;
-    };
-
 private:
-
     class marker
     {
     public:
@@ -40,21 +31,21 @@ private:
 
 public:
                     aiff_file           ( void );
-                   ~aiff_file           ( void );
+    virtual        ~aiff_file           ( void );
 
 public:
-    xbool           Open                ( const char* pFileName );
-    xbool           Open                ( X_FILE* pFile );
-    s32             GetSampleRate       ( void );
-    s32             GetNumChannels      ( void );
-    s32             GetNumSamples       ( void );
-    void            GetChannelData      ( s16* pData, s32 iChannel );
-    xbool           IsLooped            ( void );
-    s32             GetLoopStart        ( void );
-    s32             GetLoopEnd          ( void );
-    s32             GetBreakpoints      ( xarray<breakpoint>& BreakPoints );
+    virtual xbool   Open                ( const char* pFileName );
+    virtual xbool   Open                ( X_FILE* pFile );
+    virtual s32     GetSampleRate       ( void );
+    virtual s32     GetNumChannels      ( void );
+    virtual s32     GetNumSamples       ( void );
+    virtual void    GetChannelData      ( s16* pData, s32 iChannel );
+    virtual xbool   IsLooped            ( void );
+    virtual s32     GetLoopStart        ( void );
+    virtual s32     GetLoopEnd          ( void );
+    virtual s32     GetBreakpoints      ( xarray<breakpoint>& BreakPoints );
 
-    void            Close               ( void );
+    virtual void    Close               ( void );
 
 protected:
     xbool           m_FileOwned;

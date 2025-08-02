@@ -172,7 +172,6 @@ void elf::PrintMdebug( void )
 
             // Get the name of the source file
             const char* pString = (const char*)(m_pData + pHeader->cbSsOffset + pFile->issBase + pFile->rss);
-//            printf( "%s\n", pString );
 
             // Loop through all the symbols for this file
             for( s32 i=0 ; i<pFile->csym ; i++ )
@@ -182,188 +181,15 @@ void elf::PrintMdebug( void )
 
                 // Print the symbol details in CSV form
                 if( pSym->st == MDB_SYMR::ST_NIL )
-//                if( pSym->index != 0 )
                 {
                     const char* pString = (const char*)(m_pData + pHeader->cbSsOffset + pFile->issBase + pSym->iss);
 
-//                    ParseMdebugSymbolString( pString );
                     m_FileInfo[iFile].ParseSymbol( pString );
-
-//                    printf( "    \"%08x\",%d,%d,%d,\"%s\"\n", pSym->value, pSym->st, pSym->sc, pSym->index, pString );
 	            }
             }
         }
     }
 }
-
-//==============================================================================
-
-/*
-
-static xbool ReadIdent( const char*& p, xstring& Ident )
-{
-    Ident.SetLength( 0 );
-
-    if( (isalpha(*p)) || (*p=='_') )
-    {
-        while( isalpha(*p) || isdigit(*p) || (*p=='_') )
-        {
-            Ident += *p;
-            p++;
-        }
-        return TRUE;
-    }
-    return FALSE;
-}
-
-static xbool Consume( const char*& p, const char* pTest )
-{
-    const char* pStart = p;
-
-    while( *p == *pTest )
-        p++, pTest++;
-
-    if( *pTest )
-    {
-        p = pStart;
-        return FALSE;
-    }
-    else
-        return TRUE;
-}
-
-static xbool ReadDecimal( const char*& p, s32& v )
-{
-    v = 0;
-
-    if( isdigit(*p) )
-    {
-        while( isdigit(*p) )
-        {
-            v *= 10;
-            v += *p - '0';
-            p++;
-        }
-        return TRUE;
-    }
-    return FALSE;
-}
-
-static xbool ReadType( const char*& p, s32& Type )
-{
-    s32             Temp;
-    static xstring  TempIdent;
-
-    Consume( p, "/" );
-    Consume( p, "*" );
-    Consume( p, "&" );
-
-    if( ReadDecimal( p, Type ) )
-    {
-    }
-    else if( strncmp( p, "ar1;", 4 ) == 0 )
-    {
-        p += 4;
-        ReadDecimal( p, Temp );
-        Consume( p, ";" );
-        ReadDecimal( p, Temp );
-        Consume( p, ";" );
-        ReadType( p, Temp );
-    }
-    else if( strncmp( p, "xs", 2 ) == 0 )
-    {
-        p += 2;
-        ReadIdent( p, TempIdent );
-        Consume( p, ":" );
-    }
-    else if( strncmp( p, "f", 1 ) == 0 )
-    {
-        p += 1;
-        ReadType( p, Temp );
-    }
-    else
-    {
-        return FALSE;
-    }
-
-    // Check for assignment following type spec
-    if( *p == '=' )
-    {
-        p++;
-        ReadType( p, Temp );
-    }
-
-    return TRUE;
-}
-
-static xbool ReadMember( const char*& p, xstring& Name, s32& Type, s32& Offset, s32& Size )
-{
-    static s32      Temp;
-    static xstring  TempIdent;
-
-    if( ReadIdent( p, Name ) )
-    {
-        if( Consume( p, ":" ) )
-        {
-            if( ReadType( p, Type ) )
-            {
-                Consume( p, "," );
-
-                if( ReadDecimal( p, Offset ) )
-                {
-                    if( Consume( p, "," ) )
-                    {
-                        if( ReadDecimal( p, Size   ) )
-                        {
-                            if( Consume( p, ";" ) )
-                            {
-                                return TRUE;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return FALSE;
-}
-
-void elf::ParseMdebugSymbolString( const char* p )
-{
-    xstring Name;
-    s32     Type;
-    s32     Size;
-    xstring MemberName;
-    s32     MemberType;
-    s32     MemberOffset;
-    s32     MemberSize;
-
-    // Check for a class or structure definition
-    if( ReadIdent( p, Name ) &&
-        Consume( p, ":Tt" ) &&
-        ReadDecimal( p, Type ) &&
-        Consume( p, "=s" ) &&
-        ReadDecimal( p, Size ) )
-    {
-        printf( "%s\n", (const char*)Name );
-
-        // Parse the members of the structure & look for padding
-        s32 NextOffset = 0;
-        while( ReadMember( p, MemberName, MemberType, MemberOffset, MemberSize ) )
-        {
-            s32 Waste = NextOffset - NextOffset;
-            printf( " %4d %4d %4d %s\n", Waste, MemberOffset, MemberSize, (const char*)MemberName );
-            NextOffset = MemberOffset + MemberSize;
-        }
-
-        if( NextOffset != Size*8 )
-        {
-            printf( "  !!!! %d bits !!!!\n", (Size*8)-NextOffset );
-        }
-    }
-}
-
-*/
 
 //==============================================================================
 
@@ -551,7 +377,7 @@ bool elf_file::ParseSymbolStructure( const char*& p )
         // Print symbol info
         xstring s( m_pSymbolName );
         s = s.Left( m_cSymbolName );
-        printf( "'%s' %d\n", (const char*)s, m_SymbolByteLength );
+        x_printf( "'%s' %d\n", (const char*)s, m_SymbolByteLength );
 
         // Iterate over structure members
         while( *p != ';' )

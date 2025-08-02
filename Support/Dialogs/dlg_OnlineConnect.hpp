@@ -114,9 +114,9 @@ protected:
     void                UpdateAuthUser      ( void );
 
 
-#if defined(TARGET_PS2)
+
     s32                 PopulateConfigurationList( void );
-#endif
+
     ui_frame*           m_pFrame1;
     ui_listbox*         m_pUserList;
     xbool               m_AccountsHaveChanged;
@@ -150,7 +150,7 @@ protected:
 
     cancel_mode         m_CancelMode;
     connect_states      m_RetryDestination;
-#if defined(TARGET_PS2)
+
     // DNAS logo controls
     s32                 m_DNASIconID[NUM_DNAS_LOGOS];
     xbool               m_bRenderLogo[NUM_DNAS_LOGOS];
@@ -158,7 +158,7 @@ protected:
     xbool               m_bFadeIn[NUM_DNAS_LOGOS];
     f32                 m_FadeStep[NUM_DNAS_LOGOS];
     f32                 m_LogoAlpha[NUM_DNAS_LOGOS];
-#endif
+
     
 };
 

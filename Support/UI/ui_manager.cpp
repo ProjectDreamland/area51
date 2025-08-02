@@ -56,7 +56,7 @@ extern u32 g_REdge,g_TEdge,g_PhysW,g_PhysH,g_PhysFPS;
 
 //#include "dialogs\infooverlay.hpp"
 
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
 //PRELOAD_XBOX_FILE("UI_ButtonsXBOX_TriggerL_Fre.xbmp")
 //PRELOAD_XBOX_FILE("UI_ButtonsXBOX_TriggerL_Ita.xbmp")
 //PRELOAD_XBOX_FILE("UI_ButtonsXBOX_TriggerL_Spa.xbmp")
@@ -87,11 +87,11 @@ PRELOAD_XBOX_FILE("UI_TeamKillsIcon.xbmp"),
 PRELOAD_XBOX_FILE("UI_DeathIcon.xbmp"),
 PRELOAD_XBOX_FILE("UI_FlagsIcon.xbmp"),
 PRELOAD_XBOX_FILE("UI_VotesIcon.xbmp"),
-PRELOAD_XBOX_FILE("UI_FlagsIcon.xbmp"), // DUMMY
 PRELOAD_XBOX_FILE("UI_FlagsIcon.xbmp"),  // DUMMY
-PRELOAD_XBOX_FILE("UI_FlagsIcon.xbmp")  // DUMMY
+PRELOAD_XBOX_FILE("UI_FlagsIcon.xbmp"),  // DUMMY
+PRELOAD_XBOX_FILE("UI_FlagsIcon.xbmp")   // DUMMY
 };
-#else
+#elif defined(TARGET_PS2)
 static const char*  m_ButtonTexturesNames[] = {
 PRELOAD_PS2_FILE("UI_ButtonsPS2_x.xbmp"),                
 PRELOAD_PS2_FILE("UI_ButtonsPS2_square.xbmp"),           
@@ -115,9 +115,37 @@ PRELOAD_PS2_FILE("UI_TeamKillsIcon.xbmp"),
 PRELOAD_PS2_FILE("UI_DeathIcon.xbmp"),
 PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp"),
 PRELOAD_PS2_FILE("UI_VotesIcon.xbmp"),
-PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp"), // DUMMY
 PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp"),  // DUMMY
-PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp")  // DUMMY
+PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp"),  // DUMMY
+PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp")   // DUMMY
+};
+#elif defined(TARGET_PC) //DUMMY
+static const char*  m_ButtonTexturesNames[] = {
+PRELOAD_PS2_FILE("UI_ButtonsPS2_x.xbmp"),                
+PRELOAD_PS2_FILE("UI_ButtonsPS2_square.xbmp"),           
+PRELOAD_PS2_FILE("UI_ButtonsPS2_triangle.xbmp"),         
+PRELOAD_PS2_FILE("UI_ButtonsPS2_circle.xbmp"),           
+PRELOAD_PS2_FILE("UI_ButtonsPS2_directionalDown.xbmp"),  
+PRELOAD_PS2_FILE("UI_ButtonsPS2_directionalLeft.xbmp"),  
+PRELOAD_PS2_FILE("UI_ButtonsPS2_directionalUp.xbmp"),    
+PRELOAD_PS2_FILE("UI_ButtonsPS2_directionalRight.xbmp"),
+PRELOAD_PS2_FILE("UI_ButtonsPS2_directionalUpDown.xbmp"),
+PRELOAD_PS2_FILE("UI_ButtonsPS2_directionalLeftRight.xbmp"),
+PRELOAD_PS2_FILE("UI_ButtonsPS2_stickR.xbmp"),           
+PRELOAD_PS2_FILE("UI_ButtonsPS2_stickL.xbmp"),           
+PRELOAD_PS2_FILE("UI_ButtonsPS2_L1.xbmp"),               
+PRELOAD_PS2_FILE("UI_ButtonsPS2_L2.xbmp"),               
+PRELOAD_PS2_FILE("UI_ButtonsPS2_R1.xbmp"),               
+PRELOAD_PS2_FILE("UI_ButtonsPS2_R2.xbmp"),               
+PRELOAD_PS2_FILE("UI_ButtonsPS2_start.xbmp"),            
+PRELOAD_PS2_FILE("UI_KillsIcon.xbmp"),
+PRELOAD_PS2_FILE("UI_TeamKillsIcon.xbmp"),
+PRELOAD_PS2_FILE("UI_DeathIcon.xbmp"),
+PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp"),
+PRELOAD_PS2_FILE("UI_VotesIcon.xbmp"),
+PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp"),  // DUMMY
+PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp"),  // DUMMY
+PRELOAD_PS2_FILE("UI_FlagsIcon.xbmp")   // DUMMY
 };
 #endif
 
@@ -133,7 +161,7 @@ struct button_code
 };
 
 
-#if defined( TARGET_XBOX ) || defined( TARGET_PC )
+#if defined( TARGET_XBOX )
 static const button_code m_ButtonCodeTable[NUM_BUTTON_CODES] = {
     {   "x",            XBOX_BUTTON_A               },
     {   "q",            XBOX_BUTTON_X               },
@@ -194,7 +222,68 @@ static const button_code m_ButtonCodeTable[NUM_BUTTON_CODES] = {
     {   "TITLE",        CREDIT_TITLE_LINE,          },
     {   "CREDITEND",    CREDIT_END,                 }
 };
-#else
+#elif defined(TARGET_PS2)
+static const button_code m_ButtonCodeTable[NUM_BUTTON_CODES] = {
+    {   "x",            PS2_BUTTON_CROSS            },
+    {   "q",            PS2_BUTTON_SQUARE           },
+    {   "a",            PS2_BUTTON_TRIANGLE         },
+    {   "o",            PS2_BUTTON_CIRCLE           },
+    {   "d",            PS2_BUTTON_DPAD_DOWN        },
+    {   "l",            PS2_BUTTON_DPAD_LEFT        },
+    {   "u",            PS2_BUTTON_DPAD_UP          },
+    {   "r",            PS2_BUTTON_DPAD_RIGHT       },
+    {   "R",            PS2_BUTTON_STICK_RIGHT      },
+    {   "L",            PS2_BUTTON_STICK_LEFT       },
+    {   "1",            PS2_BUTTON_L1               },
+    {   "2",            PS2_BUTTON_L2               },
+    {   "3",            PS2_BUTTON_R1               },
+    {   "4",            PS2_BUTTON_R2               },
+    {   "S",            PS2_BUTTON_START            },
+    {   "SQUARE",       PS2_BUTTON_SQUARE           },
+    {   "CROSS",        PS2_BUTTON_CROSS            },
+    {   "TRIANGLE",     PS2_BUTTON_TRIANGLE         },
+    {   "CIRCLE",       PS2_BUTTON_CIRCLE           },
+    {   "DOWN",         PS2_BUTTON_DPAD_DOWN        },
+    {   "LEFT",         PS2_BUTTON_DPAD_LEFT        },
+    {   "UP",           PS2_BUTTON_DPAD_UP          },
+    {   "RIGHT",        PS2_BUTTON_DPAD_RIGHT       },
+    {   "UPDOWN",       PS2_BUTTON_DPAD_UPDOWN      },
+    {   "LEFTRIGHT",    PS2_BUTTON_DPAD_LEFTRIGHT   },
+    {   "L1",           PS2_BUTTON_L1               },
+    {   "L2",           PS2_BUTTON_L2               },
+    {   "L3",           PS2_BUTTON_STICK_LEFT       },
+    {   "R1",           PS2_BUTTON_R1               },
+    {   "R2",           PS2_BUTTON_R2               },
+    {   "R3",           PS2_BUTTON_STICK_RIGHT      },
+    {   "PAUSE",        PS2_BUTTON_START            },
+    {   "GRENADE",      PS2_BUTTON_SQUARE           }, 
+    {   "RELOAD",       PS2_BUTTON_CROSS            }, 
+    {   "USE",          PS2_BUTTON_CROSS            }, 
+    {   "PREVWEAPON",   PS2_BUTTON_TRIANGLE         }, 
+    {   "NEXTWEAPON",   PS2_BUTTON_CIRCLE           }, 
+    {   "LEANLEFT",     PS2_BUTTON_DPAD_LEFT        }, 
+    {   "LEANRIGHT",    PS2_BUTTON_DPAD_RIGHT       }, 
+    {   "LEAN",         PS2_BUTTON_DPAD_LEFTRIGHT   }, 
+    {   "MUTATE",       PS2_BUTTON_DPAD_UP          }, 
+    {   "TRANSFORM",    PS2_BUTTON_DPAD_UP          }, 
+    {   "JUMP",         PS2_BUTTON_L1               }, 
+    {   "CROUCH",       PS2_BUTTON_L2               }, 
+    {   "FLASHLIGHT",   PS2_BUTTON_STICK_LEFT       }, 
+    {   "FIRE",         PS2_BUTTON_R1               }, 
+    {   "SECONDARY",    PS2_BUTTON_R2               }, 
+    {   "MELEE",        PS2_BUTTON_STICK_RIGHT      }, 
+    {   "PARASITE",     PS2_BUTTON_R1               }, 
+    {   "CONTAGION",    PS2_BUTTON_R2               }, 
+    {   "KILLS",        KILL_ICON                   },
+    {   "DEATHS",       DEATH_ICON                  },
+    {   "TKS",          TEAM_KILL_ICON              },
+    {   "FLAGS",        FLAG_ICON                   },
+    {   "VOTES",        VOTE_ICON                   },
+    {   "NEWPAGE",      NEW_CREDIT_PAGE,            },
+    {   "TITLE",        CREDIT_TITLE_LINE,          },
+    {   "CREDITEND",    CREDIT_END,                 }
+};
+#elif defined(TARGET_PC) //DUMMY
 static const button_code m_ButtonCodeTable[NUM_BUTTON_CODES] = {
     {   "x",            PS2_BUTTON_CROSS            },
     {   "q",            PS2_BUTTON_SQUARE           },
@@ -506,8 +595,9 @@ s32 ui_manager::Init( void )
     g_StringTableMgr.LoadTable( "lore_ingame", xfs("%s\\%s", g_RscMgr.GetRootDirectory(), "ENG_ingame_lore_strings.stringbin") );
 
     //-- Load Elements
+    #if defined( TARGET_XBOX ) || defined( TARGET_PS2 ) || defined( TARGET_PC )
     (void)m_ButtonTexturesNames;
-
+    #endif
 
     //-- Fonts
     LoadFont        ( "large",          PRELOAD_FILE("UI_A51FontLarge.xbmp"  ) ); // PRELOAD_FILE("UI_A51FontLarge.font"  )  
@@ -542,7 +632,7 @@ s32 ui_manager::Init( void )
     LoadElement     ( "button_edit",    PRELOAD_FILE("UI_editbox.xbmp"),               5, 3, 1 );
 
     //-- Presence Icons
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
     LoadBitmap      ( "icon_friend",            PRELOAD_XBOX_FILE("UI_XBOX_Icon_Friend.xbmp"            ) );
     LoadBitmap      ( "icon_friend_req_sent",   PRELOAD_XBOX_FILE("UI_XBOX_Icon_Friend_Req_Sent.xbmp"   ) );
     LoadBitmap      ( "icon_friend_req_rcvd",   PRELOAD_XBOX_FILE("UI_XBOX_Icon_Friend_Req_Rcvd.xbmp"   ) );
@@ -552,7 +642,18 @@ s32 ui_manager::Init( void )
     LoadBitmap      ( "icon_voice_muted",       PRELOAD_XBOX_FILE("UI_XBOX_Icon_Voice_Muted.xbmp"       ) );
     LoadBitmap      ( "icon_voice_thru_tv",     PRELOAD_XBOX_FILE("UI_XBOX_Icon_Voice_Thru_TV.xbmp"     ) );
     LoadBitmap      ( "icon_voice_speaking",    PRELOAD_XBOX_FILE("UI_XBOX_Icon_Voice_Speaking.xbmp"    ) );
-#else
+#elif defined(TARGET_PS2)
+    LoadBitmap      ( "icon_friend",            PRELOAD_PS2_FILE("UI_PS2_Icon_Friend.xbmp"              ) );
+    LoadBitmap      ( "icon_voice_on",          PRELOAD_PS2_FILE("UI_PS2_Icon_Voice_On.xbmp"            ) );
+    LoadBitmap      ( "icon_voice_muted",       PRELOAD_PS2_FILE("UI_PS2_Icon_Voice_Muted.xbmp"         ) );
+    LoadBitmap      ( "icon_voice_thru_tv",     PRELOAD_PS2_FILE("UI_PS2_Icon_Voice_Thru_TV.xbmp"       ) );
+    LoadBitmap      ( "icon_friend_req_sent",   PRELOAD_PS2_FILE("UI_PS2_Icon_Friend_Req_Sent.xbmp"     ) );
+    LoadBitmap      ( "icon_friend_req_rcvd",   PRELOAD_PS2_FILE("UI_PS2_Icon_Friend_Req_Rcvd.xbmp"     ) );
+    LoadBitmap      ( "icon_invite_sent",       PRELOAD_PS2_FILE("UI_PS2_Icon_Invite_Sent.xbmp"         ) );
+    LoadBitmap      ( "icon_invite_rcvd",       PRELOAD_PS2_FILE("UI_PS2_Icon_Invite_Rcvd.xbmp"         ) );
+    LoadBitmap      ( "icon_voice_speaking",    PRELOAD_PS2_FILE("UI_PS2_Icon_Voice_Speaking.xbmp"      ) );
+    LoadBitmap      ( "gamespy_logo",           PRELOAD_PS2_FILE("UI_PS2_GameSpy_Logo.xbmp"             ) );
+#elif defined(TARGET_PC) //DUMMY
     LoadBitmap      ( "icon_friend",            PRELOAD_PS2_FILE("UI_PS2_Icon_Friend.xbmp"              ) );
     LoadBitmap      ( "icon_voice_on",          PRELOAD_PS2_FILE("UI_PS2_Icon_Voice_On.xbmp"            ) );
     LoadBitmap      ( "icon_voice_muted",       PRELOAD_PS2_FILE("UI_PS2_Icon_Voice_Muted.xbmp"         ) );
@@ -565,7 +666,7 @@ s32 ui_manager::Init( void )
     LoadBitmap      ( "gamespy_logo",           PRELOAD_PS2_FILE("UI_PS2_GameSpy_Logo.xbmp"             ) );
 #endif
 
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
     //-- Load up Custom Button Icons for String output
     if( x_GetTerritory() == XL_TERRITORY_AMERICA )
     {
@@ -604,11 +705,16 @@ s32 ui_manager::Init( void )
             }
         }
     }
-#else
+#elif defined(TARGET_PS2)
     for (s32 i=0;i<NUM_BUTTON_TEXTURES;i++)
     {
         m_ButtonTextures[i].SetName(m_ButtonTexturesNames[i]);
     }
+#elif defined(TARGET_PC) //DUMMY
+    for (s32 i=0;i<NUM_BUTTON_TEXTURES;i++)
+    {
+        m_ButtonTextures[i].SetName(m_ButtonTexturesNames[i]);
+    }    
 #endif
 
     s32 MemoryBudget = MemoryStart - x_MemGetFree();
@@ -626,18 +732,6 @@ s32 ui_manager::Init( void )
     // set scaling factors based on resolution
     SetRes();
 
-#ifdef TARGET_PC
-//#ifdef T2_DESIGNER_BUILD
-//    ShowCursor(TRUE);
-//#else
-//    ShowCursor(FALSE);
-//#endif
-//    m_Mouse.Load( "\\gamedata\\meridian\\resources\\PC\\Common\\UI\\ui_cursor.xbmp");
-//    VERIFY( vram_Register( m_Mouse ) ); 
-//    m_MouseColor.Set(xcolor(224,224,224,224));    //-- Jhowa
-    //d3deng_SetMouseMode( MOUSE_MODE_ALWAYS );
-//    d3deng_SetMouseMode( MOUSE_MODE_ABSOLUTE ) ;
-#endif
     // Allow processing of user input
     m_EnableUserInput = TRUE;
     m_ActiveController = 0;
@@ -740,10 +834,12 @@ void ui_manager::Kill( void )
     m_DialogClasses.Delete( 0, m_DialogClasses.GetCount() );
 
     // Free Button Icons
+    #if defined( TARGET_XBOX ) || defined( TARGET_PS2 )
     for (s32 i=0;i<NUM_BUTTON_TEXTURES;i++)
     {
         m_ButtonTextures[i].Destroy();
     }
+    #endif
 }
 
 //=========================================================================
@@ -1151,10 +1247,6 @@ s32 ui_manager::LoadElement( const char* pName, const char* pPathName, s32 nStat
     // Register the bitmap for VRAM
     //vram_Register( pElement->Bitmap );
 
-//#ifdef TARGET_GCN
-//  vram_SetFilterMode( pElement->Bitmap, VRAM_POINT, VRAM_POINT ); 
-//#endif
-
     // Add element to array and return ID
     m_Elements.Append() = pElement;
     return m_Elements.GetCount()-1;
@@ -1242,10 +1334,6 @@ void ui_manager::RenderElement( s32 iElement, const irect& Position, s32 State, 
         gsreg_SetAlphaBlend( ALPHA_BLEND_MODE(C_SRC,C_ZERO,A_SRC,C_DST) );
         gsreg_End();
 #endif
-
-#ifdef TARGET_GCN
-        GXSetBlendMode( GX_BM_BLEND, GX_BL_SRCALPHA, GX_BL_ONE, GX_LO_NOOP );
-#endif
     }
 
     // Render all the parts of the element
@@ -1273,7 +1361,7 @@ void ui_manager::RenderElement( s32 iElement, const irect& Position, s32 State, 
         for( ix=0 ; ix<pElement->cx ; ix++ )
         {
             // Calculate UVs
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX) || defined(TARGET_PC)
             uv0.X = ((f32)pElement->r[ie].l + 0.5f) / pBitmap->GetWidth();
             uv0.Y = ((f32)pElement->r[ie].t + 0.5f) / pBitmap->GetHeight();
             uv1.X = ((f32)pElement->r[ie].r - 0.5f) / pBitmap->GetWidth();
@@ -1301,25 +1389,13 @@ void ui_manager::RenderElement( s32 iElement, const irect& Position, s32 State, 
 #else
             draw_SpriteUV( vector3( p.X, p.Y, 0.0f ), wh, uv0, uv1, Color );
 #endif
-
             // Advance position on x
-#ifdef TARGET_GCN            
-            p.X += wh.X - 1; //-- HACK to fix the tile breaks
-#else
             p.X += wh.X;
-#endif
-
-
             // Advance index to element
             ie++;
         }
-
         // Advance position on y
-#ifdef TARGET_GCN            
-        p.Y += wh.Y - 1; //-- HACK to fix the tile breaks
-#else
         p.Y += wh.Y;
-#endif
     }
 
     // End drawing
@@ -1791,27 +1867,15 @@ s32 ui_manager::CreateUser( s32 ControllerID, const irect& Bounds, s32 Data )
             pUser->LStickDown[i]   .SetupAnalog( -1.0f, 0.15f, 0.2f );
             pUser->LStickLeft[i]   .SetupAnalog( -1.0f, 0.15f, 0.2f );
             pUser->LStickRight[i]  .SetupAnalog(  1.0f, 0.15f, 0.2f );
-#else
+#elif defined (TARGET_PC) 
             pUser->DPadUp[i]       .SetupRepeat( 0.200f, 0.060f );
             pUser->DPadDown[i]     .SetupRepeat( 0.200f, 0.060f );
             pUser->DPadLeft[i]     .SetupRepeat( 0.200f, 0.060f );
             pUser->DPadRight[i]    .SetupRepeat( 0.200f, 0.060f );
             pUser->PadSelect[i]    .SetupRepeat( 0.200f, 0.060f );
             pUser->PadBack[i]      .SetupRepeat( 0.200f, 0.060f );
-            pUser->PadHelp[i]      .SetupRepeat( 0.200f, 0.060f );
+            pUser->PadDelete[i]    .SetupRepeat( 0.200f, 0.060f );
             pUser->PadActivate[i]  .SetupRepeat( 0.200f, 0.060f );
-            pUser->PadShoulderL[i] .SetupRepeat( 0.200f, 0.060f );
-            pUser->PadShoulderR[i] .SetupRepeat( 0.200f, 0.060f );
-            pUser->PadShoulderL2[i].SetupRepeat( 0.200f, 0.060f );
-            pUser->PadShoulderR2[i].SetupRepeat( 0.200f, 0.060f );
-            pUser->LStickUp[i]     .SetupRepeat( 40.600f, 10.600f );
-            pUser->LStickDown[i]   .SetupRepeat( 40.600f, 10.600f );
-            pUser->LStickLeft[i]   .SetupRepeat( 40.600f, 10.600f );
-            pUser->LStickRight[i]  .SetupRepeat( 40.600f, 10.600f );
-            pUser->LStickUp[i]     .SetupAnalog(  1.0f, 0.15f, 0.2f );
-            pUser->LStickDown[i]   .SetupAnalog( -1.0f, 0.15f, 0.2f );
-            pUser->LStickLeft[i]   .SetupAnalog( -1.0f, 0.15f, 0.2f );
-            pUser->LStickRight[i]  .SetupAnalog(  1.0f, 0.15f, 0.2f );
 #endif
         }
         static const s32 MAX_DIALOGS_EVER = 20;
@@ -2196,44 +2260,38 @@ xbool ui_manager::ProcessInput( f32 DeltaTime, s32 UserID )
             if ( g_MonkeyOptions.Enabled && g_MonkeyOptions.ModeEnabled[MONKEY_MENUMONKEY] )
             {
 #ifndef X_RELEASE
-                UpdateButton( pUser->DPadUp[i],         g_Monkey.GetUIButtonValue( MONKEY_UI_UP ),          DeltaTime);                    
-                UpdateButton( pUser->DPadDown[i],       g_Monkey.GetUIButtonValue( MONKEY_UI_DOWN ),        DeltaTime);
-                UpdateButton( pUser->DPadLeft[i],       g_Monkey.GetUIButtonValue( MONKEY_UI_LEFT ),        DeltaTime);
-                UpdateButton( pUser->DPadRight[i],      g_Monkey.GetUIButtonValue( MONKEY_UI_RIGHT ),       DeltaTime);
-                UpdateButton( pUser->PadSelect[i],      g_Monkey.GetUIButtonValue( MONKEY_UI_SELECT ),      DeltaTime);
-                UpdateButton( pUser->PadBack[i],        g_Monkey.GetUIButtonValue( MONKEY_UI_BACK ),        DeltaTime);
-                UpdateButton( pUser->PadDelete[i],      g_Monkey.GetUIButtonValue( MONKEY_UI_DELETE ),      DeltaTime);
-                UpdateButton( pUser->PadActivate[i],    g_Monkey.GetUIButtonValue( MONKEY_UI_ACTIVATE ),    DeltaTime);
-                UpdateButton( pUser->PadShoulderL[i],   g_Monkey.GetUIButtonValue( MONKEY_UI_SHOULDERL ),   DeltaTime);
-                UpdateButton( pUser->PadShoulderR[i],   g_Monkey.GetUIButtonValue( MONKEY_UI_SHOULDERR ),   DeltaTime);
-                UpdateButton( pUser->PadShoulderL2[i],  g_Monkey.GetUIButtonValue( MONKEY_UI_SHOULDERL2 ),  DeltaTime);
-                UpdateButton( pUser->PadShoulderR2[i],  g_Monkey.GetUIButtonValue( MONKEY_UI_SHOULDERR2 ),  DeltaTime);
-                UpdateButton( pUser->PadHelp[i],        g_Monkey.GetUIButtonValue( MONKEY_UI_HELP ),        DeltaTime);
+                //UpdateButton( pUser->DPadUp[i],         g_Monkey.GetUIButtonValue( MONKEY_UI_UP ),          DeltaTime);                    
+                //UpdateButton( pUser->DPadDown[i],       g_Monkey.GetUIButtonValue( MONKEY_UI_DOWN ),        DeltaTime);
+                //UpdateButton( pUser->DPadLeft[i],       g_Monkey.GetUIButtonValue( MONKEY_UI_LEFT ),        DeltaTime);
+                //UpdateButton( pUser->DPadRight[i],      g_Monkey.GetUIButtonValue( MONKEY_UI_RIGHT ),       DeltaTime);
+                //UpdateButton( pUser->PadSelect[i],      g_Monkey.GetUIButtonValue( MONKEY_UI_SELECT ),      DeltaTime);
+                //UpdateButton( pUser->PadBack[i],        g_Monkey.GetUIButtonValue( MONKEY_UI_BACK ),        DeltaTime);
+                //UpdateButton( pUser->PadDelete[i],      g_Monkey.GetUIButtonValue( MONKEY_UI_DELETE ),      DeltaTime);
+                //UpdateButton( pUser->PadActivate[i],    g_Monkey.GetUIButtonValue( MONKEY_UI_ACTIVATE ),    DeltaTime);
+                //UpdateButton( pUser->PadShoulderL[i],   g_Monkey.GetUIButtonValue( MONKEY_UI_SHOULDERL ),   DeltaTime);
+                //UpdateButton( pUser->PadShoulderR[i],   g_Monkey.GetUIButtonValue( MONKEY_UI_SHOULDERR ),   DeltaTime);
+                //UpdateButton( pUser->PadShoulderL2[i],  g_Monkey.GetUIButtonValue( MONKEY_UI_SHOULDERL2 ),  DeltaTime);
+                //UpdateButton( pUser->PadShoulderR2[i],  g_Monkey.GetUIButtonValue( MONKEY_UI_SHOULDERR2 ),  DeltaTime);
+                //UpdateButton( pUser->PadHelp[i],        g_Monkey.GetUIButtonValue( MONKEY_UI_HELP ),        DeltaTime);
+                x_throw ("INTERVELOP!" );
 #endif
             }
             else
             {
-                UpdateButton( pUser->DPadUp[i],        input_IsPressed( INPUT_PS2_BTN_L_UP,      i ), DeltaTime );
-                UpdateButton( pUser->DPadDown[i],      input_IsPressed( INPUT_PS2_BTN_L_DOWN,    i ), DeltaTime );
-                UpdateButton( pUser->DPadLeft[i],      input_IsPressed( INPUT_PS2_BTN_L_LEFT,    i ), DeltaTime );
-                UpdateButton( pUser->DPadRight[i],     input_IsPressed( INPUT_PS2_BTN_L_RIGHT,   i ), DeltaTime );
+                UpdateButton( pUser->DPadUp[i],    (input_IsPressed( INPUT_KBD_UP,    i ) || input_IsPressed( INPUT_KBD_W, i )), DeltaTime );
+                UpdateButton( pUser->DPadDown[i],  (input_IsPressed( INPUT_KBD_DOWN,  i ) || input_IsPressed( INPUT_KBD_S, i )), DeltaTime );
+                UpdateButton( pUser->DPadLeft[i],  (input_IsPressed( INPUT_KBD_LEFT,  i ) || input_IsPressed( INPUT_KBD_A, i )), DeltaTime );
+                UpdateButton( pUser->DPadRight[i], (input_IsPressed( INPUT_KBD_RIGHT, i ) || input_IsPressed( INPUT_KBD_D, i )), DeltaTime );
                 
-                UpdateButton( pUser->PadSelect[i],     input_WasPressed( INPUT_PS2_BTN_CROSS,    i ), DeltaTime );
-                UpdateButton( pUser->PadBack[i],       input_WasPressed( INPUT_PS2_BTN_TRIANGLE, i ), DeltaTime );
-                UpdateButton( pUser->PadDelete[i],     input_WasPressed( INPUT_PS2_BTN_SQUARE,   i ), DeltaTime );
-                UpdateButton( pUser->PadActivate[i],   input_WasPressed( INPUT_PS2_BTN_CIRCLE,   i ), DeltaTime );
-                UpdateButton( pUser->PadShoulderL[i],  input_WasPressed( INPUT_PS2_BTN_L1,       i ), DeltaTime );
-                UpdateButton( pUser->PadShoulderR[i],  input_WasPressed( INPUT_PS2_BTN_R1,       i ), DeltaTime );
-                UpdateButton( pUser->PadShoulderL2[i], input_WasPressed( INPUT_PS2_BTN_L2,       i ), DeltaTime );
-                UpdateButton( pUser->PadShoulderR2[i], input_WasPressed( INPUT_PS2_BTN_R2,       i ), DeltaTime );
-                UpdateButton( pUser->PadHelp[i],       input_WasPressed( INPUT_PS2_BTN_START,    i ), DeltaTime );
+                UpdateButton( pUser->PadSelect[i],     input_WasPressed( INPUT_KBD_RETURN, i ), DeltaTime );
+                UpdateButton( pUser->PadBack[i],       input_WasPressed( INPUT_KBD_ESCAPE, i ), DeltaTime );
+                
+                
+                //Idk, it should be like this?
+                UpdateButton( pUser->PadDelete[i], (input_WasPressed( INPUT_KBD_DELETE, i ) || input_WasPressed( INPUT_KBD_BACK, i )), DeltaTime ); //Usefull for deleting player profiles and etc.
+                //TEMP!!!
+                UpdateButton( pUser->PadActivate[i],   input_WasPressed( INPUT_KBD_R,   i ), DeltaTime ); //Usefull for editing player profiles and etc.                
             }
-            
-            UpdateAnalog( pUser->LStickUp[i],      input_GetValue( INPUT_PS2_STICK_LEFT_Y,   i ), DeltaTime );
-            UpdateAnalog( pUser->LStickDown[i],    input_GetValue( INPUT_PS2_STICK_LEFT_Y,   i ), DeltaTime );
-            UpdateAnalog( pUser->LStickLeft[i],    input_GetValue( INPUT_PS2_STICK_LEFT_X,   i ), DeltaTime );
-            UpdateAnalog( pUser->LStickRight[i],   input_GetValue( INPUT_PS2_STICK_LEFT_X,   i ), DeltaTime );
-
             // Keep index of last controller that pressed a select button so we can hack
             // the controller number into the players controller for 1 player games
             if( pUser->PadSelect[i].nPresses > 0 )
@@ -2420,70 +2478,6 @@ xbool ui_manager::ProcessInput( f32 DeltaTime, s32 UserID )
         }
 #endif
 
-#ifdef TARGET_GCN
-
-        if( ENABLE_SCREENSHOTS && input_WasPressed( INPUT_GCN_BTN_Z, 0 ) )
-        {
-            eng_ScreenShot("c:\\screenShot.tga");
-        }
-
-        // Update d-pad buttons
-        StartController = pUser->ControllerID;
-        EndController   = StartController;
-        if( StartController == -1 )
-        {
-            StartController = 0;
-            EndController   = 0;
-        }
-        {
-            s32 i;
-
-            for( i=StartController ; i<=EndController ; i++ )
-            {
-
-
-// Jhowa Changed to Was for debounce .. will have to change back later.
-//                UpdateButton( pUser->DPadUp[i],        input_IsPressed( INPUT_GCN_BTN_UP,     i ), DeltaTime );
-//                UpdateButton( pUser->DPadDown[i],      input_IsPressed( INPUT_GCN_BTN_DOWN,   i ), DeltaTime );
-//                UpdateButton( pUser->DPadLeft[i],      input_IsPressed( INPUT_GCN_BTN_LEFT,   i ), DeltaTime );
-//                UpdateButton( pUser->DPadRight[i],     input_IsPressed( INPUT_GCN_BTN_RIGHT,  i ), DeltaTime );
-//
-//                UpdateButton( pUser->PadSelect[i],     input_IsPressed( INPUT_GCN_BTN_A,    i ), DeltaTime );
-//                UpdateButton( pUser->PadBack[i],       input_IsPressed( INPUT_GCN_BTN_B, i ), DeltaTime );
-//                UpdateButton( pUser->PadDelete[i],     input_IsPressed( INPUT_GCN_BTN_Z,   i ), DeltaTime );
-//                UpdateButton( pUser->PadShoulderL[i],  input_IsPressed( INPUT_GCN_BTN_L,       i ), DeltaTime );
-//                UpdateButton( pUser->PadShoulderR[i],  input_IsPressed( INPUT_GCN_BTN_R,       i ), DeltaTime );
-// end
-
-                UpdateButton( pUser->DPadUp[i],        input_WasPressed( INPUT_GCN_BTN_UP,     i ), DeltaTime );
-                UpdateButton( pUser->DPadDown[i],      input_WasPressed( INPUT_GCN_BTN_DOWN,   i ), DeltaTime );
-                UpdateButton( pUser->DPadLeft[i],      input_WasPressed( INPUT_GCN_BTN_LEFT,   i ), DeltaTime );
-                UpdateButton( pUser->DPadRight[i],     input_WasPressed( INPUT_GCN_BTN_RIGHT,  i ), DeltaTime );
-
-                UpdateButton( pUser->PadSelect[i],     input_WasPressed( INPUT_GCN_BTN_A,       i ), DeltaTime );
-                UpdateButton( pUser->PadBack[i],       input_WasPressed( INPUT_GCN_BTN_B,       i ), DeltaTime );
-                UpdateButton( pUser->PadDelete[i],     input_WasPressed( INPUT_GCN_BTN_Z,       i ), DeltaTime );
-                UpdateButton( pUser->PadShoulderL[i],  input_WasPressed( INPUT_GCN_BTN_L,       i ), DeltaTime );
-                UpdateButton( pUser->PadShoulderR[i],  input_WasPressed( INPUT_GCN_BTN_R,       i ), DeltaTime );
-                UpdateButton( pUser->PadHelp[i],       input_WasPressed( INPUT_GCN_BTN_START,   i ), DeltaTime );
-
-                UpdateAnalog( pUser->LStickUp[i],       input_GetValue( INPUT_GCN_STICK_LEFT_Y, i ), DeltaTime );
-                UpdateAnalog( pUser->LStickDown[i],     input_GetValue( INPUT_GCN_STICK_LEFT_Y, i ), DeltaTime );
-                UpdateAnalog( pUser->LStickLeft[i],     input_GetValue( INPUT_GCN_STICK_LEFT_X, i ), DeltaTime );
-                UpdateAnalog( pUser->LStickRight[i],    input_GetValue( INPUT_GCN_STICK_LEFT_X, i ), DeltaTime );
-
-
-                // Keep index of last controller that pressed a select button so we can hack
-                // the controller number into the players controller for 1 player games
-                if( pUser->PadSelect[i].nPresses > 0 )
-                {
-                    g_uiLastSelectController = i;
-                }
-            }
-        }
-#endif
-
-
         // Only do this if there is a target window
         if( pWin )
         {
@@ -2498,18 +2492,6 @@ xbool ui_manager::ProcessInput( f32 DeltaTime, s32 UserID )
             if( pUser->ButtonMB.nReleases ) pWin->OnMBUp  ( pWin );
             if( pUser->ButtonRB.nPresses  ) pWin->OnRBDown( pWin );
             if( pUser->ButtonRB.nReleases ) pWin->OnRBUp  ( pWin );
-
-#ifdef TARGET_PC
-/*          // Can't do this anymore, talk to SULTAN to inquire why.
-            for( s32 i = INPUT_KBD_ESCAPE; i <= INPUT_KBD_DELETE; i++)
-            {   
-                if( input_IsPressed( (input_gadget)i ) )
-                    pWin->OnKeyDown( pWin, i );
-                else
-                    pWin->OnKeyUp( pWin, i );
-            }
-*/
-#endif
 
             // Sum up button presses
             s32 pDPadUp         = 0;
@@ -2528,11 +2510,13 @@ xbool ui_manager::ProcessInput( f32 DeltaTime, s32 UserID )
             s32 PadBack         = 0;
             s32 PadDelete       = 0;
             s32 PadActivate     = 0;
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)            
             s32 PadShoulderL    = 0;
             s32 PadShoulderR    = 0;
             s32 PadShoulderL2   = 0;
-            s32 PadShoulderR2   = 0;
+            s32 PadShoulderR2   = 0;        
             s32 PadHelp         = 0;
+#endif                
             {
 #if !defined(X_RETAIL)
                 bInProcessInput = TRUE;
@@ -2560,6 +2544,7 @@ xbool ui_manager::ProcessInput( f32 DeltaTime, s32 UserID )
                     PadBack         = pUser->PadBack[i].nPresses;
                     PadDelete       = pUser->PadDelete[i].nPresses;
                     PadActivate     = pUser->PadActivate[i].nPresses;
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)                
                     PadShoulderL    = pUser->PadShoulderL[i].nPresses + pUser->PadShoulderL[i].nRepeats;
                     PadShoulderR    = pUser->PadShoulderR[i].nPresses + pUser->PadShoulderR[i].nRepeats;
                     PadShoulderL2   = pUser->PadShoulderL2[i].nPresses + pUser->PadShoulderL2[i].nRepeats;
@@ -2579,7 +2564,7 @@ xbool ui_manager::ProcessInput( f32 DeltaTime, s32 UserID )
                     tDPadDown       += pUser->LStickDown[i].nPresses  + pUser->LStickDown[i].nRepeats;
                     tDPadLeft       += pUser->LStickLeft[i].nPresses  + pUser->LStickLeft[i].nRepeats;
                     tDPadRight      += pUser->LStickRight[i].nPresses + pUser->LStickRight[i].nRepeats;
-
+#endif
 
                     // send commands for each controller
                     s_EndDialogCount=0;
@@ -2624,7 +2609,7 @@ xbool ui_manager::ProcessInput( f32 DeltaTime, s32 UserID )
                     { 
                         Iterate = TRUE; pWin->OnPadActivate( pWin ); 
                     }
-                    
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)                  
                     if( !Iterate && PadHelp     && !s_EndDialogCount ) 
                     { 
                         Iterate = TRUE; pWin->OnPadHelp    ( pWin ); 
@@ -2648,7 +2633,7 @@ xbool ui_manager::ProcessInput( f32 DeltaTime, s32 UserID )
                     { 
                         pWin->OnPadShoulder2( pWin,  1 ); 
                     }
-
+#endif
                     s_EndDialogCount=0;
                 }
 #if !defined(X_RETAIL)
@@ -2712,14 +2697,16 @@ void ui_manager::DisableUserInput( void )
             pUser->DPadLeft[j]    .Clear();
             pUser->DPadRight[j]   .Clear();
             pUser->DPadUp[j]      .Clear();
+            pUser->PadSelect[j]   .Clear();
+            pUser->PadBack[j]     .Clear();
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)            
             pUser->LStickDown[j]  .Clear();
             pUser->LStickLeft[j]  .Clear();
             pUser->LStickRight[j] .Clear();
             pUser->LStickUp[j]    .Clear();
-            pUser->PadSelect[j]   .Clear();
-            pUser->PadBack[j]     .Clear();
             pUser->PadShoulderL[j].Clear();
             pUser->PadShoulderR[j].Clear();
+#endif            
         }
     }
 }
@@ -3422,20 +3409,26 @@ void ui_manager::SetRes( void )
     s32 XRes, YRes;
     eng_GetRes( XRes, YRes );
 
-#if (defined( TARGET_PC ) && !defined( X_EDITOR )) || defined(TARGET_PS2)
+#if defined(TARGET_PC) && !defined(X_EDITOR)
     m_ScaleX = (f32)XRes / 512.0f;
     m_ScaleY = (f32)YRes / 448.0f;
-#else   // is editor or xbox
-    m_ScaleX = 1.0f;
-    m_ScaleY = 1.0f;
-#endif
-
-#ifdef TARGET_XBOX
+#elif defined(TARGET_PS2)
+    m_ScaleX = (f32)XRes / 512.0f;
+    m_ScaleY = (f32)YRes / 448.0f;
+#elif defined(TARGET_XBOX)
     if( XRes == 1280 )
     {
         m_ScaleX = (f32)XRes / 512.0f;
         m_ScaleY = (f32)YRes / 448.0f;
     }
+    else
+    {
+        m_ScaleX = 1.0f;
+        m_ScaleY = 1.0f;
+    }
+#else   // is editor
+    m_ScaleX = 1.0f;
+    m_ScaleY = 1.0f;
 #endif
 }
 

@@ -131,10 +131,6 @@ struct MDB_FDR {
 #define ifdNil -1
 #define ifdTemp 0
 #define ilnNil -1
-//#define __sgi_mld_set_cpd(__fdr,__val) ((__fdr)->cpd = __val , (__fdr)->cpdMSBits
-//#define __sgi_mld_get_cpd(__fdr) ((__fdr)->cpd | ((__fdr)->cpdMSBits<<16))
-//#define __sgi_mld_set_ipdFirst(__fdr,__val) ((__fdr)->ipdFirst = __val , (__fdr)->
-//#define __sgi_mld_get_ipdFirst(__fdr) ((__fdr)->ipdFirst | ((__fdr)->ipdFirstMSBits<<
 
 //==============================================================================
 // MDB_SYMR

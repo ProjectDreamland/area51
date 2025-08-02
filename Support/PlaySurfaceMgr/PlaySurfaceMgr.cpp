@@ -329,8 +329,10 @@ void playsurface_mgr::RebuildList( const xarray<guid>& lstGuidsToExport,platform
                     Size = sizeof(u32)*ZoneInfo.NColors;
                     break;
                 case PLATFORM_PS2:
+				    Size = sizeof(u16)*ZoneInfo.NColors;
+                    break;
                 case PLATFORM_PC:
-                    Size = sizeof(u16)*ZoneInfo.NColors;
+                    Size = sizeof(u32)*ZoneInfo.NColors;
                     break;
 
                 default:
@@ -359,8 +361,10 @@ void playsurface_mgr::RebuildList( const xarray<guid>& lstGuidsToExport,platform
                     Size = sizeof(u32)*ZoneInfo.NColors;
                     break;
                 case PLATFORM_PS2:
+				    Size = sizeof(u16)*ZoneInfo.NColors;
+                    break;
                 case PLATFORM_PC:
-                    Size = sizeof(u16)*ZoneInfo.NColors;
+                    Size = sizeof(u32)*ZoneInfo.NColors;
                     break;
 
                 default:
@@ -428,8 +432,10 @@ void playsurface_mgr::RebuildList( const xarray<guid>& lstGuidsToExport,platform
                 pSurface->ColorOffset   = pZoneInfo->NColors*sizeof(u32);
                 break;
             case PLATFORM_PS2:
+			    pSurface->ColorOffset   = pZoneInfo->NColors*sizeof(u16);
+                break;
             case PLATFORM_PC:
-                pSurface->ColorOffset   = pZoneInfo->NColors*sizeof(u16);
+                pSurface->ColorOffset   = pZoneInfo->NColors*sizeof(u32);
                 break;
 
             default:
@@ -457,8 +463,10 @@ void playsurface_mgr::RebuildList( const xarray<guid>& lstGuidsToExport,platform
                     Size = RigidInst.GetNumColors()*sizeof(u32);
                     break;
                 case PLATFORM_PS2:
+				    Size = RigidInst.GetNumColors()*sizeof(u16);
+                    break;
                 case PLATFORM_PC:
-                    Size = RigidInst.GetNumColors()*sizeof(u16);
+                    Size = RigidInst.GetNumColors()*sizeof(u32);
                     break;
 
                 default:
@@ -577,15 +585,19 @@ void playsurface_mgr::LoadZone( zone_info& Zone )
     if ( Zone.NColors )
     {
         MEMORY_OWNER( "COLOR DATA" );
-    #ifdef TARGET_XBOX
+	#if defined(TARGET_XBOX)
         vert_factory::handle hColorData = g_VertFactory.Create( "Zone colour data",Zone.NColors*sizeof( u32 ),0 );
         x_fread( hColorData->m_Ptr,sizeof(u32),Zone.NColors,m_File );
         Zone.pColorData = hColorData->m_Ptr;
         Zone.hColorData = hColorData;
-    #else
+    #elif defined(TARGET_PS2)
         Zone.pColorData = (byte*)x_malloc(Zone.NColors*sizeof(u16));
         ASSERT ( Zone.pColorData );
         x_fread( Zone.pColorData, 1, Zone.NColors*sizeof(u16), m_File );
+    #elif defined(TARGET_PC)
+        Zone.pColorData = (byte*)x_malloc(Zone.NColors*sizeof(u32));
+        ASSERT ( Zone.pColorData );
+        x_fread( Zone.pColorData, 1, Zone.NColors*sizeof(u32), m_File );
     #endif
     }
 
@@ -669,8 +681,10 @@ void playsurface_mgr::SaveFile( platform PlatformType )
                 StartOffset   += m_Zones[i].NColors*sizeof(u32);
                 break;
             case PLATFORM_PS2:
+			    StartOffset   += m_Zones[i].NColors*sizeof(u16);
+                break;
             case PLATFORM_PC:
-                StartOffset   += m_Zones[i].NColors*sizeof(u16);
+                StartOffset   += m_Zones[i].NColors*sizeof(u32);
                 break;
 
             default:
@@ -696,8 +710,10 @@ void playsurface_mgr::SaveFile( platform PlatformType )
                 StartOffset   += m_Portals[i].NColors*sizeof(u32);
                 break;
             case PLATFORM_PS2:
+			    StartOffset   += m_Portals[i].NColors*sizeof(u16);
+                break;
             case PLATFORM_PC:
-                StartOffset   += m_Portals[i].NColors*sizeof(u16);
+                StartOffset   += m_Portals[i].NColors*sizeof(u32);
                 break;
 
             default:
@@ -721,8 +737,10 @@ void playsurface_mgr::SaveFile( platform PlatformType )
                     x_fwrite( ZoneToSave.pColorData, sizeof(u32), ZoneToSave.NColors, m_File );
                     break;
                 case PLATFORM_PS2:
+				    x_fwrite( ZoneToSave.pColorData, sizeof(u16), ZoneToSave.NColors, m_File );
+                    break;
                 case PLATFORM_PC:
-                    x_fwrite( ZoneToSave.pColorData, sizeof(u16), ZoneToSave.NColors, m_File );
+                    x_fwrite( ZoneToSave.pColorData, sizeof(u32), ZoneToSave.NColors, m_File );
                     break;
 
                 default:
@@ -745,8 +763,10 @@ void playsurface_mgr::SaveFile( platform PlatformType )
                     x_fwrite( ZoneToSave.pColorData, sizeof(u32), ZoneToSave.NColors, m_File );
                     break;
                 case PLATFORM_PS2:
+				    x_fwrite( ZoneToSave.pColorData, sizeof(u16), ZoneToSave.NColors, m_File );
+                    break;
                 case PLATFORM_PC:
-                    x_fwrite( ZoneToSave.pColorData, sizeof(u16), ZoneToSave.NColors, m_File );
+                    x_fwrite( ZoneToSave.pColorData, sizeof(u32), ZoneToSave.NColors, m_File );
                     break;
 
                 default:
@@ -1247,11 +1267,19 @@ void playsurface_mgr::RenderZone( zone_info& ZoneInfo, zone_mgr::zone_id Zone1, 
                 Flags |= render::CLIPPED;
 
             // render it
+            #if defined(TARGET_XBOX) || defined(TARGET_PC)
+            render::AddRigidInstanceSimple( pSpadSurface->RenderInst,
+                                            (const u32*)pSpadSurface->pColor,
+                                            &pSurface->L2W,
+                                            pSpadSurface->WorldBBox,
+                                            Flags );
+            #else
             render::AddRigidInstanceSimple( pSpadSurface->RenderInst,
                                             (const u16*)pSpadSurface->pColor,
                                             &pSurface->L2W,
                                             pSpadSurface->WorldBBox,
                                             Flags );
+            #endif
 
             // clear any accumulated flags for the next frame
             pSurface->RenderFlags &= ~(render::CLIPPED | render::SHADOW_PASS | render::DO_SIMPLE_LIGHTING);

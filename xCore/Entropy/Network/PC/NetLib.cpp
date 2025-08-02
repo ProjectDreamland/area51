@@ -344,6 +344,10 @@ void net_EndConfig(void)
 {
 }
 
+void net_GetConnectStatus(connect_status &Status)
+{
+}
+
 //-----------------------------------------------------------------------------
 xbool net_socket::CanReceive( void )
 {
@@ -389,4 +393,3 @@ xbool net_socket::CanSend( void )
 
     return TRUE;
 }
-

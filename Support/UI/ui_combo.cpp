@@ -183,7 +183,11 @@ void ui_combo::Render( s32 ox, s32 oy )
         // Render Selection Text
         if( m_iSelection != -1 )
         {
+#if defined(TARGET_PC)
+            r2.Translate( 0, -22 );
+#else
             r2.Translate( 0, -10 );
+#endif
             m_pManager->RenderText( m_Font, r2, ui_font::h_center|ui_font::v_center, TextColor1, m_Items[m_iSelection].Label );
         }
 

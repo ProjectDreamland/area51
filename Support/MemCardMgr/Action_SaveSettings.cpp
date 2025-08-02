@@ -123,11 +123,18 @@ void MemCardMgr::MC_STATE_CREATE_SETTINGS( void )
 {
     condition& Pending = GetPendingCondition( m_iCard );
 
-#ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
     // make sure that we have enough space on the xbox
     if( Pending.BytesFree < g_StateMgr.GetSettingsSaveSize() )
     {
-        ChangeState( __id MC_STATE_SAVE_SETTINGS_FAILED );
+        ChangeState( __id MC_STATE_CREATE_PROFILE_FAILED );
+        return;
+    }
+#elif defined(TARGET_PC)
+    // make sure that we have enough space on the PC
+    if( Pending.BytesFree < g_StateMgr.GetSettingsSaveSize() )
+    {
+        ChangeState( __id MC_STATE_CREATE_PROFILE_FAILED );
         return;
     }
 #endif
@@ -140,11 +147,8 @@ void MemCardMgr::MC_STATE_CREATE_SETTINGS( void )
 
 #ifdef TARGET_XBOX
         pText = g_StringTableMgr( "ui", "MC_SAVING_SETTINGS_XBOX" );
-#else       
-        if( !m_iCard )
-            pText = g_StringTableMgr( "ui", "MC_SAVING_TO_MEMCARD_SLOT1" );
-        else
-            pText = g_StringTableMgr( "ui", "MC_SAVING_TO_MEMCARD_SLOT2" );
+#elif defined(TARGET_PC)      
+        pText = g_StringTableMgr( "ui", "MC_SAVING_SETTINGS_XBOX" );
 #endif
         WarningBox(
             g_StringTableMgr( "ui", "IDS_MEMCARD_HEADER"   ),  
@@ -154,8 +158,8 @@ void MemCardMgr::MC_STATE_CREATE_SETTINGS( void )
 
 #if defined(TARGET_XBOX)
         g_MemcardMgr.AsyncCreateDirectory( "Game Settings" );
-#else
-        g_MemcardMgr.AsyncCreateDirectory( xfs( "%s%s", m_SavePrefix, m_OptionsPostfix ) );
+#elif defined(TARGET_PC)
+        g_MemcardMgr.AsyncSetDirectory( "" ); //We dont using settings folders on PC.
 #endif
         ChangeState( __id MC_STATE_CREATE_SETTINGS_CREATE_DIR_WAIT );
 
@@ -220,11 +224,11 @@ void MemCardMgr::MC_STATE_SAVE_SETTINGS( void )
 
         // Before we can save settings, or a patch, we need to switch to that directory and
         // create it if necessary.
-    #ifdef TARGET_XBOX
+#if defined(TARGET_XBOX)
         g_MemcardMgr.AsyncSetDirectory( "Game Settings" );
-    #else
-        g_MemcardMgr.AsyncSetDirectory( xfs("%s%s",m_SavePrefix, m_OptionsPostfix) );
-    #endif
+#elif defined(TARGET_PC)
+        g_MemcardMgr.AsyncSetDirectory( "" ); //We dont using settings folders on PC.
+#endif
         ChangeState( __id MC_STATE_SAVE_SETTINGS_SET_DIR_WAIT );
     }
     else
@@ -254,8 +258,8 @@ void MemCardMgr::MC_STATE_SAVE_SETTINGS_SET_DIR_WAIT( void )
             *pSettings = g_StateMgr.GetPendingSettings();
             pSettings->Checksum();
             g_MemcardMgr.SetIconDisplayName( "Settings" );
-
-            g_MemcardMgr.AsyncWriteFile( xfs("%s%s", m_SavePrefix, m_OptionsPostfix), m_pLoadBuffer, RoundedSize );
+            
+            g_MemcardMgr.AsyncWriteFile( xfs("%s%s", m_SavePrefix, m_OptionsPostfix), m_pLoadBuffer, RoundedSize );    
             ChangeState( __id MC_STATE_SAVE_SETTINGS_WRITE_WAIT );
             return;
         }
@@ -306,56 +310,12 @@ void MemCardMgr::MC_STATE_SAVE_SETTINGS_WRITE_WAIT( void )
 
 void MemCardMgr::MC_STATE_SAVE_SETTINGS_FAILED(void)
 {
-    condition& Pending = GetPendingCondition(m_iCard);
-
-#ifdef TARGET_PS2
-    const xwchar* pText;
-
-    if( Pending.bNoCard )
-    {
-        if( m_MemcardMode == MEMCARD_CREATE_MODE )
-        {
-            if( !m_iCard )
-                pText = g_StringTableMgr( "ui", "MC_SAVE_FAILED_NO_CARD_SLOT1" );
-            else
-                pText = g_StringTableMgr( "ui", "MC_SAVE_FAILED_NO_CARD_SLOT2" );
-        }
-        else
-        {
-            if( !m_iCard )
-                pText = g_StringTableMgr( "ui", "MC_OVERWRITE_FAILED_NO_CARD_SLOT1" );
-            else
-                pText = g_StringTableMgr( "ui", "MC_OVERWRITE_FAILED_NO_CARD_SLOT2" );
-        }
-    }
-    else
-    {
-        if( m_MemcardMode == MEMCARD_CREATE_MODE )
-        {
-            if( !m_iCard )
-                pText = g_StringTableMgr( "ui", "MC_OVERWRITE_FAILED_CARD_CHANGED_SLOT1" );
-            else
-                pText = g_StringTableMgr( "ui", "MC_OVERWRITE_FAILED_CARD_CHANGED_SLOT2" );
-        }
-        else
-        {
-            if( !m_iCard )
-                pText = g_StringTableMgr( "ui", "MC_SAVE_FAILED_CARD_CHANGED_SLOT1" );
-            else
-                pText = g_StringTableMgr( "ui", "MC_SAVE_FAILED_CARD_CHANGED_SLOT2" );
-        }
-    }
-
-    OptionBox(
-        g_StringTableMgr( "ui", "IDS_MEMCARD_HEADER"       ),
-        pText,
-        g_StringTableMgr( "ui", "IDS_MEMCARD_RETRY"        ),
-        g_StringTableMgr( "ui", "IDS_MEMCARD_CONT_NO_SAVE" )
-        );
-#else
     xwstring MessageText;
     xwstring NavText;
 
+    condition& Pending = GetPendingCondition(m_iCard);
+
+#if defined(TARGET_XBOX)
     m_BlocksRequired = ( (g_StateMgr.GetSettingsSaveSize() - Pending.BytesFree) + 16383 ) / 16384;
     MessageText = xwstring( xfs( (const char*)xstring(g_StringTableMgr( "ui", "MC_NOT_ENOUGH_FREE_SPACE_SLOT1_SETTINGS_XBOX" )), m_BlocksRequired ) );
     NavText     = g_StringTableMgr( "ui", "IDS_NAV_DONT_FREE_BLOCKS" );
@@ -374,6 +334,35 @@ void MemCardMgr::MC_STATE_SAVE_SETTINGS_FAILED(void)
         TRUE, 
         SecondOption, 
         FALSE );
+#elif defined(TARGET_PC)
+    m_BlocksRequired = ( (g_StateMgr.GetSettingsSaveSize() - Pending.BytesFree) + 1023 ) / 1024;
+    MessageText = xwstring( xfs( (const char*)xstring(g_StringTableMgr( "ui", "MC_NOT_ENOUGH_FREE_SPACE_SLOT1_SETTINGS_XBOX" )), m_BlocksRequired ) );
+
+    PopUpBox( 
+        g_StringTableMgr( "ui", "IDS_MEMCARD_HEADER" ),
+        MessageText, 
+        NavText, 
+        TRUE, 
+        FALSE, 
+        FALSE );
+#endif
+
+#if defined(TARGET_PC1)
+    u32 settingsSaveSize = g_StateMgr.GetSettingsSaveSize();
+    m_BlocksRequired = ((settingsSaveSize - Pending.BytesFree) + 1023) / 1024;
+
+    MessageText = xwstring(xfs((const char*)xstring(g_StringTableMgr("ui", "MC_NOT_ENOUGH_FREE_SPACE_SLOT1_SETTINGS_XBOX")), m_BlocksRequired));
+    MessageText += xwstring(xfs("\n\nDEBUG: BytesFree=%u, SaveSize=%u", Pending.BytesFree, settingsSaveSize));
+    NavText = g_StringTableMgr("ui", "IDS_OK");
+
+    PopUpBox(
+        g_StringTableMgr("ui", "IDS_DISK_SPACE_HEADER"),
+        MessageText,
+        NavText,
+        TRUE,
+        FALSE,
+        FALSE
+    );
 #endif
 
     FlushStateStack();
@@ -419,20 +408,14 @@ void MemCardMgr::MC_STATE_SAVE_SETTINGS_FAILED_WAIT(void)
         Pending.bCancelled = TRUE;
         break;
     }
-#else
+#elif defined(TARGET_PC)
     switch( m_MessageResult )
     {
     case DLG_MCMESSAGE_IDLE:
         return;
-
-    case DLG_MCMESSAGE_NO:
-        // continue without saving
-        Pending.bCancelled = TRUE;
-        break;
-
-    case DLG_MCMESSAGE_YES:
-        // retry
-        break;
+        default:
+            Pending.bCancelled = TRUE;
+            break;
     }
 #endif
     // finish processing

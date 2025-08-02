@@ -102,7 +102,7 @@ s32                         g_Mode    = MODE_OBJECT ;       // Edit mode
 xbool                       g_bPause  = FALSE ;             // Pause flag
 s32                         g_ShowHelp  = 1 ;               // Shows help
 stats_mode                  g_StatsMode = STATS_MODE_HIGH ; // Shows stats
-config::light               g_Light ;                       // Current light
+config_options::light               g_Light ;                       // Current light
 s32                         g_PicMode = PIC_MODE_DEFAULT ;  // Pic display mode
 
 
@@ -211,10 +211,10 @@ xcolor ComputeAmbient( const vector3& Pos )
 {
     // Compute ambient from light
     xcolor Ambient ;
-    if (g_Light.m_State == config::light::STATE_OFF)
+    if (g_Light.m_State == config_options::light::STATE_OFF)
         Ambient.Set( XCOLOR_BLACK );
     else
-    if (g_Light.m_State == config::light::STATE_FULL_BRIGHT)
+    if (g_Light.m_State == config_options::light::STATE_FULL_BRIGHT)
         Ambient.Set( 128, 128, 128, 255 );
     else
     {
@@ -366,13 +366,6 @@ void eng_ScreenShot( const char* pFileName /*= NULL */, s32 Size /*= 1 */ )
 {
     (void)pFileName ;
     (void)Size ;
-}
-
-//==============================================================================
-
-xbool eng_ScreenShotActive( void )
-{
-    return FALSE ;
 }
 
 //==============================================================================
@@ -592,7 +585,7 @@ void LoadCommonConfig( void )
     // Keep current copy of config settings to detect changes
     s32           ShowHelp  = g_Config.m_ShowHelp ;
     s32           ShowStats = g_Config.m_ShowStats ;
-    config::light Light     = g_Config.m_Light ;
+    config_options::light Light     = g_Config.m_Light ;
 
     // Reload common config
     ClearPhysicsInsts();
@@ -867,7 +860,7 @@ void LoadObjects( xbool bReset )
             for (j = 0 ; j <= i ; j++)
             {
                 // Lookup object
-                config::object& ConfigObject = g_Config.m_Objects[j] ;
+                config_options::object& ConfigObject = g_Config.m_Objects[j] ;
 
                 if (ConfigObject.m_CompiledGeom[0])
                     x_printf("\n%s\n", g_Config.m_Objects[j].m_CompiledGeom) ;
@@ -993,7 +986,7 @@ void ClearParticles( void )
         if( g_iLoadedObject != -1 )
         {
             // Kill object but keep type so that it isn't reset next time it's initialized
-            config::type Type = g_pObjects[g_iLoadedObject].m_Type;
+            config_options::type Type = g_pObjects[g_iLoadedObject].m_Type;
             g_pObjects[g_iLoadedObject].Kill() ;
             g_pObjects[g_iLoadedObject].m_Type = Type;
         }
@@ -1279,7 +1272,7 @@ void HandleObjectModeInput( f32 DeltaTime )
         if (g_iLoadedObject != -1)
         {
             // Kill object but keep type so that it isn't reset next time it's initialized
-            config::type Type = g_pObjects[g_iLoadedObject].m_Type;
+            config_options::type Type = g_pObjects[g_iLoadedObject].m_Type;
             g_pObjects[g_iLoadedObject].Kill() ;
             g_pObjects[g_iLoadedObject].m_Type = Type;
         }
@@ -1306,7 +1299,7 @@ void HandleObjectModeInput( f32 DeltaTime )
 void HandleLightModeInput( f32 DeltaTime )
 {
     // Make a copy of the light
-    config::light Light = g_Light ;
+    config_options::light Light = g_Light ;
 
     // Rotate around origin
     radian Pitch, Yaw ;
@@ -1340,7 +1333,7 @@ void HandleLightModeInput( f32 DeltaTime )
     // Toggle state
     if (input_WasPressed(JOY_LIGHT_TOGGLE_TYPE))
     {
-        if (++Light.m_State == config::light::STATE_COUNT)
+        if (++Light.m_State == config_options::light::STATE_COUNT)
             Light.m_State = 0 ;
     }
 
@@ -1773,12 +1766,12 @@ void AppRender( void )
         if (eng_ScreenShotActive())
         {
             // Scale
-            Pos    *= eng_ScreenShotSize() ;
-            Size.X *= eng_ScreenShotSize() ;
-            Size.Y *= eng_ScreenShotSize() ;
+            //Pos    *= eng_ScreenShotSize() ;
+            //Size.X *= eng_ScreenShotSize() ;
+            //Size.Y *= eng_ScreenShotSize() ;
 
             // Offset
-            Pos -= vector3( XRes * eng_ScreenShotX(), YRes * eng_ScreenShotY(), 0.0f ) ;
+            //Pos -= vector3( XRes * eng_ScreenShotX(), YRes * eng_ScreenShotY(), 0.0f ) ;
         }
 
         // Draw quad
@@ -1806,7 +1799,7 @@ void AppRender( void )
     // Setup skinned lighting
     g_LightMgr.ClearLights() ;
     g_LightMgr.BeginLightCollection();
-    if (g_Light.m_State == config::light::STATE_ON)
+    if (g_Light.m_State == config_options::light::STATE_ON)
     {
         g_LightMgr.AddDynamicLight(g_Light.m_Position, 
                                    g_Light.m_Color,
@@ -1826,7 +1819,7 @@ void AppRender( void )
         Color.A = (u8)((f32)Color.A * g_Light.m_Intensity) ;
         Util_DrawMarker(g_Light.m_Position, Color) ;
 
-        if ((g_Mode == MODE_LIGHT) && (g_Light.m_State == config::light::STATE_ON))
+        if ((g_Mode == MODE_LIGHT) && (g_Light.m_State == config_options::light::STATE_ON))
         {
             draw_ClearL2W() ;
             draw_Sphere(g_Light.m_Position, g_Light.m_Radius, Color) ;
@@ -2036,7 +2029,7 @@ void AppRender( void )
             // Loco object?
             xbool bLoco = FALSE ;
             if (g_iObject != -1)
-                bLoco = (g_pObjects[g_iObject].m_Type == config::TYPE_LOCO) ;
+                bLoco = (g_pObjects[g_iObject].m_Type == config_options::TYPE_LOCO) ;
 
             // Non-loco keys
             if (!bLoco)

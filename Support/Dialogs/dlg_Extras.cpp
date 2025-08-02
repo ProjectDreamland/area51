@@ -20,7 +20,11 @@
 #include "Parsing/textin.hpp"
 #include "StateMgr/mapList.hpp"
 #include "NetworkMgr/GameMgr.hpp"
-#include "../../Apps/GameApp/Config.hpp"
+#ifdef CONFIG_VIEWER
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
+#include "../../Apps/GameApp/Config.hpp"	
+#endif
 #include "Configuration/GameConfig.hpp"
 #include "MoviePlayer/MoviePlayer.hpp"
 

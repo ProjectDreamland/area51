@@ -10,7 +10,7 @@
 #include "objects\ParticleEmiter.hpp"
 #include "CollisionMgr\CollisionMgr.hpp"
 #include "Entropy.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "AudioMgr\AudioMgr.hpp"
 #include "GameLib\StatsMgr.hpp"
 #include "GameLib\RenderContext.hpp"

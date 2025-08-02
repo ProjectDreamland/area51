@@ -27,9 +27,7 @@ enum controls
     IDC_CONTROLS_SENSITIVITY_Y_TEXT,
     IDC_CONTROLS_CROUCH_TEXT,
     //IDC_CONTROLS_LOOK_TEXT,
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)
     IDC_CONTROLS_VIBRATION_TEXT,
-#endif
     IDC_CONTROLS_AUTO_SWITCH_TEXT,
 
     IDC_CONTROLS_TOGGLE_INVERTY,
@@ -37,9 +35,7 @@ enum controls
     IDC_CONTROLS_SENSITIVITY_Y,
     IDC_CONTROLS_TOGGLE_CROUCH,
     //IDC_CONTROLS_TOGGLE_LOOK,
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)
     IDC_CONTROLS_TOGGLE_VIBRATION,
-#endif
     IDC_CONTROLS_TOGGLE_AUTO_SWITCH,
     IDC_CONTROLS_BUTTON_ACCEPT,
 
@@ -49,7 +45,6 @@ enum controls
 
 ui_manager::control_tem ProfileControlsControls[] = 
 {
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     // Frames.
     { IDC_CONTROLS_INVERTY_TEXT,        "IDS_OPTIONS_TOGGLE_INVERTY",   "text",      40,  40, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
     { IDC_CONTROLS_SENSITIVITY_X_TEXT,  "IDS_OPTIONS_SENSITIVITY_X",    "text",      40,  70, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
@@ -58,7 +53,7 @@ ui_manager::control_tem ProfileControlsControls[] =
     //{ IDC_CONTROLS_LOOK_TEXT,           "IDS_OPTIONS_LOOKSPRING",       "text",      40, 160, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
     { IDC_CONTROLS_VIBRATION_TEXT,      "IDS_OPTIONS_VIBRATION",        "text",      40, 160, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
     { IDC_CONTROLS_AUTO_SWITCH_TEXT,    "IDS_OPTIONS_AUTO_SWITCH",      "text",      40, 190, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    // Text.
+
     { IDC_CONTROLS_TOGGLE_INVERTY,      "IDS_NULL",                     "check",    343,  52, 120, 40, 0, 0, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
     { IDC_CONTROLS_SENSITIVITY_X,       "IDS_NULL",                     "slider",   290,  80, 120, 40, 0, 1, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
     { IDC_CONTROLS_SENSITIVITY_Y,       "IDS_NULL",                     "slider",   290, 110, 120, 40, 0, 2, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
@@ -69,25 +64,6 @@ ui_manager::control_tem ProfileControlsControls[] =
     { IDC_CONTROLS_BUTTON_ACCEPT,       "IDS_PROFILE_OPTIONS_ACCEPT",   "button",    40, 285, 220, 40, 0, 7, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
 
     { IDC_CONTROLS_NAV_TEXT,            "IDS_NULL",                     "text",       0,   0,   0,  0, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-#endif
-
-#ifdef TARGET_PC	
-    // Frames.
-    { IDC_CONTROLS_INVERTY_TEXT,        "IDS_OPTIONS_TOGGLE_INVERTY",   "text",      40,  40, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_SENSITIVITY_X_TEXT,  "IDS_OPTIONS_SENSITIVITY_X",    "text",      40,  70, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_SENSITIVITY_Y_TEXT,  "IDS_OPTIONS_SENSITIVITY_Y",    "text",      40, 100, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_CROUCH_TEXT,         "IDS_OPTIONS_TOGGLE_CROUCH",    "text",      40, 130, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_AUTO_SWITCH_TEXT,    "IDS_OPTIONS_AUTO_SWITCH",      "text",      40, 160, 220, 40, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    // Text.
-    { IDC_CONTROLS_TOGGLE_INVERTY,      "IDS_NULL",                     "check",    343,  52, 120, 40, 0, 0, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_SENSITIVITY_X,       "IDS_NULL",                     "slider",   290,  80, 120, 40, 0, 1, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_SENSITIVITY_Y,       "IDS_NULL",                     "slider",   290, 110, 120, 40, 0, 2, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_TOGGLE_CROUCH,       "IDS_NULL",                     "check",    343, 142, 120, 40, 0, 3, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_TOGGLE_AUTO_SWITCH,  "IDS_NULL",                     "check",    343, 172, 120, 40, 0, 6, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-    { IDC_CONTROLS_BUTTON_ACCEPT,       "IDS_PROFILE_OPTIONS_ACCEPT",   "button",    40, 285, 220, 40, 0, 7, 1, 1, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-
-    { IDC_CONTROLS_NAV_TEXT,            "IDS_NULL",                     "text",       0,   0,   0,  0, 0, 0, 0, 0, ui_win::WF_VISIBLE | ui_win::WF_SCALE_XPOS | ui_win::WF_SCALE_XSIZE },
-#endif
 };
 
 
@@ -171,10 +147,8 @@ xbool dlg_profile_controls::Create( s32                        UserID,
     m_pSensitivityX         = (ui_slider*)  FindChildByID( IDC_CONTROLS_SENSITIVITY_X      );
     m_pSensitivityY         = (ui_slider*)  FindChildByID( IDC_CONTROLS_SENSITIVITY_Y      );
     m_pToggleCrouch         = (ui_check*)   FindChildByID( IDC_CONTROLS_TOGGLE_CROUCH      );    
-    //m_pToggleLookspring     = (ui_check*)   FindChildByID( IDC_CONTROLS_TOGGLE_LOOK        );  
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)		
+    //m_pToggleLookspring     = (ui_check*)   FindChildByID( IDC_CONTROLS_TOGGLE_LOOK        );    
     m_pToggleVibration      = (ui_check*)   FindChildByID( IDC_CONTROLS_TOGGLE_VIBRATION   );
-#endif
     m_pToggleAutoSwitch     = (ui_check*)   FindChildByID( IDC_CONTROLS_TOGGLE_AUTO_SWITCH );
     m_pButtonAccept         = (ui_button*)  FindChildByID( IDC_CONTROLS_BUTTON_ACCEPT      );
 
@@ -183,9 +157,7 @@ xbool dlg_profile_controls::Create( s32                        UserID,
     m_pSensitivityYText     = (ui_text*)    FindChildByID( IDC_CONTROLS_SENSITIVITY_Y_TEXT );
     m_pCrouchText           = (ui_text*)    FindChildByID( IDC_CONTROLS_CROUCH_TEXT        );
     //m_pLookspringText       = (ui_text*)    FindChildByID( IDC_CONTROLS_LOOK_TEXT          );
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     m_pVibrationText        = (ui_text*)    FindChildByID( IDC_CONTROLS_VIBRATION_TEXT     );
-#endif
     m_pAutoSwitchText       = (ui_text*)    FindChildByID( IDC_CONTROLS_AUTO_SWITCH_TEXT   );
     m_pNavText              = (ui_text*)    FindChildByID( IDC_CONTROLS_NAV_TEXT           );
 
@@ -203,31 +175,25 @@ xbool dlg_profile_controls::Create( s32                        UserID,
     m_pSensitivityY     ->SetFlag( ui_win::WF_VISIBLE, FALSE );
     m_pToggleCrouch     ->SetFlag( ui_win::WF_VISIBLE, FALSE );
     //m_pToggleLookspring ->SetFlag( ui_win::WF_VISIBLE, FALSE );
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     m_pToggleVibration  ->SetFlag( ui_win::WF_VISIBLE, FALSE );
-#endif
     m_pToggleAutoSwitch ->SetFlag( ui_win::WF_VISIBLE, FALSE );
     m_pButtonAccept     ->SetFlag( ui_win::WF_VISIBLE, FALSE );
-    //Text.
+
     m_pInvertYText      ->SetFlag( ui_win::WF_VISIBLE, FALSE );
     m_pSensitivityXText ->SetFlag( ui_win::WF_VISIBLE, FALSE );
     m_pSensitivityYText ->SetFlag( ui_win::WF_VISIBLE, FALSE );
     m_pCrouchText       ->SetFlag( ui_win::WF_VISIBLE, FALSE );
     //m_pLookspringText   ->SetFlag( ui_win::WF_VISIBLE, FALSE );
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     m_pVibrationText    ->SetFlag( ui_win::WF_VISIBLE, FALSE );
-#endif
     m_pAutoSwitchText   ->SetFlag( ui_win::WF_VISIBLE, FALSE );
     m_pNavText          ->SetFlag( ui_win::WF_VISIBLE, FALSE );
-    //Text.
+
     m_pInvertYText      ->SetLabelFlags( ui_font::h_left|ui_font::v_center );
     m_pSensitivityXText ->SetLabelFlags( ui_font::h_left|ui_font::v_center );
     m_pSensitivityYText ->SetLabelFlags( ui_font::h_left|ui_font::v_center );
     m_pCrouchText       ->SetLabelFlags( ui_font::h_left|ui_font::v_center );
     //m_pLookspringText   ->SetLabelFlags( ui_font::h_left|ui_font::v_center );
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     m_pVibrationText    ->SetLabelFlags( ui_font::h_left|ui_font::v_center );
-#endif
     m_pAutoSwitchText   ->SetLabelFlags( ui_font::h_left|ui_font::v_center );
 
     // set button alignment
@@ -251,9 +217,7 @@ xbool dlg_profile_controls::Create( s32                        UserID,
     m_pToggleInvertY    ->SetChecked( Profile.m_bInvertY            );
     m_pToggleCrouch     ->SetChecked( Profile.m_bCrouchOn           );
     //m_pToggleLookspring ->SetChecked( Profile.m_bLookspringOn       );
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     m_pToggleVibration  ->SetChecked( Profile.m_bVibration          );
-#endif
     m_pToggleAutoSwitch ->SetChecked( Profile.GetWeaponAutoSwitch() );
 
     // initialize screen scaling
@@ -374,9 +338,7 @@ void dlg_profile_controls::OnPadSelect( ui_win* pWin )
 
             Profile.m_bCrouchOn     = m_pToggleCrouch     ->IsChecked();
             Profile.m_bInvertY      = m_pToggleInvertY    ->IsChecked();
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
             Profile.m_bVibration    = m_pToggleVibration  ->IsChecked();
-#endif
             //  Profile.m_bLookspringOn = m_pToggleLookspring ->IsChecked();
 
             Profile.SetWeaponAutoSwitch( m_pToggleAutoSwitch->IsChecked() );
@@ -419,9 +381,7 @@ void dlg_profile_controls::OnPadDelete( ui_win* pWin )
         m_pToggleInvertY    ->SetChecked( TempProfile.m_bInvertY            );
         m_pToggleCrouch     ->SetChecked( TempProfile.m_bCrouchOn           );
         //m_pToggleLookspring ->SetChecked( TempProfile.m_bLookspringOn       );
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
         m_pToggleVibration  ->SetChecked( TempProfile.m_bVibration          );
-#endif
         m_pToggleAutoSwitch ->SetChecked( TempProfile.GetWeaponAutoSwitch() );
 
         g_AudioMgr.Play("Select_Norm");
@@ -448,9 +408,7 @@ void dlg_profile_controls::OnUpdate ( ui_win* pWin, f32 DeltaTime )
             m_pSensitivityY     ->SetFlag( ui_win::WF_VISIBLE, TRUE );
             m_pToggleCrouch     ->SetFlag( ui_win::WF_VISIBLE, TRUE );
             //m_pToggleLookspring ->SetFlag( ui_win::WF_VISIBLE, TRUE );
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
             m_pToggleVibration  ->SetFlag( ui_win::WF_VISIBLE, TRUE );
-#endif
             m_pToggleAutoSwitch ->SetFlag( ui_win::WF_VISIBLE, TRUE );
             m_pButtonAccept     ->SetFlag( ui_win::WF_VISIBLE, TRUE );
 
@@ -459,9 +417,7 @@ void dlg_profile_controls::OnUpdate ( ui_win* pWin, f32 DeltaTime )
             m_pSensitivityYText ->SetFlag( ui_win::WF_VISIBLE, TRUE );
             m_pCrouchText       ->SetFlag( ui_win::WF_VISIBLE, TRUE );
             //m_pLookspringText   ->SetFlag( ui_win::WF_VISIBLE, TRUE );
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
             m_pVibrationText    ->SetFlag( ui_win::WF_VISIBLE, TRUE );
-#endif
             m_pAutoSwitchText   ->SetFlag( ui_win::WF_VISIBLE, TRUE );
             m_pNavText          ->SetFlag( ui_win::WF_VISIBLE, TRUE );
 
@@ -520,7 +476,6 @@ void dlg_profile_controls::OnUpdate ( ui_win* pWin, f32 DeltaTime )
     //else
     //    m_pLookspringText->SetLabelColor( xcolor(126,220,60,255) );
 
-#if defined(TARGET_PS2) || defined(TARGET_XBOX)	
     if( m_pToggleVibration->GetFlags(WF_HIGHLIGHT) )
     {
         highLight = 5;
@@ -529,7 +484,6 @@ void dlg_profile_controls::OnUpdate ( ui_win* pWin, f32 DeltaTime )
     }
     else
         m_pVibrationText->SetLabelColor( xcolor(126,220,60,255) );
-#endif
 
     if( m_pToggleAutoSwitch->GetFlags(WF_HIGHLIGHT) )
     {

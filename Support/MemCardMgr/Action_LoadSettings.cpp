@@ -48,11 +48,11 @@ void MemCardMgr::MC_STATE_LOAD_SETTINGS( void )
     //}
     //else
     {
-    #ifdef TARGET_XBOX
+#ifdef TARGET_XBOX
         g_MemcardMgr.AsyncSetDirectory( "Game Settings" );
-    #else
-        g_MemcardMgr.AsyncSetDirectory( xfs("%s%s",m_SavePrefix, m_OptionsPostfix) );
-    #endif
+#elif defined(TARGET_PC)
+        g_MemcardMgr.AsyncSetDirectory( "" ); //We dont using settings folders on PC.
+#endif
         ChangeState( __id MC_STATE_LOAD_SETTINGS_SET_DIR_WAIT );
     }
 }
@@ -128,13 +128,8 @@ void MemCardMgr::MC_STATE_LOAD_SETTINGS_READ_WAIT( void )
                     f32 Brightness = (f32(pSettings->GetBrightness())/100.0f);
                     xbox_SetBrightness( Brightness );
 #endif
-
-#ifdef TARGET_PS2
-                    // store the card slot
-                    g_StateMgr.SetSettingsCardSlot(m_iCard);
-#else
                     g_StateMgr.SetSettingsCardSlot( 0 );
-#endif
+                    
                     // update the settings
                     Active = *pSettings;
                     Active.Commit();

@@ -14,11 +14,8 @@ static xbool s_DispatcherActive = FALSE; // FLAG: Is the dispatcher active? (pre
 //=================== Hardware Specific Defines, Enums, etc ====================
 //==============================================================================
 
-// Root directory for the memory card
-#define PC_MEMCARD_ROOT_DIR "C:\\GameData\\A51\\Release\\PC\\MEMCARD\\"
-
 // Maximum number of memory cards the system supports.
-#define MAX_MEMCARDS (2) 
+#define MAX_MEMCARDS (1) 
 
 // Size of the message queue.
 #define MAX_MESSAGES (6) 
@@ -60,14 +57,17 @@ struct error_map
 struct pc_save_file
 {
     s32     Checksum;
-	char	Comment[128];
+    char    Comment[128];
     char    Preferences[128];
-	u8		Icon[2048];
+    u8        Icon[2048];
 };
 
 static pc_save_file* s_pFile = NULL; 
+static u32 s_ErrCode;
 
 static xbool CheckError( s32 HardwareError, xbool bProcessOnNoError = FALSE );
+
+static char s_SaveDir[384];
 
 //==============================================================================
 //========================== Hardware Specific Data ============================
@@ -92,6 +92,36 @@ static void ClearIgnoreList( void )
 //==============================================================================
 //================================= Dispatcher =================================
 //==============================================================================
+
+//------------------------------------------------------------------------------
+
+static void ProcessInternalError( void )
+{
+    memcard_error State;
+
+    // Defined in WinError.H
+    switch( s_ErrCode )
+    {
+        case ERROR_ACCESS_DENIED:
+            State = MEMCARD_ACCESS_DENIED;
+            break;
+
+        case ERROR_PATH_NOT_FOUND:
+        case ERROR_FILE_NOT_FOUND:
+            State = MEMCARD_FILE_NOT_FOUND;
+            break;
+
+        case ERROR_DISK_FULL:
+            State = MEMCARD_FULL;
+            break;
+
+        default:
+            State = MEMCARD_FATAL_ERROR;
+            break;
+    }
+    g_MemcardHardware.SetOperation( MEMCARD_OP_IDLE );
+    g_MemcardHardware.SetState( State );
+}
 
 //------------------------------------------------------------------------------
 
@@ -139,8 +169,9 @@ void MemcardDispatcher( void )
 
             case MSG_ERROR:
                 // Opps...something bad.
-                g_MemcardHardware.SetState( MEMCARD_FATAL_ERROR );
-                g_MemcardHardware.SetOperation( MEMCARD_OP_IDLE );
+                //g_MemcardHardware.SetState( MEMCARD_FATAL_ERROR );
+                //g_MemcardHardware.SetOperation( MEMCARD_OP_IDLE );
+                ProcessInternalError();
                 break;
 
             default:
@@ -203,6 +234,15 @@ void memcard_hardware::Init( void )
     s_FileInfo.Clear();
 
     // TODO: Allocate the work area (currently static).
+    
+    //Make SAVE folder if we need.
+    BOOL rootDirCreated = CreateDirectory(PC_MEMCARD_ROOT_DIR, NULL);   
+    if (!rootDirCreated && GetLastError() != ERROR_ALREADY_EXISTS)
+    {
+        s_ErrCode = GetLastError();
+        SendMessage(MSG_ERROR);
+        return;
+    }
 
     // Create the memcard_hardware thread.
     m_pThread = new xthread( MemcardDispatcher, "memcard_mgr dispatcher", 8192, 1 );
@@ -370,6 +410,11 @@ void memcard_hardware::InvalidateFileList( void )
     s_FileInfo.Clear();
 }
 
+memcard_error memcard_hardware::GetCardStatus(s32 CardId)
+{
+    return MEMCARD_FATAL_ERROR;
+}
+
 //------------------------------------------------------------------------------
 
 void memcard_hardware::Process( void )
@@ -454,37 +499,83 @@ void memcard_hardware::Process( void )
 
 //------------------------------------------------------------------------------
 
-void memcard_hardware::ProcessCreateDir( void )
+void memcard_hardware::ProcessCreateDir(void)
 {
-    CreateDirectory(
-        xfs("C:\\GAMEDATA\\A51\\RELEASE\\PC\\MEMCARD\\%s",m_pRequestedDirName ),
-        NULL
+    x_strcpy(m_pRequestedDirName, m_pRequestedFileName); 
+    x_strcpy(s_SaveDir, xfs("%s\\%s", PC_MEMCARD_ROOT_DIR, m_pRequestedFileName));
+    
+    BOOL dirCreated = CreateDirectory(s_SaveDir, NULL);
+    s_ErrCode = GetLastError();
+    
+    u32 Result;
+    if(dirCreated || s_ErrCode == ERROR_ALREADY_EXISTS)
+        Result = MSG_COMPLETE;
+    else
+        Result = MSG_ERROR;
+    
+    SendMessage(Result);
+}
+
+//------------------------------------------------------------------------------
+
+void memcard_hardware::ProcessSetDir(void)
+{
+    x_strcpy(m_pRequestedDirName, m_pRequestedFileName);
+    x_strcpy(s_SaveDir, xfs("%s\\%s", PC_MEMCARD_ROOT_DIR, m_pRequestedFileName));
+    
+    DWORD attributes = GetFileAttributes(s_SaveDir);
+    s_ErrCode = GetLastError();
+    
+    u32 Result;
+    if (attributes != INVALID_FILE_ATTRIBUTES && (attributes & FILE_ATTRIBUTE_DIRECTORY))
+        Result = MSG_COMPLETE;
+    else
+        Result = MSG_ERROR;
+    
+    SendMessage(Result);
+}
+
+//------------------------------------------------------------------------------
+
+void memcard_hardware::ProcessDeleteDir( void ) 
+{
+    WIN32_FIND_DATA findData;
+    HANDLE hFind = FindFirstFile(
+        xfs("%s\\%s\\*.*", s_SaveDir, m_pRequestedFileName),
+        &findData
     );
-    SendMessage( MSG_COMPLETE );
-}
-
-//------------------------------------------------------------------------------
-
-void memcard_hardware::ProcessSetDir( void )
-{
-    x_strcpy( m_pRequestedDirName, m_pRequestedFileName );
-    SendMessage( MSG_COMPLETE );
-}
-
-//------------------------------------------------------------------------------
-
-void memcard_hardware::ProcessDeleteDir( void )
-{
-    ProcessReadFileList();
-    s32 i,n = s_FileInfo.GetCount();
-    for( i=0;i<n;i++ )
-        DeleteFile(
-            xfs("C:\\GAMEDATA\\A51\\RELEASE\\PC\\MEMCARD\\%s\\%s",
-                m_pRequestedDirName,
-                s_FileInfo[i].FileName
-            )
-        );
-    SendMessage( MSG_COMPLETE );
+    
+    if (hFind != INVALID_HANDLE_VALUE) 
+    {
+        do 
+        {
+            if (strcmp(findData.cFileName, ".") != 0 && strcmp(findData.cFileName, "..") != 0) 
+            {
+                DeleteFile(
+                    xfs("%s\\%s\\%s",
+                        s_SaveDir,
+                        m_pRequestedFileName,
+                        findData.cFileName
+                    )
+                );
+            }
+        } while (FindNextFile(hFind, &findData));
+        
+        FindClose(hFind);
+    }
+    
+    BOOL result = RemoveDirectory(
+        xfs("%s\\%s", s_SaveDir, m_pRequestedFileName)
+    );
+    s_ErrCode = GetLastError();
+    
+    u32 MsgResult;
+    if (result || s_ErrCode == ERROR_FILE_NOT_FOUND || s_ErrCode == ERROR_PATH_NOT_FOUND)
+        MsgResult = MSG_COMPLETE;
+    else
+        MsgResult = MSG_ERROR;
+    
+    SendMessage(MsgResult);
 }
 
 //------------------------------------------------------------------------------
@@ -498,7 +589,7 @@ void memcard_hardware::ProcessMount( void )
 
 void memcard_hardware::ProcessUnmount( void )
 {
-	SendMessage( MSG_COMPLETE );
+    SendMessage( MSG_COMPLETE );
 }
 
 //------------------------------------------------------------------------------
@@ -506,37 +597,45 @@ void memcard_hardware::ProcessUnmount( void )
 void memcard_hardware::ProcessReadFile( void )
 {
     HANDLE hFile = CreateFile(
-        xfs("C:\\GAMEDATA\\A51\\RELEASE\\PC\\MEMCARD\\%s\\%s",
-            m_pRequestedDirName,
+        xfs("%s\\%s",
+            s_SaveDir,
             m_pRequestedFileName
         ),
         GENERIC_READ,
-        FILE_SHARE_READ,
+        0,
         NULL,
         OPEN_EXISTING,
         0,
         NULL
     );
-    if( hFile==INVALID_HANDLE_VALUE )
+    if( hFile!=INVALID_HANDLE_VALUE )
     {
-        SendMessage( MSG_ERROR );
-        return;
+        u32 FileSize = GetFileSize( hFile, NULL );
+        if( FileSize != m_nRequestedBytes )
+        {
+            s_ErrCode = GetLastError();
+            SendMessage( MSG_ERROR );
+            CloseHandle( hFile );
+            return;
+        }
+        DWORD BytesRead;
+        BOOL bReadResult = ReadFile(
+            hFile,
+            m_pRequestedBuffer,
+            m_nRequestedBytes,
+            &BytesRead,
+            NULL
+        );
+        if( bReadResult && (BytesRead==m_nRequestedBytes) )
+        {
+            SendMessage( MSG_COMPLETE );
+            CloseHandle( hFile );
+            return;
+        }
+        CloseHandle( hFile );
     }
-    DWORD BytesRead;
-    BOOL bReadResult = ReadFile(
-        hFile,
-        m_pRequestedBuffer,
-        m_nRequestedBytes,
-        &BytesRead,
-        NULL
-    );
-    if( ! bReadResult )
-    {
-        SendMessage( MSG_ERROR );
-        return;
-    }
-    SendMessage( MSG_COMPLETE );
-    CloseHandle( hFile );
+    s_ErrCode = GetLastError();
+    SendMessage( MSG_ERROR );
 }
 
 //------------------------------------------------------------------------------
@@ -544,8 +643,8 @@ void memcard_hardware::ProcessReadFile( void )
 void memcard_hardware::ProcessWriteFile( void )
 {
     HANDLE hFile = CreateFile(
-        xfs("C:\\GAMEDATA\\A51\\RELEASE\\PC\\MEMCARD\\%s\\%s",
-            m_pRequestedDirName,
+        xfs("%s\\%s",
+            s_SaveDir,
             m_pRequestedFileName
         ),
         GENERIC_WRITE,
@@ -555,39 +654,47 @@ void memcard_hardware::ProcessWriteFile( void )
         0,
         NULL
     );
-    if( hFile==INVALID_HANDLE_VALUE )
+    if( hFile!=INVALID_HANDLE_VALUE )
     {
-        SendMessage( MSG_ERROR );
-        return;
+        DWORD BytesWritten;
+        BOOL bWriteResult = WriteFile(
+            hFile,
+            m_pRequestedBuffer,
+            m_nRequestedBytes,
+            &BytesWritten,
+            NULL
+        );
+        if( bWriteResult && (BytesWritten==m_nRequestedBytes) )
+        {
+            SendMessage( MSG_COMPLETE );
+            CloseHandle( hFile );
+            return;
+        }
+        CloseHandle( hFile );
     }
-    DWORD BytesWritten;
-    BOOL bWriteResult = WriteFile(
-        hFile,
-        m_pRequestedBuffer,
-        m_nRequestedBytes,
-        &BytesWritten,
-        NULL
-    );
-    if( ! bWriteResult )
-    {
-        SendMessage( MSG_ERROR );
-        return;
-    }
-    SendMessage( MSG_COMPLETE );
-    CloseHandle( hFile );
+    s_ErrCode = GetLastError();
+    SendMessage( MSG_ERROR );
 }
 
 //------------------------------------------------------------------------------
 
 void memcard_hardware::ProcessDeleteFile( void )
 {
-    DeleteFile(
-        xfs("C:\\GAMEDATA\\A51\\RELEASE\\PC\\MEMCARD\\%s\\%s",
-            m_pRequestedDirName,
+    BOOL deleteResult = DeleteFile(
+        xfs("%s\\%s",
+            s_SaveDir,
             m_pRequestedFileName
         )
     );
-    SendMessage( MSG_COMPLETE );
+    
+    if (deleteResult)
+    {
+        SendMessage( MSG_COMPLETE );
+        return;
+    }
+    
+    s_ErrCode = GetLastError();
+    SendMessage( MSG_ERROR );
 }
 
 //------------------------------------------------------------------------------
@@ -599,33 +706,45 @@ void memcard_hardware::ProcessFormat( void )
 
 //------------------------------------------------------------------------------
 
-void memcard_hardware::ProcessReadFileList( void )
+void memcard_hardware::ProcessReadFileList(void)
 {
     WIN32_FIND_DATA Fd;
-    HANDLE hFind = FindFirstFile( m_pRequestedDirName,&Fd );
-    if( hFind==INVALID_HANDLE_VALUE )
-        SendMessage( MSG_ERROR );
-    else
+    HANDLE hFind = FindFirstFile(
+        xfs("%s\\*", s_SaveDir),
+        &Fd
+    );
+
+    InvalidateFileList();
+    if(hFind != INVALID_HANDLE_VALUE)
     {
-        s_FileInfo.Clear();
         s32 Index = 0;
         do
-        {   mc_file_info& Info = s_FileInfo.Append();
-            x_strcpy( Info.FileName, Fd.cFileName );
-            Info.Length = Fd.nFileSizeLow;
-            Info.Index  = Index++;
-        }
-        while( FindNextFile( hFind,&Fd ));
-        SendMessage( MSG_COMPLETE );
-        FindClose( hFind );
+        {
+            if(x_strcmp(Fd.cFileName, ".") != 0 && x_strcmp(Fd.cFileName, "..") != 0)
+            {
+                mc_file_info& Info = s_FileInfo.Append();
+                x_strcpy(Info.FileName, Fd.cFileName);
+                Info.Length = Fd.nFileSizeLow;
+                Info.Index = Index++;
+                
+                FileTimeToLocalFileTime(&Fd.ftCreationTime, (FILETIME*)&Info.CreationDate);
+                FileTimeToLocalFileTime(&Fd.ftLastWriteTime, (FILETIME*)&Info.ModifiedDate);
+            }
+        } while(FindNextFile(hFind, &Fd));
+        
+        m_nFileCount = Index;
+        FindClose(hFind);
     }
+    
+    SendMessage(MSG_COMPLETE);
+    m_bIsFileListValid = TRUE;
 }
 
 //------------------------------------------------------------------------------
 
 void memcard_hardware::ProcessPurgeFileList( void )
 {
-    // Nuke it.
+    // Nuke it.m_pRequestedDirName
     InvalidateFileList();
     
     // Done!
@@ -634,11 +753,11 @@ void memcard_hardware::ProcessPurgeFileList( void )
 
 //------------------------------------------------------------------------------
 
-void memcard_hardware::ProcessGetFileLength( void )
+void memcard_hardware::ProcessGetFileLength(void)
 {
     HANDLE hFile = CreateFile(
-        xfs("C:\\GAMEDATA\\A51\\RELEASE\\PC\\MEMCARD\\%s\\%s",
-            m_pRequestedDirName,
+        xfs("%s\\%s",
+            s_SaveDir,
             m_pRequestedFileName
         ),
         GENERIC_READ,
@@ -648,15 +767,18 @@ void memcard_hardware::ProcessGetFileLength( void )
         0,
         NULL
     );
-    if( hFile==INVALID_HANDLE_VALUE )
+    
+    if(hFile != INVALID_HANDLE_VALUE)
     {
-        SendMessage( MSG_ERROR );
+        DWORD dwResult = GetFileSize(hFile, NULL);
+        SendMessage(MSG_COMPLETE);
+        SetFileLength(dwResult);
+        CloseHandle(hFile);
         return;
     }
-    DWORD dwResult = GetFileSize( hFile,NULL );
-    SendMessage( MSG_COMPLETE );
-    SetFileLength( dwResult );
-    CloseHandle( hFile );
+    
+    s_ErrCode = GetLastError();
+    SendMessage(MSG_ERROR);
 }
 
 //------------------------------------------------------------------------------
@@ -678,46 +800,144 @@ s32 memcard_hardware::GetMaxCards( void )
 
 xbool memcard_hardware::IsCardConnected( s32 CardID )
 {
-	return TRUE;
+    return TRUE;
 }
 
 //------------------------------------------------------------------------------
 
 void memcard_hardware::ProcessCreateFile( void )
 {
-BREAK
+    HANDLE hFile = CreateFile(
+        xfs("%s\\%s",
+            s_SaveDir,
+            m_pRequestedFileName
+        ),
+        GENERIC_WRITE,
+        0,
+        NULL,
+        CREATE_ALWAYS,
+        0,
+        NULL
+    );
+    if( hFile!=INVALID_HANDLE_VALUE )
+    {
+        SendMessage( MSG_COMPLETE );
+        CloseHandle( hFile );
+        return;
+    }
+    s_ErrCode = GetLastError();
+    SendMessage( MSG_ERROR );
 }
 
 //------------------------------------------------------------------------------
 
-void memcard_hardware::ProcessWrite( void )
+void memcard_hardware::ProcessWrite(void)
 {
-BREAK;
+    ASSERT(m_pRequestedBuffer);
+    ASSERT(m_nRequestedBytes > 0);
+    ASSERT(m_RequestedOffset >= 0);
+
+    HANDLE hFile = CreateFile(
+        xfs("%s\\%s",
+            s_SaveDir,
+            m_pRequestedFileName
+        ),
+        GENERIC_WRITE,
+        0,
+        NULL,
+        OPEN_ALWAYS,
+        0,
+        NULL
+    );
+    
+    if(hFile != INVALID_HANDLE_VALUE)
+    {
+        DWORD BytesWritten;
+        SetFilePointer(hFile, m_RequestedOffset, NULL, FILE_BEGIN);
+        BOOL bWriteResult = WriteFile(
+            hFile,
+            m_pRequestedBuffer,
+            m_nRequestedBytes,
+            &BytesWritten,
+            NULL
+        );
+        
+        if(bWriteResult)
+        {
+            SendMessage(MSG_COMPLETE);
+            CloseHandle(hFile);
+            return;
+        }
+        CloseHandle(hFile);
+    }
+    
+    s_ErrCode = GetLastError();
+    SendMessage(MSG_ERROR);
 }
 
 //------------------------------------------------------------------------------
 
-void memcard_hardware::ProcessRead( void )
+void memcard_hardware::ProcessRead(void)
 {
-    BREAK;
+    ASSERT(m_pRequestedBuffer);
+    ASSERT(m_nRequestedBytes > 0);
+    ASSERT(m_RequestedOffset >= 0);
+
+    HANDLE hFile = CreateFile(
+        xfs("%s\\%s",
+            s_SaveDir,
+            m_pRequestedFileName
+        ),
+        GENERIC_READ,
+        FILE_SHARE_READ,
+        NULL,
+        OPEN_EXISTING,
+        0,
+        NULL
+    );
+    
+    if(hFile != INVALID_HANDLE_VALUE)
+    {
+        DWORD BytesRead;
+        SetFilePointer(hFile, m_RequestedOffset, NULL, FILE_BEGIN);
+        BOOL bReadResult = ReadFile(
+            hFile,
+            m_pRequestedBuffer,
+            m_nRequestedBytes,
+            &BytesRead,
+            NULL
+        );
+        
+        if(bReadResult)
+        {
+            SendMessage(MSG_COMPLETE);
+            CloseHandle(hFile);
+            return;
+        }
+        CloseHandle(hFile);
+    }
+    
+    s_ErrCode = GetLastError();
+    SendMessage(MSG_ERROR);
 }
 
 //------------------------------------------------------------------------------
 
-u32 memcard_hardware::GetFreeSpace( void )
+u32 memcard_hardware::GetFreeSpace(void)
 {
-    DWORD TotalNumberOfClusters;
-    DWORD NumberOfFreeClusters;
-    DWORD SectorsPerCluster;
-    DWORD BytesPerSector;
+    ULARGE_INTEGER FreeBytesAvailable;
+    ULARGE_INTEGER TotalNumberOfBytes;
+    ULARGE_INTEGER TotalNumberOfFreeBytes;
 
-    GetDiskFreeSpace
+    GetDiskFreeSpaceEx
     (
         "C:\\",
-        &SectorsPerCluster,
-        &BytesPerSector,
-        &NumberOfFreeClusters,
-        &TotalNumberOfClusters
+        &FreeBytesAvailable,
+        &TotalNumberOfBytes,
+        &TotalNumberOfFreeBytes
     );
-    return NumberOfFreeClusters*SectorsPerCluster*BytesPerSector;
+    if (FreeBytesAvailable.HighPart > 0)
+        return S32_MAX;
+
+    return MIN(S32_MAX, FreeBytesAvailable.LowPart);
 }

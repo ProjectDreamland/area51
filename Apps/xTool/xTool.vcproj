@@ -33,7 +33,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="WS2_32.lib uxtheme.lib"
+				AdditionalDependencies="WS2_32.lib uxtheme.lib XT4100LibStaticd.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"/>
@@ -84,7 +84,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="WS2_32.lib uxtheme.lib"
+				AdditionalDependencies="WS2_32.lib uxtheme.lib XT4100LibStaticd.lib"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="LIBC.lib"
 				SubSystem="2"/>

@@ -200,7 +200,7 @@ int main(int argc, char* argv[])
 
     // Display Banner
     x_printf( "\n" );
-    x_printf( "SoundPackager (c)2002 Inevitable Entertainment Inc.\n" );
+    x_printf( "SoundPackager v1.1 | (c)2025 Inevitable Entertainment Inc. | Intervelop\n" );
     x_printf( "\n" );
 
     // Parse command line & check to display help

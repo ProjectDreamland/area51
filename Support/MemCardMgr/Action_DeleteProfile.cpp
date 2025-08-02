@@ -61,7 +61,11 @@ void MemCardMgr::MC_STATE_DELETE_PROFILE( void )
                 FALSE
             );
         }
+#ifdef TARGET_XBOX
         g_MemcardMgr.AsyncDeleteDirectory( m_PreservedProfile[0].Dir );
+#elif defined(TARGET_PC)
+        g_MemcardMgr.AsyncDeleteFile( m_PreservedProfile[0].Dir ); //We dont using settings folders on PC.
+#endif
         return;
     }
     PopState();

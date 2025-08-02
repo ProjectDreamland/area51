@@ -14,6 +14,18 @@
 #endif
 #endif
 
+/* Add it later.
+#ifndef MAX_LOCAL_PLAYERS
+    #if defined(TARGET_XBOX)
+        #define MAX_LOCAL_PLAYERS 4
+    #elif defined(TARGET_PS2)
+        #define MAX_LOCAL_PLAYERS 2
+    #elif defined(TARGET_PC)
+        #define MAX_LOCAL_PLAYERS 1
+    #endif
+#endif
+*/
+
 //=========================================================================
 // CLASSES
 //=========================================================================
@@ -29,7 +41,13 @@ public:
     {
         ACTION_NULL = -1,
         MOVE_STRAFE,                    
-        MOVE_FOWARD_BACKWARDS,          
+        MOVE_FOWARD_BACKWARDS,
+       
+        MOVE_FORWARD,                    
+        MOVE_BACKWARD,      
+        STRAFE_LEFT,                    
+        STRAFE_RIGHT,      
+     
         LOOK_HORIZONTAL,                
         LOOK_VERTICAL,                  
         ACTION_JUMP,                    
@@ -37,8 +55,8 @@ public:
         ACTION_PRIMARY,                 
         ACTION_SECONDARY,               
         ACTION_RELOAD,                  
-		ACTION_MUTATION,
-		ACTION_CYCLE_RIGHT,             
+        ACTION_MUTATION,
+        ACTION_CYCLE_RIGHT,             
         ACTION_USE,                     
         ACTION_FLASHLIGHT,              
 

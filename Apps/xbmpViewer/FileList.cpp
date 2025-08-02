@@ -94,6 +94,7 @@ void CFileList::Thread( void )
             // Match our criteria
             if( !Finder.IsDirectory() && 
                 ( (NameUpper.Right(5) == ".XBMP") ||
+                  (NameUpper.Right(4) == ".XBM" ) ||
                   (NameUpper.Right(4) == ".BMP" ) ||
                   (NameUpper.Right(4) == ".PSD" ) ||
                   (NameUpper.Right(4) == ".TGA" ) ) )
@@ -271,6 +272,7 @@ BEGIN_MESSAGE_MAP(CFileList, CWnd)
     ON_WM_SIZE()
     ON_WM_DESTROY()
     ON_WM_RBUTTONDOWN()
+    ON_WM_CONTEXTMENU()
     ON_MESSAGE( NM_DIRCHANGED, OnDirChanged )
     ON_MESSAGE( NM_POPULATELIST, OnPopulateList )
     ON_MESSAGE( NM_REFRESHLIST, OnRefreshList )
@@ -571,7 +573,63 @@ void CFileList::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
 
 void CFileList::OnRButtonDown(UINT nFlags, CPoint point)
 {
+    UINT uFlags;
+    int nHitItem = m_List.HitTest(point, &uFlags);
+
+    if (nHitItem != -1 && (uFlags & LVHT_ONITEM))
+    {
+        if (!(m_List.GetItemState(nHitItem, LVIS_SELECTED) & LVIS_SELECTED))
+        {
+            for (int i = 0; i < m_List.GetItemCount(); i++)
+            {
+                if (m_List.GetItemState(i, LVIS_SELECTED) & LVIS_SELECTED)
+                {
+                    m_List.SetItemState(i, 0, LVIS_SELECTED);
+                }
+            }
+
+            m_List.SetItemState(nHitItem, LVIS_SELECTED | LVIS_FOCUSED, LVIS_SELECTED | LVIS_FOCUSED);
+
+            file_rec* pFile = (file_rec*)m_List.GetItemData(nHitItem);
+            ASSERT(pFile);
+            
+            CWnd* pFrame = AfxGetMainWnd();
+            CString Path = m_Path;
+            Path += pFile->Name;
+            g_CmdLinePath = m_Path;
+            g_CmdLineFile = pFile->Name;
+            pFrame->SendMessage(NM_NEWBITMAP, (WPARAM)(const char*)Path, (LPARAM)pFile);
+        }
+    }
     ClientToScreen(&point);
+    OnContextMenu(this, point);
+}
+
+void CFileList::OnContextMenu(CWnd* pWnd, CPoint pos)
+{
+    if (pWnd != this && pWnd != &m_List)
+        return;
+
+    if (pos.x == -1 && pos.y == -1)
+    {
+        CRect rect;
+        GetClientRect(rect);
+        ClientToScreen(rect);
+
+        pos = rect.TopLeft();
+        pos.Offset(rect.Width() / 2, rect.Height() / 2);
+    }
+    else
+    {
+        CPoint clientPos = pos;
+        m_List.ScreenToClient(&clientPos);
+        
+        UINT uFlags;
+        int nHitItem = m_List.HitTest(clientPos, &uFlags);
+        
+        if (nHitItem == -1 || !(uFlags & LVHT_ONITEM))
+            return;
+    }
 
     CMenu menu;
     if (menu.LoadMenu(IDR_CONTEXT_MENU))
@@ -579,7 +637,11 @@ void CFileList::OnRButtonDown(UINT nFlags, CPoint point)
         CMenu* pSubMenu = menu.GetSubMenu(0);
         if (pSubMenu)
         {
-            UINT nCmd = pSubMenu->TrackPopupMenu(TPM_RIGHTBUTTON | TPM_RETURNCMD, point.x, point.y, this);
+            UINT enableFlag = (m_List.GetSelectedCount() > 0) ? MF_ENABLED : MF_GRAYED;
+            pSubMenu->EnableMenuItem(ID_CONTEXT_CONVERT_TGA, enableFlag);
+            pSubMenu->EnableMenuItem(ID_CONTEXT_CONVERT_XBMP, enableFlag);
+            
+            UINT nCmd = pSubMenu->TrackPopupMenu(TPM_RIGHTBUTTON | TPM_RETURNCMD, pos.x, pos.y, this);
 
             if (nCmd != 0)
             {
@@ -587,7 +649,6 @@ void CFileList::OnRButtonDown(UINT nFlags, CPoint point)
             }
         }
     }
-    CWnd::OnRButtonDown(nFlags, point);
 }
 
 void CFileList::OnContextConvertTga()

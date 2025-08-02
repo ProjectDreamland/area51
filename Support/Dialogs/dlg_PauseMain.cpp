@@ -16,7 +16,12 @@
 #include "StateMgr\StateMgr.hpp"
 #include "stringmgr\stringmgr.hpp"
 #include "Configuration/GameConfig.hpp"
-#include "../../Apps/GameApp/Config.hpp"
+
+#ifdef CONFIG_VIEWER
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
+#include "../../Apps/GameApp/Config.hpp"	
+#endif
 
 #ifndef CONFIG_RETAIL
 #include "InputMgr\monkey.hpp"

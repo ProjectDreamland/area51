@@ -20,7 +20,12 @@
 #include "stringmgr\stringmgr.hpp"
 #include "NetworkMgr\NetworkMgr.hpp"
 #include "NetworkMgr\GameMgr.hpp"
-#include "../../Apps/GameApp/Config.hpp"
+
+#ifdef CONFIG_VIEWER
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
+#include "../../Apps/GameApp/Config.hpp"	
+#endif
 
 
 //=========================================================================

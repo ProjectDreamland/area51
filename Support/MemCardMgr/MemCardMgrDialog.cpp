@@ -61,37 +61,120 @@ void MemCardMgr::WarningBox( const char* pTitle,
         g_UiMgr->EndDialog( g_UiUserID,TRUE );
         m_pMessage = NULL;
         m_DialogsAllocated--;
-    }
 
-    m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
-        g_UiUserID,
-        "mcmessage",
-        irect(
+#ifdef TARGET_PC
+        s32 XRes, YRes;
+        eng_GetRes(XRes, YRes);
+        
+        irect dialogRect(
             0,
             0,
             MC_TEXT_BOX_POPUP_SIZE_W,
             MC_TEXT_BOX_POPUP_SIZE_H
-        ), 
-        NULL,
-        ui_win::WF_VISIBLE
-        |   ui_win::WF_BORDER
-        |   ui_win::WF_DLG_CENTER
-    );
-    
-    m_DialogsAllocated++;
+        );
+        
+        dialogRect.Translate(
+            (XRes - MC_TEXT_BOX_POPUP_SIZE_W) / 2,
+            (YRes - MC_TEXT_BOX_POPUP_SIZE_H) / 2
+        );
+        
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+            g_UiUserID,
+            "mcmessage",
+            dialogRect,
+            NULL,
+            ui_win::WF_VISIBLE
+            | ui_win::WF_BORDER
+            | ui_win::WF_USE_ABSOLUTE
+        );
+#else
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+            g_UiUserID,
+            "mcmessage",
+            irect(
+                0,
+                0,
+                MC_TEXT_BOX_POPUP_SIZE_W,
+                MC_TEXT_BOX_POPUP_SIZE_H
+            ), 
+            NULL,
+            ui_win::WF_VISIBLE
+            | ui_win::WF_BORDER
+            | ui_win::WF_DLG_CENTER
+        );
+#endif
+        
+        m_DialogsAllocated++;
+        ASSERT( m_pMessage );
+        m_pMessage->Configure( xwstring( pTitle ),
+                                NULL,
+                                pDone,
+                                xwstring( pMessage ),
+                                XCOLOR_WHITE,
+                                &m_MessageResult,
+                                TRUE,
+                                AllowPrematureExit,
+                                AllowPrematureExit
+                            );
+    }
+    else
+    {
+#ifdef TARGET_PC
+        s32 XRes, YRes;
+        eng_GetRes(XRes, YRes);
+        
+        irect dialogRect(
+            0,
+            0,
+            MC_TEXT_BOX_POPUP_SIZE_W,
+            MC_TEXT_BOX_POPUP_SIZE_H
+        );
+        
+        dialogRect.Translate(
+            (XRes - MC_TEXT_BOX_POPUP_SIZE_W) / 2,
+            (YRes - MC_TEXT_BOX_POPUP_SIZE_H) / 2
+        );
+        
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+            g_UiUserID,
+            "mcmessage",
+            dialogRect,
+            NULL,
+            ui_win::WF_VISIBLE
+            | ui_win::WF_BORDER
+            | ui_win::WF_USE_ABSOLUTE
+        );
+#else
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+            g_UiUserID,
+            "mcmessage",
+            irect(
+                0,
+                0,
+                MC_TEXT_BOX_POPUP_SIZE_W,
+                MC_TEXT_BOX_POPUP_SIZE_H
+            ), 
+            NULL,
+            ui_win::WF_VISIBLE
+            | ui_win::WF_BORDER
+            | ui_win::WF_DLG_CENTER
+        );
+#endif
 
-    ASSERT( m_pMessage );
+        m_DialogsAllocated++;
+        ASSERT( m_pMessage );
 
-    m_pMessage->Configure( xwstring( pTitle ),
-        NULL,
-        pDone,
-        xwstring( pMessage ),
-        XCOLOR_WHITE,
-        &m_MessageResult,
-        TRUE,
-        AllowPrematureExit,
-        AllowPrematureExit
-    );
+        m_pMessage->Configure( xwstring( pTitle ),
+            NULL,
+            pDone,
+            xwstring( pMessage ),
+            XCOLOR_WHITE,
+            &m_MessageResult,
+            TRUE,
+            AllowPrematureExit,
+            AllowPrematureExit
+        );
+    }
 }
 
 //==---------------------------------------------------------------------------
@@ -108,7 +191,7 @@ void MemCardMgr::WarningBox( const xwchar* pTitle,
 
     //if( g_StateMgr.GetState() == SM_PLAYING_GAME )
     if( g_StateMgr.DisplayMemcardDialogs() == FALSE )
-    {
+    {        
         // No memcard dialogs when game is in progress.
         // We should only be getting here if an autosave is in progress!
         m_MessageResult = DLG_MCMESSAGE_YES;
@@ -130,6 +213,32 @@ void MemCardMgr::WarningBox( const xwchar* pTitle,
         m_pMessage = NULL;
         m_DialogsAllocated--;
         
+#ifdef TARGET_PC
+        s32 XRes, YRes;
+        eng_GetRes(XRes, YRes);
+        
+        irect dialogRect(
+            0,
+            0,
+            MC_TEXT_BOX_POPUP_SIZE_W,
+            MC_TEXT_BOX_POPUP_SIZE_H
+        );
+        
+        dialogRect.Translate(
+            (XRes - MC_TEXT_BOX_POPUP_SIZE_W) / 2,
+            (YRes - MC_TEXT_BOX_POPUP_SIZE_H) / 2
+        );
+        
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+            g_UiUserID,
+            "mcmessage",
+            dialogRect,
+            NULL,
+            ui_win::WF_VISIBLE
+            | ui_win::WF_BORDER
+            | ui_win::WF_USE_ABSOLUTE
+        );
+#else
         m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
             g_UiUserID,
             "mcmessage",
@@ -141,9 +250,10 @@ void MemCardMgr::WarningBox( const xwchar* pTitle,
             ),
             NULL,
             ui_win::WF_VISIBLE
-            |   ui_win::WF_BORDER
-            |   ui_win::WF_DLG_CENTER
+            | ui_win::WF_BORDER
+            | ui_win::WF_DLG_CENTER
         );
+#endif
 
         m_DialogsAllocated++;
         ASSERT( m_pMessage );
@@ -161,8 +271,32 @@ void MemCardMgr::WarningBox( const xwchar* pTitle,
     }
     else
     {
-        //g_AudioMgr.Play("VendorScreen_PopUpOn");
+#ifdef TARGET_PC
+        s32 XRes, YRes;
+        eng_GetRes(XRes, YRes);
         
+        irect dialogRect(
+            0,
+            0,
+            MC_TEXT_BOX_POPUP_SIZE_W,
+            MC_TEXT_BOX_POPUP_SIZE_H
+        );
+        
+        dialogRect.Translate(
+            (XRes - MC_TEXT_BOX_POPUP_SIZE_W) / 2,
+            (YRes - MC_TEXT_BOX_POPUP_SIZE_H) / 2
+        );
+        
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+            g_UiUserID,
+            "mcmessage",
+            dialogRect,
+            NULL,
+            ui_win::WF_VISIBLE
+            | ui_win::WF_BORDER
+            | ui_win::WF_USE_ABSOLUTE
+        );
+#else
         m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
             g_UiUserID,
             "mcmessage",
@@ -174,9 +308,10 @@ void MemCardMgr::WarningBox( const xwchar* pTitle,
             ),
             NULL,
             ui_win::WF_VISIBLE
-            |   ui_win::WF_BORDER
-            |   ui_win::WF_DLG_CENTER
+            | ui_win::WF_BORDER
+            | ui_win::WF_DLG_CENTER
         );
+#endif
 
         m_DialogsAllocated++;
         ASSERT( m_pMessage );
@@ -211,7 +346,7 @@ void MemCardMgr::OptionBox( const char*   pTitle,
     (void)AllowCancel;
 
     ASSERTS( pMessage,"String Missing for OptionBox" );
-
+	
     //if( g_StateMgr.GetState() == SM_PLAYING_GAME )
     if( g_StateMgr.DisplayMemcardDialogs() == FALSE )
     {
@@ -236,35 +371,32 @@ void MemCardMgr::OptionBox( const char*   pTitle,
         m_DialogsAllocated--;
         m_pMessage = NULL;
 
-        m_pMessage = (dlg_mcmessage*)g_UiMgr->OpenDialog(
+#ifdef TARGET_PC
+        s32 XRes, YRes;
+        eng_GetRes(XRes, YRes);
+        
+        irect dialogRect(
+            0,
+            0,
+            MC_TEXT_BOX_POPUP_SIZE_W,
+            MC_TEXT_BOX_POPUP_SIZE_H
+        );
+        
+        dialogRect.Translate(
+            (XRes - MC_TEXT_BOX_POPUP_SIZE_W) / 2,
+            (YRes - MC_TEXT_BOX_POPUP_SIZE_H) / 2
+        );
+        
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
             g_UiUserID,
             "mcmessage",
-            irect(
-                0,
-                0,
-                MC_TEXT_BOX_POPUP_SIZE_W,
-                MC_TEXT_BOX_POPUP_SIZE_H
-            ),
+            dialogRect,
             NULL,
             ui_win::WF_VISIBLE
-            |   ui_win::WF_BORDER
-            |   ui_win::WF_DLG_CENTER
+            | ui_win::WF_BORDER
+            | ui_win::WF_USE_ABSOLUTE
         );
-
-        m_DialogsAllocated++;
-        ASSERT( m_pMessage );
-        m_pMessage->Configure( xwstring( pTitle ),
-                                pYes,
-                                pNo,
-                                xwstring( pMessage ),
-                                XCOLOR_WHITE,
-                                &m_MessageResult,
-                                DefaultToNo,
-                                AllowCancel
-                            );
-    }
-    else
-    {
+#else
         m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
             g_UiUserID,
             "mcmessage",
@@ -276,9 +408,66 @@ void MemCardMgr::OptionBox( const char*   pTitle,
             ),
             NULL,
             ui_win::WF_VISIBLE
-            |   ui_win::WF_BORDER
-            |   ui_win::WF_DLG_CENTER
+            | ui_win::WF_BORDER
+            | ui_win::WF_DLG_CENTER
         );
+#endif
+
+        m_DialogsAllocated++;
+        ASSERT( m_pMessage );
+        m_pMessage->Configure( xwstring( pTitle ),
+                               pYes,
+                               pNo,
+                               xwstring( pMessage ),
+                               XCOLOR_WHITE,
+                               &m_MessageResult,
+                               DefaultToNo,
+                               AllowCancel
+                           );
+    }
+    else
+    {
+#ifdef TARGET_PC
+        s32 XRes, YRes;
+        eng_GetRes(XRes, YRes);
+        
+        irect dialogRect(
+            0,
+            0,
+            MC_TEXT_BOX_POPUP_SIZE_W,
+            MC_TEXT_BOX_POPUP_SIZE_H
+        );
+        
+        dialogRect.Translate(
+            (XRes - MC_TEXT_BOX_POPUP_SIZE_W) / 2,
+            (YRes - MC_TEXT_BOX_POPUP_SIZE_H) / 2
+        );
+        
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+            g_UiUserID,
+            "mcmessage",
+            dialogRect,
+            NULL,
+            ui_win::WF_VISIBLE
+            | ui_win::WF_BORDER
+            | ui_win::WF_USE_ABSOLUTE
+        );
+#else
+        m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+            g_UiUserID,
+            "mcmessage",
+            irect(
+                0,
+                0,
+                MC_TEXT_BOX_POPUP_SIZE_W,
+                MC_TEXT_BOX_POPUP_SIZE_H
+            ),
+            NULL,
+            ui_win::WF_VISIBLE
+            | ui_win::WF_BORDER
+            | ui_win::WF_DLG_CENTER
+        );
+#endif
 
         m_DialogsAllocated++;
         ASSERT( m_pMessage );
@@ -312,7 +501,7 @@ void MemCardMgr::OptionBox( const xwchar* pTitle,
     (void)pNo;
     (void)DefaultToNo;
     (void)AllowCancel;
-
+	
     //if( g_StateMgr.GetState() == SM_PLAYING_GAME )
     if( g_StateMgr.DisplayMemcardDialogs() == FALSE )
     {
@@ -337,6 +526,32 @@ void MemCardMgr::OptionBox( const xwchar* pTitle,
         m_pMessage = NULL;
     }
     
+#ifdef TARGET_PC
+    s32 XRes, YRes;
+    eng_GetRes(XRes, YRes);
+    
+    irect dialogRect(
+        0,
+        0,
+        MC_TEXT_BOX_POPUP_SIZE_W,
+        MC_TEXT_BOX_POPUP_SIZE_H
+    );
+    
+    dialogRect.Translate(
+        (XRes - MC_TEXT_BOX_POPUP_SIZE_W) / 2,
+        (YRes - MC_TEXT_BOX_POPUP_SIZE_H) / 2
+    );
+    
+    m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
+        g_UiUserID,
+        "mcmessage",
+        dialogRect,
+        NULL,
+        ui_win::WF_VISIBLE
+        | ui_win::WF_BORDER
+        | ui_win::WF_USE_ABSOLUTE
+    );
+#else
     m_pMessage=( dlg_mcmessage* )g_UiMgr->OpenDialog(
         g_UiUserID,
         "mcmessage",
@@ -348,9 +563,10 @@ void MemCardMgr::OptionBox( const xwchar* pTitle,
         ),
         NULL,
         ui_win::WF_VISIBLE
-        |   ui_win::WF_BORDER
-        |   ui_win::WF_DLG_CENTER
+        | ui_win::WF_BORDER
+        | ui_win::WF_DLG_CENTER
     );
+#endif
 
     m_DialogsAllocated++;
     ASSERT( m_pMessage );
@@ -389,10 +605,28 @@ void MemCardMgr::PopUpBox( const xwchar* pTitle,const xwchar* pMessage, const xw
 
     dlg_popup *pPopUp;
 
-    irect r = g_UiMgr->GetUserBounds( g_UiUserID );
-    pPopUp = (dlg_popup*)g_UiMgr->OpenDialog(  g_UiUserID, "popup", r, NULL, ui_win::WF_VISIBLE|ui_win::WF_BORDER|ui_win::WF_DLG_CENTER|ui_win::WF_INPUTMODAL|ui_win::WF_USE_ABSOLUTE );
+#ifdef TARGET_PC
+    s32 XRes, YRes;
+    eng_GetRes(XRes, YRes);
+    
+    irect r(0, 0, XRes, YRes);
+#else
+    irect r = g_UiMgr->GetUserBounds(g_UiUserID);
+#endif
 
-    irect Size( 0, 0, 400, 240 );
+    pPopUp = (dlg_popup*)g_UiMgr->OpenDialog(
+        g_UiUserID, 
+        "popup", 
+        r, 
+        NULL, 
+        ui_win::WF_VISIBLE | ui_win::WF_BORDER | ui_win::WF_DLG_CENTER | ui_win::WF_INPUTMODAL | ui_win::WF_USE_ABSOLUTE
+    );
+
+#ifdef TARGET_PC
+    irect Size(0, 0, 400, 240);
+#else
+    irect Size(0, 0, 400, 240);
+#endif
 
     pPopUp->Configure( 
         Size,
@@ -402,7 +636,8 @@ void MemCardMgr::PopUpBox( const xwchar* pTitle,const xwchar* pMessage, const xw
         bMaybe, 
         pMessage,
         pNavText,
-        &m_MessageResult );
+        &m_MessageResult
+    );
 
     m_pMessage = (dlg_mcmessage*)pPopUp; 
 

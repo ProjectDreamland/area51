@@ -65,13 +65,13 @@ void            eng_MaximizeViewport    ( view& View );
 void            eng_SetView             ( const view& View );
 const view*     eng_GetView             ( void );
 
-#if !defined( CONFIG_RETAIL )
+#if !defined(X_RETAIL) || defined(X_QA)
 void            eng_ScreenShot          ( const char* pFileName = NULL, s32 Size = 1 );
 xbool           eng_ScreenShotActive    ( void );
 s32             eng_ScreenShotSize      ( void );
 s32             eng_ScreenShotX         ( void );
 s32             eng_ScreenShotY         ( void );
-#endif
+#endif  // !defined( X_RETAIL ) || defined( X_QA )
 
 xbool           eng_Begin               ( const char* pTaskName=NULL );
 void            eng_End                 ( void );

@@ -2,7 +2,7 @@
 #include "Parsing\TextIn.hpp"
 #include "Entropy.hpp"
 #include "CollisionMgr\CollisionMgr.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "Render\LightMgr.hpp"
 
 //=========================================================================

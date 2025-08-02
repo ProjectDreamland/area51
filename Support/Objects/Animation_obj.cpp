@@ -1,6 +1,6 @@
 
 #include "animation_obj.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "EventMgr\EventMgr.hpp"
 
 //=========================================================================

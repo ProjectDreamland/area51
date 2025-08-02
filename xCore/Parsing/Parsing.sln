@@ -14,6 +14,7 @@ Global
 		QA Xbox = QA Xbox
 		Release Win32 = Release Win32
 		Release Xbox = Release Xbox
+		VIEWER-Debug Win32 = VIEWER-Debug Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{BCC5EDD0-C48B-4F3A-BFCF-D72A676D0749}.Debug Win32.ActiveCfg = Debug|Win32
@@ -34,6 +35,8 @@ Global
 		{BCC5EDD0-C48B-4F3A-BFCF-D72A676D0749}.Release Win32.Build.0 = Release|Win32
 		{BCC5EDD0-C48B-4F3A-BFCF-D72A676D0749}.Release Xbox.ActiveCfg = Release|Xbox
 		{BCC5EDD0-C48B-4F3A-BFCF-D72A676D0749}.Release Xbox.Build.0 = Release|Xbox
+		{BCC5EDD0-C48B-4F3A-BFCF-D72A676D0749}.VIEWER-Debug Win32.ActiveCfg = VIEWER-Debug|Win32
+		{BCC5EDD0-C48B-4F3A-BFCF-D72A676D0749}.VIEWER-Debug Win32.Build.0 = VIEWER-Debug|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ScriptCompiler", "ScriptCompiler.vcproj", "{B4C7A173-106C-4756-9610-BA41EF5A70F0}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug Win32 = Debug Win32
+		OptDebug Win32 = OptDebug Win32
+		QA Win32 = QA Win32
+		Release Win32 = Release Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B4C7A173-106C-4756-9610-BA41EF5A70F0}.Debug Win32.ActiveCfg = Debug|Win32
+		{B4C7A173-106C-4756-9610-BA41EF5A70F0}.Debug Win32.Build.0 = Debug|Win32
+		{B4C7A173-106C-4756-9610-BA41EF5A70F0}.OptDebug Win32.ActiveCfg = OptDebug|Win32
+		{B4C7A173-106C-4756-9610-BA41EF5A70F0}.OptDebug Win32.Build.0 = OptDebug|Win32
+		{B4C7A173-106C-4756-9610-BA41EF5A70F0}.QA Win32.ActiveCfg = QA|Win32
+		{B4C7A173-106C-4756-9610-BA41EF5A70F0}.QA Win32.Build.0 = QA|Win32
+		{B4C7A173-106C-4756-9610-BA41EF5A70F0}.Release Win32.ActiveCfg = Release|Win32
+		{B4C7A173-106C-4756-9610-BA41EF5A70F0}.Release Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

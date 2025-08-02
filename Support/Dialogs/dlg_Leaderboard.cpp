@@ -19,7 +19,11 @@
 #include "NetworkMgr\GameMgr.hpp"
 #include "NetworkMgr\Voice\VoiceMgr.hpp"
 
-#include "../../Apps/GameApp/Config.hpp"
+#ifdef CONFIG_VIEWER
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
+#include "../../Apps/GameApp/Config.hpp"	
+#endif
 
 #ifndef CONFIG_RETAIL
 #include "InputMgr\monkey.hpp"

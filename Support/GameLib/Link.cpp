@@ -76,6 +76,8 @@
 #include "Objects\CokeCan.hpp"
 #include "Objects\SuperDestructible.hpp"
 
+
+#include "Objects\VideoWall.hpp"
 #include "Objects\Path.hpp"
 #include "Objects\Tracker.hpp"
 #include "Objects\Camera.hpp"
@@ -196,6 +198,7 @@ void ForceLink( void )
         pDummy = new cloth_object ;
         pDummy = new particle_event_emitter;
         pDummy = new ladder_field;
+        pDummy = new video_wall;
 
         pDummy = new marker_object;
         pDummy = new input_setting;

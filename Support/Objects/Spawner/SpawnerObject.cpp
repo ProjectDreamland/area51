@@ -1,6 +1,6 @@
 #include "SpawnerObject.hpp"
 #include "Obj_mgr\obj_mgr.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "Entropy.hpp"
 #include "Dictionary\global_dictionary.hpp"
 #include "TemplateMgr\TemplateMgr.hpp"

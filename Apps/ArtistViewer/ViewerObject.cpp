@@ -80,7 +80,7 @@ viewer_object::viewer_object()
     m_CompiledGeom[0] = 0;
     m_pConfigObject = NULL;                 // Owner config object
     m_RenderType    = RENDER_NULL ;         // Render type - skin or rigid
-    m_Type          = config::TYPE_NULL ;   // Type of object
+    m_Type          = config_options::TYPE_NULL ;   // Type of object
 
     // Resources
     m_bAudioSet  = FALSE ;          // TRUE if audio is in config file
@@ -213,7 +213,7 @@ xbool viewer_object::IsMeshInLOD( s32 iLOD, const char* pMesh )
 //==============================================================================
 
 // Builds lod masks
-void viewer_object::BuildLODs( config::object& Object )
+void viewer_object::BuildLODs( config_options::object& Object )
 {
     s32 i,j;
 
@@ -304,7 +304,7 @@ void viewer_object::BuildLODs( config::object& Object )
 //==============================================================================
 
 // Initialize
-xbool viewer_object::Init( config::object& ConfigObject )
+xbool viewer_object::Init( config_options::object& ConfigObject )
 {
     s32 i ;
 
@@ -314,7 +314,7 @@ xbool viewer_object::Init( config::object& ConfigObject )
     m_pConfigObject = &ConfigObject;
     
     // Reset?
-    xbool bReset = (m_Type == config::TYPE_NULL) ;
+    xbool bReset = (m_Type == config_options::TYPE_NULL) ;
 
     // Reset position?
     if (bReset)
@@ -393,14 +393,14 @@ xbool viewer_object::Init( config::object& ConfigObject )
         m_AnimPlayer.SetAnim(0, FALSE) ;
 
         // Setup loco
-        if( m_Type != config::TYPE_OBJECT )
+        if( m_Type != config_options::TYPE_OBJECT )
         {
             m_Loco.OnInit( m_pGeom, ConfigObject.m_CompiledAnim, ConfigObject) ;
             m_Loco.SetLookAt(m_Loco.GetEyePosition() + vector3(0,0,-100)) ;
             m_Loco.SetYaw(R_180) ;
         
             // If this a lip sync, then there is no bind pose so go to the last frame of the anim
-            if( m_Type == config::TYPE_LIP_SYNC )
+            if( m_Type == config_options::TYPE_LIP_SYNC )
                 m_Loco.GetMotionController().SetFrameParametric(1.0f);
         }
         
@@ -509,7 +509,7 @@ void viewer_object::Kill( void )
 
     // Flag not loaded anymore
     m_RenderType = RENDER_NULL ;
-    m_Type       = config::TYPE_NULL ;
+    m_Type       = config_options::TYPE_NULL ;
     m_pGeom      = NULL ;
 }
 
@@ -541,7 +541,7 @@ const char* viewer_object::GetAnimType( const char* pAnimName ) const
         return "FULLBODY";
         
     // Lookup anim array
-    xarray<config::object::anim>& Anims = m_pConfigObject->m_Anims;
+    xarray<config_options::object::anim>& Anims = m_pConfigObject->m_Anims;
 
     // Search through all anims
     for( s32 i = 0; i < Anims.GetCount(); i++ )
@@ -611,7 +611,7 @@ void viewer_object::PlayCurrentAnim( xbool bMovieStart )
     GetAnimInfo( pAnimName, pAnimType, MaskType, MaskFlags );
 
     // Play loco?
-    if ( ( m_Type == config::TYPE_LOCO ) || ( m_Type == config::TYPE_LIP_SYNC ) )
+    if ( ( m_Type == config_options::TYPE_LOCO ) || ( m_Type == config_options::TYPE_LIP_SYNC ) )
     {
         // No pause in loco mode
         m_bAnimPaused = FALSE;
@@ -691,7 +691,7 @@ xbool viewer_object::HasCurrentAnimFinished( void )
     GetAnimInfo( pAnimName, pAnimType, MaskType, MaskFlags );
 
     // Play loco?
-    if ( ( m_Type == config::TYPE_LOCO ) || ( m_Type == config::TYPE_LIP_SYNC ) )
+    if ( ( m_Type == config_options::TYPE_LOCO ) || ( m_Type == config_options::TYPE_LIP_SYNC ) )
     {
         loco_anim_controller* pCont = NULL;
         
@@ -778,7 +778,7 @@ s32 viewer_object::GetCurrentAnimFrame( void )
     GetAnimInfo( pAnimName, pAnimType, MaskType, MaskFlags );
 
     // Play loco?
-    if ( ( m_Type == config::TYPE_LOCO ) || ( m_Type == config::TYPE_LIP_SYNC ) )
+    if ( ( m_Type == config_options::TYPE_LOCO ) || ( m_Type == config_options::TYPE_LIP_SYNC ) )
     {
         // Additive?
         if( x_stristr( pAnimType, "ADDITIVE" ) )
@@ -855,7 +855,7 @@ void viewer_object::GetBoneL2W( s32 iBone, matrix4& L2W )
     }
 
     // Loco?
-    if (m_Type == config::TYPE_LOCO)
+    if (m_Type == config_options::TYPE_LOCO)
         L2W = m_Loco.m_Player.GetBoneL2W(iBone) ;
     else
         L2W = *m_AnimPlayer.GetBoneL2W(iBone) ;
@@ -930,13 +930,13 @@ void viewer_object::Advance( f32 DeltaTime )
     // Advance loco and animation players
     switch( m_Type )
     {
-    case config::TYPE_LOCO:
+    case config_options::TYPE_LOCO:
         m_Loco.OnAdvance( DeltaTime ) ;
         m_Loco.SendEvents( g_pPlayer );
         m_L2W = m_Loco.GetL2W();
         break;
 
-    case config::TYPE_LIP_SYNC:
+    case config_options::TYPE_LIP_SYNC:
         m_Loco.OnAdvance( DeltaTime ) ;
         m_Loco.SendEvents( g_pPlayer );
 
@@ -1003,7 +1003,7 @@ void viewer_object::SetL2W( const matrix4& L2W, xbool bFlip180 )
     m_AnimPlayer.SetL2W( L2W );
     
     // Update loco?
-    if( m_Type == config::TYPE_LOCO )
+    if( m_Type == config_options::TYPE_LOCO )
     {
         // Fixup
         matrix4 LocoL2W = L2W;
@@ -1044,7 +1044,7 @@ const matrix4* viewer_object::ComputeMatrices( s32 nActiveBones )
     if (m_hAnimGroup.GetPointer())
     {
         // Loco?
-        if ( ( m_Type == config::TYPE_LOCO ) || ( m_Type == config::TYPE_LIP_SYNC ) )
+        if ( ( m_Type == config_options::TYPE_LOCO ) || ( m_Type == config_options::TYPE_LIP_SYNC ) )
         {
             // Animations present?
             if (m_Loco.IsAnimLoaded())
@@ -1055,7 +1055,7 @@ const matrix4* viewer_object::ComputeMatrices( s32 nActiveBones )
             }
 
             // Lip sync loco?            
-            if( m_Type == config::TYPE_LIP_SYNC )
+            if( m_Type == config_options::TYPE_LIP_SYNC )
             {
                 // For lip sync, loco is at origin, so put into world space
                 for( i = 0 ; i < nActiveBones ; i++ )
@@ -1215,7 +1215,7 @@ void viewer_object::Render( const view& View, xtimer& LogicCPU, xtimer& RenderCP
     //draw_ClearL2W() ;
 
     // Render object?
-    if( m_Type == config::TYPE_OBJECT )
+    if( m_Type == config_options::TYPE_OBJECT )
     {
         // Render grid so we can see the floor when showing player hands
         if (    ( HasCameraBone() )
@@ -1243,7 +1243,7 @@ void viewer_object::Render( const view& View, xtimer& LogicCPU, xtimer& RenderCP
     }
                 
     // Render loco?
-    if ( m_Type == config::TYPE_LOCO )
+    if ( m_Type == config_options::TYPE_LOCO )
     {
         // Render move and look info
         if (    (!g_ShowHelp) &&
@@ -1365,11 +1365,11 @@ bbox viewer_object::GetWorldBBox( void )
 xcolor viewer_object::LightVert( const vector3& Position, const vector3& Normal )
 {
     // Full bright?
-    if (g_Light.m_State == config::light::STATE_FULL_BRIGHT)
+    if (g_Light.m_State == config_options::light::STATE_FULL_BRIGHT)
         return XCOLOR_WHITE ;
     
     // Off?
-    if (g_Light.m_State == config::light::STATE_OFF)
+    if (g_Light.m_State == config_options::light::STATE_OFF)
         return XCOLOR_BLACK ;
 
     // Get direction and distance to light
@@ -1509,7 +1509,7 @@ void viewer_object::HandleInput( f32 DeltaTime )
     xbool bRagdollShiftPressed = FALSE;
 
     // Which type?
-    if (m_Type == config::TYPE_LOCO)
+    if (m_Type == config_options::TYPE_LOCO)
     {
         // Lookup ragdoll shift mode
         bRagdollShiftPressed = input_IsPressed( JOY_OBJECT_RAGDOLL_SHIFT );
@@ -1561,7 +1561,7 @@ void viewer_object::HandleInput( f32 DeltaTime )
     }
 // Commented out as per Aarons request so lip sync uses normal object camera    
 /*    
-    else if (m_Type == config::TYPE_LIP_SYNC)
+    else if (m_Type == config_options::TYPE_LIP_SYNC)
     {
         bLipSyncTest  = TRUE ;
 
@@ -1643,9 +1643,9 @@ void viewer_object::HandleInput( f32 DeltaTime )
             f32     t;
             if( Plane.Intersect( t, RayPos, RayDir ) )
             {
-                vector3 ColPos = RayPos + RayDir*t;
-                ColPos.GetY() = m_Loco.GetLookAt().GetY() ;
-                m_Loco.SetLookAt(ColPos) ;
+                //vector3 ColPos = RayPos + RayDir*t;
+                //ColPos.GetY() = m_Loco.GetLookAt().GetY() ;
+                //m_Loco.SetLookAt(ColPos) ;
             }
         }
 #endif
@@ -1996,7 +1996,7 @@ void viewer_object::HandleInput( f32 DeltaTime )
             PlayCurrentAnim( FALSE );
 
         // Keep looping the anim in loco mode?
-        if ( m_Type == config::TYPE_LOCO )
+        if ( m_Type == config_options::TYPE_LOCO )
         {
             xbool bPlayAnimPressed = input_IsPressed(JOY_OBJECT_PLAY_ANIM) ;
 
@@ -2128,7 +2128,7 @@ void viewer_object::ShowInfo( s32& x, s32& y )
     if (pAnimGroup)
     {
         // Get anim name from player
-        if (m_Type == config::TYPE_LOCO)
+        if (m_Type == config_options::TYPE_LOCO)
             pCurrAnimInfo = &(m_Loco.m_Player.GetCurrAnim().GetAnimInfo()) ;
         else
             pCurrAnimInfo = &(m_AnimPlayer.GetAnimInfo()) ;
@@ -2180,7 +2180,7 @@ void viewer_object::ShowInfo( s32& x, s32& y )
         }
 
         // Show loco info
-        if (m_Type == config::TYPE_LOCO)
+        if (m_Type == config_options::TYPE_LOCO)
             x_printfxy(x,y++, "MoveStyle:%s", m_Loco.GetMoveStyleName(m_Loco.GetMoveStyle()) ) ;
     }
 
@@ -2299,7 +2299,7 @@ void viewer_object::GetState( viewer_object::state& State )
         }
         
         // Get anim info from loco?
-        if (m_Type == config::TYPE_LOCO)
+        if (m_Type == config_options::TYPE_LOCO)
         {
             // Get current anim info
             x_strcpy(State.m_AnimName, m_Loco.m_Player.GetCurrAnim().GetAnimName()) ;
@@ -2346,7 +2346,7 @@ void viewer_object::SetState( const viewer_object::state& State )
             m_iAnim = 0;
     
         // Get anim info from loco?
-        if (m_Type == config::TYPE_LOCO)
+        if (m_Type == config_options::TYPE_LOCO)
         {
             // Set current anim info
             m_Loco.SetPosition(State.m_Position) ;

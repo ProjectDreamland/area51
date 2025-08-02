@@ -65,6 +65,12 @@ public:
     void            Pause           (void);
     void            Resume          (void);
     xbool           CachingComplete ( void )    { return TRUE;              }
+#ifdef TARGET_PC     
+    void            SetRenderSize   (const vector2& Size) { m_RenderSize = Size;             }
+    void            SetRenderPos    (const vector2& Pos)  { m_RenderPos = Pos;               }
+    void            SetForceStretch (xbool bForceStretch) { m_bForceStretch = bForceStretch; }
+    xbool           IsForceStretch  (void)                { return m_bForceStretch;          }
+#endif
 
 #ifdef TARGET_XBOX
     void            SetPos          ( vector3& Pos ){ m_Pos = Pos; }
@@ -84,11 +90,18 @@ private:
     f32             m_Volume;
     s32             m_Language;
     xbool           m_IsLooped;
-    HBINK           m_Handle;
+    HBINK           m_Handle;  
+#ifdef TARGET_PC 
+    vector2         m_RenderSize;
+    vector2         m_RenderPos;
+    xbool           m_bForceStretch;
+    
+    IDirect3DSurface9* m_Surface;
+#endif
 
 #ifdef TARGET_XBOX
     vector3         m_Pos;
 #endif
 };
 
-#endif // MOVIEPLAYER_HPP
+#endif // MOVIEPLAYER_BINK_HPP

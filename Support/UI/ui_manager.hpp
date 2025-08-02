@@ -22,6 +22,24 @@
 //  Controller button mapping
 //==============================================================================
 
+#if defined( TARGET_XBOX )
+#define INPUT_BUTTON_UP         INPUT_XBOX_BTN_UP      
+#define INPUT_BUTTON_DOWN       INPUT_XBOX_BTN_DOWN
+#define INPUT_BUTTON_LEFT       INPUT_XBOX_BTN_LEFT
+#define INPUT_BUTTON_RIGHT      INPUT_XBOX_BTN_RIGHT
+#define INPUT_STICK_X           INPUT_XBOX_STICK_LEFT_X   
+#define INPUT_STICK_Y           INPUT_XBOX_STICK_LEFT_Y   
+#define INPUT_STICK_X_C         INPUT_XBOX_STICK_RIGHT_X
+#define INPUT_STICK_Y_C         INPUT_XBOX_STICK_RIGHT_Y
+#define INPUT_SELECT            INPUT_XBOX_BTN_A
+#define INPUT_CANCEL            INPUT_XBOX_BTN_B
+#define INPUT_PREV_MENU         INPUT_XBOX_R_TRIGGER
+#define INPUT_NEXT_MENU         INPUT_XBOX_L_TRIGGER
+#define INPUT_BUTTON_Z          INPUT_XBOX_BTN_BLACK
+#define INPUT_BUTTON_START      INPUT_XBOX_BTN_START
+#define INPUT_MAX_CONTROLLER_COUNT 4
+#endif
+
 #ifdef TARGET_PS2
 #define INPUT_BUTTON_UP         INPUT_PS2_BTN_L_UP      
 #define INPUT_BUTTON_DOWN       INPUT_PS2_BTN_L_DOWN
@@ -40,42 +58,23 @@
 #define INPUT_MAX_CONTROLLER_COUNT 2
 #endif
 
-#ifdef TARGET_GCN
-#define INPUT_BUTTON_UP         INPUT_GCN_BTN_UP
-#define INPUT_BUTTON_DOWN       INPUT_GCN_BTN_DOWN
-#define INPUT_BUTTON_LEFT       INPUT_GCN_BTN_LEFT
-#define INPUT_BUTTON_RIGHT      INPUT_GCN_BTN_RIGHT
-#define INPUT_STICK_X           INPUT_GCN_STICK_LEFT_X
-#define INPUT_STICK_Y           INPUT_GCN_STICK_LEFT_Y
-#define INPUT_STICK_X_C         INPUT_GCN_STICK_RIGHT_X
-#define INPUT_STICK_Y_C         INPUT_GCN_STICK_RIGHT_Y
-#define INPUT_SELECT            INPUT_GCN_BTN_A
-#define INPUT_CANCEL            INPUT_GCN_BTN_B
-#define INPUT_PREV_MENU         INPUT_GCN_BTN_R
-#define INPUT_NEXT_MENU         INPUT_GCN_BTN_L
-#define INPUT_BUTTON_Z          INPUT_GCN_BTN_Z
-#define INPUT_BUTTON_START      INPUT_GCN_BTN_START
+#if defined( TARGET_PC )
+#define INPUT_BUTTON_UP         INPUT_KBD_UP      
+#define INPUT_BUTTON_DOWN       INPUT_KBD_DOWN
+#define INPUT_BUTTON_LEFT       INPUT_KBD_LEFT
+#define INPUT_BUTTON_RIGHT      INPUT_KBD_RIGHT
+#define INPUT_STICK_X           INPUT_PS2_STICK_LEFT_X   
+#define INPUT_STICK_Y           INPUT_PS2_STICK_LEFT_Y
+#define INPUT_STICK_X_C         INPUT_PS2_STICK_RIGHT_X
+#define INPUT_STICK_Y_C         INPUT_PS2_STICK_RIGHT_Y
+#define INPUT_SELECT            INPUT_PS2_BTN_CROSS
+#define INPUT_CANCEL            INPUT_PS2_BTN_SQUARE
+#define INPUT_PREV_MENU         INPUT_PS2_BTN_L1
+#define INPUT_NEXT_MENU         INPUT_PS2_BTN_R1
+#define INPUT_BUTTON_Z          INPUT_PS2_BTN_R2
+#define INPUT_BUTTON_START      INPUT_PS2_BTN_START
 #define INPUT_MAX_CONTROLLER_COUNT 2
 #endif
-
-#if defined( TARGET_XBOX) || defined( TARGET_PC)
-#define INPUT_BUTTON_UP         INPUT_XBOX_BTN_UP      
-#define INPUT_BUTTON_DOWN       INPUT_XBOX_BTN_DOWN
-#define INPUT_BUTTON_LEFT       INPUT_XBOX_BTN_LEFT
-#define INPUT_BUTTON_RIGHT      INPUT_XBOX_BTN_RIGHT
-#define INPUT_STICK_X           INPUT_XBOX_STICK_LEFT_X   
-#define INPUT_STICK_Y           INPUT_XBOX_STICK_LEFT_Y   
-#define INPUT_STICK_X_C         INPUT_XBOX_STICK_RIGHT_X
-#define INPUT_STICK_Y_C         INPUT_XBOX_STICK_RIGHT_Y
-#define INPUT_SELECT            INPUT_XBOX_BTN_A
-#define INPUT_CANCEL            INPUT_XBOX_BTN_B
-#define INPUT_PREV_MENU         INPUT_XBOX_R_TRIGGER
-#define INPUT_NEXT_MENU         INPUT_XBOX_L_TRIGGER
-#define INPUT_BUTTON_Z          INPUT_XBOX_BTN_BLACK
-#define INPUT_BUTTON_START      INPUT_XBOX_BTN_START
-#define INPUT_MAX_CONTROLLER_COUNT 4
-#endif
-
 
 //==============================================================================
 //  Externals
@@ -97,7 +96,7 @@ extern xbool bInProcessInput;
 //==============================================================================
 #define BUTTON_SPRITE_WIDTH     18
 
-#if defined( TARGET_XBOX) || defined( TARGET_PC)
+#if defined( TARGET_XBOX )
 enum
 {
     XBOX_BUTTON_A, 
@@ -128,7 +127,37 @@ enum
     NUM_BUTTON_TEXTURES,
 
 };
-#else
+#elif defined(TARGET_PS2)
+enum
+{
+    PS2_BUTTON_CROSS, 
+    PS2_BUTTON_SQUARE, 
+    PS2_BUTTON_TRIANGLE, 
+    PS2_BUTTON_CIRCLE,
+    PS2_BUTTON_DPAD_DOWN,
+    PS2_BUTTON_DPAD_LEFT,
+    PS2_BUTTON_DPAD_UP,
+    PS2_BUTTON_DPAD_RIGHT, 
+    PS2_BUTTON_DPAD_UPDOWN,
+    PS2_BUTTON_DPAD_LEFTRIGHT,
+    PS2_BUTTON_STICK_RIGHT, 
+    PS2_BUTTON_STICK_LEFT, 
+    PS2_BUTTON_L1,
+    PS2_BUTTON_L2, 
+    PS2_BUTTON_R1, 
+    PS2_BUTTON_R2,
+    PS2_BUTTON_START,
+    KILL_ICON,
+    TEAM_KILL_ICON,
+    DEATH_ICON,
+    FLAG_ICON,
+    VOTE_ICON,
+    NEW_CREDIT_PAGE,
+    CREDIT_TITLE_LINE,
+    CREDIT_END,
+    NUM_BUTTON_TEXTURES,
+};
+#elif defined(TARGET_PC)
 enum
 {
     PS2_BUTTON_CROSS, 
@@ -257,7 +286,7 @@ public:
         NAV_RIGHT,
     };
 
-	struct user
+    struct user
     {
         xbool                   Enabled;
         s32                     ControllerID;
@@ -279,23 +308,25 @@ public:
         button                  ButtonMB;
         button                  ButtonRB;
 
-        button                  DPadUp			[INPUT_MAX_CONTROLLER_COUNT];
-        button                  DPadDown		[INPUT_MAX_CONTROLLER_COUNT];
-        button                  DPadLeft		[INPUT_MAX_CONTROLLER_COUNT];
-        button                  DPadRight		[INPUT_MAX_CONTROLLER_COUNT];
-        button                  PadSelect		[INPUT_MAX_CONTROLLER_COUNT];
-        button                  PadBack			[INPUT_MAX_CONTROLLER_COUNT];
-        button                  PadDelete		[INPUT_MAX_CONTROLLER_COUNT];
-        button                  PadHelp			[INPUT_MAX_CONTROLLER_COUNT];
+        button                  DPadUp            [INPUT_MAX_CONTROLLER_COUNT];
+        button                  DPadDown        [INPUT_MAX_CONTROLLER_COUNT];
+        button                  DPadLeft        [INPUT_MAX_CONTROLLER_COUNT];
+        button                  DPadRight        [INPUT_MAX_CONTROLLER_COUNT];
+        button                  PadSelect        [INPUT_MAX_CONTROLLER_COUNT];
+        button                  PadBack            [INPUT_MAX_CONTROLLER_COUNT];
+        button                  PadDelete        [INPUT_MAX_CONTROLLER_COUNT];
         button                  PadActivate     [INPUT_MAX_CONTROLLER_COUNT];
-        button                  PadShoulderL	[INPUT_MAX_CONTROLLER_COUNT];
-        button                  PadShoulderR	[INPUT_MAX_CONTROLLER_COUNT];
-        button                  PadShoulderL2	[INPUT_MAX_CONTROLLER_COUNT];
-        button                  PadShoulderR2	[INPUT_MAX_CONTROLLER_COUNT];
-        button                  LStickUp		[INPUT_MAX_CONTROLLER_COUNT];
-        button                  LStickDown		[INPUT_MAX_CONTROLLER_COUNT];
-        button                  LStickLeft		[INPUT_MAX_CONTROLLER_COUNT];
-        button                  LStickRight		[INPUT_MAX_CONTROLLER_COUNT];
+#if defined(TARGET_PS2) || defined(TARGET_XBOX)    
+        button                  PadHelp            [INPUT_MAX_CONTROLLER_COUNT];
+        button                  PadShoulderL    [INPUT_MAX_CONTROLLER_COUNT];
+        button                  PadShoulderR    [INPUT_MAX_CONTROLLER_COUNT];
+        button                  PadShoulderL2    [INPUT_MAX_CONTROLLER_COUNT];
+        button                  PadShoulderR2    [INPUT_MAX_CONTROLLER_COUNT];
+        button                  LStickUp        [INPUT_MAX_CONTROLLER_COUNT];
+        button                  LStickDown        [INPUT_MAX_CONTROLLER_COUNT];
+        button                  LStickLeft        [INPUT_MAX_CONTROLLER_COUNT];
+        button                  LStickRight        [INPUT_MAX_CONTROLLER_COUNT];
+#endif        
 
         xarray<ui_dialog*>      DialogStack;
     };
@@ -415,13 +446,13 @@ public:
     void            Kill                    ( void );
 
     s32             LoadBackground          ( const char* pName, const char* pPathName );
-	void			UnloadBackground	    ( const char* pName );
+    void            UnloadBackground        ( const char* pName );
     s32             FindBackground          ( const char* pName ) const;
     void            RenderBackground        ( const char* pName ) const;
     void            EnableBackground        ( xbool IsEnabled )                                     { m_EnableBackground = IsEnabled; }
 
     s32             LoadBitmap              ( const char* pName, const char* pPathName );
-	void			UnloadBitmap	        ( const char* pName );
+    void            UnloadBitmap            ( const char* pName );
     s32             FindBitmap              ( const char* pName );
     void            RenderBitmap            ( s32 iBitmap, const irect& Position, xcolor Color = XCOLOR_WHITE ) const;
     void            RenderBitmapUV          ( s32 iBitmap, const irect& Position, const vector2& UV0, const vector2& UV1, xcolor Color = XCOLOR_WHITE ) const;
@@ -504,7 +535,7 @@ public:
     f32             GetAlphaTime            ( void )                { return m_AlphaTime; }
 
     // button icons
-    xbitmap*	    GetButtonTexture        ( s32 buttonCode );      
+    xbitmap*        GetButtonTexture        ( s32 buttonCode );      
     s32             LookUpButtonCode        ( const xwchar* pString, s32 iStart ) const;
 
     // scale factors
@@ -674,8 +705,8 @@ public:
     xstring*            m_log;
 };
 
-extern ui_manager*	g_UiMgr;
-extern s32			g_UiUserID;
+extern ui_manager*    g_UiMgr;
+extern s32            g_UiUserID;
 
 //==============================================================================
 #endif // UI_MANAGER_HPP

@@ -73,7 +73,9 @@ level_loader  g_LevelLoader;
 xbool         g_level_loading  = FALSE;
 extern char   g_FullPath [ 256 ];
 extern xtimer g_GameTimer;
+#ifndef CONFIG_VIEWER
 extern u32    g_nLogicFramesAfterLoad;
+#endif
 
 #ifndef X_RETAIL
 void* g_pBallast = NULL;
@@ -613,8 +615,10 @@ void level_loader::LoadLevel( xbool bFullLoad )
     // inflate the world bounds a bit
     g_ObjMgr.InflateSafeBBox( 1000.0f );
 
+    #ifndef CONFIG_VIEWER
     // reset the frame count to 0
     g_nLogicFramesAfterLoad = 0;
+	#endif
 
     if( bFullLoad )
     {

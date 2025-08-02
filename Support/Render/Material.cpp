@@ -224,3 +224,250 @@ void ps::path::compile( const char* pShaderText,shader& Result )
 }
 
 #endif
+
+//=============================================================================
+// PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC PC !
+//=============================================================================
+
+#ifdef TARGET_PC
+
+#include "Entropy.hpp"
+#include "Render.hpp"
+
+#include "PC\pc_render.hpp"
+
+//=============================================================================
+
+static const D3DVERTEXELEMENT9 s_dwRigidDesc[] =
+{
+    {0, 0,  D3DDECLTYPE_FLOAT3,   D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0},
+    {0, 12, D3DDECLTYPE_FLOAT3,   D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_NORMAL,   0},
+    {0, 24, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_COLOR,    0},
+    {0, 28, D3DDECLTYPE_FLOAT2,   D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0},
+    D3DDECL_END()
+};
+
+//=============================================================================
+
+static const D3DVERTEXELEMENT9 s_dwSkinDesc[] =
+{
+    {0,  0, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0},
+    {0, 16, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_NORMAL,   0},
+    {0, 32, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0},
+    D3DDECL_END()
+};
+
+//=============================================================================
+
+shader::shader(u32 Type, IDirect3DPixelShader9* pPS, IDirect3DVertexDeclaration9* pVertexDecl)
+{
+    this->Type = Type;
+    pPixelShader = pPS;
+    pVertexDecl = pVertexDecl;
+    pVertexShader = NULL;
+}
+
+//=============================================================================
+
+shader::shader(u32 Type, IDirect3DVertexShader9* pVS, IDirect3DVertexDeclaration9* pVertexDecl)
+{
+    this->Type = Type;
+    pVertexShader = pVS;
+    pVertexDecl = pVertexDecl;
+    pPixelShader = NULL;
+}
+
+//=============================================================================
+
+static void DisplayBuffer( char* pTextIn )
+{
+#ifndef CONFIG_RETAIL
+
+    char* pDst = pTextIn;
+    char* pSrc = pTextIn;
+    {
+        u32 TotalBytes = x_strlen( pTextIn );
+        s32 nLines     = 0;
+
+        for( u32 j=0;j<TotalBytes;j++ )
+        {
+            if( pSrc[j]==0x0D )
+                continue;
+            if( pSrc[j]==0x0A )
+            {
+                nLines++;
+                *pDst=0;
+                pDst++;
+            }
+            else
+            {
+                *pDst = pSrc[j];
+                pDst++;
+            }
+        }
+        *pDst = 0;
+
+        OutputDebugString("\n***********************************************************************************\n\n" );
+
+        for( s32 iLine=0;iLine<nLines;iLine++ )
+        {
+            OutputDebugString( xfs("%3d: %s\n",iLine+1,pSrc ));
+            pSrc += x_strlen( pSrc )+1;
+        }
+    }
+#endif
+}
+
+//=============================================================================
+
+#pragma auto_inline(off)
+
+void vs::path::compile( const char* pShaderText, shader& Result )
+{
+#if COMPILE_SHADERS
+    bool bSkin = (Flags.oPos_Skin || Flags.oSt_CastShadowSkin);
+    u32 TotalBytes = x_strlen(pShaderText);
+    u32 dwType = 0;
+    
+    if(g_pd3dDevice)
+    {
+        LPD3DXBUFFER pMicrocode = NULL;
+        LPD3DXBUFFER pErrorLog = NULL;
+        
+        DWORD dwFlags = 0;
+        #ifdef X_RETAIL
+            dwFlags = D3DXSHADER_SKIPVALIDATION;
+        #else
+            dwFlags = D3DXSHADER_DEBUG;
+        #endif
+        
+        HRESULT hr = D3DXAssembleShader(
+            pShaderText,
+            TotalBytes, 
+            NULL,       
+            NULL,       
+            dwFlags,    
+            &pMicrocode,
+            &pErrorLog  
+        );
+            
+        if(FAILED(hr))
+        {
+            if(pErrorLog)
+            {
+                DisplayBuffer((char*)pErrorLog->GetBufferPointer());
+                pErrorLog->Release();
+            }
+            ASSERT(FALSE);
+            return;
+        }
+        
+        IDirect3DVertexShader9* pVertexShader = NULL;
+        hr = g_pd3dDevice->CreateVertexShader(
+            (CONST DWORD*)pMicrocode->GetBufferPointer(),
+            &pVertexShader
+        );
+            
+        if(FAILED(hr))
+        {
+            if(pMicrocode)
+                pMicrocode->Release();
+            ASSERT(FALSE);
+            return;
+        }
+        
+        IDirect3DVertexDeclaration9* pVertexDecl = NULL;
+        hr = g_pd3dDevice->CreateVertexDeclaration(
+            bSkin ? s_dwSkinDesc : s_dwRigidDesc, 
+            &pVertexDecl
+        );
+
+        if(FAILED(hr))
+        {
+            if(pVertexShader)
+                pVertexShader->Release();
+            if(pMicrocode)
+                pMicrocode->Release();
+            ASSERT(FALSE);
+            return;
+        }
+        
+        Result.shader::shader(
+            dwType,
+            pVertexShader,
+            pVertexDecl
+        );
+        
+        if(pMicrocode)
+            pMicrocode->Release();
+    }
+#endif
+}
+
+//=============================================================================
+
+void ps::path::compile( const char* pShaderText, shader& Result )
+{
+#if COMPILE_SHADERS
+    u32 TotalBytes = x_strlen(pShaderText);
+    u32 dwType = 0;
+    
+    if(g_pd3dDevice)
+    {
+        LPD3DXBUFFER pMicrocode = NULL;
+        LPD3DXBUFFER pErrorLog = NULL;
+        
+        DWORD dwFlags = 0;
+        #ifdef X_RETAIL
+            dwFlags = D3DXSHADER_SKIPVALIDATION;
+        #else
+            dwFlags = D3DXSHADER_DEBUG;
+        #endif
+        
+        HRESULT hr = D3DXAssembleShader(
+            pShaderText,  
+            TotalBytes,   
+            NULL,         
+            NULL,         
+            dwFlags,      
+            &pMicrocode,  
+            &pErrorLog    
+        );
+            
+        if(FAILED(hr))
+        {
+            if(pErrorLog)
+            {
+                DisplayBuffer((char*)pErrorLog->GetBufferPointer());
+                pErrorLog->Release();
+            }
+            ASSERT(FALSE);
+            return;
+        }
+        
+        IDirect3DPixelShader9* pPixelShader = NULL;
+        hr = g_pd3dDevice->CreatePixelShader(
+            (CONST DWORD*)pMicrocode->GetBufferPointer(),
+            &pPixelShader
+        );
+            
+        if(FAILED(hr))
+        {
+            if(pMicrocode)
+                pMicrocode->Release();
+            ASSERT(FALSE);
+            return;
+        }
+        
+        Result.shader::shader(
+            dwType,
+            pPixelShader,
+            NULL
+        );
+        
+        if(pMicrocode)
+            pMicrocode->Release();
+    }
+#endif
+}
+#endif // TARGET_PC

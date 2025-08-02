@@ -2,7 +2,7 @@
 #include "audio_channel_mgr.hpp"
 #include "audio_hardware.hpp"
 #include "audio_mp3_mgr.hpp"
-#include "audio\codecs\mp3api.hpp"
+#include "codecs\mp3api.hpp"
 #include "x_bytestream.hpp"
 #include "x_log.hpp"
 
@@ -125,7 +125,7 @@ audio_mp3_mgr::~audio_mp3_mgr( void )
 void audio_mp3_mgr::Init( void )
 {
     ASSERT( s_Initialized == FALSE );
-    //ASI_startup();
+    ASI_startup();
     s_Initialized = TRUE;
 }
 
@@ -134,7 +134,7 @@ void audio_mp3_mgr::Init( void )
 void audio_mp3_mgr::Kill( void )
 {
     ASSERT( s_Initialized );
-    //ASI_shutdown();
+    ASI_shutdown();
     s_Initialized = FALSE;
 }
 
@@ -145,8 +145,7 @@ void audio_mp3_mgr::Open( audio_stream* pStream )
     ASSERT( s_Initialized );
     ASSERT( VALID_STREAM(pStream) );
     pStream->CursorMP3 = 0;
-    //pStream->HandleMP3 = (void*)ASI_stream_open( (U32)pStream, mp3_fetch_data, pStream->Samples[0].Sample.WaveformLength );
-	pStream->HandleMP3 = NULL;
+    pStream->HandleMP3 = (void*)ASI_stream_open( (U32)pStream, mp3_fetch_data, pStream->Samples[0].Sample.WaveformLength );
 }
 
 //------------------------------------------------------------------------------
@@ -156,8 +155,8 @@ void audio_mp3_mgr::Close( audio_stream* pStream )
     ASSERT( s_Initialized );
     ASSERT( VALID_STREAM(pStream) );
 
-    //if( pStream->HandleMP3 )
-    //    ASI_stream_close( (s32)pStream->HandleMP3 );
+    if( pStream->HandleMP3 )
+        ASI_stream_close( (s32)pStream->HandleMP3 );
     pStream->HandleMP3 = NULL;
 }
 
@@ -185,7 +184,6 @@ void audio_mp3_mgr::Decode( audio_stream* pStream, s16* pBufferL, s16* pBufferR,
     }
     else
     {
-/****
         // Lock the audio hardware.
         g_AudioHardware.Lock();
 
@@ -229,7 +227,6 @@ void audio_mp3_mgr::Decode( audio_stream* pStream, s16* pBufferL, s16* pBufferR,
 
         // Unlock it now.
         g_AudioHardware.Unlock();
-****/
     }
 }
 

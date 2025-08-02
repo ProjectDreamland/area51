@@ -75,6 +75,8 @@ struct rigid_geom : public geom
         vertex_pc*  pVert;
         
         s32         iBone;
+        
+        u32         Pad; // GS: Unknown padding in V41.
 
         void FileIO( fileio& File );
     };

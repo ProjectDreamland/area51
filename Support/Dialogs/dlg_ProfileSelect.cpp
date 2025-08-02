@@ -23,7 +23,11 @@
 #include "stringmgr\stringmgr.hpp"
 #include "ResourceMgr\ResourceMgr.hpp"
 #include "Parsing/textin.hpp"
-#include "../Apps/GameApp/Config.hpp"
+#ifdef CONFIG_VIEWER
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
+#include "../../Apps/GameApp/Config.hpp"	
+#endif
 #include "MemCardMgr/MemCardMgr.hpp"
 
 
@@ -994,66 +998,59 @@ void dlg_profile_select::OnUpdate ( ui_win* pWin, f32 DeltaTime )
 void dlg_profile_select::RefreshProfileList( void )
 {
     xbool Found = FALSE;
-    u32 Profile1;
+    u32 ProfileHashToSelect;
 
     // get the hash for the selected profile
     if( m_Type == PROFILE_SELECT_OVERWRITE )
     {
-        Profile1 = g_StateMgr.GetSelectedProfile( g_StateMgr.GetPendingProfileIndex() );        
+        ProfileHashToSelect = g_StateMgr.GetSelectedProfile( g_StateMgr.GetPendingProfileIndex() );
     }
     else
     {
-        Profile1 = g_StateMgr.GetSelectedProfile( 0 );
+        ProfileHashToSelect = g_StateMgr.GetSelectedProfile( 0 );
     }
 
     // get the profile list
     xarray<profile_info*>& ProfileNames = g_StateMgr.GetProfileList();
-
     // store the current selection
     s32 CurrentSelection = m_pProfileList->GetSelection();
 
     // clear the list
     m_pProfileList->DeleteAllItems();
-
     // get the current list from the memcard manager
     g_UIMemCardMgr.GetProfileNames( ProfileNames );
-
     // fill it with the profile information
     for (s32 i=0; i<ProfileNames.GetCount(); i++)
     {
+        s32 ProfileState = PROFILE_OK;
+
         if( ProfileNames[i]->bDamaged )
         {
-#ifdef TARGET_XBOX
-            // add the profile to the list
-            m_pProfileList->AddItem( ProfileNames[i]->Name, i, PROFILE_OK );
-#else
-            // add the profile to the list
-            m_pProfileList->AddItem( g_StringTableMgr( "ui", "IDS_CORRUPT" ), i, PROFILE_CORRUPT );
-            m_pProfileList->SetItemColor( i, XCOLOR_RED );
-#endif
+            ProfileState = PROFILE_CORRUPT;
         }
         else if ( ProfileNames[i]->Ver != PROFILE_VERSION_NUMBER )
         {
-#ifdef TARGET_XBOX
-            // add the profile to the list
-            m_pProfileList->AddItem( ProfileNames[i]->Name, i, PROFILE_OK );
+#ifdef RETAIL
+            ProfileState = PROFILE_CORRUPT;
 #else
-            // add the profile to the list
-            //m_pProfileList->AddItem( g_StringTableMgr( "ui", "IDS_BAD_VERSION" ), i, PROFILE_EXPIRED ); // not for retail
-            m_pProfileList->AddItem( g_StringTableMgr( "ui", "IDS_CORRUPT" ), i, PROFILE_CORRUPT );
-            m_pProfileList->SetItemColor( i, XCOLOR_RED );
+            ProfileState = PROFILE_EXPIRED;
 #endif
+        }
+
+        if( ProfileState != PROFILE_OK )
+        {
+            m_pProfileList->AddItem( g_StringTableMgr( "ui", "IDS_CORRUPT" ), i, ProfileState );
+            m_pProfileList->SetItemColor( i, XCOLOR_RED );
         }
         else
         {
-            // add the profile to the list
-            m_pProfileList->AddItem( ProfileNames[i]->Name, i, PROFILE_OK );
+            m_pProfileList->AddItem( ProfileNames[i]->Name, i, ProfileState );
         }
 
-        // look for a match for the selected profile
-        if( Profile1 != 0 )
+        // look for a match for the selected profile hash
+        if( ProfileHashToSelect != 0 )
         {
-            if( ProfileNames[i]->Hash == Profile1 )
+            if( ProfileNames[i]->Hash == ProfileHashToSelect )
             {
                 if( CurrentSelection == -1 )
                     CurrentSelection = i;
@@ -1067,14 +1064,8 @@ void dlg_profile_select::RefreshProfileList( void )
     m_pProfileList->AddItem( g_StringTableMgr("ui", "IDS_PROFILE_CREATE_NEW"), m_CreateIndex );
 
     // determine if profile selected
-    //if( g_StateMgr.GetSelectedProfile( 0 ) && Found )
-    //{
-    //    // set the selected profile
-    //    m_pProfileList->SetSelection( CurrentSelection );
-    //}
-    //else
     {
-        if( ( m_pProfileList->GetItemCount() > CurrentSelection ) && ( CurrentSelection >= 0 ) )
+        if( ( CurrentSelection >= 0 ) && (CurrentSelection < m_pProfileList->GetItemCount()) )
         {
             m_pProfileList->SetSelection( CurrentSelection );
         }
@@ -1084,79 +1075,117 @@ void dlg_profile_select::RefreshProfileList( void )
         }
     }
 
-    // populate profile info
+    // populate profile info box based on current selection
     s32 SelIndex = m_pProfileList->GetSelection();
+
     if( SelIndex == m_CreateIndex )
     {
-    #ifdef TARGET_XBOX
-        // new profile, blank fields
-        m_pProfileDetails->SetLabel( g_StringTableMgr( "ui", "IDS_HARD_DISK_TITLE" ) );
-        MemCardMgr::condition& Condition = g_UIMemCardMgr.GetCondition(0);
-        u32 nBlocksFree = (u32)(Condition.BytesFree/16384);
-        
-        if( nBlocksFree <= 50000 )
-        {
-            xwstring Msg( xfs("%d ",nBlocksFree) );
+        // Handle display for "Create New" option
+        m_pProfileDetails->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_CREATE_NEW" ) );
 
-            if (nBlocksFree == 1)
-                Msg += g_StringTableMgr( "ui", "IDS_XBOX_LIVE_BLOCK_FREE" );
+#if defined(TARGET_XBOX)
+            m_pProfileDetails->SetLabel( g_StringTableMgr( "ui", "IDS_HARD_DISK_TITLE" ) );
+            MemCardMgr::condition& Condition = g_UIMemCardMgr.GetCondition(0);
+            u32 nBlocksFree = (u32)(Condition.BytesFree/16384);
+
+            if( nBlocksFree <= 50000 )
+            {
+                xwstring Msg( xfs("%d ",nBlocksFree) );
+                if (nBlocksFree == 1)
+                    Msg += g_StringTableMgr( "ui", "IDS_XBOX_LIVE_BLOCK_FREE" );
+                else
+                    Msg += g_StringTableMgr( "ui", "IDS_XBOX_LIVE_BLOCKS_FREE" );
+                m_pCardSlot->SetLabel( Msg );
+            }
             else
-                Msg += g_StringTableMgr( "ui", "IDS_XBOX_LIVE_BLOCKS_FREE" );            
+            {
+                xwstring Msg( xfs("50000+ ") );
+                Msg += g_StringTableMgr( "ui", "IDS_XBOX_LIVE_BLOCKS_FREE" );
+                m_pCardSlot->SetLabel( Msg );
+            }
+            m_pCreationDate     ->SetFlag(WF_VISIBLE, FALSE);
+            m_pModifiedDate     ->SetFlag(WF_VISIBLE, FALSE);
+            m_pInfoCreationDate ->SetFlag(WF_VISIBLE, FALSE);
+            m_pInfoModifiedDate ->SetFlag(WF_VISIBLE, FALSE);
 
-            m_pCardSlot->SetLabel( Msg );
-        }
-        else
-        {
-            xwstring Msg( xfs("50000+ ") );
-            Msg += g_StringTableMgr( "ui", "IDS_XBOX_LIVE_BLOCKS_FREE" );
-
-            m_pCardSlot->SetLabel( Msg );
-        }
-
-    #else
-        // new profile, blank fields
-        m_pCardSlot         ->SetLabel( g_StringTableMgr( "ui", "IDS_NULL" ) );
-        m_pInfoCreationDate ->SetLabel( xwstring("---") );
-        m_pInfoModifiedDate ->SetLabel( xwstring("---") );
-    #endif
+#elif defined(TARGET_PC)
+            m_pProfileDetails->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_INFO" ) );
+            m_pCardSlot         ->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_SAVE_LOCATION_PC" ) ); //TEMP
+            m_pCreationDate     ->SetFlag(WF_VISIBLE, FALSE);
+            m_pModifiedDate     ->SetFlag(WF_VISIBLE, FALSE);
+            m_pInfoCreationDate ->SetFlag(WF_VISIBLE, FALSE);
+            m_pInfoModifiedDate ->SetFlag(WF_VISIBLE, FALSE);
+#else
+            m_pProfileDetails->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_INFO" ) );
+            m_pCardSlot         ->SetLabel( g_StringTableMgr( "ui", "IDS_NULL" ) );
+            m_pCreationDate     ->SetFlag(WF_VISIBLE, TRUE);
+            m_pModifiedDate     ->SetFlag(WF_VISIBLE, TRUE);
+            m_pInfoCreationDate ->SetFlag(WF_VISIBLE, TRUE);
+            m_pInfoModifiedDate ->SetFlag(WF_VISIBLE, TRUE);
+            m_pInfoCreationDate ->SetLabel( xwstring(L"---") );
+            m_pInfoModifiedDate ->SetLabel( xwstring(L"---") );
+#endif
     }
-    else
+    else // Displaying info for an existing profile
     {
-    #ifdef TARGET_XBOX
-        m_pProfileDetails->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_INFO" ) );
-    #endif
-        // set the profile info
-        if( ProfileNames[SelIndex]->CardID == 0 )
+        if( SelIndex >= 0 && SelIndex < ProfileNames.GetCount() )
         {
-            m_pCardSlot     ->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_CARD_SLOT_1" ) );
+            m_pCreationDate     ->SetFlag(WF_VISIBLE, TRUE);
+            m_pModifiedDate     ->SetFlag(WF_VISIBLE, TRUE);
+            m_pInfoCreationDate ->SetFlag(WF_VISIBLE, TRUE);
+            m_pInfoModifiedDate ->SetFlag(WF_VISIBLE, TRUE);
+
+            m_pProfileDetails->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_INFO" ) );
+
+#if defined(TARGET_XBOX)
+                m_pCardSlot->SetLabel( g_StringTableMgr( "ui", "IDS_HARD_DISK_TITLE" ) );
+#elif defined(TARGET_PC)
+                m_pCardSlot->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_SAVE_LOCATION_PC" ) ); //TEMP
+#else 
+                if( ProfileNames[SelIndex]->CardID == 0 )
+                {
+                    m_pCardSlot     ->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_CARD_SLOT_1" ) );
+                }
+                else
+                {
+                    m_pCardSlot     ->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_CARD_SLOT_2" ) );
+                }
+#endif
+
+            split_date TimeStamp;
+            const xwchar* Month;
+
+            // Creation Date
+#ifdef TARGET_PS2
+            TimeStamp = eng_SplitJSTDate( ProfileNames[SelIndex]->CreationDate );
+#else
+            TimeStamp = eng_SplitDate( ProfileNames[SelIndex]->CreationDate );
+#endif
+            Month = g_StringTableMgr( "ui", (const char*)xfs("IDS_MONTH%d", TimeStamp.Month));
+            xwstring CreateStamp(xfs("%02i:%02i:%02i ",TimeStamp.Hour, TimeStamp.Minute, TimeStamp.Second));
+            CreateStamp += Month;
+            CreateStamp += (const char*)xfs(" %02i, %d", TimeStamp.Day, TimeStamp.Year);
+            m_pInfoCreationDate->SetLabel(CreateStamp);
+
+            // Modification Date
+#ifdef TARGET_PS2
+            TimeStamp = eng_SplitJSTDate( ProfileNames[SelIndex]->ModifiedDate );
+#else
+            TimeStamp = eng_SplitDate( ProfileNames[SelIndex]->ModifiedDate );
+#endif
+            Month = g_StringTableMgr( "ui", (const char*)xfs("IDS_MONTH%d", TimeStamp.Month));
+            xwstring ModStamp(xfs("%02i:%02i:%02i ",TimeStamp.Hour, TimeStamp.Minute, TimeStamp.Second));
+            ModStamp += Month;
+            ModStamp += (const char*)xfs(" %02i, %d", TimeStamp.Day, TimeStamp.Year);
+            m_pInfoModifiedDate->SetLabel(ModStamp);
         }
         else
         {
-            m_pCardSlot     ->SetLabel( g_StringTableMgr( "ui", "IDS_PROFILE_CARD_SLOT_2" ) );
+             m_pProfileDetails->SetLabel( g_StringTableMgr( "ui", "IDS_ERROR" ) );
+             m_pCardSlot         ->SetLabel( L"" );
+             m_pInfoCreationDate ->SetLabel( L"" );
+             m_pInfoModifiedDate ->SetLabel( L"" );
         }
-
-#ifdef TARGET_PS2
-        split_date TimeStamp = eng_SplitJSTDate( ProfileNames[SelIndex]->CreationDate );
-#else
-        split_date TimeStamp = eng_SplitDate( ProfileNames[SelIndex]->CreationDate );
-#endif
-        const xwchar* Month = g_StringTableMgr( "ui", (const char*)xfs("IDS_MONTH%d", TimeStamp.Month));
-        xwstring CreateStamp(xfs("%02i:%02i:%02i ",TimeStamp.Hour, TimeStamp.Minute, TimeStamp.Second));
-        CreateStamp += Month;
-        CreateStamp += (const char*)xfs("%02i", TimeStamp.Day);
-        m_pInfoCreationDate->SetLabel(CreateStamp);
-
-#ifdef TARGET_PS2
-        TimeStamp = eng_SplitJSTDate( ProfileNames[SelIndex]->ModifiedDate );
-#else
-        TimeStamp = eng_SplitDate( ProfileNames[SelIndex]->ModifiedDate );
-#endif
-        Month = g_StringTableMgr( "ui", (const char*)xfs("IDS_MONTH%d", TimeStamp.Month));
-        xwstring ModStamp(xfs("%02i:%02i:%02i ",TimeStamp.Hour, TimeStamp.Minute, TimeStamp.Second));
-        ModStamp += Month;
-        ModStamp += (const char*)xfs("%02i", TimeStamp.Day);
-        m_pInfoModifiedDate->SetLabel(ModStamp);
-
     }
 }
 

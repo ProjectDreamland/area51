@@ -415,7 +415,7 @@ void rawmaterial2::BuildFromRM( rawmaterial& RM )
     if (m_nTextures > 0)
     {
         m_pTexture = new texture[ RM.m_nTextures ];
-        x_memmove( m_pTexture, RM.m_pTexture, sizeof(texture)*m_nTextures );
+        x_memcpy( m_pTexture, RM.m_pTexture, sizeof(texture)*m_nTextures );
     }
     else
         m_pTexture = NULL;
@@ -424,7 +424,7 @@ void rawmaterial2::BuildFromRM( rawmaterial& RM )
     if (m_nSubMeshs > 0)
     {
         m_pSubMesh = new sub_mesh[ RM.m_nSubMeshs ];
-        x_memmove( m_pSubMesh, RM.m_pSubMesh, sizeof(sub_mesh)*m_nSubMeshs );
+        x_memcpy( m_pSubMesh, RM.m_pSubMesh, sizeof(sub_mesh)*m_nSubMeshs );
     }
     else
         m_pSubMesh = NULL;

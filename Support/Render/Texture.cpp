@@ -11,14 +11,14 @@ static s32 s_nTexture   = 0;
 static s32 s_TextureMem = 0;
 
 //=============================================================================
-//	TYPES
+//    TYPES
 //=============================================================================
 
 static struct texture_loader : public rsc_loader
 {
     texture_loader( void ) : rsc_loader( "TEXTURE", ".xbmp" ) {}
 
-	//-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
 
     virtual void* PreLoad( X_FILE* FP )
     {
@@ -83,7 +83,7 @@ static struct texture_loader : public rsc_loader
         return( pTexture );
     }
 
-	//-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
 
     virtual void* Resolve( void* pData ) 
     {
@@ -103,7 +103,7 @@ static struct texture_loader : public rsc_loader
         return( pTexture );
     }
 
-	//-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
 
     virtual void Unload( void* pData )
     {
@@ -125,7 +125,7 @@ static struct cubemap_loader : public rsc_loader
 {
     cubemap_loader( void ) : rsc_loader( "CUBEMAP", ".envmap" ) {}
 
-	//-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
 
     virtual void* PreLoad( X_FILE* FP )
     {
@@ -142,7 +142,7 @@ static struct cubemap_loader : public rsc_loader
         return( pCubemap );
     }
 
-	//-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
 
     virtual void* Resolve( void* pData ) 
     {
@@ -178,7 +178,7 @@ static struct cubemap_loader : public rsc_loader
         return( pCubemap );
     }
 
-	//-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
 
     virtual void Unload( void* pData )
     {

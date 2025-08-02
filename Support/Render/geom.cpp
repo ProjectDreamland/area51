@@ -14,7 +14,7 @@ geom::geom( void )
 
 geom::geom( fileio& File )
 {
-	(void)File;
+    (void)File;
     m_RefCount = 0;
     m_hGeom    = HNULL;
 

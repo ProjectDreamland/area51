@@ -27,7 +27,8 @@
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="FALSE"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
 				BufferSecurityCheck="TRUE"
 				EnableFunctionLevelLinking="FALSE"
 				EnableEnhancedInstructionSet="0"
@@ -40,8 +41,8 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib"
-				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win"
+				AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib Math_a.lib"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win;$(X)\..\xCore\3rdParty\Miles6\mathspy\win"
 				IgnoreDefaultLibraryNames="libci.lib"
 				GenerateDebugInformation="TRUE"/>
 			<Tool
@@ -233,8 +234,9 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9"
-				IgnoreDefaultLibraryNames="libc"
+				AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib Math_a.lib"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win;$(X)\..\xCore\3rdParty\Miles6\mathspy\win"
+				IgnoreDefaultLibraryNames="libci.lib"
 				GenerateDebugInformation="TRUE"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -426,7 +428,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9"/>
+				AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib Math_a.lib"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win;$(X)\..\xCore\3rdParty\Miles6\mathspy\win"
+				IgnoreDefaultLibraryNames="libci.lib"
+				GenerateDebugInformation="FALSE"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -600,7 +605,7 @@
 			WholeProgramOptimization="TRUE">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="3"
+				Optimization="0"
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="TRUE"
@@ -628,7 +633,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9"/>
+				AdditionalDependencies="d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dsound.lib binkw32.lib Mss32.lib Math_a.lib"
+				AdditionalLibraryDirectories="$(X)\3rdParty\DirectX9;$(X)\..\xCore\3rdParty\BinkSDK;$(X)\..\xCore\3rdParty\Miles6\lib\win;$(X)\..\xCore\3rdParty\Miles6\mathspy\win"
+				IgnoreDefaultLibraryNames="libci.lib"
+				GenerateDebugInformation="TRUE"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool

@@ -30,6 +30,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
+				AdditionalDependencies="XT4100LibStaticd.lib"
 				AdditionalLibraryDirectories="$(X)/3rdParty/DirectX9"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"/>

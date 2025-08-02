@@ -63,18 +63,18 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="2"
+				OptimizeForWindowsApplication="TRUE"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\entropy\Audio,include"
 				PreprocessorDefinitions="TARGET_PC;CONFIG_RETAIL"
-				InlineFunctionExpansion="2"
-				OptimizeForProcessor="2"
-				FavorSizeOrSpeed="1"
-				OptimizeForWindowsApplication="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
-				EnableIntrinsicFunctions="TRUE"
 				StringPooling="TRUE"
-				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
+				UsePrecompiledHeader="2"
 				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -122,6 +122,12 @@
 		</File>
 		<File
 			RelativePath="aiff_file.hpp">
+		</File>
+		<File
+			RelativePath=".\audio_file.cpp">
+		</File>
+		<File
+			RelativePath=".\audio_file.hpp">
 		</File>
 		<File
 			RelativePath="audio_private_pkg.hpp">
@@ -191,6 +197,12 @@
 		</File>
 		<File
 			RelativePath="test.txt">
+		</File>
+		<File
+			RelativePath=".\wav_file.cpp">
+		</File>
+		<File
+			RelativePath=".\wav_file.hpp">
 		</File>
 	</Files>
 	<Globals>

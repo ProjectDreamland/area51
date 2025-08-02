@@ -69,21 +69,24 @@ static info_entry InfoTable[] =
 {
     { ".TGA",       tga_Info    },
     { ".BMP",       bmp_Info    },
-	{ ".PSD",       psd_Info    },
+    { ".PSD",       psd_Info    },
     { ".XBMP",     xbmp_Info	},
+    { ".XBM",      xbmp_Info    }, //Legacy code: Tribes:AA
 };
 
 static load_entry LoadTable[] = 
 {
     { ".TGA",       tga_Load    },
     { ".BMP",       bmp_Load    },
-	{ ".PSD",       psd_Load    },
+    { ".PSD",       psd_Load    },
     { ".XBMP",     xbmp_Load    },
+    { ".XBM",      xbmp_Load    }, //Legacy code: Tribes:AA
 };
 
 static save_entry SaveTable[] = 
 {
     { ".XBMP",      xbmp_Save   },
+    { ".XBM",       xbmp_Save   }, //Legacy code: Tribes:AA
 };
 
 //==============================================================================

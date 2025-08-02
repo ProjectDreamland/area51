@@ -24,8 +24,12 @@
 				AdditionalIncludeDirectories="$(X)\x_files"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				DebugInformationFormat="4"/>
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
+				BufferSecurityCheck="FALSE"
+				EnableEnhancedInstructionSet="0"
+				DebugInformationFormat="4"
+				CallingConvention="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -60,7 +64,7 @@
 				AdditionalIncludeDirectories="$(X)\x_files"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_QA"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -96,7 +100,7 @@
 				AdditionalIncludeDirectories="$(X)\x_files"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -132,7 +136,7 @@
 				AdditionalIncludeDirectories="$(X)\x_files"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>

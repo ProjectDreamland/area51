@@ -9,7 +9,7 @@
 #include "SimpleSoundEmitter.hpp"
 #include "AudioMgr\AudioMgr.hpp"
 #include "gamelib\StatsMgr.hpp"
-#include "Render\editor_icons.hpp"
+#include "Render\Editor\editor_icons.hpp"
 #include "Audio\audio_stream_controller.hpp"
 
 //=========================================================================

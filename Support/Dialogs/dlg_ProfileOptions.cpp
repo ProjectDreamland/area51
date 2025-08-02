@@ -701,24 +701,22 @@ void dlg_profile_options::OnPadSelect( ui_win* pWin )
 
                 // select this new profile
                 g_StateMgr.SetSelectedProfile( g_StateMgr.GetPendingProfileIndex(), NewProfile.GetHash() );
-#ifndef TARGET_XBOX
-                // go to the memcard select screen and pick a card to save it on
-                m_State = DIALOG_STATE_SELECT;
-#else
-                // attempt to save the profile to the hdd
+
+                // attempt to save the profile to the default device (HDD for Xbox, appropriate location for PC)
+                // MemCardMgr should handle the platform difference. Card index 0 is used.
                 g_UIMemCardMgr.CreateProfile( 0, g_StateMgr.GetPendingProfileIndex(), this, &dlg_profile_options::OnProfileCreateCB );
 
-                // change the dialog state to wait for the memcard
+                // change the dialog state to wait for the memcard operation
                 m_State = DIALOG_STATE_WAIT_FOR_MEMCARD;
-#endif
             }
-            else
+            else // Editing existing profile
             {
                 // check for any changes made to the profile
                 player_profile PendingProfile = g_StateMgr.GetPendingProfile();
 
                 if( PendingProfile.HasChanged() )
                 {
+#ifdef TARGET_XBOX
                     if( GameMgr.GameInProgress() && g_NetworkMgr.IsOnline() )
                     {
                         // don't save to memcard whilst an online game is in progress
@@ -730,6 +728,7 @@ void dlg_profile_options::OnPadSelect( ui_win* pWin )
                         m_State = DIALOG_STATE_ACTIVATE;
                     }
                     else
+#endif
                     {
                         // changes have been made - prompt to save
                         irect r = g_UiMgr->GetUserBounds( g_UiUserID );
@@ -743,15 +742,15 @@ void dlg_profile_options::OnPadSelect( ui_win* pWin )
                         m_State = DIALOG_STATE_POPUP;
 
                         // configure message
-                        m_PopUp->Configure( g_StringTableMgr( "ui", "IDS_PROFILE_EDIT" ), 
-                            TRUE, 
-                            TRUE, 
-                            FALSE, 
+                        m_PopUp->Configure( g_StringTableMgr( "ui", "IDS_PROFILE_EDIT" ),
+                            TRUE,
+                            TRUE,
+                            FALSE,
                             g_StringTableMgr( "ui", "IDS_PROFILE_EDIT_MSG" ),
                             navText,
                             &m_PopUpResult );
 
-                        return;
+                        return; // Wait for popup response
                     }
                 }
                 else
@@ -764,6 +763,7 @@ void dlg_profile_options::OnPadSelect( ui_win* pWin )
         }
     }
 }
+
 
 //=========================================================================
 
@@ -794,6 +794,42 @@ void dlg_profile_options::OnProfileCreateCB( void )
         // save unsuccessful - return to profile select screen
         g_AudioMgr.Play( "Backup" );
         m_State = DIALOG_STATE_BACK;  
+    }
+}
+#else
+void dlg_profile_options::OnProfileCreateCB( void )
+{
+    MemCardMgr::condition& Condition = g_UIMemCardMgr.GetCondition( 0 );
+
+    // If the save was successful OR user continues WITHOUT saving
+    if( Condition.SuccessCode )
+    {
+        // continue without saving?
+        if( !Condition.bCancelled )
+        {
+            // saved ok
+            g_StateMgr.SetProfileNotSaved( g_StateMgr.GetPendingProfileIndex(), FALSE );
+        }
+        else
+        {
+			// save unsuccessful - return to profile select screen
+            g_AudioMgr.Play( "Backup" );
+            m_State = DIALOG_STATE_BACK;
+            return;
+        }
+
+        // update the changes in the profile
+        g_StateMgr.ActivatePendingProfile();
+        g_AudioMgr.Play( "Select_Norm" );
+
+        // continue to campaign menu or next logical step
+        m_State = DIALOG_STATE_SELECT; 
+    }
+    else
+    {
+        // save unsuccessful - return to profile select screen or previous menu
+        g_AudioMgr.Play( "Backup" );
+        m_State = DIALOG_STATE_BACK;
     }
 }
 #endif
@@ -956,14 +992,14 @@ void dlg_profile_options::OnUpdate ( ui_win* pWin, f32 DeltaTime )
         {
             // turn on the buttons
             m_pButtonControls       ->SetFlag(ui_win::WF_VISIBLE, TRUE);
-            m_pButtonAvatar         ->SetFlag(ui_win::WF_VISIBLE, TRUE);    
+            m_pButtonAvatar         ->SetFlag(ui_win::WF_VISIBLE, TRUE);
             m_pButtonDifficulty     ->SetFlag(ui_win::WF_VISIBLE, TRUE);
             m_pButtonOnlineStatus   ->SetFlag(ui_win::WF_VISIBLE, TRUE);
             m_pButtonAutosave       ->SetFlag(ui_win::WF_VISIBLE, TRUE);
-            m_pButtonCreate         ->SetFlag(ui_win::WF_VISIBLE, TRUE);    
+            m_pButtonCreate         ->SetFlag(ui_win::WF_VISIBLE, TRUE);
             m_pNavText              ->SetFlag(ui_win::WF_VISIBLE, TRUE);
 
-            #ifdef TARGET_XBOX
+#ifdef TARGET_XBOX
             {
                 if( g_MatchMgr.GetAuthStatus() == AUTH_STAT_CONNECTED )
                 {
@@ -974,16 +1010,16 @@ void dlg_profile_options::OnUpdate ( ui_win* pWin, f32 DeltaTime )
                     m_pButtonOnlineStatus->SetFlag( ui_win::WF_DISABLED, TRUE  );
                 }
             }
-            #endif
+#endif
 
             s32 iControl = g_StateMgr.GetCurrentControl();
 
             if( m_bCreate )
-            {                          
+            {
                 if( (iControl == -1) || (GotoControl(iControl)==NULL) )
                 {
                     GotoControl( (ui_control*)m_pButtonCreate );
-                    m_pButtonCreate->SetFlag(WF_HIGHLIGHT, TRUE); 
+                    m_pButtonCreate->SetFlag(WF_HIGHLIGHT, TRUE);
                     g_UiMgr->SetScreenHighlight( m_pButtonCreate->GetPosition() );
                 }
                 else
@@ -999,13 +1035,13 @@ void dlg_profile_options::OnUpdate ( ui_win* pWin, f32 DeltaTime )
                 if( (iControl == -1) || (GotoControl(iControl)==NULL) )
                 {
                     GotoControl( (ui_control*)m_pButtonControls );
-                    m_pButtonControls->SetFlag(WF_HIGHLIGHT, TRUE); 
+                    m_pButtonControls->SetFlag(WF_HIGHLIGHT, TRUE);
                     g_UiMgr->SetScreenHighlight( m_pButtonControls->GetPosition() );
                 }
                 else
                 {
                     // range check control ID
-                    if( iControl > 4 )
+                    if( iControl > 4 ) // Assuming max control index is 4 for edit mode (Controls, Avatar, Difficulty, Online Status, Autosave)
                     {
                         iControl = 0;
                     }
@@ -1062,7 +1098,7 @@ void dlg_profile_options::OnUpdate ( ui_win* pWin, f32 DeltaTime )
 
                         // continue onward
                         g_AudioMgr.Play( "Select_Norm" );
-                        m_State = DIALOG_STATE_ACTIVATE;            
+                        m_State = DIALOG_STATE_ACTIVATE;
                     }
                     else
                     {
@@ -1090,75 +1126,31 @@ void dlg_profile_options::OnUpdate ( ui_win* pWin, f32 DeltaTime )
                     // save changes?
                     if ( m_PopUpResult == DLG_POPUP_YES )
                     {
-                        // check if this profile is saved
+                        // check if this profile exists on disk already
                         if( g_StateMgr.GetProfileNotSaved( g_StateMgr.GetPendingProfileIndex() ) )
                         {
-    #ifdef TARGET_XBOX
-                            // Xbox intercepts this keypress so it can prompt the user
-                            // to go to the dashboard to free up space.
-                            MemCardMgr::condition& Condition = g_UIMemCardMgr.GetCondition(0);
-                            // open confirmation dialog
-                            irect r = g_UiMgr->GetUserBounds( g_UiUserID );
-                            m_PopUp = (dlg_popup*)g_UiMgr->OpenDialog(  m_UserID, "popup", r, NULL, ui_win::WF_VISIBLE|ui_win::WF_BORDER|ui_win::WF_DLG_CENTER|WF_INPUTMODAL|ui_win::WF_USE_ABSOLUTE );
-                            m_PopUpType = OPTIONS_POPUP_XBOX_FREE_BLOCKS;
-
-                            // set nav text
-                            xbool secondOption = FALSE;
-                            xwstring navText(g_StringTableMgr( "ui", "IDS_NAV_DONT_FREE_BLOCKS" ));
-
-                            if( GameMgr.GameInProgress() == FALSE )
-                            {
-                                navText += g_StringTableMgr( "ui", "IDS_NAV_FREE_MORE_BLOCKS" );
-                                secondOption = TRUE;
-                            }
-
-                            m_pNavText->SetFlag(ui_win::WF_VISIBLE, FALSE);
-
-                            // calculate blocks required
-                            m_BlocksRequired = ( (g_StateMgr.GetProfileSaveSize() - Condition.BytesFree) + 16383 ) / 16384;
-
-                            if( x_GetLocale() == XL_LANG_ENGLISH )
-                            {
-                                r.SetWidth(380);
-                                r.SetHeight(125);
-                            }
-                            else
-                            {
-                                r.SetWidth(400);
-                                r.SetHeight(145);
-                            }
-                            m_PopUp->Configure( r, g_StringTableMgr( "ui", "IDS_MEMCARD_HEADER" ), 
-                                                TRUE, 
-                                                secondOption, 
-                                                FALSE, 
-                                                xwstring( xfs( (const char*)xstring(g_StringTableMgr( "ui", "MC_NOT_ENOUGH_FREE_SPACE_SLOT1_XBOX" )), m_BlocksRequired ) ),
-                                                navText,
-                                                &m_PopUpResult );
-                            return;
-    #else
-                            // not saved - goto memory card screen
-                            m_CurrentControl = IDC_PROFILE_OPTIONS_ACCEPT;
-
-                            // go to the profile select screen and pick a place to save it to
-                            m_State = DIALOG_STATE_MEMCARD_ERROR;
-    #endif
+                            // Profile exists in memory but not saved to disk yet.
+                            // Attempt to create/save it for the first time.
+                            // MemCardMgr should handle platform specifics (Xbox HDD / PC location) using card index 0.
+                            g_UIMemCardMgr.CreateProfile( 0, g_StateMgr.GetPendingProfileIndex(), this, &dlg_profile_options::OnProfileCreateCB );
+                            m_State = DIALOG_STATE_WAIT_FOR_MEMCARD;
                         }
                         else
                         {
-                            // OK. save changes
+                            // Profile already exists on disk. Save the changes.
                             g_AudioMgr.Play("Select_Norm");
 
                             m_CurrentControl = IDC_PROFILE_OPTIONS_ACCEPT;
 
-                            // attempt to save the changes to the memcard
+                            // attempt to save the changes to the memcard/device
                             profile_info* pProfileInfo = &g_UIMemCardMgr.GetProfileInfo( g_StateMgr.GetPendingProfileIndex() );
-                            m_iCard = pProfileInfo->CardID;
+                            m_iCard = pProfileInfo->CardID; // Get the correct card ID where the profile resides
                             g_UIMemCardMgr.SaveProfile( *pProfileInfo, g_StateMgr.GetPendingProfileIndex(), this, &dlg_profile_options::OnSaveProfileCB );
 
                             m_State = DIALOG_STATE_WAIT_FOR_MEMCARD;
                         }
                     }
-                    else
+                    else // User chose "No" to saving changes
                     {
                         // abandon changes
                         g_AudioMgr.Play("Backup");
@@ -1167,7 +1159,7 @@ void dlg_profile_options::OnUpdate ( ui_win* pWin, f32 DeltaTime )
                 }
                 break;
             }
-            // clear popup 
+            // clear popup
             m_PopUp = NULL;
 
             // turn on nav text
@@ -1206,6 +1198,8 @@ void dlg_profile_options::OnUpdate ( ui_win* pWin, f32 DeltaTime )
     }
     else if( m_pButtonCreate->GetFlags(WF_HIGHLIGHT) )
     {
+        // Assuming 'Create/Accept' button corresponds to highlight index 6
+        // (Indices seem to skip based on control layout/disabling)
         highLight = 6;
         g_UiMgr->SetScreenHighlight( m_pButtonCreate->GetPosition() );
     }

@@ -10,19 +10,20 @@
 //#define WRITE_MP3_FILE
 
 //------------------------------------------------------------------------------
+
 u32 CompressAudioFilePC_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* LipSyncSize )
 {
-    aiff_file   Aiff;
+    audio_file* AudioFile = audio_file::Create(in);
     s32         TotalCompressedSize = 0;
 
-    if( Aiff.Open( in ) )
+    if( AudioFile->Open( in ) )
     {
-        xarray<aiff_file::breakpoint> BreakPoints;
-        s32  SampleRate         = Aiff.GetSampleRate();
-        s32  nChannels          = Aiff.GetNumChannels();
-        s32  nSamples           = Aiff.GetNumSamples();
-        s32  LoopStart          = Aiff.GetLoopStart();
-        s32  LoopEnd            = Aiff.GetLoopEnd();
+        xarray<audio_file::breakpoint> BreakPoints;
+        s32  SampleRate         = AudioFile->GetSampleRate();
+        s32  nChannels          = AudioFile->GetNumChannels();
+        s32  nSamples           = AudioFile->GetNumSamples();
+        s32  LoopStart          = AudioFile->GetLoopStart();
+        s32  LoopEnd            = AudioFile->GetLoopEnd();
         s16* pSampleBuffer      = (s16*)x_malloc( sizeof(s16) * nSamples );
         s32  HeaderSize         = 4 * sizeof(s32);
         s32  CompressionMethod;
@@ -34,7 +35,7 @@ u32 CompressAudioFilePC_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* Lip
         xarray<void*> pCompressedBuffer;
 
         // Get the breakpoints.
-        Aiff.GetBreakpoints( BreakPoints );
+        AudioFile->GetBreakpoints( BreakPoints );
 
         // Currently only support mono and stereo.
         ASSERT( (nChannels == 1) || (nChannels == 2) );
@@ -99,7 +100,7 @@ u32 CompressAudioFilePC_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* Lip
             pCompressedBuffer.Append() = x_malloc( CompressedSize );
 
             // Read the the uncompressed waveform data.
-            Aiff.GetChannelData( pSampleBuffer, i );
+            AudioFile->GetChannelData( pSampleBuffer, i );
 
             // Copy the sample, no compression necessary
             x_memcpy( pCompressedBuffer[i], pSampleBuffer, nSamples * sizeof(s16) );
@@ -132,10 +133,14 @@ u32 CompressAudioFilePC_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* Lip
         }
 
         // Write out the lip sync data.
-        WriteLipSyncData( &Aiff, out );
+        WriteLipSyncData( AudioFile, out );
 
         // Write out the break points.
         WriteBreakPoints( BreakPoints, out, FALSE );
+        
+        // Close and delete audio file
+        AudioFile->Close();
+        delete AudioFile;
     }
 
     return TotalCompressedSize;
@@ -145,17 +150,17 @@ u32 CompressAudioFilePC_PCM( X_FILE* in, X_FILE* out, s32* NumChannels, s32* Lip
 
 u32 CompressAudioFilePC_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32* LipSyncSize )
 {
-    aiff_file Aiff;
-    s32 TotalCompressedSize = 0;
+    audio_file* AudioFile = audio_file::Create(in);
+    s32         TotalCompressedSize = 0;
 
-    if( Aiff.Open( in ) )
+    if( AudioFile->Open( in ) )
     {
-        xarray<aiff_file::breakpoint> BreakPoints;
-        s32  SampleRate         = Aiff.GetSampleRate();
-        s32  nChannels          = Aiff.GetNumChannels();
-        s32  nSamples           = Aiff.GetNumSamples();
-        s32  LoopStart          = Aiff.GetLoopStart();
-        s32  LoopEnd            = Aiff.GetLoopEnd();
+        xarray<audio_file::breakpoint> BreakPoints;
+        s32  SampleRate         = AudioFile->GetSampleRate();
+        s32  nChannels          = AudioFile->GetNumChannels();
+        s32  nSamples           = AudioFile->GetNumSamples();
+        s32  LoopStart          = AudioFile->GetLoopStart();
+        s32  LoopEnd            = AudioFile->GetLoopEnd();
         s16* pSampleBuffer      = NULL;
         s32  HeaderSize         = 4 * sizeof(s32);
         s32  CompressionMethod;
@@ -170,7 +175,7 @@ u32 CompressAudioFilePC_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
         ASSERT( (nChannels == 1) || (nChannels == 2) );
 
         // Get the breakpoints.
-        Aiff.GetBreakpoints( BreakPoints );
+        AudioFile->GetBreakpoints( BreakPoints );
 
         // Set the number of channels.
         *NumChannels = nChannels;
@@ -210,7 +215,7 @@ u32 CompressAudioFilePC_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
         for( i=0 ; i<nChannels ; i++ )
         {
             // Read the uncompressed waveform data.
-            Aiff.GetChannelData( pSampleBuffer, i );
+            AudioFile->GetChannelData( pSampleBuffer, i );
 
             // Compress and save
             AILSOUNDINFO info;
@@ -226,7 +231,7 @@ u32 CompressAudioFilePC_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
             AIL_compress_ADPCM( &info, &pCompressedData, &CompressedSize );
             pCompressedBuffer.Append() = pCompressedData;
 
-            if( Aiff.IsLooped() )
+            if( AudioFile->IsLooped() )
             {
                 if( LoopEnd > 1 )
                     LoopEnd--;
@@ -273,296 +278,20 @@ u32 CompressAudioFilePC_ADPCM ( X_FILE* in, X_FILE* out, s32* NumChannels, s32* 
             // Write out the compressed data.
             x_fwrite( pCompressedBuffer[i], CompressedSize, 1, out );
 
-        // Debug code to write out the compressed WAV as a file
-//        static s32 nFile = 0;
-//        xbytestream b;
-//        b.Append( pCompressedBuffer[i], CompressedSize );
-//        b.SaveFile( xfs( "c:\\tmp\\%d.wav", nFile++ ) );
-
             // Free the compressed buffer memory.
             AIL_mem_free_lock( pCompressedBuffer[i] );
         }
 
         // Write out the lip sync data.
-        WriteLipSyncData( &Aiff, out );
+        WriteLipSyncData( AudioFile, out );
 
         // Write out the break points.
         WriteBreakPoints( BreakPoints, out, FALSE );
+        
+        // Close and delete audio file
+        AudioFile->Close();
+        delete AudioFile;
     }
-
-    return TotalCompressedSize;
-}
-
-//------------------------------------------------------------------------------
-
-u32 CompressAudioFilePC_MP3_Mono( aiff_file& Aiff, X_FILE* out, s32* NumChannels, s32* LipSyncSize )
-{
-    s32  TotalCompressedSize = 0;
-    s32  SampleRate          = Aiff.GetSampleRate();
-    s32  nChannels           = Aiff.GetNumChannels();
-    s32  nSamples            = Aiff.GetNumSamples();
-    s32  LoopStart           = Aiff.GetLoopStart();
-    s32  LoopEnd             = Aiff.GetLoopEnd();
-    s16* pSampleBuffer       = NULL;
-    s32  HeaderSize          = 4 * sizeof(s32);
-    s32  CompressionMethod;
-    s32  BreakPointSize;
-    s32  nBreakPoints;
-
-    void* pCompressedBuffer;
-    s32   CompressedSize;
-    xarray<aiff_file::breakpoint> BreakPoints;
-
-    // Currently only support mono and stereo.
-    ASSERT( nChannels == 1 );
-
-    // Get the breakpoints.
-    Aiff.GetBreakpoints( BreakPoints );
-
-    // Set the number of channels.
-    *NumChannels = nChannels;
-
-    if( s_Verbose)
-    {
-        x_printf( "(MP3 mono)\n" );
-        x_DebugMsg( "(MP3 mono)\n" );
-    }
-
-    // Set it.
-    CompressionMethod = PC_MP3_MONO;
-
-    // Write out compression method.
-    x_fwrite( &CompressionMethod, sizeof(s32), 1, out );
-
-    // Allocate a buffer for the source data and clear it
-    pSampleBuffer = (s16*)x_malloc( sizeof(s16) * nSamples );
-    x_memset( pSampleBuffer, 0, sizeof(s16) * nSamples );
-
-    // Read the uncompressed waveform data.
-    Aiff.GetChannelData( pSampleBuffer, 0 );
-
-    // Allocate buffer for compressed data
-    s32 CompressedDataSize = (s32)(nSamples * 1.25f + 7200);
-    u8* pCompressedData = (u8*)x_malloc( CompressedDataSize );
-    ASSERT( pCompressedData );
-    pCompressedBuffer = pCompressedData;
-
-    // Compress to MP3
-    lame_global_flags* gfp = lame_init();
-    lame_set_num_samples        ( gfp, nSamples );
-    lame_set_num_channels       ( gfp, 1 );
-    lame_set_in_samplerate      ( gfp, SampleRate );
-    lame_set_out_samplerate     ( gfp, SampleRate );
-    lame_set_quality            ( gfp, 5 );             // TODO: Set this from parameters
-    lame_set_mode               ( gfp, MONO );
-    lame_set_compression_ratio  ( gfp, 11.0f );
-    s32 Inited = lame_init_params( gfp );
-    ASSERT( Inited != -1 );
-
-    s32 Size = lame_encode_buffer( gfp, pSampleBuffer, NULL, nSamples, pCompressedData, CompressedDataSize );
-    ASSERT( Size >= 0 );
-    Size += lame_encode_finish( gfp, pCompressedData+Size, CompressedDataSize-Size );
-
-    CompressedSize = Size;
-
-    if( Aiff.IsLooped() )
-    {
-        if( LoopEnd > 1 )
-            LoopEnd--;
-    }
-    else
-    {
-        LoopStart = LoopEnd = 0;
-    }
-
-    // Write out the compressed size.
-    x_fwrite( &CompressedSize, sizeof(s32), 1, out );
-
-    // Write out the lip sync size in bytes.
-    *LipSyncSize = GetLipSyncSize( nSamples, SampleRate );
-    x_fwrite( LipSyncSize, sizeof(s32), 1, out );
-
-    // Write out the break point size in byte.
-    BreakPointSize = GetBreakPointSize( BreakPoints, nBreakPoints );
-    x_fwrite( &BreakPointSize, sizeof(s32), 1, out );
-
-    // Write out header size in bytes.
-    x_fwrite( &HeaderSize, sizeof(s32), 1, out );
-
-    // Write out the number of samples, sample rate and loop points
-    x_fwrite( &nSamples,     sizeof(s32), 1, out );
-    x_fwrite( &SampleRate,   sizeof(s32), 1, out );
-    x_fwrite( &LoopStart,    sizeof(s32), 1, out );
-    x_fwrite( &LoopEnd,      sizeof(s32), 1, out );
-
-    // Free buffer.
-    x_free( pSampleBuffer );
-
-    // Keep track of total compressed size.
-    TotalCompressedSize += CompressedSize;
-
-    // Write out the compressed data.
-    x_fwrite( pCompressedBuffer, CompressedSize, 1, out );
-
-    // Debug code to write out the compressed MP3 as a file
-#ifdef WRITE_MP3_FILE
-    static s32 nFile = 0;
-    xbytestream b;
-    b.Append( pCompressedBuffer, CompressedSize );
-    b.SaveFile( xfs( "c:\\tmp\\%d.mp3", nFile++ ) );
-#endif
-
-    // Free the compressed buffer memory.
-    x_free( pCompressedBuffer );
-
-    // Write out the lip sync data.
-    WriteLipSyncData( &Aiff, out );
-
-    // Write out the break points.
-    WriteBreakPoints( BreakPoints, out, FALSE );
-
-    return TotalCompressedSize;
-}
-
-//------------------------------------------------------------------------------
-
-u32 CompressAudioFilePC_MP3_Stereo( aiff_file& Aiff, X_FILE* out, s32* NumChannels, s32* LipSyncSize )
-{
-    s32 TotalCompressedSize = 0;
-
-    xarray<aiff_file::breakpoint> BreakPoints;
-    s32  SampleRate         = Aiff.GetSampleRate();
-    s32  nChannels          = Aiff.GetNumChannels();
-    s32  nSamples           = Aiff.GetNumSamples();
-    s32  LoopStart          = Aiff.GetLoopStart();
-    s32  LoopEnd            = Aiff.GetLoopEnd();
-    s16* pSampleBufferL     = NULL;
-    s16* pSampleBufferR     = NULL;
-    s32  HeaderSize         = 4 * sizeof(s32);
-    s32  CompressionMethod;
-    s32  i;
-    s32  BreakPointSize;
-    s32  nBreakPoints;
-
-    void* pCompressedBuffer;
-    s32   CompressedSize;
-
-    // Currently only support stereo.
-    ASSERT( nChannels == 2 );
-//    nChannels=1; // Fake pc into thinking it is a mono stream.
-
-    // Get the breakpoints.
-    Aiff.GetBreakpoints( BreakPoints );
-
-    // Set the number of channels.
-    *NumChannels = nChannels;
-
-    if( s_Verbose)
-    {
-        x_printf( "(MP3 stereo)\n" );
-        x_DebugMsg( "(MP3 stereo)\n" );
-    }
-
-    // Set it.
-    CompressionMethod = PC_MP3_INTERLEAVED_STEREO;
-
-    // Write out compression method.
-    x_fwrite( &CompressionMethod, sizeof(s32), 1, out );
-
-    // Allocate a buffer for the source data and clear it
-    pSampleBufferL = (s16*)x_malloc( sizeof(s16) * nSamples );
-    x_memset( pSampleBufferL, 0, sizeof(s16) * nSamples );
-    pSampleBufferR = (s16*)x_malloc( sizeof(s16) * nSamples );
-    x_memset( pSampleBufferR, 0, sizeof(s16) * nSamples );
-
-    // Read the uncompressed waveform data.
-    Aiff.GetChannelData( pSampleBufferL, 0 );
-    Aiff.GetChannelData( pSampleBufferR, 1 );
-
-    // Allocate buffer for compressed data
-    s32 CompressedDataSize = (s32)(nSamples * 1.25f + 7200);
-    u8* pCompressedData = (u8*)x_malloc( CompressedDataSize );
-    ASSERT( pCompressedData );
-    pCompressedBuffer = pCompressedData;
-
-    // Compress to MP3
-    lame_global_flags* gfp = lame_init();
-    lame_set_num_samples        ( gfp, nSamples );
-    lame_set_num_channels       ( gfp, 2 );
-    lame_set_in_samplerate      ( gfp, SampleRate );
-    lame_set_out_samplerate     ( gfp, SampleRate );
-    lame_set_quality            ( gfp, 5 );             // TODO: Set this from parameters
-    lame_set_mode               ( gfp, STEREO );
-    lame_set_compression_ratio  ( gfp, 11.0f );
-    s32 Inited = lame_init_params( gfp );
-    ASSERT( Inited != -1 );
-
-    s32 Size = lame_encode_buffer( gfp, pSampleBufferL, pSampleBufferR, nSamples, pCompressedData, CompressedDataSize );
-    ASSERT( Size >= 0 );
-    Size += lame_encode_finish( gfp, pCompressedData+Size, CompressedDataSize-Size );
-
-    CompressedSize = Size;
-
-    if( Aiff.IsLooped() )
-    {
-        if( LoopEnd > 1 )
-            LoopEnd--;
-    }
-    else
-    {
-        LoopStart = LoopEnd = 0;
-    }
-
-    // Write out the compressed size.
-    x_fwrite( &CompressedSize, sizeof(s32), 1, out );
-
-    // Write out the lip sync size in bytes.
-    *LipSyncSize = GetLipSyncSize( nSamples, SampleRate );
-    x_fwrite( LipSyncSize, sizeof(s32), 1, out );
-
-    // Write out the break point size in byte.
-    BreakPointSize = GetBreakPointSize( BreakPoints, nBreakPoints );
-    x_fwrite( &BreakPointSize, sizeof(s32), 1, out );
-
-    // Write out header size in bytes.
-    x_fwrite( &HeaderSize, sizeof(s32), 1, out );
-    
-    // Compress each channel...
-    for( i=0 ; i<nChannels ; i++ )
-    {
-        // Write out the number of samples, sample rate and loop points
-        x_fwrite( &nSamples,     sizeof(s32), 1, out );
-        x_fwrite( &SampleRate,   sizeof(s32), 1, out );
-        x_fwrite( &LoopStart,    sizeof(s32), 1, out );
-        x_fwrite( &LoopEnd,      sizeof(s32), 1, out );
-    }
-
-    // Free buffer.
-    x_free( pSampleBufferL );
-    x_free( pSampleBufferR );
-
-    // Keep track of total compressed size.
-    TotalCompressedSize += CompressedSize;
-
-    // Write out the compressed data.
-    x_fwrite( pCompressedBuffer, CompressedSize, 1, out );
-
-    // Debug code to write out the compressed MP3 as a file
-#ifdef WRITE_MP3_FILE
-    static s32 nFile = 0;
-    xbytestream b;
-    b.Append( pCompressedBuffer, CompressedSize );
-    b.SaveFile( xfs( "c:\\tmp\\%d.mp3", nFile++ ) );
-#endif
-
-    // Free the compressed buffer memory.
-    x_free( pCompressedBuffer );
-
-    // Write out the lip sync data.
-    WriteLipSyncData( &Aiff, out );
-
-    // Write out the break points.
-    WriteBreakPoints( BreakPoints, out, FALSE );
 
     return TotalCompressedSize;
 }
@@ -571,27 +300,237 @@ u32 CompressAudioFilePC_MP3_Stereo( aiff_file& Aiff, X_FILE* out, s32* NumChanne
 
 u32 CompressAudioFilePC_MP3( X_FILE* in, X_FILE* out, s32* NumChannels, s32* LipSyncSize )
 {
-    aiff_file Aiff;
-    s32       Result = 0;
+    audio_file* AudioFile = audio_file::Create(in);
+    s32         TotalCompressedSize = 0;
 
-    if( Aiff.Open( in ) )
+    if( AudioFile->Open( in ) )
     {
-        s32 nChannels = Aiff.GetNumChannels();
-        switch( nChannels )
+        xarray<audio_file::breakpoint> BreakPoints;
+        s32  SampleRate         = AudioFile->GetSampleRate();
+        s32  nChannels          = AudioFile->GetNumChannels();
+        s32  nSamples           = AudioFile->GetNumSamples();
+        s32  LoopStart          = AudioFile->GetLoopStart();
+        s32  LoopEnd            = AudioFile->GetLoopEnd();
+        s16* pSampleBuffer      = NULL;
+        s16* pSampleBufferL     = NULL;
+        s16* pSampleBufferR     = NULL;
+        s32  HeaderSize         = 4 * sizeof(s32);
+        s32  CompressionMethod;
+        s32  i;
+        s32  BreakPointSize;
+        s32  nBreakPoints;
+
+        void* pCompressedBuffer;
+        s32   CompressedSize;
+
+        // Get the breakpoints.
+        AudioFile->GetBreakpoints( BreakPoints );
+
+        // Set the number of channels.
+        *NumChannels = nChannels;
+
+        if( s_Verbose)
         {
-            case 1:
-                Result = CompressAudioFilePC_MP3_Mono( Aiff, out, NumChannels,LipSyncSize );
-                break;
-            case 2:
-                Result = CompressAudioFilePC_MP3_Stereo( Aiff, out, NumChannels, LipSyncSize );
-                break;
-            default:
-                ASSERT(0);
-                break;
+            if( nChannels == 1 )
+            {
+                x_printf( "(MP3 mono)\n" );
+                x_DebugMsg( "(MP3 mono)\n" );
+            }
+            else
+            {
+                x_printf( "(MP3 stereo)\n" );
+                x_DebugMsg( "(MP3 stereo)\n" );
+            }
         }
+
+        // Multi-channel sound?
+        if( nChannels == 1 )
+        {
+            // Set it.
+            CompressionMethod = PC_MP3_MONO;
+
+            // Write out compression method.
+            x_fwrite( &CompressionMethod, sizeof(s32), 1, out );
+
+            // Allocate a buffer for the source data and clear it
+            pSampleBuffer = (s16*)x_malloc( sizeof(s16) * nSamples );
+            x_memset( pSampleBuffer, 0, sizeof(s16) * nSamples );
+
+            // Read the uncompressed waveform data.
+            AudioFile->GetChannelData( pSampleBuffer, 0 );
+
+            // Allocate buffer for compressed data
+            s32 CompressedDataSize = (s32)(nSamples * 1.25f + 7200);
+            u8* pCompressedData = (u8*)x_malloc( CompressedDataSize );
+            ASSERT( pCompressedData );
+            pCompressedBuffer = pCompressedData;
+
+            // Compress to MP3
+            lame_global_flags* gfp = lame_init();
+            lame_set_num_samples        ( gfp, nSamples );
+            lame_set_num_channels       ( gfp, 1 );
+            lame_set_in_samplerate      ( gfp, SampleRate );
+            lame_set_out_samplerate     ( gfp, SampleRate );
+            lame_set_quality            ( gfp, 5 );             // TODO: Set this from parameters
+            lame_set_mode               ( gfp, MONO );
+            lame_set_compression_ratio  ( gfp, 11.0f );
+            s32 Inited = lame_init_params( gfp );
+            ASSERT( Inited != -1 );
+
+            s32 Size = lame_encode_buffer( gfp, pSampleBuffer, NULL, nSamples, pCompressedData, CompressedDataSize );
+            ASSERT( Size >= 0 );
+            Size += lame_encode_finish( gfp, pCompressedData+Size, CompressedDataSize-Size );
+
+            CompressedSize = Size;
+
+            if( AudioFile->IsLooped() )
+            {
+                if( LoopEnd > 1 )
+                    LoopEnd--;
+            }
+            else
+            {
+                LoopStart = LoopEnd = 0;
+            }
+
+            // Write out the compressed size.
+            x_fwrite( &CompressedSize, sizeof(s32), 1, out );
+
+            // Write out the lip sync size in bytes.
+            *LipSyncSize = GetLipSyncSize( nSamples, SampleRate );
+            x_fwrite( LipSyncSize, sizeof(s32), 1, out );
+
+            // Write out the break point size in byte.
+            BreakPointSize = GetBreakPointSize( BreakPoints, nBreakPoints );
+            x_fwrite( &BreakPointSize, sizeof(s32), 1, out );
+
+            // Write out header size in bytes.
+            x_fwrite( &HeaderSize, sizeof(s32), 1, out );
+
+            // Write out the number of samples, sample rate and loop points
+            x_fwrite( &nSamples,     sizeof(s32), 1, out );
+            x_fwrite( &SampleRate,   sizeof(s32), 1, out );
+            x_fwrite( &LoopStart,    sizeof(s32), 1, out );
+            x_fwrite( &LoopEnd,      sizeof(s32), 1, out );
+
+            // Free buffer.
+            x_free( pSampleBuffer );
+
+            // Keep track of total compressed size.
+            TotalCompressedSize += CompressedSize;
+
+            // Write out the compressed data.
+            x_fwrite( pCompressedBuffer, CompressedSize, 1, out );
+
+            // Free the compressed buffer memory.
+            x_free( pCompressedBuffer );
+        }
+        else if( nChannels == 2 )
+        {
+            // Set it.
+            CompressionMethod = PC_MP3_INTERLEAVED_STEREO;
+
+            // Write out compression method.
+            x_fwrite( &CompressionMethod, sizeof(s32), 1, out );
+
+            // Allocate a buffer for the source data and clear it
+            pSampleBufferL = (s16*)x_malloc( sizeof(s16) * nSamples );
+            x_memset( pSampleBufferL, 0, sizeof(s16) * nSamples );
+            pSampleBufferR = (s16*)x_malloc( sizeof(s16) * nSamples );
+            x_memset( pSampleBufferR, 0, sizeof(s16) * nSamples );
+
+            // Read the uncompressed waveform data.
+            AudioFile->GetChannelData( pSampleBufferL, 0 );
+            AudioFile->GetChannelData( pSampleBufferR, 1 );
+
+            // Allocate buffer for compressed data
+            s32 CompressedDataSize = (s32)(nSamples * 1.25f + 7200);
+            u8* pCompressedData = (u8*)x_malloc( CompressedDataSize );
+            ASSERT( pCompressedData );
+            pCompressedBuffer = pCompressedData;
+
+            // Compress to MP3
+            lame_global_flags* gfp = lame_init();
+            lame_set_num_samples        ( gfp, nSamples );
+            lame_set_num_channels       ( gfp, 2 );
+            lame_set_in_samplerate      ( gfp, SampleRate );
+            lame_set_out_samplerate     ( gfp, SampleRate );
+            lame_set_quality            ( gfp, 5 );             // TODO: Set this from parameters
+            lame_set_mode               ( gfp, STEREO );
+            lame_set_compression_ratio  ( gfp, 11.0f );
+            s32 Inited = lame_init_params( gfp );
+            ASSERT( Inited != -1 );
+
+            s32 Size = lame_encode_buffer( gfp, pSampleBufferL, pSampleBufferR, nSamples, pCompressedData, CompressedDataSize );
+            ASSERT( Size >= 0 );
+            Size += lame_encode_finish( gfp, pCompressedData+Size, CompressedDataSize-Size );
+
+            CompressedSize = Size;
+
+            if( AudioFile->IsLooped() )
+            {
+                if( LoopEnd > 1 )
+                    LoopEnd--;
+            }
+            else
+            {
+                LoopStart = LoopEnd = 0;
+            }
+
+            // Write out the compressed size.
+            x_fwrite( &CompressedSize, sizeof(s32), 1, out );
+
+            // Write out the lip sync size in bytes.
+            *LipSyncSize = GetLipSyncSize( nSamples, SampleRate );
+            x_fwrite( LipSyncSize, sizeof(s32), 1, out );
+
+            // Write out the break point size in byte.
+            BreakPointSize = GetBreakPointSize( BreakPoints, nBreakPoints );
+            x_fwrite( &BreakPointSize, sizeof(s32), 1, out );
+
+            // Write out header size in bytes.
+            x_fwrite( &HeaderSize, sizeof(s32), 1, out );
+            
+            // Compress each channel...
+            for( i=0 ; i<nChannels ; i++ )
+            {
+                // Write out the number of samples, sample rate and loop points
+                x_fwrite( &nSamples,     sizeof(s32), 1, out );
+                x_fwrite( &SampleRate,   sizeof(s32), 1, out );
+                x_fwrite( &LoopStart,    sizeof(s32), 1, out );
+                x_fwrite( &LoopEnd,      sizeof(s32), 1, out );
+            }
+
+            // Free buffer.
+            x_free( pSampleBufferL );
+            x_free( pSampleBufferR );
+
+            // Keep track of total compressed size.
+            TotalCompressedSize += CompressedSize;
+
+            // Write out the compressed data.
+            x_fwrite( pCompressedBuffer, CompressedSize, 1, out );
+
+            // Free the compressed buffer memory.
+            x_free( pCompressedBuffer );
+        }
+        else
+        {
+            ASSERT(0); // Unsupported number of channels
+        }
+
+        // Write out the lip sync data.
+        WriteLipSyncData( AudioFile, out );
+
+        // Write out the break points.
+        WriteBreakPoints( BreakPoints, out, FALSE );
+        
+        // Close and delete audio file
+        AudioFile->Close();
+        delete AudioFile;
     }
 
-    return Result;
+    return TotalCompressedSize;
 }
 
 //------------------------------------------------------------------------------

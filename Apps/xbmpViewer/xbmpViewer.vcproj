@@ -18,23 +18,24 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="3"
-				AdditionalIncludeDirectories="$(X)\x_files,$(X)\auxiliary\bitmap"
-				PreprocessorDefinitions="TARGET_PC;CONFIG_RETAIL;APP_EDITOR"
 				InlineFunctionExpansion="2"
-				OptimizeForProcessor="2"
-				FavorSizeOrSpeed="1"
-				OptimizeForWindowsApplication="TRUE"
-				EnableFiberSafeOptimizations="TRUE"
 				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="1"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="2"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="$(X)\x_files,$(X)\auxiliary\bitmap"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL,APP_EDITOR"
 				StringPooling="TRUE"
-				UsePrecompiledHeader="2"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
+				UsePrecompiledHeader="2"
 				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="XT4100LibStaticd.lib"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="LIBC.lib"
 				SubSystem="2"/>
@@ -69,7 +70,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(X)\x_files,$(X)\auxiliary\bitmap"
-				PreprocessorDefinitions="TARGET_PC;CONFIG_DEBUG;APP_EDITOR"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,APP_EDITOR"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
@@ -78,6 +79,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="XT4100LibStaticd.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"/>

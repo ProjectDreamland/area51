@@ -20,7 +20,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
-				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"/>
+				PreprocessorDefinitions="TARGET_PC,CONFIG_RETAIL"
+				RuntimeLibrary="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -45,6 +46,27 @@
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
+			Name="Release|Xbox"
+			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			ConfigurationType="4">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary,$(X)\..\xCore\3rdParty\BinkXbox\Include"
+				PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalOptions="/LTCG"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+		</Configuration>
+		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
@@ -55,7 +77,8 @@
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -133,6 +156,26 @@
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
+			Name="EDITOR-Debug|Xbox"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
+		</Configuration>
+		<Configuration
 			Name="OptDebug|Win32"
 			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
 			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
@@ -143,12 +186,12 @@
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_OPTDEBUG"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLinkerTool"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -163,8 +206,6 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
@@ -201,12 +242,12 @@
 				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
 				PreprocessorDefinitions="TARGET_PC,CONFIG_QA"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="0"
 				DebugInformationFormat="4"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLinkerTool"/>
+				Name="VCLibrarianTool"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -221,8 +262,6 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool
@@ -249,25 +288,58 @@
 				Name="VCPreLinkEventTool"/>
 		</Configuration>
 		<Configuration
-			Name="Release|Xbox"
-			OutputDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
-			IntermediateDirectory="$(ProjectDir)_$(PlatformName)$(ConfigurationName)"
+			Name="VIEWER-Debug|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(X),$(X)\..\Support,$(X)\Entropy,$(X)\x_files,$(X)\Auxiliary,$(X)\..\xCore\3rdParty\BinkXbox\Include"
-				PreprocessorDefinitions="TARGET_XBOX,CONFIG_RETAIL"/>
+				AdditionalIncludeDirectories="$(X),$(X)\x_files,$(X)\Entropy,$(X)\..\Support,$(X)\Auxiliary"
+				PreprocessorDefinitions="TARGET_PC,CONFIG_DEBUG,CONFIG_VIEWER"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
-				Name="VCLibrarianTool"
-				AdditionalOptions="/LTCG"/>
+				Name="VCLibrarianTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
 				Name="VCPreBuildEventTool"/>
 			<Tool
 				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="VIEWER-Debug|Xbox"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1">
+			<Tool
+				Name="VCCLCompilerTool"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="XboxDeploymentTool"/>
+			<Tool
+				Name="XboxImageTool"/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -480,6 +552,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Xbox\dlg_MemcardSelectXBOX.hpp">
@@ -537,6 +615,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Xbox\dlg_MultiPlayerXBOX.cpp">
@@ -566,6 +650,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -603,6 +693,12 @@
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Xbox\dlg_OnlineConnectXBOX.cpp">
@@ -632,6 +728,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -669,6 +771,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Xbox\dlg_OnlineMainXBOX.hpp">
@@ -698,6 +806,12 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="QA|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -735,6 +849,12 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Xbox\dlg_QuickMatch.hpp">
@@ -768,6 +888,12 @@
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
@@ -776,18 +902,8 @@
 			<File
 				RelativePath=".\dlg_COPA.cpp">
 				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Xbox"
 					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
@@ -798,18 +914,13 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="OptDebug|Win32">
+					Name="EDITOR-Debug|Win32">
 					<Tool
-						Name="VCCLCompilerTool"/>
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="OptDebug|Xbox"
 					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
@@ -820,7 +931,7 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="EDITOR-Debug|Win32">
+					Name="VIEWER-Debug|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
@@ -850,6 +961,11 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="EDITOR-Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="OptDebug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -872,7 +988,7 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="EDITOR-Debug|Win32">
+					Name="VIEWER-Debug|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
@@ -904,6 +1020,12 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="EDITOR-Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="OptDebug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
@@ -928,7 +1050,7 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
+					Name="VIEWER-Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -959,6 +1081,11 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="EDITOR-Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="OptDebug|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
@@ -981,7 +1108,7 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="EDITOR-Debug|Win32">
+					Name="VIEWER-Debug|Win32">
 					<Tool
 						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
@@ -1064,23 +1191,16 @@
 					<Tool
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\dlg_OnlineConnect.cpp">
 				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1092,25 +1212,7 @@
 						Name="VCCLCompilerTool"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="EDITOR-Debug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="OptDebug|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="OptDebug|Xbox"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="QA|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
@@ -1199,6 +1301,11 @@
 					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="VIEWER-Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 			</File>
 		</Filter>
@@ -1444,102 +1551,12 @@
 		</File>
 		<File
 			RelativePath=".\dlg_Feedback.cpp">
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Feedback.hpp">
 		</File>
 		<File
 			RelativePath=".\dlg_Friends.cpp">
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Xbox">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
-				<Tool
-					Name="VCCustomBuildTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Friends.hpp">
@@ -1819,6 +1836,12 @@
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCLCompilerTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_OnlineEULA.hpp">
@@ -1876,6 +1899,12 @@
 				<Tool
 					Name="VCCLCompilerTool"/>
 			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32"
+				ExcludedFromBuild="TRUE">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_OnlineHost.cpp">
@@ -1903,6 +1932,11 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -1923,7 +1957,7 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
+				Name="VIEWER-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -1954,6 +1988,11 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -1974,13 +2013,13 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
+				Name="VIEWER-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath=".\dlg_OnlineJoin.cpp">	
+			RelativePath=".\dlg_OnlineJoin.cpp">
 		</File>
 		<File
 			RelativePath=".\dlg_OnlineJoin.hpp">
@@ -2005,6 +2044,11 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -2025,7 +2069,7 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
+				Name="VIEWER-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -2056,6 +2100,11 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -2076,7 +2125,7 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
+				Name="VIEWER-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -2107,6 +2156,11 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="EDITOR-Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="OptDebug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
@@ -2127,7 +2181,7 @@
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="EDITOR-Debug|Win32">
+				Name="VIEWER-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -2238,6 +2292,11 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="QA|Xbox">
+				<Tool
+					Name="VCCustomBuildTool"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="VIEWER-Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"/>
 			</FileConfiguration>
@@ -2556,36 +2615,6 @@
 		</File>
 		<File
 			RelativePath=".\dlg_Stats.cpp">
-			<FileConfiguration
-				Name="Release|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="OptDebug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="QA|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="EDITOR-Debug|Win32"
-				ExcludedFromBuild="TRUE">
-				<Tool
-					Name="VCCLCompilerTool"/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\dlg_Stats.hpp">

@@ -151,7 +151,7 @@ void viewer_loco::CheckForProperty ( const geom*                    pGeom,
 
 void  viewer_loco::OnInit( const geom*      pGeom, 
                            const char*      pAnimFileName, 
-                           config::object&  Object )
+                           config_options::object&  Object )
 {
     s32 i ;
 
@@ -159,7 +159,7 @@ void  viewer_loco::OnInit( const geom*      pGeom,
     m_bWarnings = FALSE;
 
     // Make sure properties exist for loco type only
-    if( Object.m_Type == config::TYPE_LOCO )
+    if( Object.m_Type == config_options::TYPE_LOCO )
     {
         // Make sure aimer properties are present
         CheckForProperty( pGeom, "AIMER", "BlendSpeed",         geom::property::TYPE_FLOAT );

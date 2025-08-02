@@ -19,6 +19,7 @@ public:
     int m_MipLevels;
     CString m_SelectedPlatform;
     CString m_SelectedFormat;
+    int m_GenericCompression;
 
 protected:
     virtual void DoDataExchange(CDataExchange* pDX);
@@ -33,4 +34,7 @@ protected:
 
 public:
     virtual BOOL OnInitDialog();
+    virtual void OnUpdateDialog();
+    virtual void OnPlatformChanged();
+    void UpdateFormatsByPlatform(const CString& platform, BOOL genericCompression);
 };

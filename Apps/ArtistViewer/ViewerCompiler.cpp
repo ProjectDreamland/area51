@@ -46,10 +46,10 @@ void OutputParams ( const xstring& S )
 //=========================================================================
 
 // Returns viewer compile path
-const char* GetViewerDataPath( config::system System )
+const char* GetViewerDataPath( config_options::system System )
 {
     ASSERT(System >= 0) ;
-    ASSERT(System < config::SYSTEM_TOTAL) ;
+    ASSERT(System < config_options::SYSTEM_TOTAL) ;
 
     return g_Config.m_ViewerDataPaths[System].m_Name ;
 }
@@ -57,10 +57,10 @@ const char* GetViewerDataPath( config::system System )
 //=========================================================================
 
 // Returns texture source path
-const char* GetTextureSourcePath( config::system System )
+const char* GetTextureSourcePath( config_options::system System )
 {
     ASSERT(System >= 0) ;
-    ASSERT(System < config::SYSTEM_TOTAL) ;
+    ASSERT(System < config_options::SYSTEM_TOTAL) ;
 
     return g_Config.m_TextureSourcePaths[System].m_Name ;
 }
@@ -68,15 +68,15 @@ const char* GetTextureSourcePath( config::system System )
 //=========================================================================
 
 // Returns system compile string
-const char* GetSystemCompile( config::system System )
+const char* GetSystemCompile( config_options::system System )
 {
     // Final compile command
     switch(System)
     {
-        case config::SYSTEM_PC:   return "PC" ;
-        case config::SYSTEM_PS2:  return "PS2" ;
-        case config::SYSTEM_XBOX: return "XBOX" ;
-        case config::SYSTEM_GCN:  return "GCN" ;
+        case config_options::SYSTEM_PC:   return "PC" ;
+        case config_options::SYSTEM_PS2:  return "PS2" ;
+        case config_options::SYSTEM_XBOX: return "XBOX" ;
+        case config_options::SYSTEM_GCN:  return "GCN" ;
     }
 
     ASSERT(0) ;
@@ -86,7 +86,7 @@ const char* GetSystemCompile( config::system System )
 //=========================================================================
 
 // Compiles geometry, animations, and audio for object
-void CompileObject( config& Config, config::object& Object, config::system System, xbool bVerbose )
+void CompileObject( config& Config, config_options::object& Object, config_options::system System, xbool bVerbose )
 {
     s32     i,j ;
     X_FILE* pFile ;
@@ -202,7 +202,7 @@ void CompileObject( config& Config, config::object& Object, config::system Syste
             for (i = 0 ; i < Object.m_Anims.GetCount() ; i++)
             {
                 // Lookup anim name and type
-                config::object::anim& Anim = Object.m_Anims[i] ;
+                config_options::object::anim& Anim = Object.m_Anims[i] ;
 
                 // Skip if not there
                 if (Util_DoesFileExist(Anim.m_Matx, "WARNING: ") == FALSE)
@@ -326,7 +326,7 @@ void CompileObject( config& Config, config::object& Object, config::system Syste
             for (i = 0 ; i < Object.m_Sounds.GetCount() ; i++)
             {
                 // Lookup sound
-                config::object::sound& Sound = Object.m_Sounds[i] ;
+                config_options::object::sound& Sound = Object.m_Sounds[i] ;
 
                 // Skip if not there
                 if (Util_DoesFileExist(Sound.m_Source, "WARNING: ") == FALSE)
@@ -341,7 +341,7 @@ void CompileObject( config& Config, config::object& Object, config::system Syste
             for (i = 0 ; i < Object.m_Sounds.GetCount() ; i++)
             {
                 // Lookup sound
-                config::object::sound& Sound = Object.m_Sounds[i] ;
+                config_options::object::sound& Sound = Object.m_Sounds[i] ;
 
                 // Skip if not there
                 if (Util_DoesFileExist(Sound.m_Source, NULL) == FALSE)
@@ -376,7 +376,7 @@ void CompileObject( config& Config, config::object& Object, config::system Syste
             for (i = 0 ; i < Object.m_Sounds.GetCount() ; i++)
             {
                 // Lookup sound
-                config::object::sound& Sound = Object.m_Sounds[i] ;
+                config_options::object::sound& Sound = Object.m_Sounds[i] ;
 
                 // Skip if not there
                 if (Util_DoesFileExist(Sound.m_Source, NULL) == FALSE)
@@ -438,7 +438,7 @@ void CompileObject( config& Config, config::object& Object, config::system Syste
 
 //=========================================================================
 
-void CompileFxs( config& Config, config::system System )
+void CompileFxs( config& Config, config_options::system System )
 {
     s32 i;
     
@@ -506,10 +506,10 @@ void CompileConfig( const char* pConfig, xbool bVerbose )
         // Compile all objects
         for( i = 0; i < g_Config.m_Objects.GetCount(); i++ )
         {
-            //CompileObject(g_Config.m_Objects[i], config::SYSTEM_PC) ;
-            CompileObject(g_Config, g_Config.m_Objects[i], config::SYSTEM_PS2, bVerbose ) ;
+            //CompileObject(g_Config.m_Objects[i], config_options::SYSTEM_PC) ;
+            CompileObject(g_Config, g_Config.m_Objects[i], config_options::SYSTEM_PS2, bVerbose ) ;
         }
-        CompileFxs( g_Config, config::SYSTEM_PS2 );
+        CompileFxs( g_Config, config_options::SYSTEM_PS2 );
     }
     else
     {

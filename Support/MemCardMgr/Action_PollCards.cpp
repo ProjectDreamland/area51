@@ -39,24 +39,6 @@ void MemCardMgr::MC_STATE_TRAWL_CHECK_CARD( void )
 {
     // reset timer
     m_CardWait = 0;
-#if defined(TARGET_PS2)
-    //  "Checking memory card (8MB) (for"
-    //  "PlayStation¢2) in MEMORY CARD slot 1."
-    //  "Do not remove memory card"
-    //  "(8MB) (for PlayStation¢2), reset,"
-    //  "or switch off the console."
-
-    const xwchar* pText;
-    if( ! m_iCard )
-        pText = g_StringTableMgr( "ui", "MC_CARD_CHECK_SLOT1" );
-    else
-        pText = g_StringTableMgr( "ui", "MC_CARD_CHECK_SLOT2" );
-    WarningBox(
-        g_StringTableMgr( "ui", "IDS_MEMCARD_HEADER"   ),  
-        pText,
-        FALSE
-        );
-#endif
     ChangeState( __id MC_STATE_TRAWL_CHECK_CARD_WAIT );
 }
 
@@ -235,7 +217,7 @@ void MemCardMgr::MC_STATE_TRAWL_DIRS_WAIT( void )
                     xstring String (DirList[i].FileName);
 #ifdef TARGET_XBOX
                     if(String.Find( "Profile " ) != -1 )
-#else
+#elif defined(TARGET_PC)
                     if(( String.Find( m_SavePrefix ) != -1 ) && ( String.Find( "A510" ) != -1 ))
 #endif
                     {
@@ -283,7 +265,11 @@ void MemCardMgr::MC_STATE_GET_PROFILE_NAMES( void )
     if( m_iDir < Pending.InfoList.GetCount())
     {
         ChangeState( __id MC_STATE_GET_PROFILE_NAMES_WAIT );
+#ifdef TARGET_XBOX
         g_MemcardMgr.AsyncSetDirectory( Pending.InfoList[m_iDir].Dir );
+#elif defined(TARGET_PC)
+        g_MemcardMgr.AsyncSetDirectory( "" ); //We dont using folders on PC.
+#endif
         return;
     }
 
@@ -309,14 +295,9 @@ void MemCardMgr::MC_STATE_GET_PROFILE_NAMES_WAIT( void )
     case kSUCCESS:
         {
             ChangeState( __id MC_STATE_PROFILE_NAME_WAIT );
-#ifdef TARGET_XBOX
             s32 RoundedSize = (sizeof( player_profile )+1023)&~1023;;
             AllocBuffer( RoundedSize );
             g_MemcardMgr.AsyncReadFile( Pending.InfoList[m_iDir].Dir, (byte*)m_pLoadBuffer, RoundedSize );
-#else
-            AllocBuffer( 1024 );
-            g_MemcardMgr.AsyncRead( Pending.InfoList[m_iDir].Dir, (byte*)m_pLoadBuffer, 0, 1024 );
-#endif
             break;
         }
 
@@ -356,8 +337,7 @@ void MemCardMgr::MC_STATE_PROFILE_NAME_WAIT( void )
         return;
 
     case kSUCCESS:
-#ifdef TARGET_XBOX
-        // decrypt the whole file.  Need to detect corruption early on XBox
+        // decrypt the whole file.  Need to detect corruption early
         x_decrypt( pProfile, sizeof(player_profile), m_EncryptionKey );
         if( pProfile->Validate() == FALSE )
         {
@@ -370,11 +350,6 @@ void MemCardMgr::MC_STATE_PROFILE_NAME_WAIT( void )
             FreeBuffer();
         }
         else
-#else
-        // This decryption WILL fail as we only read about 1KB worth of data. But, in this case,
-        // we only need that small amount of information so don't really need to worry about that.
-        x_decrypt( pProfile, 1024, m_EncryptionKey );
-#endif
         {
             Info.Name       = xwstring( pProfile->GetProfileName() );
             Info.Hash       = pProfile->GetHash();
@@ -389,14 +364,12 @@ void MemCardMgr::MC_STATE_PROFILE_NAME_WAIT( void )
         return;
 
     case kFAILURE:
-#ifdef TARGET_XBOX
         {
             s32 Count = x_strlen( Info.Dir );
             Count -= 8;
             Info.Name = Info.Dir.Right(Count);
             Pending.ErrorCode = 0;
         }
-#endif
         if( !Info.bDamaged )
         {
             Info.bDamaged = true;
@@ -425,8 +398,8 @@ void MemCardMgr::MC_STATE_FIND_SETTINGS( void )
 {
 #ifdef TARGET_XBOX
         g_MemcardMgr.AsyncSetDirectory( "Game Settings" );
-#else
-        g_MemcardMgr.AsyncSetDirectory( xfs("%s%s",m_SavePrefix, m_OptionsPostfix) );
+#elif defined(TARGET_PC)
+        g_MemcardMgr.AsyncSetDirectory( "" ); //We dont using folders on PC.
 #endif
     ChangeState( __id MC_STATE_FIND_SETTINGS_WAIT );
 }
@@ -494,13 +467,6 @@ void MemCardMgr::MC_ACTION_POLL_CARDS( void )
     PushState( __id MC_STATE_MOUNT      );
     PushState( __id MC_STATE_TRAWL_DIRS );
     PushState( __id MC_STATE_UNMOUNT    );
-#if defined(TARGET_PS2)
-    // push states for card two
-    PushState( __id MC_STATE_NEXT_CARD  ); 
-    PushState( __id MC_STATE_MOUNT      ); 
-    PushState( __id MC_STATE_TRAWL_DIRS ); 
-    PushState( __id MC_STATE_UNMOUNT    ); 
-#endif
     PushState( __id MC_STATE_FINISH     );
 }
 
@@ -514,11 +480,5 @@ void MemCardMgr::MC_ACTION_REPOLL_CARDS( void )
     // push states for card one
     PushState( __id MC_STATE_MOUNT      );
     PushState( __id MC_STATE_UNMOUNT    );
-#if defined(TARGET_PS2)
-    // push states for card two
-    PushState( __id MC_STATE_NEXT_CARD  ); 
-    PushState( __id MC_STATE_MOUNT      ); 
-    PushState( __id MC_STATE_UNMOUNT    ); 
-#endif
     PushState( __id MC_STATE_FINISH     );
 }

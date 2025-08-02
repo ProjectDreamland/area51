@@ -20,8 +20,13 @@
 #include "AudioMgr\AudioMgr.hpp"
 #include "MemCardMgr/MemCardMgr.hpp"
 #include "e_memcard.hpp"
+#include "e_Network.hpp"
 
+#if defined(CONFIG_VIEWER)
+#include "../../Apps/ArtistViewer/Config.hpp"
+#else
 #include "../../Apps/GameApp/Config.hpp"
+#endif
 
 extern void InitFrontEndMusic( void );
 extern void KillFrontEndMusic( void );
@@ -293,7 +298,7 @@ void dlg_online_connect::Render( s32 ox, s32 oy )
 
     // render DNAS logos
     s32 tempW = (m_CurrPos.l + m_CurrPos.r) / 2;
-
+#if defined(TARGET_PS2)
     xbool PalMode;
     irect textPos;
     eng_GetPALMode( PalMode );
@@ -305,6 +310,10 @@ void dlg_online_connect::Render( s32 ox, s32 oy )
     {
         textPos.Set( tempW-150, 320, tempW+150, 50 );
     }
+#else
+	irect textPos;
+	textPos.Set( tempW-150, 320, tempW+150, 50 );
+#endif	
 
     // Now render any logos that should be on screen.
     rb.l = tempW - 64;
@@ -708,9 +717,7 @@ void dlg_online_connect::OnUpdate ( ui_win* pWin, f32 DeltaTime )
 
                     // *** NOTE *** we must be very careful where we kick off the background
                     // rendering.
-#if defined(TARGET_PS2)
                     KillFrontEndMusic();
-#endif
                     g_StateMgr.StartBackgroundRendering();
                     xtimer t;
 
@@ -719,9 +726,7 @@ void dlg_online_connect::OnUpdate ( ui_win* pWin, f32 DeltaTime )
                     t.Stop();
                     LOG_MESSAGE( "dlg_online_connect::OnUpdate", "SetOnline() call took %2.02fms", t.ReadMs() );
                     g_StateMgr.StopBackgroundRendering();
-#if defined(TARGET_PS2)
                     InitFrontEndMusic();
-#endif
                 }
                 break;
 
@@ -1098,9 +1103,7 @@ void dlg_online_connect::OnUpdate ( ui_win* pWin, f32 DeltaTime )
                     m_PopUp->EnableBlackout( FALSE );
 
                     m_pNavText->SetFlag(ui_win::WF_VISIBLE, FALSE);
-#if defined(TARGET_PS2)
                     KillFrontEndMusic();
-#endif
                     g_StateMgr.StartBackgroundRendering();
                     net_ActivateConfig( FALSE );
                     g_NetworkMgr.SetOnline( FALSE );
@@ -1109,9 +1112,7 @@ void dlg_online_connect::OnUpdate ( ui_win* pWin, f32 DeltaTime )
                     // Reset exit reason so that we don't get two messages telling us the network is down.
                     //
                     g_ActiveConfig.SetExitReason( GAME_EXIT_CONTINUE );
-#if defined(TARGET_PS2)
                     InitFrontEndMusic();
-#endif
 
                     // Once we have actually disconnected, then we go back.
                     SetState( DIALOG_STATE_BACK );
